@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Oligonucleotide MW &amp; Concentration Calculator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Work+Sans:wght@400;500;600;700&family=Libre+Franklin:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500;600&family=Space+Mono:wght@400;700&family=DM+Mono:wght@400;500&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  /* ============ kit chrome ============ */
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --kit-bg:#0d1117; --kit-panel:#161b22; --kit-line:#262d38;
+    --kit-text:#e6edf3; --kit-muted:#8b97a5; --kit-accent:#58a6ff;
+    --ui-sans:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+  }
+  html,body{height:100%}
+  body{font-family:var(--ui-sans); background:var(--kit-bg); color:var(--kit-text); overflow:hidden}
+  .kit{display:grid; grid-template-columns:1fr 384px; height:100vh}
+
+  /* ============ left: stage ============ */
+  .stage{display:flex; flex-direction:column; min-width:0;
+    background:radial-gradient(120% 120% at 50% 0%, #11161e 0%, #0b0e13 70%)}
+  .stage-bar{display:flex; align-items:center; gap:16px; padding:16px 24px;
+    border-bottom:1px solid var(--kit-line); flex:0 0 auto}
+  .brand{display:flex; align-items:center; gap:10px; margin-right:auto}
+  .brand .dot{width:22px;height:22px;border-radius:6px;
+    background:linear-gradient(135deg,#58a6ff,#3fb950); flex:0 0 auto}
+  .brand b{font-size:14px;font-weight:600;letter-spacing:-.01em}
+  .brand span{font-size:12px;color:var(--kit-muted)}
+
+  .seg{display:inline-flex; background:#0b0e13; border:1px solid var(--kit-line);
+    border-radius:9px; padding:3px; gap:2px}
+  .seg button{font:inherit; font-size:12.5px; font-weight:500; color:var(--kit-muted);
+    background:none; border:0; padding:6px 13px; border-radius:6px; cursor:pointer; white-space:nowrap}
+  .seg button.is-active{background:#21262d; color:var(--kit-text)}
+  .ghost-btn{font:inherit;font-size:12.5px;color:var(--kit-muted);background:none;
+    border:1px solid var(--kit-line);border-radius:8px;padding:7px 12px;cursor:pointer}
+  .ghost-btn:hover{color:var(--kit-text);border-color:#3a444f}
+
+  .stage-canvas{flex:1 1 auto; min-height:0; overflow:auto;
+    display:flex; align-items:center; justify-content:center; padding:48px}
+  .stage-canvas[data-platform="app"]{align-items:flex-start; padding-top:36px}
+
+  /* phone frame */
+  [data-platform="app"] .web-wrap{display:none}
+  [data-platform="web"] .phone{display:none}
+  .phone{width:392px; border-radius:46px; padding:13px; background:#05070a;
+    border:1px solid #20262f; box-shadow:0 40px 80px -30px rgba(0,0,0,.8), inset 0 0 0 2px #11151b}
+  .phone .screen{border-radius:34px; overflow:hidden; position:relative; background:var(--bg);
+    height:760px; display:flex; flex-direction:column}
+  .phone .statusbar{display:flex; justify-content:space-between; align-items:center;
+    padding:11px 24px 6px; font-size:12px; font-weight:600; color:var(--text); flex:0 0 auto}
+  .phone .statusbar .dots i{width:15px;height:9px;border:1.4px solid var(--text);
+    border-radius:2px;opacity:.7;display:inline-block}
+  .phone .scroll{flex:1 1 auto; overflow:auto; -webkit-overflow-scrolling:touch}
+  .web-wrap{width:min(560px,100%)}
+
+  /* ============ the calculator ============ */
+  .calc{
+    --radius:14px; --pad:22px; --gap:12px; --btn-h:46px;
+    --fs-base:15px; --fs-result:54px; --border:1px;
+    --bg:#fff; --surface:#fff; --surface-2:#f4f7fb;
+    --text:#0f1b2d; --muted:#5b6b7f; --line:#dbe3ec; --accent:#2563eb;
+    --accent-ink:#fff; --shadow:0 18px 44px -24px rgba(16,38,76,.35);
+    --font-ui:var(--ui-sans); --font-num:"IBM Plex Mono",monospace;
+    position:relative; background:var(--surface); color:var(--text);
+    border:var(--border) solid var(--line); border-radius:var(--radius);
+    box-shadow:var(--shadow); font-family:var(--font-ui);
+    width:100%; overflow:hidden; transition:border-radius .15s,box-shadow .15s}
+  .phone .calc{border-radius:0;border:0;box-shadow:none;min-height:100%}
+  .calc-head{display:flex; align-items:center; gap:10px; padding:var(--pad) var(--pad) 0}
+  .calc-title{font-size:13px;font-weight:600;letter-spacing:-.01em}
+  .calc-sub{font-size:11.5px;color:var(--muted)}
+  .pill{margin-left:auto;font-size:11px;font-weight:600;letter-spacing:.04em;
+    padding:4px 9px;border-radius:999px;background:var(--surface-2);
+    color:var(--accent);border:1px solid var(--line)}
+
+  /* result */
+  .result{padding:var(--pad); display:flex; flex-direction:column; gap:6px}
+  .calc[data-align="center"] .result{align-items:center; text-align:center}
+  .result-label{font-size:11px; font-weight:600; letter-spacing:.09em;
+    text-transform:uppercase; color:var(--muted)}
+  .result-value{font-family:var(--font-num); font-weight:500; font-size:var(--fs-result);
+    line-height:1; letter-spacing:-.02em; color:var(--text);
+    font-variant-numeric:tabular-nums; word-break:break-all}
+  .result-value .unit{font-size:.34em; color:var(--muted); font-weight:500; margin-left:.4em; letter-spacing:0; white-space:nowrap; display:inline-block}
+  .chips{display:flex; flex-wrap:wrap; gap:6px; margin-top:4px}
+  .calc[data-align="center"] .chips{justify-content:center}
+  .chip{font-size:11.5px; color:var(--muted); background:var(--surface-2);
+    border:1px solid var(--line); border-radius:7px; padding:4px 9px; font-variant-numeric:tabular-nums}
+  .chip b{color:var(--text);font-weight:600}
+  .formula{font-family:var(--font-num);font-size:11.5px;color:var(--muted);
+    padding:0 var(--pad); margin-top:-6px; word-break:break-all}
+  .calc[data-align="center"] .formula{text-align:center}
+  .rule{height:var(--border);background:var(--line);margin:6px 0}
+
+  /* chemistry controls */
+  .chem{display:flex; flex-wrap:wrap; gap:12px 16px; padding:14px var(--pad) 4px; align-items:flex-end}
+  .cgrp{display:flex; flex-direction:column; gap:5px}
+  .clabel{font-size:9.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+  .cseg{display:inline-flex; background:var(--surface-2); border:var(--border) solid var(--line);
+    border-radius:calc(var(--radius)*.5); padding:2px; gap:2px}
+  .cseg button{font:inherit; font-size:11.5px; font-weight:600; color:var(--muted);
+    background:none; border:0; padding:6px 11px; border-radius:calc(var(--radius)*.4); cursor:pointer; white-space:nowrap}
+  .cseg button.on{background:var(--accent); color:var(--accent-ink)}
+  .adv-btn{font:inherit; font-size:11.5px; font-weight:700; cursor:pointer; height:32px; padding:0 13px;
+    border-radius:calc(var(--radius)*.45); background:var(--surface-2); color:var(--text);
+    border:var(--border) solid var(--line); letter-spacing:.01em}
+  .adv-btn.on{background:var(--accent); color:var(--accent-ink); border-color:transparent}
+  /* custom modifier row */
+  .modrow{display:flex; flex-direction:column; gap:6px; padding:6px var(--pad) 0}
+  .modctl{display:flex; gap:8px; align-items:stretch; flex-wrap:wrap}
+  .modsel{flex:0 0 auto; font:inherit; font-size:13px; color:var(--text); background:var(--surface-2);
+    border:var(--border) solid var(--line); border-radius:calc(var(--radius)*.5); padding:8px 10px; cursor:pointer}
+  .modname{flex:1 1 130px; min-width:0; font:inherit; font-size:14px; color:var(--text); background:var(--surface-2);
+    border:var(--border) solid var(--line); border-radius:calc(var(--radius)*.5); padding:8px 11px; outline:none}
+  .modname:focus{border-color:var(--accent)}
+  .modname:disabled{opacity:.65; cursor:default}
+  .cinput.modmass{flex:0 0 130px}
+  .cinput.modmass input:disabled{opacity:.65}
+  /* concentration reading toggle */
+  .readrow{display:flex; align-items:center; gap:12px; padding:10px var(--pad) 0; flex-wrap:wrap}
+  .cseg.sm button{font-size:12.5px; padding:7px 13px}
+  .cseg.sm button.disabled{cursor:not-allowed}
+  .epsline{font-size:12.5px; color:var(--muted); font-family:var(--font-num)}
+  .epsline b{color:var(--accent); font-weight:600}
+
+  /* input */
+  .field{padding:14px var(--pad) var(--pad)}
+  .field-top{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:7px}
+  .field-top label{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .field-top .count{font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .seq-input{width:100%; min-height:60px; resize:vertical; font-family:var(--font-num);
+    font-size:16px; line-height:1.5; letter-spacing:.06em; color:var(--text);
+    background:var(--surface-2); border:var(--border) solid var(--line);
+    border-radius:calc(var(--radius)*.6); padding:12px 14px; outline:none}
+  .seq-input:focus{border-color:var(--accent); box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent)}
+  .hint{font-size:11px;color:var(--muted);margin-top:7px;line-height:1.4}
+  .hint span{display:block;position:relative;padding-left:11px}
+  .hint span::before{content:"•";position:absolute;left:1px;color:var(--accent)}
+  .hint span+span{margin-top:3px}
+  .warn{font-size:11.5px;color:#d1242f;margin-top:6px}
+  /* tabs */
+  .modebar{display:flex; justify-content:flex-end; padding:var(--pad) var(--pad) 0}
+  .modetoggle{display:inline-flex; background:var(--surface-2); border:var(--border) solid var(--line);
+    border-radius:999px; padding:3px; gap:2px}
+  .modetoggle button{font:inherit; font-size:12px; font-weight:600; color:var(--muted);
+    background:none; border:0; padding:5px 12px; border-radius:999px; cursor:pointer; white-space:nowrap; transition:background .12s,color .12s}
+  .modetoggle button.on{background:var(--accent); color:var(--accent-ink)}
+  .tabs{display:flex; gap:6px; padding:8px var(--pad) 0}
+  .tab{flex:1; font:inherit; font-size:13px; font-weight:600; cursor:pointer; padding:11px 10px;
+    border-radius:calc(var(--radius)*.5); border:var(--border) solid var(--line);
+    background:var(--surface-2); color:var(--muted); transition:background .12s,color .12s}
+  .tab.on{background:var(--accent); color:var(--accent-ink); border-color:transparent}
+  /* concentration tab */
+  .mwlink{display:flex; align-items:flex-start; gap:14px; padding:18px var(--pad) 0}
+  .mwlink-main{flex:1 1 auto; min-width:0}
+  .mwlink-val{font-family:var(--font-num); font-weight:600; font-size:30px; color:var(--text); margin-top:4px; font-variant-numeric:tabular-nums; word-break:break-all}
+  .mwlink-val small{font-size:13px; color:var(--muted); font-weight:500}
+  .mwlink-sub{font-size:11px; color:var(--muted); margin-top:5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-family:var(--font-num)}
+  .mwlink-toggle{display:flex; align-items:center; gap:6px; font-size:11.5px; color:var(--muted); cursor:pointer; white-space:nowrap; flex:0 0 auto; margin-top:18px; margin-left:auto}
+  .mwlink-toggle input{accent-color:var(--accent); cursor:pointer}
+  .csec{font-size:10.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); padding:22px var(--pad) 0}
+  .crow{display:flex; gap:10px; padding:12px var(--pad) 0}
+  .cfield{flex:1; display:flex; flex-direction:column; gap:6px; min-width:0}
+  .cfield label{font-size:11px; font-weight:600; letter-spacing:.03em; color:var(--muted)}
+  .cinput{display:flex; align-items:stretch; border:var(--border) solid var(--line); border-radius:calc(var(--radius)*.55); background:var(--surface-2); overflow:hidden}
+  .cinput input{flex:1; min-width:0; border:0; background:transparent; outline:none; font-family:var(--font-num); font-size:16px; color:var(--text); padding:11px 12px; -moz-appearance:textfield}
+  .cinput input::-webkit-outer-spin-button,.cinput input::-webkit-inner-spin-button{-webkit-appearance:none; margin:0}
+  .cinput:focus-within{border-color:var(--accent); box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 16%,transparent)}
+  .cunit-fixed{flex:0 0 64px; width:64px; display:flex; align-items:center; justify-content:center; padding:0 4px; font-size:13px; color:var(--muted); border-left:var(--border) solid var(--line); font-family:var(--font-num)}
+  .cinput select{flex:0 0 64px; width:64px; align-self:stretch; border:0; border-left:var(--border) solid var(--line); background-color:var(--surface-2); color:var(--text); font:inherit; font-size:14px; padding:0 4px 0 8px; cursor:pointer}
+  .cresults{display:grid; grid-template-columns:1fr 1fr; gap:10px; padding:12px var(--pad) 0}
+  .cres{background:color-mix(in srgb,var(--accent) 9%,var(--surface)); border:var(--border) solid color-mix(in srgb,var(--accent) 22%,var(--line)); border-radius:calc(var(--radius)*.6); padding:13px 14px}
+  .cres .l{font-size:10px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--muted)}
+  .cres .v{font-family:var(--font-num); font-weight:600; font-size:23px; margin-top:6px; color:var(--accent); font-variant-numeric:tabular-nums; word-break:break-all}
+  .cres .v small{font-size:12px; color:var(--muted); font-weight:500; margin-left:3px}
+  .cnote{font-size:11.5px; color:var(--muted); padding:8px var(--pad) 0; line-height:1.45}
+  .cnote b{color:var(--text)}
+
+  /* keypad */
+  .keypad{display:flex; flex-direction:column; gap:var(--gap); margin-top:var(--gap)}
+  .calc[data-keypad="off"] .keypad{display:none}
+  .kp-label{font-size:9.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:2px 0 -4px}
+  .kp-row{display:flex; gap:var(--gap)}
+  .key{flex:1 1 0; min-width:42px; height:var(--btn-h); border-radius:calc(var(--radius)*.5);
+    font-family:var(--font-num); font-size:18px; font-weight:700; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; user-select:none;
+    transition:transform .04s, background .12s, border-color .12s}
+  .key:active{transform:translateY(1px)}
+  .key.mod{font-size:15px}
+  .key.util{font-family:var(--font-ui); font-size:13px; font-weight:600}
+  .key.lk{flex:0 0 auto; min-width:54px; font-family:var(--font-num)}
+
+  /* button styles */
+  .calc[data-btn="filled"] .key{background:var(--accent); color:var(--accent-ink); border:var(--border) solid transparent}
+  .calc[data-btn="filled"] .key.util,.calc[data-btn="filled"] .key.lk{background:var(--surface-2); color:var(--text); border:var(--border) solid var(--line)}
+  .calc[data-btn="filled"] .key.mod{background:color-mix(in srgb,var(--accent) 78%,#000)}
+  .calc[data-btn="soft"] .key{background:color-mix(in srgb,var(--accent) 13%,var(--surface)); color:var(--accent); border:var(--border) solid transparent}
+  .calc[data-btn="soft"] .key.util,.calc[data-btn="soft"] .key.lk{background:var(--surface-2); color:var(--text); border:var(--border) solid var(--line)}
+  .calc[data-btn="outline"] .key{background:var(--surface); color:var(--text); border:var(--border) solid var(--line)}
+  .calc[data-btn="outline"] .key:hover{border-color:var(--accent); color:var(--accent)}
+  .calc[data-btn="ghost"] .key{background:transparent; color:var(--text); border:var(--border) solid transparent}
+  .calc[data-btn="ghost"] .key:hover{background:var(--surface-2)}
+
+  /* footer */
+  .calc-foot{display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:0 var(--pad) var(--pad)}
+  .ctl-btn{height:38px;padding:0 14px;border-radius:calc(var(--radius)*.55);font:inherit;font-size:13px;
+    font-weight:600;cursor:pointer;background:var(--surface-2);color:var(--text);border:var(--border) solid var(--line);
+    display:inline-flex;align-items:center;gap:6px}
+  .ctl-btn.sm{height:30px;padding:0 11px;font-size:12px}
+  .copy{margin-left:auto; height:38px;padding:0 16px;border-radius:calc(var(--radius)*.55);
+    font:inherit;font-size:13px;font-weight:600;cursor:pointer;background:var(--accent);color:var(--accent-ink);border:0}
+  .ctl-btn:active,.copy:active{transform:translateY(1px)}
+
+  /* result on bottom */
+  .calc[data-resultpos="bottom"] .calc-body{display:flex;flex-direction:column}
+  .calc[data-resultpos="bottom"] .result{order:5}
+  .calc[data-resultpos="bottom"] .formula{order:5}
+
+  /* history drawer */
+  .drawer{position:absolute; inset:0; z-index:6; background:var(--surface); display:flex; flex-direction:column}
+  .drawer[hidden]{display:none}
+  .drawer-head{display:flex; align-items:center; gap:10px; padding:var(--pad);
+    border-bottom:var(--border) solid var(--line)}
+  .drawer-head h4{font-size:14px;font-weight:600;margin-right:auto}
+  .dclose{width:30px;height:30px;border-radius:8px;border:var(--border) solid var(--line);
+    background:var(--surface-2);color:var(--text);cursor:pointer;font-size:14px;line-height:1}
+  .ctl-btn.danger{background:#d1242f; color:#fff; border-color:#d1242f}
+  .drawer-list{flex:1 1 auto; overflow:auto; padding:4px var(--pad) var(--pad)}
+  .drawer-search{padding:10px var(--pad) 0}
+  .hsearch{width:100%; font:inherit; font-size:13px; color:var(--text); background:var(--surface-2);
+    border:var(--border) solid var(--line); border-radius:calc(var(--radius)*.5); padding:9px 12px; outline:none}
+  .hsearch:focus{border-color:var(--accent); box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 16%,transparent)}
+  .hname{font-family:var(--font-ui); font-size:13px; font-weight:600; color:var(--text);
+    background:transparent; border:1px solid transparent; border-radius:6px; padding:2px 6px; margin:-2px -6px 3px;
+    width:calc(100% + 12px); outline:none}
+  .hname:hover{border-color:var(--line)}
+  .hname:focus{border-color:var(--accent); background:var(--surface-2)}
+  .hname::placeholder{color:var(--muted); font-weight:500; font-style:italic}
+  .hempty{color:var(--muted);font-size:12.5px;padding:24px 4px;text-align:center;line-height:1.5}
+  .hitem{display:flex; align-items:center; gap:12px; padding:12px 0;
+    border-bottom:1px solid var(--line); cursor:pointer}
+  .hitem:hover{background:color-mix(in srgb,var(--accent) 6%,transparent)}
+  .hmw{font-family:var(--font-num);font-weight:600;font-size:15px;min-width:104px;font-variant-numeric:tabular-nums}
+  .hmw small{font-size:10px;color:var(--muted);font-weight:500}
+  .hmid{flex:1 1 auto; min-width:0}
+  .hseq{font-family:var(--font-num);font-size:12px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .htags{font-size:10.5px;color:var(--muted);margin-top:2px}
+  .htime{font-size:10px;color:var(--muted);margin-top:3px;opacity:.85}
+  .hcount{color:var(--muted);font-weight:500;font-size:12px}
+  .hdel{flex:0 0 auto;width:26px;height:26px;border-radius:7px;border:0;background:transparent;
+    color:var(--muted);cursor:pointer;font-size:13px}
+  .hdel:hover{background:var(--surface-2);color:#d1242f}
+
+  /* ============ right: control panel ============ */
+  .panel{background:var(--kit-panel); border-left:1px solid var(--kit-line); overflow-y:auto; display:flex; flex-direction:column}
+  .panel-head{position:sticky;top:0;z-index:2;background:var(--kit-panel);
+    padding:18px 20px 14px;border-bottom:1px solid var(--kit-line)}
+  .panel-head h2{font-size:13px;font-weight:600;letter-spacing:.02em}
+  .panel-head p{font-size:11.5px;color:var(--kit-muted);margin-top:3px;line-height:1.4}
+  .grp{border-bottom:1px solid var(--kit-line); padding:16px 20px}
+  .grp > h3{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--kit-muted); margin-bottom:13px; display:flex; align-items:center; gap:8px}
+  .grp > h3 .tag{margin-left:auto;font-weight:500;letter-spacing:0;text-transform:none;color:#6b7888;font-size:11px}
+  .row{margin-bottom:14px}
+  .row:last-child{margin-bottom:0}
+  .row > label{display:block;font-size:11.5px;color:var(--kit-muted);margin-bottom:7px}
+  .row > label .v{float:right;color:var(--kit-text);font-variant-numeric:tabular-nums;
+    font-family:"IBM Plex Mono",monospace;font-size:11px}
+  .pseg{display:flex; background:#0b0e13; border:1px solid var(--kit-line); border-radius:8px; padding:3px; gap:2px}
+  .pseg.col{flex-direction:column}
+  .pseg button{flex:1; font:inherit; font-size:12px; font-weight:500; color:var(--kit-muted);
+    background:none;border:0;padding:7px 6px;border-radius:6px;cursor:pointer;white-space:nowrap;transition:background .1s,color .1s}
+  .pseg button.is-active{background:#21262d;color:var(--kit-text)}
+  .pseg button:hover:not(.is-active){color:var(--kit-text)}
+  .swatches{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}
+  .sw{aspect-ratio:1;border-radius:8px;cursor:pointer;position:relative;border:2px solid transparent;overflow:hidden}
+  .sw .face{position:absolute;inset:0;border-radius:6px}
+  .sw.is-active{border-color:var(--kit-text);box-shadow:0 0 0 2px var(--kit-panel) inset}
+  .theme-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .tw{cursor:pointer;border-radius:9px;overflow:hidden;border:2px solid transparent;background:#0b0e13}
+  .tw.is-active{border-color:var(--kit-text)}
+  .tw .prev{height:40px;display:flex;align-items:center;justify-content:center;gap:4px}
+  .tw .prev i{width:11px;height:11px;border-radius:3px;display:block}
+  .tw .nm{font-size:10px;text-align:center;padding:5px 2px 6px;color:var(--kit-muted)}
+  .tw.is-active .nm{color:var(--kit-text)}
+  input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:4px;background:var(--kit-line);border-radius:99px;outline:none}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;
+    background:var(--kit-text);cursor:pointer;border:3px solid var(--kit-panel);box-shadow:0 0 0 1px var(--kit-line)}
+  input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--kit-text);cursor:pointer;border:3px solid var(--kit-panel)}
+  .toggle{display:flex;align-items:center;justify-content:space-between;padding:8px 0;cursor:pointer}
+  .toggle span{font-size:12.5px;color:var(--kit-text)}
+  .toggle .sw-t{width:38px;height:22px;border-radius:99px;background:#30363d;position:relative;transition:background .15s;flex:0 0 auto}
+  .toggle .sw-t::after{content:"";position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:#fff;transition:transform .15s}
+  .toggle.on .sw-t{background:var(--kit-accent)}
+  .toggle.on .sw-t::after{transform:translateX(16px)}
+  select{width:100%;font:inherit;font-size:12.5px;color:var(--kit-text);background:#0b0e13;
+    border:1px solid var(--kit-line);border-radius:8px;padding:8px 10px;cursor:pointer;appearance:none;
+    background-image:linear-gradient(45deg,transparent 50%,var(--kit-muted) 50%),linear-gradient(135deg,var(--kit-muted) 50%,transparent 50%);
+    background-position:calc(100% - 16px) 51%,calc(100% - 11px) 51%;background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+  select:hover{border-color:#3a444f}
+  .panel::-webkit-scrollbar,.stage-canvas::-webkit-scrollbar,.drawer-list::-webkit-scrollbar,.phone .scroll::-webkit-scrollbar{width:10px;height:10px}
+  .panel::-webkit-scrollbar-thumb,.stage-canvas::-webkit-scrollbar-thumb{background:#2b333d;border-radius:99px;border:2px solid var(--kit-panel)}
+
+  @media (max-width:1080px){
+    .kit{grid-template-columns:1fr}
+    .panel{position:fixed;inset:0 0 0 auto;width:384px;box-shadow:-20px 0 60px rgba(0,0,0,.5)}
+  }
+  /* ===== tester app build: hide the construction-kit chrome, show only the calculator ===== */
+  body.app-mode .kit{grid-template-columns:1fr}
+  body.app-mode .panel,
+  body.app-mode .stage-bar,
+  body.app-mode .phone{display:none !important}
+  body.app-mode .stage-canvas{padding:28px 20px; align-items:flex-start}
+  body.app-mode .web-wrap{width:min(640px,100%); margin:0 auto}
+  @media (max-width:560px){ body.app-mode .stage-canvas{padding:14px} }
+</style>
+</head>
+<body class="app-mode">
+<div class="kit">
+  <section class="stage">
+    <div class="stage-bar">
+      <div class="brand">
+        <div class="dot"></div>
+        <div>
+          <b>Oligo MW · Construction Kit</b><br />
+          <span>DNA / RNA / hybrid molecular weight · live design system</span>
+        </div>
+      </div>
+      <div class="seg" id="platformSeg">
+        <button data-val="web" class="is-active">Web</button>
+        <button data-val="app">App</button>
+      </div>
+      <button class="ghost-btn" id="resetBtn">Reset</button>
+    </div>
+
+    <div class="stage-canvas" id="stageCanvas" data-platform="web">
+      <div class="web-wrap"><div class="calc" id="calc"></div></div>
+      <div class="phone">
+        <div class="screen">
+          <div class="statusbar"><span>9:41</span><span class="dots"><i></i></span></div>
+          <div class="scroll"><div class="calc" id="calcApp"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <aside class="panel" id="panel"></aside>
+</div>
+
+<!-- calculator markup template -->
+<template id="calcTpl">
+  <div class="modebar">
+    <div class="modetoggle" data-modetoggle>
+      <button data-mode="light">☀ Light</button><button data-mode="dark">☾ Dark</button>
+    </div>
+  </div>
+  <div class="tabs">
+    <button class="tab" data-tab="mw" style="font-size: 16px; font-weight: 600">MW Calculator</button>
+    <button class="tab" data-tab="conc" style="font-size: 16px; font-weight: 600">Concentration</button>
+  </div>
+  <div class="tabpane" data-pane="mw">
+  <div class="calc-head">
+    <div>
+      <div class="calc-title" style="font-size: 18px">Oligonucleotide MW</div>
+      <div class="calc-sub" style="font-size: 16px">5′→3′ · enter sequence</div>
+    </div>
+    <div class="pill" data-pill style="font-size: 12px">DNA</div>
+  </div>
+  <div class="calc-body">
+    <div class="result">
+      <div class="result-label" style="font-size: 16px">Molecular weight</div>
+      <div class="result-value"><span data-mw>0.00</span><span class="unit">g/mol</span></div>
+      <div class="chips" data-chips></div>
+    </div>
+    <div class="formula" data-formula></div>
+    <div class="rule"></div>
+
+    <div class="chem">
+      <div class="cgrp"><span class="clabel" style="font-size: 14px">Backbone</span>
+        <div class="cseg" data-cset="type">
+          <button data-cval="DNA">DNA</button><button data-cval="RNA">RNA</button><button data-cval="Hybrid">Hybrid</button>
+        </div></div>
+      <div class="cgrp"><span class="clabel" style="font-size: 14px">Linkage</span>
+        <div class="cseg" data-cset="linkage">
+          <button data-cval="PO">PO</button><button data-cval="PS">PS</button><button data-cval="Mixed">Mixed</button>
+        </div></div>
+      <div class="cgrp"><span class="clabel" style="font-size: 14px">5′ end</span>
+        <div class="cseg" data-cset="five">
+          <button data-cval="OH">OH</button><button data-cval="phosphate">5′P</button><button data-cval="DMT">DMT</button>
+        </div></div>
+      <div class="cgrp"><span class="clabel" style="font-size: 14px">3′ end</span>
+        <div class="cseg" data-cset="three">
+          <button data-cval="OH">OH</button><button data-cval="phosphate">3′P</button>
+        </div></div>
+      <div class="cgrp"><span class="clabel" style="font-size: 12px">ADDITIONAL</span>
+        <button class="adv-btn" data-adv>+ Advanced</button></div>
+    </div>
+
+    <div class="modrow">
+      <span class="clabel" style="font-size: 14px">Conjugate / custom modifier</span>
+      <div class="modctl">
+        <select class="modsel" data-modpreset></select>
+        <input class="modname" data-modfield="modName" placeholder="Name (e.g. 5′-Cy3)" spellcheck="false" />
+        <span class="cinput modmass"><input type="number" data-modfield="modMass" inputmode="decimal" placeholder="0" /><span class="cunit-fixed" style="font-size:13px">g/mol</span></span>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-top"><label style="font-size: 14px">Sequence</label><span class="count" data-count>0 nt</span></div>
+      <textarea class="seq-input" data-seq spellcheck="false"></textarea>
+      <div class="hint" data-hint></div>
+      <div class="warn" data-warn style="display:none"></div>
+      <div class="keypad" data-keypad></div>
+    </div>
+
+    <div class="calc-foot">
+      <button class="ctl-btn" data-history>History</button>
+      <button class="ctl-btn" data-save>Save Strand</button>
+      <button class="copy" data-copy>Copy result</button>
+    </div>
+  </div>
+  </div><!-- /mw pane -->
+
+  <div class="tabpane" data-pane="conc" style="display:none">
+    <div class="calc-head">
+      <div>
+        <div class="calc-title" style="font-size: 18px">Concentration &amp; Molarity</div>
+        <div class="calc-sub" style="font-size: 16px" data-clinksub>Linked to the MW calculator</div>
+      </div>
+      <div class="pill" data-cpill style="font-size: 12px">— g/mol</div>
+    </div>
+
+    <div class="mwlink">
+      <div class="mwlink-main">
+        <div class="result-label" style="font-size: 16px">Molecular weight</div>
+        <div class="mwlink-val"><span data-cmw>0.00</span> <small style="font-size: 14px">g/mol</small></div>
+        <div class="mwlink-sub" data-cmwsub style="width: 500px">linked from sequence</div>
+      </div>
+      <label class="mwlink-toggle"><input type="checkbox" data-ctoggle="useCustomMW" style="width: 14px; height: 14px" /> custom</label>
+    </div>
+    <div class="crow" data-customwrap style="display:none">
+      <div class="cfield"><label style="font-size: 16px">Custom Molecular Weight (g/mol)</label>
+        <div class="cinput"><input type="number" data-conc="customMW" inputmode="decimal" placeholder="e.g. 6500" /></div></div>
+    </div>
+
+    <div class="csec" style="font-size: 16px">1 · Stock concentration · Nanodrop</div>
+    <div class="readrow">
+      <div class="cseg sm" data-cset="readMode">
+        <button data-cval="ng">ng/µL</button><button data-cval="a260">A₂₆₀ (OD)</button>
+      </div>
+      <span class="epsline" data-epsline></span>
+    </div>
+    <div class="crow">
+      <div class="cfield" data-ndwrap><label style="font-size: 14px">Nanodrop reading</label>
+        <div class="cinput"><input type="number" data-conc="nd" inputmode="decimal" placeholder="0" /><span class="cunit-fixed" style="font-size: 14px; font-family: Newsreader">ng/µL</span></div></div>
+      <div class="cfield" data-a260wrap style="display:none"><label style="font-size: 14px">Absorbance A₂₆₀</label>
+        <div class="cinput"><input type="number" data-conc="a260" inputmode="decimal" placeholder="0" /><span class="cunit-fixed" style="font-size: 14px; font-family: Newsreader">A₂₆₀</span></div></div>
+      <div class="cfield"><label style="font-size: 14px">Resuspended in</label>
+        <div class="cinput"><input type="number" data-conc="vol" inputmode="decimal" placeholder="0" /><select data-cu="volUnit"><option>µL</option><option>mL</option><option>L</option></select></div></div>
+    </div>
+    <div class="result" style="padding-bottom:0">
+      <div class="result-label" style="font-size: 16px">Stock concentration</div>
+      <div class="result-value" style="font-size:46px"><span data-cconc>0</span><span class="unit" data-cconcu>µM</span></div>
+    </div>
+    <div class="cresults">
+      <div class="cres"><div class="l">Total amount</div><div class="v"><span data-camt>0</span><small data-camtu>pmol</small></div></div>
+      <div class="cres"><div class="l">Total mass</div><div class="v"><span data-cmass>0</span><small data-cmassu>µg</small></div></div>
+    </div>
+
+    <div class="rule" style="margin:18px 0 2px"></div>
+    <div class="csec" style="font-size: 16px">2 · Dilute the stock · C₁V₁ = C₂V₂</div>
+    <div class="mwlink" style="padding-top:10px; align-items:center; gap:8px">
+      <span data-stocklabel style="font-size:16px">Custom stock conc.:</span>
+      <b data-c1 style="font-size:16px">—</b>
+      <span class="cinput" data-stockwrap style="display:none; flex:0 0 150px">
+        <input type="number" data-conc="customStock" inputmode="decimal" placeholder="0" />
+        <select data-cu="customStockUnit"><option>nM</option><option>µM</option><option>mM</option><option>M</option></select>
+      </span>
+      <label class="mwlink-toggle" style="margin-top:0; margin-left:auto"><input type="checkbox" data-ctoggle="useCustomStock" style="width:14px;height:14px" /> custom</label>
+    </div>
+    <div class="crow">
+      <div class="cfield"><label style="font-size: 14px">Target Concentration</label>
+        <div class="cinput"><input type="number" data-conc="dilC2" inputmode="decimal" placeholder="0" /><select data-cu="dilC2Unit"><option>nM</option><option>µM</option><option>mM</option><option>M</option></select></div></div>
+      <div class="cfield"><label style="font-size: 14px">Target Volume</label>
+        <div class="cinput"><input type="number" data-conc="dilV2" inputmode="decimal" placeholder="0" /><select data-cu="dilV2Unit"><option>µL</option><option>mL</option><option>L</option></select></div></div>
+    </div>
+    <div class="cresults">
+      <div class="cres"><div class="l">ADD STOCK</div><div class="v"><span data-v1>—</span><small data-v1u></small></div></div>
+      <div class="cres"><div class="l">Add water / diluent</div><div class="v"><span data-water>—</span><small data-wateru></small></div></div>
+    </div>
+    <div class="cnote" data-dilnote style="font-size: 16px"></div>
+    <div class="calc-foot">
+      <button class="copy" data-ccopy style="margin-left:auto">Copy concentration</button>
+    </div>
+  </div><!-- /conc pane -->
+
+  <div class="drawer" data-drawer hidden>
+    <div class="drawer-head">
+      <h4>Saved strands <span class="hcount" data-hcount></span></h4>
+      <button class="ctl-btn sm" data-hclear>Clear all</button>
+      <button class="dclose" data-dclose>✕</button>
+    </div>
+    <div class="drawer-search">
+      <input type="text" class="hsearch" data-hsearch placeholder="Search by name or sequence…" spellcheck="false" />
+    </div>
+    <div class="drawer-list" data-hlist></div>
+  </div>
+</template>
+
+<script>
+/* =================================================================
+   OLIGO MW ENGINE  —  token model
+   M = M5' + Σ nucleoside(token) + Σ linkage(bond)
+   Average masses (g/mol). DNA ACGT (5'-OH, PO) -> 1173.84  ✓
+   ================================================================= */
+const NUCLEO = {
+  d:   { A:251.246, C:227.220, G:267.245, T:242.231 },          // 2'-deoxy (DNA)
+  r:   { A:267.245, C:243.219, G:283.244, U:244.203 },          // ribo (RNA)
+  m:   { A:281.272, C:257.246, G:297.271, U:258.230 },          // 2'-OMe  (ribo + CH2)
+  f:   { A:269.236, C:245.210, G:285.235, U:246.194 },          // 2'-F    (ribo + F-OH)
+  moe: { A:325.325, C:315.326, G:341.324, U:316.310 },          // 2'-MOE  (ribo + C3H6O; C,U are 5-Me per Bachem)
+  cEt: { A:293.283, C:269.257, G:309.282, U:270.241 },          // 2'-cEt  (ribo + C2H2 bridge)
+};
+const SUGAR_LABEL  = { d:"DNA", r:"RNA", m:"2′-OMe", f:"2′-F", moe:"2′-MOE", cEt:"2′-cEt" };
+const PREFIXES = ["cEt","moe","m","f","d","r"];                 // longest-first for parsing
+const LINK = { PO:61.964, PS:78.025 };                          // phosphodiester / phosphorothioate bridge
+const FIVE = { OH:0, phosphate:79.979, DMT:302.373 };           // 5' end group mass
+const FIVE_THIO_DELTA = 16.061;                                 // 5'-phosphate -> 5'-phosphorothioate (O->S)
+const FIVE_LABEL = { OH:"5′-OH", phosphate:"5′-phosphate", DMT:"5′-DMT" };
+function fiveLabel(five, thio){ return (five==='phosphate'&&thio) ? "5′-phosphorothioate" : FIVE_LABEL[five]; }
+function fiveTag(five, thio){ return five==='DMT'?"DMT":(five==='phosphate'?(thio?"5′-Ps":"5′-P"):""); }
+
+// 3' end group + custom conjugate/modifier
+const THREE = { OH:0, phosphate:79.979 };                       // 3' end group mass (HPO3)
+const THREE_LABEL = { OH:"3′-OH", phosphate:"3′-phosphate" };
+function threeTag(three){ return three==='phosphate' ? "3′-P" : ""; }
+// Universal (vendor-independent) average Δmass presets, g/mol. Each derives from standard nucleotide chemistry.
+const MOD_PRESETS = {
+  "":      {name:"", mass:0},                       // none
+  "3p":    {name:"3′-Phosphate",      mass:79.98},  // HPO3
+  "invdT": {name:"Inverted dT (3′)",  mass:304.20}, // dT nucleoside 242.23 + PO 61.96
+  "invdA": {name:"Inverted dA (3′)",  mass:313.21},
+  "invdC": {name:"Inverted dC (3′)",  mass:289.18},
+  "invdG": {name:"Inverted dG (3′)",  mass:329.21},
+  "custom":{name:"", mass:0},                        // manual entry
+};
+const MOD_PRESET_LABEL = { "":"None", "3p":"3′-Phosphate", "invdT":"Inverted dT (3′)", "invdA":"Inverted dA (3′)", "invdC":"Inverted dC (3′)", "invdG":"Inverted dG (3′)", "custom":"Custom…" };
+function modMassVal(){ return parseFloat(S.modMass)||0; }
+
+// --- ε₂₆₀ nearest-neighbor model (Cavaluzzi/IDT). Separate DNA & RNA tables (L·mol⁻¹·cm⁻¹). ---
+const EXT_MONO = {
+  DNA:{A:15400,C:7400,G:11500,T:8700,U:9900},
+  RNA:{A:15400,C:7200,G:11500,U:9900,T:8700}
+};
+const EXT_NN = {
+  DNA:{AA:27400,AC:21200,AG:25000,AT:22800,CA:21200,CC:14600,CG:18000,CT:15200,
+       GA:25200,GC:17600,GG:21600,GT:20000,TA:23400,TC:16200,TG:19000,TT:16800},
+  RNA:{AA:27400,AC:21000,AG:25000,AU:24000,CA:21000,CC:14200,CG:17800,CU:16200,
+       GA:25200,GC:17400,GG:21600,GU:21200,UA:24600,UC:17200,UG:20000,UU:19600}
+};
+function epsilon260(tokens){               // modified sugars reuse the natural base ε of the same backbone
+  const n=tokens.length; if(!n) return 0;
+  const typ = t => (t.sugar==='d') ? 'DNA' : 'RNA';            // deoxy -> DNA table; ribose & 2'-mods -> RNA
+  const mb  = (b,tbl) => tbl==='DNA' ? (b==='U'?'T':b) : (b==='T'?'U':b);
+  const bk  = t => mb(t.base, typ(t));
+  if(n===1) return EXT_MONO[typ(tokens[0])][bk(tokens[0])]||0;
+  let sumNN=0, sumMono=0;
+  for(let i=0;i<n-1;i++){ const t1=tokens[i],t2=tokens[i+1], tbl=typ(t1);
+    sumNN += EXT_NN[tbl][mb(t1.base,tbl)+mb(t2.base,tbl)]||0; }
+  for(let i=1;i<n-1;i++) sumMono += EXT_MONO[typ(tokens[i])][bk(tokens[i])]||0;
+  return Math.max(sumNN - sumMono, 0);
+}
+
+// Parse a sequence string -> tokens, per-gap PS markers, and 5' end group.
+//   Leading "DMT" or "P" sets the 5' group; an "s" right after "P" -> 5'-phosphorothioate.
+//   An "s" between two bases marks that internucleotide linkage as PS (a trailing s is ignored).
+function parseSeq(str, mode){
+  const s = str||""; let i=0;
+  let five='OH', fiveThio=false;
+  if(s.startsWith('DMT',i)){ five='DMT'; i+=3; }
+  else if(s[i]==='P'){ five='phosphate'; i++;
+    let k=i; while(k<s.length && /\s/.test(s[k])) k++;
+    if(s[k]==='s'){ fiveThio=true; i=k+1; }                    // 5'-phosphorothioate (s after P, spaces ok)
+  }
+  const tokens=[], marks=[], bad=[]; let pending=false, needPrefix=false;
+  while(i<s.length){
+    const ch=s[i];
+    if(/\s/.test(ch)){ i++; continue; }
+    if(ch==='s'||ch==='o'){ pending = (ch==='s'); i++; continue; }            // linkage marker
+    let sugar=null, plen=0;
+    for(const p of PREFIXES){ if(s.startsWith(p,i)){ sugar=p; plen=p.length; break; } }
+    const j=i+plen, base=s[j];
+    if(base && /[ACGTU]/.test(base)){
+      if(!sugar){
+        if(mode==='Hybrid'){ bad.push(base); needPrefix=true; pending=false; i=j+1; continue; }  // hybrid: must specify d/r
+        sugar = (mode==='RNA') ? 'r' : 'd';                    // bare letter -> infer
+      }
+      let b=base;
+      if(sugar==='d' && b==='U') b='T';
+      if(sugar!=='d' && b==='T') b='U';
+      if(NUCLEO[sugar][b]==null){ bad.push(s.slice(i,j+1)); i=j+1; pending=false; continue; }
+      if(tokens.length>0) marks.push(pending);                  // gap between prev token and this one
+      tokens.push({sugar, base:b});
+      pending=false; i=j+1;
+    } else { bad.push(ch); i++; }
+  }
+  return {tokens, marks, five, fiveThio, bad, needPrefix};
+}
+
+// Render tokens back to a string for a target backbone + linkage mode.
+function serialize(tokens, marks, type, linkMode, five, fiveThio){
+  let out="";
+  if(five==='DMT') out+="DMT ";                                // space sets the 5' group apart
+  else if(five==='phosphate'){ out+="P "; if(fiveThio) out+="s"; }   // thio s sits AFTER the locked "P " space
+  tokens.forEach((t,i)=>{
+    let sugar=t.sugar;
+    if(sugar==='d'||sugar==='r'){ if(type==='DNA') sugar='d'; else if(type==='RNA') sugar='r'; }
+    let b=t.base;
+    if(sugar==='d' && b==='U') b='T';
+    if(sugar!=='d' && b==='T') b='U';
+    out += ((sugar==='d'||sugar==='r') ? (type==='Hybrid'? sugar : "") : sugar) + b;
+    if(linkMode==='PS' && i<tokens.length-1) out+="s";          // PS between bases only — free 3'-OH after cleavage, no terminal s
+    else if(linkMode==='Mixed' && marks[i]) out+="s";           // marks[i] = gap after token i
+  });
+  return out;
+}
+function rebuild(seq, fromType, toType, linkMode){
+  const p=parseSeq(seq, fromType);
+  return serialize(p.tokens, p.marks, toType, linkMode, p.five, p.fiveThio);
+}
+
+function compute(seq, mode, linkMode, three=(S&&S.three)||'OH', modMass=(S?modMassVal():0)){
+  const {tokens,marks,five,fiveThio,bad,needPrefix}=parseSeq(seq,mode);
+  const n=tokens.length;
+  const bonds = marks.map(m=> linkMode==='PO'?'PO' : linkMode==='PS'?'PS' : (m?'PS':'PO'));
+  let mw = FIVE[five] + (five==='phosphate'&&fiveThio?FIVE_THIO_DELTA:0) + (THREE[three]||0) + (modMass||0);
+  tokens.forEach(t=> mw+=NUCLEO[t.sugar][t.base]);
+  bonds.forEach(b=> mw+=LINK[b]);
+  const counts={A:0,C:0,G:0,T:0,U:0}, sugarCounts={};
+  tokens.forEach(t=>{ counts[t.base]++; sugarCounts[t.sugar]=(sugarCounts[t.sugar]||0)+1; });
+  const nPS=bonds.filter(b=>b==='PS').length, nPO=bonds.length-nPS;
+  const charge = -(bonds.length) - (five==='phosphate'?2:0) - (three==='phosphate'?2:0);
+  return {n,tokens,bonds,bad,mw,counts,sugarCounts,nPS,nPO,charge,five,fiveThio,three,modMass,needPrefix};
+}
+
+/* =================================================================
+   STATE + THEMES (visual kit)
+   ================================================================= */
+const THEMES = {
+  clinical:{name:"Clinical", bg:"#eef2f6", surface:"#ffffff", surface2:"#f4f7fb", text:"#0f1b2d", muted:"#5b6b7f", line:"#dbe3ec", accent:"#2563eb"},
+  paper:{name:"Paper", bg:"#efe7d9", surface:"#fbf7f0", surface2:"#f3ece0", text:"#2a2118", muted:"#7a6f60", line:"#e2d8c7", accent:"#c2703d"},
+  mono:{name:"Mono", bg:"#ececee", surface:"#ffffff", surface2:"#f4f4f5", text:"#18181b", muted:"#71717a", line:"#e2e2e6", accent:"#18181b"},
+  mint:{name:"Lab", bg:"#e4efed", surface:"#ffffff", surface2:"#eef5f3", text:"#0f2622", muted:"#4f6f69", line:"#d2e3df", accent:"#0d9488"},
+  contrast:{name:"Contrast", bg:"#ffffff", surface:"#ffffff", surface2:"#f5f5f5", text:"#000000", muted:"#444444", line:"#000000", accent:"#1d4ed8"},
+  slate:{name:"Slate", bg:"#0d1117", surface:"#161c26", surface2:"#1e2530", text:"#e6edf3", muted:"#8b97a5", line:"#2a3340", accent:"#58a6ff"},
+  terminal:{name:"Terminal", bg:"#070b07", surface:"#0d130d", surface2:"#121a12", text:"#c8f5c8", muted:"#5e885e", line:"#1c2a1c", accent:"#3fb950"},
+  midnight:{name:"Indigo", bg:"#0c0a1a", surface:"#15122b", surface2:"#1c1838", text:"#e6e3f5", muted:"#9089b5", line:"#2a2550", accent:"#8b7bff"},
+};
+const ACCENTS = ["#2563eb","#0d9488","#7c3aed","#d97706","#e11d48","#16a34a","#475569"];
+const FONTS_UI = {
+  sans:{label:"Helvetica", css:'"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif'},
+  plex:{label:"IBM Plex Sans", css:'"IBM Plex Sans",sans-serif'},
+  grotesk:{label:"Space Grotesk", css:'"Space Grotesk",sans-serif'},
+  dmsans:{label:"DM Sans", css:'"DM Sans",sans-serif'},
+  work:{label:"Work Sans", css:'"Work Sans",sans-serif'},
+  franklin:{label:"Libre Franklin", css:'"Libre Franklin",sans-serif'},
+  serif:{label:"Newsreader (serif)", css:'"Newsreader",Georgia,serif'},
+  sourceserif:{label:"Source Serif (serif)", css:'"Source Serif 4",Georgia,serif'},
+};
+const FONTS_NUM = {
+  mono:{label:"IBM Plex Mono", css:'"IBM Plex Mono",monospace'},
+  jetbrains:{label:"JetBrains Mono", css:'"JetBrains Mono",monospace'},
+  spacemono:{label:"Space Mono", css:'"Space Mono",monospace'},
+  dmmono:{label:"DM Mono", css:'"DM Mono",monospace'},
+  fira:{label:"Fira Code", css:'"Fira Code",monospace'},
+  grotesk:{label:"Space Grotesk", css:'"Space Grotesk",sans-serif'},
+  match:{label:"Match interface", css:'inherit'},
+};
+const DENSITY = { compact:{pad:"16px",gap:"9px",btn:"42px"}, cozy:{pad:"22px",gap:"12px",btn:"46px"}, comfortable:{pad:"30px",gap:"16px",btn:"54px"} };
+const SHADOWS = { none:"none", soft:"0 18px 44px -24px rgba(16,38,76,.35)", hard:"0 10px 0 -4px rgba(0,0,0,.08), 0 26px 50px -28px rgba(16,38,76,.5)" };
+
+const DEFAULTS = {
+  platform:"web", theme:"paper", accent:"#d97706",
+  fontUI:"sourceserif", fontNum:"match", fsBase:16, fsResult:48,
+  radius:15, border:1, density:"cozy", shadow:"soft",
+  btn:"soft", keypad:true, resultpos:"top", align:"left",
+  showChips:true, showFormula:false, showCharge:false, decimals:2,
+  type:"DNA", linkage:"PO", five:"OH", fiveThio:false, advanced:false,
+  three:"OH", modPreset:"", modName:"", modMass:"",
+  seq:"ATCGATCGAT",
+  tab:"mw", useCustomMW:false, customMW:"",
+  readMode:"ng", a260:"1.0",
+  nd:"100", vol:"200", volUnit:"µL",
+  dilC2:"10", dilC2Unit:"µM", dilV2:"100", dilV2Unit:"µL",
+  useCustomStock:false, customStock:"", customStockUnit:"µM",
+};
+let S = load();
+let history = loadHist();
+let drawerOpen = false;
+let histSearch = "";
+function load(){ try{ const s={...DEFAULTS, ...JSON.parse(localStorage.getItem("oligoKit")||"{}")}; if(s.theme!=='paper'&&s.theme!=='slate') s.theme='paper'; return s; }catch(e){ return {...DEFAULTS}; } }
+function save(){ localStorage.setItem("oligoKit", JSON.stringify(S)); }
+function loadHist(){ try{ return JSON.parse(localStorage.getItem("oligoHistory")||"[]"); }catch(e){ return []; } }
+function saveHist(){ localStorage.setItem("oligoHistory", JSON.stringify(history)); }
+
+/* =================================================================
+   RENDER
+   ================================================================= */
+const calcs = [document.getElementById("calc"), document.getElementById("calcApp")];
+const tpl = document.getElementById("calcTpl");
+calcs.forEach(c=>c.appendChild(tpl.content.cloneNode(true)));
+
+function pickInk(hex){
+  const c=hex.replace('#',''); const r=parseInt(c.substr(0,2),16),g=parseInt(c.substr(2,2),16),b=parseInt(c.substr(4,2),16);
+  return (0.299*r+0.587*g+0.114*b)>150 ? "#0f1b2d":"#ffffff";
+}
+function applyVars(el){
+  const t=THEMES[S.theme], d=DENSITY[S.density];
+  const set=(k,v)=>el.style.setProperty(k,v);
+  set("--bg",t.bg); set("--surface",t.surface); set("--surface-2",t.surface2);
+  set("--text",t.text); set("--muted",t.muted); set("--line",t.line);
+  set("--accent",S.accent); set("--accent-ink",pickInk(S.accent));
+  set("--radius",S.radius+"px"); set("--border",S.border+"px");
+  set("--pad",d.pad); set("--gap",d.gap); set("--btn-h",d.btn);
+  set("--fs-base",S.fsBase+"px"); set("--fs-result",S.fsResult+"px");
+  set("--font-ui",FONTS_UI[S.fontUI].css); set("--font-num",FONTS_NUM[S.fontNum].css);
+  set("--shadow",SHADOWS[S.shadow]);
+  el.style.fontSize=S.fsBase+"px";
+  el.dataset.btn=S.btn; el.dataset.keypad=S.keypad?"on":"off";
+  el.dataset.resultpos=S.resultpos; el.dataset.align=S.align;
+}
+function fmt(mw,n){
+  if(!n) return (0).toFixed(S.decimals);
+  return Number(mw.toFixed(S.decimals)).toLocaleString(undefined,{minimumFractionDigits:S.decimals,maximumFractionDigits:S.decimals});
+}
+/* =================================================================
+   CONCENTRATION ENGINE
+   ng/µL == mg/L == 1e-3 g/L ;  C(mol/L) = (g/L)/MW ;  mass = C·V·MW
+   ================================================================= */
+const C_UNITS  =[['M',1],['mM',1e-3],['µM',1e-6],['nM',1e-9],['pM',1e-12]];
+const V_UNITS  =[['L',1],['mL',1e-3],['µL',1e-6]];
+const M_UNITS  =[['g',1],['mg',1e-3],['µg',1e-6],['ng',1e-9],['pg',1e-12]];
+const MOL_UNITS=[['mol',1],['mmol',1e-3],['µmol',1e-6],['nmol',1e-9],['pmol',1e-12],['fmol',1e-15]];
+function uf(name, ladder){ const e=ladder.find(x=>x[0]===name); return e?e[1]:1; }
+function autoUnit(base, ladder){
+  if(!isFinite(base)||base===0) return {v:0,u:ladder[ladder.length-2][0]};
+  const a=Math.abs(base);
+  for(const [u,f] of ladder){ if(a>=f*0.999999) return {v:base/f,u}; }
+  const L=ladder[ladder.length-1]; return {v:base/L[1],u:L[0]};
+}
+function nfmt(x){ if(!isFinite(x)) return "—"; const a=Math.abs(x); const d=a>=100?1:a>=1?2:3; return x.toLocaleString(undefined,{maximumFractionDigits:d}); }
+function currentMW(){ if(S.useCustomMW){ const v=parseFloat(S.customMW); return isFinite(v)&&v>0?v:0; } return compute(S.seq,S.type,S.linkage).mw; }
+function setVal(input, v){ if(input && document.activeElement!==input) input.value=v; }
+function renderConc(el){
+  const MW=currentMW(), r=compute(S.seq,S.type,S.linkage);
+  el.querySelector("[data-cpill]").textContent = MW>0 ? (Math.round(MW).toLocaleString()+" g/mol") : "— g/mol";
+  el.querySelector("[data-cmw]").textContent = MW>0 ? MW.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}) : "0.00";
+  el.querySelector("[data-cmwsub]").textContent = S.useCustomMW ? "custom value" : (r.n? `${S.seq} · ${r.n} nt` : "enter a sequence in the MW tab");
+  el.querySelector("[data-customwrap]").style.display = S.useCustomMW ? "flex":"none";
+  const _mwMain=el.querySelector(".mwlink-main"); if(_mwMain) _mwMain.style.display = S.useCustomMW ? "none":"";  // hide linked MW display in custom mode
+  const _ls=el.querySelector("[data-clinksub]"); if(_ls) _ls.textContent = S.useCustomMW ? "Using a custom MW value" : "Linked to the MW calculator";
+  const ct=el.querySelector('[data-ctoggle="useCustomMW"]'); if(ct) ct.checked=S.useCustomMW;
+  setVal(el.querySelector('[data-conc="customMW"]'), S.customMW);
+  setVal(el.querySelector('[data-conc="nd"]'), S.nd);
+  setVal(el.querySelector('[data-conc="a260"]'), S.a260);
+  setVal(el.querySelector('[data-conc="vol"]'), S.vol);
+  setVal(el.querySelector('[data-conc="dilC2"]'), S.dilC2);
+  setVal(el.querySelector('[data-conc="dilV2"]'), S.dilV2);
+  el.querySelector('[data-cu="volUnit"]').value=S.volUnit;
+  el.querySelector('[data-cu="dilC2Unit"]').value=S.dilC2Unit;
+  el.querySelector('[data-cu="dilV2Unit"]').value=S.dilV2Unit;
+  // 1) stock concentration — ng/µL  OR  A₂₆₀ (Beer-Lambert with sequence ε₂₆₀)
+  const eps = epsilon260(r.tokens);
+  const a260mode = (S.readMode==='a260') && !S.useCustomMW && eps>0;
+  // reading-mode UI: A₂₆₀ disabled without a sequence ε (i.e. custom-MW mode)
+  const a260btn = el.querySelector('[data-cset="readMode"] [data-cval="a260"]');
+  if(a260btn){ const dis=S.useCustomMW||eps<=0; a260btn.classList.toggle("disabled",dis); a260btn.style.pointerEvents=dis?"none":""; a260btn.style.opacity=dis?".4":""; }
+  const ndw=el.querySelector("[data-ndwrap]"), aw=el.querySelector("[data-a260wrap]");
+  if(ndw) ndw.style.display=a260mode?"none":"";
+  if(aw) aw.style.display=a260mode?"":"none";
+  const epsEl=el.querySelector("[data-epsline]");
+  if(epsEl) epsEl.innerHTML = S.useCustomMW ? `A₂₆₀ path needs a sequence — disabled in custom-MW mode`
+                  : (eps>0 ? `ε₂₆₀ ≈ <b>${eps.toLocaleString()}</b> L·mol⁻¹·cm⁻¹` : `enter a sequence for ε₂₆₀`);
+  const nd=parseFloat(S.nd)||0, a260=parseFloat(S.a260)||0;
+  const C1 = a260mode ? (a260/eps) : (MW>0 ? (nd*1e-3)/MW : 0);   // mol/L
+  const volL=(parseFloat(S.vol)||0)*uf(S.volUnit,V_UNITS);
+  const moles=C1*volL, massG=C1*MW*volL;
+  const c1=autoUnit(C1,C_UNITS), a1=autoUnit(moles,MOL_UNITS), m1=autoUnit(massG,M_UNITS);
+  el.querySelector("[data-cconc]").textContent=nfmt(c1.v); el.querySelector("[data-cconcu]").textContent=c1.u;
+  el.querySelector("[data-camt]").textContent=nfmt(a1.v);  el.querySelector("[data-camtu]").textContent=a1.u;
+  el.querySelector("[data-cmass]").textContent=nfmt(m1.v); el.querySelector("[data-cmassu]").textContent=m1.u;
+  // 2) dilution  Cstock·V1 = C2·V2  (Cstock = custom override, else the nanodrop stock above)
+  const Cstock = S.useCustomStock ? (parseFloat(S.customStock)||0)*uf(S.customStockUnit,C_UNITS) : C1;
+  const cs=autoUnit(Cstock,C_UNITS);
+  const c1El=el.querySelector("[data-c1]"); if(c1El){ c1El.textContent = Cstock>0 ? `${nfmt(cs.v)} ${cs.u}` : "—"; c1El.style.display = S.useCustomStock?"none":""; }
+  const _sl=el.querySelector("[data-stocklabel]"); if(_sl) _sl.textContent = S.useCustomStock ? "Custom stock conc:" : "Stock from above:";
+  const _sw=el.querySelector("[data-stockwrap]"); if(_sw) _sw.style.display = S.useCustomStock ? "flex":"none";
+  const _st=el.querySelector('[data-ctoggle="useCustomStock"]'); if(_st) _st.checked=S.useCustomStock;
+  setVal(el.querySelector('[data-conc="customStock"]'), S.customStock);
+  const _su=el.querySelector('[data-cu="customStockUnit"]'); if(_su) _su.value=S.customStockUnit;
+  const C2=(parseFloat(S.dilC2)||0)*uf(S.dilC2Unit,C_UNITS);
+  const V2=(parseFloat(S.dilV2)||0)*uf(S.dilV2Unit,V_UNITS);
+  const v1El=el.querySelector("[data-v1]"), v1uEl=el.querySelector("[data-v1u]");
+  const wEl=el.querySelector("[data-water]"), wuEl=el.querySelector("[data-wateru]"), dn=el.querySelector("[data-dilnote]");
+  if(Cstock>0 && C2>0 && V2>0 && C2<=Cstock*(1+1e-9)){
+    const V1=(C2*V2)/Cstock, water=Math.max(V2-V1,0);
+    const dv1=autoUnit(V1,V_UNITS), dw=autoUnit(water,V_UNITS);
+    v1El.textContent=nfmt(dv1.v); v1uEl.textContent=dv1.u;
+    wEl.textContent=nfmt(dw.v);  wuEl.textContent=dw.u;
+    dn.innerHTML=`Add <b>${nfmt(dv1.v)} ${dv1.u}</b> stock + <b>${nfmt(dw.v)} ${dw.u}</b> water → <b>${nfmt(parseFloat(S.dilV2)||0)} ${S.dilV2Unit}</b> at <b>${nfmt(parseFloat(S.dilC2)||0)} ${S.dilC2Unit}</b>&nbsp;(${nfmt(Cstock/C2)}× dilution).`;
+    dn.style.color="";
+  } else {
+    v1El.textContent="—"; v1uEl.textContent=""; wEl.textContent="—"; wuEl.textContent="";
+    if(Cstock<=0){ dn.textContent = S.useCustomStock ? "Enter a custom stock concentration." : "Enter a Nanodrop reading (and MW) to set the stock concentration."; dn.style.color=""; }
+    else if(C2>Cstock){ dn.textContent="Target (C₂) must be at or below the stock — you can't dilute up to a higher concentration."; dn.style.color="#d1242f"; }
+    else { dn.textContent="Enter a target concentration and volume."; dn.style.color=""; }
+  }
+}
+function hintLines(){
+  const a=[];
+  if(S.type==='Hybrid') a.push("Hybrid — write each base with a d or r prefix (dA, rU), or use the keypad.");
+  if(S.linkage==='Mixed') a.push("Mixed linkage — type s between bases for a phosphorothioate (PO is the default).");
+  if(S.five==='phosphate') a.push("5′-phosphate — type s right after the “P ” (e.g. P sAUCG…) for a 5′-phosphorothioate.");
+  if(S.advanced) a.push("Advanced — use modified-base keys, e.g. mA (2′-OMe), fG (2′-F), moeC, cEtA.");
+  return a;
+}
+function placeholderFor(){ return S.type==='RNA' ? "e.g. ACGUACGUAC" : (S.type==='Hybrid' ? "e.g. dAdCrGrU" : "e.g. ATCGATCGAT"); }
+
+function chipsHTML(r){
+  const c=[`<span class="chip"><b>${r.n}</b> bases</span>`];
+  if(r.five!=='OH') c.push(`<span class="chip">${fiveTag(r.five,r.fiveThio)}</span>`);
+  if(r.three!=='OH') c.push(`<span class="chip">${threeTag(r.three)}</span>`);
+  if(r.modMass) c.push(`<span class="chip">${(S.modName||'mod')} <b>+${nfmt(r.modMass)}</b></span>`);
+  if(r.bonds.length){ c.push(`<span class="chip"><b>${r.nPO}</b> PO</span>`); if(r.nPS) c.push(`<span class="chip"><b>${r.nPS}</b> PS</span>`); }
+  const sugars=Object.keys(r.sugarCounts);
+  if(sugars.length>1) sugars.forEach(s=>c.push(`<span class="chip">${SUGAR_LABEL[s]} <b>${r.sugarCounts[s]}</b></span>`));
+  else ["A","C","G","T","U"].forEach(b=>{ if(r.counts[b]) c.push(`<span class="chip">${b} <b>${r.counts[b]}</b></span>`); });
+  if(S.showCharge) c.push(`<span class="chip">charge <b>${r.charge}</b></span>`);
+  return c.join("");
+}
+function keypadHTML(){
+  const rows=[];
+  const row=(label,keys)=> (label?`<div class="kp-label">${label}</div>`:"")
+    + `<div class="kp-row">` + keys.map(k=>`<div class="key${k.mod?' mod':''}" data-token="${k.t}">${k.t}</div>`).join("") + `</div>`;
+  const nat = S.advanced ? (S.type==='RNA'?'RNA':'DNA') : "";   // label natural row when mods are shown
+  if(S.type==='DNA') rows.push(row(nat, ["A","C","G","T"].map(b=>({t:b}))));
+  else if(S.type==='RNA') rows.push(row(nat, ["A","C","G","U"].map(b=>({t:b}))));
+  else { rows.push(row("DNA", ["A","C","G","T"].map(b=>({t:"d"+b}))));
+         rows.push(row("RNA", ["A","C","G","U"].map(b=>({t:"r"+b}))) ); }
+  if(S.advanced){
+    rows.push(row("2′-OMe", ["A","C","G","U"].map(b=>({t:"m"+b,mod:1}))));
+    rows.push(row("2′-F",   ["A","C","G","U"].map(b=>({t:"f"+b,mod:1}))));
+    rows.push(row("2′-MOE", ["A","C","G","U"].map(b=>({t:"moe"+b,mod:1}))));
+    rows.push(row("2′-cEt", ["A","C","G","U"].map(b=>({t:"cEt"+b,mod:1}))));
+  }
+  const util=[];
+  if(S.linkage==='Mixed') util.push(`<div class="key util lk" data-token="s">s</div>`);
+  util.push(`<div class="key util" data-act="del">⌫</div>`);
+  util.push(`<div class="key util" data-act="clear">Clear</div>`);
+  rows.push(`<div class="kp-row kp-util">`+util.join("")+`</div>`);
+  return rows.join("");
+}
+function renderNumbers(el){
+  const r=compute(S.seq,S.type,S.linkage);
+  S.five=r.five; S.fiveThio=r.fiveThio;
+  el.querySelector("[data-mw]").textContent=fmt(r.mw,r.n);
+  el.querySelector("[data-count]").textContent=r.n+" nt";
+  const chipsEl=el.querySelector("[data-chips]");
+  chipsEl.style.display=S.showChips?"flex":"none";
+  if(S.showChips) chipsEl.innerHTML=chipsHTML(r);
+  const f=el.querySelector("[data-formula]");
+  f.style.display=(S.showFormula&&r.n)?"block":"none";
+  const m5=(FIVE[r.five]+(r.five==='phosphate'&&r.fiveThio?FIVE_THIO_DELTA:0)).toFixed(2);
+  if(S.showFormula) f.textContent=`M5′(${m5}) + Σ${r.n} nt + ${r.bonds.length} bonds (${r.nPO}·PO${r.nPS?", "+r.nPS+"·PS":""})`;
+  const w=el.querySelector("[data-warn]");
+  if(r.needPrefix){ w.style.display="block"; w.textContent="Hybrid mode — prefix every base with d or r (e.g. dA, rU). Bare bases are not counted."; }
+  else if(r.bad.length){ w.style.display="block"; w.textContent="Ignored: "+[...new Set(r.bad)].join(" "); }
+  else w.style.display="none";
+  el.querySelector("[data-history]").textContent="History ("+history.length+")";
+}
+function renderCalc(el){
+  applyVars(el);
+  renderNumbers(el);
+  el.querySelector("[data-pill]").textContent=S.type;
+  el.querySelectorAll("[data-cset]").forEach(g=>{ const key=g.dataset.cset;
+    g.querySelectorAll("[data-cval]").forEach(b=>b.classList.toggle("on", b.dataset.cval===S[key])); });
+  el.querySelectorAll("[data-mode]").forEach(b=>b.classList.toggle("on", b.dataset.mode===(S.theme==='slate'?'dark':'light')));
+  // custom modifier controls
+  const sel=el.querySelector("[data-modpreset]");
+  if(sel){
+    if(!sel.dataset.built){ sel.innerHTML=Object.keys(MOD_PRESET_LABEL).map(k=>`<option value="${k}">${MOD_PRESET_LABEL[k]}</option>`).join(""); sel.dataset.built="1"; }
+    sel.value=S.modPreset||"";
+    const nameI=el.querySelector('[data-modfield="modName"]'), massI=el.querySelector('[data-modfield="modMass"]');
+    const editable = S.modPreset==='custom';
+    if(nameI && document.activeElement!==nameI){ nameI.value=S.modName||""; }
+    if(massI && document.activeElement!==massI){ massI.value=S.modMass||""; }
+    if(nameI){ nameI.disabled=!editable; nameI.style.display=(S.modPreset===''?"none":""); }
+    if(massI){ massI.disabled=!editable; }
+    const mm=el.querySelector(".modmass"); if(mm) mm.style.display=(S.modPreset===''?"none":"");
+  }
+  const adv=el.querySelector("[data-adv]");
+  adv.classList.toggle("on",S.advanced); adv.textContent=S.advanced?"Advanced ✓":"+ Advanced";
+  const hint=el.querySelector("[data-hint]"), hts=hintLines();
+  hint.innerHTML=hts.map(h=>`<span>${h}</span>`).join("");
+  hint.style.display=hts.length?"block":"none";
+  const ta=el.querySelector("[data-seq]");
+  if(document.activeElement!==ta) ta.value=S.seq;
+  ta.placeholder=placeholderFor();
+  el.querySelector("[data-keypad]").innerHTML=keypadHTML();
+  el.querySelector("[data-drawer]").hidden=!drawerOpen;
+  if(drawerOpen){ el.querySelector("[data-hlist]").innerHTML=drawerListHTML();
+    const hc=el.querySelector("[data-hcount]"); if(hc) hc.textContent=history.length?("· "+history.length):"";
+    const sb=el.querySelector("[data-hsearch]"); if(sb && document.activeElement!==sb) sb.value=histSearch; }
+  // tabs
+  el.querySelectorAll("[data-tab]").forEach(b=>b.classList.toggle("on", b.dataset.tab===S.tab));
+  const mp=el.querySelector('[data-pane="mw"]'), cp=el.querySelector('[data-pane="conc"]');
+  if(mp) mp.style.display = S.tab==='mw' ? '' : 'none';
+  if(cp) cp.style.display = S.tab==='conc' ? '' : 'none';
+  renderConc(el);
+}
+function drawerListHTML(){
+  if(!history.length) return `<div class="hempty">No saved strands yet.<br/>Enter a sequence and hit <b>Save Strand</b> to log it here.</div>`;
+  const q=(histSearch||"").trim().toLowerCase();
+  const rows = history.map((h,i)=>({h,i})).filter(({h})=> !q || (h.name||"").toLowerCase().includes(q) || (h.seq||"").toLowerCase().includes(q));
+  if(!rows.length) return `<div class="hempty">No strands match “${histSearch}”.</div>`;
+  return rows.map(({h,i})=>`
+    <div class="hitem" data-hload="${i}">
+      <div class="hmw">${h.mwStr}<br/><small>g/mol</small></div>
+      <div class="hmid">
+        <input class="hname" data-hname="${i}" value="${(h.name||'').replace(/"/g,'&quot;')}" placeholder="Untitled strand" spellcheck="false" />
+        <div class="hseq">${(h.seq||"(empty)")}</div>
+        <div class="htags"><b>${h.type}</b> · ${linkText(h)} · ${fiveLabel(h.five,h.fiveThio)} · ${h.n} nt${h.comp?" · "+h.comp:""}${h.mods&&h.mods.length?" · "+h.mods.join(", "):""}</div>
+        <div class="htime">${fmtTime(h.t)} · click row to reload</div>
+      </div>
+      <button class="hdel" data-hdel="${i}" title="Delete">✕</button>
+    </div>`).join("");
+}
+
+function applyAll(){
+  calcs.forEach(c=>renderCalc(c));
+  document.getElementById("stageCanvas").dataset.platform=S.platform;
+  document.querySelectorAll('#platformSeg button').forEach(b=>b.classList.toggle('is-active', b.dataset.val===S.platform));
+  save();
+}
+
+/* =================================================================
+   INTERACTION
+   ================================================================= */
+function tokenCutLen(before){
+  if(before.endsWith("DMT ")||before.endsWith("DMT")) return before.endsWith(" ")?4:3;
+  if(/(^|\s)Ps ?$/.test(before)) return before.endsWith(" ")?3:2;
+  if(/(^|\s)P ?$/.test(before)) return before.endsWith(" ")?2:1;
+  const m=before.match(/(cEt|moe|m|f|d|r)?([ACGTU])$/);
+  if(m) return m[0].length;
+  return before.length?1:0;
+}
+function smartDelete(s){ s=s||""; return s.slice(0, s.length - tokenCutLen(s)); }
+// ---- 5' prefix lock helpers ----
+function lockLen(){ return S.five==='DMT' ? 4 : (S.five==='phosphate' ? 2 : 0); }   // protected "DMT " / "P "
+function fivePrefixStr(){ return S.five==='DMT' ? "DMT " : (S.five==='phosphate' ? ("P "+(S.fiveThio?"s":"")) : ""); }
+function enforceFive(seq){
+  if(S.five==='phosphate'||S.five==='DMT'){
+    const p=parseSeq(seq,S.type);
+    if(p.five!==S.five) return serialize(p.tokens,p.marks,S.type,S.linkage,S.five, S.five==='phosphate'?S.fiveThio:false);
+  }
+  return seq;
+}
+function fmtTime(t){ try{ return new Date(t).toLocaleString(undefined,{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}); }catch(_){ return ""; } }
+function linkText(h){ return h.linkage==='PO' ? "all-PO" : h.linkage==='PS' ? "all-PS" : ("mixed "+(h.nPO||0)+"·PO/"+(h.nPS||0)+"·PS"); }
+function saveCurrent(){
+  const r=compute(S.seq,S.type,S.linkage);
+  if(!r.n) return false;
+  const mods=[...new Set(r.tokens.map(t=>t.sugar))].filter(s=>s!=='d'&&s!=='r').map(s=>SUGAR_LABEL[s]);
+  if(r.three==='phosphate') mods.push('3′-P');
+  if(r.modMass) mods.push((S.modName||'mod')+' +'+nfmt(r.modMass));
+  const comp=["A","C","G","T","U"].filter(b=>r.counts[b]).map(b=>b+r.counts[b]).join(" ");
+  const entry={ seq:S.seq, type:S.type, linkage:S.linkage, five:r.five, fiveThio:r.fiveThio, advanced:S.advanced,
+    three:S.three, modPreset:S.modPreset, modName:S.modName, modMass:S.modMass,
+    name:"", n:r.n, nPO:r.nPO, nPS:r.nPS, comp, mods, mw:r.mw, mwStr:fmt(r.mw,r.n), t:Date.now() };
+  const last=history[0];
+  if(last && last.seq===entry.seq && last.type===entry.type && last.linkage===entry.linkage && last.five===entry.five) return false;
+  history.unshift(entry); if(history.length>60) history.length=60; saveHist();
+  return true;
+}
+
+document.querySelector(".kit").addEventListener("mousedown", e=>{ if(e.target.closest(".key")) e.preventDefault(); }); // keep caret in the textarea
+document.querySelector(".kit").addEventListener("click", e=>{
+  const key=e.target.closest(".key");
+  if(key){
+    const ta=document.activeElement;
+    const focused = ta && ta.matches && ta.matches("[data-seq]");
+    const L=lockLen();
+    if(focused){                                              // operate at the caret / selection
+      const v=ta.value; let a=ta.selectionStart, b=ta.selectionEnd, nv=v, pos=a;
+      if(key.dataset.token!=null){ a=Math.max(a,L); b=Math.max(b,L);
+        const tk=key.dataset.token; nv=v.slice(0,a)+tk+v.slice(b); pos=a+tk.length; }
+      else if(key.dataset.act==="del"){
+        if(a!==b){ a=Math.max(a,L); nv=v.slice(0,a)+v.slice(b); pos=a; }
+        else if(a>L){ const cut=Math.min(tokenCutLen(v.slice(0,a)), a-L); nv=v.slice(0,a-cut)+v.slice(a); pos=a-cut; }
+        else { nv=v; pos=L; }                                  // caret in the locked 5' prefix -> no-op
+      }
+      else if(key.dataset.act==="clear"){ nv=fivePrefixStr(); pos=nv.length; }
+      nv=enforceFive(nv); S.seq=nv; applyAll();
+      ta.value=nv; ta.focus(); ta.setSelectionRange(pos,pos);
+    } else {                                                  // no caret -> act on the 3' end
+      if(key.dataset.token!=null) S.seq=enforceFive((S.seq||"")+key.dataset.token);
+      else if(key.dataset.act==="del") S.seq=enforceFive(smartDelete(S.seq));
+      else if(key.dataset.act==="clear") S.seq=fivePrefixStr();
+      applyAll();
+    }
+    return;
+  }
+  const cv=e.target.closest("[data-cval]");
+  if(cv){
+    const key=cv.closest("[data-cset]").dataset.cset, val=cv.dataset.cval;
+    if(key==="type" && val!==S.type){ S.seq=rebuild(S.seq, S.type, val, S.linkage); S.type=val; }   // flip T<->U etc.
+    else if(key==="linkage"){
+      if(val==="PO") S.seq=rebuild(S.seq, S.type, S.type, "PO");        // strip s markers
+      else if(val==="PS") S.seq=rebuild(S.seq, S.type, S.type, "PS");   // s after every base
+      // Mixed: leave the sequence as typed
+      S.linkage=val;
+    } else if(key==="five"){
+      const p=parseSeq(S.seq, S.type);
+      const thio=(val==="phosphate")?p.fiveThio:false;
+      S.seq=serialize(p.tokens, p.marks, S.type, S.linkage, val, thio);  // inject/remove 5' group
+      S.five=val;
+    } else { S[key]=val; }
+    applyAll();
+    calcs.forEach(c=>{ c.querySelector("[data-seq]").value=S.seq; });  // sync even if a field is focused
+    return;
+  }
+  if(e.target.closest("[data-adv]")){ S.advanced=!S.advanced; applyAll(); return; }
+  const md=e.target.closest("[data-mode]");
+  if(md){ S.theme = md.dataset.mode==='dark' ? 'slate' : 'paper'; applyAll(); return; }
+  const tb=e.target.closest("[data-tab]");
+  if(tb){ S.tab=tb.dataset.tab; applyAll(); return; }
+  const ccp=e.target.closest("[data-ccopy]");
+  if(ccp){ const MW=currentMW(), nd=parseFloat(S.nd)||0, concM=MW>0?(nd*1e-3)/MW:0, c=autoUnit(concM,C_UNITS);
+    navigator.clipboard?.writeText(`${nfmt(c.v)} ${c.u} — ${nd} ng/µL, MW ${nfmt(MW)} g/mol`);
+    const t=ccp.textContent; ccp.textContent="Copied ✓"; setTimeout(()=>ccp.textContent=t,1100); return; }
+  if(e.target.closest("[data-history]")){ drawerOpen=true; applyAll(); return; }
+  if(e.target.closest("[data-dclose]")){ drawerOpen=false; applyAll(); return; }
+  if(e.target.closest("[data-save]")){
+    const ok=saveCurrent();
+    const b=e.target.closest("[data-save]"); const t=b.textContent;
+    b.textContent= ok? "Saved ✓" : "—"; setTimeout(()=>{b.textContent=t; applyAll();},900);
+    applyAll(); return;
+  }
+  const cp=e.target.closest("[data-copy]");
+  if(cp){
+    const r=compute(S.seq,S.type,S.linkage);
+    const ends=[fiveLabel(r.five,r.fiveThio), THREE_LABEL[r.three]].filter(Boolean).join(" / ");
+    const modtxt=r.modMass?` + ${(S.modName||'mod')} (+${nfmt(r.modMass)})`:"";
+    navigator.clipboard?.writeText(`${fmt(r.mw,r.n)} g/mol — ${S.type} ${S.linkage} ${ends}${modtxt} (${r.n} nt) · ${S.seq}`);
+    const t=cp.textContent; cp.textContent="Copied ✓"; setTimeout(()=>cp.textContent=t,1100); return;
+  }
+  if(e.target.closest("[data-hclear]")){
+    const btn=e.target.closest("[data-hclear]");
+    if(btn.dataset.armed!=="1"){                       // first click: arm + warn, don't clear
+      btn.dataset.armed="1"; const orig=btn.textContent;
+      btn.textContent="Confirm clear?"; btn.classList.add("danger");
+      clearTimeout(btn._t); btn._t=setTimeout(()=>{ btn.dataset.armed="0"; btn.textContent=orig; btn.classList.remove("danger"); },3000);
+      return;
+    }
+    clearTimeout(btn._t); history=[]; saveHist(); applyAll(); return;   // second click within 3s: clear
+  }
+  const del=e.target.closest("[data-hdel]");
+  if(del){ history.splice(+del.dataset.hdel,1); saveHist(); applyAll(); return; }
+  const it=e.target.closest("[data-hload]");
+  if(it && !e.target.closest("[data-hname]")){ const h=history[+it.dataset.hload];
+    Object.assign(S,{seq:h.seq,type:h.type,linkage:h.linkage,five:h.five,advanced:!!h.advanced,
+      three:h.three||'OH', modPreset:h.modPreset||'', modName:h.modName||'', modMass:h.modMass||''});
+    drawerOpen=false; applyAll(); return; }
+});
+
+document.querySelector(".kit").addEventListener("input", e=>{
+  const hs=e.target.closest("[data-hsearch]");
+  if(hs){ histSearch=hs.value;
+    calcs.forEach(c=>{ const list=c.querySelector("[data-hlist]"); if(list) list.innerHTML=drawerListHTML();
+      const box=c.querySelector("[data-hsearch]"); if(box && box!==hs) box.value=histSearch; });
+    return; }
+  const hn=e.target.closest("[data-hname]");
+  if(hn){ const idx=+hn.dataset.hname; if(history[idx]){ history[idx].name=hn.value; saveHist();
+    calcs.forEach(c=>{ const tw=c.querySelector(`[data-hname="${idx}"]`); if(tw && tw!==hn) tw.value=hn.value; }); }
+    return; }
+  const mf=e.target.closest("[data-modfield]");
+  if(mf){ S[mf.dataset.modfield]=mf.value; if(S.modPreset!=='custom') S.modPreset='custom'; save();
+    calcs.forEach(c=>{ renderNumbers(c); renderConc(c); const t=c.querySelector(`[data-modfield="${mf.dataset.modfield}"]`); if(t!==mf) t.value=mf.value; }); return; }
+  const ci=e.target.closest("[data-conc]");
+  if(ci){ S[ci.dataset.conc]=ci.value; save(); calcs.forEach(c=>renderConc(c)); return; }
+  const ta=e.target.closest("[data-seq]"); if(!ta) return;
+  let v=ta.value; const fixed=enforceFive(v);
+  if(fixed!==v){ v=fixed; const L=lockLen(); const pos=Math.max(ta.selectionStart,L); ta.value=v; try{ta.setSelectionRange(pos,pos);}catch(_){ } }
+  S.seq=v; save();
+  calcs.forEach(c=>{ renderNumbers(c); const t=c.querySelector("[data-seq]");
+    if(t!==ta && document.activeElement!==t) t.value=S.seq; });
+});
+// ---- keep the locked 5' prefix (group + space) un-deletable ----
+document.querySelector(".kit").addEventListener("keydown", e=>{
+  const ta=e.target.closest("[data-seq]"); if(!ta) return;
+  const L=lockLen(); if(!L) return;
+  const a=ta.selectionStart, b=ta.selectionEnd;
+  if(e.key==="Backspace"){ if(a===b ? a<=L : Math.min(a,b)<L){ e.preventDefault(); if(Math.min(a,b)<L) ta.setSelectionRange(L,Math.max(a,b,L)); } }
+  else if(e.key==="Delete"){ if(Math.min(a,b)<L){ e.preventDefault(); ta.setSelectionRange(L,Math.max(a,b,L)); } }
+});
+document.querySelector(".kit").addEventListener("beforeinput", e=>{
+  const ta=e.target.closest("[data-seq]"); if(!ta) return;
+  const L=lockLen(); if(!L) return;
+  if(ta.selectionStart<L){ e.preventDefault(); ta.setSelectionRange(L, Math.max(ta.selectionEnd,L)); }
+});
+document.querySelector(".kit").addEventListener("mouseup", e=>{
+  const ta=e.target.closest("[data-seq]"); if(!ta) return;
+  const L=lockLen(); if(!L) return;
+  setTimeout(()=>{ if(ta.selectionStart<L) ta.setSelectionRange(L, Math.max(ta.selectionEnd,L)); },0);
+});
+
+document.querySelector(".kit").addEventListener("change", e=>{
+  const mp=e.target.closest("[data-modpreset]");
+  if(mp){ S.modPreset=mp.value;
+    if(mp.value && mp.value!=='custom'){ const p=MOD_PRESETS[mp.value]; S.modName=p.name; S.modMass=String(p.mass); }
+    else if(mp.value===''){ S.modName=''; S.modMass=''; }
+    applyAll(); return; }
+  const cu=e.target.closest("[data-cu]"); if(cu){ S[cu.dataset.cu]=cu.value; applyAll(); return; }
+  const ctg=e.target.closest("[data-ctoggle]");
+  if(ctg){ S[ctg.dataset.ctoggle]=ctg.checked;
+    if(ctg.dataset.ctoggle==="useCustomMW" && ctg.checked && !String(S.customMW).trim()){
+      const linked=compute(S.seq,S.type,S.linkage).mw;            // prefill with the live MW so it's editable, not 0
+      if(linked>0) S.customMW=String(Math.round(linked*100)/100);
+    }
+    if(ctg.dataset.ctoggle==="useCustomStock" && ctg.checked && !String(S.customStock).trim()){
+      const _MW=currentMW(); const _C1=_MW>0 ? (parseFloat(S.nd)||0)*1e-3/_MW : 0;   // prefill with the nanodrop stock
+      if(_C1>0){ const a=autoUnit(_C1,C_UNITS); const u=['M','mM','µM','nM'].includes(a.u)?a.u:'µM';
+        S.customStock=String(Math.round((_C1/uf(u,C_UNITS))*1000)/1000); S.customStockUnit=u; }
+    }
+    applyAll(); return; }
+});
+
+document.getElementById("platformSeg").addEventListener("click", e=>{
+  const b=e.target.closest("button"); if(!b) return; S.platform=b.dataset.val; applyAll();
+});
+document.getElementById("resetBtn").addEventListener("click", ()=>{ S={...DEFAULTS}; drawerOpen=false; save(); buildPanel(); applyAll(); });
+
+/* =================================================================
+   CONTROL PANEL (visual + layout + display only)
+   ================================================================= */
+function seg(key,opts){ return `<div class="pseg" data-seg="${key}">`+opts.map(([v,l])=>`<button data-set="${key}" data-val="${v}" class="${S[key]===v?'is-active':''}">${l}</button>`).join("")+`</div>`; }
+function selectCtl(key,opts){ return `<select data-select="${key}">`+opts.map(([v,l])=>`<option value="${v}" ${S[key]===v?'selected':''}>${l}</option>`).join("")+`</select>`; }
+function slider(key,min,max,step){ return `<input type="range" data-slider="${key}" min="${min}" max="${max}" step="${step}" value="${S[key]}" />`; }
+function toggle(key,label){ return `<div class="toggle ${S[key]?'on':''}" data-toggle="${key}"><span>${label}</span><div class="sw-t"></div></div>`; }
+
+function buildPanel(){
+  document.getElementById("panel").innerHTML = `
+  <div class="panel-head">
+    <h2>Construction kit</h2>
+    <p>Design the calculator's look &amp; layout here. Chemistry (backbone, linkage, 5′ end, modifications) now lives in the calculator itself for end users.</p>
+  </div>
+  <div class="grp"><h3>Accent</h3>
+    <div class="swatches">${ACCENTS.map(a=>`<div class="sw ${S.accent===a?'is-active':''}" data-accent="${a}"><div class="face" style="background:${a}"></div></div>`).join("")}</div>
+  </div>
+  <div class="grp"><h3>Typography</h3>
+    <div class="row"><label>Interface font</label>${selectCtl("fontUI",Object.entries(FONTS_UI).map(([k,f])=>[k,f.label]))}</div>
+    <div class="row"><label>Number font</label>${selectCtl("fontNum",Object.entries(FONTS_NUM).map(([k,f])=>[k,f.label]))}</div>
+    <div class="row"><label>Base text<span class="v" data-v="fsBase">${S.fsBase}px</span></label>${slider("fsBase",13,18,1)}</div>
+    <div class="row"><label>Result size<span class="v" data-v="fsResult">${S.fsResult}px</span></label>${slider("fsResult",36,96,2)}</div>
+  </div>
+  <div class="grp"><h3>Shape &amp; density</h3>
+    <div class="row"><label>Corner radius<span class="v" data-v="radius">${S.radius}px</span></label>${slider("radius",0,28,1)}</div>
+    <div class="row"><label>Border weight<span class="v" data-v="border">${S.border}px</span></label>${slider("border",0,3,1)}</div>
+    <div class="row"><label>Density</label>${seg("density",[["compact","Compact"],["cozy","Cozy"],["comfortable","Comfy"]])}</div>
+    <div class="row"><label>Elevation</label>${seg("shadow",[["none","Flat"],["soft","Soft"],["hard","Hard"]])}</div>
+  </div>
+  <div class="grp"><h3>Buttons</h3>
+    <div class="row"><label>Keypad style</label><div class="pseg col">${["filled","soft","outline","ghost"].map(v=>`<button data-set="btn" data-val="${v}" class="${S.btn===v?'is-active':''}">${v[0].toUpperCase()+v.slice(1)}</button>`).join("")}</div></div>
+    ${toggle("keypad","Show base keypad")}
+  </div>
+  <div class="grp"><h3>Layout</h3>
+    <div class="row"><label>Result position</label>${seg("resultpos",[["top","Top"],["bottom","Bottom"]])}</div>
+    <div class="row"><label>Alignment</label>${seg("align",[["left","Left"],["center","Center"]])}</div>
+  </div>
+  <div class="grp"><h3>Display</h3>
+    ${toggle("showChips","Composition chips")}
+    ${toggle("showFormula","Show formula line")}
+    ${toggle("showCharge","Approx. net charge")}
+    <div class="row" style="margin-top:12px"><label>Decimal places<span class="v" data-v="decimals">${S.decimals}</span></label>${slider("decimals",0,4,1)}</div>
+  </div>
+  <div class="grp"><h3>Platform preview</h3>
+    <div class="row"><label>Surface</label>${seg("platform",[["web","Web interface"],["app","Mobile app"]])}</div>
+  </div>`;
+  wirePanel();
+}
+function wirePanel(){
+  const p=document.getElementById("panel");
+  p.querySelectorAll("[data-set]").forEach(b=>b.addEventListener("click",()=>{
+    const k=b.dataset.set, v=b.dataset.val; S[k]=(k==="decimals")?+v:v;
+    p.querySelectorAll(`[data-set="${k}"]`).forEach(x=>x.classList.toggle("is-active",x.dataset.val===v));
+    applyAll();
+  }));
+  p.querySelectorAll("[data-accent]").forEach(a=>a.addEventListener("click",()=>{
+    S.accent=a.dataset.accent;
+    p.querySelectorAll("[data-accent]").forEach(x=>x.classList.toggle("is-active",x===a));
+    applyAll();
+  }));
+  p.querySelectorAll("[data-slider]").forEach(sl=>sl.addEventListener("input",()=>{
+    const k=sl.dataset.slider; S[k]=+sl.value;
+    const v=p.querySelector(`[data-v="${k}"]`);
+    if(v) v.textContent=(k==="fsBase"||k==="fsResult"||k==="radius"||k==="border")?S[k]+"px":S[k];
+    applyAll();
+  }));
+  p.querySelectorAll("[data-select]").forEach(sel=>sel.addEventListener("change",()=>{ S[sel.dataset.select]=sel.value; applyAll(); }));
+  p.querySelectorAll("[data-toggle]").forEach(t=>t.addEventListener("click",()=>{
+    const k=t.dataset.toggle; S[k]=!S[k]; t.classList.toggle("on",S[k]); applyAll();
+  }));
+}
+
+/* boot */
+buildPanel();
+applyAll();
+</script>
+</body>
+</html>
+
+<style id="__om-edit-overrides">
+#calc .field >:is(button,input,textarea) { height: 79px !important }
+#calc .field >:is(button,input,textarea) { height: 80px !important }
+</style>
