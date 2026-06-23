@@ -310,11 +310,14 @@
     .panel{position:fixed;inset:0 0 0 auto;width:384px;box-shadow:-20px 0 60px rgba(0,0,0,.5)}
   }
   /* ===== tester app build: hide the construction-kit chrome, show only the calculator ===== */
-  body.app-mode .kit{grid-template-columns:1fr}
+  body.app-mode{overflow:auto; height:auto}                 /* let the page scroll naturally */
+  body.app-mode .kit{display:block; height:auto; min-height:100vh}
+  body.app-mode .stage{height:auto; min-height:100vh; background:
+    radial-gradient(120% 120% at 50% 0%, #11161e 0%, #0b0e13 70%)}
+  body.app-mode .stage-canvas{display:block; height:auto; overflow:visible; padding:28px 20px}
   body.app-mode .panel,
   body.app-mode .stage-bar,
   body.app-mode .phone{display:none !important}
-  body.app-mode .stage-canvas{padding:28px 20px; align-items:flex-start}
   body.app-mode .web-wrap{width:min(640px,100%); margin:0 auto}
   @media (max-width:560px){ body.app-mode .stage-canvas{padding:14px} }
 </style>
