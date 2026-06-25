@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata from this file."
+title: "Oligo MW & Concentration Calculator"
+abstract: >-
+  A free tool for oligonucleotide molecular weight, extinction coefficient
+  (epsilon-260), concentration, and dilution. Supports DNA/RNA/hybrid strands,
+  modified bases, phosphorothioate and mixed backbones, 5' and 3' end groups,
+  user-defined custom monomers and conjugates, and duplexes (siRNA/ASO).
+type: software
+authors:
+  - family-names: Chen
+    given-names: "Yu-Sheng (Albert)"
+    orcid: "https://orcid.org/0000-0002-1713-4190"
+version: "1.0.0"
+date-released: "2026-06-25"
+license: MIT
+repository-code: "https://github.com/Albert8409/oligo-mw-calculator"
+url: "https://albert8409.github.io/oligo-mw-calculator/"
+doi: "10.5281/zenodo.20842890"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.20842890"
+    description: "Concept DOI — always resolves to the latest version"
+  - type: doi
+    value: "10.5281/zenodo.20842891"
+    description: "Version 1.0.0"
+keywords:
+  - oligonucleotide
+  - molecular weight
+  - extinction coefficient
+  - phosphorothioate
+  - siRNA
+  - antisense oligonucleotide
+  - primer
