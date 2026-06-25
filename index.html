@@ -365,11 +365,12 @@
   .calc[data-resultpos="bottom"] .formula{order:5}
 
   /* history drawer */
-  .faq{position:absolute; inset:0; z-index:7; background:var(--surface); display:flex; flex-direction:column}
+  .faq{position:static; z-index:7; background:var(--surface); display:flex; flex-direction:column}
   .faq[hidden]{display:none}
+  .calc.faq-open .tabs, .calc.faq-open .tabpane{display:none !important}
   .faq-head{display:flex; align-items:center; gap:10px; padding:var(--pad); border-bottom:var(--border) solid var(--line)}
   .faq-head h4{font-family:var(--font-head); font-size:16px; font-weight:600; margin-right:auto}
-  .faq-body{flex:1 1 auto; overflow-y:auto; padding:8px var(--pad) var(--pad)}
+  .faq-body{padding:8px var(--pad) var(--pad)}
   .faq-sec{margin-top:14px}
   .faq-sectitle{font-family:var(--font-head); font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); margin:6px 0 8px; padding-bottom:6px; border-bottom:var(--border) solid var(--line)}
   .faq-item{border:var(--border) solid var(--line); border-radius:calc(var(--radius)*.55); margin-bottom:9px; background:var(--surface-2); overflow:hidden}
@@ -1568,6 +1569,7 @@ function rebuildKeepThree(seq, fromType, toType, linkMode){    // rebuild but pr
 }
 function lockRight(three=S.three){ const t=threeSuffixStr(three); return t.length; }   // protected trailing chars (incl. leading space)
 function linkText(h){ return h.linkage==='PO' ? "all-PO" : h.linkage==='PS' ? "all-PS" : ("mixed "+(h.nPO||0)+"·PO/"+(h.nPS||0)+"·PS"); }
+function fmtTime(t){ try{ return new Date(t).toLocaleString(undefined,{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}); }catch(_){ return ''; } }
 function exportHistoryCSV(list){
   const data = list || history;
   if(!data.length) return;
@@ -1934,7 +1936,7 @@ function renderFaq(){
   calcs.forEach(c=>{ const b=c.querySelector("[data-faqbody]"); if(b) b.innerHTML=html; });
 }
 let faqOpen=false;
-function setFaq(open){ faqOpen=open; calcs.forEach(c=>{ const f=c.querySelector("[data-faq]"); if(f) f.hidden=!open; }); if(open) renderFaq(); }
+function setFaq(open){ faqOpen=open; if(open) renderFaq(); calcs.forEach(c=>{ const f=c.querySelector("[data-faq]"); if(f) f.hidden=!open; c.classList.toggle("faq-open", open); }); if(open){ const sc=document.querySelector('.stage-canvas'); if(sc) sc.scrollTop=0; const ph=document.querySelector('.phone .scroll'); if(ph) ph.scrollTop=0; try{ window.scrollTo(0,0); }catch(_){} } }
 document.querySelector(".kit").addEventListener("click", e=>{
   if(e.target.closest("[data-faqopen]")){ setFaq(true); return; }
   if(e.target.closest("[data-faqclose]")){ setFaq(false); return; }
