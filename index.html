@@ -1158,7 +1158,7 @@ const DENSITY = { compact:{pad:"16px",gap:"9px",btn:"42px"}, cozy:{pad:"22px",ga
 const SHADOWS = { none:"none", soft:"0 18px 44px -24px rgba(16,38,76,.35)", hard:"0 10px 0 -4px rgba(0,0,0,.08), 0 26px 50px -28px rgba(16,38,76,.5)" };
 
 const DEFAULTS = {
-  platform:"web", theme:"paper", accent:"#2563eb",
+  platform:"web", theme:"paper", accent:"#d97706",
   fontUI:"quicksand", fontHead:"poppins", fontNum:"splinemono", fsBase:15, fsResult:54,
   radius:14, border:1, density:"cozy", shadow:"soft",
   btn:"soft", keypad:true, resultpos:"top", align:"left",
@@ -1172,6 +1172,11 @@ const DEFAULTS = {
   dilC2:"10", dilC2Unit:"µM", dilV2:"100", dilV2Unit:"µL",
   useCustomStock:false, customStock:"", customStockUnit:"µM",
 };
+// Bump BUILD_VERSION whenever the baked-in design changes (accent, fonts, theme,
+// sizes, layout). On their next visit, returning users are auto-refreshed to the
+// new appearance defaults below — their saved strands & sequences are kept.
+const BUILD_VERSION = 1;
+const APPEARANCE_KEYS = ["platform","theme","accent","fontUI","fontHead","fontNum","fsBase","fsResult","radius","border","density","shadow","btn","keypad","resultpos","align","showChips","showFormula","showCharge","decimals"];
 let S = load();
 let history = loadHist();
 let drawerOpen = false;
@@ -1179,10 +1184,20 @@ let histSearch = "";
 let histSel = new Set();
 let savedSig = null;
 function currentSig(){ return JSON.stringify([S.seq,S.type,S.linkage,S.five,S.fiveThio,S.three,S.duplexMode,S.antiSeq]); }
-function load(){ try{ const s={...DEFAULTS, ...JSON.parse(localStorage.getItem("oligoKit")||"{}")}; if(s.theme!=='paper'&&s.theme!=='slate') s.theme='paper'; return s; }catch(e){ return {...DEFAULTS}; } }
-function save(){ localStorage.setItem("oligoKit", JSON.stringify(S)); }
-function loadHist(){ try{ return JSON.parse(localStorage.getItem("oligoHistory")||"[]"); }catch(e){ return []; } }
-function saveHist(){ localStorage.setItem("oligoHistory", JSON.stringify(history)); }
+function load(){ try{
+    const s={...DEFAULTS, ...JSON.parse(localStorage.getItem("oligoKitApp")||"{}")};
+    if(s.theme!=='paper'&&s.theme!=='slate') s.theme='paper';
+    if(s.__v !== BUILD_VERSION){
+      // New build — refresh appearance to the current defaults, keep user data.
+      APPEARANCE_KEYS.forEach(k=> s[k]=DEFAULTS[k]);
+      s.__v = BUILD_VERSION;
+      try{ localStorage.setItem("oligoKitApp", JSON.stringify(s)); }catch(e){}
+    }
+    return s;
+  }catch(e){ return {...DEFAULTS, __v:BUILD_VERSION}; } }
+function save(){ localStorage.setItem("oligoKitApp", JSON.stringify(S)); }
+function loadHist(){ try{ return JSON.parse(localStorage.getItem("oligoHistoryApp")||"[]"); }catch(e){ return []; } }
+function saveHist(){ localStorage.setItem("oligoHistoryApp", JSON.stringify(history)); }
 
 /* =================================================================
    RENDER
