@@ -278,6 +278,7 @@
     background:var(--surface-2); border:var(--border) solid var(--line); border-radius:999px;
     padding:6px 14px; cursor:pointer; transition:color .12s, border-color .12s}
   .faq-btn:hover{color:var(--accent); border-color:var(--accent)}
+  .faq-btn.on{color:var(--accent-ink); background:var(--accent); border-color:var(--accent)}
   .modetoggle{display:inline-flex; background:var(--surface-2); border:var(--border) solid var(--line);
     border-radius:999px; padding:3px; gap:2px}
   .modetoggle button{font-family:var(--font-head); font-size:12px; font-weight:600; color:var(--muted);
@@ -296,8 +297,15 @@
   .mwlink-val{font-family:var(--font-num); font-weight:600; font-size:30px; color:var(--text); margin-top:4px; font-variant-numeric:tabular-nums; word-break:break-all}
   .mwlink-val small{font-size:13px; color:var(--muted); font-weight:500}
   .mwlink-sub{font-size:11px; color:var(--muted); margin-top:5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-family:var(--font-num)}
-  .mwlink-toggle{display:flex; align-items:center; gap:6px; font-size:11.5px; color:var(--muted); cursor:pointer; white-space:nowrap; flex:0 0 auto; margin-top:18px; margin-left:auto}
-  .mwlink-toggle input{accent-color:var(--accent); cursor:pointer}
+  .mwlink-toggle{display:inline-flex; align-items:center; gap:6px; height:30px; padding:0 12px; border-radius:calc(var(--radius)*.55);
+    font-family:var(--font-head); font-size:12px; font-weight:600; color:var(--text); cursor:pointer; white-space:nowrap; flex:0 0 auto; margin-top:18px; margin-left:auto;
+    background:var(--surface-2); border:var(--border) solid var(--line); transition:color .12s, border-color .12s, background .12s}
+  .mwlink-toggle:hover{color:var(--accent); border-color:var(--accent)}
+  .mwlink-toggle:has(input:checked){color:var(--accent); border-color:var(--accent); background:color-mix(in srgb,var(--accent) 12%,transparent)}
+  .mwlink-toggle::before{content:"+"; font-family:var(--font-num); font-weight:700; font-size:13px; line-height:1; color:var(--muted); transition:color .12s}
+  .mwlink-toggle:hover::before{color:var(--accent)}
+  .mwlink-toggle:has(input:checked)::before{content:"✓"; color:var(--accent)}
+  .mwlink-toggle input{position:absolute; opacity:0; width:0; height:0; margin:0; pointer-events:none}
   .csec{font-size:10.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); padding:22px var(--pad) 0; font-family:var(--font-head)}
   .crow{display:flex; gap:10px; padding:12px var(--pad) 0}
   .cfield{flex:1; display:flex; flex-direction:column; gap:6px; min-width:0}
@@ -371,6 +379,8 @@
   .faq-head{display:flex; align-items:center; gap:10px; padding:var(--pad); border-bottom:var(--border) solid var(--line)}
   .faq-head h4{font-family:var(--font-head); font-size:16px; font-weight:600; margin-right:auto}
   .faq-body{padding:8px var(--pad) var(--pad)}
+  .faq-grouptitle{font-family:var(--font-head); font-size:16px; font-weight:600; color:var(--text); margin:20px 0 10px; padding-bottom:8px; border-bottom:var(--border) solid var(--line)}
+  .faq-grouptitle:first-child{margin-top:4px}
   .faq-sec{margin-top:14px}
   .faq-sectitle{font-family:var(--font-head); font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); margin:6px 0 8px; padding-bottom:6px; border-bottom:var(--border) solid var(--line)}
   .faq-item{border:var(--border) solid var(--line); border-radius:calc(var(--radius)*.55); margin-bottom:9px; background:var(--surface-2); overflow:hidden}
@@ -383,6 +393,8 @@
   .faq-item[open] summary{border-bottom:var(--border) solid var(--line); color:var(--accent)}
   .faq-ans{font-size:13.5px; line-height:1.7; color:var(--muted); padding:14px 16px 16px; background:color-mix(in srgb,var(--surface) 55%,var(--surface-2))}
   .faq-ans b{color:var(--text); font-weight:600}
+  .faq-ans a{color:var(--accent); font-weight:600; text-decoration:underline; text-underline-offset:2px; text-decoration-thickness:1px; word-break:break-all}
+  .faq-ans a:hover{text-decoration-thickness:2px}
   .faq-ans br+br{line-height:2.2}
   .faq-ans code{font-family:var(--font-num); font-size:12px; background:color-mix(in srgb,var(--accent) 14%,var(--surface)); color:var(--text); padding:2px 6px; border-radius:5px; white-space:nowrap}
   /* history drawer */
@@ -782,7 +794,7 @@
         <div class="mwlink-val"><span data-cmw>0.00</span> <small style="font-size: 14px">g/mol</small></div>
         <div class="mwlink-sub" data-cmwsub style="width: 500px">linked from sequence</div>
       </div>
-      <label class="mwlink-toggle"><input type="checkbox" data-ctoggle="useCustomMW" style="width: 14px; height: 14px" /> custom</label>
+      <label class="mwlink-toggle"><input type="checkbox" data-ctoggle="useCustomMW" /> custom</label>
     </div>
     <div class="mwsrc-row" data-mwsrcrow style="display:none">
       <span class="clabel" style="font-size: 13px">MW source</span>
@@ -828,7 +840,7 @@
         <input type="number" data-conc="customStock" inputmode="decimal" placeholder="0" />
         <select data-cu="customStockUnit"><option>nM</option><option>µM</option><option>mM</option><option>M</option></select>
       </span>
-      <label class="mwlink-toggle" style="margin-top:0; margin-left:auto"><input type="checkbox" data-ctoggle="useCustomStock" style="width:14px;height:14px" /> custom</label>
+      <label class="mwlink-toggle" style="margin-top:0; margin-left:auto"><input type="checkbox" data-ctoggle="useCustomStock" /> custom</label>
     </div>
     <div class="crow">
       <div class="cfield"><label style="font-size: 14px">Target Concentration</label>
@@ -848,8 +860,7 @@
 
   <div class="faq" data-faq hidden>
     <div class="faq-head">
-      <h4>How to use this calculator</h4>
-      <button class="dclose" data-faqclose>✕</button>
+      <button class="dclose" data-faqclose style="margin-left:auto">✕</button>
     </div>
     <div class="faq-body" data-faqbody></div>
   </div>
@@ -1927,18 +1938,20 @@ const FAQ_DATA = {
   ]}
 };
 function renderFaq(){
-  const order = (S.tab==='conc') ? ['about','conc','mw'] : ['about','mw','conc'];
-  const html = order.map(key=>{ const sec=FAQ_DATA[key];
-    return `<div class="faq-sec"><div class="faq-sectitle">${sec.title}</div>`+
-      sec.items.map(it=>`<details class="faq-item"><summary>${it.q}</summary><div class="faq-ans">${it.a}</div></details>`).join("")+
-      `</div>`;
-  }).join("");
+  const sub = (S.tab==='conc') ? ['conc','mw'] : ['mw','conc'];
+  const secHTML = (sec, cls) =>
+    `<div class="faq-sec"><div class="${cls}">${sec.title}</div>`+
+    sec.items.map(it=>`<details class="faq-item"><summary>${it.q}</summary><div class="faq-ans">${it.a}</div></details>`).join("")+
+    `</div>`;
+  let html = secHTML(FAQ_DATA.about, 'faq-grouptitle');
+  html += `<div class="faq-grouptitle">How to use this calculator</div>`;
+  html += sub.map(key=>secHTML(FAQ_DATA[key], 'faq-sectitle')).join("");
   calcs.forEach(c=>{ const b=c.querySelector("[data-faqbody]"); if(b) b.innerHTML=html; });
 }
 let faqOpen=false;
-function setFaq(open){ faqOpen=open; if(open) renderFaq(); calcs.forEach(c=>{ const f=c.querySelector("[data-faq]"); if(f) f.hidden=!open; c.classList.toggle("faq-open", open); }); if(open){ const sc=document.querySelector('.stage-canvas'); if(sc) sc.scrollTop=0; const ph=document.querySelector('.phone .scroll'); if(ph) ph.scrollTop=0; try{ window.scrollTo(0,0); }catch(_){} } }
+function setFaq(open){ faqOpen=open; if(open) renderFaq(); calcs.forEach(c=>{ const f=c.querySelector("[data-faq]"); if(f) f.hidden=!open; c.classList.toggle("faq-open", open); const b=c.querySelector("[data-faqopen]"); if(b) b.classList.toggle("on", open); }); if(open){ const sc=document.querySelector('.stage-canvas'); if(sc) sc.scrollTop=0; const ph=document.querySelector('.phone .scroll'); if(ph) ph.scrollTop=0; try{ window.scrollTo(0,0); }catch(_){} } }
 document.querySelector(".kit").addEventListener("click", e=>{
-  if(e.target.closest("[data-faqopen]")){ setFaq(true); return; }
+  if(e.target.closest("[data-faqopen]")){ setFaq(!faqOpen); return; }
   if(e.target.closest("[data-faqclose]")){ setFaq(false); return; }
 });
 
