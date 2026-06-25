@@ -9,7 +9,7 @@ abstract: >-
 type: software
 authors:
   - family-names: Chen
-    given-names: "Yu-Sheng (Albert)"
+    given-names: "Yu-Sheng"
     orcid: "https://orcid.org/0000-0002-1713-4190"
 version: "1.0.0"
 date-released: "2026-06-25"

@@ -31,8 +31,8 @@ The DOI `10.5281/zenodo.20842890` is the concept DOI and always resolves to the 
 
 ## Author
 
-**Yu-Sheng (Albert) Chen**
+**Yu-Sheng Chen**
 
 ## License
 
-[MIT](LICENSE) © 2026 Yu-Sheng (Albert) Chen
+[MIT](LICENSE) © 2026 Yu-Sheng Chen
