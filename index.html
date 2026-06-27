@@ -99,6 +99,7 @@
   .calc{
     --radius:14px; --pad:22px; --gap:12px; --btn-h:46px;
     --fs-base:15px; --fs-result:54px; --border:1px;
+    --sticky-bg:color-mix(in srgb, var(--surface) 92%, #000); --sticky-line:color-mix(in srgb, var(--accent) 70%, transparent);
     --bg:#fff; --surface:#fff; --surface-2:#f4f7fb;
     --text:#0f1b2d; --muted:#5b6b7f; --line:#dbe3ec; --accent:#2563eb;
     --accent-ink:#fff; --shadow:0 18px 44px -24px rgba(16,38,76,.35);
@@ -109,6 +110,21 @@
     width:100%; overflow:hidden; transition:border-radius .15s,box-shadow .15s}
   .phone .calc{border-radius:0;border:0;box-shadow:none;min-height:100%}
   .calc-head{display:flex; align-items:center; gap:10px; padding:var(--pad) var(--pad) 0}
+  /* sticky header on mobile (app preview frame + real phone web): keep FAQ/theme + tabs reachable while scrolling */
+  [data-platform="app"] .calc{overflow:visible}
+  .calc .faq-head{display:none}
+  [data-platform="app"] .calc-topbar, .phone .calc-topbar{position:sticky; top:0; z-index:5;
+    background:var(--sticky-bg); padding-bottom:10px;
+    border-bottom:2px solid var(--sticky-line);
+    box-shadow:0 9px 14px -11px rgba(0,0,0,.5)}
+  @media (max-width:600px){
+    .calc{overflow:visible}
+    .faq-head{display:none}
+    .calc-topbar{position:sticky; top:0; z-index:5; background:var(--sticky-bg); padding-bottom:10px;
+      border-radius:var(--radius) var(--radius) 0 0;
+      border-bottom:2px solid var(--sticky-line);
+      box-shadow:0 9px 14px -11px rgba(0,0,0,.5)}
+  }
   .calc-title{font-size:13px;font-weight:600;letter-spacing:-.01em}
   .calc-sub{font-size:11.5px;color:var(--muted)}
   .pill{margin-left:auto;font-size:11px;font-weight:600;letter-spacing:.04em;
@@ -292,10 +308,11 @@
   .tab:hover:not(.on){color:var(--accent); border-color:var(--accent)}
   .tab.on{background:var(--accent); color:var(--accent-ink); border-color:transparent}
   /* concentration tab */
-  .mwlink{display:flex; align-items:flex-start; gap:14px; padding:18px var(--pad) 0}
+  .mwlink{display:flex; align-items:flex-start; gap:14px; padding:18px var(--pad) 0; position:relative}
   .mwlink-main{flex:1 1 auto; min-width:0}
   .mwlink-val{font-family:var(--font-num); font-weight:600; font-size:30px; color:var(--text); margin-top:4px; font-variant-numeric:tabular-nums; word-break:break-all}
-  .mwlink-val small{font-size:13px; color:var(--muted); font-weight:500}
+  .mwlink-val small{font-size:13px; color:var(--muted); font-weight:500; white-space:nowrap}
+  .mwlink>.mwlink-toggle{position:absolute; top:14px; right:var(--pad); margin:0}
   .mwlink-sub{font-size:11px; color:var(--muted); margin-top:5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-family:var(--font-num)}
   .mwlink-toggle{display:inline-flex; align-items:center; gap:6px; height:30px; padding:0 12px; border-radius:calc(var(--radius)*.55);
     font-family:var(--font-head); font-size:12px; font-weight:600; color:var(--text); cursor:pointer; white-space:nowrap; flex:0 0 auto; margin-top:18px; margin-left:auto;
@@ -357,10 +374,10 @@
     font-weight:600;cursor:pointer;background:var(--surface-2);color:var(--text);border:var(--border) solid var(--line);
     display:inline-flex;align-items:center;gap:6px;transition:color .12s, border-color .12s}
   .ctl-btn:hover{color:var(--accent); border-color:var(--accent)}
-  .ctl-btn.is-saved{color:var(--accent); border-color:var(--accent); background:color-mix(in srgb,var(--accent) 12%,transparent)}
+  .ctl-btn.is-saved, .ctl-btn.is-saved:hover{color:#16a34a; border-color:#16a34a; background:color-mix(in srgb,#16a34a 13%,transparent)}
   .ctl-btn.sm{height:30px;padding:0 11px;font-size:12px}
-  .copy{margin-left:auto; height:34px;padding:0 14px;border-radius:999px;
-    font-family:var(--font-head);font-size:12.5px;font-weight:600;cursor:pointer;
+  .copy{margin-left:auto; height:34px;padding:0 11px;border-radius:999px;
+    font-family:var(--font-head);font-size:11.5px;font-weight:600;cursor:pointer;white-space:nowrap;
     background:var(--surface-2);color:var(--muted);border:var(--border) solid var(--line);
     transition:color .12s, border-color .12s}
   .ctl-btn:active,.copy:active{transform:translateY(1px)}
@@ -398,23 +415,34 @@
   .faq-ans br+br{line-height:2.2}
   .faq-ans code{font-family:var(--font-num); font-size:12px; background:color-mix(in srgb,var(--accent) 14%,var(--surface)); color:var(--text); padding:2px 6px; border-radius:5px; white-space:nowrap}
   /* history drawer */
-  .drawer{position:absolute; inset:0; z-index:6; background:var(--surface); display:flex; flex-direction:column}
+  .drawer{position:static; z-index:6; background:var(--surface); display:flex; flex-direction:column}
   .drawer[hidden]{display:none}
-  .drawer-head{display:flex; align-items:center; gap:10px; padding:var(--pad);
+  /* when History is open, it takes over the calc like the FAQ does */
+  .calc.drawer-open .calc-topbar, .calc.drawer-open .tabpane, .calc.drawer-open .faq{display:none}
+  /* drawer top (title + Export All + Clear all + close + search) pinned on mobile, like the tabs bar */
+  .drawer-top{background:var(--surface)}
+  [data-platform="app"] .drawer-top, .phone .drawer-top{position:sticky; top:0; z-index:5;
+    background:var(--sticky-bg); padding-bottom:10px;
+    border-bottom:2px solid var(--sticky-line); box-shadow:0 9px 14px -11px rgba(0,0,0,.5)}
+  @media (max-width:600px){
+    .drawer-top{position:sticky; top:0; z-index:5; background:var(--sticky-bg); padding-bottom:10px;
+      border-bottom:2px solid var(--sticky-line); box-shadow:0 9px 14px -11px rgba(0,0,0,.5)}
+  }
+  .drawer-head{flex:0 0 auto; display:flex; align-items:center; gap:10px; padding:var(--pad);
     border-bottom:var(--border) solid var(--line)}
   .drawer-head h4{font-size:14px;font-weight:600;margin-right:auto}
   .dclose{width:30px;height:30px;border-radius:8px;border:var(--border) solid var(--line);
     background:var(--surface-2);color:var(--text);cursor:pointer;font-size:14px;line-height:1; transition:color .12s, border-color .12s}
   .dclose:hover{color:var(--accent); border-color:var(--accent)}
   .ctl-btn.danger{background:#d1242f; color:#fff; border-color:#d1242f}
-  .drawer-list{flex:1 1 auto; overflow:auto; padding:4px var(--pad) var(--pad)}
+  .drawer-list{flex:1 1 auto; min-height:0; overflow:auto; padding:4px var(--pad) var(--pad)}
   .drawer-foot{flex:0 0 auto; display:flex; align-items:center; gap:10px; padding:12px var(--pad);
     border-top:var(--border) solid var(--line); background:var(--surface-2)}
   .drawer-foot[hidden]{display:none}
   .selcount{font-family:var(--font-head); font-size:12.5px; font-weight:600; color:var(--text); margin-right:auto}
   .ctl-btn.primary{background:var(--accent); color:var(--accent-ink); border-color:transparent}
   .ctl-btn.primary:hover{filter:brightness(1.08); color:var(--accent-ink)}
-  .drawer-search{padding:10px var(--pad) 0}
+  .drawer-search{flex:0 0 auto; padding:10px var(--pad) 0}
   .hsearch{width:100%; font:inherit; font-size:13px; color:var(--text); background:var(--surface-2);
     border:var(--border) solid var(--line); border-radius:calc(var(--radius)*.5); padding:9px 12px; outline:none}
   .hsearch:focus{border-color:var(--accent); box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 16%,transparent)}
@@ -437,15 +465,21 @@
   .hmw{font-family:var(--font-num);font-weight:600;font-size:15px;min-width:104px;font-variant-numeric:tabular-nums}
   .hmw small{font-size:10px;color:var(--muted);font-weight:500}
   .hmid{flex:1 1 auto; min-width:0}
-  .hseq{font-family:var(--font-num);font-size:12px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .hseq{font-family:var(--font-num);font-size:12px;color:var(--text);line-height:1.35;word-break:break-all;
+    display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
   .htags{font-size:10.5px;color:var(--muted);margin-top:2px}
   .hdx{font-size:11px;color:var(--accent);margin-top:3px;font-family:var(--font-num)}
   .hdx b{font-weight:700}
+  .hdxstrand{display:flex; gap:7px; align-items:baseline; margin-top:3px}
+  .hdxlab{flex:0 0 auto; min-width:34px; font-family:var(--font-head); font-size:9.5px; font-weight:700;
+    letter-spacing:.05em; text-transform:uppercase; color:var(--accent)}
+  .hdxstrand .hseq{flex:1 1 auto; min-width:0; margin:0}
   .htime{font-size:10px;color:var(--muted);margin-top:3px;opacity:.85}
   .hcount{color:var(--muted);font-weight:500;font-size:12px}
   .hdel{flex:0 0 auto;width:26px;height:26px;border-radius:7px;border:0;background:transparent;
     color:var(--muted);cursor:pointer;font-size:13px}
   .hdel:hover{background:var(--surface-2);color:#d1242f}
+  .hdel.armed{width:auto;padding:0 9px;background:#d1242f;color:#fff;font-size:11px;font-weight:600;font-family:var(--font-head)}
 
   /* ============ right: control panel ============ */
   .panel{background:var(--kit-panel); border-left:1px solid var(--kit-line); overflow-y:auto; display:flex; flex-direction:column}
@@ -660,6 +694,7 @@
 
 <!-- calculator markup template -->
 <template id="calcTpl">
+  <div class="calc-topbar">
   <div class="modebar">
     <button class="faq-btn" data-faqopen>FAQ?</button>
     <div class="modetoggle" data-modetoggle>
@@ -669,6 +704,7 @@
   <div class="tabs">
     <button class="tab" data-tab="mw" style="font-size: 16px; font-weight: 600">MW Calculator</button>
     <button class="tab" data-tab="conc" style="font-size: 16px; font-weight: 600">Concentration</button>
+  </div>
   </div>
   <div class="tabpane" data-pane="mw">
   <div class="calc-head">
@@ -774,7 +810,7 @@
     <div class="calc-foot">
       <button class="ctl-btn" data-history>History</button>
       <button class="ctl-btn" data-save>Save Strand</button>
-      <button class="copy" data-copy>Copy result</button>
+      <button class="copy" data-copy>Copy info</button>
     </div>
   </div>
   </div><!-- /mw pane -->
@@ -792,7 +828,7 @@
       <div class="mwlink-main">
         <div class="result-label" style="font-size: 16px">Molecular weight</div>
         <div class="mwlink-val"><span data-cmw>0.00</span> <small style="font-size: 14px">g/mol</small></div>
-        <div class="mwlink-sub" data-cmwsub style="width: 500px">linked from sequence</div>
+        <div class="mwlink-sub" data-cmwsub>linked from sequence</div>
       </div>
       <label class="mwlink-toggle"><input type="checkbox" data-ctoggle="useCustomMW" /> custom</label>
     </div>
@@ -843,17 +879,18 @@
       <label class="mwlink-toggle" style="margin-top:0; margin-left:auto"><input type="checkbox" data-ctoggle="useCustomStock" /> custom</label>
     </div>
     <div class="crow">
-      <div class="cfield"><label style="font-size: 14px">Target Concentration</label>
+      <div class="cfield"><label style="font-size: 14px">Target Conc.</label>
         <div class="cinput"><input type="number" data-conc="dilC2" inputmode="decimal" placeholder="0" /><select data-cu="dilC2Unit"><option>nM</option><option>µM</option><option>mM</option><option>M</option></select></div></div>
       <div class="cfield"><label style="font-size: 14px">Target Volume</label>
         <div class="cinput"><input type="number" data-conc="dilV2" inputmode="decimal" placeholder="0" /><select data-cu="dilV2Unit"><option>µL</option><option>mL</option><option>L</option></select></div></div>
     </div>
     <div class="cresults">
       <div class="cres"><div class="l">ADD STOCK</div><div class="v"><span data-v1>—</span><small data-v1u></small></div></div>
-      <div class="cres"><div class="l">Add water / buffer / diluent</div><div class="v"><span data-water>—</span><small data-wateru></small></div></div>
+      <div class="cres"><div class="l">Add water / buffer</div><div class="v"><span data-water>—</span><small data-wateru></small></div></div>
     </div>
     <div class="cnote" data-dilnote style="font-size: 16px"></div>
     <div class="calc-foot" style="padding-top:14px">
+      <button class="ctl-btn" data-history>History</button>
       <button class="copy" data-ccopy style="margin-left:auto">Copy Conc.</button>
     </div>
   </div><!-- /conc pane -->
@@ -866,6 +903,7 @@
   </div>
 
   <div class="drawer" data-drawer hidden>
+    <div class="drawer-top">
     <div class="drawer-head">
       <h4>Saved strands <span class="hcount" data-hcount></span></h4>
       <button class="ctl-btn sm" data-hcsv="all">Export All</button>
@@ -874,6 +912,7 @@
     </div>
     <div class="drawer-search">
       <input type="text" class="hsearch" data-hsearch placeholder="Search by name or sequence…" spellcheck="false" />
+    </div>
     </div>
     <div class="drawer-list" data-hlist></div>
     <div class="drawer-foot" data-drawerfoot hidden>
@@ -1405,7 +1444,7 @@ function renderNumbers(el){
   else if(r.bad.length){ w.style.display="block"; w.textContent="Ignored: "+[...new Set(r.bad)].join(" "); }
   else w.style.display="none";
   const seqTa=el.querySelector("[data-seq]"); if(seqTa) seqTa.classList.toggle("has-bad", !!(r.bad.length||r.needPrefix));
-  el.querySelector("[data-history]").textContent="History ("+history.length+")";
+  el.querySelectorAll("[data-history]").forEach(h=>h.textContent="History ("+history.length+")");
   const sv=el.querySelector("[data-save]"); if(sv){ const isSaved = compute(S.seq,S.type,S.linkage).n>0 && savedSig===currentSig();
     sv.classList.toggle("is-saved", isSaved); sv.textContent = isSaved ? "Saved ✓" : "Save Strand"; }
   // ---- duplex / antisense ----
@@ -1502,6 +1541,7 @@ function renderCalc(el){
   ta.placeholder=placeholderFor();
   el.querySelector("[data-keypad]").innerHTML=keypadHTML();
   el.querySelector("[data-drawer]").hidden=!drawerOpen;
+  el.classList.toggle("drawer-open", drawerOpen);
   if(drawerOpen){ el.querySelector("[data-hlist]").innerHTML=drawerListHTML();
     const hc=el.querySelector("[data-hcount]"); if(hc) hc.textContent=history.length?("· "+history.length):"";
     updateSelFoot(el);
@@ -1526,12 +1566,15 @@ function drawerListHTML(){
   return rows.map(({h,i})=>`
     <div class="hitem${histSel.has(i)?' is-sel':''}" data-hload="${i}">
       <button class="hsel" data-hsel="${i}" title="Select for export" aria-label="Select"><svg viewBox="0 0 16 16" width="13" height="13"><path d="M3 8.5l3.2 3.2L13 4.8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      <div class="hmw">${h.mwStr}<br/><small>g/mol</small></div>
+      <div class="hmw">${h.duplex?h.duplex.duplexMwStr:h.mwStr}<br/><small>g/mol</small></div>
       <div class="hmid">
         <input class="hname" data-hname="${i}" value="${(h.name||'').replace(/"/g,'&quot;')}" placeholder="Untitled strand" spellcheck="false" />
-        <div class="hseq">${(h.seq||"(empty)")}</div>
-        ${h.duplex?`<div class="hdx"><b>Duplex</b> ${h.duplex.duplexMwStr} g/mol · antisense ${h.duplex.antiMwStr} (${h.duplex.antiN} nt)</div>`:""}
-        <div class="htags"><b>${h.type}</b> · ${linkText(h)} · ${fiveLabel(h.five,h.fiveThio)} · ${h.n} nt${h.comp?" · "+h.comp:""}${h.mods&&h.mods.length?" · "+h.mods.join(", "):""}</div>
+        ${h.duplex
+          ? `<div class="htags" style="margin-bottom:4px"><b>Duplex</b> · ${h.type} · ${linkText(h)} · ${h.n}+${h.duplex.antiN} nt</div>
+             <div class="hdxstrand"><span class="hdxlab">Sense</span><div class="hseq">${h.seq||"(empty)"}</div></div>
+             <div class="hdxstrand"><span class="hdxlab">Anti</span><div class="hseq">${h.duplex.antiSeq||"(empty)"}</div></div>`
+          : `<div class="hseq">${(h.seq||"(empty)")}</div>
+             <div class="htags"><b>${h.type}</b> · ${linkText(h)} · ${fiveLabel(h.five,h.fiveThio)} · ${h.n} nt${h.comp?" · "+h.comp:""}${h.mods&&h.mods.length?" · "+h.mods.join(", "):""}</div>`}
         <div class="htime">${fmtTime(h.t)} · click row to reload</div>
       </div>
       <button class="hdel" data-hdel="${i}" title="Delete">✕</button>
@@ -1615,7 +1658,8 @@ function saveCurrent(){
     three:S.three, modPreset:S.modPreset, modName:S.modName, modMass:S.modMass, duplex:dx,
     name:"", n:r.n, nPO:r.nPO, nPS:r.nPS, comp, mods, mw:r.mw, mwStr:fmt(r.mw,r.n), t:Date.now() };
   const last=history[0];
-  if(last && last.seq===entry.seq && last.type===entry.type && last.linkage===entry.linkage && last.five===entry.five) return false;
+  const sig=x=>JSON.stringify([x.seq,x.type,x.linkage,x.five,x.fiveThio,x.three,x.duplex?[x.duplex.mode,x.duplex.antiSeq,x.duplex.antiLink]:0]);
+  if(last && sig(last)===sig(entry)) return false;
   history.unshift(entry); if(history.length>60) history.length=60; saveHist();
   return true;
 }
@@ -1700,7 +1744,7 @@ document.querySelector(".kit").addEventListener("click", e=>{
     const C1 = a260mode ? (a260/eps) : (MW>0?(nd*1e-3)/MW:0);
     const su=S.stockUnit||'µM', val=C1/uf(su,C_UNITS);
     copyText(`${nfmt(val)} ${su} — ${a260mode?('A260 '+a260):(nd+' ng/µL')}, MW ${nfmt(MW)} g/mol`, ccp); return; }
-  if(e.target.closest("[data-history]")){ drawerOpen=true; applyAll(); return; }
+  if(e.target.closest("[data-history]")){ drawerOpen=true; applyAll(); scrollViewTop(); calcs.forEach(c=>{ const l=c.querySelector("[data-hlist]"); if(l) l.scrollTop=0; }); return; }
   if(e.target.closest("[data-dclose]")){ drawerOpen=false; applyAll(); return; }
   if(e.target.closest("[data-save]")){
     const ok=saveCurrent();
@@ -1732,7 +1776,15 @@ document.querySelector(".kit").addEventListener("click", e=>{
     clearTimeout(btn._t); history=[]; saveHist(); applyAll(); return;   // second click within 3s: clear
   }
   const del=e.target.closest("[data-hdel]");
-  if(del){ history.splice(+del.dataset.hdel,1); histSel.clear(); saveHist(); applyAll(); return; }
+  if(del){
+    if(del.dataset.armed!=="1"){                       // first click: arm + warn, don't delete
+      del.dataset.armed="1"; del.dataset.orig=del.innerHTML;
+      del.textContent="Delete?"; del.classList.add("armed");
+      clearTimeout(del._t); del._t=setTimeout(()=>{ del.dataset.armed="0"; del.innerHTML=del.dataset.orig||"\u2715"; del.classList.remove("armed"); },3000);
+      return;
+    }
+    clearTimeout(del._t);                               // second click within 3s: delete
+    history.splice(+del.dataset.hdel,1); histSel.clear(); saveHist(); applyAll(); return; }
   const hsel=e.target.closest("[data-hsel]");
   if(hsel){ const i=+hsel.dataset.hsel; if(histSel.has(i)) histSel.delete(i); else histSel.add(i);
     calcs.forEach(c=>{ const it=c.querySelector('[data-hsel="'+i+'"]'); if(it){ const row=it.closest('.hitem'); if(row) row.classList.toggle('is-sel', histSel.has(i)); }
@@ -1949,7 +2001,8 @@ function renderFaq(){
   calcs.forEach(c=>{ const b=c.querySelector("[data-faqbody]"); if(b) b.innerHTML=html; });
 }
 let faqOpen=false;
-function setFaq(open){ faqOpen=open; if(open) renderFaq(); calcs.forEach(c=>{ const f=c.querySelector("[data-faq]"); if(f) f.hidden=!open; c.classList.toggle("faq-open", open); const b=c.querySelector("[data-faqopen]"); if(b) b.classList.toggle("on", open); }); if(open){ const sc=document.querySelector('.stage-canvas'); if(sc) sc.scrollTop=0; const ph=document.querySelector('.phone .scroll'); if(ph) ph.scrollTop=0; try{ window.scrollTo(0,0); }catch(_){} } }
+function scrollViewTop(){ const sc=document.querySelector('.stage-canvas'); if(sc) sc.scrollTop=0; document.querySelectorAll('.phone .scroll').forEach(s=>s.scrollTop=0); try{ window.scrollTo(0,0); }catch(_){} }
+function setFaq(open){ faqOpen=open; if(open) renderFaq(); calcs.forEach(c=>{ const f=c.querySelector("[data-faq]"); if(f) f.hidden=!open; c.classList.toggle("faq-open", open); const b=c.querySelector("[data-faqopen]"); if(b){ b.classList.toggle("on", open); b.textContent=open?"✕ FAQ":"FAQ?"; } }); if(open) scrollViewTop(); }
 document.querySelector(".kit").addEventListener("click", e=>{
   if(e.target.closest("[data-faqopen]")){ setFaq(!faqOpen); return; }
   if(e.target.closest("[data-faqclose]")){ setFaq(false); return; }
