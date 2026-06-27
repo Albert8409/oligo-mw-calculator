@@ -415,6 +415,66 @@
   .faq-ans a:hover{text-decoration-thickness:2px}
   .faq-ans br+br{line-height:2.2}
   .faq-ans code{font-family:var(--font-num); font-size:12px; background:color-mix(in srgb,var(--accent) 14%,var(--surface)); color:var(--text); padding:2px 6px; border-radius:5px; white-space:nowrap}
+  /* vendor catalog overlay */
+  .calc.catalog-open .tabs, .calc.catalog-open .tabpane, .calc.catalog-open .faq, .calc.catalog-open .drawer{display:none !important}
+  .catalog{position:static; z-index:7; background:var(--surface); display:flex; flex-direction:column}
+  .catalog[hidden]{display:none}
+  .catalog-top{background:var(--surface)}
+  [data-platform="app"] .catalog-top, .phone .catalog-top{position:sticky; top:0; z-index:5; background:var(--sticky-bg); padding-bottom:10px; border-bottom:2px solid var(--sticky-line); box-shadow:0 9px 14px -11px rgba(0,0,0,.5)}
+  @media (max-width:600px){ .catalog-top{position:sticky; top:0; z-index:5; background:var(--sticky-bg); padding-bottom:10px; border-bottom:2px solid var(--sticky-line); box-shadow:0 9px 14px -11px rgba(0,0,0,.5)} }
+  .catalog-head{display:flex; align-items:center; gap:10px; padding:var(--pad); border-bottom:var(--border) solid var(--line)}
+  .catalog-head h4{font-family:var(--font-head); font-size:16px; font-weight:600; margin-right:auto}
+  .cat-count{color:var(--muted); font-weight:500; font-size:12px}
+  .catalog-controls{display:flex; flex-wrap:wrap; gap:8px; padding:10px var(--pad) 0; align-items:center}
+  .cat-vendorseg{display:inline-flex; background:var(--surface-2); border:var(--border) solid var(--line); border-radius:999px; padding:3px; gap:2px; flex-wrap:wrap}
+  .cat-vendorseg button{font-family:var(--font-head); font-size:11.5px; font-weight:600; color:var(--muted); background:none; border:0; padding:6px 11px; border-radius:999px; cursor:pointer; white-space:nowrap; transition:color .12s}
+  .cat-vendorseg button:hover{color:var(--accent)}
+  .cat-vendorseg button.on{background:var(--accent); color:var(--accent-ink)}
+  .cat-search{flex:1 1 170px; min-width:0; font:inherit; font-family:var(--font-ui); font-size:13px; color:var(--text); background:var(--surface-2); border:var(--border) solid var(--line); border-radius:calc(var(--radius)*.5); padding:9px 12px; outline:none}
+  .cat-search:focus{border-color:var(--accent); box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 16%,transparent)}
+  .cat-catsel{flex:0 0 auto}
+  .catalog-controls{align-items:flex-end}
+  .cat-ctl{display:flex; flex-direction:column; gap:3px; font-family:var(--font-head); font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--muted)}
+  .cat-ctl select{font-size:12.5px}
+  .catalog-search2{display:flex; gap:8px; padding:9px var(--pad) 0}
+  .cat-search-cat{flex:0 0 132px; min-width:0}
+  .catalog-list{padding:12px var(--pad) var(--pad); display:flex; flex-direction:column; gap:9px}
+  .cat-item{border:var(--border) solid var(--line); border-radius:calc(var(--radius)*.55); background:var(--surface-2); padding:12px 13px; display:flex; gap:12px; align-items:flex-start}
+  .cat-main{flex:1 1 auto; min-width:0}
+  .cat-name{font-family:var(--font-head); font-size:13.5px; font-weight:600; color:var(--text); line-height:1.35}
+  .cat-vendor{font-size:11.5px; color:var(--muted); margin-top:2px}
+  .cat-tags{display:flex; flex-wrap:wrap; gap:6px 8px; align-items:center; margin-top:8px; font-size:11px}
+  .cat-code{font-family:var(--font-num); font-weight:600; background:color-mix(in srgb,var(--accent) 14%,var(--surface)); color:var(--text); padding:2px 7px; border-radius:5px}
+  .cat-mass{font-family:var(--font-num); color:var(--muted)}
+  .cat-pill{color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:2px 8px}
+  .cat-verified{color:#16a34a; font-weight:600}
+  .cat-src{color:var(--accent); font-weight:600; text-decoration:underline; text-underline-offset:2px}
+  .cat-actions{display:flex; flex-direction:column; gap:6px; flex:0 0 auto}
+  .cat-actions button{font-family:var(--font-head); font-size:11.5px; font-weight:600; white-space:nowrap; cursor:pointer; border-radius:999px; padding:7px 12px; border:var(--border) solid var(--line); background:var(--surface); color:var(--text); transition:.12s}
+  .cat-ins:hover{color:var(--accent-ink); background:var(--accent); border-color:var(--accent)}
+  .cat-add:hover{color:var(--accent); border-color:var(--accent)}
+  .cat-add.in-lib{color:#16a34a; border-color:#16a34a; background:color-mix(in srgb,#16a34a 12%,transparent); cursor:pointer}
+  .cat-add.in-lib .lib-rm{display:none}
+  .cat-add.in-lib:hover{color:#d1242f; border-color:#d1242f; background:color-mix(in srgb,#d1242f 12%,transparent)}
+  .cat-add.in-lib:hover .lib-on{display:none}
+  .cat-add.in-lib:hover .lib-rm{display:inline}
+  .cat-empty{color:var(--muted); font-size:12.5px; padding:28px 4px; text-align:center}
+  /* catalog soft gate (Pro preview) */
+  .catgate{position:fixed; inset:0; z-index:60; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,.55); padding:20px}
+  .catgate[hidden]{display:none}
+  .catgate-card{background:var(--surface); border:var(--border) solid var(--line); border-radius:var(--radius); box-shadow:0 30px 80px -20px rgba(0,0,0,.6); max-width:380px; width:100%; padding:22px}
+  .catgate-title{font-family:var(--font-head); font-size:17px; font-weight:700; color:var(--text)}
+  .catgate-sub{font-size:13px; line-height:1.5; color:var(--muted); margin:8px 0 14px}
+  .catgate-input{width:100%; font:inherit; font-family:var(--font-ui); font-size:14px; color:var(--text); background:var(--surface-2); border:var(--border) solid var(--line); border-radius:calc(var(--radius)*.5); padding:11px 12px; outline:none}
+  .catgate-input:focus{border-color:var(--accent); box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 16%,transparent)}
+  .catgate-err{color:#d1242f; font-size:12px; margin-top:7px}
+  .catgate-row{display:flex; gap:8px; justify-content:flex-end; margin-top:14px}
+  .catgate-cancel,.catgate-go{font-family:var(--font-head); font-size:12.5px; font-weight:600; cursor:pointer; border-radius:999px; padding:9px 16px; border:var(--border) solid var(--line); transition:.12s}
+  .catgate-cancel{background:var(--surface-2); color:var(--muted)}
+  .catgate-cancel:hover{color:var(--text); border-color:var(--accent)}
+  .catgate-go{background:var(--accent); color:var(--accent-ink); border-color:var(--accent)}
+  .catgate-go:hover{filter:brightness(1.06)}
+  .catgate-note{font-size:10.5px; line-height:1.45; color:var(--muted); margin-top:14px; padding-top:12px; border-top:var(--border) solid var(--line)}
   /* history drawer */
   .drawer{position:static; z-index:6; background:var(--surface); display:flex; flex-direction:column}
   .drawer[hidden]{display:none}
@@ -524,6 +584,8 @@
   .toggle .sw-t::after{content:"";position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:#fff;transition:transform .15s}
   .toggle.on .sw-t{background:var(--kit-accent)}
   .toggle.on .sw-t::after{transform:translateX(16px)}
+  .ktext{width:100%; font:inherit; font-size:12px; color:var(--kit-text); background:#0b0e13; border:1px solid var(--kit-line); border-radius:8px; padding:8px 10px; outline:none}
+  .ktext:focus{border-color:var(--kit-accent)}
   select{width:100%;font:inherit;font-size:12.5px;color:var(--kit-text);background:#0b0e13;
     border:1px solid var(--kit-line);border-radius:8px;padding:8px 10px;cursor:pointer;appearance:none;
     background-image:linear-gradient(45deg,transparent 50%,var(--kit-muted) 50%),linear-gradient(135deg,var(--kit-muted) 50%,transparent 50%);
@@ -698,6 +760,7 @@
   <div class="calc-topbar">
   <div class="modebar">
     <button class="faq-btn" data-faqopen>FAQ?</button>
+    <button class="faq-btn" data-catopen>Catalog</button>
     <div class="modetoggle" data-modetoggle>
       <button data-mode="light">☀ Light</button><button data-mode="dark">☾ Dark</button>
     </div>
@@ -922,7 +985,988 @@
       <button class="ctl-btn sm primary" data-hcsv="sel">Export Selected</button>
     </div>
   </div>
+
+  <div class="catalog" data-catalog hidden>
+    <div data-catbody></div>
+  </div>
+
+  <div class="catgate" data-catgate hidden>
+    <div class="catgate-card">
+      <div class="catgate-title">Vendor Catalog · Pro preview</div>
+      <p class="catgate-sub">A curated library of 350+ verified phosphoramidites (ChemGenes &amp; Glen Research). This preview is open to ShengLab members during beta — enter the access code to continue.</p>
+      <input class="catgate-input" data-catgateinput type="password" placeholder="Access code" spellcheck="false" autocomplete="off" />
+      <div class="catgate-err" data-catgateerr hidden>Incorrect code — try again.</div>
+      <div class="catgate-row">
+        <button class="catgate-cancel" data-catgatecancel>Cancel</button>
+        <button class="catgate-go" data-catgateunlock>Unlock</button>
+      </div>
+      <div class="catgate-note">Soft beta gate — friendly access control, not real security (the data is in the page). The full Pro version will use real accounts with the hosted Supabase catalog and unlimited saved bases.</div>
+    </div>
+  </div>
 </template>
+
+<script type="application/json" id="catalogData">
+{
+ "schema_version": 4,
+ "generated": "2026-06-27",
+ "vendors": [
+  "ChemGenes",
+  "Glen Research"
+ ],
+ "note": "FREE SUBSET (30 common monomers). Full catalog (267/351) is the Pro/Supabase tier.",
+ "counts": {
+  "monomers": 30,
+  "vendor_products": 45
+ },
+ "monomers": [
+  {
+   "code": "dpsiU",
+   "name": "2'-deoxyPseudouridine",
+   "category": "Modified DNA base",
+   "sugar": "d",
+   "kind": "base",
+   "hasPhos": false,
+   "mass": 228.204,
+   "nucleoside_formula": "C9H12N2O5",
+   "cas": "289712-98-7",
+   "verified": true,
+   "verification": "MATCH",
+   "vendor_products": [
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "10-1055",
+     "product_name": "2'-deoxypseudoU-CE Phosphoramidite",
+     "protecting_group": "(per Glen)",
+     "format": "phosphoramidite (CE)",
+     "amidite_formula": "C39H47N4O8P",
+     "amidite_fw": 730.799,
+     "audit": "MATCH",
+     "source": "https://www.glenresearch.com/structural-studies/2-deoxypseudou-ce-phosphoramidite10-1055.html"
+    }
+   ]
+  },
+  {
+   "code": "5mdC",
+   "name": "5-Methyl-2'-deoxyCytidine",
+   "category": "Modified DNA base",
+   "sugar": "d",
+   "kind": "base",
+   "hasPhos": false,
+   "mass": 241.247,
+   "nucleoside_formula": "C10H15N3O4",
+   "cas": "",
+   "verified": true,
+   "verification": "MATCH",
+   "vendor_products": [
+    {
+     "vendor": "ChemGenes",
+     "catalog_no": "ANP-6421",
+     "product_name": "5-Methyl-deoxy Cytidine (n-bz) CED phosphoramidite",
+     "protecting_group": "Bz",
+     "format": "phosphoramidite (CED)",
+     "amidite_formula": "C47H54N5O8P",
+     "amidite_fw": 847.93,
+     "audit": "MATCH",
+     "source": "https://www.chemgenes.com/products.php?product=5-methyl-deoxy-cytidine-n-bz-ced-phosphoramidite"
+    },
+    {
+     "vendor": "ChemGenes",
+     "catalog_no": "ANP-6422",
+     "product_name": "5-Methyl-deoxy Cytidine (n,n-dmf) CED phosphoramidite",
+     "protecting_group": "dmf",
+     "format": "phosphoramidite (CED)",
+     "amidite_formula": "C43H55N6O7P",
+     "amidite_fw": 798.91,
+     "audit": "MATCH",
+     "source": "https://www.chemgenes.com/products.php?product=5-methyl-deoxy-cytidine-n-n-dmf-ced-phosphoramidite"
+    },
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "10-1060",
+     "product_name": "5-Me-dC-CE Phosphoramidite",
+     "protecting_group": "(per Glen)",
+     "format": "phosphoramidite (CE)",
+     "amidite_formula": "C47H54N5O8P",
+     "amidite_fw": 847.95,
+     "audit": "MATCH",
+     "source": "https://www.glenresearch.com/dna-damage-epigenetics/5-me-dc-ce-phosphoramidite10-1060.html"
+    },
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "10-1560",
+     "product_name": "Ac-5-Me-dC-CE Phosphoramidite",
+     "protecting_group": "(per Glen)",
+     "format": "phosphoramidite (CE)",
+     "amidite_formula": "C42H52N5O8P",
+     "amidite_fw": 785.879,
+     "audit": "MATCH",
+     "source": "https://www.glenresearch.com/duplex-stability/ac-5-me-dc-ce-phosphoramidite10-1560.html"
+    }
+   ]
+  },
+  {
+   "code": "dU",
+   "name": "2'-deoxyUridine",
+   "category": "Modified DNA base",
+   "sugar": "d",
+   "kind": "base",
+   "hasPhos": false,
+   "mass": 228.204,
+   "nucleoside_formula": "C9H12N2O5",
+   "cas": "951-78-0",
+   "verified": true,
+   "verification": "MATCH",
+   "vendor_products": [
+    {
+     "vendor": "ChemGenes",
+     "catalog_no": "ANP-6131",
+     "product_name": "deoxy Uridine CED phosphoramidite",
+     "protecting_group": "none",
+     "format": "phosphoramidite (CED)",
+     "amidite_formula": "C39H47N4O8P",
+     "amidite_fw": 730.79,
+     "audit": "MATCH",
+     "source": "https://www.chemgenes.com/products.php?product=deoxy-uridine-ced-phosphoramidite"
+    }
+   ]
+  },
+  {
+   "code": "dI",
+   "name": "2'-deoxyInosine",
+   "category": "Modified DNA base",
+   "sugar": "d",
+   "kind": "base",
+   "hasPhos": false,
+   "mass": 252.23,
+   "nucleoside_formula": "C10H12N4O4",
+   "cas": "890-38-0",
+   "verified": true,
+   "verification": "MATCH",
+   "vendor_products": [
+    {
+     "vendor": "ChemGenes",
+     "catalog_no": "ANP-6411",
+     "product_name": "deoxy Inosine CED phosphoramidite",
+     "protecting_group": "none",
+     "format": "phosphoramidite (CED)",
+     "amidite_formula": "C40H47N6O7P",
+     "amidite_fw": 754.81,
+     "audit": "MATCH",
+     "source": "https://www.chemgenes.com/products.php?product=deoxy-inosine-ced-phosphoramidite"
+    },
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "10-1040",
+     "product_name": "dI-CE Phosphoramidite",
+     "protecting_group": "(per Glen)",
+     "format": "phosphoramidite (CE)",
+     "amidite_formula": "C40H47N6O7P",
+     "amidite_fw": 754.825,
+     "audit": "MATCH",
+     "source": "https://www.glenresearch.com/degenerate-bases/di-ce-phosphoramidite10-1040.html"
+    }
+   ]
+  },
+  {
+   "code": "2APdR",
+   "name": "2-Aminopurine-2'-deoxyriboside",
+   "category": "Modified DNA base",
+   "sugar": "d",
+   "kind": "base",
+   "hasPhos": false,
+   "mass": 251.246,
+   "nucleoside_formula": "C10H13N5O3",
+   "cas": "",
+   "verified": true,
+   "verification": "MATCH",
+   "vendor_products": [
+    {
+     "vendor": "ChemGenes",
+     "catalog_no": "ANP-9315-2",
+     "product_name": "2-Aminopurine(N2-Dmf) 2'-deoxy-riboside CE phosphoramidite",
+     "protecting_group": "dmf",
+     "format": "phosphoramidite (CED)",
+     "amidite_formula": "C43H53N8O6P",
+     "amidite_fw": 808.01,
+     "audit": "MATCH",
+     "source": "https://www.chemgenes.com/products.php?product=2-aminopurine-n2-dmf-2-deoxy-riboside-ce-phosphoramidite"
+    },
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "10-1046",
+     "product_name": "2-Aminopurine-CE Phosphoramidite",
+     "protecting_group": "(per Glen)",
+     "format": "phosphoramidite (CE)",
+     "amidite_formula": "C43H53N8O6P",
+     "amidite_fw": 808.921,
+     "audit": "MATCH",
+     "source": "https://www.glenresearch.com/structural-studies/2-aminopurine-ce-phosphoramidite10-1046.html"
+    }
+   ]
+  },
+  {
+   "code": "5BrdC",
+   "name": "5-Bromo-2'-deoxyCytidine",
+   "category": "Modified DNA base",
+   "sugar": "d",
+   "kind": "base",
+   "hasPhos": false,
+   "mass": 306.116,
+   "nucleoside_formula": "C9H12BrN3O4",
+   "cas": "",
+   "verified": true,
+   "verification": "MATCH",
+   "vendor_products": [
+    {
+     "vendor": "ChemGenes",
+     "catalog_no": "ANP-6141",
+     "product_name": "5-Bromo-deoxy Cytidine CED phosphoramidite",
+     "protecting_group": "Bz",
+     "format": "phosphoramidite (CED)",
+     "amidite_formula": "C46H51BrN5O8P",
+     "amidite_fw": 912.8,
+     "audit": "MATCH",
+     "source": "https://www.chemgenes.com/products.php?product=5-bromo-deoxy-cytidine-ced-phosphoramidite"
+    },
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "10-1080",
+     "product_name": "5-Br-dC-CE Phosphoramidite",
+     "protecting_group": "(per Glen)",
+     "format": "phosphoramidite (CE)",
+     "amidite_formula": "C46H51BrN5O8P",
+     "amidite_fw": 912.819,
+     "audit": "MATCH",
+     "source": "https://www.glenresearch.com/halogenated-nucleosides/5-br-dc-ce-phosphoramidite10-1080.html"
+    }
+   ]
+  },
+  {
+   "code": "2AdA",
+   "name": "2-Amino-2'-deoxyAdenosine (2,6-DAP-dR)",
+   "category": "Modified DNA base",
+   "sugar": "d",
+   "kind": "base",
+   "hasPhos": false,
+   "mass": 266.261,
+   "nucleoside_formula": "C10H14N6O3",
+   "cas": "173273-38-6",
+   "verified": true,
+   "verification": "MATCH",
+   "vendor_products": [
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "10-1585",
+     "product_name": "Pac-2-Amino-dA-CE Phosphoramidite",
+     "protecting_group": "(per Glen)",
+     "format": "phosphoramidite (CE)",
+     "amidite_formula": "C57H72N9O8P",
+     "amidite_fw": 1042.232,
+     "audit": "MATCH",
+     "source": "https://www.glenresearch.com/duplex-stability/pac-2-amino-da-ce-phosphoramidite10-1585.html"
+    },
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "10-1085",
+     "product_name": "2-Amino-dA-CE Phosphoramidite",
+     "protecting_group": "(per Glen)",
+     "format": "phosphoramidite (CE)",
+     "amidite_formula": "C58H83N10O6P",
+     "amidite_fw": 1047.34,
+     "audit": "MATCH",
+     "source": "https://www.glenresearch.com/duplex-stability/2-amino-da-ce-phosphoramidite10-1085.html"
+    }
+   ]
+  },
+  {
+   "code": "5FdU",
+   "name": "5-Fluoro-2'-deoxyUridine",
+   "category": "Modified DNA base",
+   "sugar": "d",
+   "kind": "base",
+   "hasPhos": false,
+   "mass": 246.194,
+   "nucleoside_formula": "C9H11FN2O5",
+   "cas": "",
+   "verified": true,
+   "verification": "MATCH",
+   "vendor_products": [
+    {
+     "vendor": "ChemGenes",
+     "catalog_no": "ANP-6151",
+     "product_name": "5-Fluoro-deoxy Uridine CED phosphoramidite",
+     "protecting_group": "none",
+     "format": "phosphoramidite (CED)",
+     "amidite_formula": "C39H46FN4O8P",
+     "amidite_fw": 748.78,
+     "audit": "MATCH",
+     "source": "https://www.chemgenes.com/products.php?product=5-fluoro-deoxy-uridine-ced-phosphoramidite"
+    },
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "10-1092",
+     "product_name": "5-F-dU-CE Phosphoramidite",
+     "protecting_group": "(per Glen)",
+     "format": "phosphoramidite (CE)",
+     "amidite_formula": "C39H46FN4O8P",
+     "amidite_fw": 748.789,
+     "audit": "MATCH",
+     "source": "https://www.glenresearch.com/halogenated-nucleosides/5-f-du-ce-phosphoramidite10-1092.html"
+    }
+   ]
+  },
+  {
+   "code": "moe5mC",
+   "name": "2'-MOE-5-Methylcytidine",
+   "category": "2'-modification",
+   "sugar": "moe",
+   "kind": "base",
+   "hasPhos": false,
+   "mass": 315.326,
+   "nucleoside_formula": "C13H21N3O6",
+   "cas": "163759-94-2",
+   "verified": true,
+   "verification": "MATCH",
+   "vendor_products": [
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "10-3211",
+     "product_name": "5-Me-C-2'-MOE-Phosphoramidite",
+     "protecting_group": "(per Glen)",
+     "format": "phosphoramidite (CE)",
+     "amidite_formula": "C50H60N5O10P",
+     "amidite_fw": 922.029,
+     "audit": "MATCH",
+     "source": "https://www.glenresearch.com/2-moe-rna-phosphoramidites/5-me-c-2-moe-phosphoramidite10-3211.html"
+    }
+   ]
+  },
+  {
+   "code": "moe5mU",
+   "name": "2'-MOE-5-Methyluridine",
+   "category": "2'-modification",
+   "sugar": "moe",
+   "kind": "base",
+   "hasPhos": false,
+   "mass": 316.31,
+   "nucleoside_formula": "C13H20N2O7",
+   "cas": "163878-63-5",
+   "verified": true,
+   "verification": "MATCH",
+   "vendor_products": [
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "10-3231",
+     "product_name": "5-Me-U-2'-MOE-Phosphoramidite",
+     "protecting_group": "(per Glen)",
+     "format": "phosphoramidite (CE)",
+     "amidite_formula": "C43H55N4O10P",
+     "amidite_fw": 818.905,
+     "audit": "MATCH",
+     "source": "https://www.glenresearch.com/2-moe-rna-phosphoramidites/5-me-u-2-moe-phosphoramidite10-3231.html"
+    }
+   ]
+  },
+  {
+   "code": "2OMe5MeC",
+   "name": "2'-OMe-5-Methylcytidine",
+   "category": "2'-modification",
+   "sugar": "m",
+   "kind": "base",
+   "hasPhos": false,
+   "mass": 271.273,
+   "nucleoside_formula": "C11H17N3O5",
+   "cas": "",
+   "verified": true,
+   "verification": "MATCH",
+   "vendor_products": [
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "10-3160",
+     "product_name": "2'-OMe-5-Me-C-CE Phosphoramidite",
+     "protecting_group": "(per Glen)",
+     "format": "phosphoramidite (CE)",
+     "amidite_formula": "C43H54N5O9P",
+     "amidite_fw": 815.905,
+     "audit": "MATCH",
+     "source": "https://www.glenresearch.com/2-ome-rna-phosphoramidites/2-ome-5-me-c-ce-phosphoramidite10-3160.html"
+    }
+   ]
+  },
+  {
+   "code": "2OMe5MeU",
+   "name": "2'-O-Methyl-5-Methyluridine",
+   "category": "2'-modification",
+   "sugar": "m",
+   "kind": "base",
+   "hasPhos": false,
+   "mass": 272.257,
+   "nucleoside_formula": "C11H16N2O6",
+   "cas": "",
+   "verified": true,
+   "verification": "MATCH",
+   "vendor_products": [
+    {
+     "vendor": "ChemGenes",
+     "catalog_no": "ANP-5600",
+     "product_name": "2'-O-Methyl 5-Methyl Uridine CED phosphoramidite",
+     "protecting_group": "none",
+     "format": "phosphoramidite (CED)",
+     "amidite_formula": "C41H51N4O9P",
+     "amidite_fw": 774.84,
+     "audit": "MATCH",
+     "source": "https://www.chemgenes.com/products.php?product=2-o-methyl-5-methyl-uridine-ced-phosphoramidite"
+    },
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "10-3131",
+     "product_name": "2'-OMe-5-Me-U-CE Phosphoramidite",
+     "protecting_group": "(per Glen)",
+     "format": "phosphoramidite (CE)",
+     "amidite_formula": "C41H51N4O9P",
+     "amidite_fw": 774.852,
+     "audit": "MATCH",
+     "source": "https://www.glenresearch.com/2-ome-rna-phosphoramidites/2-ome-5-me-u-ce-phosphoramidite10-3131.html"
+    }
+   ]
+  },
+  {
+   "code": "lnaA",
+   "name": "LNA-Adenosine",
+   "category": "2'-modification",
+   "sugar": "lna",
+   "kind": "base",
+   "hasPhos": false,
+   "mass": 279.256,
+   "nucleoside_formula": "C11H13N5O4",
+   "cas": "206055-79-0",
+   "verified": true,
+   "verification": "MATCH",
+   "vendor_products": [
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "10-2000",
+     "product_name": "Bz-A-LA-CE Phosphoramidite",
+     "protecting_group": "(per Glen)",
+     "format": "phosphoramidite (CE)",
+     "amidite_formula": "C48H52N7O8P",
+     "amidite_fw": 885.959,
+     "audit": "MATCH",
+     "source": "https://www.glenresearch.com/lna-phosphoramidites/bz-a-la-ce-phosphoramidite10-2000.html"
+    }
+   ]
+  },
+  {
+   "code": "lnaT",
+   "name": "LNA-Thymidine",
+   "category": "2'-modification",
+   "sugar": "lna",
+   "kind": "base",
+   "hasPhos": false,
+   "mass": 270.241,
+   "nucleoside_formula": "C11H14N2O6",
+   "cas": "206055-75-6",
+   "verified": true,
+   "verification": "MATCH",
+   "vendor_products": [
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "10-2030",
+     "product_name": "T-LA-CE Phosphoramidite",
+     "protecting_group": "(per Glen)",
+     "format": "phosphoramidite (CE)",
+     "amidite_formula": "C41H49N4O9P",
+     "amidite_fw": 772.836,
+     "audit": "MATCH",
+     "source": "https://www.glenresearch.com/lna-phosphoramidites/t-la-ce-phosphoramidite10-2030.html"
+    }
+   ]
+  },
+  {
+   "code": "lnaG",
+   "name": "LNA-Guanosine",
+   "category": "2'-modification",
+   "sugar": "lna",
+   "kind": "base",
+   "hasPhos": false,
+   "mass": 295.255,
+   "nucleoside_formula": "C11H13N5O5",
+   "cas": "709641-79-2",
+   "verified": true,
+   "verification": "MATCH",
+   "vendor_products": [
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "10-2029",
+     "product_name": "dmf-G-LA-CE Phosphoramidite",
+     "protecting_group": "(per Glen)",
+     "format": "phosphoramidite (CE)",
+     "amidite_formula": "C44H53N8O8P",
+     "amidite_fw": 852.93,
+     "audit": "MATCH",
+     "source": "https://www.glenresearch.com/lna-phosphoramidites/dmf-g-la-ce-phosphoramidite10-2029.html"
+    }
+   ]
+  },
+  {
+   "code": "lna5mC",
+   "name": "LNA-5-Methylcytidine",
+   "category": "2'-modification",
+   "sugar": "lna",
+   "kind": "base",
+   "hasPhos": false,
+   "mass": 269.257,
+   "nucleoside_formula": "C11H15N3O5",
+   "cas": "206055-82-5",
+   "verified": true,
+   "verification": "MATCH",
+   "vendor_products": [
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "10-2011",
+     "product_name": "Bz-5-Me-C-LA-CE Phosphoramidite",
+     "protecting_group": "(per Glen)",
+     "format": "phosphoramidite (CE)",
+     "amidite_formula": "C48H54N5O9P",
+     "amidite_fw": 875.96,
+     "audit": "MATCH",
+     "source": "https://www.glenresearch.com/lna-phosphoramidites/bz-5-me-c-la-ce-phosphoramidite10-2011.html"
+    }
+   ]
+  },
+  {
+   "code": "Cyanine3",
+   "name": "Cyanine 3 Phosphoramidite",
+   "category": "Conjugate / Label",
+   "sugar": "-",
+   "kind": "conj",
+   "hasPhos": false,
+   "mass": 507.59,
+   "nucleoside_formula": "",
+   "cas": "",
+   "verified": true,
+   "verification": "Glen F.W.",
+   "vendor_products": [
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "10-5913",
+     "product_name": "Cyanine 3 Phosphoramidite",
+     "protecting_group": "(per Glen)",
+     "format": "phosphoramidite (CE)",
+     "amidite_formula": "C58H70N4O4PCl",
+     "amidite_fw": null,
+     "audit": "Glen F.W.",
+     "source": "https://www.glenresearch.com/fluorophores/cyanine-3-phosphoramidite10-5913.html"
+    },
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "20-5913",
+     "product_name": "Cyanine 3 CPG",
+     "protecting_group": "(per Glen)",
+     "format": "CPG",
+     "amidite_formula": null,
+     "amidite_fw": null,
+     "audit": "Glen F.W.",
+     "source": "https://www.glenresearch.com/fluorophores/cyanine-3-cpg20-5913.html"
+    }
+   ]
+  },
+  {
+   "code": "Cyanine5",
+   "name": "Cyanine 5 Phosphoramidite",
+   "category": "Conjugate / Label",
+   "sugar": "-",
+   "kind": "conj",
+   "hasPhos": false,
+   "mass": 533.63,
+   "nucleoside_formula": "",
+   "cas": "",
+   "verified": true,
+   "verification": "Glen F.W.",
+   "vendor_products": [
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "10-5915",
+     "product_name": "Cyanine 5 Phosphoramidite",
+     "protecting_group": "(per Glen)",
+     "format": "phosphoramidite (CE)",
+     "amidite_formula": "C60H72N4O4PCl",
+     "amidite_fw": null,
+     "audit": "Glen F.W.",
+     "source": "https://www.glenresearch.com/fluorophores/cyanine-5-phosphoramidite10-5915.html"
+    },
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "20-5915",
+     "product_name": "Cyanine 5 CPG",
+     "protecting_group": "(per Glen)",
+     "format": "CPG",
+     "amidite_formula": null,
+     "amidite_fw": null,
+     "audit": "Glen F.W.",
+     "source": "https://www.glenresearch.com/fluorophores/cyanine-5-cpg20-5915.html"
+    }
+   ]
+  },
+  {
+   "code": "HEXchx",
+   "name": "Hexachloro-fluorescein (HEX), cyclohexyl",
+   "category": "Conjugate / Label",
+   "sugar": "",
+   "kind": "conj",
+   "hasPhos": false,
+   "mass": 786.15,
+   "nucleoside_formula": "",
+   "cas": "",
+   "verified": true,
+   "verification": "Added = amidite - DMT - 2x pivaloyl - CED + PO. 6 Cl permanent. = TET + Cl2 - H2 (exact); cross-checks Glen HEX 744.13 (+ linker).",
+   "vendor_products": [
+    {
+     "vendor": "ChemGenes",
+     "catalog_no": "CLP-1527",
+     "product_name": "Hexachloro-fluorescein (HEX), cyclohexyl",
+     "protecting_group": "DMT; 2x pivaloyl; CED",
+     "format": "phosphoramidite (CED)",
+     "amidite_formula": "C69H72Cl6N3O13P",
+     "amidite_fw": 1395.01,
+     "audit": "Added = amidite - DMT - 2x pivaloyl - CED + PO. 6 Cl permanent. = TET + Cl2 - H2 (exact); cross-checks Glen HEX 744.13 (+ linker).",
+     "source": "https://www.chemgenes.com/products.php?product=hexachloro-fluorescein-cyclohexyl-ced-phosphoramidite"
+    }
+   ]
+  },
+  {
+   "code": "TETchx",
+   "name": "Tetrachloro-fluorescein (TET), cyclohexyl",
+   "category": "Conjugate / Label",
+   "sugar": "",
+   "kind": "conj",
+   "hasPhos": false,
+   "mass": 717.26,
+   "nucleoside_formula": "",
+   "cas": "",
+   "verified": true,
+   "verification": "Added = amidite - DMT - 2x pivaloyl - CED + PO. 4 Cl permanent. Cross-checks Glen TET 675.24 (+ cyclohexyl linker).",
+   "vendor_products": [
+    {
+     "vendor": "ChemGenes",
+     "catalog_no": "CLP-1526",
+     "product_name": "Tetrachloro-fluorescein (TET), cyclohexyl",
+     "protecting_group": "DMT; 2x pivaloyl; CED",
+     "format": "phosphoramidite (CED)",
+     "amidite_formula": "C69H74Cl4N3O13P",
+     "amidite_fw": 1326.12,
+     "audit": "Added = amidite - DMT - 2x pivaloyl - CED + PO. 4 Cl permanent. Cross-checks Glen TET 675.24 (+ cyclohexyl linker).",
+     "source": "https://www.chemgenes.com/products.php?product=tetrachloro-fluorescein-cyclohexyl-ced-phosphoramidite"
+    }
+   ]
+  },
+  {
+   "code": "TAMRADt",
+   "name": "TAMRA-dT",
+   "category": "Labeled base",
+   "sugar": "d",
+   "kind": "base",
+   "hasPhos": false,
+   "mass": 808.886,
+   "nucleoside_formula": "",
+   "cas": "",
+   "verified": true,
+   "verification": "Glen F.W.",
+   "vendor_products": [
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "10-1057",
+     "product_name": "TAMRA-dT",
+     "protecting_group": "(per Glen)",
+     "format": "phosphoramidite (CE)",
+     "amidite_formula": "C73H83N8O13P",
+     "amidite_fw": null,
+     "audit": "Glen F.W.",
+     "source": "https://www.glenresearch.com/fluorophores/tamra-dt10-1057.html"
+    }
+   ]
+  },
+  {
+   "code": "JOEDt",
+   "name": "JOE-dT Phosphoramidite",
+   "category": "Labeled base",
+   "sugar": "d",
+   "kind": "base",
+   "hasPhos": false,
+   "mass": 883.686,
+   "nucleoside_formula": "",
+   "cas": "",
+   "verified": true,
+   "verification": "Glen F.W.",
+   "vendor_products": [
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "10-5936",
+     "product_name": "JOE-dT Phosphoramidite",
+     "protecting_group": "(per Glen)",
+     "format": "phosphoramidite (CE)",
+     "amidite_formula": "C81H91Cl2N6O19P",
+     "amidite_fw": null,
+     "audit": "Glen F.W.",
+     "source": "https://www.glenresearch.com/fluorophores/joe-dt-phosphoramidite10-5936.html"
+    }
+   ]
+  },
+  {
+   "code": "BHQ1Dt",
+   "name": "BHQ™-1-dT",
+   "category": "Labeled base",
+   "sugar": "d",
+   "kind": "base",
+   "hasPhos": false,
+   "mass": 898.966,
+   "nucleoside_formula": "",
+   "cas": "",
+   "verified": true,
+   "verification": "Glen F.W.",
+   "vendor_products": [
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "10-5941",
+     "product_name": "BHQ™-1-dT",
+     "protecting_group": "(per Glen)",
+     "format": "phosphoramidite (CE)",
+     "amidite_formula": "C74H89N12O14P",
+     "amidite_fw": null,
+     "audit": "Glen F.W.",
+     "source": "https://www.glenresearch.com/quenchers/bhq-1-dt10-5941.html"
+    }
+   ]
+  },
+  {
+   "code": "BHQ2Dt",
+   "name": "BHQ™-2-dT",
+   "category": "Labeled base",
+   "sugar": "d",
+   "kind": "base",
+   "hasPhos": false,
+   "mass": 900.946,
+   "nucleoside_formula": "",
+   "cas": "",
+   "verified": true,
+   "verification": "Glen F.W.",
+   "vendor_products": [
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "10-5942",
+     "product_name": "BHQ™-2-dT",
+     "protecting_group": "(per Glen)",
+     "format": "phosphoramidite (CE)",
+     "amidite_formula": "C73H87N12O15P",
+     "amidite_fw": null,
+     "audit": "Glen F.W.",
+     "source": "https://www.glenresearch.com/quenchers/bhq-2-dt10-5942.html"
+    }
+   ]
+  },
+  {
+   "code": "Dabcyl",
+   "name": "5'-Dabcyl (quencher)",
+   "category": "Conjugate / Label",
+   "sugar": "-",
+   "kind": "conj",
+   "hasPhos": false,
+   "mass": 430.18,
+   "nucleoside_formula": "",
+   "cas": "",
+   "verified": true,
+   "verification": "Glen F.W. (vendor-published added mass).",
+   "vendor_products": [
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "10-5912",
+     "product_name": "5'-Dabcyl (quencher)",
+     "protecting_group": "(per vendor)",
+     "format": "phosphoramidite",
+     "amidite_formula": "C30H45N6O3P",
+     "amidite_fw": 568.69,
+     "audit": "Glen F.W. (vendor-published added mass).",
+     "source": "https://www.glenresearch.com/5-dabcyl-phosphoramidite10-5912.html"
+    }
+   ]
+  },
+  {
+   "code": "BiotinDt",
+   "name": "Biotin-dT",
+   "category": "Labeled base",
+   "sugar": "d",
+   "kind": "base",
+   "hasPhos": false,
+   "mass": 622.736,
+   "nucleoside_formula": "",
+   "cas": "",
+   "verified": true,
+   "verification": "Glen F.W.",
+   "vendor_products": [
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "10-1038",
+     "product_name": "Biotin-dT",
+     "protecting_group": "(per Glen)",
+     "format": "phosphoramidite (CE)",
+     "amidite_formula": "C69H89N8O12PS",
+     "amidite_fw": null,
+     "audit": "Glen F.W.",
+     "source": "https://www.glenresearch.com/biotin-labeling/biotin-dt10-1038.html"
+    },
+    {
+     "vendor": "ChemGenes",
+     "catalog_no": "CLP-1502",
+     "product_name": "Biotin dT CED phosphoramidite",
+     "protecting_group": "(per ChemGenes)",
+     "format": "phosphoramidite (CED)",
+     "amidite_formula": "C69H89N8O12PS",
+     "amidite_fw": 1285.53,
+     "audit": "formula match (Glen-verified)",
+     "source": "https://www.chemgenes.com/products.php?product=biotin-dt-ced-phosphoramidite"
+    }
+   ]
+  },
+  {
+   "code": "CholesterolTEGpl",
+   "name": "Cholesterol (Plant) TEG (non-DMT)",
+   "category": "Conjugate / Label",
+   "sugar": "",
+   "kind": "conj",
+   "hasPhos": false,
+   "mass": 725.93,
+   "nucleoside_formula": "",
+   "cas": "",
+   "verified": true,
+   "verification": "No DMT. Added = amidite - CED + PO (864.19-138.255). = Glen Cholesteryl-TEG 755.97 minus a glyceryl CH2O (DMT version carries the extra arm).",
+   "vendor_products": [
+    {
+     "vendor": "ChemGenes",
+     "catalog_no": "CLP-2795",
+     "product_name": "Cholesterol (Plant) TEG (non-DMT)",
+     "protecting_group": "CED (no DMT)",
+     "format": "phosphoramidite (CED)",
+     "amidite_formula": "C48H86N3O8P",
+     "amidite_fw": 864.19,
+     "audit": "No DMT. Added = amidite - CED + PO (864.19-138.255). = Glen Cholesteryl-TEG 755.97 minus a glyceryl CH2O (DMT version carries the extra arm).",
+     "source": "https://www.chemgenes.com/products.php?product=cholesterol-plant-teg-ce-phosphoramidite"
+    }
+   ]
+  },
+  {
+   "code": "AminoC6Dt",
+   "name": "Amino-Modifier C6 dT",
+   "category": "Labeled base",
+   "sugar": "d",
+   "kind": "base",
+   "hasPhos": false,
+   "mass": 396.446,
+   "nucleoside_formula": "",
+   "cas": "",
+   "verified": true,
+   "verification": "Glen F.W.",
+   "vendor_products": [
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "10-1039",
+     "product_name": "Amino-Modifier C6 dT",
+     "protecting_group": "(per Glen)",
+     "format": "phosphoramidite (CE)",
+     "amidite_formula": "C50H62N6O10F3P",
+     "amidite_fw": null,
+     "audit": "Glen F.W.",
+     "source": "https://www.glenresearch.com/amino-modifiers/amino-modifier-c6-dt10-1039.html"
+    },
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "20-2039",
+     "product_name": "3'-Amino-Modifier C6 dT CPG",
+     "protecting_group": "(per Glen)",
+     "format": "CPG",
+     "amidite_formula": null,
+     "amidite_fw": null,
+     "audit": "Glen F.W.",
+     "source": "https://www.glenresearch.com/amino-modifiers/3-amino-modifier-c6-dt-cpg20-2039.html"
+    },
+    {
+     "vendor": "ChemGenes",
+     "catalog_no": "CLP-1501",
+     "product_name": "Amino Modifier deoxy Uridine (C-6) CED phosphoramidite",
+     "protecting_group": "(per ChemGenes)",
+     "format": "phosphoramidite (CED)",
+     "amidite_formula": "C50H62F3N6O10P",
+     "amidite_fw": 995.03,
+     "audit": "formula match (Glen-verified)",
+     "source": "https://www.chemgenes.com/products.php?product=amino-modifier-deoxy-uridine-c-6-ced-phosphoramidite"
+    }
+   ]
+  },
+  {
+   "code": "Thiol6SS",
+   "name": "3'-Thiol-Modifier 6 S-S CPG",
+   "category": "Conjugate / Label",
+   "sugar": "-",
+   "kind": "conj",
+   "hasPhos": false,
+   "mass": 198.18,
+   "nucleoside_formula": "",
+   "cas": "",
+   "verified": true,
+   "verification": "Glen F.W.",
+   "vendor_products": [
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "20-2938",
+     "product_name": "3'-Thiol-Modifier 6 S-S CPG",
+     "protecting_group": "(per Glen)",
+     "format": "CPG",
+     "amidite_formula": null,
+     "amidite_fw": null,
+     "audit": "Glen F.W.",
+     "source": "https://www.glenresearch.com/thiol-modifiers/3-thiol-modifier-6-s-s-cpg20-2938.html"
+    }
+   ]
+  },
+  {
+   "code": "6FAMPS",
+   "name": "3'-(6-FAM) PS",
+   "category": "Conjugate / Label",
+   "sugar": "-",
+   "kind": "conj",
+   "hasPhos": false,
+   "mass": 569.46,
+   "nucleoside_formula": "",
+   "cas": "",
+   "verified": true,
+   "verification": "Glen F.W.",
+   "vendor_products": [
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "26-2961",
+     "product_name": "3'-(6-FAM) PS",
+     "protecting_group": "(per Glen)",
+     "format": "PS",
+     "amidite_formula": null,
+     "amidite_fw": null,
+     "audit": "Glen F.W.",
+     "source": "https://www.glenresearch.com/fluorophores/3-6-fam-ps26-2961.html"
+    },
+    {
+     "vendor": "Glen Research",
+     "catalog_no": "20-2961",
+     "product_name": "3'-(6-FAM) CPG",
+     "protecting_group": "(per Glen)",
+     "format": "CPG",
+     "amidite_formula": null,
+     "amidite_fw": null,
+     "audit": "Glen F.W.",
+     "source": "https://www.glenresearch.com/fluorophores/3-6-fam-cpg20-2961.html"
+    }
+   ]
+  }
+ ]
+}
+</script>
 
 <script>
 /* =================================================================
@@ -1009,7 +2053,7 @@ function parseSeq(str, mode){
     let k=i; while(k<s.length && /\s/.test(s[k])) k++;
     if(s[k]==='s'){ fiveThio=true; i=k+1; }                    // 5'-phosphorothioate (s after P, spaces ok)
   }
-  const tokens=[], marks=[], bad=[]; let pending=false, needPrefix=false;
+  const tokens=[], marks=[], bad=[]; let pending=false, needPrefix=false, uToT=false;
   while(i<s.length){
     const ch=s[i];
     if(/\s/.test(ch)){ i++; continue; }
@@ -1031,7 +2075,7 @@ function parseSeq(str, mode){
         sugar = (mode==='RNA') ? 'r' : 'd';                    // bare letter -> infer
       }
       let b=base;
-      if(sugar==='d' && b==='U') b='T';
+      if(sugar==='d' && b==='U'){ b='T'; uToT=true; }
       if(sugar!=='d' && b==='T') b='U';
       if(NUCLEO[sugar][b]==null){ bad.push(s.slice(i,j+1)); i=j+1; pending=false; continue; }
       if(tokens.length>0) marks.push(pending);                  // gap between prev token and this one
@@ -1039,7 +2083,7 @@ function parseSeq(str, mode){
       pending=false; i=j+1;
     } else { bad.push(ch); i++; }
   }
-  return {tokens, marks, five, fiveThio, bad, needPrefix, threeThio};
+  return {tokens, marks, five, fiveThio, bad, needPrefix, threeThio, uToT};
 }
 
 // Render tokens back to a string for a target backbone + linkage mode.
@@ -1145,7 +2189,7 @@ function antisense(seq, type, linkMode){
 }
 
 function compute(seq, mode, linkMode, three=(S&&S.three)||'OH', modMass=0){
-  const {tokens,marks,five,fiveThio,bad,needPrefix,threeThio}=parseSeq(seq,mode);
+  const {tokens,marks,five,fiveThio,bad,needPrefix,threeThio,uToT}=parseSeq(seq,mode);
   const bondForming = tokens.map(t=> !t.nobond);                 // conjugates don't form backbone bonds
   const n = bondForming.filter(Boolean).length;                  // nucleotide length excludes conjugates
   const bonds=[];
@@ -1160,7 +2204,8 @@ function compute(seq, mode, linkMode, three=(S&&S.three)||'OH', modMass=0){
   const nPS=bonds.filter(b=>b==='PS').length, nPO=bonds.length-nPS;
   const invN = (three && three.indexOf('inv')===0) ? 1 : 0;   // inverted dT/dA/dC/dG is a real nucleotide -> counts in length
   const charge = -(bonds.length) - (five==='phosphate'?2:0) - (three==='phosphate'?2:(invN?1:0));
-  return {n:n+invN, tokens,bonds,bad,mw,counts,sugarCounts,customCounts,nPS,nPO,charge,five,fiveThio,three,modMass,needPrefix};
+  let conjMid=null; for(let i=1;i<tokens.length-1;i++){ if(tokens[i].nobond){ conjMid = tokens[i].code||'·'; break; } }   // a conjugate placed mid-chain (not 5'/3' end)
+  return {n:n+invN, tokens,bonds,bad,mw,counts,sugarCounts,customCounts,nPS,nPO,charge,five,fiveThio,three,modMass,needPrefix,uToT,conjMid};
 }
 
 /* =================================================================
@@ -1223,12 +2268,13 @@ const DEFAULTS = {
   nd:"100", vol:"200", volUnit:"µL",
   dilC2:"10", dilC2Unit:"µM", dilV2:"100", dilV2Unit:"µL",
   useCustomStock:false, customStock:"", customStockUnit:"µM",
+  catalogEnabled:true, catalogVendor:"all", catalogCategory:"all", catalogSource:"bundled", catalogSupabaseUrl:"", catalogSupabaseAnonKey:"", catalogUnlocked:false,
 };
 // Bump BUILD_VERSION whenever the baked-in design changes (accent, fonts, theme,
 // sizes, layout). On their next visit, returning users are auto-refreshed to the
 // new appearance defaults below — their saved strands & sequences are kept.
-const BUILD_VERSION = 1;
-const APPEARANCE_KEYS = ["platform","theme","accent","fontUI","fontHead","fontNum","fsBase","fsResult","radius","border","density","shadow","btn","keypad","resultpos","align","showChips","showFormula","showCharge","decimals"];
+const BUILD_VERSION = 3;
+const APPEARANCE_KEYS = ["platform","theme","accent","fontUI","fontHead","fontNum","fsBase","fsResult","radius","border","density","shadow","btn","keypad","resultpos","align","showChips","showFormula","showCharge","decimals","catalogEnabled"];
 let S = load();
 let history = loadHist();
 let drawerOpen = false;
@@ -1442,6 +2488,8 @@ function renderNumbers(el){
   if(S.showFormula) f.textContent=`M5′(${m5}) + Σ${r.n} nt + ${r.bonds.length} bonds (${r.nPO}·PO${r.nPS?", "+r.nPS+"·PS":""})`;
   const w=el.querySelector("[data-warn]");
   if(r.needPrefix){ w.style.display="block"; w.textContent="Hybrid mode — prefix every base with d or r (e.g. dA, rU). Bare bases are not counted."; }
+  else if(r.uToT){ w.style.display="block"; w.textContent="U is not a DNA base — counted as T (deoxythymidine). Switch the backbone to RNA for uridine."; }
+  else if(r.conjMid){ w.style.display="block"; w.textContent="Conjugate "+(r.conjMid.length>1?'('+r.conjMid+')':r.conjMid)+" is mid-sequence — conjugates add mass only and form no backbone phosphate, so the chain doesn’t link through it. If it should sit in the backbone, set it to ‘in-chain base’."; }
   else if(r.bad.length){ w.style.display="block"; w.textContent="Ignored: "+[...new Set(r.bad)].join(" "); }
   else w.style.display="none";
   const seqTa=el.querySelector("[data-seq]"); if(seqTa) seqTa.classList.toggle("has-bad", !!(r.bad.length||r.needPrefix));
@@ -1467,7 +2515,7 @@ function renderNumbers(el){
         note="Mirror · Watson-Crick complement · same backbone &amp; linkage";
       }
       const aw2=el.querySelector("[data-antiwarn]");
-      if(aw2){ if(mode==='custom' && a && a.r.needPrefix){ aw2.style.display="block"; aw2.textContent="Hybrid — prefix each base with d or r (e.g. dA, rU)."; } else if(mode==='custom' && a && a.r.bad.length){ aw2.style.display="block"; aw2.textContent="Ignored: "+[...new Set(a.r.bad)].join(" "); } else aw2.style.display="none"; }
+      if(aw2){ if(mode==='custom' && a && a.r.needPrefix){ aw2.style.display="block"; aw2.textContent="Hybrid — prefix each base with d or r (e.g. dA, rU)."; } else if(mode==='custom' && a && a.r.uToT){ aw2.style.display="block"; aw2.textContent="U is not a DNA base — counted as T. Switch the antisense backbone to RNA for uridine."; } else if(mode==='custom' && a && a.r.conjMid){ aw2.style.display="block"; aw2.textContent="Conjugate "+(a.r.conjMid.length>1?'('+a.r.conjMid+')':a.r.conjMid)+" is mid-sequence — conjugates form no backbone phosphate. Set it to ‘in-chain base’ to incorporate it into the chain."; } else if(mode==='custom' && a && a.r.bad.length){ aw2.style.display="block"; aw2.textContent="Ignored: "+[...new Set(a.r.bad)].join(" "); } else aw2.style.display="none"; }
       const ac=el.querySelector("[data-anticount]"); if(ac && a) ac.textContent=(a.r.n||0)+" nt";
       const ah=el.querySelector("[data-antihint]"); if(ah){ const hs=[];
         if((S.antiType||S.type)==='Hybrid') hs.push("Hybrid — write each base with a d or r prefix (dA, rU), or use the keypad.");
@@ -1543,6 +2591,7 @@ function renderCalc(el){
   el.querySelector("[data-keypad]").innerHTML=keypadHTML();
   el.querySelector("[data-drawer]").hidden=!drawerOpen;
   el.classList.toggle("drawer-open", drawerOpen);
+  const catBtn=el.querySelector("[data-catopen]"); if(catBtn) catBtn.hidden=!S.catalogEnabled;
   if(drawerOpen){ el.querySelector("[data-hlist]").innerHTML=drawerListHTML();
     const hc=el.querySelector("[data-hcount]"); if(hc) hc.textContent=history.length?("· "+history.length):"";
     updateSelFoot(el);
@@ -1593,6 +2642,7 @@ function applyAll(){
    INTERACTION
    ================================================================= */
 function tokenCutLen(before){
+  if(before.endsWith(")")){ const lp=before.lastIndexOf("("); if(lp>=0) return before.length-lp; }   // delete a whole (xyz) code as one unit
   if(before.endsWith("DMT ")||before.endsWith("DMT")) return before.endsWith(" ")?4:3;
   if(/(^|\s)Ps ?$/.test(before)) return before.endsWith(" ")?3:2;
   if(/(^|\s)P ?$/.test(before)) return before.endsWith(" ")?2:1;
@@ -1745,7 +2795,7 @@ document.querySelector(".kit").addEventListener("click", e=>{
     const C1 = a260mode ? (a260/eps) : (MW>0?(nd*1e-3)/MW:0);
     const su=S.stockUnit||'µM', val=C1/uf(su,C_UNITS);
     copyText(`${nfmt(val)} ${su} — ${a260mode?('A260 '+a260):(nd+' ng/µL')}, MW ${nfmt(MW)} g/mol`, ccp); return; }
-  if(e.target.closest("[data-history]")){ drawerOpen=true; applyAll(); scrollViewTop(); calcs.forEach(c=>{ const l=c.querySelector("[data-hlist]"); if(l) l.scrollTop=0; }); return; }
+  if(e.target.closest("[data-history]")){ if(catalogOpen) setCatalog(false); drawerOpen=true; applyAll(); scrollViewTop(); calcs.forEach(c=>{ const l=c.querySelector("[data-hlist]"); if(l) l.scrollTop=0; }); return; }
   if(e.target.closest("[data-dclose]")){ drawerOpen=false; applyAll(); return; }
   if(e.target.closest("[data-save]")){
     const ok=saveCurrent();
@@ -1831,15 +2881,36 @@ document.querySelector(".kit").addEventListener("input", e=>{
 // ---- keep the locked 5' prefix AND 3' suffix un-editable ----
 function lockBounds(ta){ const isA=ta.matches("[data-antiseq]");
   return { L:lockLen(isA?S.antiFive:S.five), rstart: ta.value.length - lockRight(isA?S.antiThree:S.three) }; }
+function applySeqEdit(ta, nv, caret){     // programmatic sequence edit (token-aware delete) — mirrors the input handler
+  const isAnti=ta.matches("[data-antiseq]"), seqKey=isAnti?'antiSeq':'seq', sel=isAnti?"[data-antiseq]":"[data-seq]";
+  const fKey=isAnti?S.antiFive:S.five, fThio=isAnti?false:S.fiveThio, threeK=isAnti?S.antiThree:S.three;
+  nv=enforceFive(nv,fKey,fThio,S.type); nv=enforceThree(nv,threeK);
+  S[seqKey]=nv; save(); ta.value=nv;
+  const rmax=nv.length-lockRight(threeK); const c=Math.max(Math.min(caret,rmax), lockLen(fKey));
+  try{ ta.setSelectionRange(c,c); }catch(_){}
+  calcs.forEach(cc=>{ renderNumbers(cc); const t=cc.querySelector(sel); if(t && t!==ta && document.activeElement!==t) t.value=nv; });
+}
+// delete a whole (xyz) catalog/custom code as one unit (Backspace/Delete)
+function parenGroupAt(v, caret, forward){
+  if(forward){
+    if(v[caret]==='('){ const rp=v.indexOf(')', caret); if(rp>=caret) return [caret, rp+1]; }
+    const l=v.lastIndexOf('(', caret-1); if(l>=0){ const r=v.indexOf(')', l); if(r>=caret && caret>l) return [l, r+1]; }
+  } else {
+    const lp=v.lastIndexOf('(', caret-1); if(lp>=0){ const rp=v.indexOf(')', lp); if(rp>=lp && caret>lp && caret<=rp+1) return [lp, rp+1]; }
+  }
+  return null;
+}
 document.querySelector(".kit").addEventListener("keydown", e=>{
   const ta=e.target.closest("[data-seq],[data-antiseq]"); if(!ta) return;
   const {L,rstart}=lockBounds(ta); const a=ta.selectionStart, b=ta.selectionEnd; const R=ta.value.length-rstart;
   if(e.key==="Backspace"){
     if(L && (a===b ? a<=L : Math.min(a,b)<L)){ e.preventDefault(); if(Math.min(a,b)<L) ta.setSelectionRange(L,Math.max(a,b,L)); return; }
     if(R && (a===b ? a>rstart : Math.max(a,b)>rstart)){ e.preventDefault(); const p=Math.min(a,b,rstart); ta.setSelectionRange(p,p); return; }
+    if(a===b && a>L){ const g=parenGroupAt(ta.value, a, false); if(g && g[0]>=L && g[1]<=rstart){ e.preventDefault(); applySeqEdit(ta, ta.value.slice(0,g[0])+ta.value.slice(g[1]), g[0]); return; } }
   } else if(e.key==="Delete"){
     if(L && Math.min(a,b)<L){ e.preventDefault(); ta.setSelectionRange(L,Math.max(a,b,L)); return; }
     if(R && Math.max(a,b)>=rstart){ e.preventDefault(); const p=Math.min(a,b,rstart); ta.setSelectionRange(p,p); return; }
+    if(a===b && a<rstart){ const g=parenGroupAt(ta.value, a, true); if(g && g[0]>=L && g[1]<=rstart){ e.preventDefault(); applySeqEdit(ta, ta.value.slice(0,g[0])+ta.value.slice(g[1]), g[0]); return; } }
   }
 });
 document.querySelector(".kit").addEventListener("beforeinput", e=>{
@@ -1927,6 +2998,14 @@ function buildPanel(){
     ${toggle("showCharge","Approx. net charge")}
     <div class="row" style="margin-top:12px"><label>Decimal places<span class="v" data-v="decimals">${S.decimals}</span></label>${slider("decimals",0,4,1)}</div>
   </div>
+  <div class="grp"><h3>Catalog</h3>
+    ${toggle("catalogEnabled","Enable vendor catalog")}
+    <div class="row"><label>Vendors shown</label>${selectCtl("catalogVendor",[["all","All vendors"],["ChemGenes","ChemGenes only"],["Glen Research","Glen Research only"]])}</div>
+    <div class="row"><label>Default category</label>${selectCtl("catalogCategory",[["all","All categories"], ...[...new Set((CATALOG.monomers||[]).map(m=>m.category))].map(c=>[c,c])])}</div>
+    <div class="row"><label>Data source</label>${selectCtl("catalogSource",[["bundled","Bundled (offline)"],["supabase","Supabase (Pro)"]])}</div>
+    <div class="row"><label>Supabase URL</label><input class="ktext" data-textset="catalogSupabaseUrl" value="${(S.catalogSupabaseUrl||'').replace(/"/g,'&quot;')}" placeholder="https://xxxx.supabase.co" /></div>
+    <div class="row"><label>Supabase anon key</label><input class="ktext" data-textset="catalogSupabaseAnonKey" value="${(S.catalogSupabaseAnonKey||'').replace(/"/g,'&quot;')}" placeholder="eyJhbGciOi…" /></div>
+  </div>
   <div class="grp"><h3>Platform preview</h3>
     <div class="row"><label>Surface</label>${seg("platform",[["web","Web interface"],["app","Mobile app"]])}</div>
   </div>`;
@@ -1950,9 +3029,12 @@ function wirePanel(){
     if(v) v.textContent=(k==="fsBase"||k==="fsResult"||k==="radius"||k==="border")?S[k]+"px":S[k];
     applyAll();
   }));
-  p.querySelectorAll("[data-select]").forEach(sel=>sel.addEventListener("change",()=>{ S[sel.dataset.select]=sel.value; applyAll(); }));
+  p.querySelectorAll("[data-select]").forEach(sel=>sel.addEventListener("change",()=>{ S[sel.dataset.select]=sel.value; if(sel.dataset.select==='catalogSource') reloadCatalogSource(); if(catalogOpen) renderCatalog(); applyAll(); }));
+  p.querySelectorAll("[data-textset]").forEach(i=>i.addEventListener("input",()=>{ S[i.dataset.textset]=i.value; save(); if(i.dataset.textset==='catalogSupabaseUrl'||i.dataset.textset==='catalogSupabaseAnonKey') reloadCatalogSource(); }));
   p.querySelectorAll("[data-toggle]").forEach(t=>t.addEventListener("click",()=>{
-    const k=t.dataset.toggle; S[k]=!S[k]; t.classList.toggle("on",S[k]); applyAll();
+    const k=t.dataset.toggle; S[k]=!S[k]; t.classList.toggle("on",S[k]);
+    if(k==='catalogEnabled'){ rebuildCustom(); if(!S.catalogEnabled && catalogOpen) setCatalog(false); }
+    applyAll();
   }));
 }
 
@@ -1971,6 +3053,7 @@ const FAQ_DATA = {
     {q:"What do the chips under the result mean?", a:"They summarize the strand at a glance: total length (nt), the number of PO and PS bonds, the end groups, any custom monomers, and the count of each base (A/C/G/T/U)."},
     {q:"Duplex mode (antisense + duplex MW)", a:"For double-stranded oligos (siRNA, ASOs) the <b>Duplex mode</b> control adds the second strand to the picture. <b>Off</b> = just your single strand. <b>Mirror</b> = the calculator automatically writes the matching antisense strand for you (the reverse-complement, where A pairs with T/U and G with C) and shows the antisense MW plus the combined duplex MW. <b>Manual</b> = you type the antisense strand yourself in a second box — use this when your real antisense isn't a simple complement (different modifications, mismatches, overhangs). The Manual box has its own 5′-end control and uses the keypad too. <b>Example (Mirror):</b> sense <code>ATCGATCG</code> → antisense <code>CGATCGAT</code>; duplex MW = sense + antisense. <b>Tip:</b> when duplex mode is on, the Concentration tab lets you base its math on the sense, antisense, or whole duplex."},
     {q:"Custom bases & conjugates — what are they?", a:"Tap <b>+ Custom bases</b> (Super Advanced) to define anything that isn't a standard base: an unusual nucleotide, or a dye/tag attached to your oligo. Give it a <b>name</b>, a short <b>code</b>, and its <b>mass</b>, then it becomes a code you can type in the sequence and a button on the keypad. Single-letter codes are typed bare (<code>Y</code>); 2+ letter codes are wrapped in parentheses (<code>(psU)</code>). Each item is either an <b>In-chain base</b> or a <b>Conjugate</b> — see the next question, it matters."},
+    {q:"Vendor catalog — browse &amp; insert real monomers", a:"Tap <b>Catalog</b> in the top bar to open a curated library of modified phosphoramidites from <b>ChemGenes</b> and <b>Glen Research</b> (117 monomers across 156 vendor SKUs). Choose a vendor, search by product name / catalog # / code, or filter by category. Each result shows the engine <code>code</code> — type it in a sequence as <code>(code)</code> for multi-letter codes — plus the monomer mass, its contribution per position, and a verified badge linking to the vendor's page. <b>Insert</b> drops the code at your cursor in the sequence; <b>+ Library</b> saves it to your custom bases for the keypad. Browsing or inserting changes nothing in your saved data until you click <b>+ Library</b>. The catalog works fully offline."},
     {q:"In-chain base vs Conjugate — what's the difference, and why does it change the mass?", a:"This is the key choice when you add a custom item, and it changes the result.<br><br><b>In-chain base</b> = a building block that sits <i>inside</i> the strand, like a normal letter. The calculator <b>automatically adds a backbone phosphate</b> (PO, or PS if your strand is phosphorothioate) to connect it, and it <b>counts as +1 in the length</b>. Use this for unusual nucleotides (e.g. pseudouridine).<br><br><b>Conjugate</b> = something hanging <i>off</i> the strand, like a dye or tag (Cy3, GalNAc, cholesterol, biotin). The calculator <b>adds only the mass you typed — no extra phosphate is added</b>, and it <b>does not change the length</b>. Use this for labels/attachments.<br><br><b>Worked example —</b> <code>AUCG(Cy3)</code>: if Cy3 is set to <b>In-chain base</b> it adds Cy3's mass <b>plus one phosphate (≈62 g/mol)</b> and the strand reads 5 nt. If Cy3 is set to <b>Conjugate</b> it adds <b>just Cy3's mass</b>, no phosphate, and the strand stays 4 nt. So the two differ by about one phosphate. Why isn't it automatic? Dye/linker chemistries vary, and vendors often quote a mass that already includes the linker — so you tell the calculator which case you have. <b>Forgot which you picked?</b> In the list, tap the soft <b>base / conjugate</b> pill next to any item to switch it instantly."},
     {q:"⚠ Custom bases: read this so your mass is right", a:"The calculator can't know the chemistry of something you invented, so <b>you</b> must set it correctly — a wrong setting here is the easiest way to get a wrong mass. Get three things right: <b>(1) Kind</b> — <b>In-chain base</b> (sits in the strand, gets a backbone phosphate, +1 nt) vs <b>Conjugate</b> (a tag hanging off; adds only its mass, no phosphate, no length). <b>(2) Mass basis</b> (in-chain only) — did you enter the <b>free nucleoside</b> mass (no phosphate; the app adds it) or the <b>residue</b> mass (phosphate already included)? Set the toggle to match your number; the live preview shows the per-position result to confirm. <b>(3) Sanity-check</b> the preview, length, and chips after adding — they reveal instantly if the kind/basis is wrong. You can tap the <b>base / conjugate</b> pill in the list to switch kind anytime, and an <code>s</code> next to a conjugate makes that junction PS (+16.06). When unsure, verify a known oligo against a trusted value first."},
     {q:"Custom in-chain base: why is \"g/mol/pos\" higher than the MW I typed?", a:"Because for an <b>in-chain base in Nucleoside mode</b> you enter the phosphate-free monomer mass, and the calculator adds one backbone phosphate (PO = 61.96) automatically — so the per-position number is about 62 higher. <b>Example:</b> type 244.20 → the list shows 306.16/pos. If the mass you have <i>already includes</i> the phosphate, flip the toggle to <b>+ Phosphate</b> and the per-position value will match exactly what you typed. (Conjugates don't do this — they add your mass as-is, with no phosphate.)"},
@@ -2003,11 +3086,225 @@ function renderFaq(){
 }
 let faqOpen=false;
 function scrollViewTop(){ const sc=document.querySelector('.stage-canvas'); if(sc) sc.scrollTop=0; document.querySelectorAll('.phone .scroll').forEach(s=>s.scrollTop=0); try{ window.scrollTo(0,0); }catch(_){} }
-function setFaq(open){ faqOpen=open; if(open) renderFaq(); calcs.forEach(c=>{ const f=c.querySelector("[data-faq]"); if(f) f.hidden=!open; c.classList.toggle("faq-open", open); const b=c.querySelector("[data-faqopen]"); if(b){ b.classList.toggle("on", open); b.textContent=open?"✕ FAQ":"FAQ?"; } }); if(open) scrollViewTop(); }
+function setFaq(open){ faqOpen=open; if(open){ renderFaq(); if(catalogOpen) setCatalog(false); } calcs.forEach(c=>{ const f=c.querySelector("[data-faq]"); if(f) f.hidden=!open; c.classList.toggle("faq-open", open); const b=c.querySelector("[data-faqopen]"); if(b){ b.classList.toggle("on", open); b.textContent=open?"✕ FAQ":"FAQ?"; } }); if(open) scrollViewTop(); }
 document.querySelector(".kit").addEventListener("click", e=>{
   if(e.target.closest("[data-faqopen]")){ setFaq(!faqOpen); return; }
   if(e.target.closest("[data-faqclose]")){ setFaq(false); return; }
 });
+
+/* =================================================================
+   VENDOR CATALOG  —  browse/search curated monomers (non-destructive)
+   Data-source seam: bundled inline JSON now  ->  Supabase later
+   (identical record shape, so the UI/injection never changes).
+   ================================================================= */
+let CATALOG = { monomers:[], vendors:[], skus:[], byCode:{} };
+let catalogOpen=false, catalogQName="", catalogQCat="", lastSeqEl=null;
+
+function parseCatalogInline(){
+  const el=document.getElementById("catalogData");
+  if(el && el.textContent.trim()){ try{ return JSON.parse(el.textContent); }catch(e){ console.warn("[catalog] inline parse failed", e); } }
+  return { monomers:[], vendors:[] };
+}
+function catalogReady(cat){
+  CATALOG.monomers = (cat.monomers||[]).filter(m=>m.code && typeof m.mass==='number');
+  CATALOG.vendors  = cat.vendors && cat.vendors.length ? cat.vendors
+                   : [...new Set(CATALOG.monomers.flatMap(m=>(m.vendor_products||[]).map(v=>v.vendor)))];
+  CATALOG.byCode = {}; CATALOG.monomers.forEach(m=>{ CATALOG.byCode[m.code]=m; });
+  CATALOG.skus = [];                                   // flatten to one row per purchasable SKU (search hits SKUs)
+  CATALOG.monomers.forEach(m=>{ (m.vendor_products||[]).forEach(v=>CATALOG.skus.push({
+    code:m.code, name:m.name, category:m.category, sugar:m.sugar, kind:m.kind||'base',
+    hasPhos:!!m.hasPhos, mass:m.mass, verified:!!m.verified, verification:m.verification||'',
+    vendor:v.vendor, catalog_no:v.catalog_no, product_name:v.product_name, source:v.source||'' })); });
+}
+// ---- hosted (Pro) catalog source: Supabase via PostgREST resource embedding; returns the SAME nested shape as the inline JSON ----
+async function fetchFromSupabase(){
+  const base = (S.catalogSupabaseUrl||'').replace(/\/+$/,'');
+  const key  = (S.catalogSupabaseAnonKey||'').trim();
+  if(!base || !key) throw new Error('Supabase URL or anon key missing');
+  const sel = 'code,name,category,sugar,kind,has_phos,mass,verified,verification,'
+            + 'vendor_products(vendor,catalog_no,product_name,source)';
+  const res = await fetch(`${base}/rest/v1/monomers?select=${encodeURIComponent(sel)}`, {
+    headers:{ apikey:key, Authorization:'Bearer '+key, Accept:'application/json' }
+  });
+  if(!res.ok) throw new Error('Supabase '+res.status+' '+(await res.text()).slice(0,160));
+  const rows = await res.json();
+  const monomers = rows.map(m=>({                       // map snake_case -> the keys catalogReady() expects (only has_phos differs)
+    code:m.code, name:m.name, category:m.category, sugar:m.sugar, kind:m.kind,
+    hasPhos:!!m.has_phos, mass:Number(m.mass),
+    verified:!!m.verified, verification:m.verification||'',
+    vendor_products:(m.vendor_products||[]).map(v=>({
+      vendor:v.vendor, catalog_no:v.catalog_no, product_name:v.product_name, source:v.source||'' }))
+  }));
+  const vendors = [...new Set(monomers.flatMap(m=>m.vendor_products.map(v=>v.vendor)))];
+  return { monomers, vendors };
+}
+// chosen source: bundled inline (offline default) or Supabase (Pro) override, with graceful fallback to bundled
+function loadCatalog(){
+  if(S.catalogSource==='supabase' && S.catalogSupabaseUrl && S.catalogSupabaseAnonKey){
+    return fetchFromSupabase().catch(e=>{ console.warn('[catalog] Supabase failed, falling back to bundled:', e); return parseCatalogInline(); });
+  }
+  return Promise.resolve(parseCatalogInline());
+}
+let _catReloadT=null;
+function reloadCatalogSource(){ clearTimeout(_catReloadT); _catReloadT=setTimeout(()=>{ loadCatalog().then(cat=>{ catalogReady(cat); rebuildCustom(); applyAll(); if(catalogOpen) renderCatalog(); }).catch(()=>{}); }, 350); }
+
+// merge catalog monomers into the engine's CUSTOM map — NON-DESTRUCTIVE (never writes S/localStorage)
+function mergeCatalogIntoCustom(){
+  if(!S.catalogEnabled) return;
+  (CATALOG.monomers||[]).forEach(c=>{
+    if(CUSTOM[c.code]) return;                         // NEVER shadow a user-defined code
+    const conj=(c.kind==='conj');
+    CUSTOM[c.code]={ code:c.code, name:c.name, mass:c.mass, hasPhos:!!c.hasPhos, kind:c.kind||'base',
+      nobond:conj, eff: conj ? c.mass : (c.hasPhos ? c.mass-LINK.PO : c.mass), _catalog:true };
+  });
+}
+const __origRebuildCustom = rebuildCustom;             // wrap so the merge re-applies after every rebuild
+rebuildCustom = function(){ __origRebuildCustom(); mergeCatalogIntoCustom(); };
+catalogReady(parseCatalogInline());                    // sync: bundled populates CATALOG immediately (buildPanel + offline)
+loadCatalog().then(cat=>{ catalogReady(cat); rebuildCustom(); if(typeof applyAll==='function') applyAll(); if(catalogOpen) renderCatalog(); });   // then load the chosen source (bundled re-applies harmlessly; Supabase overrides)
+
+function setCatalog(open){
+  if(open && !S.catalogEnabled) return;
+  catalogOpen=open;
+  if(open){ catalogQName=""; catalogQCat=""; if(typeof faqOpen!=='undefined' && faqOpen) setFaq(false); drawerOpen=false; renderCatalog(); }
+  calcs.forEach(c=>{
+    const el=c.querySelector("[data-catalog]"); if(el) el.hidden=!open;
+    c.classList.toggle("catalog-open", open);
+    const b=c.querySelector("[data-catopen]"); if(b){ b.classList.toggle("on",open); b.textContent=open?"✕ Catalog":"Catalog"; }
+    if(open){ const dr=c.querySelector("[data-drawer]"); if(dr) dr.hidden=true; c.classList.remove("drawer-open"); }
+  });
+  if(open) scrollViewTop();
+}
+function renderCatalog(){
+  const vendors=["all", ...(CATALOG.vendors||[])];
+  const cats=["all", ...[...new Set((CATALOG.monomers||[]).map(m=>m.category))]];
+  const vendorOpts=vendors.map(v=>`<option value="${v.replace(/"/g,'&quot;')}" ${(S.catalogVendor||'all')===v?'selected':''}>${v==='all'?'All vendors':v}</option>`).join("");
+  const catOpts=cats.map(c=>`<option value="${c.replace(/"/g,'&quot;')}" ${(S.catalogCategory||'all')===c?'selected':''}>${c==='all'?'All categories':c.replace("2'","2′")}</option>`).join("");
+  const head=`
+    <div class="catalog-top">
+      <div class="catalog-head"><h4>Vendor catalog <span class="cat-count" data-catcount></span></h4>
+        <button class="dclose" data-catclose>✕</button></div>
+      <div class="catalog-controls">
+        <label class="cat-ctl"><span>Vendor</span><select class="three-sel cat-vendorsel" data-catvendorsel>${vendorOpts}</select></label>
+        <label class="cat-ctl"><span>Category</span><select class="three-sel cat-catsel" data-catcatsel>${catOpts}</select></label>
+      </div>
+      <div class="catalog-search2">
+        <input class="cat-search" data-catsearch-name placeholder="Name / compound (e.g. deoxy)" spellcheck="false" value="${(catalogQName||'').replace(/"/g,'&quot;')}" />
+        <input class="cat-search cat-search-cat" data-catsearch-cat placeholder="Catalog #" spellcheck="false" value="${(catalogQCat||'').replace(/"/g,'&quot;')}" />
+      </div>
+    </div>
+    <div class="catalog-list" data-catlist></div>`;
+  calcs.forEach(c=>{ const b=c.querySelector("[data-catbody]"); if(b) b.innerHTML=head; });
+  renderCatalogList();
+}
+function catFilteredSkus(){
+  const vf=S.catalogVendor||'all', cf=S.catalogCategory||'all';
+  const qn=(catalogQName||'').trim().toLowerCase(), qc=(catalogQCat||'').trim().toLowerCase();
+  return (CATALOG.skus||[]).filter(s=>{
+    if(vf!=='all' && s.vendor!==vf) return false;
+    if(cf!=='all' && s.category!==cf) return false;
+    if(qn){ if(((s.product_name+' '+s.name+' '+s.code).toLowerCase()).indexOf(qn)<0) return false; }
+    if(qc){ if((String(s.catalog_no||'').toLowerCase()).indexOf(qc)<0) return false; }
+    return true;
+  });
+}
+function renderCatalogList(){
+  const rows=catFilteredSkus();
+  const lib=new Set((S.customBases||[]).map(c=>c.code));
+  const html = rows.length ? rows.map(s=>{
+    const tag=s.code.length>1?`(${s.code})`:s.code;
+    const perPos=(s.kind==='conj') ? `+${s.mass.toFixed(2)} g/mol` : `+${(s.hasPhos?s.mass:s.mass+LINK.PO).toFixed(2)} g/mol/pos`;
+    const inLib=lib.has(s.code);
+    return `<div class="cat-item">
+      <div class="cat-main">
+        <div class="cat-name">${s.product_name}</div>
+        <div class="cat-vendor">${s.vendor} · ${s.catalog_no}</div>
+        <div class="cat-tags">
+          <span class="cat-code">${tag}</span>
+          <span class="cat-mass">${s.mass.toFixed(2)} g/mol · ${perPos}</span>
+          <span class="cat-pill">${(s.category||'').replace("2'","2′")}</span>
+          ${s.verified?`<span class="cat-verified">✓ ${s.verification||'verified'}</span>`:''}
+          ${s.source?`<a class="cat-src" href="${s.source}" target="_blank" rel="noopener">source</a>`:''}
+        </div>
+      </div>
+      <div class="cat-actions">
+        <button class="cat-ins" data-catinsert="${s.code}">Insert ${tag}</button>
+        ${inLib
+          ? `<button class="cat-add in-lib" data-catremove="${s.code}" title="Remove from your library"><span class="lib-on">✓ In library</span><span class="lib-rm">✕ Remove</span></button>`
+          : `<button class="cat-add" data-catadd="${s.code}">+ Library</button>`}
+      </div>
+    </div>`;
+  }).join("") : `<div class="cat-empty">No matches. Try a different vendor, category, or search term.</div>`;
+  calcs.forEach(c=>{ const l=c.querySelector("[data-catlist]"); if(l) l.innerHTML=html;
+    const cc=c.querySelector("[data-catcount]"); if(cc) cc.textContent=rows.length?("· "+rows.length):""; });
+}
+function insertCatalogCode(code){
+  const tk = code.length>1 ? `(${code})` : code;
+  let ta = (lastSeqEl && document.contains(lastSeqEl) && lastSeqEl.offsetParent!==null) ? lastSeqEl : null;
+  if(!ta){ ta = document.querySelector(".calc [data-seq]"); }     // default to the sense field
+  if(!ta) return;
+  const isAnti = ta.matches("[data-antiseq]");
+  const seqKey = isAnti ? 'antiSeq' : 'seq';
+  const fKey = isAnti ? S.antiFive : S.five, fThio = isAnti ? false : S.fiveThio;
+  const threeK = isAnti ? S.antiThree : S.three;
+  const v = ta.value, L = lockLen(fKey), R = lockRight(threeK), rs = v.length - R;
+  let a = Math.max(Math.min((ta.selectionStart!=null?ta.selectionStart:v.length), rs), L);
+  let b = Math.max(Math.min((ta.selectionEnd!=null?ta.selectionEnd:v.length), rs), L);
+  let nv = v.slice(0,a) + tk + v.slice(b); let pos = a + tk.length;
+  nv = enforceFive(nv, fKey, fThio, S.type); nv = enforceThree(nv, threeK);
+  S[seqKey] = nv;
+  setCatalog(false);
+  applyAll();
+  const ta2 = document.querySelector(".calc [data-"+(isAnti?'antiseq':'seq')+"]");
+  if(ta2){ ta2.focus(); try{ ta2.setSelectionRange(pos,pos); }catch(_){ } lastSeqEl=ta2; }
+}
+function addCatalogToLibrary(code){                    // the ONE place browsing writes saved data
+  const m = CATALOG.byCode[code]; if(!m) return;
+  S.customBases = S.customBases || [];
+  if(!S.customBases.some(c=>c.code===code)){           // dedupe by code (B5.5)
+    S.customBases.push({ code:m.code, name:m.name, mass:m.mass, hasPhos:!!m.hasPhos, kind:m.kind||'base' });
+    save();
+  }
+  rebuildCustom(); applyAll();
+}
+function removeCatalogFromLibrary(code){               // remove a previously-added catalog monomer from the user's library
+  S.customBases = (S.customBases||[]).filter(c=>c.code!==code);
+  save(); rebuildCustom(); applyAll();
+}
+function openCatGate(){
+  calcs.forEach(c=>{ const g=c.querySelector("[data-catgate]"); if(!g) return;
+    const vis = c.offsetParent!==null; g.hidden = !vis;
+    if(vis){ const err=g.querySelector("[data-catgateerr]"); if(err) err.hidden=true; const inp=g.querySelector("[data-catgateinput]"); if(inp){ inp.value=""; setTimeout(()=>{ try{ inp.focus(); }catch(_){ } },30); } }
+  });
+}
+function closeCatGate(){ calcs.forEach(c=>{ const g=c.querySelector("[data-catgate]"); if(g) g.hidden=true; }); }
+function tryCatUnlock(inp){
+  if(!inp) return;
+  if(inp.value === "ShengLab"){ S.catalogUnlocked=true; save(); closeCatGate(); setCatalog(true); }
+  else { const g=inp.closest("[data-catgate]"); const err=g&&g.querySelector("[data-catgateerr]"); if(err) err.hidden=false; try{ inp.select(); }catch(_){ } }
+}
+document.querySelector(".kit").addEventListener("keydown", e=>{ if(e.target.matches && e.target.matches("[data-catgateinput]")){ if(e.key==="Enter"){ e.preventDefault(); tryCatUnlock(e.target); } else if(e.key==="Escape"){ e.preventDefault(); closeCatGate(); } } });
+(function(){
+  const kit=document.querySelector(".kit");
+  kit.addEventListener("focusin", e=>{ const t=e.target.closest("[data-seq],[data-antiseq]"); if(t) lastSeqEl=t; });
+  kit.addEventListener("click", e=>{
+    if(e.target.closest("[data-catopen]")){ setCatalog(!catalogOpen); return; }   // free tier: open directly (gate reserved for the Pro full catalog)
+    if(e.target.closest("[data-catgateunlock]")){ const g=e.target.closest("[data-catgate]"); tryCatUnlock(g&&g.querySelector("[data-catgateinput]")); return; }
+    if(e.target.closest("[data-catgatecancel]")){ closeCatGate(); return; }
+    if(e.target.closest("[data-catclose]")){ setCatalog(false); return; }
+    const ins=e.target.closest("[data-catinsert]"); if(ins){ insertCatalogCode(ins.dataset.catinsert); return; }
+    const add=e.target.closest("[data-catadd]"); if(add){ addCatalogToLibrary(add.dataset.catadd); renderCatalogList(); return; }
+    const rm=e.target.closest("[data-catremove]"); if(rm){ removeCatalogFromLibrary(rm.dataset.catremove); renderCatalogList(); return; }
+  });
+  kit.addEventListener("input", e=>{
+    if(e.target.matches("[data-catsearch-name]")){ catalogQName=e.target.value; renderCatalogList(); }
+    else if(e.target.matches("[data-catsearch-cat]")){ catalogQCat=e.target.value; renderCatalogList(); }
+  });
+  kit.addEventListener("change", e=>{
+    if(e.target.matches("[data-catvendorsel]")){ S.catalogVendor=e.target.value; save(); renderCatalogList(); }
+    else if(e.target.matches("[data-catcatsel]")){ S.catalogCategory=e.target.value; save(); renderCatalogList(); }
+  });
+})();
 
 /* boot */
 rebuildCustom();
