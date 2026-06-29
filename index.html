@@ -474,6 +474,14 @@
   .catgate-cancel:hover{color:var(--text); border-color:var(--accent)}
   .catgate-go{background:var(--accent); color:var(--accent-ink); border-color:var(--accent)}
   .catgate-go:hover{filter:brightness(1.06)}
+  .pro-bar{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:10px var(--pad) 0; padding:9px 12px; border:var(--border) solid var(--line); border-radius:calc(var(--radius)*.5); background:var(--surface-2); font-size:12px; color:var(--muted)}
+  .pro-bar.is-pro{border-color:#16a34a; color:#16a34a; background:color-mix(in srgb,#16a34a 10%,transparent)}
+  .pro-bar.pending{border-color:var(--accent); color:var(--accent); background:color-mix(in srgb,var(--accent) 9%,transparent)}
+  .pro-meta{margin-left:auto; font-family:var(--font-num); opacity:.8}
+  .pro-cta{margin-left:auto; font-family:var(--font-head); font-weight:700; font-size:12px; color:var(--accent-ink); background:var(--accent); border:0; border-radius:999px; padding:7px 13px; cursor:pointer}
+  .pro-cta:hover{filter:brightness(1.06)}
+  .pro-link{font-family:var(--font-head); font-weight:600; font-size:11.5px; color:inherit; background:none; border:1px solid currentColor; border-radius:999px; padding:5px 11px; cursor:pointer; opacity:.85}
+  .pro-link:hover{opacity:1}
   .catgate-note{font-size:10.5px; line-height:1.45; color:var(--muted); margin-top:14px; padding-top:12px; border-top:var(--border) solid var(--line)}
   /* history drawer */
   .drawer{position:static; z-index:6; background:var(--surface); display:flex; flex-direction:column}
@@ -992,15 +1000,18 @@
 
   <div class="catgate" data-catgate hidden>
     <div class="catgate-card">
-      <div class="catgate-title">Vendor Catalog · Pro preview</div>
-      <p class="catgate-sub">A curated library of 350+ verified phosphoramidites (ChemGenes &amp; Glen Research). This preview is open to ShengLab members during beta — enter the access code to continue.</p>
-      <input class="catgate-input" data-catgateinput type="password" placeholder="Access code" spellcheck="false" autocomplete="off" />
-      <div class="catgate-err" data-catgateerr hidden>Incorrect code — try again.</div>
+      <div class="catgate-title">Upgrade to Pro — full catalog</div>
+      <p class="catgate-sub" data-prostep="email">Pro unlocks the complete verified catalog (250+ monomers across ChemGenes &amp; Glen Research). Enter your email and we’ll send a 6-digit sign-in code.</p>
+      <p class="catgate-sub" data-prostep="code" hidden>We emailed a sign-in link to <b data-proemaillabel></b> — open it <b>on this device</b> and you’ll be signed in automatically. (Or, if codes are enabled, enter the 6-digit code below.)</p>
+      <input class="catgate-input" data-proemail type="email" placeholder="you@university.edu" spellcheck="false" autocomplete="email" />
+      <input class="catgate-input" data-procode type="text" inputmode="numeric" placeholder="6-digit code" spellcheck="false" autocomplete="one-time-code" hidden />
+      <div class="catgate-err" data-proerr hidden></div>
       <div class="catgate-row">
-        <button class="catgate-cancel" data-catgatecancel>Cancel</button>
-        <button class="catgate-go" data-catgateunlock>Unlock</button>
+        <button class="catgate-cancel" data-procancel>Cancel</button>
+        <button class="catgate-go" data-prosend>Send code</button>
+        <button class="catgate-go" data-proverify hidden>Verify</button>
       </div>
-      <div class="catgate-note">Soft beta gate — friendly access control, not real security (the data is in the page). The full Pro version will use real accounts with the hosted Supabase catalog and unlimited saved bases.</div>
+      <div class="catgate-note">Free tier = 30 common monomers. Pro unlocks the full set and is granted per account. Sign-in is a one-time email code — no password.</div>
     </div>
   </div>
 </template>
@@ -2268,13 +2279,15 @@ const DEFAULTS = {
   nd:"100", vol:"200", volUnit:"µL",
   dilC2:"10", dilC2Unit:"µM", dilV2:"100", dilV2Unit:"µL",
   useCustomStock:false, customStock:"", customStockUnit:"µM",
-  catalogEnabled:true, catalogVendor:"all", catalogCategory:"all", catalogSource:"bundled", catalogSupabaseUrl:"", catalogSupabaseAnonKey:"", catalogUnlocked:false,
+  catalogEnabled:true, catalogVendor:"all", catalogCategory:"all", catalogSource:"supabase",
+  catalogSupabaseUrl:"https://rpynsgqgzpgbobmbdnfu.supabase.co",
+  catalogSupabaseAnonKey:"sb_publishable_f_LWVuHTxFIbmii9C4j4aQ_mwcipb4O", catalogUnlocked:false,
 };
 // Bump BUILD_VERSION whenever the baked-in design changes (accent, fonts, theme,
 // sizes, layout). On their next visit, returning users are auto-refreshed to the
 // new appearance defaults below — their saved strands & sequences are kept.
-const BUILD_VERSION = 3;
-const APPEARANCE_KEYS = ["platform","theme","accent","fontUI","fontHead","fontNum","fsBase","fsResult","radius","border","density","shadow","btn","keypad","resultpos","align","showChips","showFormula","showCharge","decimals","catalogEnabled"];
+const BUILD_VERSION = 4;
+const APPEARANCE_KEYS = ["platform","theme","accent","fontUI","fontHead","fontNum","fsBase","fsResult","radius","border","density","shadow","btn","keypad","resultpos","align","showChips","showFormula","showCharge","decimals","catalogEnabled","catalogSource","catalogSupabaseUrl","catalogSupabaseAnonKey"];
 let S = load();
 let history = loadHist();
 let drawerOpen = false;
@@ -3117,14 +3130,94 @@ function catalogReady(cat){
     vendor:v.vendor, catalog_no:v.catalog_no, product_name:v.product_name, source:v.source||'' })); });
 }
 // ---- hosted (Pro) catalog source: Supabase via PostgREST resource embedding; returns the SAME nested shape as the inline JSON ----
+/* ---- Pro auth (Supabase email OTP; plain fetch, no library, no redirect) ---- */
+const PRO_SESS_KEY='oligoProSession';
+let proIsPro=false, proPending=false, _proEmail='';
+function proSession(){ try{ return JSON.parse(localStorage.getItem(PRO_SESS_KEY)||'null'); }catch(_){ return null; } }
+function setProSession(s){ if(s) localStorage.setItem(PRO_SESS_KEY, JSON.stringify(s)); else localStorage.removeItem(PRO_SESS_KEY); }
+function sbBase(){ return (S.catalogSupabaseUrl||'').replace(/\/+$/,''); }
+function sbAuthHeaders(){ return { apikey:(S.catalogSupabaseAnonKey||'').trim(), 'Content-Type':'application/json' }; }
+async function proSendCode(email){
+  const r=await fetch(sbBase()+'/auth/v1/otp',{method:'POST',headers:sbAuthHeaders(),body:JSON.stringify({email,create_user:true})});
+  if(!r.ok) throw new Error((await r.text()).slice(0,180)); return true;
+}
+async function proVerifyCode(email, code){
+  const tok=String(code).trim(); let lastErr='';
+  for(const type of ['email','signup','magiclink']){          // OTP token type differs: returning login vs first-time signup
+    const r=await fetch(sbBase()+'/auth/v1/verify',{method:'POST',headers:sbAuthHeaders(),body:JSON.stringify({email,token:tok,type})});
+    if(r.ok){ const d=await r.json(); setProSession({access_token:d.access_token, refresh_token:d.refresh_token, expires_at:d.expires_at, email}); return true; }
+    lastErr=(await r.text()).slice(0,180);
+  }
+  throw new Error(lastErr||'verification failed');
+}
+async function proAccessToken(){
+  const s=proSession(); if(!s||!s.access_token) return null;
+  if(s.expires_at && (s.expires_at*1000 - Date.now() > 60000)) return s.access_token;   // still valid
+  try{                                                                                   // expired -> refresh
+    const r=await fetch(sbBase()+'/auth/v1/token?grant_type=refresh_token',{method:'POST',headers:sbAuthHeaders(),body:JSON.stringify({refresh_token:s.refresh_token})});
+    if(!r.ok) throw 0; const d=await r.json();
+    setProSession({access_token:d.access_token, refresh_token:d.refresh_token, expires_at:d.expires_at, email:s.email});
+    return d.access_token;
+  }catch(_){ setProSession(null); return null; }
+}
+function proSignOut(){ setProSession(null); proIsPro=false; proPending=false; S.catalogSource='bundled'; save(); reloadCatalogSource(); if(catalogOpen) renderCatalog(); }
+// status bar shown at the top of the catalog
+function proBarHTML(){
+  const s=proSession();
+  if(proIsPro) return `<div class="pro-bar is-pro"><span>★ Pro — full catalog</span><span class="pro-meta">${s?s.email:''}</span><button class="pro-link" data-prosignout>Sign out</button></div>`;
+  if(s) return `<div class="pro-bar pending"><span>Signed in — Pro access pending</span><span class="pro-meta">${s.email}</span><button class="pro-link" data-prosignout>Sign out</button></div>`;
+  return `<div class="pro-bar"><span>Free catalog · 30 common monomers</span><button class="pro-cta" data-proupgrade>Upgrade to Pro ▸</button></div>`;
+}
+function openProAuth(){
+  if(!sbBase()||!(S.catalogSupabaseAnonKey||'').trim()){ proErr('Pro catalog is not configured yet.'); calcs.forEach(c=>{ const g=c.querySelector('[data-catgate]'); if(g) g.hidden=(c.offsetParent===null); }); return; }
+  calcs.forEach(c=>{ const g=c.querySelector('[data-catgate]'); if(g) g.hidden=(c.offsetParent===null); });
+  proSetStep('email');
+}
+function closeProAuth(){ calcs.forEach(c=>{ const g=c.querySelector('[data-catgate]'); if(g) g.hidden=true; }); }
+function proSetStep(step){
+  const code = step==='code';
+  calcs.forEach(c=>{
+    const sE=c.querySelector('[data-prostep="email"]'), sC=c.querySelector('[data-prostep="code"]');
+    const eml=c.querySelector('[data-proemail]'), cod=c.querySelector('[data-procode]');
+    const snd=c.querySelector('[data-prosend]'), vfy=c.querySelector('[data-proverify]'), err=c.querySelector('[data-proerr]');
+    if(err){ err.hidden=true; err.textContent=''; }
+    if(sE) sE.hidden=code; if(sC) sC.hidden=!code;
+    if(cod){ cod.hidden=!code; if(code) cod.value=''; }
+    if(snd) snd.hidden=code; if(vfy) vfy.hidden=!code;
+    const f = code?cod:eml; if(f && c.offsetParent!==null) setTimeout(()=>{ try{ f.focus(); }catch(_){ } },60);
+  });
+}
+function proErr(msg){ calcs.forEach(c=>{ const e=c.querySelector('[data-proerr]'); if(e){ e.textContent=msg||''; e.hidden=!msg; } }); }
+async function proDoSend(){
+  const c=calcs.find(x=>x.offsetParent!==null)||calcs[0]; const eml=c&&c.querySelector('[data-proemail]');
+  const email=((eml&&eml.value)||'').trim(); if(!/.+@.+\..+/.test(email)){ proErr('Enter a valid email.'); return; }
+  _proEmail=email; proErr(''); const btn=c.querySelector('[data-prosend]'); if(btn){ btn.disabled=true; btn.textContent='Sending…'; }
+  try{ await proSendCode(email); calcs.forEach(x=>{ const l=x.querySelector('[data-proemaillabel]'); if(l) l.textContent=email; }); proSetStep('code'); }
+  catch(e){ proErr('Could not send code: '+e.message); }
+  finally{ if(btn){ btn.disabled=false; btn.textContent='Send code'; } }
+}
+async function proDoVerify(){
+  const c=calcs.find(x=>x.offsetParent!==null)||calcs[0]; const cod=c&&c.querySelector('[data-procode]');
+  const code=((cod&&cod.value)||'').trim(); if(!/^[0-9]{6}$/.test(code)){ proErr('Enter the 6-digit code.'); return; }
+  proErr(''); const btn=c.querySelector('[data-proverify]'); if(btn){ btn.disabled=true; btn.textContent='Verifying…'; }
+  try{
+    await proVerifyCode(_proEmail, code);
+    S.catalogSource='supabase'; save();                 // signed in -> pull the live (gated) catalog
+    closeProAuth();
+    const cat=await loadCatalog(); catalogReady(cat); rebuildCustom(); applyAll(); renderCatalog();
+  }catch(e){ proErr('Verification failed: '+e.message); }
+  finally{ if(btn){ btn.disabled=false; btn.textContent='Verify'; } }
+}
+
 async function fetchFromSupabase(){
   const base = (S.catalogSupabaseUrl||'').replace(/\/+$/,'');
   const key  = (S.catalogSupabaseAnonKey||'').trim();
   if(!base || !key) throw new Error('Supabase URL or anon key missing');
   const sel = 'code,name,category,sugar,kind,has_phos,mass,verified,verification,'
             + 'vendor_products(vendor,catalog_no,product_name,source)';
+  const tok = await proAccessToken();                  // signed-in Pro user -> JWT; else anon key (RLS returns free-30)
   const res = await fetch(`${base}/rest/v1/monomers?select=${encodeURIComponent(sel)}`, {
-    headers:{ apikey:key, Authorization:'Bearer '+key, Accept:'application/json' }
+    headers:{ apikey:key, Authorization:'Bearer '+(tok||key), Accept:'application/json' }
   });
   if(!res.ok) throw new Error('Supabase '+res.status+' '+(await res.text()).slice(0,160));
   const rows = await res.json();
@@ -3136,6 +3229,7 @@ async function fetchFromSupabase(){
       vendor:v.vendor, catalog_no:v.catalog_no, product_name:v.product_name, source:v.source||'' }))
   }));
   const vendors = [...new Set(monomers.flatMap(m=>m.vendor_products.map(v=>v.vendor)))];
+  const _signed=!!proSession(); proIsPro=_signed && monomers.length>30; proPending=_signed && !proIsPro;   // infer Pro state from what RLS returned
   return { monomers, vendors };
 }
 // chosen source: bundled inline (offline default) or Supabase (Pro) override, with graceful fallback to bundled
@@ -3161,6 +3255,20 @@ function mergeCatalogIntoCustom(){
 const __origRebuildCustom = rebuildCustom;             // wrap so the merge re-applies after every rebuild
 rebuildCustom = function(){ __origRebuildCustom(); mergeCatalogIntoCustom(); };
 catalogReady(parseCatalogInline());                    // sync: bundled populates CATALOG immediately (buildPanel + offline)
+(function proInitFromHash(){                              // magic-link return: token lands in URL hash -> become a session
+  try{
+    const h=location.hash||''; if(h.indexOf('access_token=')<0) return;
+    const p=new URLSearchParams(h.replace(/^#/,''));
+    const at=p.get('access_token'), rt=p.get('refresh_token');
+    if(at&&rt){
+      const exp=Math.floor(Date.now()/1000)+(parseInt(p.get('expires_in'),10)||3600);
+      const prev=proSession();
+      setProSession({access_token:at, refresh_token:rt, expires_at:exp, email:(prev&&prev.email)||''});
+      S.catalogSource='supabase'; save();
+      try{ history.replaceState(null,'',location.pathname+location.search); }catch(_){}   // strip token from the address bar
+    }
+  }catch(_){}
+})();
 loadCatalog().then(cat=>{ catalogReady(cat); rebuildCustom(); if(typeof applyAll==='function') applyAll(); if(catalogOpen) renderCatalog(); });   // then load the chosen source (bundled re-applies harmlessly; Supabase overrides)
 
 function setCatalog(open){
@@ -3184,6 +3292,7 @@ function renderCatalog(){
     <div class="catalog-top">
       <div class="catalog-head"><h4>Vendor catalog <span class="cat-count" data-catcount></span></h4>
         <button class="dclose" data-catclose>✕</button></div>
+      ${proBarHTML()}
       <div class="catalog-controls">
         <label class="cat-ctl"><span>Vendor</span><select class="three-sel cat-vendorsel" data-catvendorsel>${vendorOpts}</select></label>
         <label class="cat-ctl"><span>Category</span><select class="three-sel cat-catsel" data-catcatsel>${catOpts}</select></label>
@@ -3288,7 +3397,12 @@ document.querySelector(".kit").addEventListener("keydown", e=>{ if(e.target.matc
   const kit=document.querySelector(".kit");
   kit.addEventListener("focusin", e=>{ const t=e.target.closest("[data-seq],[data-antiseq]"); if(t) lastSeqEl=t; });
   kit.addEventListener("click", e=>{
-    if(e.target.closest("[data-catopen]")){ setCatalog(!catalogOpen); return; }   // free tier: open directly (gate reserved for the Pro full catalog)
+    if(e.target.closest("[data-catopen]")){ setCatalog(!catalogOpen); return; }   // free 30 open to all; Pro unlocks the full set via sign-in
+    if(e.target.closest("[data-proupgrade]")){ openProAuth(); return; }
+    if(e.target.closest("[data-procancel]")){ closeProAuth(); return; }
+    if(e.target.closest("[data-prosend]")){ proDoSend(); return; }
+    if(e.target.closest("[data-proverify]")){ proDoVerify(); return; }
+    if(e.target.closest("[data-prosignout]")){ proSignOut(); return; }
     if(e.target.closest("[data-catgateunlock]")){ const g=e.target.closest("[data-catgate]"); tryCatUnlock(g&&g.querySelector("[data-catgateinput]")); return; }
     if(e.target.closest("[data-catgatecancel]")){ closeCatGate(); return; }
     if(e.target.closest("[data-catclose]")){ setCatalog(false); return; }
