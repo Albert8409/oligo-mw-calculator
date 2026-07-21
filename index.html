@@ -2408,11 +2408,11 @@ const DEFAULTS = {
   showChips:true, showFormula:false, decimals:2, msBasis:"avg", msMode:"neg", msAdducts:false, duplexMode:"off", antiSeq:"", antiType:"DNA", antiFive:"OH", antiThree:"OH", antiLinkage:"PO", mwSource:"sense",
   type:"DNA", linkage:"PO", five:"OH", fiveThio:false, advanced:false, superAdvanced:false, customBases:[],
   three:"OH", modPreset:"", modName:"", modMass:"",
-  seq:"ATCGATCGAT",
+  seq:"",
   tab:"mw", useCustomMW:false, customMW:"",
-  readMode:"ng", a260:"1.0", stockUnit:"µM",
-  nd:"100", vol:"200", volUnit:"µL",
-  dilC2:"10", dilC2Unit:"µM", dilV2:"100", dilV2Unit:"µL",
+  readMode:"ng", a260:"", stockUnit:"µM",
+  nd:"", vol:"", volUnit:"µL",
+  dilC2:"", dilC2Unit:"µM", dilV2:"", dilV2Unit:"µL",
   useCustomStock:false, customStock:"", customStockUnit:"µM",
   catalogEnabled:true, catalogVendor:"all", catalogCategory:"all", catalogSource:"supabase",
   catalogSupabaseUrl:"https://rpynsgqgzpgbobmbdnfu.supabase.co",
@@ -2421,7 +2421,7 @@ const DEFAULTS = {
 // Bump BUILD_VERSION whenever the baked-in design changes (accent, fonts, theme,
 // sizes, layout). On their next visit, returning users are auto-refreshed to the
 // new appearance defaults below — their saved strands & sequences are kept.
-const BUILD_VERSION = 4;
+const BUILD_VERSION = 5;
 const APPEARANCE_KEYS = ["platform","theme","accent","fontUI","fontHead","fontNum","fsBase","fsResult","radius","border","density","shadow","btn","keypad","resultpos","align","showChips","showFormula","showCharge","decimals","catalogEnabled","catalogSource","catalogSupabaseUrl","catalogSupabaseAnonKey"];
 let S = load();
 let history = loadHist();
@@ -3614,6 +3614,624 @@ document.querySelector(".kit").addEventListener("keydown", e=>{ if(e.target.matc
 rebuildCustom();
 buildPanel();
 applyAll();
+</script>
+
+<script>/* __OLIGO_PRO_SYNC_BLOCK__ */
+/* ============================================================================
+   Oligo MW Calculator — FREE PWA layer (A0) + Pro cloud sync (set A)
+   + library management (set B).  PURELY ADDITIVE.
+   Does not touch: compute()/parseSeq()/NUCLEO/LINK/msData(), catalog data,
+   design defaults, or any existing storage key.
+   New local keys only: oligoSyncMeta , oligoPwaMeta
+   ========================================================================== */
+(function(){
+'use strict';
+if(window.__oligoProSyncLoaded) return; window.__oligoProSyncLoaded=true;
+var W=window, SYNC_KEY='oligoSyncMeta', PWA_KEY='oligoPwaMeta';
+
+function jget(k,d){ try{ return JSON.parse(localStorage.getItem(k)||d); }catch(_){ return JSON.parse(d); } }
+function jset(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(_){ } }
+function syncMeta(){ return jget(SYNC_KEY,'{}'); }
+function setSyncMeta(m){ jset(SYNC_KEY,m); }
+function pwaMeta(){ return jget(PWA_KEY,'{}'); }
+function setPwaMeta(m){ jset(PWA_KEY,m); }
+function uuid(){ try{ return crypto.randomUUID(); }catch(_){ return 'id-'+Date.now().toString(36)+'-'+Math.random().toString(16).slice(2,10); } }
+
+/* =========================================================================
+   A0 — FREE installable PWA layer.  Never gated; works with zero network.
+   ========================================================================= */
+/* Icons are real same-origin PNG files in icons/ (no canvas generation, no data:/blob:).
+   They must be deployed alongside index.html + sw.js. */
+function initManifest(){
+  try{
+    if(document.querySelector('link[rel="manifest"]')) return;
+    var cs=getComputedStyle(document.body);
+    var theme=(cs.getPropertyValue('--bg')||'').trim()||'#0f172a';
+    // The manifest is delivered from a blob: URL, and manifest members resolve against
+    // the MANIFEST's own URL - so icon/start_url paths are absolutised against the page.
+    // The icons themselves stay real same-origin files under icons/.
+    var abs=function(p){ try{ return new URL(p, location.href).href; }catch(_){ return p; } };
+    var mf={ name:'Oligo MW Calculator', short_name:'OligoMW', display:'standalone',
+      start_url:abs('.'), scope:abs('.'), theme_color:theme, background_color:theme,
+      description:'Oligonucleotide molecular weight, extinction coefficient and concentration calculator.',
+      icons:[{src:abs('icons/icon-192.png'),sizes:'192x192',type:'image/png',purpose:'any'},
+             {src:abs('icons/icon-512.png'),sizes:'512x512',type:'image/png',purpose:'any'},
+             {src:abs('icons/icon-maskable-512.png'),sizes:'512x512',type:'image/png',purpose:'maskable'}] };
+    var href;
+    try{ href=URL.createObjectURL(new Blob([JSON.stringify(mf)],{type:'application/manifest+json'})); }
+    catch(_){ href='data:application/manifest+json,'+encodeURIComponent(JSON.stringify(mf)); }
+    function L(rel,h){ var l=document.createElement('link'); l.rel=rel; l.href=h; document.head.appendChild(l); }
+    function M(n,c){ if(document.querySelector('meta[name="'+n+'"]')) return;
+      var m=document.createElement('meta'); m.name=n; m.content=c; document.head.appendChild(m); }
+    L('manifest',href); L('apple-touch-icon','icons/icon-192.png');
+    M('theme-color',theme); M('apple-mobile-web-app-capable','yes');
+    M('apple-mobile-web-app-status-bar-style','black-translucent');
+    M('apple-mobile-web-app-title','OligoMW'); M('mobile-web-app-capable','yes');
+  }catch(_){ }
+}
+function initSW(){
+  try{
+    if(!('serviceWorker' in navigator)) return;
+    if(!/^https?:$/.test(location.protocol)) return;   // file:// -> silently skip
+    navigator.serviceWorker.register('sw.js').catch(function(){});  // missing sw.js is non-fatal
+  }catch(_){ }
+}
+var _deferredPrompt=null;
+function chip(text, onClick){
+  try{
+    var old=document.getElementById('pwaChip'); if(old) old.remove();
+    var d=document.createElement('div'); d.id='pwaChip';
+    d.style.cssText='position:fixed;left:50%;transform:translateX(-50%);bottom:16px;z-index:80;'+
+      'display:flex;align-items:center;gap:10px;padding:9px 14px;border-radius:999px;'+
+      'font:500 13px/1.2 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;'+
+      'background:rgba(15,23,42,.94);color:#fff;box-shadow:0 10px 30px -8px rgba(0,0,0,.5);cursor:'+(onClick?'pointer':'default');
+    var s=document.createElement('span'); s.textContent=text; d.appendChild(s);
+    var x=document.createElement('button'); x.textContent='✕';
+    x.setAttribute('aria-label','Dismiss');
+    x.style.cssText='background:none;border:0;color:#94a3b8;font-size:14px;cursor:pointer;padding:0 2px;line-height:1';
+    x.addEventListener('click',function(ev){ ev.stopPropagation(); d.remove();
+      var m=pwaMeta(); m.dismissed=true; setPwaMeta(m); });
+    d.appendChild(x);
+    if(onClick) d.addEventListener('click',onClick);
+    document.body.appendChild(d);
+    setTimeout(function(){ if(d.parentNode && !onClick) d.remove(); }, 12000);
+  }catch(_){ }
+}
+function initInstallAffordance(){
+  try{
+    W.addEventListener('beforeinstallprompt', function(e){
+      e.preventDefault(); _deferredPrompt=e;
+      if(pwaMeta().dismissed || pwaMeta().installed) return;
+      chip('Install app', function(){
+        var p=_deferredPrompt; if(!p) return;
+        _deferredPrompt=null; var c=document.getElementById('pwaChip'); if(c) c.remove();
+        p.prompt(); p.userChoice.then(function(r){
+          if(r && r.outcome==='accepted'){ var m=pwaMeta(); m.installed=true; setPwaMeta(m); }
+        }).catch(function(){});
+      });
+    });
+    W.addEventListener('appinstalled', function(){ var m=pwaMeta(); m.installed=true; setPwaMeta(m);
+      var c=document.getElementById('pwaChip'); if(c) c.remove(); });
+    var isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent||'') && !W.MSStream;
+    var standalone=(W.matchMedia && W.matchMedia('(display-mode: standalone)').matches) || navigator.standalone===true;
+    if(isIOS && !standalone && !pwaMeta().iosHinted && !pwaMeta().dismissed){
+      var m=pwaMeta(); m.iosHinted=true; setPwaMeta(m);
+      setTimeout(function(){ chip('Add to Home Screen: Share ▸ Add to Home Screen', null); }, 2500);
+    }
+  }catch(_){ }
+}
+
+/* =========================================================================
+   PRO cloud sync (set A)
+   ========================================================================= */
+function sbUrl(){ return (typeof sbBase==='function')? sbBase() : ''; }
+function anonKey(){ return ((typeof S!=='undefined' && S.catalogSupabaseAnonKey)||'').trim(); }
+function jwtSub(tok){ try{
+  var b=tok.split('.')[1].replace(/-/g,'+').replace(/_/g,'/');
+  while(b.length%4) b+='=';
+  return (JSON.parse(decodeURIComponent(escape(atob(b))))||{}).sub||null;
+}catch(_){ return null; } }
+function syncEnabled(){
+  try{ return !!(proIsPro && typeof proSession==='function' && proSession() && proSession().access_token && sbUrl() && anonKey()); }
+  catch(_){ return false; }
+}
+async function authHeaders(extra){
+  try{
+    var tok=await proAccessToken(); if(!tok) return null;
+    var h={ apikey:anonKey(), 'Content-Type':'application/json', Accept:'application/json', Authorization:'Bearer '+tok };
+    if(extra) for(var k in extra) h[k]=extra[k];
+    return h;
+  }catch(_){ return null; }
+}
+async function userId(){ try{ var t=await proAccessToken(); return t?jwtSub(t):null; }catch(_){ return null; } }
+
+/* dirty queue — never lose a write because the network blipped */
+function queueDirty(item){
+  var m=syncMeta(); m.dirty=m.dirty||[];
+  var dup=m.dirty.some(function(d){ return d.k===item.k && d.op===item.op && d.key===item.key; });
+  if(!dup){ m.dirty.push(item); if(m.dirty.length>500) m.dirty.shift(); setSyncMeta(m); }
+}
+async function flushDirty(){
+  var m=syncMeta(); if(!m.dirty||!m.dirty.length||!syncEnabled()) return;
+  var pend=m.dirty.slice(); m.dirty=[]; setSyncMeta(m);
+  for(var i=0;i<pend.length;i++){
+    var d=pend[i];
+    try{
+      if(d.k==='strand' && d.op==='up'){ var e=(history||[]).find(function(h){return h.id===d.key;}); if(e) await pushStrand(e,true); }
+      else if(d.k==='strand' && d.op==='del'){ await deleteStrandCloud(d.key,true); }
+      else if(d.k==='base' && d.op==='up'){ var c=((S.customBases)||[]).find(function(b){return b.code===d.key;}); if(c) await pushCustomBase(c,true); }
+      else if(d.k==='base' && d.op==='del'){ await deleteCustomBaseCloud(d.key,true); }
+    }catch(_){ }
+  }
+}
+
+async function pushStrand(entry, noQueue){
+  if(!syncEnabled()||!entry) return false;
+  if(!entry.id){ entry.id=uuid(); try{ saveHist(); }catch(_){ } }
+  try{
+    var uid=await userId(); var h=await authHeaders({Prefer:'resolution=merge-duplicates,return=minimal'});
+    if(!uid||!h) throw new Error('no session');
+    var row={ user_id:uid, client_id:entry.id, name:entry.name||'', seq:entry.seq||'',
+              folder:entry.folder||null, tags:Array.isArray(entry.tags)?entry.tags:[], data:entry };
+    var r=await fetch(sbUrl()+'/rest/v1/strands?on_conflict=user_id,client_id',
+      {method:'POST',headers:h,body:JSON.stringify([row])});
+    if(!r.ok) throw new Error(r.status+' '+(await r.text()).slice(0,140));
+    setStatus('synced'); return true;
+  }catch(e){ if(!noQueue) queueDirty({k:'strand',op:'up',key:entry.id}); setStatus('offline'); return false; }
+}
+async function deleteStrandCloud(cid, noQueue){
+  if(!syncEnabled()||!cid) return false;
+  try{
+    var h=await authHeaders(); if(!h) throw new Error('no session');
+    var r=await fetch(sbUrl()+'/rest/v1/strands?client_id=eq.'+encodeURIComponent(cid),{method:'DELETE',headers:h});
+    if(!r.ok) throw new Error(r.status); setStatus('synced'); return true;
+  }catch(e){ if(!noQueue) queueDirty({k:'strand',op:'del',key:cid}); setStatus('offline'); return false; }
+}
+async function deleteAllStrandsCloud(){
+  if(!syncEnabled()) return false;
+  try{
+    var uid=await userId(), h=await authHeaders(); if(!uid||!h) return false;
+    var r=await fetch(sbUrl()+'/rest/v1/strands?user_id=eq.'+encodeURIComponent(uid),{method:'DELETE',headers:h});
+    setStatus(r.ok?'synced':'offline'); return r.ok;
+  }catch(_){ setStatus('offline'); return false; }
+}
+async function pushCustomBase(cb, noQueue){
+  if(!syncEnabled()||!cb||!cb.code) return false;
+  try{
+    var uid=await userId(); var h=await authHeaders({Prefer:'resolution=merge-duplicates,return=minimal'});
+    if(!uid||!h) throw new Error('no session');
+    var row={ user_id:uid, code:cb.code, name:cb.name||'', data:cb };
+    var r=await fetch(sbUrl()+'/rest/v1/custom_bases?on_conflict=user_id,code',
+      {method:'POST',headers:h,body:JSON.stringify([row])});
+    if(!r.ok) throw new Error(r.status+' '+(await r.text()).slice(0,140));
+    setStatus('synced'); return true;
+  }catch(e){ if(!noQueue) queueDirty({k:'base',op:'up',key:cb.code}); setStatus('offline'); return false; }
+}
+async function deleteCustomBaseCloud(code, noQueue){
+  if(!syncEnabled()||!code) return false;
+  try{
+    var h=await authHeaders(); if(!h) throw new Error('no session');
+    var r=await fetch(sbUrl()+'/rest/v1/custom_bases?code=eq.'+encodeURIComponent(code),{method:'DELETE',headers:h});
+    if(!r.ok) throw new Error(r.status); setStatus('synced'); return true;
+  }catch(e){ if(!noQueue) queueDirty({k:'base',op:'del',key:code}); setStatus('offline'); return false; }
+}
+
+async function pullCloud(){
+  if(!syncEnabled()) return false;
+  setStatus('syncing');
+  try{
+    var h=await authHeaders(); if(!h) throw new Error('no session');
+    var res=await Promise.all([
+      fetch(sbUrl()+'/rest/v1/strands?select=*&order=updated_at.desc',{headers:h}),
+      fetch(sbUrl()+'/rest/v1/custom_bases?select=*&order=code.asc',{headers:h})
+    ]);
+    if(!res[0].ok||!res[1].ok) throw new Error('pull '+res[0].status+'/'+res[1].status);
+    var rows=await res[0].json(), bases=await res[1].json();
+    // Cloud is source of truth ONLY when it actually has rows — never let an
+    // empty/failed cloud read wipe the user's local mirror.
+    if(rows && rows.length){
+      var list=rows.map(function(row){
+        var d=Object.assign({}, row.data||{});
+        d.id=row.client_id||d.id||uuid();
+        if(row.name!=null) d.name=row.name;
+        if(row.folder!=null) d.folder=row.folder;
+        if(Array.isArray(row.tags)) d.tags=row.tags;
+        return d;
+      });
+      history.splice(0, history.length); Array.prototype.push.apply(history, list); saveHist();
+    }
+    if(bases && bases.length){
+      S.customBases=bases.map(function(b){ return Object.assign({}, b.data||{}, {code:b.code}); });
+      save();
+    }
+    rebuildCustom(); applyAll();
+    var m=syncMeta(); m.lastPull=Date.now(); setSyncMeta(m);
+    setStatus('synced'); return true;
+  }catch(e){ console.warn('[sync] pull failed:',e); setStatus('offline'); return false; }
+}
+
+function migrateIds(){
+  try{ var ch=false;
+    (history||[]).forEach(function(h){ if(h && !h.id){ h.id=uuid(); ch=true; } });
+    if(ch) saveHist();
+  }catch(_){ }
+}
+async function firstLoginImport(){
+  if(!syncEnabled()) return false;
+  var uid=await userId(); if(!uid) return false;
+  var m=syncMeta(); m.imported=m.imported||{};
+  if(m.imported[uid]) return false;                     // one-time per account
+  migrateIds();
+  var ok=true, i;
+  var hs=(history||[]).slice(), cbs=((S.customBases)||[]).slice();
+  for(i=0;i<hs.length;i++){ if(!await pushStrand(hs[i])) ok=false; }
+  for(i=0;i<cbs.length;i++){ if(!await pushCustomBase(cbs[i])) ok=false; }
+  if(ok){ m=syncMeta(); m.imported=m.imported||{}; m.imported[uid]=true; setSyncMeta(m); }
+  return ok;
+}
+
+var _proReadyBusy=false;
+async function onProReady(){
+  if(_proReadyBusy || !syncEnabled()) return;
+  _proReadyBusy=true;
+  try{ migrateIds(); await firstLoginImport(); await flushDirty(); await pullCloud(); }
+  catch(e){ console.warn('[sync] onProReady:',e); }
+  finally{ _proReadyBusy=false; }
+}
+var _proReadyT=null;
+function scheduleProReady(){ clearTimeout(_proReadyT); _proReadyT=setTimeout(onProReady, 250); }
+
+/* ---- sync status shown in the existing .pro-bar (no new heavy UI) ---- */
+var _status='';
+function setStatus(s){ _status=s; try{
+  document.querySelectorAll('[data-syncstate]').forEach(function(n){
+    n.textContent = s==='syncing'?'· syncing…' : s==='offline'?'· offline, will sync' : s==='synced'?'· synced' : '';
+  });
+}catch(_){ } }
+if(typeof W.proBarHTML==='function'){
+  var _origProBar=W.proBarHTML;
+  W.proBarHTML=function(){
+    var html=_origProBar.apply(this,arguments);
+    try{
+      if(proIsPro) html=html.replace('</span><span class="pro-meta"',
+        ' <span class="pro-meta" data-syncstate>'+(_status==='syncing'?'· syncing…':_status==='offline'?'· offline, will sync':'· synced')+'</span></span><span class="pro-meta"');
+    }catch(_){ }
+    return html;
+  };
+}
+
+/* =========================================================================
+   Wiring — optimistic local write first, then best-effort cloud
+   ========================================================================= */
+if(typeof W.saveCurrent==='function'){
+  var _origSaveCurrent=W.saveCurrent;
+  W.saveCurrent=function(){
+    var r=_origSaveCurrent.apply(this,arguments);
+    try{ if(r && history.length){ var e=history[0]; if(!e.id){ e.id=uuid(); saveHist(); }
+      if(syncEnabled()) pushStrand(e); } }catch(_){ }
+    return r;
+  };
+}
+if(typeof W.addCustomBase==='function'){
+  var _origAddCB=W.addCustomBase;
+  W.addCustomBase=function(){
+    var before=((S.customBases)||[]).length;
+    var r=_origAddCB.apply(this,arguments);
+    try{ var arr=(S.customBases)||[];
+      if(arr.length>before && syncEnabled()) pushCustomBase(arr[arr.length-1]); }catch(_){ }
+    return r;
+  };
+}
+if(typeof W.addCatalogToLibrary==='function'){
+  var _origAddCat=W.addCatalogToLibrary;
+  W.addCatalogToLibrary=function(code){
+    var r=_origAddCat.apply(this,arguments);
+    try{ var c=((S.customBases)||[]).find(function(b){return b.code===code;});
+      if(c && syncEnabled()) pushCustomBase(c); }catch(_){ }
+    return r;
+  };
+}
+if(typeof W.removeCatalogFromLibrary==='function'){
+  var _origRmCat=W.removeCatalogFromLibrary;
+  W.removeCatalogFromLibrary=function(code){
+    var r=_origRmCat.apply(this,arguments);
+    try{ if(syncEnabled()) deleteCustomBaseCloud(code); }catch(_){ }
+    return r;
+  };
+}
+if(typeof W.proSignOut==='function'){
+  var _origSignOut=W.proSignOut;
+  W.proSignOut=function(){
+    var r=_origSignOut.apply(this,arguments);          // local mirror deliberately left intact
+    try{ setStatus(''); applyAll(); }catch(_){ }
+    return r;
+  };
+}
+if(typeof W.fetchFromSupabase==='function'){
+  var _origFetchSB=W.fetchFromSupabase;
+  W.fetchFromSupabase=async function(){
+    var out=await _origFetchSB.apply(this,arguments);
+    try{ if(proIsPro) scheduleProReady(); }catch(_){ }
+    return out;
+  };
+}
+
+/* capture-phase: read the row identity BEFORE the app's handler splices it away */
+document.addEventListener('click', function(e){
+  try{
+    var t=e.target;
+    var del=t.closest && t.closest('[data-hdel]');
+    if(del && del.dataset.armed==='1'){
+      var h=(history||[])[+del.dataset.hdel];
+      if(h && h.id && syncEnabled()){ var cid=h.id; setTimeout(function(){ deleteStrandCloud(cid); },0); }
+    }
+    var clr=t.closest && t.closest('[data-hclear]');
+    if(clr && clr.dataset.armed==='1' && syncEnabled()){ setTimeout(function(){ deleteAllStrandsCloud(); },0); }
+    var cbd=t.closest && t.closest('[data-cbdel]');
+    if(cbd){ var c=((S.customBases)||[])[+cbd.dataset.cbdel];
+      if(c && c.code && syncEnabled()){ var code=c.code; setTimeout(function(){ deleteCustomBaseCloud(code); },0); } }
+    var cbe=t.closest && t.closest('[data-cbedit]');
+    if(cbe){ var c2=((S.customBases)||[])[+cbe.dataset.cbedit];
+      if(c2 && c2.code && syncEnabled()){ var code2=c2.code; setTimeout(function(){ deleteCustomBaseCloud(code2); },0); } }
+    var cbk=t.closest && t.closest('[data-cbkindtoggle]');
+    if(cbk){ var i3=+cbk.dataset.cbkindtoggle;
+      setTimeout(function(){ var c3=((S.customBases)||[])[i3]; if(c3 && syncEnabled()) pushCustomBase(c3); },0); }
+  }catch(_){ }
+}, true);
+
+/* rename / notes / folder / tags -> push after the app has updated local state */
+var _pushT={};
+function pushSoon(entry){
+  if(!entry||!entry.id||!syncEnabled()) return;
+  clearTimeout(_pushT[entry.id]);
+  _pushT[entry.id]=setTimeout(function(){ pushStrand(entry); }, 600);
+}
+document.addEventListener('input', function(e){
+  try{
+    var hn=e.target.closest && e.target.closest('[data-hname]');
+    if(hn){ var h=(history||[])[+hn.dataset.hname]; if(h) pushSoon(h); }
+  }catch(_){ }
+}, false);
+
+/* =========================================================================
+   Set B — library management (Pro only; free view stays exactly as today)
+   ========================================================================= */
+var libFolder='', libTag='';
+function proOn(){ return !!proIsPro; }
+function allFolders(){ var s={}; (history||[]).forEach(function(h){ if(h.folder) s[h.folder]=1; }); return Object.keys(s).sort(); }
+function allTags(){ var s={}; (history||[]).forEach(function(h){ (h.tags||[]).forEach(function(t){ if(t) s[t]=1; }); }); return Object.keys(s).sort(); }
+
+function ensureProToolbar(el){
+  try{
+    var head=el.querySelector('[data-hlist]'); if(!head) return;
+    var host=head.parentNode; if(!host) return;
+    var bar=host.querySelector('.prolibbar');
+    if(!proOn()){ if(bar) bar.remove(); return; }
+    if(!bar){
+      bar=document.createElement('div'); bar.className='prolibbar';
+      bar.style.cssText='display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:0 0 8px;font-size:12px';
+      host.insertBefore(bar, head);
+      bar.addEventListener('click',function(ev){ ev.stopPropagation(); });
+    }
+    var fo=allFolders(), tg=allTags();
+    bar.innerHTML=
+      '<select class="ctl-btn sm" data-libfolder style="max-width:150px"><option value="">All folders</option>'+
+        fo.map(function(f){ return '<option value="'+esc(f)+'"'+(libFolder===f?' selected':'')+'>'+esc(f)+'</option>'; }).join('')+'</select>'+
+      '<select class="ctl-btn sm" data-libtag style="max-width:150px"><option value="">All tags</option>'+
+        tg.map(function(t){ return '<option value="'+esc(t)+'"'+(libTag===t?' selected':'')+'>'+esc(t)+'</option>'; }).join('')+'</select>'+
+      '<button class="ctl-btn sm" data-libbatch>Batch entry</button>'+
+      '<span style="color:var(--muted)">Pro library · '+(history||[]).length+' strands</span>';
+  }catch(_){ }
+}
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function decorateDrawer(el){
+  try{
+    var list=el.querySelector('[data-hlist]'); if(!list) return;
+    ensureProToolbar(el);
+    var pro=proOn();
+    list.querySelectorAll('.hitem').forEach(function(row){
+      var i=+row.getAttribute('data-hload'); var h=(history||[])[i]; if(!h) return;
+      var show=true;
+      if(pro && libFolder && (h.folder||'')!==libFolder) show=false;
+      if(pro && libTag && (h.tags||[]).indexOf(libTag)<0) show=false;
+      row.style.display=show?'':'none';
+      if(!pro || row.querySelector('.prox')) return;
+      var mid=row.querySelector('.hmid'); if(!mid) return;
+      var box=document.createElement('div'); box.className='prox';
+      box.style.cssText='display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:6px';
+      box.innerHTML=
+        '<input class="catgate-input" data-libf="'+i+'" placeholder="Folder" value="'+esc(h.folder||'')+'" style="width:110px;padding:4px 7px;font-size:12px" />'+
+        '<input class="catgate-input" data-libt="'+i+'" placeholder="tags, comma" value="'+esc((h.tags||[]).join(', '))+'" style="width:140px;padding:4px 7px;font-size:12px" />'+
+        '<input class="catgate-input" data-libn="'+i+'" placeholder="Note" value="'+esc(h.note||'')+'" style="flex:1;min-width:120px;padding:4px 7px;font-size:12px" />'+
+        '<button class="ctl-btn sm" data-libdup="'+i+'" title="Duplicate this strand">Duplicate</button>'+
+        '<button class="ctl-btn sm" data-libver="'+i+'" title="Save as a new version">+ Version</button>';
+      box.addEventListener('click',function(ev){ ev.stopPropagation(); });
+      mid.appendChild(box);
+    });
+  }catch(_){ }
+}
+if(typeof W.drawerListHTML==='function'){
+  var _origDrawerList=W.drawerListHTML;
+  W.drawerListHTML=function(){
+    var out=_origDrawerList.apply(this,arguments);
+    setTimeout(function(){ try{ (typeof calcs!=='undefined'?calcs:[]).forEach(decorateDrawer); }catch(_){ } },0);
+    return out;
+  };
+}
+
+/* Set-B interactions */
+document.addEventListener('click', function(e){
+  try{
+    var t=e.target;
+    var dup=t.closest && t.closest('[data-libdup]');
+    if(dup){ e.stopPropagation(); var h=(history||[])[+dup.dataset.libdup]; if(!h) return;
+      var c=Object.assign({},h); c.id=uuid(); c.t=Date.now(); c.name=(h.name||'Untitled strand')+' (copy)';
+      history.unshift(c); saveHist(); if(syncEnabled()) pushStrand(c); applyAll(); return; }
+    var ver=t.closest && t.closest('[data-libver]');
+    if(ver){ e.stopPropagation(); var h2=(history||[])[+ver.dataset.libver]; if(!h2) return;
+      var m=(h2.name||'Untitled strand').match(/^(.*?)(?:\s+v(\d+))?$/);
+      var base=(m&&m[1])||h2.name||'Untitled strand'; var nv=((m&&+m[2])||1)+1;
+      var c2=Object.assign({},h2); c2.id=uuid(); c2.t=Date.now(); c2.name=base+' v'+nv;
+      history.unshift(c2); saveHist(); if(syncEnabled()) pushStrand(c2); applyAll(); return; }
+    if(t.closest && t.closest('[data-libbatch]')){ e.stopPropagation(); openBatch(); return; }
+  }catch(_){ }
+}, true);   // CAPTURE: container-level stopPropagation must not swallow these
+document.addEventListener('input', function(e){
+  try{
+    var t=e.target, h, changed=false;
+    var f=t.closest && t.closest('[data-libf]');
+    if(f){ h=(history||[])[+f.dataset.libf]; if(h){ h.folder=f.value.trim(); changed=true; } }
+    var g=t.closest && t.closest('[data-libt]');
+    if(g){ h=(history||[])[+g.dataset.libt]; if(h){ h.tags=g.value.split(',').map(function(s){return s.trim();}).filter(Boolean); changed=true; } }
+    var n=t.closest && t.closest('[data-libn]');
+    if(n){ h=(history||[])[+n.dataset.libn]; if(h){ h.note=n.value; changed=true; } }
+    if(changed && h){ saveHist(); pushSoon(h); }
+  }catch(_){ }
+}, false);
+document.addEventListener('change', function(e){
+  try{
+    var t=e.target;
+    if(t.matches && t.matches('[data-libfolder]')){ libFolder=t.value; (typeof calcs!=='undefined'?calcs:[]).forEach(decorateDrawer); }
+    if(t.matches && t.matches('[data-libtag]')){ libTag=t.value; (typeof calcs!=='undefined'?calcs:[]).forEach(decorateDrawer); }
+  }catch(_){ }
+}, false);
+
+/* ---- B5: Pro export adds folder/tags/note/epsilon260/monoisotopic ---- */
+function strandExtras(h){
+  var eps='', mono='';
+  try{ var r=compute(h.seq||'', h.type, h.linkage, h.three||'OH', h.modMass||0);
+       if(r && r.tokens) eps=Math.round(epsilon260(r.tokens)); }catch(_){ }
+  try{ var d=msData(h.seq||'', h.type, h.linkage, h.three||'OH');
+       if(d && d.mono!=null) mono=d.mono.toFixed(2); }catch(_){ }
+  return {eps:eps, mono:mono};
+}
+function exportProCSV(data){
+  if(!data||!data.length) return;
+  var asc=function(v){ return String(v==null?'':v).replace(/[′’]/g,"'").replace(/·/g,'').replace(/[−–]/g,'-'); };
+  var escv=function(v){ v=asc(v); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v; };
+  var cols=['name','folder','tags','note',"sequence (5'->3')",'type','linkage',"5' end","3' end",
+            'length (nt)','modifications','MW (g/mol)','epsilon260 (M-1cm-1)','monoisotopic (Da)',
+            "antisense (5'->3')",'antisense MW','duplex MW','saved'];
+  var rows=data.map(function(h){
+    var x=strandExtras(h);
+    return [h.name||'', h.folder||'', (h.tags||[]).join('; '), h.note||'',
+      spaceSeq(h.seq||'', h.type, h.linkage), h.type||'', linkText(h),
+      fiveLabel(h.five,h.fiveThio), THREE_LABEL[h.three||'OH'], h.n||'',
+      (h.mods&&h.mods.length?h.mods.join('; '):''), h.mwStr||'', x.eps, x.mono,
+      h.duplex?spaceSeq(h.duplex.antiSeq||'', h.type, h.linkage):'',
+      h.duplex?h.duplex.antiMwStr:'', h.duplex?h.duplex.duplexMwStr:'',
+      h.t?new Date(h.t).toLocaleString():''];
+  });
+  var csv='\uFEFF'+[cols.map(escv).join(',')].concat(rows.map(function(r){ return r.map(escv).join(','); })).join('\r\n');
+  var blob=new Blob([csv],{type:'text/csv;charset=utf-8'}), url=URL.createObjectURL(blob);
+  var a=document.createElement('a'); a.href=url; a.download='oligo-library.csv';
+  document.body.appendChild(a); a.click();
+  setTimeout(function(){ a.remove(); URL.revokeObjectURL(url); },100);
+}
+if(typeof W.exportHistoryCSV==='function'){
+  var _origExport=W.exportHistoryCSV;
+  W.exportHistoryCSV=function(list){
+    if(!syncEnabled()) return _origExport.apply(this,arguments);   // free path byte-identical
+    if(list && list.length) { exportProCSV(list); return; }
+    pullCloud().finally(function(){ exportProCSV((history||[]).slice()); });
+  };
+}
+
+/* ---- B6: batch entry (Pro only) ---- */
+function openBatch(){
+  if(!proOn()) return;
+  var old=document.getElementById('batchOv'); if(old) old.remove();
+  var ov=document.createElement('div'); ov.id='batchOv'; ov.className='catgate';
+  ov.innerHTML='<div class="catgate-card" style="max-width:760px">'+
+    '<div class="catgate-title">Batch entry — paste sequences</div>'+
+    '<div class="catgate-sub">One per line. Optional <b>name</b>&lt;TAB&gt;<b>sequence</b>. Uses the current Type / Linkage / end settings.</div>'+
+    '<textarea class="catgate-input" data-batchin rows="7" spellcheck="false" placeholder="primer-F\tACGTACGTAC&#10;ACGTTTGCA"></textarea>'+
+    '<div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">'+
+      '<button class="ctl-btn sm primary" data-batchcalc>Compute</button>'+
+      '<button class="ctl-btn sm" data-batchsave hidden>Save all to library</button>'+
+      '<button class="ctl-btn sm" data-batchexp hidden>Export table</button>'+
+      '<button class="ctl-btn sm" data-batchclose style="margin-left:auto">Close</button>'+
+    '</div>'+
+    '<div data-batchout style="margin-top:12px;max-height:320px;overflow:auto;font-size:12px"></div>'+
+    '</div>';
+  document.body.appendChild(ov);
+  ov.addEventListener('click',function(ev){ if(ev.target===ov) ov.remove(); });
+}
+var _batchRows=[];
+function batchCompute(ov){
+  var ta=ov.querySelector('[data-batchin]'); if(!ta) return;
+  var lines=(ta.value||'').split(/\r?\n/).map(function(s){return s.trim();}).filter(Boolean);
+  _batchRows=[];
+  lines.forEach(function(ln){
+    var name='', seq=ln;
+    var m=ln.split(/\t|\s{2,}/);
+    if(m.length>1){ name=m[0].trim(); seq=m.slice(1).join(' ').trim(); }
+    var r=null,eps='',mono='',mw='';
+    try{ r=compute(seq, S.type, S.linkage, S.three||'OH', 0);
+      if(r&&r.n){ mw=fmt(r.mw,r.n); eps=Math.round(epsilon260(r.tokens)); } }catch(_){ }
+    try{ var d=msData(seq, S.type, S.linkage, S.three||'OH'); if(d&&d.mono!=null) mono=d.mono.toFixed(2); }catch(_){ }
+    _batchRows.push({name:name, seq:seq, n:(r&&r.n)||0, mw:mw, eps:eps, mono:mono, ok:!!(r&&r.n)});
+  });
+  var out=ov.querySelector('[data-batchout]');
+  out.innerHTML='<table style="width:100%;border-collapse:collapse">'+
+    '<tr style="text-align:left;color:var(--muted)"><th>Name</th><th>Sequence</th><th>nt</th><th>MW</th><th>ε260</th><th>Monoisotopic</th></tr>'+
+    _batchRows.map(function(r){ return '<tr style="border-top:1px solid var(--line)'+(r.ok?'':';color:#d1242f')+'">'+
+      '<td>'+esc(r.name)+'</td><td style="font-family:var(--font-num,monospace)">'+esc(r.seq)+'</td>'+
+      '<td>'+(r.n||'')+'</td><td>'+esc(r.mw)+'</td><td>'+esc(r.eps)+'</td><td>'+esc(r.mono)+'</td></tr>'; }).join('')+
+    '</table>';
+  var good=_batchRows.filter(function(r){return r.ok;}).length;
+  ov.querySelector('[data-batchsave]').hidden = good===0;
+  ov.querySelector('[data-batchexp]').hidden = good===0;
+}
+document.addEventListener('click', function(e){
+  var ov=document.getElementById('batchOv'); if(!ov) return;
+  var t=e.target;
+  if(t.closest('[data-batchclose]')){ ov.remove(); return; }
+  if(t.closest('[data-batchcalc]')){ batchCompute(ov); return; }
+  if(t.closest('[data-batchsave]')){
+    var added=0;
+    _batchRows.filter(function(r){return r.ok;}).forEach(function(r){
+      var rr=null; try{ rr=compute(r.seq,S.type,S.linkage,S.three||'OH',0); }catch(_){ }
+      if(!rr||!rr.n) return;
+      var entry={ id:uuid(), seq:r.seq, type:S.type, linkage:S.linkage, five:rr.five, fiveThio:rr.fiveThio,
+        three:S.three||'OH', name:r.name||'', n:rr.n, nPO:rr.nPO, nPS:rr.nPS,
+        comp:['A','C','G','T','U'].filter(function(b){return rr.counts[b];}).map(function(b){return b+rr.counts[b];}).join(' '),
+        mods:[], mw:rr.mw, mwStr:fmt(rr.mw,rr.n), duplex:null, t:Date.now(), folder:'', tags:[], note:'' };
+      history.unshift(entry); added++; if(syncEnabled()) pushStrand(entry);
+    });
+    saveHist(); applyAll(); ov.remove(); return;
+  }
+  if(t.closest('[data-batchexp]')){
+    var rows=_batchRows.filter(function(r){return r.ok;});
+    if(!rows.length) return;
+    var csv='\uFEFF'+['name,sequence,length (nt),MW (g/mol),epsilon260,monoisotopic']
+      .concat(rows.map(function(r){ return [r.name,r.seq,r.n,r.mw,r.eps,r.mono].map(function(v){
+        v=String(v==null?'':v); return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v; }).join(','); })).join('\r\n');
+    var b=new Blob([csv],{type:'text/csv;charset=utf-8'}), u=URL.createObjectURL(b);
+    var a=document.createElement('a'); a.href=u; a.download='oligo-batch.csv'; document.body.appendChild(a); a.click();
+    setTimeout(function(){ a.remove(); URL.revokeObjectURL(u); },100); return;
+  }
+}, false);
+
+/* =========================================================================
+   boot
+   ========================================================================= */
+function boot(){
+  try{ migrateIds(); }catch(_){ }
+  try{ initManifest(); initSW(); initInstallAffordance(); }catch(_){ }
+  try{ if(syncEnabled()) scheduleProReady(); }catch(_){ }
+  W.addEventListener('online', function(){ if(syncEnabled()){ flushDirty(); } });
+}
+if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', boot); else boot();
+
+/* expose for console / testing */
+W.oligoSync={ syncEnabled:syncEnabled, pullCloud:pullCloud, pushStrand:pushStrand,
+  deleteStrandCloud:deleteStrandCloud, pushCustomBase:pushCustomBase,
+  deleteCustomBaseCloud:deleteCustomBaseCloud, firstLoginImport:firstLoginImport,
+  onProReady:onProReady, migrateIds:migrateIds, syncMeta:syncMeta, flushDirty:flushDirty };
+})();
+
 </script>
 </body>
 </html>
