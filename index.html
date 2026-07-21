@@ -191,6 +191,34 @@
   .chip.hint-chip{background:transparent; border-style:dashed; color:var(--accent); font-weight:500; font-family:var(--font-ui)}
   .formula{font-family:var(--font-num);font-size:11.5px;color:var(--muted);
     padding:0 var(--pad); margin-top:-6px; word-break:break-all}
+  /* mass spec tab */
+  .ms-body{padding:16px var(--pad) 4px}
+  .ms-empty{color:var(--muted); font-size:13px; text-align:center; padding:34px 8px; line-height:1.6}
+  .ms-head{font-family:var(--font-head); font-size:17px; font-weight:600; color:var(--text); margin-bottom:14px}
+  .ms-head .ms-sub{font-family:var(--font-ui); font-size:11.5px; font-weight:500; color:var(--muted); margin-left:8px}
+  .ms-stats{display:flex; gap:12px; flex-wrap:wrap}
+  .ms-stat{flex:1 1 160px; border:var(--border) solid var(--line); border-radius:calc(var(--radius)*.55); background:var(--surface-2); padding:12px 14px}
+  .ms-l{font-size:11px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:var(--muted)}
+  .ms-v{font-family:var(--font-num); font-size:26px; font-weight:600; color:var(--text); margin-top:4px; font-variant-numeric:tabular-nums; word-break:break-all}
+  .ms-v small{font-size:.5em; color:var(--muted); font-weight:500}
+  .ms-na{font-family:var(--font-ui); font-size:14px; color:var(--muted); font-style:italic}
+  .ms-meta{display:flex; flex-wrap:wrap; gap:8px 14px; align-items:center; margin-top:10px; font-size:12px; color:var(--muted)}
+  .ms-formula{font-family:var(--font-num); color:var(--text); background:var(--surface-2); border:var(--border) solid var(--line); padding:3px 9px; border-radius:6px; word-break:break-all}
+  .ms-missing{margin-top:12px; padding:11px 13px; border:1px solid color-mix(in srgb,var(--accent) 45%,var(--line)); background:color-mix(in srgb,var(--accent) 8%,transparent); border-radius:calc(var(--radius)*.5); font-size:12px; line-height:1.55; color:var(--text)}
+  .ms-missing code{font-family:var(--font-num); background:var(--surface); padding:1px 5px; border-radius:4px}
+  .ms-controls{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:16px 0 12px}
+  .ms-adbtn{font-family:var(--font-head); font-size:11.5px; font-weight:600; color:var(--muted); background:var(--surface); border:var(--border) solid var(--line); border-radius:999px; padding:7px 13px; cursor:pointer; transition:.12s}
+  .ms-adbtn:hover{color:var(--accent); border-color:var(--accent)}
+  .ms-adbtn.on{background:var(--accent); color:var(--accent-ink); border-color:transparent}
+  .ms-ladder-wrap{max-height:280px; overflow:auto; border:var(--border) solid var(--line); border-radius:calc(var(--radius)*.5)}
+  .ms-ladder{width:100%; border-collapse:collapse; font-family:var(--font-num); font-size:12.5px}
+  .ms-ladder th{position:sticky; top:0; background:var(--surface-2); color:var(--muted); font-family:var(--font-ui); font-size:10.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; text-align:right; padding:8px 12px; border-bottom:var(--border) solid var(--line)}
+  .ms-ladder th:first-child{text-align:left}
+  .ms-ladder td{text-align:right; padding:6px 12px; color:var(--text); font-variant-numeric:tabular-nums; border-bottom:1px solid color-mix(in srgb,var(--line) 55%,transparent)}
+  .ms-ladder td:first-child{text-align:left; color:var(--muted)}
+  .ms-ladder tr.hot td{background:color-mix(in srgb,var(--accent) 10%,transparent)}
+  .ms-ladder tr.hot td:first-child{color:var(--accent); font-weight:600}
+  .ms-foot-note{font-size:11px; color:var(--muted); line-height:1.55; margin-top:10px}
   .calc[data-align="center"] .formula{text-align:center}
   .rule{height:var(--border);background:var(--line);margin:6px 0}
 
@@ -224,6 +252,12 @@
   .cb-kindbtn:hover{color:var(--accent); border-color:var(--accent)}
   .cb-mw small{font-size:10px}
   .cb-del{width:22px;height:22px;border:0;background:transparent;color:var(--muted);cursor:pointer;border-radius:5px;font-size:12px}
+  .cb-editbtn{width:26px;height:26px;border:0;background:transparent;color:var(--muted);cursor:pointer;border-radius:5px;font-size:15px;transform:scaleX(-1)}
+  .cb-editbtn:hover{color:var(--accent)}
+  .cb-fchk{margin-top:6px;font-size:11px;line-height:1.5;font-family:var(--font-ui)}
+  .cb-fchk.ok{color:#16a34a}
+  .cb-fchk.warn{color:#d97706}
+  .cb-fchk.bad{color:#d1242f}
   .cb-del:hover{background:color-mix(in srgb,#d1242f 14%,transparent);color:#d1242f}
   .cb-form{display:flex; flex-direction:column; gap:8px}
   .cb-frow{display:flex; gap:7px; flex-wrap:wrap; align-items:stretch}
@@ -776,6 +810,7 @@
   <div class="tabs">
     <button class="tab" data-tab="mw" style="font-size: 16px; font-weight: 600">MW Calculator</button>
     <button class="tab" data-tab="conc" style="font-size: 16px; font-weight: 600">Concentration</button>
+    <button class="tab" data-tab="ms" style="font-size: 16px; font-weight: 600">Mass Spec</button>
   </div>
   </div>
   <div class="tabpane" data-pane="mw">
@@ -835,6 +870,8 @@
           <span class="cinput cb-mass"><input type="number" data-cbf="mass" inputmode="decimal" placeholder="e.g. 244.20" /><span class="cunit-fixed" style="font-size:13px">g/mol</span></span>
         </div>
         <div class="cb-frow">
+          <input class="cb-in cb-formula" data-cbf="formula" placeholder="Formula for mass spec, optional (e.g. C9H12N2O6)" spellcheck="false" />
+        <div class="cb-frow">
           <div class="cseg sm cb-kind" data-cbkindseg>
             <button data-cbkind="base" class="on" style="font-size:12px">In-chain base</button><button data-cbkind="conj" style="font-size:12px">Conjugate</button>
           </div>
@@ -882,7 +919,11 @@
     <div class="calc-foot">
       <button class="ctl-btn" data-history>History</button>
       <button class="ctl-btn" data-save>Save Strand</button>
-      <button class="copy" data-copy>Copy info</button>
+      <span class="copy-group" style="margin-left:auto;display:inline-flex;gap:6px">
+        <button class="copy" data-copymw title="Copy the molecular weight">MW</button>
+        <button class="copy" data-copyseq title="Copy the sequence">Seq</button>
+        <button class="copy" data-copy title="Copy the full summary">Summary</button>
+      </span>
     </div>
   </div>
   </div><!-- /mw pane -->
@@ -967,6 +1008,14 @@
     </div>
   </div><!-- /conc pane -->
 
+  <div class="tabpane" data-pane="ms" style="display:none">
+    <div class="ms-body" data-msbody></div>
+    <div class="calc-foot" style="padding-top:14px">
+      <button class="ctl-btn" data-history>History</button>
+      <button class="copy" data-mscopy style="margin-left:auto">Copy MS</button>
+    </div>
+  </div><!-- /ms pane -->
+
   <div class="faq" data-faq hidden>
     <div class="faq-head">
       <button class="dclose" data-faqclose style="margin-left:auto">✕</button>
@@ -1001,10 +1050,10 @@
   <div class="catgate" data-catgate hidden>
     <div class="catgate-card">
       <div class="catgate-title">Upgrade to Pro — full catalog</div>
-      <p class="catgate-sub" data-prostep="email">Pro unlocks the complete verified catalog (250+ monomers across ChemGenes &amp; Glen Research). Enter your email and we’ll send a 6-digit sign-in code.</p>
+      <p class="catgate-sub" data-prostep="email">Pro unlocks the complete verified catalog (267 monomers across ChemGenes &amp; Glen Research). Enter your email and we’ll send a 6-digit sign-in code.</p>
       <p class="catgate-sub" data-prostep="code" hidden>We emailed a sign-in link to <b data-proemaillabel></b> — open it <b>on this device</b> and you’ll be signed in automatically. (Or, if codes are enabled, enter the 6-digit code below.)</p>
       <input class="catgate-input" data-proemail type="email" placeholder="you@university.edu" spellcheck="false" autocomplete="email" />
-      <input class="catgate-input" data-procode type="text" inputmode="numeric" placeholder="6-digit code" spellcheck="false" autocomplete="one-time-code" hidden />
+      <input class="catgate-input" data-procode type="text" inputmode="numeric" placeholder="Code from email" spellcheck="false" autocomplete="one-time-code" hidden />
       <div class="catgate-err" data-proerr hidden></div>
       <div class="catgate-row">
         <button class="catgate-cancel" data-procancel>Cancel</button>
@@ -1016,10 +1065,9 @@
   </div>
 </template>
 
-<script type="application/json" id="catalogData">
-{
+<script type="application/json" id="catalogData">{
  "schema_version": 4,
- "generated": "2026-06-27",
+ "generated": "2026-07-20",
  "vendors": [
   "ChemGenes",
   "Glen Research"
@@ -1553,7 +1601,7 @@
    "kind": "conj",
    "hasPhos": false,
    "mass": 507.59,
-   "nucleoside_formula": "",
+   "nucleoside_formula": "C29H36N2O4P",
    "cas": "",
    "verified": true,
    "verification": "Glen F.W.",
@@ -1590,7 +1638,7 @@
    "kind": "conj",
    "hasPhos": false,
    "mass": 533.63,
-   "nucleoside_formula": "",
+   "nucleoside_formula": "C31H38N2O4P",
    "cas": "",
    "verified": true,
    "verification": "Glen F.W.",
@@ -1627,7 +1675,7 @@
    "kind": "conj",
    "hasPhos": false,
    "mass": 786.15,
-   "nucleoside_formula": "",
+   "nucleoside_formula": "C29H20Cl6NO10P",
    "cas": "",
    "verified": true,
    "verification": "Added = amidite - DMT - 2x pivaloyl - CED + PO. 6 Cl permanent. = TET + Cl2 - H2 (exact); cross-checks Glen HEX 744.13 (+ linker).",
@@ -1653,7 +1701,7 @@
    "kind": "conj",
    "hasPhos": false,
    "mass": 717.26,
-   "nucleoside_formula": "",
+   "nucleoside_formula": "C29H22Cl4NO10P",
    "cas": "",
    "verified": true,
    "verification": "Added = amidite - DMT - 2x pivaloyl - CED + PO. 4 Cl permanent. Cross-checks Glen TET 675.24 (+ cyclohexyl linker).",
@@ -1679,7 +1727,7 @@
    "kind": "base",
    "hasPhos": false,
    "mass": 808.886,
-   "nucleoside_formula": "",
+   "nucleoside_formula": "C43H48N6O10",
    "cas": "",
    "verified": true,
    "verification": "Glen F.W.",
@@ -1705,7 +1753,7 @@
    "kind": "base",
    "hasPhos": false,
    "mass": 883.686,
-   "nucleoside_formula": "",
+   "nucleoside_formula": "C41H40Cl2N4O14",
    "cas": "",
    "verified": true,
    "verification": "Glen F.W.",
@@ -1725,13 +1773,13 @@
   },
   {
    "code": "BHQ1Dt",
-   "name": "BHQ™-1-dT",
+   "name": "BHQ\u2122-1-dT",
    "category": "Labeled base",
    "sugar": "d",
    "kind": "base",
    "hasPhos": false,
    "mass": 898.966,
-   "nucleoside_formula": "",
+   "nucleoside_formula": "C44H54N10O11",
    "cas": "",
    "verified": true,
    "verification": "Glen F.W.",
@@ -1739,7 +1787,7 @@
     {
      "vendor": "Glen Research",
      "catalog_no": "10-5941",
-     "product_name": "BHQ™-1-dT",
+     "product_name": "BHQ\u2122-1-dT",
      "protecting_group": "(per Glen)",
      "format": "phosphoramidite (CE)",
      "amidite_formula": "C74H89N12O14P",
@@ -1751,13 +1799,13 @@
   },
   {
    "code": "BHQ2Dt",
-   "name": "BHQ™-2-dT",
+   "name": "BHQ\u2122-2-dT",
    "category": "Labeled base",
    "sugar": "d",
    "kind": "base",
    "hasPhos": false,
    "mass": 900.946,
-   "nucleoside_formula": "",
+   "nucleoside_formula": "C43H52N10O12",
    "cas": "",
    "verified": true,
    "verification": "Glen F.W.",
@@ -1765,7 +1813,7 @@
     {
      "vendor": "Glen Research",
      "catalog_no": "10-5942",
-     "product_name": "BHQ™-2-dT",
+     "product_name": "BHQ\u2122-2-dT",
      "protecting_group": "(per Glen)",
      "format": "phosphoramidite (CE)",
      "amidite_formula": "C73H87N12O15P",
@@ -1783,7 +1831,7 @@
    "kind": "conj",
    "hasPhos": false,
    "mass": 430.18,
-   "nucleoside_formula": "",
+   "nucleoside_formula": "C21H27N4O4P",
    "cas": "",
    "verified": true,
    "verification": "Glen F.W. (vendor-published added mass).",
@@ -1809,7 +1857,7 @@
    "kind": "base",
    "hasPhos": false,
    "mass": 622.736,
-   "nucleoside_formula": "",
+   "nucleoside_formula": "C28H42N6O8S",
    "cas": "",
    "verified": true,
    "verification": "Glen F.W.",
@@ -1846,7 +1894,7 @@
    "kind": "conj",
    "hasPhos": false,
    "mass": 725.93,
-   "nucleoside_formula": "",
+   "nucleoside_formula": "C39H68NO9P",
    "cas": "",
    "verified": true,
    "verification": "No DMT. Added = amidite - CED + PO (864.19-138.255). = Glen Cholesteryl-TEG 755.97 minus a glyceryl CH2O (DMT version carries the extra arm).",
@@ -1872,7 +1920,7 @@
    "kind": "base",
    "hasPhos": false,
    "mass": 396.446,
-   "nucleoside_formula": "",
+   "nucleoside_formula": "C18H28N4O6",
    "cas": "",
    "verified": true,
    "verification": "Glen F.W.",
@@ -1920,7 +1968,7 @@
    "kind": "conj",
    "hasPhos": false,
    "mass": 198.18,
-   "nucleoside_formula": "",
+   "nucleoside_formula": "C5H11O4PS",
    "cas": "",
    "verified": true,
    "verification": "Glen F.W.",
@@ -1976,14 +2024,13 @@
    ]
   }
  ]
-}
-</script>
+}</script>
 
 <script>
 /* =================================================================
    OLIGO MW ENGINE  —  token model
    M = M5' + Σ nucleoside(token) + Σ linkage(bond)
-   Average masses (g/mol). DNA ACGT (5'-OH, PO) -> 1173.84  ✓
+   Average masses (g/mol). DNA ACGT (5'-OH, PO) -> 1173.83  ✓
    ================================================================= */
 const NUCLEO = {
   d:   { A:251.246, C:227.220, G:267.245, T:242.231 },          // 2'-deoxy (DNA)
@@ -2147,6 +2194,7 @@ function copyText(txt, btn){
 function cbForm(){ const root=document.querySelector("[data-cbmgr]"); if(!root) return null;
   return { name:root.querySelector('[data-cbf="name"]').value.trim(),
            code:root.querySelector('[data-cbf="code"]').value.trim(),
+           formula:(root.querySelector('[data-cbf="formula"]')||{}).value ? root.querySelector('[data-cbf="formula"]').value.trim() : '',
            mass:parseFloat(root.querySelector('[data-cbf="mass"]').value),
            hasPhos: root.querySelector('[data-cbphos="1"]').classList.contains("on"),
            kind: root.querySelector('[data-cbkind="conj"]').classList.contains("on") ? 'conj' : 'base' };
@@ -2162,9 +2210,29 @@ function cbSyncForm(){ const root=document.querySelector("[data-cbmgr]"); if(!ro
 function cbPreview(){ const el=document.querySelector("[data-cbprev]"); if(!el) return;
   const f=cbForm(); if(!f || !f.code || !isFinite(f.mass)){ el.textContent=""; return; }
   const tag = f.code.length>1?'('+f.code+')':f.code;
-  if(f.kind==='conj'){ el.innerHTML = `<b>${tag}</b> → adds <b>${f.mass.toFixed(2)} g/mol</b> once (no backbone bond).`; return; }
+  if(f.kind==='conj'){ el.innerHTML = `<b>${tag}</b> → adds <b>${f.mass.toFixed(2)} g/mol</b> once (no backbone bond).`+cbFormulaCheck(f); return; }
   const nucleoside = f.hasPhos ? (f.mass-LINK.PO) : f.mass;
-  el.innerHTML = `<b>${tag}</b> → contributes <b>${(nucleoside+LINK.PO).toFixed(2)} g/mol</b> per position (${nucleoside.toFixed(2)} monomer + 1 PO bond; PS adds +16.06).`;
+  el.innerHTML = `<b>${tag}</b> → contributes <b>${(nucleoside+LINK.PO).toFixed(2)} g/mol</b> per position (${nucleoside.toFixed(2)} monomer + 1 PO bond; PS adds +16.06).`+cbFormulaCheck(f);
+}
+function cbFormulaCheck(f){                              // flag when the mass-spec formula doesn't match the entered mass
+  if(!f || !f.formula) return "";
+  const fm=parseFormula(f.formula);
+  if(!fm) return `<div class="cb-fchk bad">Formula not recognized. Use element symbols like C, H, N, O, P, S (example: C9H12N2O6).</div>`;
+  const avg=formulaAvg(fm);
+  if(avg==null) return `<div class="cb-fchk bad">Formula has an element the calculator can't weigh. Stick to C H N O P S F Cl Br I Na K.</div>`;
+  const expected = (f.kind==='conj') ? f.mass : (f.hasPhos ? f.mass-LINK.PO : f.mass);
+  const basis = (f.kind==='conj') ? 'the mass you entered' : (f.hasPhos ? 'the nucleoside (your mass minus one phosphate)' : 'the mass you entered');
+  const diff=avg-expected, tol=Math.max(0.6, expected*0.003);
+  if(Math.abs(diff)<=tol) return `<div class="cb-fchk ok">Formula ${formatFormula(fm)} = ${avg.toFixed(2)} g/mol average, matches ${basis}.</div>`;
+  return `<div class="cb-fchk warn">Formula ${formatFormula(fm)} averages ${avg.toFixed(2)} g/mol, but ${basis} is ${expected.toFixed(2)} (off by ${diff>0?'+':''}${diff.toFixed(2)}). Fix the formula or the mass so the monoisotopic value is right.</div>`;
+}
+function loadCustomIntoForm(c){                          // populate the add form from an existing item, for editing
+  const root=document.querySelector("[data-cbmgr]"); if(!root) return;
+  const set=(k,v)=>{ const i=root.querySelector(`[data-cbf="${k}"]`); if(i) i.value=(v!=null?v:''); };
+  set('name',c.name); set('code',c.code); set('mass',c.mass); set('formula',c.formula||'');
+  root.querySelectorAll('[data-cbkind]').forEach(b=>b.classList.toggle('on', b.dataset.cbkind===((c.kind==='conj')?'conj':'base')));
+  root.querySelectorAll('[data-cbphos]').forEach(b=>b.classList.toggle('on', b.dataset.cbphos===(c.hasPhos?'1':'0')));
+  cbSyncForm();
 }
 function addCustomBase(){
   const f=cbForm(); if(!f) return;
@@ -2174,10 +2242,10 @@ function addCustomBase(){
   if(f.code.length===1 && RESERVED_CODES.has(f.code)){ if(warn){warn.innerHTML=`<span style="color:#d1242f">"${f.code}" is reserved. Use another letter or a 2+ char code (typed as (${f.code}x)).</span>`;} return; }
   if(/[()\s]/.test(f.code)){ if(warn){warn.innerHTML='<span style="color:#d1242f">Code can\'t contain spaces or parentheses.</span>';} return; }
   if((S.customBases||[]).some(c=>c.code===f.code)){ if(warn){warn.innerHTML=`<span style="color:#d1242f">"${f.code}" already defined.</span>`;} return; }
-  S.customBases=[...(S.customBases||[]), {code:f.code, name:f.name, mass:f.mass, hasPhos:f.hasPhos, kind:f.kind}];
+  S.customBases=[...(S.customBases||[]), {code:f.code, name:f.name, mass:f.mass, hasPhos:f.hasPhos, kind:f.kind, formula:f.formula||''}];
   rebuildCustom(); save();
   const root=document.querySelector("[data-cbmgr]");
-  ["name","code","mass"].forEach(k=>{ const i=root.querySelector(`[data-cbf="${k}"]`); if(i) i.value=""; });
+  ["name","code","mass","formula"].forEach(k=>{ const i=root.querySelector(`[data-cbf="${k}"]`); if(i) i.value=""; });
   applyAll();
 }
 
@@ -2207,7 +2275,8 @@ function compute(seq, mode, linkMode, three=(S&&S.three)||'OH', modMass=0){
   for(let i=0;i<tokens.length-1;i++){ if(bondForming[i]&&bondForming[i+1]) bonds.push(linkMode==='PO'?'PO':linkMode==='PS'?'PS':(marks[i]?'PS':'PO')); }
   let mw = FIVE[five] + (five==='phosphate'&&fiveThio?FIVE_THIO_DELTA:0) + (THREE[three]||0) + (modMass||0);
   if(threeThio && (three==='phosphate' || (three&&three.indexOf('inv')===0))) mw += FIVE_THIO_DELTA;   // 's' before 3' end -> phosphorothioate (+16.06)
-  for(let i=0;i<tokens.length-1;i++){ if(!(bondForming[i]&&bondForming[i+1]) && (linkMode==='PS'||marks[i])) mw += FIVE_THIO_DELTA; }   // PS at a conjugate junction (+16.06)
+  let conjThio=0;
+  for(let i=0;i<tokens.length-1;i++){ if(!(bondForming[i]&&bondForming[i+1]) && (linkMode==='PS'||marks[i])){ mw += FIVE_THIO_DELTA; conjThio++; } }   // PS at a conjugate junction (+16.06)
   tokens.forEach(t=> mw+= t.custom ? t.mass : NUCLEO[t.sugar][t.base]);
   bonds.forEach(b=> mw+=LINK[b]);
   const counts={A:0,C:0,G:0,T:0,U:0}, sugarCounts={}, customCounts={};
@@ -2216,7 +2285,73 @@ function compute(seq, mode, linkMode, three=(S&&S.three)||'OH', modMass=0){
   const invN = (three && three.indexOf('inv')===0) ? 1 : 0;   // inverted dT/dA/dC/dG is a real nucleotide -> counts in length
   const charge = -(bonds.length) - (five==='phosphate'?2:0) - (three==='phosphate'?2:(invN?1:0));
   let conjMid=null; for(let i=1;i<tokens.length-1;i++){ if(tokens[i].nobond){ conjMid = tokens[i].code||'·'; break; } }   // a conjugate placed mid-chain (not 5'/3' end)
-  return {n:n+invN, tokens,bonds,bad,mw,counts,sugarCounts,customCounts,nPS,nPO,charge,five,fiveThio,three,modMass,needPrefix,uToT,conjMid};
+  return {n:n+invN, tokens,bonds,bad,mw,counts,sugarCounts,customCounts,nPS,nPO,charge,five,fiveThio,threeThio,conjThio,three,modMass,needPrefix,uToT,conjMid};
+}
+
+/* =================================================================
+   MASS SPEC  —  monoisotopic mass (via elemental formula), ESI m/z ladder,
+   Na/K adducts. Average mass is exactly what compute() already returns.
+   Formulas below are verified to reproduce the NUCLEO average masses.
+   ================================================================= */
+const MONO_MASS = {C:12,H:1.0078250319,N:14.0030740052,O:15.9949146221,P:30.97376151,S:31.97207069,F:18.99840322,Cl:34.96885268,Br:78.9183376,I:126.904473,Na:22.98976928,K:38.96370649};
+const PROTON = 1.007276467;
+const AVG_MASS = {C:12.011,H:1.008,N:14.007,O:15.999,P:30.974,S:32.06,F:18.998,Cl:35.45,Br:79.904,I:126.904,Na:22.990,K:39.098};
+function formulaAvg(f){ return formulaMass(f, AVG_MASS); }
+const ADDUCT = { Na:{avg:21.9818, mono:21.9819, label:"Na\u207a"}, K:{avg:38.0904, mono:37.9559, label:"K\u207a"} };   // (X \u2212 H) neutral-mass shift per adduct
+const FML = {   // free nucleoside (5\u2032-OH, 3\u2032-OH) element counts, per sugar/base
+  d:{A:{C:10,H:13,N:5,O:3},C:{C:9,H:13,N:3,O:4},G:{C:10,H:13,N:5,O:4},T:{C:10,H:14,N:2,O:5}},
+  r:{A:{C:10,H:13,N:5,O:4},C:{C:9,H:13,N:3,O:5},G:{C:10,H:13,N:5,O:5},U:{C:9,H:12,N:2,O:6}},
+  m:{A:{C:11,H:15,N:5,O:4},C:{C:10,H:15,N:3,O:5},G:{C:11,H:15,N:5,O:5},U:{C:10,H:14,N:2,O:6}},
+  f:{A:{C:10,H:12,F:1,N:5,O:3},C:{C:9,H:12,F:1,N:3,O:4},G:{C:10,H:12,F:1,N:5,O:4},U:{C:9,H:11,F:1,N:2,O:5}},
+  moe:{A:{C:13,H:19,N:5,O:5},C:{C:13,H:21,N:3,O:6},G:{C:13,H:19,N:5,O:6},U:{C:13,H:20,N:2,O:7}},
+  cEt:{A:{C:12,H:15,N:5,O:4},C:{C:11,H:15,N:3,O:5},G:{C:12,H:15,N:5,O:5},U:{C:11,H:14,N:2,O:6}},
+};
+const BOND_FML = { PO:{H:-1,P:1,O:2}, PS:{H:-1,P:1,O:1,S:1} };
+const FIVE_FML = { OH:{}, phosphate:{H:1,P:1,O:3}, DMT:{C:21,H:18,O:2} };
+const THREE_FML = { OH:{}, phosphate:{H:1,P:1,O:3}, invdT:{C:10,H:13,N:2,O:7,P:1}, invdA:{C:10,H:12,N:5,O:5,P:1}, invdC:{C:9,H:12,N:3,O:6,P:1}, invdG:{C:10,H:12,N:5,O:6,P:1} };
+const THIO_FML = {O:-1,S:1};
+function parseFormula(str){
+  if(!str||typeof str!=='string') return null;
+  const clean=str.replace(/\s+/g,''); if(!clean||!/^[A-Za-z0-9]+$/.test(clean)) return null;
+  const f={}; let ok=false; const re=/([A-Z][a-z]?)(\d*)/g; let m;
+  while((m=re.exec(clean))){ if(!m[1]) continue; f[m[1]]=(f[m[1]]||0)+(m[2]?parseInt(m[2],10):1); ok=true; }
+  return ok? f : null;
+}
+function customFormula(code){                        // resolve a custom/catalog code's element formula (user-entered wins, else catalog)
+  const cb=((typeof S!=='undefined'&&S.customBases)||[]).find(c=>c.code===code);
+  if(cb && cb.formula){ const f=parseFormula(cb.formula); if(f) return f; }
+  const m=(typeof CATALOG!=='undefined'&&CATALOG.byCode)?CATALOG.byCode[code]:null;
+  if(m && m.nucleoside_formula){ const f=parseFormula(m.nucleoside_formula); if(f) return f; }
+  return null;
+}
+function addFml(dst,g,mult){ mult=(mult==null?1:mult); for(const k in g) dst[k]=(dst[k]||0)+g[k]*mult; }
+function msFormula(r, missing){                      // full-oligo element formula; null if any piece has no known formula
+  const f={}; let ok=true;
+  addFml(f, FIVE_FML[r.five]||{}); if(r.five==='phosphate'&&r.fiveThio) addFml(f,THIO_FML);
+  addFml(f, THREE_FML[r.three]||{}); if(r.threeThio && (r.three==='phosphate'||(r.three&&r.three.indexOf('inv')===0))) addFml(f,THIO_FML);
+  addFml(f, THIO_FML, r.conjThio||0);
+  (r.tokens||[]).forEach(t=>{ if(t.custom){ const cf=customFormula(t.code); if(cf) addFml(f,cf); else { ok=false; missing.push(t.code.length>1?'('+t.code+')':t.code); } } else { addFml(f, FML[t.sugar][t.base]); } });
+  (r.bonds||[]).forEach(b=> addFml(f, BOND_FML[b]));
+  if(r.modMass>0){ ok=false; missing.push('3\u2032 modifier'); }
+  return ok? f : null;
+}
+function formulaMass(f, table){ let s=0; for(const k in f){ if(!(k in table)) return null; s+=f[k]*table[k]; } return s; }
+function formatFormula(f){                            // Hill order: C, H, then alphabetical
+  if(!f) return null;
+  const rest=Object.keys(f).filter(k=>k!=='C'&&k!=='H'&&f[k]).sort();
+  let s=''; ['C','H',...rest].forEach(k=>{ if(f[k]) s+=k+(f[k]!==1?f[k]:''); }); return s;
+}
+function msData(seq,mode,linkMode,three){
+  const r=compute(seq,mode,linkMode,three);
+  const missing=[]; const f=msFormula(r, missing);
+  const mono = f? formulaMass(f, MONO_MASS) : null;
+  const nP = r.bonds.length + (r.five==='phosphate'?2:0) + (r.three==='phosphate'?2:0);   // max deprotonations for the m/z ladder
+  return { r, avg:r.mw, mono, formula:f, formulaStr:formatFormula(f), missing:[...new Set(missing)], charge:r.charge, maxN:Math.max(1,nP), n:r.n };
+}
+function mzLadder(M, maxN, mode){                     // mode 'neg' -> [M-zH]z- ; 'pos' -> [M+zH]z+
+  const rows=[]; const sgn = (mode==='pos')? +1 : -1;
+  for(let z=1; z<=maxN; z++) rows.push({z, mz:(M + sgn*z*PROTON)/z});
+  return rows;
 }
 
 /* =================================================================
@@ -2270,7 +2405,7 @@ const DEFAULTS = {
   fontUI:"quicksand", fontHead:"poppins", fontNum:"splinemono", fsBase:15, fsResult:54,
   radius:14, border:1, density:"cozy", shadow:"soft",
   btn:"soft", keypad:true, resultpos:"top", align:"left",
-  showChips:true, showFormula:false, showCharge:false, decimals:2, duplexMode:"off", antiSeq:"", antiType:"DNA", antiFive:"OH", antiThree:"OH", antiLinkage:"PO", mwSource:"sense",
+  showChips:true, showFormula:false, decimals:2, msBasis:"avg", msMode:"neg", msAdducts:false, duplexMode:"off", antiSeq:"", antiType:"DNA", antiFive:"OH", antiThree:"OH", antiLinkage:"PO", mwSource:"sense",
   type:"DNA", linkage:"PO", five:"OH", fiveThio:false, advanced:false, superAdvanced:false, customBases:[],
   three:"OH", modPreset:"", modName:"", modMass:"",
   seq:"ATCGATCGAT",
@@ -2457,7 +2592,6 @@ function chipsHTML(r){
   const sugars=Object.keys(r.sugarCounts);
   if(sugars.length>1) sugars.forEach(s=>c.push(`<span class="chip sub">${SUGAR_LABEL[s]} <b>${r.sugarCounts[s]}</b></span>`));
   else ["A","C","G","T","U"].forEach(b=>{ if(r.counts[b]) c.push(`<span class="chip sub">${b} <b>${r.counts[b]}</b></span>`); });
-  if(S.showCharge) c.push(`<span class="chip sub">charge <b>${r.charge}</b></span>`);
   return c.join("");
 }
 function keypadHTML(){
@@ -2487,6 +2621,52 @@ function keypadHTML(){
   rows.push(`<div class="kp-row kp-util">`+util.join("")+`</div>`);
   return rows.join("");
 }
+function msSummaryText(){
+  const d=msData(S.seq,S.type,S.linkage); if(!d.n) return "";
+  const mode=S.msMode==='pos'?'pos':'neg', basis=(S.msBasis==='mono'&&d.mono!=null)?'mono':'avg';
+  const M=basis==='mono'?d.mono:d.avg;
+  const lad=mzLadder(M,d.maxN,mode).map(x=>x.z+'⁻: '+x.mz.toFixed(2)).join('  ');
+  return `${spaceSeq(S.seq,S.type,S.linkage)}\nAverage: ${d.avg.toFixed(2)} g/mol`+
+    (d.mono!=null?`\nMonoisotopic: ${d.mono.toFixed(2)} Da`:``)+
+    (d.formulaStr?`\nFormula: ${d.formulaStr}`:``)+
+    `\nNet charge: ${d.charge}`+
+    `\nESI ${mode==='pos'?'[M+zH]z+':'[M−zH]z−'} m/z (${basis}):\n${lad}`;
+}
+function renderMS(el){
+  const box=el.querySelector("[data-msbody]"); if(!box) return;
+  const d=msData(S.seq,S.type,S.linkage);
+  if(!d.n){ box.innerHTML=`<div class="ms-empty">Build a sequence in the <b>MW Calculator</b> tab. Its exact mass, elemental formula, and ESI m/z ladder show up here.</div>`; return; }
+  const monoOK = d.mono!=null;
+  const basis = (S.msBasis==='mono' && monoOK) ? 'mono' : 'avg';
+  const mode = S.msMode==='pos' ? 'pos' : 'neg';
+  const M = basis==='mono' ? d.mono : d.avg;
+  const dec = S.decimals!=null ? S.decimals : 2;
+  const rows = mzLadder(M, d.maxN, mode);
+  const ad = ADDUCT.Na, adK = ADDUCT.K, adKey = basis==='mono'?'mono':'avg';
+  const showAd = !!S.msAdducts;
+  const ion = mode==='pos' ? '[M+zH]<sup>z+</sup>' : '[M−zH]<sup>z−</sup>';
+  const ladHTML = rows.map(x=>{
+    const hot = x.mz>=500 && x.mz<=2000;
+    const na = x.mz + ad[adKey]/x.z, k = x.mz + adK[adKey]/x.z;
+    return `<tr class="${hot?'hot':''}"><td>${x.z}${mode==='pos'?'+':'−'}</td><td>${x.mz.toFixed(2)}</td>${showAd?`<td>${na.toFixed(2)}</td><td>${k.toFixed(2)}</td>`:''}</tr>`;
+  }).join("");
+  const missHTML = (!monoOK && d.missing.length) ? `<div class="ms-missing"><b>Monoisotopic mass needs a formula</b> for ${d.missing.map(c=>`<code>${c}</code>`).join(', ')}. Add it under <b>Custom monomers &amp; conjugates</b> (Super Advanced): type the <b>free-nucleoside formula</b> (5′-OH, 3′-OH, <b>no phosphate</b>) into the Formula field. The calculator adds the backbone phosphate for you, the same way it does for the mass. Average mass and the m/z ladder below still work.</div>` : '';
+  box.innerHTML = `
+    <div class="ms-head">Mass spec <span class="ms-sub">linked to the MW Calculator sequence</span></div>
+    <div class="ms-stats">
+      <div class="ms-stat"><div class="ms-l">Average mass</div><div class="ms-v">${d.avg.toLocaleString(undefined,{minimumFractionDigits:dec,maximumFractionDigits:dec})} <small>g/mol</small></div></div>
+      <div class="ms-stat"><div class="ms-l">Monoisotopic mass</div><div class="ms-v">${monoOK? d.mono.toLocaleString(undefined,{minimumFractionDigits:dec,maximumFractionDigits:dec})+' <small>Da</small>' : '<span class="ms-na">needs formula</span>'}</div></div>
+    </div>
+    <div class="ms-meta">${d.formulaStr?`<span class="ms-formula">${d.formulaStr}</span>`:''}<span class="ms-charge">net charge <b>${d.charge}</b></span><span class="ms-len">${d.n} nt</span></div>
+    ${missHTML}
+    <div class="ms-controls">
+      <div class="cseg sm" data-msset="msBasis"><button data-msval="avg" class="${basis==='avg'?'on':''}">Average</button><button data-msval="mono" class="${basis==='mono'?'on':''}" ${monoOK?'':'disabled'}>Monoisotopic</button></div>
+      <div class="cseg sm" data-msset="msMode"><button data-msval="neg" class="${mode==='neg'?'on':''}">Negative</button><button data-msval="pos" class="${mode==='pos'?'on':''}">Positive</button></div>
+      <button class="ms-adbtn ${showAd?'on':''}" data-msadducts>Na⁺/K⁺ adducts</button>
+    </div>
+    <div class="ms-ladder-wrap"><table class="ms-ladder"><thead><tr><th>charge</th><th>${ion} m/z</th>${showAd?'<th>+Na⁺</th><th>+K⁺</th>':''}</tr></thead><tbody>${ladHTML}</tbody></table></div>
+    <div class="ms-foot-note">Oligos ionize in <b>negative</b> mode (loss of backbone protons). Highlighted rows fall in the typical ESI window (m/z 500–2000). Monoisotopic is used for high-resolution instruments on shorter oligos; average for deconvoluted or larger species.</div>`;
+}
 function renderNumbers(el){
   const r=compute(S.seq,S.type,S.linkage);
   S.five=r.five; S.fiveThio=r.fiveThio;
@@ -2498,7 +2678,7 @@ function renderNumbers(el){
   const f=el.querySelector("[data-formula]");
   f.style.display=(S.showFormula&&r.n)?"block":"none";
   const m5=(FIVE[r.five]+(r.five==='phosphate'&&r.fiveThio?FIVE_THIO_DELTA:0)).toFixed(2);
-  if(S.showFormula) f.textContent=`M5′(${m5}) + Σ${r.n} nt + ${r.bonds.length} bonds (${r.nPO}·PO${r.nPS?", "+r.nPS+"·PS":""})`;
+  if(S.showFormula) f.textContent=`How it adds up: 5′ end ${m5} + ${r.n} nucleotide${r.n===1?'':'s'} + ${r.bonds.length} backbone bond${r.bonds.length===1?'':'s'} (${r.nPO} PO${r.nPS?", "+r.nPS+" PS":""}), in g/mol.`;
   const w=el.querySelector("[data-warn]");
   if(r.needPrefix){ w.style.display="block"; w.textContent="Hybrid mode — prefix every base with d or r (e.g. dA, rU). Bare bases are not counted."; }
   else if(r.uToT){ w.style.display="block"; w.textContent="U is not a DNA base — counted as T (deoxythymidine). Switch the backbone to RNA for uridine."; }
@@ -2590,7 +2770,7 @@ function renderCalc(el){
   if(cbl){ const cb=S.customBases||[];
     cbl.innerHTML = cb.length ? cb.map((c,i)=>{ const conj=(c.kind==='conj'); const tag=c.code.length>1?'('+c.code+')':c.code;
       const mw = conj ? `+${c.mass.toFixed(2)} <small>g/mol</small>` : `${(c.hasPhos?c.mass:(c.mass+LINK.PO)).toFixed(2)} <small>g/mol/pos</small>`;
-      return `<div class="cb-item"><span class="cb-tag">${tag}</span><span class="cb-nm">${c.name||'—'}</span><button class="cb-kindbtn" data-cbkindtoggle="${i}" title="Click to switch in-chain base ↔ conjugate">${conj?'conjugate':'base'}</button><span class="cb-mw">${mw}</span><button class="cb-del" data-cbdel="${i}" title="Delete">✕</button></div>`; }).join("")
+      return `<div class="cb-item"><span class="cb-tag">${tag}</span><span class="cb-nm">${c.name||'—'}</span><button class="cb-kindbtn" data-cbkindtoggle="${i}" title="Click to switch in-chain base ↔ conjugate">${conj?'conjugate':'base'}</button><span class="cb-mw">${mw}</span><button class="cb-editbtn" data-cbedit="${i}" title="Edit this monomer">✎</button><button class="cb-del" data-cbdel="${i}" title="Delete">✕</button></div>`; }).join("")
       : `<div class="cb-empty">No custom monomers or conjugates yet. Define one below — it becomes a sequence code and a keypad button.</div>`; }
   const tsel=el.querySelector("[data-threesel]"); if(tsel) tsel.value=S.three||'OH';
   const atsel=el.querySelector("[data-antithreesel]"); if(atsel) atsel.value=S.antiThree||'OH';
@@ -2614,7 +2794,9 @@ function renderCalc(el){
   const mp=el.querySelector('[data-pane="mw"]'), cp=el.querySelector('[data-pane="conc"]');
   if(mp) mp.style.display = S.tab==='mw' ? '' : 'none';
   if(cp) cp.style.display = S.tab==='conc' ? '' : 'none';
+  const msp=el.querySelector('[data-pane="ms"]'); if(msp) msp.style.display = S.tab==='ms' ? '' : 'none';
   renderConc(el);
+  renderMS(el);
 }
 function updateSelFoot(el){
   const ft=el.querySelector("[data-drawerfoot]"); if(!ft) return;
@@ -2794,6 +2976,8 @@ document.querySelector(".kit").addEventListener("click", e=>{
   if(kb){ kb.parentElement.querySelectorAll("[data-cbkind]").forEach(x=>x.classList.toggle("on",x===kb)); cbSyncForm(); cbPreview(); return; }
   const cbkt=e.target.closest("[data-cbkindtoggle]");
   if(cbkt){ const i=+cbkt.dataset.cbkindtoggle; const c=(S.customBases||[])[i]; if(c){ c.kind=(c.kind==='conj')?'base':'conj'; rebuildCustom(); save(); applyAll(); } return; }
+  const cbed=e.target.closest("[data-cbedit]");
+  if(cbed){ const i=+cbed.dataset.cbedit; const c=(S.customBases||[])[i]; if(c){ loadCustomIntoForm(c); (S.customBases||[]).splice(i,1); rebuildCustom(); save(); applyAll(); cbPreview(); const nm=document.querySelector('[data-cbf="name"]'); if(nm) nm.focus(); } return; }
   const cbdel=e.target.closest("[data-cbdel]");
   if(cbdel){ const i=+cbdel.dataset.cbdel; (S.customBases||[]).splice(i,1); rebuildCustom(); save(); applyAll(); return; }
   if(e.target.closest("[data-cbadd]")){ addCustomBase(); return; }
@@ -2801,6 +2985,10 @@ document.querySelector(".kit").addEventListener("click", e=>{
   if(md){ S.theme = md.dataset.mode==='dark' ? 'slate' : 'paper'; applyAll(); return; }
   const tb=e.target.closest("[data-tab]");
   if(tb){ S.tab=tb.dataset.tab; applyAll(); return; }
+  const msb=e.target.closest("[data-msset] [data-msval]");
+  if(msb){ const key=msb.closest("[data-msset]").dataset.msset; if(!msb.disabled){ S[key]=msb.dataset.msval; save(); calcs.forEach(c=>renderMS(c)); } return; }
+  if(e.target.closest("[data-msadducts]")){ S.msAdducts=!S.msAdducts; save(); calcs.forEach(c=>renderMS(c)); return; }
+  if(e.target.closest("[data-mscopy]")){ copyText(msSummaryText(), e.target.closest("[data-mscopy]")); return; }
   const ccp=e.target.closest("[data-ccopy]");
   if(ccp){ const MW=currentMW(), eps=srcStrand().eps;
     const a260mode=(S.readMode==='a260')&&!S.useCustomMW&&eps>0;
@@ -2816,6 +3004,8 @@ document.querySelector(".kit").addEventListener("click", e=>{
     else { const b=e.target.closest("[data-save]"); b.textContent="Already saved"; setTimeout(()=>applyAll(),900); }
     return;
   }
+  if(e.target.closest("[data-copyseq]")){ copyText(spaceSeq(S.seq,S.type,S.linkage), e.target.closest("[data-copyseq]")); return; }
+  if(e.target.closest("[data-copymw]")){ const rr=compute(S.seq,S.type,S.linkage); copyText(fmt(rr.mw,rr.n)+" g/mol", e.target.closest("[data-copymw]")); return; }
   const cp=e.target.closest("[data-copy]");
   if(cp){
     const r=compute(S.seq,S.type,S.linkage);
@@ -3008,7 +3198,6 @@ function buildPanel(){
   <div class="grp"><h3>Display</h3>
     ${toggle("showChips","Composition chips")}
     ${toggle("showFormula","Show formula line")}
-    ${toggle("showCharge","Approx. net charge")}
     <div class="row" style="margin-top:12px"><label>Decimal places<span class="v" data-v="decimals">${S.decimals}</span></label>${slider("decimals",0,4,1)}</div>
   </div>
   <div class="grp"><h3>Catalog</h3>
@@ -3057,27 +3246,28 @@ function wirePanel(){
 const FAQ_DATA = {
   mw: { title:"MW Calculator", items:[
     {q:"What does the MW Calculator do?", a:"Type an oligonucleotide sequence and it returns the molecular weight in g/mol, using the standard additive model: 5′-end + every nucleoside + every backbone linkage. <b>Example:</b> <code>ATCG</code> (DNA) → <b>1,173.83 g/mol</b>."},
-    {q:"How do I enter a sequence?", a:"Type letters in the Sequence box, or tap the on-screen base buttons (keypad). The result updates live. You can paste a sequence too — spaces are ignored. <b>Example:</b> type <code>ATCGATCGAT</code> → 3,027.04 g/mol."},
-    {q:"DNA, RNA, or Hybrid — what's the difference?", a:"<b>DNA</b> uses A/C/G/T (2′-deoxy). <b>RNA</b> uses A/C/G/U (ribose). Switching between them auto-swaps T↔U and recomputes. <b>Hybrid</b> lets you mix in one strand, but you must prefix every base with <code>d</code> or <code>r</code>. <b>Example (Hybrid):</b> <code>dAdCrGrU</code> = DNA-A, DNA-C, RNA-G, RNA-U."},
-    {q:"Linkage: PO, PS, and Mixed", a:"<b>PO</b> = phosphodiester (natural). <b>PS</b> = phosphorothioate (one O→S per bond, +16.06 g/mol). <b>Mixed</b> lets you set bonds individually — type <code>s</code> between two bases for a PS bond there, otherwise it's PO. <b>Example:</b> <code>AsCsGT</code> = PS, PS, PO. Note there's no linkage after the last base (free 3′-OH)."},
-    {q:"5′ end and 3′ end groups (and PS at the ends)", a:"<b>5′ end:</b> OH (default), 5′-Phosphate, or DMT. <b>3′ end:</b> OH, 3′-Phosphate, or an inverted base (Inverted dT/dA/dC/dG) — these show in the sequence as a locked tag (<code>P</code>, <code>idT</code>…) you can't delete; type to the left of it to add bases. <b>Phosphorothioate at an end:</b> put an <code>s</code> next to the end group and that linkage becomes PS (+16.06). <b>Example:</b> <code>ATCG s idT</code> = a PS linkage to the 3′ inverted-dT; <code>P s</code> at the 5′ = 5′-phosphorothioate. Inverted bases count as a nucleotide (+1 nt); a bare 3′-phosphate does not."},
-    {q:"How do I make a phosphorothioate (PS) bond?", a:"Type a lowercase <code>s</code> at the bond you want as PS — each PS adds +16.06 g/mol versus PO. Set the strand to <b>PS</b> to make every bond PS, or <b>Mixed</b> and place <code>s</code> only where you want it. <b>Example:</b> <code>AsCsGT</code> = PS, PS, PO. An <code>s</code> also works next to an end group or a conjugate to make that junction PS (e.g. <code>BsAUCG</code> if <code>B</code> is a 5′ conjugate, or <code>ATCG s idT</code>). No <code>s</code> = PO."},
+    {q:"How do I enter a sequence?", a:"Type letters in the Sequence box, or tap the on-screen base buttons (keypad). The result updates live. You can paste a sequence too; spaces are ignored. <b>Example:</b> type <code>ATCGATCGAT</code> → 3,027.04 g/mol."},
+    {q:"DNA, RNA, or Hybrid: what's the difference?", a:"<b>DNA</b> uses A/C/G/T (2′-deoxy). <b>RNA</b> uses A/C/G/U (ribose). Switching between them auto-swaps T↔U and recomputes. <b>Hybrid</b> lets you mix in one strand, but you must prefix every base with <code>d</code> or <code>r</code>. <b>Example (Hybrid):</b> <code>dAdCrGrU</code> = DNA-A, DNA-C, RNA-G, RNA-U."},
+    {q:"Linkage: PO, PS, and Mixed", a:"<b>PO</b> = phosphodiester (natural). <b>PS</b> = phosphorothioate (one O→S per bond, +16.06 g/mol). <b>Mixed</b> lets you set bonds individually. Type <code>s</code> between two bases for a PS bond there; otherwise it stays PO. <b>Example:</b> <code>AsCsGT</code> = PS, PS, PO. Note there's no linkage after the last base (free 3′-OH)."},
+    {q:"5′ end and 3′ end groups (and PS at the ends)", a:"<b>5′ end:</b> OH (default), 5′-Phosphate, or DMT. <b>3′ end:</b> OH, 3′-Phosphate, or an inverted base (Inverted dT/dA/dC/dG). These show in the sequence as a locked tag (<code>P</code>, <code>idT</code>…) you can't delete; type to the left of it to add bases. <b>Phosphorothioate at an end:</b> put an <code>s</code> next to the end group and that linkage becomes PS (+16.06). <b>Example:</b> <code>ATCG s idT</code> = a PS linkage to the 3′ inverted-dT; <code>P s</code> at the 5′ = 5′-phosphorothioate. Inverted bases count as a nucleotide (+1 nt); a bare 3′-phosphate does not."},
+    {q:"How do I make a phosphorothioate (PS) bond?", a:"Type a lowercase <code>s</code> at the bond you want as PS. Each PS adds +16.06 g/mol versus PO. Set the strand to <b>PS</b> to make every bond PS, or <b>Mixed</b> and place <code>s</code> only where you want it. <b>Example:</b> <code>AsCsGT</code> = PS, PS, PO. An <code>s</code> also works next to an end group or a conjugate to make that junction PS (e.g. <code>BsAUCG</code> if <code>B</code> is a 5′ conjugate, or <code>ATCG s idT</code>). No <code>s</code> means PO."},
     {q:"Advanced: 2′-sugar modifications", a:"Tap <b>+ Advanced</b> to reveal keypads for 2′-OMe (<code>m</code>), 2′-F (<code>f</code>), 2′-MOE (<code>moe</code>), and 2′-cEt (<code>cEt</code>). Prefix any base. <b>Example:</b> <code>mAfCdG</code> = 2′-OMe-A, 2′-F-C, DNA-G."},
     {q:"What do the chips under the result mean?", a:"They summarize the strand at a glance: total length (nt), the number of PO and PS bonds, the end groups, any custom monomers, and the count of each base (A/C/G/T/U)."},
-    {q:"Duplex mode (antisense + duplex MW)", a:"For double-stranded oligos (siRNA, ASOs) the <b>Duplex mode</b> control adds the second strand to the picture. <b>Off</b> = just your single strand. <b>Mirror</b> = the calculator automatically writes the matching antisense strand for you (the reverse-complement, where A pairs with T/U and G with C) and shows the antisense MW plus the combined duplex MW. <b>Manual</b> = you type the antisense strand yourself in a second box — use this when your real antisense isn't a simple complement (different modifications, mismatches, overhangs). The Manual box has its own 5′-end control and uses the keypad too. <b>Example (Mirror):</b> sense <code>ATCGATCG</code> → antisense <code>CGATCGAT</code>; duplex MW = sense + antisense. <b>Tip:</b> when duplex mode is on, the Concentration tab lets you base its math on the sense, antisense, or whole duplex."},
-    {q:"Custom bases & conjugates — what are they?", a:"Tap <b>+ Custom bases</b> (Super Advanced) to define anything that isn't a standard base: an unusual nucleotide, or a dye/tag attached to your oligo. Give it a <b>name</b>, a short <b>code</b>, and its <b>mass</b>, then it becomes a code you can type in the sequence and a button on the keypad. Single-letter codes are typed bare (<code>Y</code>); 2+ letter codes are wrapped in parentheses (<code>(psU)</code>). Each item is either an <b>In-chain base</b> or a <b>Conjugate</b> — see the next question, it matters."},
-    {q:"Vendor catalog — browse &amp; insert real monomers", a:"Tap <b>Catalog</b> in the top bar to open a curated library of modified phosphoramidites from <b>ChemGenes</b> and <b>Glen Research</b> (117 monomers across 156 vendor SKUs). Choose a vendor, search by product name / catalog # / code, or filter by category. Each result shows the engine <code>code</code> — type it in a sequence as <code>(code)</code> for multi-letter codes — plus the monomer mass, its contribution per position, and a verified badge linking to the vendor's page. <b>Insert</b> drops the code at your cursor in the sequence; <b>+ Library</b> saves it to your custom bases for the keypad. Browsing or inserting changes nothing in your saved data until you click <b>+ Library</b>. The catalog works fully offline."},
-    {q:"In-chain base vs Conjugate — what's the difference, and why does it change the mass?", a:"This is the key choice when you add a custom item, and it changes the result.<br><br><b>In-chain base</b> = a building block that sits <i>inside</i> the strand, like a normal letter. The calculator <b>automatically adds a backbone phosphate</b> (PO, or PS if your strand is phosphorothioate) to connect it, and it <b>counts as +1 in the length</b>. Use this for unusual nucleotides (e.g. pseudouridine).<br><br><b>Conjugate</b> = something hanging <i>off</i> the strand, like a dye or tag (Cy3, GalNAc, cholesterol, biotin). The calculator <b>adds only the mass you typed — no extra phosphate is added</b>, and it <b>does not change the length</b>. Use this for labels/attachments.<br><br><b>Worked example —</b> <code>AUCG(Cy3)</code>: if Cy3 is set to <b>In-chain base</b> it adds Cy3's mass <b>plus one phosphate (≈62 g/mol)</b> and the strand reads 5 nt. If Cy3 is set to <b>Conjugate</b> it adds <b>just Cy3's mass</b>, no phosphate, and the strand stays 4 nt. So the two differ by about one phosphate. Why isn't it automatic? Dye/linker chemistries vary, and vendors often quote a mass that already includes the linker — so you tell the calculator which case you have. <b>Forgot which you picked?</b> In the list, tap the soft <b>base / conjugate</b> pill next to any item to switch it instantly."},
-    {q:"⚠ Custom bases: read this so your mass is right", a:"The calculator can't know the chemistry of something you invented, so <b>you</b> must set it correctly — a wrong setting here is the easiest way to get a wrong mass. Get three things right: <b>(1) Kind</b> — <b>In-chain base</b> (sits in the strand, gets a backbone phosphate, +1 nt) vs <b>Conjugate</b> (a tag hanging off; adds only its mass, no phosphate, no length). <b>(2) Mass basis</b> (in-chain only) — did you enter the <b>free nucleoside</b> mass (no phosphate; the app adds it) or the <b>residue</b> mass (phosphate already included)? Set the toggle to match your number; the live preview shows the per-position result to confirm. <b>(3) Sanity-check</b> the preview, length, and chips after adding — they reveal instantly if the kind/basis is wrong. You can tap the <b>base / conjugate</b> pill in the list to switch kind anytime, and an <code>s</code> next to a conjugate makes that junction PS (+16.06). When unsure, verify a known oligo against a trusted value first."},
-    {q:"Custom in-chain base: why is \"g/mol/pos\" higher than the MW I typed?", a:"Because for an <b>in-chain base in Nucleoside mode</b> you enter the phosphate-free monomer mass, and the calculator adds one backbone phosphate (PO = 61.96) automatically — so the per-position number is about 62 higher. <b>Example:</b> type 244.20 → the list shows 306.16/pos. If the mass you have <i>already includes</i> the phosphate, flip the toggle to <b>+ Phosphate</b> and the per-position value will match exactly what you typed. (Conjugates don't do this — they add your mass as-is, with no phosphate.)"},
+    {q:"Duplex mode (antisense + duplex MW)", a:"For double-stranded oligos (siRNA, ASOs) the <b>Duplex mode</b> control adds the second strand to the picture. <b>Off</b> = just your single strand. <b>Mirror</b> = the calculator automatically writes the matching antisense strand for you (the reverse-complement, where A pairs with T/U and G with C) and shows the antisense MW plus the combined duplex MW. <b>Manual</b> = you type the antisense strand yourself in a second box. Use this when your real antisense isn't a simple complement (different modifications, mismatches, overhangs). The Manual box has its own 5′-end control and uses the keypad too. <b>Example (Mirror):</b> sense <code>ATCGATCG</code> → antisense <code>CGATCGAT</code>; duplex MW = sense + antisense. <b>Tip:</b> when duplex mode is on, the Concentration tab lets you base its math on the sense, antisense, or whole duplex."},
+    {q:"Custom bases & conjugates: what are they?", a:"Tap <b>+ Custom bases</b> (Super Advanced) to define anything that isn't a standard base: an unusual nucleotide, or a dye/tag attached to your oligo. Give it a <b>name</b>, a short <b>code</b>, and its <b>mass</b>, then it becomes a code you can type in the sequence and a button on the keypad. Single-letter codes are typed bare (<code>Y</code>); 2+ letter codes are wrapped in parentheses (<code>(psU)</code>). Each item is either an <b>In-chain base</b> or a <b>Conjugate</b>. The next question explains why that choice matters."},
+    {q:"Vendor catalog: browse &amp; insert real monomers", a:"Tap <b>Catalog</b> in the top bar to open a curated library of modified phosphoramidites from <b>ChemGenes</b> and <b>Glen Research</b> (267 monomers across 351 vendor SKUs). Choose a vendor, search by product name / catalog # / code, or filter by category. Each result shows the engine <code>code</code> (type it in a sequence as <code>(code)</code> for multi-letter codes), plus the monomer mass, its contribution per position, and a verified badge linking to the vendor's page. <b>Insert</b> drops the code at your cursor in the sequence; <b>+ Library</b> saves it to your custom bases for the keypad. Browsing or inserting changes nothing in your saved data until you click <b>+ Library</b>. The catalog works fully offline."},
+    {q:"In-chain base vs Conjugate: what's the difference, and why does it change the mass?", a:"This is the key choice when you add a custom item, and it changes the result.<br><br><b>In-chain base</b> = a building block that sits <i>inside</i> the strand, like a normal letter. The calculator <b>automatically adds a backbone phosphate</b> (PO, or PS if your strand is phosphorothioate) to connect it, and it <b>counts as +1 in the length</b>. Use this for unusual nucleotides (e.g. pseudouridine).<br><br><b>Conjugate</b> = something hanging <i>off</i> the strand, like a dye or tag (Cy3, GalNAc, cholesterol, biotin). The calculator <b>adds only the mass you typed, with no extra phosphate</b>, and it <b>does not change the length</b>. Use this for labels/attachments.<br><br><b>Worked example.</b> <code>AUCG(Cy3)</code>: if Cy3 is set to <b>In-chain base</b> it adds Cy3's mass <b>plus one phosphate (≈62 g/mol)</b> and the strand reads 5 nt. If Cy3 is set to <b>Conjugate</b> it adds <b>just Cy3's mass</b>, no phosphate, and the strand stays 4 nt. So the two differ by about one phosphate. Why isn't it automatic? Dye/linker chemistries vary, and vendors often quote a mass that already includes the linker, so you tell the calculator which case you have. <b>Forgot which you picked?</b> In the list, tap the soft <b>base / conjugate</b> pill next to any item to switch it instantly."},
+    {q:"Custom bases: getting the mass right", a:"The calculator can't know the chemistry of something you invented, so <b>you</b> must set it correctly. A wrong setting here is the easiest way to get a wrong mass. Get three things right: <b>(1) Kind.</b> <b>In-chain base</b> sits in the strand, gets a backbone phosphate, and adds +1 nt; <b>Conjugate</b> is a tag hanging off that adds only its mass, no phosphate, no length. <b>(2) Mass basis</b> (in-chain only). Did you enter the <b>free nucleoside</b> mass (no phosphate; the app adds it) or the <b>residue</b> mass (phosphate already included)? Set the toggle to match your number; the live preview shows the per-position result to confirm. <b>(3) Sanity-check</b> the preview, length, and chips after adding; they reveal instantly if the kind or basis is wrong. You can tap the <b>base / conjugate</b> pill in the list to switch kind anytime, and an <code>s</code> next to a conjugate makes that junction PS (+16.06). When unsure, verify a known oligo against a trusted value first."},
+    {q:"Custom in-chain base: why is \"g/mol/pos\" higher than the MW I typed?", a:"Because for an <b>in-chain base in Nucleoside mode</b> you enter the phosphate-free monomer mass, and the calculator adds one backbone phosphate (PO = 61.96) automatically, so the per-position number is about 62 higher. <b>Example:</b> type 244.20 → the list shows 306.16/pos. If the mass you have <i>already includes</i> the phosphate, flip the toggle to <b>+ Phosphate</b> and the per-position value will match exactly what you typed. (Conjugates don't do this; they add your mass as-is, with no phosphate.)"},
+    {q:"Mass Spec tab: monoisotopic mass, m/z ladder, adducts", a:"The <b>Mass Spec</b> tab reads the sequence from the MW Calculator and shows what you need at the instrument. <b>Average mass</b> suits deconvoluted or larger oligos; <b>monoisotopic mass</b> (from the exact elemental formula) is what high-resolution instruments report for shorter oligos. The <b>m/z ladder</b> lists the charge-state series so you can match the peaks on your spectrum. Oligos run in <b>negative</b> mode as [M\u2212zH]<sup>z\u2212</sup>, and the highlighted rows fall in the typical ESI window (m/z 500 to 2000). Turn on <b>Na\u207a/K\u207a adducts</b> to see the salt satellite peaks that often appear. A custom base or conjugate needs its elemental formula for a monoisotopic mass: add the free-nucleoside formula in the Custom monomers panel and the backbone phosphate is added for you. Average mass and the ladder work without it."},
     {q:"Saving strands: History, naming, search, CSV", a:"<b>Save Strand</b> logs the current strand. Open <b>History</b> to reload any past strand, rename it, search by name or sequence, delete, or <b>Export CSV</b> (opens in Excel) with name, sequence, type, linkage, ends, length, modifications, and MW."},
   ]},
   conc: { title:"Concentration", items:[
     {q:"What does the Concentration tab do?", a:"It turns a Nanodrop reading into the molar concentration of your dissolved oligo, and helps you dilute it to a target. It uses the molecular weight from the MW Calculator tab automatically."},
-    {q:"Where does the MW come from?", a:"It's <b>linked live from the MW Calculator</b> — whatever sequence you built there. Tick <b>custom</b> to type a molecular weight by hand instead (the A₂₆₀ path is disabled in that case, since it needs the sequence)."},
+    {q:"Where does the MW come from?", a:"It's <b>linked live from the MW Calculator</b>, from whatever sequence you built there. Tick <b>custom</b> to type a molecular weight by hand instead (the A₂₆₀ path is disabled in that case, since it needs the sequence)."},
     {q:"Nanodrop in ng/µL vs A₂₆₀ (OD)", a:"Two reading modes. <b>ng/µL</b>: concentration = (ng/µL) ÷ MW. <b>A₂₆₀ (OD)</b>: uses Beer-Lambert, concentration = A₂₆₀ ÷ ε₂₆₀, where ε₂₆₀ is computed from your sequence (nearest-neighbor model, shown on screen). <b>Example:</b> 100 ng/µL of a 3,027 g/mol oligo ≈ 33 µM."},
-    {q:"How accurate is ε₂₆₀ (the A₂₆₀ path)?", a:"For standard DNA/RNA bases ε₂₆₀ is computed with the established nearest-neighbor model and is reliable. <b>Heads-up:</b> the molar absorptivity of <b>custom monomers/conjugates</b> and an <b>inverted-base 3′ cap</b> isn't known to the calculator, so those are <b>excluded</b> from ε₂₆₀ — making the A₂₆₀→concentration result a slight under-estimate when they're present. 2′-sugar modifications (OMe/F/MOE/cEt) reuse their natural base's ε, which is a standard, very close approximation. The <b>ng/µL path and the molecular weight itself are exact</b> in all cases — if a strand has custom chemistry, prefer the ng/µL reading, or enter a known ε for the most accurate A₂₆₀ result."},
-    {q:"Stock concentration output + units", a:"The big number is your stock concentration. Use the unit dropdown beside it to switch between nM / µM / mM / M — the value rescales automatically and your choice sticks."},
+    {q:"How accurate is ε₂₆₀ (the A₂₆₀ path)?", a:"For standard DNA/RNA bases ε₂₆₀ is computed with the established nearest-neighbor model and is reliable. <b>Heads-up:</b> the molar absorptivity of <b>custom monomers/conjugates</b> and an <b>inverted-base 3′ cap</b> isn't known to the calculator, so those are <b>excluded</b> from ε₂₆₀, which makes the A₂₆₀→concentration result a slight under-estimate when they're present. 2′-sugar modifications (OMe/F/MOE/cEt) reuse their natural base's ε, which is a standard, very close approximation. The <b>ng/µL path and the molecular weight itself are exact</b> in all cases. If a strand has custom chemistry, prefer the ng/µL reading, or enter a known ε for the most accurate A₂₆₀ result."},
+    {q:"Stock concentration output + units", a:"The big number is your stock concentration. Use the unit dropdown beside it to switch between nM / µM / mM / M. The value rescales automatically and your choice sticks."},
     {q:"Diluting the stock (C₁V₁ = C₂V₂)", a:"Enter a target concentration and final volume; the calculator tells you how much stock and how much water/buffer/diluent to mix. The stock can come from the Nanodrop result above, or tick <b>custom</b> to type a known stock concentration. <b>Example:</b> 50 µM stock → 5 µM in 100 µL means 10 µL stock + 90 µL diluent."},
     {q:"MW source with duplexes (Sense / Antisense / Duplex)", a:"When Duplex mode is on in the MW tab, a <b>MW source</b> selector appears here. Pick Sense, Antisense, or Duplex and all the concentration math (and ε₂₆₀ for the A₂₆₀ path) uses that strand."},
   ]},
@@ -3198,7 +3388,7 @@ async function proDoSend(){
 }
 async function proDoVerify(){
   const c=calcs.find(x=>x.offsetParent!==null)||calcs[0]; const cod=c&&c.querySelector('[data-procode]');
-  const code=((cod&&cod.value)||'').trim(); if(!/^[0-9]{6}$/.test(code)){ proErr('Enter the 6-digit code.'); return; }
+  const code=((cod&&cod.value)||'').trim(); if(!/^[0-9]{6,10}$/.test(code)){ proErr('Enter the numeric code from your email.'); return; }
   proErr(''); const btn=c.querySelector('[data-proverify]'); if(btn){ btn.disabled=true; btn.textContent='Verifying…'; }
   try{
     await proVerifyCode(_proEmail, code);
@@ -3213,7 +3403,7 @@ async function fetchFromSupabase(){
   const base = (S.catalogSupabaseUrl||'').replace(/\/+$/,'');
   const key  = (S.catalogSupabaseAnonKey||'').trim();
   if(!base || !key) throw new Error('Supabase URL or anon key missing');
-  const sel = 'code,name,category,sugar,kind,has_phos,mass,verified,verification,'
+  const sel = 'code,name,category,sugar,kind,has_phos,mass,verified,verification,nucleoside_formula,'
             + 'vendor_products(vendor,catalog_no,product_name,source)';
   const tok = await proAccessToken();                  // signed-in Pro user -> JWT; else anon key (RLS returns free-30)
   const res = await fetch(`${base}/rest/v1/monomers?select=${encodeURIComponent(sel)}`, {
@@ -3222,7 +3412,7 @@ async function fetchFromSupabase(){
   if(!res.ok) throw new Error('Supabase '+res.status+' '+(await res.text()).slice(0,160));
   const rows = await res.json();
   const monomers = rows.map(m=>({                       // map snake_case -> the keys catalogReady() expects (only has_phos differs)
-    code:m.code, name:m.name, category:m.category, sugar:m.sugar, kind:m.kind,
+    code:m.code, name:m.name, category:m.category, sugar:m.sugar, kind:m.kind, nucleoside_formula:m.nucleoside_formula,
     hasPhos:!!m.has_phos, mass:Number(m.mass),
     verified:!!m.verified, verification:m.verification||'',
     vendor_products:(m.vendor_products||[]).map(v=>({
