@@ -3,7 +3,7 @@
    Supabase (/rest/v1/, /auth/v1/) and any cross-origin request is passthrough
    (network-only) so auth + the Pro catalog are never served stale.
    Bump CACHE on each deploy so updated builds land. */
-var CACHE = 'oligo-mw-v10';
+var CACHE = 'oligo-mw-v11';
 var PRECACHE = [
   './',
   './index.html',
