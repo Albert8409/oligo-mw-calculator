@@ -3,7 +3,7 @@
    Supabase (/rest/v1/, /auth/v1/) and any cross-origin request is passthrough
    (network-only) so auth + the Pro catalog are never served stale.
    Bump CACHE on each deploy so updated builds land. */
-var CACHE = 'oligo-mw-v9';
+var CACHE = 'oligo-mw-v10';
 var PRECACHE = [
   './',
   './index.html',
@@ -23,10 +23,12 @@ self.addEventListener('install', function(e){
 });
 
 self.addEventListener('activate', function(e){
-  e.waitUntil(caches.keys().then(function(keys){
-    return Promise.all(keys.map(function(k){ return k===CACHE ? null : caches.delete(k); }));
+  e.waitUntil(caches.keys().then(function(keys){    return Promise.all(keys.map(function(k){ return k===CACHE ? null : caches.delete(k); }));
   }).then(function(){ return self.clients.claim(); }));
 });
+
+// client tapped "Update available" -> activate this waiting SW now (triggers controllerchange -> reload)
+self.addEventListener('message', function(e){ if(e.data==='skipWaiting'){ self.skipWaiting(); } });
 
 self.addEventListener('fetch', function(e){
   var req = e.request;

@@ -3700,7 +3700,40 @@ function initSW(){
   try{
     if(!('serviceWorker' in navigator)) return;
     if(!/^https?:$/.test(location.protocol)) return;   // file:// -> silently skip
-    navigator.serviceWorker.register('sw.js').catch(function(){});  // missing sw.js is non-fatal
+    navigator.serviceWorker.register('sw.js').then(function(reg){
+      // a new SW was found -> when it finishes installing (and one already controls the page), offer a refresh
+      reg.addEventListener('updatefound', function(){
+        var sw=reg.installing; if(!sw) return;
+        sw.addEventListener('statechange', function(){
+          if(sw.state==='installed' && navigator.serviceWorker.controller){ showUpdateChip(); }
+        });
+      });
+    }).catch(function(){});                              // missing sw.js is non-fatal
+    // the new SW took control (after the user taps refresh / relaunch) -> reload once to show the new build
+    var reloaded=false;
+    navigator.serviceWorker.addEventListener('controllerchange', function(){
+      if(reloaded) return; reloaded=true; location.reload();
+    });
+  }catch(_){ }
+}
+function showUpdateChip(){
+  try{
+    if(document.getElementById('oligoUpdateChip')) return;
+    var b=document.createElement('button');
+    b.id='oligoUpdateChip';
+    b.textContent='Update available — tap to refresh';
+    b.setAttribute('style','position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:9999;'
+      +'font:600 13px/1.2 system-ui,sans-serif;color:#fff;background:#d97706;border:0;border-radius:999px;'
+      +'padding:11px 18px;box-shadow:0 8px 24px -6px rgba(0,0,0,.5);cursor:pointer;max-width:92vw');
+    b.addEventListener('click', function(){
+      navigator.serviceWorker.getRegistration().then(function(reg){
+        var w=reg && (reg.waiting||reg.installing);
+        if(w){ w.postMessage('skipWaiting'); }          // ask the waiting SW to activate -> controllerchange -> reload
+        else { location.reload(); }
+      }).catch(function(){ location.reload(); });
+      b.disabled=true; b.textContent='Updating…';
+    });
+    document.body.appendChild(b);
   }catch(_){ }
 }
 var _deferredPrompt=null;
