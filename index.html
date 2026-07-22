@@ -112,20 +112,45 @@
     width:100%; overflow:hidden; transition:border-radius .15s,box-shadow .15s}
   .phone .calc{border-radius:0;border:0;box-shadow:none;min-height:100%}
   .calc-head{display:flex; align-items:center; gap:10px; padding:var(--pad) var(--pad) 0}
-  /* sticky header on mobile (app preview frame + real phone web): keep FAQ/theme + tabs reachable while scrolling */
-  [data-platform="app"] .calc{overflow:visible}
+  /* sticky header on mobile (real phone frame + narrow viewport). NOT keyed on
+     [data-platform="app"] — the shipped build is always app-mode, so that would force
+     the full-bleed sticky header (and break the rounded top corners) on wide desktop. */
   .calc .faq-head{display:none}
-  [data-platform="app"] .calc-topbar, .phone .calc-topbar{position:sticky; top:0; z-index:5;
+  .phone .calc{overflow:visible}
+  .phone .calc-topbar{position:sticky; top:0; z-index:5;
     background:var(--sticky-bg); padding-bottom:10px;
     border-bottom:2px solid var(--sticky-line);
     box-shadow:0 9px 14px -11px rgba(0,0,0,.5)}
   @media (max-width:600px){
-    .calc{overflow:visible}
+    .calc{overflow:visible; border-radius:0; border:0; box-shadow:none}
     .faq-head{display:none}
     .calc-topbar{position:sticky; top:0; z-index:5; background:var(--sticky-bg); padding-bottom:10px;
-      border-radius:var(--radius) var(--radius) 0 0;
+      border-radius:0;
       border-bottom:2px solid var(--sticky-line);
       box-shadow:0 9px 14px -11px rgba(0,0,0,.5)}
+  }
+  /* ---- narrow-view UX: shipped build is always app-mode, so DO NOT key these on
+     [data-platform="app"] (that would force phone styling on wide desktop). Drive them
+     only by real viewport width via the media query below (+ .phone for any explicit frame). ---- */
+  .t-short{display:none}
+  .phone .t-full{display:none}
+  .phone .t-short{display:inline}
+  .phone .tab{font-size:13px; padding:9px 6px; white-space:nowrap}
+  .phone .modebar{padding-top:12px; padding-bottom:2px}
+  .phone .faq-btn{font-size:11.5px; padding:5px 11px}
+  .phone .modetoggle button{font-size:11px; padding:5px 9px}
+  .phone .tabs{padding-top:6px}
+  .phone .result-value{font-size:min(var(--fs-result),38px)}
+  .phone .chem{gap:16px 16px}
+  @media (max-width:600px){
+    .calc .t-full{display:none} .calc .t-short{display:inline}
+    .calc .tabs .tab{font-size:13px; padding:9px 6px; white-space:nowrap}
+    .calc .modebar{padding-top:12px; padding-bottom:2px}
+    .calc .faq-btn{font-size:11.5px; padding:5px 11px}
+    .calc .modetoggle button{font-size:11px; padding:5px 9px}
+    .calc .tabs{padding-top:6px}
+    .calc .result-value{font-size:min(var(--fs-result),38px)}
+    .calc .chem{gap:16px 16px}
   }
   .calc-title{font-size:13px;font-weight:600;letter-spacing:-.01em}
   .calc-sub{font-size:11.5px;color:var(--muted)}
@@ -338,7 +363,7 @@
   .modetoggle button.on{background:var(--accent); color:var(--accent-ink)}
   .modetoggle button:hover:not(.on){color:var(--accent); box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--accent) 45%,transparent)}
   .tabs{display:flex; gap:6px; padding:8px var(--pad) 0}
-  .tab{flex:1; font-family:var(--font-head); font-size:13px; font-weight:600; cursor:pointer; padding:11px 10px;
+  .tab{flex:1; font-family:var(--font-head); font-size:16px; font-weight:600; cursor:pointer; padding:11px 10px;
     border-radius:calc(var(--radius)*.5); border:var(--border) solid var(--line);
     background:var(--surface-2); color:var(--muted); transition:background .12s,color .12s,border-color .12s}
   .tab:hover:not(.on){color:var(--accent); border-color:var(--accent)}
@@ -348,7 +373,7 @@
   .mwlink-main{flex:1 1 auto; min-width:0}
   .mwlink-val{font-family:var(--font-num); font-weight:600; font-size:30px; color:var(--text); margin-top:4px; font-variant-numeric:tabular-nums; word-break:break-all}
   .mwlink-val small{font-size:13px; color:var(--muted); font-weight:500; white-space:nowrap}
-  .mwlink>.mwlink-toggle{position:absolute; top:14px; right:var(--pad); margin:0}
+  .mwlink>.mwlink-toggle{position:static; margin-left:auto}
   .mwlink-sub{font-size:11px; color:var(--muted); margin-top:5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-family:var(--font-num)}
   .mwlink-toggle{display:inline-flex; align-items:center; gap:6px; height:30px; padding:0 12px; border-radius:calc(var(--radius)*.55);
     font-family:var(--font-head); font-size:12px; font-weight:600; color:var(--text); cursor:pointer; white-space:nowrap; flex:0 0 auto; margin-top:18px; margin-left:auto;
@@ -456,7 +481,7 @@
   .catalog{position:static; z-index:7; background:var(--surface); display:flex; flex-direction:column}
   .catalog[hidden]{display:none}
   .catalog-top{background:var(--surface)}
-  [data-platform="app"] .catalog-top, .phone .catalog-top{position:sticky; top:0; z-index:5; background:var(--sticky-bg); padding-bottom:10px; border-bottom:2px solid var(--sticky-line); box-shadow:0 9px 14px -11px rgba(0,0,0,.5)}
+  .phone .catalog-top{position:sticky; top:0; z-index:5; background:var(--sticky-bg); padding-bottom:10px; border-bottom:2px solid var(--sticky-line); box-shadow:0 9px 14px -11px rgba(0,0,0,.5)}
   @media (max-width:600px){ .catalog-top{position:sticky; top:0; z-index:5; background:var(--sticky-bg); padding-bottom:10px; border-bottom:2px solid var(--sticky-line); box-shadow:0 9px 14px -11px rgba(0,0,0,.5)} }
   .catalog-head{display:flex; align-items:center; gap:10px; padding:var(--pad); border-bottom:var(--border) solid var(--line)}
   .catalog-head h4{font-family:var(--font-head); font-size:16px; font-weight:600; margin-right:auto}
@@ -526,7 +551,7 @@
   .calc.drawer-open .calc-topbar, .calc.drawer-open .tabpane, .calc.drawer-open .faq{display:none}
   /* drawer top (title + Export All + Clear all + close + search) pinned on mobile, like the tabs bar */
   .drawer-top{background:var(--surface)}
-  [data-platform="app"] .drawer-top, .phone .drawer-top{position:sticky; top:0; z-index:5;
+  .phone .drawer-top{position:sticky; top:0; z-index:5;
     background:var(--sticky-bg); padding-bottom:10px;
     border-bottom:2px solid var(--sticky-line); box-shadow:0 9px 14px -11px rgba(0,0,0,.5)}
   @media (max-width:600px){
@@ -650,7 +675,7 @@
   body.app-mode .panel,
   body.app-mode .stage-bar,
   body.app-mode .phone{display:none !important}
-  body.app-mode .web-wrap{width:min(640px,100%); margin:0 auto}
+  body.app-mode .web-wrap{display:block !important; width:min(640px,100%); margin:0 auto}
   @media (max-width:560px){ body.app-mode .stage-canvas{padding:14px} }
 </style>
 </head>
@@ -810,9 +835,9 @@
     </div>
   </div>
   <div class="tabs">
-    <button class="tab" data-tab="mw" style="font-size: 16px; font-weight: 600">MW Calculator</button>
-    <button class="tab" data-tab="conc" style="font-size: 16px; font-weight: 600">Concentration</button>
-    <button class="tab" data-tab="ms" style="font-size: 16px; font-weight: 600">Mass Spec</button>
+    <button class="tab" data-tab="mw"><span class="t-full">MW Calculator</span><span class="t-short">MW</span></button>
+    <button class="tab" data-tab="conc"><span class="t-full">Concentration</span><span class="t-short">Conc.</span></button>
+    <button class="tab" data-tab="ms"><span class="t-full">Mass Spec</span><span class="t-short">Mass Spec</span></button>
   </div>
   </div>
   <div class="tabpane" data-pane="mw">
