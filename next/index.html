@@ -111,7 +111,7 @@
   --bg:#efe7d9; --surface:#fbf7f0; --surface-2:#f4eee1; --surface-3:#ece2d0;
   --text:#241d13; --muted:#5c5142; --faint:#726657;
   --line:#e4dac8; --line-2:#d7c8b0;
-  --accent:#c96a05; --accent-2:#9a4f08; --accent-ink:#160b00; --accent-soft:rgba(201,106,5,.13);
+  --accent:#c96a05; --accent-2:#8f4907;  /* R30: #9a4f08 was 4.28:1 on --accent-soft (floor 4.5); #8f4907 is 4.79 there, 6.29 on the card */ --accent-ink:#160b00; --accent-soft:rgba(201,106,5,.13);
   --good:#136a32; --good-soft:rgba(19,106,50,.13); --err:#b3271c; --err-soft:rgba(179,39,28,.10);
   --emph-bg:#161b24; --emph-fg:#eef2f8; --emph-label:#9fabbc; --emph-val:#f7a940; --emph-side:#9fabbc; --emph-bd:transparent; --emph-edge:transparent; --emph-sh:none;
   --pnl-bg:#161b24; --pnl-surf:#1f2531; --pnl-inset:#131a23; --pnl-line:#2b3440; --pnl-text:#eef2f8; --pnl-muted:#a7b3c4; --pnl-faint:#818fa1; --pnl-accent:#f6a635; --pnl-hero:#f7a940; --pnl-good:#54c76f;
@@ -131,7 +131,9 @@ body[data-mode="dark"]{
   --good:#4cc46a; --good-soft:rgba(76,196,106,.15); --err:#ff8178; --err-soft:rgba(255,129,120,.12);
   --emph-bg:#243040; --emph-fg:#e6edf3; --emph-label:#a9b6c6; --emph-val:#f0a53a; --emph-side:#a9b6c6;
   --emph-bd:color-mix(in srgb,var(--accent) 30%,var(--line)); --emph-edge:var(--accent); --emph-sh:0 12px 26px -16px rgba(0,0,0,.75);
-  --pnl-bg:#090d13; --pnl-surf:#131a24; --pnl-inset:#0c121a; --pnl-line:#26303d; --pnl-hero:#f4b355; --pnl-accent:#f4b355;
+  /* live-result instrument in dark mode: deep navy sampled from the app icon
+     (#021533) so the panel reads as a separate instrument, not more page. */
+  --pnl-bg:#021533; --pnl-surf:#0a2450; --pnl-inset:#01102a; --pnl-line:#1d3c6d; --pnl-text:#eaf1fb; --pnl-muted:#a0b5d5; --pnl-faint:#8095b6; --pnl-hero:#f8bc60; --pnl-accent:#f8bc60; --pnl-good:#5ad07a;
   --statusbar:#0d1117; --status-fg:#e6edf3;
   --scroll-thumb:#46515f; --scroll-thumb-hover:#5d6a79; --scroll-track:transparent;
 }
@@ -186,6 +188,10 @@ body[data-mode="dark"] .ico-btn.is-open, body[data-mode="dark"] .acct-btn.is-ope
 #kp-trigger.is-open{box-shadow:0 0 0 3px var(--accent-soft), inset 0 0 0 2px color-mix(in srgb,var(--accent-ink) 35%, transparent)}
 .menu .m-x{position:absolute; top:8px; right:8px; width:26px; height:26px; border-radius:7px; border:1px solid var(--line); background:var(--surface-2); color:var(--text); display:grid; place-items:center; font-size:12px; padding:0}
 .menu .m-x:hover{border-color:var(--accent)}
+/* 26px visual, 46px hit area — the panel is only 270px wide so the box itself
+   cannot grow without colliding with the menu rows above it. */
+.menu .m-x{position:absolute}
+.menu .m-x::after{content:""; position:absolute; top:-10px; right:-10px; bottom:-10px; left:-10px}
 .modetoggle{display:inline-flex; background:var(--surface-2); border:1px solid var(--line); border-radius:999px; padding:3px}
 .modetoggle button{border:0; background:none; font-family:var(--font-head); font-size:12px; font-weight:600; color:var(--muted); padding:6px 11px; border-radius:999px; min-height:34px}
 body[data-mode="light"] .mt-light, body[data-mode="dark"] .mt-dark{background:var(--accent); color:var(--accent-ink)}
@@ -395,6 +401,13 @@ body[data-tab="ms"] .r-actions .pa.prim .lp-ms,
 body[data-tab="hist"] .r-actions .pa.prim .lp-mw{display:inline}
 body[data-tab="cat"] .r-actions .pa.prim, body[data-tab="pro"] .r-actions .pa.prim{display:none}
 /* result state visibility (flat panel) */
+/* R29: .eyebrow's base rule is color:var(--muted) — the PAGE muted colour. In
+   the desktop layout this label sits on the dark result panel, so in LIGHT mode
+   it rendered #5c5142 on #161b24 = 2.23:1 (measured off the rendered pixels,
+   floor 4.5). Dark mode passed only by accident, because there --muted is light.
+   var(--pnl-muted) is what every other label on this panel already uses:
+   8.13:1 light, 8.69:1 dark. */
+#result .r-lead .eyebrow{color:var(--pnl-muted)}
 .r-lead .eyebrow{font-size:12px; letter-spacing:.09em}
 .r-empty{display:none}
 body[data-state="empty"] .e-default{display:block}
@@ -646,7 +659,10 @@ body[data-conc="a260"] .ng-only{display:none} body:not([data-conc="a260"]) .a260
 body[data-drawer="open"] .topbar{z-index:58}
 body[data-overlay="account"] .topbar, body[data-overlay="library"] .topbar{z-index:72}
 body[data-overlay="account"] .scrim, body[data-overlay="library"] .scrim{display:block}
-.menu{position:fixed; top:64px; right:16px; z-index:71; width:270px; background:var(--surface); border:1px solid var(--line-2); border-radius:14px; box-shadow:0 26px 66px -20px rgba(0,0,0,.55); padding:8px; display:none}
+/* top:64px sat under the phone status bar in standalone PWA (.topbar is
+   50px + safe-area there), so the first rows of Account/Library were covered.
+   max-height keeps a long Account menu scrollable instead of running off-screen. */
+.menu{position:fixed; top:calc(64px + var(--sat)); right:16px; z-index:71; width:270px; max-width:calc(100vw - 24px); max-height:calc(100vh - var(--sat) - var(--sab) - 78px); overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch; background:var(--surface); border:1px solid var(--line-2); border-radius:14px; box-shadow:0 26px 66px -20px rgba(0,0,0,.55); padding:8px; display:none}
 body[data-overlay="account"] .menu-account, body[data-overlay="library"] .menu-library{display:block}
 .menu .mi{display:flex; align-items:center; gap:11px; width:100%; text-align:left; border:0; background:none; color:var(--text); border-radius:9px; padding:11px; min-height:46px; font-family:var(--font-head); font-weight:600; font-size:13.5px}
 .menu .mi:hover{background:var(--surface-2)}
@@ -661,16 +677,26 @@ body[data-overlay="account"] .menu-account, body[data-overlay="library"] .menu-l
 .menu .mtheme .tl{font-family:var(--font-head); font-size:12px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); margin-bottom:6px}
 .menu .mseg{display:grid; grid-auto-flow:column; grid-auto-columns:1fr; background:var(--surface-2); border:1px solid var(--line); border-radius:9px; padding:3px; gap:3px}
 .menu .mseg button{border:0; background:none; font-family:var(--font-head); font-weight:600; font-size:12px; color:var(--muted); padding:8px 4px; border-radius:7px; min-height:38px}
-body[data-mode="light"] .menu .mseg .theme-light, body[data-mode="dark"] .menu .mseg .theme-dark{background:var(--accent); color:var(--accent-ink)}
+/* The highlight follows the chosen SETTING, not the resolved colour scheme.
+   shellTheme() already maintains .on + aria-checked correctly (including for
+   Auto); the old rule keyed off body[data-mode] so Auto could never look
+   selected and users read it as "stuck on dark forever". */
+.menu .mseg button.on, .menu .mseg button[aria-checked="true"]{background:var(--accent); color:var(--accent-ink)}
+.menu .mseg .theme-auto{line-height:1.15}
+.menu .mseg .theme-auto .sub{display:block; font-family:var(--font-head); font-size:9.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--faint); margin-top:2px}
+.menu .mseg button.on .sub{color:var(--accent-ink); opacity:.7}
 .help-sheet{position:fixed; z-index:75; background:var(--surface); display:none; flex-direction:column}
 body[data-overlay="help"] .help-sheet{display:flex}
 .help-sheet{inset:0}
 @media (min-width:768px){ .help-sheet{top:60px; left:auto; right:0; width:min(600px,100%); border-left:1px solid var(--line-2); box-shadow:var(--shadow)} }
-.help-top{flex:0 0 auto; display:flex; align-items:flex-start; gap:6px; padding:14px 20px 0; border-bottom:1px solid var(--line)}
+/* the help sheet is inset:0 below 768px, so its own header row has to carry the
+   safe-area inset or the tabs + close button sit under the phone status bar */
+.help-top{flex:0 0 auto; display:flex; align-items:flex-start; gap:6px; padding:calc(14px + var(--sat)) 20px 0; border-bottom:1px solid var(--line); background:var(--surface); position:relative; z-index:1}
+@media (min-width:768px){ .help-top{padding-top:14px} }   /* sheet already starts below the topbar */
 .help-tabs{display:flex; flex:1 1 auto; min-width:0; align-items:center; gap:2px; flex-wrap:wrap; overflow-x:hidden}
 .help-tabs .ht{flex:0 0 auto; border:0; background:none; font-family:var(--font-head); font-weight:600; font-size:12.5px; color:var(--muted); padding:11px 10px; border-bottom:2px solid transparent; white-space:nowrap}
 .help-tabs .ht.on{color:var(--accent-2); border-bottom-color:var(--accent)} body[data-mode="dark"] .help-tabs .ht.on{color:var(--accent)}
-.help-top .hx{flex:0 0 34px; width:34px; height:34px; border-radius:8px; border:1px solid var(--line); background:var(--surface-2); color:var(--text)}
+.help-top .hx{flex:0 0 44px; width:44px; height:44px; border-radius:10px; border:1px solid var(--line); background:var(--surface-2); color:var(--text)}
 .help-body{flex:1 1 auto; overflow-y:auto; padding:18px 20px calc(24px + var(--sab)); max-width:640px}
 .help-body h3{font-size:16px; margin-bottom:10px}
 .help-body p{font-size:13.5px; line-height:1.6; margin:0 0 11px; color:var(--text)}
@@ -715,12 +741,12 @@ body[data-mode="dark"] .help-faq-ans a{color:var(--accent)}
   .tabbar{display:grid}
   .workspace{padding-bottom:66px}
   .app{grid-template-columns:minmax(0,1fr); grid-template-areas:"result" "work"}
-  .rail{position:fixed; top:0; bottom:0; left:0; width:264px; z-index:60; transform:translateX(-100%); transition:transform .2s; align-items:stretch; padding:18px 14px 22px; gap:20px; box-shadow:var(--shadow)}
+  .rail{position:fixed; top:0; bottom:0; left:0; width:264px; z-index:60; transform:translateX(-100%); transition:transform .2s; align-items:stretch; padding:calc(18px + var(--sat)) 14px calc(22px + var(--sab)); gap:20px; box-shadow:var(--shadow); overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch}
   .rail .rlabel,.step .st,.step .ss,.libitem .li-l span,.helpitem .hi-l span,.proitem .pi-main,.proitem .pi-arr,.grp-h{display:revert}
   .step,.libitem,.helpitem,.proitem{justify-content:flex-start; width:100%; height:auto; padding:10px 9px}
   .libitem .cnt{position:static; transform:none; min-width:26px; padding:2px 8px; font-size:12px}
   body[data-drawer="open"] .rail{transform:none}
-  .rail-close{display:grid; place-items:center; position:absolute; top:12px; right:12px; width:34px; height:34px; border-radius:8px; border:1px solid var(--line); background:var(--surface-2); color:var(--text)}
+  .rail-close{display:grid; place-items:center; position:absolute; top:calc(12px + var(--sat)); right:12px; width:44px; height:44px; border-radius:10px; border:1px solid var(--line); background:var(--surface-2); color:var(--text)}
   .rail-scrim{display:none; position:fixed; inset:0; z-index:55; background:rgba(0,0,0,.34)}
   body[data-drawer="open"] .rail-scrim{display:block}
   .rail-toggle{display:grid}
@@ -734,6 +760,12 @@ body[data-mode="dark"] .help-faq-ans a{color:var(--accent)}
   .r-sub,.r-lead,.r-foot,.r-built,.r-rows{display:none}
   details.r-more{order:5; width:100%}
   details.r-more > summary{border-bottom:0}
+  /* R34/D3: the labels are hidden ONLY on phones (<=767px), where the disclosure
+     is a bare chevron living in the card's right-hand gutter. Hiding them here
+     left 768-1099 with a 780x44 empty strip carrying one small centred glyph --
+     measured at t820, and it reads as a rendering artifact rather than a control.
+     At tablet width the summary is still a full-width row, so it keeps its words. */
+  details.r-more > summary .chev{font-size:20px; line-height:1}
   .r-more-body{display:grid; grid-template-columns:1fr 1fr; gap:12px}
   .r-more-body .p-trace{grid-column:1/2} .r-more-body .p-ladder{grid-column:2/3}
   .r-more-body .r-actions{grid-column:1/-1}
@@ -752,18 +784,42 @@ body[data-mode="dark"] .help-faq-ans a{color:var(--accent)}
   .rail-toggle{display:none}
   .lib-btn{display:grid}
   .ws-scroll{padding:15px 15px 30px}
-  .r-inner{padding:11px 16px 8px}
+  /* tighter instrument strip: trimmed padding, and the detail toggle no longer
+     occupies a row of its own (was ~44px of pure chrome on a phone screen). */
+  .r-inner{padding:6px 16px 8px; position:relative}
   .r-hero .hv{font-size:30px}
-  .r-status{width:100%}
+  .r-status{width:100%; font-size:11px; letter-spacing:.09em}
   .r-sub,.r-lead,.r-fine,.r-foot,.r-built,.r-rows{display:none}
-  .r-chips{margin-top:8px}
-  details.r-more > summary{border-bottom:0; justify-content:center}
-  .r-more{position:fixed; left:0; right:0; top:calc(var(--sat) + 50px); bottom:0; z-index:40; background:transparent; pointer-events:none}
-  details.r-more[open]{background:var(--surface); pointer-events:auto; overflow-y:auto}
-  details.r-more[open] > summary{position:sticky; top:0; background:var(--surface); border-bottom:1px solid var(--line)}
-  details.r-more:not([open]) > summary{position:fixed; left:0; right:0; top:auto; margin-top:0}
-  /* keep chevron summary in-flow within the result bar when closed */
-  .r-more:not([open]){position:static; background:none; pointer-events:auto}
+  /* A5: one swipeable row instead of a wrapping block. At 320/360 the
+     composition chip used to push the card from 132px to 165px — the
+     narrowest screens were paying the most vertical space. */
+  .r-chips{margin-top:6px; flex:1 1 100%; width:100%; min-width:0; flex-wrap:nowrap;
+           overflow-x:auto; overscroll-behavior-x:contain; -webkit-overflow-scrolling:touch;
+           scrollbar-width:none; -ms-overflow-style:none}
+  .r-chips::-webkit-scrollbar{display:none}
+  .r-chips span{flex:0 0 auto; white-space:nowrap}
+  /* reserve the chevron gutter only in the states that actually render it
+     (empty/invalid/partial hide .has-content, so no dead space there) */
+  body[data-state="demo"] .r-inner, body[data-state="live"] .r-inner, body[data-state="formula-missing"] .r-inner{padding-right:54px}
+  /* COLLAPSED: chevron lives INSIDE the card, in its own right-hand gutter.
+     Costs zero vertical height and overlaps none of the value, units or chips. */
+  details.r-more{position:absolute; top:0; right:0; bottom:0; left:auto; width:54px; height:auto; z-index:3; background:none; pointer-events:auto}
+  details.r-more > summary{position:absolute; inset:0; width:auto; min-height:0; height:auto; display:grid; place-items:center; gap:0; border:0; padding:0; margin:0; background:none; color:var(--pnl-muted)}
+  details.r-more > summary .chev{font-size:22px; line-height:1}
+  /* R34/D3: wordless on phones only -- the gutter is 54px wide, there is no room
+     for "SHOW FULL DETAIL", and the rotating chevron carries the whole meaning. */
+  details.r-more > summary .lbl-open, details.r-more > summary .lbl-close,
+  details.r-more[open] > summary .lbl-open, details.r-more[open] > summary .lbl-close{display:none}
+  /* EXPANDED: full-screen sheet; the same chevron, rotated, in a sticky header row */
+  details.r-more[open]{position:fixed; left:0; right:0; top:calc(var(--sat) + 50px); bottom:0; width:auto; height:auto; z-index:40; background:var(--surface); overflow-y:auto; pointer-events:auto}
+  details.r-more[open] > summary{position:sticky; inset:auto; top:0; width:100%; height:46px; background:var(--surface); border-bottom:1px solid var(--line); color:var(--muted)}
+  /* R34/D2: the up-arrow must be exactly where the down-arrow was. Collapsed, the
+     summary IS the 54px gutter, so the chevron centres at 100% - 27px. Expanded,
+     the summary spans the full width and the base justify-content:center parked it
+     168px further left (measured: x 336->0, w 54->390). The chevron is 12px wide,
+     so end-alignment plus 21px of right padding restores the same centre line and
+     the control stays under the finger that opened it. */
+  details.r-more[open] > summary{justify-content:end; justify-items:end; padding:0 21px 0 0}
   .r-more-body{padding:15px 16px calc(24px + var(--sab)); grid-template-columns:1fr; gap:14px; display:flex; flex-direction:column}
   .crow{grid-template-columns:1fr; gap:8px; padding:11px 0}
   .crow .ann{grid-row:1; text-align:left; order:-1; color:var(--faint)}
@@ -782,10 +838,116 @@ body[data-mode="dark"] .help-faq-ans a{color:var(--accent)}
 .tabbar button{border:0; background:none; display:flex; flex-direction:column; align-items:center; gap:3px; padding:7px 2px; color:var(--muted); min-height:54px}
 .tabbar button .tl{font-family:var(--font-head); font-weight:600; font-size:12px}
 body[data-tab="mw"] .tb-mw, body[data-tab="conc"] .tb-conc, body[data-tab="ms"] .tb-ms, body[data-tab="cat"] .tb-cat{color:var(--accent)}
+/* R29: light-mode --accent (#c96a05) on the tabbar surface (#fbf7f0) is 3.54:1
+   for 12px/600 text. The INACTIVE labels use --muted and measure 7.25:1, so the
+   one tab telling you where you are was the hardest of the four to read. #a85400
+   is 5.00:1 — same burnt orange, one shade deeper. Dark mode's accent already
+   passes on the dark bar, hence :not([data-mode="dark"]). */
+body:not([data-mode="dark"])[data-tab="mw"] .tb-mw,
+body:not([data-mode="dark"])[data-tab="conc"] .tb-conc,
+body:not([data-mode="dark"])[data-tab="ms"] .tb-ms,
+body:not([data-mode="dark"])[data-tab="cat"] .tb-cat{color:#a85400}
 </style>
 <style id="__phase5-supp">
 /* real safe-area insets (replace the prototype's simulated values); max() keeps the top bar clear of the notch */
-:root{ --sat: max(env(safe-area-inset-top, 0px), 0px); --sab: max(env(safe-area-inset-bottom, 0px), 0px); }
+:root{ --sat: max(env(safe-area-inset-top, 0px), 0px); --sab: max(env(safe-area-inset-bottom, 0px), 0px);
+        /* R34/D5: the horizontal insets were never declared, so every calc() that
+           wanted them silently fell back to nothing. A landscape phone PWA has
+           side insets around 59px and is >=768px wide, which is exactly the range
+           that had no safe-area handling at all. */
+        --sal: max(env(safe-area-inset-left, 0px), 0px); --sar: max(env(safe-area-inset-right, 0px), 0px); }
+
+/* R34/D5: above 767px the shell ignored the insets entirely -- .topbar only gains
+   --sat padding inside @media (max-width:767px) (see the breakpoint block above),
+   so an installed iPad PWA ran its top bar under the status bar. These rules live
+   in the last stylesheet in the document, so the longhands below win the tie
+   against the earlier padding shorthands and override only the sides they name. */
+@media (min-width:768px){
+  .topbar{height:calc(60px + var(--sat)); padding-top:var(--sat);
+          padding-left:calc(18px + var(--sal)); padding-right:calc(18px + var(--sar))}
+  .tabbar{padding-left:var(--sal); padding-right:var(--sar)}
+  .uisw-foot{padding-left:calc(18px + var(--sal)); padding-right:calc(18px + var(--sar))}
+  .rail{padding-left:calc(14px + var(--sal))}
+}
+/* single-column tablet: the workspace and the result card own both screen edges */
+@media (min-width:768px) and (max-width:1099px){
+  .ws-scroll{padding-left:calc(26px + var(--sal)); padding-right:calc(26px + var(--sar))}
+  .r-inner{padding-left:calc(20px + var(--sal)); padding-right:calc(20px + var(--sar))}
+  body[data-state="demo"] .r-inner, body[data-state="live"] .r-inner,
+  body[data-state="formula-missing"] .r-inner{padding-right:calc(20px + var(--sar))}
+}
+/* three-column desktop: the rail owns the left edge, the result panel the right.
+   The shell is a fixed-height box up here with html,body{overflow:hidden}, so the
+   taller top bar has to come out of .app or the bottom of the page is clipped. */
+@media (min-width:1100px){
+  .r-inner{padding-right:calc(20px + var(--sar))}
+  .app{height:calc(100vh - 60px - var(--sat)); height:calc(100dvh - 60px - var(--sat))}
+}
+
+/* R35/D6: a landscape phone is >=768px WIDE but only ~390px TALL, so it takes the
+   tablet layout at a third of the height, and .app -- flex:1 1 auto with no floor
+   -- absorbed everything the other body children claimed. Measured at 844x390:
+   60px top bar + 77px version bar + 85px tab-bar reservation left the whole
+   application 168px. The result panel wanted 155px and got 51 (its detail toggle
+   fell below the panel floor); the workspace got 117px of a 1502px scroll height,
+   putting #seq -- the field the app exists for -- 484px out of reach.
+   Below 1100px the page scrolls, so giving .app the viewport minus the two bars it
+   must not overlap costs nothing except pushing the advisory notice below the fold,
+   which is the right way round. The two rules differ only in top-bar height:
+   50px + --sat below 768 (index.html:779), 60px + --sat above it (R34/D5). */
+@media (max-height:520px) and (min-width:768px){
+  .app{min-height:calc(100dvh - 60px - var(--sat) - 64px - var(--sab))}
+}
+@media (max-height:520px) and (max-width:767px){
+  .app{min-height:calc(100dvh - 50px - var(--sat) - 64px - var(--sab))}
+}
+
+/* R35/D6 part two. The floor above gave the landscape phone room; this makes the
+   result strip fit inside it. Measured at 844x390 after the floor: the strip's
+   content wanted 155px and the two implicit auto rows handed it 90, so the detail
+   toggle (y 159-203) sat 53px below the panel floor -- present in the DOM, not
+   reachable without scrolling a panel nobody would think to scroll.
+   Row sizing first: auto for the strip, minmax(0,1fr) for the workspace, which is
+   a scroller already. Then the strip stops needing 155px by taking the gutter
+   treatment <=767 has had all along -- the toggle out of flow, no 44px row, no
+   10px gap, trimmed padding: ~87px. Scoped to 768-1099 because that is the only
+   range that stacks; >=1100 keeps its single minmax(0,1fr) row. */
+@media (min-width:768px) and (max-width:1099px) and (max-height:520px){
+  .app{grid-template-rows:auto minmax(0,1fr)}
+  .r-inner{padding:6px calc(20px + var(--sar)) 8px calc(20px + var(--sal)); position:relative}
+  .r-hero .hv{font-size:26px}
+  body[data-state="demo"] .r-inner, body[data-state="live"] .r-inner,
+  body[data-state="formula-missing"] .r-inner{padding-right:calc(54px + var(--sar))}
+  details.r-more{position:absolute; top:0; right:var(--sar); bottom:0; left:auto; width:54px; height:auto; z-index:3; background:none; pointer-events:auto}
+  details.r-more > summary{position:absolute; inset:0; width:auto; min-height:0; height:auto; display:grid; place-items:center; gap:0; border:0; padding:0; margin:0; background:none; color:var(--pnl-muted)}
+  details.r-more > summary .chev{font-size:22px; line-height:1}
+  details.r-more > summary .lbl-open, details.r-more > summary .lbl-close,
+  details.r-more[open] > summary .lbl-open, details.r-more[open] > summary .lbl-close{display:none}
+  details.r-more[open]{position:fixed; left:0; right:0; top:calc(var(--sat) + 60px); bottom:0; width:auto; height:auto; z-index:40; background:var(--surface); overflow-y:auto; pointer-events:auto}
+  details.r-more[open] > summary{position:sticky; inset:auto; top:0; width:100%; height:44px; background:var(--surface); border-bottom:1px solid var(--line); color:var(--muted); justify-content:end; justify-items:end; padding:0 calc(21px + var(--sar)) 0 0}
+  details.r-more[open] > .r-more-body{padding:12px calc(16px + var(--sar)) calc(24px + var(--sab)) calc(16px + var(--sal))}
+}
+
+/* R38/D8: a short screen spends its height on the input, not on introductory
+   prose. Measured at 844x390: the workspace scroller is 158px and #seq starts
+   372px in, behind a breadcrumb, a page title, a subtitle paragraph, a section
+   header and a helper sentence -- roughly 174px of text the user reads once.
+   .crumb is already hidden below 768px; this extends the same judgement to short
+   screens and trims the rest of the chrome with it.
+   #seq-desc is clipped rather than removed: it is half of
+   aria-describedby="seq-desc seqhint", so display:none would drop the field's
+   description from the accessibility tree. Same technique as .sr (index.html:159).
+   No width guard, by the same reasoning as R35/D6b: a 1440x500 window is as
+   starved for height as a landscape phone is. */
+@media (max-height:520px){
+  .crumb{display:none}
+  .vsub{display:none}
+  .vhead{margin-bottom:2px}
+  .vhead h2{font-size:19px}
+  .sechead{margin:10px 0 6px}
+  .ws-scroll{padding-top:10px}
+  .seq-desc{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; margin:0; padding:0; border:0}
+}
 .statusbar{ background:var(--statusbar) }
 /* screen-reader-only live announcer */
 .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
@@ -1140,6 +1302,30 @@ body[data-mode="dark"] .catcard .c-src{color:var(--accent)}
 .catcard .c-src:hover{text-decoration:underline}
 .catcard .c-cat{color:var(--faint)}
 .gatebar[data-state="pro"]{border-color:color-mix(in srgb,var(--accent) 40%,var(--line)); background:var(--accent-soft)}
+
+/* ===== round 25 — touch-target floor, cascade-correct ======================
+   Every rule below is written at >= the specificity of the rule it has to
+   beat, and this block is the LAST static CSS in the document, so equal
+   specificity resolves in its favour too. Placement matters as much as the
+   value: the round-24 A1 bug and B4 below are the same defect.
+   ========================================================================= */
+@media (max-width:1099px){
+  /* B4: the Theme segment inside the Account menu. `.mseg button` at (0,1,1)
+     never beat `.menu .mseg button{min-height:38px}` at (0,2,1), so the
+     Auto / Light / Dark radios measured 38px on every phone. Padding is
+     trimmed 8px -> 6px so the pill art stays the same height while the hit
+     box grows to the floor. */
+  .menu .mseg button{min-height:44px; padding:6px 4px}
+
+  /* B6: help sheet tabs were 42px (padding 11px). 12px lands exactly on 44
+     including the 2px bottom border. */
+  .help-tabs .ht{padding:12px 10px}
+
+  /* B2: the Quick Insert keypad floor existed only below 768px, leaving the
+     768..1099 tablet band at 40px. Same values as the phone block. */
+  .qi-tok,.qi-expand,.qi-open{min-height:44px}
+  .qi-tok{min-width:44px}
+}
 </style>
 <style id="oligo-catgate-css">
 /* ===== shared modal shell (.catgate / .ctl-btn) =============================
@@ -1271,8 +1457,8 @@ textarea.catgate-input{font-family:var(--font-num,ui-monospace,monospace);line-h
           <div class="seqctl" data-seqctl="sense">
             <button class="ghost" data-seqpaste="sense" aria-label="Paste a sequence into the sense strand at the cursor">⧉ Paste</button>
             <button class="ghost" data-seqclear="sense" aria-label="Clear the sense sequence">Clear</button>
-            <button class="ghost" data-scan aria-label="Scan a photo of a sequence to fill the sense strand">📷 Scan</button>
-            <button class="ghost" data-voice aria-label="Dictate a sequence by voice">🎤 Voice</button>
+            <button class="ghost" data-scan="sense" aria-label="Scan a photo of a sequence to fill the sense strand">📷 Scan</button>
+            <button class="ghost" data-voice="sense" aria-label="Dictate a sequence by voice">🎤 Voice</button>
           </div>
         </div>
 
@@ -1285,6 +1471,8 @@ textarea.catgate-input{font-family:var(--font-num,ui-monospace,monospace);line-h
           <div class="seqctl" data-seqctl="antisense" hidden>
             <button class="ghost" data-seqpaste="antisense" aria-label="Paste a sequence into the antisense strand at the cursor">⧉ Paste</button>
             <button class="ghost" data-seqclear="antisense" aria-label="Clear the antisense sequence">Clear</button>
+            <button class="ghost" data-scan="antisense" aria-label="Scan a photo of a sequence to fill the antisense strand">📷 Scan</button>
+            <button class="ghost" data-voice="antisense" aria-label="Dictate the antisense sequence by voice">🎤 Voice</button>
           </div>
           <div class="hint" data-antihint style="display:none"></div>
           <p class="hintline" data-antirule style="display:none"><span class="hk" aria-hidden="true">›</span><span>Automatic complement: reverse-complement with the same sugar modifications and linkage per position; clean 5′-OH / 3′-OH ends.</span></p>
@@ -1374,6 +1562,14 @@ textarea.catgate-input{font-family:var(--font-num,ui-monospace,monospace);line-h
         </div>
         <div class="big"><div><div class="bl">Stock concentration</div><div style="display:flex;align-items:baseline;gap:8px;margin-top:4px"><span class="bv" id="c-stock">0</span><span class="bu" id="c-stocku">µM</span></div></div><div class="bside" id="c-side">Total amount <b>—</b><br>Total mass <b>—</b></div></div>
         <div class="sechead"><span><span class="snum" aria-hidden="true">2</span>Dilute the stock · C₁V₁ = C₂V₂</span><span class="sh-note" data-dilnote>using the stock above</span></div>
+        <div class="link">
+          <div class="link-main"><div class="ll">Stock used for the dilution</div><div class="ls" id="d-linksub">measured from the reading above</div></div>
+          <label class="link-toggle"><input type="checkbox" data-ctoggle="useCustomStock"><span>Use custom stock conc</span></label>
+        </div>
+        <div class="custom-mw-row" data-customstockwrap hidden>
+          <div class="fld"><label for="d-customstock">Custom stock concentration</label><div class="inp"><input id="d-customstock" type="number" data-conc="customStock" inputmode="decimal" min="0" step="any" placeholder="e.g. 100" aria-describedby="d-customstock-note"><span class="u">µM</span></div></div>
+          <div class="custom-mw-note" id="d-customstock-note">Dilute from a stock you already know — a vendor tube whose concentration is printed on the label, or an aliquot you made earlier. This replaces the measured stock for the C₁V₁ = C₂V₂ recipe only; section 1 keeps reporting what the reading above gives. With a custom stock the dilution needs no molecular weight and no sequence.</div>
+        </div>
         <div class="dil">
           <div class="fld"><label for="d-c2">Target concentration</label><div class="inp"><input id="d-c2" data-conc="dilC2" inputmode="decimal" min="0" value="" placeholder="0"><span class="u">µM</span></div></div>
           <div class="fld"><label for="d-v2">Target volume</label><div class="inp"><input id="d-v2" data-conc="dilV2" inputmode="decimal" min="0" value="" placeholder="0"><span class="u">µL</span></div></div>
@@ -1530,7 +1726,7 @@ textarea.catgate-input{font-family:var(--font-num,ui-monospace,monospace);line-h
         <div class="r-row"><span class="rl">Elemental formula</span><span class="rv mono-ok">C₉₈H₁₂₄N₃₇O₅₈P₉</span><span class="rv na mono-missing">unavailable — needs a formula</span></div>
       </div>
       <div class="r-notice has-content" role="note" hidden></div><details class="r-more has-content">
-        <summary><span class="lbl-open">Show full detail</span><span class="lbl-close">Hide detail</span><span class="chev" aria-hidden="true">▾</span></summary>
+        <summary aria-label="Show or hide full detail" title="Show / hide full detail"><span class="lbl-open">Show full detail</span><span class="lbl-close">Hide detail</span><span class="chev" aria-hidden="true">▾</span></summary>
         <div class="r-more-body"><div class="r-dxdetail" hidden></div>
           <div class="p-trace">
             <div class="tr"><span>Σ free nucleosides</span><span class="tv">2,469.36</span></div>
@@ -1562,7 +1758,7 @@ textarea.catgate-input{font-family:var(--font-num,ui-monospace,monospace);line-h
   <div class="msep"></div>
   <button class="mi danger" role="menuitem" data-acctbtn data-signed="0"><span class="ic" aria-hidden="true">→</span>Sign in</button>
   <div class="msep"></div>
-  <div class="mtheme"><div class="tl">Theme</div><div class="mseg" role="radiogroup" aria-label="Theme"><button class="theme-auto" role="radio" aria-checked="false">Auto</button><button class="theme-light" role="radio" aria-checked="true">Light</button><button class="theme-dark" role="radio" aria-checked="false">Dark</button></div></div>
+  <div class="mtheme"><div class="tl">Theme</div><div class="mseg" role="radiogroup" aria-label="Theme"><button class="theme-auto" role="radio" aria-checked="false">Auto<span class="sub" data-autosub></span></button><button class="theme-light" role="radio" aria-checked="true">Light</button><button class="theme-dark" role="radio" aria-checked="false">Dark</button></div></div>
 </div>
 <div class="menu menu-library" role="menu" aria-label="Library">
   <div class="mhead"><button class="m-x" aria-label="Close library menu" onclick="setOverlay('none')">✕</button><span class="eyebrow" style="padding:0 2px">Library</span></div>
@@ -2741,7 +2937,12 @@ function spaceSeq(seq, type, linkMode){
     if(!t.nobond && i<p.tokens.length-1){ if(lm==='PS') s+='s'; else if(lm==='Mixed' && p.marks[i]) s+='s'; }
     return s;
   });
-  return pre + parts.join(' ');
+  /* IDT-style grouping: three BASES together, one space between groups.
+     Grouping by TOKEN (not by character) is what makes a linkage mark ride
+     along with its base without counting as a base:
+       TsAsGs ACsG ACT GGsC   */
+  var groups=[]; for(var gi=0; gi<parts.length; gi+=3){ groups.push(parts.slice(gi, gi+3).join('')); }
+  return pre + groups.join(' ');
 }
 function copyText(txt, btn){
   const done=()=>{ if(btn){ const t=btn.textContent; btn.textContent="Copied ✓"; setTimeout(()=>btn.textContent=t,1100); } };
@@ -3258,6 +3459,20 @@ function loadSavedState(h){
 
 /* Phase 5D: the .key keypad handlers were removed — the inline composer (its own
    module) now owns all token insertion/deletion via an explicit editor-state model. */
+
+/* R32: the composer module owns the display formatter, and this block is parsed
+   before it. Resolve it at call time and fall back to the raw string, which is
+   what these fields held before Phase 5D existed. A presentation module should
+   not be able to take the chemistry controls down with it -- and that is exactly
+   what happened while _fmtSeqField was unexported: every [data-cval] click threw
+   ReferenceError, and the focused-field sync on the line after it never ran, so
+   the sequence box kept showing thymidines after a flip to RNA while the mass
+   had already moved to uridines. */
+function _fmtSeqFieldSafe(seq,isAnti){
+  try{ var f=window._fmtSeqField; return (typeof f==='function') ? f(seq,isAnti) : seq; }
+  catch(_){ return seq; }
+}
+
 document.body.addEventListener("click", e=>{
   const cv=e.target.closest("[data-cval]");
   if(cv){
@@ -3284,7 +3499,7 @@ document.body.addEventListener("click", e=>{
     else if(key==="antiLinkage"){ const at=S.antiType||S.type; if(val==="PO") S.antiSeq=rebuild(S.antiSeq,at,at,"PO"); else if(val==="PS") S.antiSeq=rebuild(S.antiSeq,at,at,"PS"); S.antiLinkage=val; }   // populate/strip s in antisense
     else { S[key]=val; }
     applyAll();
-    calcs.forEach(c=>{ const st=c.querySelector("[data-seq]"); if(st) st.value=_fmtSeqField(S.seq,false); if(S.duplexMode!=="mirror"){ const at=c.querySelector("[data-antiseq]"); if(at) at.value=_fmtSeqField(S.antiSeq||'',true); } });  // sync even if a field is focused
+    calcs.forEach(c=>{ const st=c.querySelector("[data-seq]"); if(st) st.value=_fmtSeqFieldSafe(S.seq,false); if(S.duplexMode!=="mirror"){ const at=c.querySelector("[data-antiseq]"); if(at) at.value=_fmtSeqFieldSafe(S.antiSeq||'',true); } });  // sync even if a field is focused
     return;
   }
   if(e.target.closest("button[data-adv]")){ S.advanced=!S.advanced; applyAll(); return; }
@@ -3492,8 +3707,8 @@ document.body.addEventListener("change", e=>{
     if(mp.value && mp.value!=='custom'){ const p=MOD_PRESETS[mp.value]; S.modName=p.name; S.modMass=String(p.mass); }
     else if(mp.value===''){ S.modName=''; S.modMass=''; }
     applyAll(); return; }
-  const tsel=e.target.closest("[data-threesel]"); if(tsel){ S.three=tsel.value; S.seq=enforceThree(S.seq); applyAll(); calcs.forEach(c=>{ const t=c.querySelector("[data-seq]"); if(t) t.value=_fmtSeqField(S.seq,false); }); return; }
-  const atsel=e.target.closest("[data-antithreesel]"); if(atsel){ S.antiThree=atsel.value; S.antiSeq=enforceThree(S.antiSeq, S.antiThree); applyAll(); calcs.forEach(c=>{ const t=c.querySelector("[data-antiseq]"); if(t) t.value=_fmtSeqField(S.antiSeq||'',true); }); return; }
+  const tsel=e.target.closest("[data-threesel]"); if(tsel){ S.three=tsel.value; S.seq=enforceThree(S.seq); applyAll(); calcs.forEach(c=>{ const t=c.querySelector("[data-seq]"); if(t) t.value=_fmtSeqFieldSafe(S.seq,false); }); return; }
+  const atsel=e.target.closest("[data-antithreesel]"); if(atsel){ S.antiThree=atsel.value; S.antiSeq=enforceThree(S.antiSeq, S.antiThree); applyAll(); calcs.forEach(c=>{ const t=c.querySelector("[data-antiseq]"); if(t) t.value=_fmtSeqFieldSafe(S.antiSeq||'',true); }); return; }
   const cu=e.target.closest("[data-cu]"); if(cu){ S[cu.dataset.cu]=cu.value; applyAll(); return; }
   const ctg=e.target.closest("[data-ctoggle]");
   if(ctg){ S[ctg.dataset.ctoggle]=ctg.checked;
@@ -3503,7 +3718,14 @@ document.body.addEventListener("change", e=>{
     }
     if(ctg.dataset.ctoggle==="useCustomMW" && ctg.checked && S.readMode==="a260") S.readMode="ng";
     if(ctg.dataset.ctoggle==="useCustomStock" && ctg.checked && !String(S.customStock).trim()){
-      const _MW=currentMW(); const _C1=_MW>0 ? (parseFloat(S.nd)||0)*1e-3/_MW : 0;   // prefill with the nanodrop stock
+      /* R39: prefill with whatever section 1 is currently measuring, so turning the
+         toggle on is a starting point rather than a blank field. Mirrors the C1
+         expression in renderConcShell() -- including the A260 path, which the
+         original ng/uL-only prefill silently ignored. */
+      const _MW=currentMW(), _eps=srcStrand().eps;
+      const _a260m=(S.readMode==='a260') && !S.useCustomMW && _eps>0;
+      const _pn=parseFloat(S.path), _path=(isFinite(_pn)&&_pn>0)?_pn:1;
+      const _C1=_a260m ? ((parseFloat(S.a260)||0)/(_eps*_path)) : (_MW>0 ? (parseFloat(S.nd)||0)*1e-3/_MW : 0);
       if(_C1>0){ const a=autoUnit(_C1,C_UNITS); const u=['M','mM','µM','nM'].includes(a.u)?a.u:'µM';
         S.customStock=String(Math.round((_C1/uf(u,C_UNITS))*1000)/1000); S.customStockUnit=u; }
     }
@@ -4678,6 +4900,7 @@ function shellTheme(){
   if(ta) ta.setAttribute('aria-checked', auto?'true':'false');
   [tl,td,ta].forEach(function(b){ if(b) b.tabIndex=b.getAttribute('aria-checked')==='true'?0:-1; });
   if(tl) tl.classList.toggle('on', !auto&&!dark); if(td) td.classList.toggle('on', !auto&&dark); if(ta) ta.classList.toggle('on', auto);
+  var asub=_q('[data-autosub]'); if(asub) asub.textContent = auto ? (dark?'· dark':'· light') : '';
   var tc=document.getElementById('tc'); if(tc) tc.setAttribute('content', dark?'#0d1117':'#fbf7f0');
 }
 
@@ -5080,30 +5303,61 @@ function renderConcShell(){
   var C1 = a260mode ? (a260/(eps*path)) : (MW>0?(nd*1e-3)/MW:0);   // mol/L
   var su=S.stockUnit||'µM';
   var stock=document.getElementById('c-stock'); if(stock) stock.textContent = C1>0?nfmt(C1/uf(su,C_UNITS)):'0';
-  var dilnote=_q('#panel-conc [data-dilnote]'); if(dilnote) dilnote.textContent = C1>0?('from '+nfmt(C1/uf(su,C_UNITS))+' '+su+' stock'):'using the stock above';
+  /* [data-dilnote] is set in the R39 block below -- it names the stock the dilution
+     actually uses, which is no longer necessarily the one measured here. */
   var stocku=document.getElementById('c-stocku'); if(stocku) stocku.textContent=su;
   var volL=(parseFloat(S.vol)||0)*uf(S.volUnit||'µL',V_UNITS);
   var a1=autoUnit(C1*volL,MOL_UNITS), m1=autoUnit(C1*MW*volL,M_UNITS);
   var side=document.getElementById('c-side'); if(side) side.innerHTML='Total amount <b>'+nfmt(a1.v)+' '+a1.u+'</b><br>Total mass <b>'+nfmt(m1.v)+' '+m1.u+'</b>';
+  /* ---------------------------------------------------------------------
+     R39 -- "Use custom stock conc". Section 2 may run C1V1 = C2V2 from a stock
+     the user types in rather than the one section 1 measured, for the common
+     bench case of diluting a vendor tube whose concentration is printed on the
+     label. Section 1 stays measurement-only on purpose: #c-stock, #c-side and
+     [data-ccopy] keep reporting what the Nanodrop/A260 reading gives, because
+     "what I measured" and "what I am diluting from" are two different claims
+     and conflating them would let a typed number pass as a measurement.
+     Only the dilution switches to C1dil -- and with a custom stock it needs no
+     molecular weight and no sequence at all.
+     --------------------------------------------------------------------- */
+  var csToggle=_q('#panel-conc [data-ctoggle="useCustomStock"]'); if(csToggle) csToggle.checked=!!S.useCustomStock;
+  var csWrap=_q('#panel-conc [data-customstockwrap]'); if(csWrap) csWrap.hidden=!S.useCustomStock;
+  var csu=S.customStockUnit||'µM';
+  var csInput=document.getElementById('d-customstock');
+  if(csInput && document.activeElement!==csInput) csInput.value=S.customStock||'';
+  var csUnitEl=_q('#panel-conc [data-customstockwrap] .u'); if(csUnitEl) csUnitEl.textContent=csu;
+  var csRaw=String(S.customStock||'').trim(), csNum=parseFloat(csRaw);
+  _markInp('d-customstock', !!S.useCustomStock && !!csRaw && !(csNum>0));        // entered but not > 0
+  var C1dil = S.useCustomStock ? ((isFinite(csNum)&&csNum>0)?csNum*uf(csu,C_UNITS):0) : C1;
+  var dsu   = S.useCustomStock ? csu : su;                                       // the unit the dilution talks in
+  var c1ls=document.getElementById('d-linksub');
+  if(c1ls) c1ls.textContent = S.useCustomStock
+    ? (C1dil>0?'custom value — no MW or sequence needed':'enter a custom stock concentration')
+    : (C1>0?('measured from the '+(a260mode?'A₂₆₀':'Nanodrop')+' reading above'):'no stock yet — read above, or use a custom one');
+  var dilnote=_q('#panel-conc [data-dilnote]');
+  if(dilnote) dilnote.textContent = C1dil>0
+    ? ('from '+nfmt(C1dil/uf(dsu,C_UNITS))+' '+dsu+(S.useCustomStock?' custom stock':' stock'))
+    : (S.useCustomStock?'enter a custom stock':'using the stock above');
   var C2raw=parseFloat(S.dilC2)||0, V2raw=parseFloat(S.dilV2)||0;
   var C2=C2raw*uf(S.dilC2Unit||'µM',C_UNITS);
   var V2=V2raw*uf(S.dilV2Unit||'µL',V_UNITS);
   var addel=document.getElementById('d-add'), watel=document.getElementById('d-water');
-  var dilValid = C1>0 && C2>0 && V2>0 && C2<=C1*(1+1e-9);
+  var dilValid = C1dil>0 && C2>0 && V2>0 && C2<=C1dil*(1+1e-9);
   if(dilValid){
-    var V1=(C2*V2)/C1, dv1=autoUnit(V1,V_UNITS), dw=autoUnit(Math.max(V2-V1,0),V_UNITS);
+    var V1=(C2*V2)/C1dil, dv1=autoUnit(V1,V_UNITS), dw=autoUnit(Math.max(V2-V1,0),V_UNITS);
     if(addel) addel.textContent=nfmt(dv1.v)+' '+dv1.u; if(watel) watel.textContent=nfmt(dw.v)+' '+dw.u;
   } else { if(addel) addel.textContent='—'; if(watel) watel.textContent='—'; }
   // ---- Pass 2c: validation, input error rings, and copy gated until the recipe is valid ----
   var warnEl=_q('#panel-conc [data-conc-warn]');
   if(warnEl){ var wmsg='';
-    if(C1>0 && C2raw>0 && C2>C1*(1+1e-9)) wmsg='Target '+nfmt(C2/uf(su,C_UNITS))+' '+su+' exceeds the '+nfmt(C1/uf(su,C_UNITS))+' '+su+' stock — you can’t dilute up. Lower the target, or concentrate the stock first.';
+    if(C1dil>0 && C2raw>0 && C2>C1dil*(1+1e-9)) wmsg='Target '+nfmt(C2/uf(dsu,C_UNITS))+' '+dsu+' exceeds the '+nfmt(C1dil/uf(dsu,C_UNITS))+' '+dsu+' stock — you can’t dilute up. Lower the target, or concentrate the stock first.';
+    else if(S.useCustomStock && !(C1dil>0) && (C2raw>0||V2raw>0)) wmsg='Enter a custom stock concentration above — the dilution needs a starting concentration.';
     warnEl.textContent=wmsg; warnEl.hidden=!wmsg; }
   function _markInp(id, bad){ var el=document.getElementById(id); if(!el) return; var box=el.closest('.inp'); if(box) box.classList.toggle('err', !!bad); if(bad) el.setAttribute('aria-invalid','true'); else el.removeAttribute('aria-invalid'); }
   var readRaw=(S.readMode==='a260')?S.a260:S.nd, readNum=parseFloat(readRaw);
   _markInp('c-read', readRaw!=null && readRaw!=='' && !(readNum>0));           // entered but not > 0
   _markInp('c-vol',  S.vol!=null && S.vol!=='' && !((parseFloat(S.vol)||0)>0));
-  _markInp('d-c2',   C2raw>0 && C1>0 && C2>C1*(1+1e-9));                        // target above stock
+  _markInp('d-c2',   C2raw>0 && C1dil>0 && C2>C1dil*(1+1e-9));                  // target above the stock the dilution uses
   var cr=_q('.view-conc .copyrecipe'); if(cr){ cr.disabled=!dilValid; cr.setAttribute('aria-disabled', dilValid?'false':'true'); }
 }
 
@@ -5868,7 +6122,14 @@ function formatEditorValue(raw,A){
   var parsed=parseSeq(raw,A.typeKey);
   if(parsed.bad.length||parsed.needPrefix||parsed.tokens.length!==units.length) return raw;
   if(/[so]$/.test(units[units.length-1])&&!suffix) return raw;
-  return prefix+units.join(' ')+suffix;
+  /* R33: IDT-style grouping in the INPUT field, to match spaceSeq() in the Live
+     Result panel (R28). Group by UNIT, not by character -- a unit is a base plus
+     its trailing linkage mark, so an 's' rides along with its base and does not
+     count towards the three:  TsAsGs ACsG ACT GGsC
+     scanEditorUnits() ignores whitespace entirely, so re-scanning this output
+     yields the same units and the formatter stays idempotent. */
+  var groups=[]; for(var gi=0; gi<units.length; gi+=3){ groups.push(units.slice(gi, gi+3).join('')); }
+  return prefix+groups.join(' ')+suffix;
 }
 function mapEditorCaret(before,after,caret){
   var need=0, i;
@@ -5886,6 +6147,12 @@ function _fmtSeqField(seq,isAnti){                       // format S.seq/S.antiS
               :{fKey:S.five,fThio:S.fiveThio,threeKey:S.three,typeKey:S.type,sKey:'seq',isAnti:false};
   try{ return formatEditorValue(seq,A); }catch(_){ return seq; }
 }
+/* R32: the engine block calls this from the [data-cval] chemistry handler and
+   from both 3'-end <select> handlers, but it lives in this IIFE's closure and
+   was never exported -- so every chemistry click threw ReferenceError and the
+   "sync even if a field is focused" branch after it never ran. Exported next to
+   formatEditorValue/mapEditorCaret, which the same call path already relies on. */
+window._fmtSeqField=_fmtSeqField;
 function doInsert(insertStr, code, kind){
   if(typeof S==='undefined') return;
   var t=resolveTarget(), A=affixOf(t), ta=fieldEl(t); if(!ta) return;
@@ -6154,12 +6421,12 @@ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded'
 
 <style id="oligo-share-css">
 /* Share (Part 1) — free link-share + recipient view. Uses existing app CSS variables. */
-.oshare-scrim{position:fixed;inset:0;z-index:200;background:rgba(20,18,14,.46);display:flex;align-items:center;justify-content:center;padding:18px}
+.oshare-scrim{position:fixed;inset:0;z-index:200;background:rgba(20,18,14,.46);display:flex;align-items:center;justify-content:center;padding:calc(18px + var(--sat)) 18px calc(18px + var(--sab))}
 .oshare-box{position:relative;background:var(--surface);color:var(--text);border:1px solid var(--line-2);border-radius:16px;box-shadow:var(--shadow);width:min(560px,100%);max-height:88vh;overflow:auto;padding:20px}
 .oshare-box h3{font-family:var(--font-head);font-size:16px;margin:0 0 4px}
 .oshare-sub{font-size:12.5px;color:var(--muted);line-height:1.5;margin:0 0 14px}
 .oshare-row{display:flex;gap:8px;margin:12px 0;flex-wrap:wrap}
-.oshare-row input{flex:1 1 220px;min-width:0;font-size:12.5px;padding:9px 11px;border:1px solid var(--line-2);border-radius:10px;background:var(--surface-2);color:var(--text)}
+.oshare-row input{flex:1 1 220px;min-width:0;min-height:44px;font-size:12.5px;padding:9px 11px;border:1px solid var(--line-2);border-radius:10px;background:var(--surface-2);color:var(--text)}
 .oshare-btn{font-family:var(--font-head);font-weight:600;font-size:12.5px;min-height:44px;padding:9px 16px;border-radius:999px;border:1px solid var(--line-2);background:var(--surface-2);color:var(--text);cursor:pointer}
 .oshare-btn.primary{background:var(--accent-ink,var(--accent));color:#fff;border-color:transparent}
 .oshare-btn[disabled]{opacity:.55;cursor:default}
@@ -6172,7 +6439,9 @@ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded'
 .oshare-card .mw b{font-family:var(--font-mono,ui-monospace,monospace)}
 .oshare-card .oshare-btn{margin-top:8px}
 .oshare-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
-.oshare-x{position:absolute;top:12px;right:14px;min-height:auto;padding:6px 10px}
+/* B9: `min-height:auto` here silently defeated the .oshare-btn 44px floor and
+   left the close affordance at 32x32. Keep the small glyph, restore the box. */
+.oshare-x{position:absolute;top:8px;right:10px;min-height:44px;min-width:44px;padding:0;display:grid;place-items:center;line-height:1}
 </style>
 <script id="oligo-share-js">
 /* Oligo MW Calculator — Share (Part 1): free, self-contained link-share + "Shared with you" recipient view.
@@ -6753,25 +7022,67 @@ try{
   /* ---- one-time scoped styles + one hidden file input ---- */
   var st=document.createElement('style');
   st.textContent=[
-    '#scanOv{position:fixed;inset:0;z-index:10000;display:flex;align-items:flex-start;justify-content:center;background:rgba(0,0,0,.5);padding:24px 14px;overflow:auto}',
+    '#scanOv{position:fixed;inset:0;z-index:10000;display:flex;align-items:flex-start;justify-content:center;background:rgba(0,0,0,.5);padding:calc(24px + var(--sat,0px)) 14px calc(24px + var(--sab,0px));overflow:auto;-webkit-overflow-scrolling:touch}',
     '#scanOv .catgate-card{background:var(--surface,#fff);color:var(--text,#111);border:1px solid var(--line,#e2e2e2);border-radius:14px;padding:18px;box-shadow:var(--shadow,0 20px 60px rgba(0,0,0,.35));width:100%;margin:auto}',
     '#scanOv .catgate-title{font-size:16px;font-weight:700;margin-bottom:4px;color:var(--text,#111)}',
     '#scanOv .catgate-sub{font-size:12px;color:var(--muted,#777);margin-bottom:10px;line-height:1.5}',
-    '#scanOv .catgate-input{width:100%;padding:7px 9px;border:1px solid var(--line,#ccc);border-radius:8px;background:var(--surface-2,var(--bg,#fff));color:inherit;font-size:13px;box-sizing:border-box;font-family:inherit}',
-    '#scanOv .ctl-btn{padding:7px 13px;border-radius:8px;border:1px solid var(--line,#ccc);background:var(--surface-2,#f2f2f2);color:var(--text,#111);cursor:pointer;font-size:13px;line-height:1.2}',
+    // B8: 7px padding gave a 32px field. This sheet is where a mis-read base
+    // gets corrected by hand, usually on a phone, so it gets the full floor.
+    '#scanOv .catgate-input{width:100%;min-height:44px;padding:10px 11px;border:1px solid var(--line,#ccc);border-radius:8px;background:var(--surface-2,var(--bg,#fff));color:inherit;font-size:13px;box-sizing:border-box;font-family:inherit}',
+    '#scanOv .ctl-btn{min-height:44px;padding:10px 15px;border-radius:9px;border:1px solid var(--line,#ccc);background:var(--surface-2,#f2f2f2);color:var(--text,#111);cursor:pointer;font-size:13px;line-height:1.2}',
     '#scanOv .ctl-btn:hover{border-color:var(--accent,#d97706)}',
     '#scanOv .ctl-btn.primary{background:var(--accent,#d97706);border-color:var(--accent,#d97706);color:var(--accent-ink,#fff)}',
-    '#scanOv .ctl-btn.sm{font-size:12px;padding:6px 11px}',
+    '#scanOv .ctl-btn.sm{font-size:12px;padding:9px 12px}',
     '.scan-row{border:1px solid var(--line,#dcdcdc);border-radius:10px;padding:10px 11px;margin:10px 0;background:var(--surface-2,rgba(127,127,127,.04))}',
     '.scan-row-h{display:flex;gap:8px;align-items:center;margin-bottom:6px}',
     '.scan-name{flex:1;min-width:120px}',
     '.scan-conf{font-size:11px;color:var(--muted,#777);white-space:nowrap}',
     '.scan-seq{width:100%;font-family:var(--font-num,ui-monospace,monospace);margin-bottom:6px}',
-    '.scan-selrow{display:flex;gap:12px;flex-wrap:wrap;align-items:center;font-size:12px;color:var(--muted,#777);margin-bottom:6px}',
-    '.scan-selrow select{font-size:12px;padding:3px 5px;border:1px solid var(--line,#ccc);border-radius:6px;background:var(--surface,#fff);color:var(--text,#111)}',
-    '.scan-selrow label{display:inline-flex;gap:4px;align-items:center}',
+    '.scan-selrow{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:12px;color:var(--muted,#777);margin-bottom:6px}',
+    // B8: the four chem selects were 24px tall — under even the WCAG 2.5.8 AA
+    // 24px minimum once the border is counted, and the hardest controls in the
+    // whole sheet to hit. Row wraps, so height costs nothing but vertical space
+    // inside an already-scrollable card.
+    '#scanOv .scan-selrow select{font-size:13px;min-height:44px;padding:6px 8px;border:1px solid var(--line,#ccc);border-radius:8px;background:var(--surface,#fff);color:var(--text,#111);font-family:inherit}',
+    '.scan-selrow label{display:inline-flex;gap:6px;align-items:center;min-height:44px}',
+    '#scanOv .scan-selrow input[type=checkbox]{width:20px;height:20px}',
     '.scan-out{font-size:13px;margin-bottom:6px;line-height:1.5;color:var(--text,#111)}',
-    '.scan-out .ck-ok{color:#188038;font-weight:600}.scan-out .ck-warn{color:#d1242f;font-weight:600}',
+    /* R28: #188038 measured 4.34:1 on the sheet's cream surface rgb(244,238,225)
+       — under the 4.5:1 AA floor. #0f6b2e is 5.74:1 there and 6.64:1 on white.
+       (#d1242f is 4.54:1 on the same surface, so the warn colour stays put; it
+       is also used by half a dozen unrelated components.) */
+    '.scan-out .ck-ok{color:#0f6b2e;font-weight:600}.scan-out .ck-warn{color:#d1242f;font-weight:600}',
+    /* R26: the header badge reports the MW checksum, so it needs the same
+       colour vocabulary. .scan-out-scoped rules above do not reach it. */
+    '.scan-conf.ck-ok{color:#0f6b2e;font-weight:600}.scan-conf.ck-warn{color:#d1242f;font-weight:600}',
+    /* R26: a row whose computed mass contradicts the mass printed on the label
+       is the one thing in this sheet a user must not skim past. */
+    '#scanOv .scan-row[data-mwck="bad"]{border-color:#d1242f;box-shadow:inset 3px 0 0 #d1242f}',
+    '#scanOv .scan-row[data-mwck="bad"] .scan-seq{border-color:#d1242f}',
+    '.scan-fix{font-size:12px;line-height:1.5;margin:2px 0 6px;color:#b42318}',
+    /* ===== R27: dark-mode status colours ==================================
+       The three hard-coded hexes above are AA-legal on the light surface and
+       fail badly on the dark one. Measured against rgb(30,37,48), which is
+       what the sheet actually paints on in dark mode:
+           #d1242f  2.94:1     #b42318  2.34:1     #188038  3.06:1
+       AA body text is 4.5:1. Replacements were picked by computing the ratio:
+           #f87171  5.57:1     #4cc38a  6.94:1
+       Scoped to body[data-mode="dark"] — the app's own theme switch — so the
+       light palette is untouched. ==================================== */
+    'body[data-mode="dark"] .scan-out .ck-warn,body[data-mode="dark"] .scan-conf.ck-warn,body[data-mode="dark"] .scan-err{color:#f87171}',
+    'body[data-mode="dark"] .scan-out .ck-ok,body[data-mode="dark"] .scan-conf.ck-ok{color:#4cc38a}',
+    'body[data-mode="dark"] .scan-fix{color:#f87171}',
+    /* the rail is a non-text indicator (WCAG 1.4.11, 3:1) and sat at 2.94 */
+    'body[data-mode="dark"] #scanOv .scan-row[data-mwck="bad"]{border-color:#f87171;box-shadow:inset 3px 0 0 #f87171}',
+    'body[data-mode="dark"] #scanOv .scan-row[data-mwck="bad"] .scan-seq{border-color:#f87171}',
+    /* .scan-chip.warn hard-codes a pale pink background, which stayed pale pink
+       on a dark card and read as a light-mode fragment pasted into the sheet.
+       R28: the .16 tint composites to rgb(65,49,58) over the card, where #f87171
+       is only 4.40:1. The tint is what makes .scan-chipbtn read as a button, so
+       the text goes a step lighter instead — #fca5a5 is 6.41:1 on the blended
+       pill. This is the one place in dark mode that deviates from #f87171, and
+       it deviates because it is the one place with a background of its own. */
+    'body[data-mode="dark"] .scan-chip.warn{background:rgba(248,113,113,.16);color:#fca5a5}',
     '.scan-flags{display:flex;gap:6px;flex-wrap:wrap}.scan-flags:empty{display:none}',
     '.scan-chip{font-size:11px;padding:2px 8px;border-radius:999px;background:var(--surface-3,#ececec);color:var(--text,#333)}',
     '.scan-chip.warn{background:#fdecec;color:#b42318}',
@@ -6779,7 +7090,10 @@ try{
     '.scan-row-acts{display:flex;gap:8px;margin-top:8px}',
     '.scan-foot{display:flex;gap:8px;margin-top:12px;align-items:center}',
     '.scan-spin{padding:26px 8px;text-align:center;color:var(--muted,#777);font-size:14px}',
-    '.scan-chipbtn{border:none;cursor:pointer;font:inherit;font-size:11px;padding:2px 9px;border-radius:999px}',
+    // B8: this chip is a button — it opens the monomer picker for a token the
+    // model could not resolve. It measured 96x21. The non-interactive
+    // .scan-chip siblings stay small on purpose.
+    '.scan-chipbtn{border:none;cursor:pointer;font:inherit;font-size:12px;min-height:44px;padding:6px 13px;border-radius:999px;display:inline-flex;align-items:center;gap:4px}',
     '.scan-chipbtn:hover{box-shadow:0 0 0 1px var(--accent,#d97706) inset}',
     '.scan-pick{border:1px solid var(--accent,#d97706);border-radius:10px;padding:9px 10px;margin:8px 0 0;background:var(--surface,#fff)}',
     '.scan-pick-h{font-size:12px;margin-bottom:6px;color:var(--text,#111)}',
@@ -6802,9 +7116,16 @@ try{
     var ov=document.getElementById('scanOv');
     if(!ov){
       ov=document.createElement('div'); ov.id='scanOv'; ov.className='catgate';
+      /* R31 V5: same gap as #voiceOv -- no dialog role, and an Escape handler on
+         an element that never received focus. Focusing the container on create
+         (not on every re-render) means Escape works from the moment it opens and
+         a later repaint cannot yank focus out of a field the user is editing. */
+      ov.setAttribute('role','dialog'); ov.setAttribute('aria-modal','true');
+      ov.setAttribute('aria-label','Scan a label'); ov.setAttribute('tabindex','-1');
       ov.addEventListener('click', function(ev){ if(ev.target===ov) closeOverlay(); });
       ov.addEventListener('keydown', function(ev){ if(ev.key==='Escape') closeOverlay(); });
       document.body.appendChild(ov);
+      try{ ov.focus(); }catch(_){ }
     }
     return ov;
   }
@@ -6846,7 +7167,30 @@ try{
       mw:rr.mw, mwStr:fmt(rr.mw,rr.n), duplex:null, t:Date.now(), folder:'', tags:[], note:(r.scale?('scale '+r.scale):'') };
   }
 
-  /* ---- where the result should go: the calculator, or the Batch list ---- */
+  /* ---- R39: send one reviewed strand to the manual antisense strand --------
+     The antisense Scan button lives inside [data-seqctl="antisense"], which
+     applyAll() only unhides in duplexMode 'custom' ("Enter manually"), so this
+     path is already scoped the way the user asked. The guard below covers the
+     programmatic route (oligoScan._target('anti')) and the case where the mode
+     is flipped while the review overlay is open.
+     Chemistry travels with the sequence: a scanned RNA antisense must not be
+     computed as DNA, so the row's type/linkage/5'/3' land on the antisense
+     chem controls, mirroring what loadSavedState() does for the sense strand.
+     Setting S.antiSeq and calling applyAll() is the app's own idiom for filling
+     that box programmatically (see the seed at index.html:4982/4993). */
+  function useAsAnti(r){
+    var en=entryOf(r); if(!en){ notice('Fix the sequence before using it.'); return false; }
+    try{
+      if(S.duplexMode!=='custom'){ notice('Set the antisense strand to “Enter manually” first.'); return false; }
+      S.antiType=en.type; S.antiLinkage=en.linkage; S.antiFive=en.five; S.antiThree=en.three;
+      S.antiSeq=en.seq;
+      setTab('mw'); applyAll();
+      return true;
+    }catch(_){ return false; }
+  }
+
+  /* ---- where the result should go: the calculator, the antisense strand,
+          or the Batch list ---- */
   var target='calc';
 
   /* ---- unresolved modification -> catalog / custom-monomer picker ---------
@@ -6934,28 +7278,99 @@ try{
     (r.lowConfidenceSpans||[]).forEach(function(l){ if(l&&l.text) h+='<span class="scan-chip">check “'+scEsc(l.text)+'”</span>'; });
     return h;
   }
+  /* ---- R26: MW checksum -----------------------------------------------------
+     The mass printed on a vendor label is independent evidence about the
+     sequence, and the model reads it far more reliably than it reads 57
+     consecutive bases (correct on 3/3 runs where the sequence was wrong on
+     3/3). Comparing our computed mass against it is therefore the only
+     trustworthy signal in the payload — the model's own `confidence` field
+     was 1.0 on every one of those wrong reads.
+     Returns null when there is nothing to check against, which the callers
+     must treat as "unverified", NOT as "fine".
+     -------------------------------------------------------------------------*/
+  function mwVerdict(r, c){
+    c = c || computeRow(r);
+    if(!c || !c.ok) return null;
+    if(r.vendorMW==null || isNaN(r.vendorMW)) return null;
+    var vm=Number(r.vendorMW); if(!(vm>0)) return null;
+    var d=c.rr.mw-vm, ad=Math.abs(d), rel=ad/vm;
+    /* Mean residue mass, used ONLY to turn a mass gap into a base count for
+       the hint text. Never feeds compute() or the engine in any way. */
+    var per=(r.type==='RNA')?321.2:308.9;
+    var nb=Math.round(ad/per);
+    if(ad<=1)      return {k:'ok',   vm:vm, d:d, nb:0};
+    /* 0.5%: absorbs vendor rounding and free-acid vs sodium-salt reporting,
+       which the previous hard 1.0 g/mol cut flagged as a mis-read. On a 21 kDa
+       oligo that is ~106 g/mol — still well under a single residue, so a
+       genuine off-by-one-base can never hide inside this band. */
+    if(rel<=0.005) return {k:'near', vm:vm, d:d, nb:0};
+    return {k:'bad', vm:vm, d:d, nb:nb};
+  }
+  function verdictText(v){
+    if(!v) return '';
+    if(v.k==='ok')   return ' · <span class="ck-ok">✓ matches sheet ('+v.vm.toFixed(1)+')</span>';
+    if(v.k==='near') return ' · <span class="ck-ok">✓ sheet '+v.vm.toFixed(1)+' (Δ '+v.d.toFixed(1)+', within rounding)</span>';
+    return ' · <span class="ck-warn">⚠ sheet says '+v.vm.toFixed(1)+' (Δ '+(v.d>0?'+':'')+v.d.toFixed(1)+')</span>';
+  }
+  /* R26: "Δ 1229.4" is arithmetic; "about 4 bases missing" is an instruction.
+     Sign convention: our mass BELOW the label means bases were dropped. */
+  function fixHtml(r,c){
+    var v=mwVerdict(r,c); if(!v || v.k!=='bad') return '';
+    var msg;
+    if(v.nb>=1) msg='This does not match the mass printed on the label. Check the sequence for about '
+                    +v.nb+' base'+(v.nb===1?'':'s')+' '+(v.d<0?'missing':'too many')
+                    +' — scanning drops repeated bases most often (…CC…, …TTT…).';
+    else        msg='This does not match the mass printed on the label. Re-check the sequence, the 5′/3′ ends and the linkage.';
+    return '<div class="scan-fix">'+msg+'</div>';
+  }
+  /* R26: the header badge used to print the model's self-reported confidence.
+     Measured: 1.0 on three consecutive wrong reads. A number a model assigns
+     to its own output is not evidence, so the badge now reports the checksum
+     and says so plainly when there is nothing to check. */
+  function confHtml(r,c){
+    var v=mwVerdict(r,c);
+    if(v && v.k==='ok')   return '<span class="scan-conf ck-ok" data-conf>✓ MW verified</span>';
+    if(v && v.k==='near') return '<span class="scan-conf ck-ok" data-conf>✓ MW verified</span>';
+    if(v && v.k==='bad')  return '<span class="scan-conf ck-warn" data-conf>⚠ MW mismatch</span>';
+    var pct=(r.confidence!=null?Math.round(r.confidence*100)+'%':'—');
+    return '<span class="scan-conf" data-conf>conf '+pct+' · unverified</span>';
+  }
+  function mwckOf(r,c){ var v=mwVerdict(r,c); return v?v.k:'none'; }
+
+  /* R26: single repaint path, at module scope because it is called both from
+     openReview's input handler and from the delegated body click handler that
+     resolves a monomer. The badge, the rail and the numbers are three views of
+     one verdict, so they have to be recomputed together — before this, a hand
+     edit refreshed the numbers and left a stale badge. */
+  function paintRow(el, r){
+    if(!el || !r) return;
+    var c=computeRow(r);
+    var o=el.querySelector('[data-out]');    if(o)  o.innerHTML=outHtml(r);
+    var fl=el.querySelector('[data-flags]'); if(fl) fl.innerHTML=flagHtml(r);
+    var cf=el.querySelector('[data-conf]');  if(cf) cf.outerHTML=confHtml(r,c);
+    try{ el.setAttribute('data-mwck', mwckOf(r,c)); }catch(_){ }
+  }
+
   function outHtml(r){
     var c=computeRow(r);
     if(!c.ok) return '<span class="scan-err">'+scEsc(c.msg||'Cannot parse')+'</span>';
-    var s='<b>'+c.mwStr+'</b> g/mol · '+c.n+' nt · ε₂₆₀ '+(c.eps||'—')+' · mono '+(c.mono||'—');
-    if(r.vendorMW!=null && !isNaN(r.vendorMW)){
-      var d=Math.abs(c.rr.mw-Number(r.vendorMW));
-      s+= d<=1 ? ' · <span class="ck-ok">✓ matches sheet ('+Number(r.vendorMW).toFixed(1)+')</span>'
-              : ' · <span class="ck-warn">⚠ sheet says '+Number(r.vendorMW).toFixed(1)+' (Δ '+d.toFixed(1)+')</span>';
-    }
-    return s;
+    return '<b>'+c.mwStr+'</b> g/mol · '+c.n+' nt · ε₂₆₀ '+(c.eps||'—')+' · mono '+(c.mono||'—')
+           + verdictText(mwVerdict(r,c)) + fixHtml(r,c);
   }
   function rowHtml(r,i){
-    return '<div class="scan-row" data-scanrow="'+i+'">'+
+    var c0=computeRow(r);
+    return '<div class="scan-row" data-scanrow="'+i+'" data-mwck="'+mwckOf(r,c0)+'">'+
       '<div class="scan-row-h"><input class="catgate-input scan-name" data-f="name" placeholder="Name (optional)" value="'+scEsc(r.name||'')+'"/>'+
-        '<span class="scan-conf">conf '+(r.confidence!=null?Math.round(r.confidence*100)+'%':'—')+'</span></div>'+
+        confHtml(r,c0)+'</div>'+
       '<input class="catgate-input scan-seq" data-f="seq" spellcheck="false" value="'+scEsc(r.seq||'')+'"/>'+
       '<div class="scan-selrow">Type '+selType(r)+' Linkage '+selLink(r)+' 5′ '+selFive(r)+' 3′ '+selThree(r)+
         ' <label><input type="checkbox" data-f="fiveThio"'+(r.fiveThio?' checked':'')+'/> 5′-PS</label></div>'+
       '<div class="scan-out" data-out>'+outHtml(r)+'</div>'+
       '<div class="scan-flags" data-flags>'+flagHtml(r)+'</div>'+
       '<div data-pickwrap></div>'+
-      '<div class="scan-row-acts"><button class="ctl-btn sm primary" data-scanuse="'+i+'">Use in calculator</button>'+
+      '<div class="scan-row-acts">'+(target==='anti'
+        ? '<button class="ctl-btn sm primary" data-scanuseanti="'+i+'">Use as antisense</button>'
+        : '<button class="ctl-btn sm primary" data-scanuse="'+i+'">Use in calculator</button>')+
         '<button class="ctl-btn sm" data-scanrm="'+i+'">Remove</button></div>'+
     '</div>';
   }
@@ -6972,7 +7387,8 @@ try{
     var ov=ensureOverlay(); var n=rows.length;
     ov.innerHTML='<div class="catgate-card" style="max-width:820px;max-height:88vh;overflow:auto">'+
       '<div class="catgate-title">📷 Scan result — '+n+' strand'+(n===1?'':'s')+' found</div>'+
-      '<div class="catgate-sub">Review and edit. MW is recomputed by the app engine; any MW printed on the source is only a cross-check. Nothing is saved until you choose.</div>'+
+      '<div class="catgate-sub">Review and edit. MW is recomputed by the app engine; any MW printed on the source is only a cross-check. Nothing is saved until you choose.'+
+        (target==='anti'?' “Use as antisense” sends one strand to the manual antisense box; “Save all to library” keeps every strand.':'')+'</div>'+
       '<div data-scanlist>'+rows.map(rowHtml).join('')+'</div>'+
       '<div class="scan-foot">'+
         (target==='batch'
@@ -6984,7 +7400,7 @@ try{
     var card=ov.querySelector('[data-scanlist]');
     function readRow(el){ var idx=+el.getAttribute('data-scanrow'); var r=rows[idx]; if(!r) return null;
       el.querySelectorAll('[data-f]').forEach(function(f){ var k=f.getAttribute('data-f'); r[k]=(f.type==='checkbox')?f.checked:f.value; }); return r; }
-    function refresh(el){ var r=readRow(el); if(!r) return; var o=el.querySelector('[data-out]'); var fl=el.querySelector('[data-flags]'); if(o) o.innerHTML=outHtml(r); if(fl) fl.innerHTML=flagHtml(r); }
+    function refresh(el){ var r=readRow(el); if(!r) return; paintRow(el, r); }   /* R26: repaint badge + rail + numbers together */
     card.addEventListener('input', function(e){
       var pq=e.target.closest('[data-pickq]');
       if(pq){                                        // live catalog search, cursor preserved
@@ -7004,11 +7420,16 @@ try{
     return new Promise(function(resolve,reject){
       var img=new Image(); var url=URL.createObjectURL(file);
       img.onload=function(){
-        try{ var max=1600,w=img.naturalWidth,h=img.naturalHeight,sc=Math.min(1,max/Math.max(w,h||1));
+        /* 2200px @ q0.92 (was 1600 @ 0.85). A vendor label prints the sequence
+           line small; at 1600/0.85 adjacent characters smeared together and the
+           model guessed. Never upscales, so small images are unaffected. */
+        try{ var max=2200,w=img.naturalWidth,h=img.naturalHeight,sc=Math.min(1,max/Math.max(w,h||1));
           var cw=Math.max(1,Math.round(w*sc)),ch=Math.max(1,Math.round(h*sc));
           var cv=document.createElement('canvas'); cv.width=cw; cv.height=ch;
-          cv.getContext('2d').drawImage(img,0,0,cw,ch);
-          var out=cv.toDataURL('image/jpeg',0.85); URL.revokeObjectURL(url); resolve(out);
+          var ctx=cv.getContext('2d');
+          try{ ctx.imageSmoothingEnabled=true; ctx.imageSmoothingQuality='high'; }catch(_){ }
+          ctx.drawImage(img,0,0,cw,ch);
+          var out=cv.toDataURL('image/jpeg',0.92); URL.revokeObjectURL(url); resolve(out);
         }catch(e){ URL.revokeObjectURL(url); reject(e); }
       };
       img.onerror=function(){ URL.revokeObjectURL(url); reject(new Error('image')); };
@@ -7049,7 +7470,8 @@ try{
 
   /* ---- delegated clicks: Scan button + review actions ---- */
   document.body.addEventListener('click', function(e){
-    if(e.target.closest('[data-scan]')){ e.preventDefault(); target='calc'; doScan(); return; }
+    var scBtn=e.target.closest('[data-scan]');
+    if(scBtn){ e.preventDefault(); target=(scBtn.getAttribute('data-scan')==='antisense')?'anti':'calc'; doScan(); return; }
     if(e.target.closest('[data-batchscan]')){ e.preventDefault(); target='batch'; doScan(); return; }
     var ov=document.getElementById('scanOv'); if(!ov || !ov.contains(e.target)) return;
     if(e.target.closest('[data-scanclose]')){ closeOverlay(); return; }
@@ -7059,6 +7481,9 @@ try{
     if(us){ var r=rows[+us.getAttribute('data-scanuse')]; if(!r){ return; } var en=entryOf(r);
       if(!en){ notice('Fix the sequence before using it.'); return; }
       try{ loadSavedState(en); applyAll(); setTab('mw'); }catch(_){ } closeOverlay(); return; }
+    var ua=e.target.closest('[data-scanuseanti]');
+    if(ua){ var ra=rows[+ua.getAttribute('data-scanuseanti')]; if(!ra){ return; }
+      if(useAsAnti(ra)) closeOverlay(); return; }
     var resBtn=e.target.closest('[data-scanres]');
     if(resBtn){                                      // chip -> open the picker for that mod
       var rowEl3=resBtn.closest('[data-scanrow]'); if(!rowEl3) return;
@@ -7093,8 +7518,8 @@ try{
       if(seqIn) seqIn.value=rH.seq;
       if(rH.unresolved) rH.unresolved.splice(+idsH[1],1);
       var pwH=rowH.querySelector('[data-pickwrap]'); if(pwH) pwH.innerHTML='';
-      var oH=rowH.querySelector('[data-out]'); if(oH) oH.innerHTML=outHtml(rH);
-      var flH=rowH.querySelector('[data-flags]'); if(flH) flH.innerHTML=flagHtml(rH);
+      paintRow(rowH, rH);   /* R26: resolving a monomer changes the mass, so the
+                               checksum verdict can flip — repaint all of it. */
       notice(code+' added to your monomer library and inserted — mass now included.');
       return;
     }
@@ -7181,7 +7606,22 @@ try{
       if(LINK[t]){ out+='s'; pend=''; continue; }
       if(PREF[t]!=null){ pend=PREF[t]; continue; }
       if(BASE[t]!=null){ out+=pend+BASE[t]; pend=''; continue; }
-      /* unknown token -> ignore */
+      /* Whole-token miss. Speech engines routinely collapse spelled-out bases
+         into one word ("A U C G" -> "aucg"), which used to be dropped in full.
+         Re-read the token character by character, but ONLY when EVERY character
+         maps to a known base / sugar prefix / linkage -- so "aucg" becomes ACGU
+         while "hello" is still ignored. */
+      var cs=t.split(''), ok=cs.length>1, j, c;
+      for(j=0;j<cs.length;j++){ c=cs[j];
+        if(BASE[c]==null && PREF[c]==null && !LINK[c]){ ok=false; break; } }
+      if(ok){
+        for(j=0;j<cs.length;j++){ c=cs[j];
+          if(BASE[c]!=null){ out+=pend+BASE[c]; pend=''; continue; }
+          if(PREF[c]!=null){ pend=PREF[c]; continue; }
+          if(LINK[c]){ out+='s'; pend=''; continue; } }
+        continue;
+      }
+      /* still unrecognised -> ignore */
     }
     return out;
   }
@@ -7189,19 +7629,26 @@ try{
   /* ---- scoped styles (theme-var driven, same approach as the scan modal) ---- */
   var st=document.createElement('style');
   st.textContent=[
-    '#voiceOv{position:fixed;inset:0;z-index:10000;display:flex;align-items:flex-start;justify-content:center;background:rgba(0,0,0,.5);padding:24px 14px;overflow:auto}',
+    '#voiceOv{position:fixed;inset:0;z-index:10000;display:flex;align-items:flex-start;justify-content:center;background:rgba(0,0,0,.5);padding:calc(24px + var(--sat,0px)) 14px calc(24px + var(--sab,0px));overflow:auto;-webkit-overflow-scrolling:touch}',
     '#voiceOv .catgate-card{background:var(--surface,#fff);color:var(--text,#111);border:1px solid var(--line,#e2e2e2);border-radius:14px;padding:18px;box-shadow:var(--shadow,0 20px 60px rgba(0,0,0,.35));width:100%;margin:auto}',
     '#voiceOv .catgate-title{font-size:16px;font-weight:700;margin-bottom:4px;color:var(--text,#111)}',
     '#voiceOv .catgate-sub{font-size:12px;color:var(--muted,#777);margin-bottom:10px;line-height:1.5}',
-    '#voiceOv .ctl-btn{padding:7px 13px;border-radius:8px;border:1px solid var(--line,#ccc);background:var(--surface-2,#f2f2f2);color:var(--text,#111);cursor:pointer;font-size:13px;line-height:1.2}',
+    '#voiceOv .ctl-btn{min-height:44px;padding:10px 15px;border-radius:9px;border:1px solid var(--line,#ccc);background:var(--surface-2,#f2f2f2);color:var(--text,#111);cursor:pointer;font-size:13px;line-height:1.2}',
     '#voiceOv .ctl-btn:hover{border-color:var(--accent,#d97706)}',
     '#voiceOv .ctl-btn.primary{background:var(--accent,#d97706);border-color:var(--accent,#d97706);color:var(--accent-ink,#fff)}',
-    '#voiceOv .ctl-btn.sm{font-size:12px;padding:6px 11px}',
+    '#voiceOv .ctl-btn.sm{font-size:12px;padding:9px 12px}',
     '#voiceOv .ctl-btn[disabled]{opacity:.5;cursor:not-allowed}',
     '#voiceOv .ctl-btn.rec{background:#d1242f;border-color:#d1242f;color:#fff}',
     '.voice-status{font-size:12px;color:var(--muted,#777)}',
-    '.voice-out{min-height:44px;border:1px solid var(--line,#ccc);border-radius:8px;padding:10px 11px;font-family:var(--font-num,ui-monospace,monospace);font-size:16px;letter-spacing:.02em;background:var(--surface-2,rgba(127,127,127,.04));color:var(--text,#111);word-break:break-all}',
-    '.voice-out .voice-ph{color:var(--muted,#999);font-family:inherit;font-size:13px}',
+    '.voice-out{display:block;width:100%;min-height:60px;max-height:34vh;resize:vertical;border:1px solid var(--line,#ccc);border-radius:8px;padding:10px 11px;font-family:var(--font-num,ui-monospace,monospace);font-size:16px;line-height:1.45;letter-spacing:.02em;background:var(--surface-2,rgba(127,127,127,.04));color:var(--text,#111);word-break:break-all}',
+    '.voice-out:focus{outline:2px solid var(--accent,#d97706);outline-offset:1px;border-color:var(--accent,#d97706)}',
+    '.voice-out[readonly]{opacity:.72;cursor:default}',
+    '.voice-out::placeholder{color:var(--muted,#999);font-family:var(--font-ui,inherit);font-size:13px;letter-spacing:0;opacity:1}',
+    '.voice-hint{font-size:11px;color:var(--muted,#888);margin:5px 0 0;line-height:1.45}',
+    /* R31: the box no longer hides a U->T substitution, so it has to name the
+       one the calculator will still make on Insert. --err/--err-soft rather than
+       new literals: 5.19:1 light, 5.85:1 dark, both composited. */
+    '.voice-warn{font-size:12px;line-height:1.45;margin:7px 0 0;padding:7px 9px;border-radius:7px;background:var(--err-soft,rgba(179,39,28,.10));color:var(--err,#b3271c)}',
     '.voice-heard{font-size:11px;color:var(--muted,#888);margin:6px 0 2px;min-height:14px}',
     '.scan-foot{display:flex;gap:8px;margin-top:12px;align-items:center;flex-wrap:wrap}'
   ].join('');
@@ -7212,6 +7659,9 @@ try{
 
   /* ---- recognition state ---- */
   var rec=null, listening=false, finalText='', out='', vtarget='calc';
+  /* `base` is everything the user has committed by hand; the live transcript is
+     appended to it, so a manual edit is never overwritten by later speech. */
+  var base='', editTimer=null;
   function ensureRec(){
     if(!SR) return null;
     if(rec) return rec;
@@ -7222,8 +7672,20 @@ try{
         var r=e.results[i];
         if(r.isFinal) finalText+=' '+r[0].transcript; else interim+=' '+r[0].transcript;
       }
+      /* R31: parseVoice() honours a spoken "clear" inside its own parse, but
+         `out = base + parse(...)` then re-prepended the hand-edited baseline --
+         so "clear" cleared everything except the text the user was most likely
+         trying to get rid of. Drop the baseline and forget every transcript up
+         to and including the command, which is exactly what the Clear button
+         does. The finalText rewrite is persistent and idempotent (afterwards it
+         no longer contains the word); the interim rewrite is per-event, because
+         `interim` is rebuilt from scratch on every result and folding it into
+         finalText here would double-count it when it finalises. */
+      var CLR=/\b(?:clear|reset)\b/i, CLRALL=/^[\s\S]*\b(?:clear|reset)\b/i;
+      if(CLR.test(finalText)){ base=''; finalText=finalText.replace(CLRALL,''); }
       var preview=(finalText+' '+interim).trim();
-      out=parseVoice(preview); updateModal(preview);
+      if(CLR.test(interim)){ base=''; preview=preview.replace(CLRALL,'').trim(); }
+      out=base+parseVoice(preview); updateModal(preview);
     };
     rec.onend=function(){ if(listening){ try{ rec.start(); }catch(_){ } } };  // Chrome self-stops on silence; keep going
     rec.onerror=function(ev){ var er=ev&&ev.error;
@@ -7233,50 +7695,153 @@ try{
     return rec;
   }
   function startListen(){ var r=ensureRec(); if(!r){ setStatus('Voice input isn’t supported in this browser.'); return; }
-    listening=true; try{ r.start(); }catch(_){ } setStatus('Listening…'); updateMicBtn(); }
+    listening=true; try{ r.start(); }catch(_){ } setStatus('Listening…'); updateMicBtn(); unlockField(); }
+
+  /* the box is read-only until dictation has started at least once, then it is a
+     normal text field -- which is what opens the on-screen keyboard on a phone */
+  function unlockField(){
+    var ov=document.getElementById('voiceOv'); if(!ov) return;
+    var o=ov.querySelector('[data-voiceout]'); if(o){ o.removeAttribute('readonly'); }
+    var hint=ov.querySelector('[data-voicehint]');
+    if(hint) hint.textContent='Editable now — tap the box to fix a base with the keyboard; dictation keeps appending after your edit.';
+  }
+
+  /* A hand edit becomes the new baseline. Zeroing finalText and aborting the
+     in-flight utterance (debounced, so typing does not thrash the recogniser)
+     stops the pending transcript from re-appending what the user just changed;
+     onend restarts recognition because `listening` is still true. */
+  function onFieldEdit(o){
+    base=String(o.value||'').replace(/\s+/g,'');
+    out=base; finalText='';
+    var h=document.querySelector('#voiceOv [data-voiceheard]'); if(h) h.textContent='';
+    updateWarn();                                    /* a hand-typed U needs the same note as a dictated one */
+    if(editTimer) clearTimeout(editTimer);
+    editTimer=setTimeout(function(){ editTimer=null;
+      if(listening && rec && rec.abort){ try{ rec.abort(); }catch(_){ } }
+    }, 350);
+  }
   function stopListen(){ listening=false; try{ rec&&rec.stop(); }catch(_){ } setStatus('Paused'); updateMicBtn(); }
 
   /* ---- modal ---- */
-  function fmtOut(){ try{ return out ? (typeof spaceSeq==='function'? spaceSeq(out, S.type, S.linkage) : out) : ''; }catch(_){ return out; } }
+  /* R31: this used to be spaceSeq(out, S.type, S.linkage), i.e. the recognised
+     text was re-parsed as the currently selected chemistry before being shown.
+     parseSeq() rewrites U as T on a d-sugar, so dictating "A U C G" with the
+     backbone on DNA displayed "ATC G" -- a base the user never said -- and
+     doInsert() trusts the box, so that is what got inserted. The same round-trip
+     printed d/r prefixes only in Hybrid mode, so "d A d C d G" collapsed to
+     "ACG" (silently rArCrG under an RNA backbone).
+     A confirmation field must show what was heard. Grouping is the only
+     transformation it needs, and grouping needs no chemistry: tokenise as
+     [sugar prefix?][base][linkage s?] and space every three TOKENS -- the same
+     rule spaceSeq() applies, which is what lets a linkage mark ride along with
+     its base without counting as a base:  TsAsGs ACsG ACT GGsC.
+     Order in the alternation matters: moe and cEt before the single letters, or
+     "moeA" would be read as m + (o?) and "cEtA" as c + ...  Anything the
+     tokeniser cannot account for end to end (a hand-typed conjugate, an idT
+     suffix) is echoed verbatim rather than guessed at. */
+  var VTOK=/(?:moe|cEt|[drmf])?[ACGTU]s?/g;
+  function groupOut(s){
+    s=String(s==null?'':s); if(!s) return '';
+    var toks=s.match(VTOK);
+    if(!toks || toks.join('')!==s) return s;
+    var g=[]; for(var i=0;i<toks.length;i+=3){ g.push(toks.slice(i,i+3).join('')); }
+    return g.join(' ');
+  }
+  function fmtOut(){ try{ return groupOut(out); }catch(_){ return out; } }
   function setStatus(txt){ var ov=document.getElementById('voiceOv'); if(!ov) return; var s=ov.querySelector('[data-voicestatus]'); if(s) s.textContent=txt; }
   function updateMicBtn(){ var ov=document.getElementById('voiceOv'); if(!ov) return; var b=ov.querySelector('[data-voicetoggle]'); if(!b) return;
     b.textContent=listening?'■ Stop':'● Start'; b.classList.toggle('rec',listening); }
+  /* R31: Insert re-parses under the calculator's own backbone, so a U dictated
+     while the backbone is DNA is still counted as T once it lands -- the app says
+     so in [data-warn] afterwards. Saying it here, in the app's own words, while
+     the user can still change the backbone, is the difference between a warning
+     and a post-mortem. Hybrid needs no note: there every base carries its own
+     sugar prefix. */
+  function updateWarn(){
+    var ov=document.getElementById('voiceOv'); if(!ov) return;
+    var w=ov.querySelector('[data-voicewarn]'); if(!w) return;
+    var ty=''; try{ ty=S.type; }catch(_){ }
+    var msg='';
+    if(ty==='DNA' && /U/.test(out)) msg='U is not a DNA base — it will be counted as T. Switch the backbone to RNA for uridine.';
+    else if(ty==='RNA' && /T/.test(out)) msg='T is not an RNA base — it will be counted as U. Switch the backbone to DNA for thymidine.';
+    w.textContent=msg; w.hidden=!msg;
+  }
   function updateModal(preview){
     var ov=document.getElementById('voiceOv'); if(!ov) return;
-    var o=ov.querySelector('[data-voiceout]'); if(o){ var f=fmtOut(); o.innerHTML = f ? scEsc(f) : '<span class="voice-ph">Recognized sequence appears here…</span>'; }
+    var o=ov.querySelector('[data-voiceout]');
+    if(o){
+      var f=fmtOut();
+      /* Never yank the caret out from under someone. Write while the box is
+         unfocused, or while the caret is parked at the very end (the ordinary
+         "watch it stream in" case) -- otherwise leave the edit alone. */
+      var focused=(document.activeElement===o);
+      var atEnd=focused && o.selectionStart===o.value.length && o.selectionEnd===o.value.length;
+      if((!focused || atEnd) && o.value!==f){
+        o.value=f;
+        if(atEnd){ try{ o.selectionStart=o.selectionEnd=o.value.length; }catch(_){ } }
+      }
+    }
     var h=ov.querySelector('[data-voiceheard]'); if(h) h.textContent = preview ? ('heard: '+preview) : '';
+    updateWarn();
   }
   function closeVoice(){ stopListen(); var ov=document.getElementById('voiceOv'); if(ov) ov.remove(); }
   function openVoice(){
     var ov=document.getElementById('voiceOv');
     if(!ov){ ov=document.createElement('div'); ov.id='voiceOv';
+      /* R31 V5: match the convention the app already uses for the help sheet and
+         all three share sheets, so AT announces this as a dialog and treats the
+         page behind it as inert. tabindex + focus() also make the Escape handler
+         below reachable -- it is registered on the overlay, and nothing ever
+         moved focus into the overlay, so Escape did nothing until the user
+         happened to click something inside. Focus lands on the container rather
+         than the textarea on purpose: focusing the field would throw up the
+         on-screen keyboard before there is anything to edit. */
+      ov.setAttribute('role','dialog'); ov.setAttribute('aria-modal','true');
+      ov.setAttribute('aria-label','Voice input'); ov.setAttribute('tabindex','-1');
       ov.addEventListener('click',function(ev){ if(ev.target===ov) closeVoice(); });
       ov.addEventListener('keydown',function(ev){ if(ev.key==='Escape') closeVoice(); });
       document.body.appendChild(ov);
+      try{ ov.focus(); }catch(_){ }
     }
+    /* R31 V3: out/base/finalText live in this closure and used to survive close.
+       Re-opening rendered an empty box while the parser still held the previous
+       sequence, so the first new word brought the old text back prepended to it.
+       A fresh open is a fresh session -- unless dictation is still running, in
+       which case the re-render must restore the unlocked field, the Stop label
+       and the text rather than wipe them (handled after the render below). */
+    if(!listening){ finalText=''; out=''; base=''; }
     var noSR = !SR;
     ov.innerHTML='<div class="catgate-card" style="max-width:560px">'+
-      '<div class="catgate-title">🎤 Voice input</div>'+
+      '<div class="catgate-title">🎤 Voice input'+(vtarget==='anti'?' — antisense strand':'')+'</div>'+
       '<div class="catgate-sub">Say the bases as letters or words — e.g. “D A, D T, D C, D G”, or “deoxy adenine, deoxy thymine…”. Say “star” (or “thio”) for a phosphorothioate <b>s</b> bond. For 2′ sugar mods, say the name — “fluoro A” → fA, “O-methyl A” → mA, “MOE A” → moeA, “cET A” → cEtA. Words are recognized more reliably than single letters; check the result before inserting.</div>'+
       (noSR
         ? '<div class="voice-status" style="margin:8px 0">Voice input isn’t supported in this browser. Try Chrome, Edge, or Safari.</div>'
-        : '<div style="display:flex;gap:10px;align-items:center;margin:8px 0"><button class="ctl-btn sm primary" data-voicetoggle>● Start</button><span class="voice-status" data-voicestatus>Idle — tap Start and allow the mic.</span></div>')+
-      '<div class="voice-out" data-voiceout aria-live="polite"><span class="voice-ph">Recognized sequence appears here…</span></div>'+
-      '<div class="voice-heard" data-voiceheard></div>'+
+        : '<div style="display:flex;gap:10px;align-items:center;margin:8px 0"><button class="ctl-btn sm primary" data-voicetoggle>● Start</button><span class="voice-status" data-voicestatus role="status" aria-live="polite">Idle — tap Start and allow the mic.</span></div>')+
+      '<textarea class="voice-out" data-voiceout rows="2" spellcheck="false" autocapitalize="characters" autocorrect="off" autocomplete="off"'+(noSR?'':' readonly')+' aria-label="Recognized sequence" placeholder="Recognized sequence appears here…"></textarea>'+
+      '<div class="voice-hint" data-voicehint>'+(noSR
+        ? 'Type the sequence here, then insert it.'
+        : 'Tap Start to dictate. After that the box is editable &mdash; tap it to fix a base with the keyboard, even while recording.')+'</div>'+
+      '<div class="voice-heard" data-voiceheard aria-live="off"></div>'+
+      '<div class="voice-warn" data-voicewarn aria-live="polite" hidden></div>'+
       '<div class="scan-foot">'+
         (vtarget==='batch'
           ? '<button class="ctl-btn sm primary" data-voiceappend>Add line to batch</button>'
-          : '<button class="ctl-btn sm primary" data-voiceinsert>Insert into calculator</button>'+
+          : '<button class="ctl-btn sm primary" data-voiceinsert>Insert into '+(vtarget==='anti'?'antisense':'calculator')+'</button>'+
             '<button class="ctl-btn sm" data-voiceappend>Append</button>')+
         '<button class="ctl-btn sm" data-voiceclear>Clear</button>'+
         '<button class="ctl-btn sm" data-voiceclose style="margin-left:auto">Close</button>'+
       '</div>'+
     '</div>';
     updateMicBtn();
+    if(listening){ unlockField(); setStatus('Listening…'); updateModal(''); }   /* R31 V3: re-opened mid-dictation */
+    updateWarn();
   }
 
   /* ---- insert into the sense sequence via the app's own input pipeline ---- */
   function doInsert(replace){
+    /* insert exactly what the user can see in the (editable) box */
+    try{ var _f=document.querySelector('#voiceOv [data-voiceout]');
+         if(_f){ var _v=String(_f.value||'').replace(/\s+/g,''); if(_v) out=_v; } }catch(_){ }
     if(!out){ setStatus('Nothing recognized yet.'); return; }
     if(vtarget==='batch'){                            // dictate straight into the Batch list
       var bov=document.getElementById('batchOv'), bta=bov&&bov.querySelector('[data-batchin]');
@@ -7284,6 +7849,18 @@ try{
       var cur=(bta.value||'').replace(/\s+$/,'');
       bta.value=(cur? cur+'\n' : '')+out;
       try{ var _bc=bov.querySelector('[data-batchcalc]'); if(_bc) _bc.click(); }catch(_){ }   // route through the app's own batch handler (batchCompute is closure-scoped)
+      closeVoice(); return;
+    }
+    if(vtarget==='anti'){                             /* R39: dictate into the manual antisense strand */
+      var ata=document.querySelector('[data-antiseq]');
+      var manual=false; try{ manual=(S.duplexMode==='custom'); }catch(_){ manual=false; }
+      if(!ata || !manual){ setStatus('Set the antisense strand to “Enter manually” first.'); return; }
+      var acur=ata.value||'';
+      var aval = replace ? out : (acur ? (acur+' '+out) : out);
+      try{ ata.focus(); }catch(_){ }
+      ata.value=aval;
+      ata.dispatchEvent(new Event('input',{bubbles:true}));   // drives S.antiSeq update + compute + render
+      try{ setTab('mw'); }catch(_){ }
       closeVoice(); return;
     }
     var ta=document.querySelector('[data-seq]'); if(!ta){ return; }
@@ -7298,20 +7875,31 @@ try{
 
   /* ---- delegated clicks: mic button + modal actions ---- */
   document.body.addEventListener('click', function(e){
-    if(e.target.closest('[data-voice]')){ e.preventDefault(); if(!SR){ return; } vtarget='calc'; openVoice(); return; }
+    var vcBtn=e.target.closest('[data-voice]');
+    if(vcBtn){ e.preventDefault(); if(!SR){ return; } vtarget=(vcBtn.getAttribute('data-voice')==='antisense')?'anti':'calc'; openVoice(); return; }
     if(e.target.closest('[data-batchvoice]')){ e.preventDefault(); if(!SR){ return; } vtarget='batch'; openVoice(); return; }
     var ov=document.getElementById('voiceOv'); if(!ov || !ov.contains(e.target)) return;
     if(e.target.closest('[data-voiceclose]')){ closeVoice(); return; }
     if(e.target.closest('[data-voicetoggle]')){ if(listening) stopListen(); else startListen(); return; }
-    if(e.target.closest('[data-voiceclear]')){ finalText=''; out=''; updateModal(''); setStatus(listening?'Listening…':'Cleared.'); return; }
+    if(e.target.closest('[data-voiceclear]')){ finalText=''; out=''; base='';
+      var _co=ov.querySelector('[data-voiceout]'); if(_co) _co.value='';
+      updateModal(''); setStatus(listening?'Listening…':'Cleared.'); return; }
     if(e.target.closest('[data-voiceinsert]')){ doInsert(true); return; }
     if(e.target.closest('[data-voiceappend]')){ doInsert(false); return; }
+  }, false);
+
+  /* hand edits inside the recognised-sequence box */
+  document.body.addEventListener('input', function(e){
+    var o=e.target&&e.target.closest?e.target.closest('#voiceOv [data-voiceout]'):null;
+    if(o) onFieldEdit(o);
   }, false);
 
   /* expose for testing / external triggers */
   W.oligoVoice={ open:openVoice, parse:parseVoice, supported:!!SR,
     _target:function(t){ if(t) vtarget=t; return vtarget; },
-    _insert:function(s,replace){ out=String(s||''); doInsert(replace); } };
+    _insert:function(s,replace){ out=String(s||''); base=out;
+      try{ var f=document.querySelector('#voiceOv [data-voiceout]'); if(f) f.value=out; }catch(_){ }
+      doInsert(replace); } };
 })();
 </script>
 
@@ -7321,8 +7909,11 @@ try{
    Self-contained additive module, same pattern as the share / lab / scan / voice
    blocks: its own <style>, its own DOM nodes, its own delegated click handler.
    No existing module is refactored, reordered or renamed.
-   Reachable in EVERY state (signed in or out, online or offline) from two
-   places, and it is never dismissible.
+   The Account-menu entry is reachable in EVERY state (signed in or out,
+   online or offline) and is never dismissible -- that is the permanent route.
+   The footer banner is a one-time hint: it can be dismissed (remembered under
+   an additive, disposable localStorage key) and its copy names the Account
+   route so dismissing it never strands anybody.
    ========================================================================== */
 (function(){
   var U=window.__oligoUi||{my:"next",other:"../",key:"oligoUiVersion",handedOver:false,
@@ -7333,6 +7924,34 @@ try{
 
   var KEY=U.key||"oligoUiVersion", OTHER=U.other||"../";
   var stripV=U.stripV||function(q){ return q||""; };
+
+  /* Additive + disposable: if this key is lost the only consequence is that the
+     one-time hint shows again. No user data lives here. */
+  var DKEY="oligoUiBarDismissed";
+  function dismissed(){ try{ return localStorage.getItem(DKEY)==="1"; }catch(_){ return false; } }
+  function dismiss(){
+    try{ localStorage.setItem(DKEY,"1"); }catch(_){ }
+    var f=document.querySelector(".uisw-foot"); if(f) f.hidden=true;
+    syncShell();
+  }
+
+  /* R34/D1: the >=1100px shell has no room of its own to give, so the bar has to
+     tell the shell how much to hand back. Reading the height right after toggling
+     the class forces the layout, so one synchronous pass is enough; resize is the
+     only thing that can change how the copy wraps, hence the rAF-coalesced hook.
+     Below 1100px this is inert -- the page scrolls there and the existing
+     margin-bottom already clears the fixed tab bar. */
+  function syncShell(){
+    var f=document.querySelector(".uisw-foot");
+    var on=!!(f && !f.hidden && f.offsetParent!==null);
+    try{ document.body.classList.toggle("uisw-on", on); }catch(_){ return; }
+    if(!on) return;
+    var hh=Math.round(f.getBoundingClientRect().height);
+    if(hh>0) document.documentElement.style.setProperty("--uisw-h", hh+"px");
+  }
+  var _swRaf=0;
+  function syncSoon(){ if(_swRaf) return; _swRaf=requestAnimationFrame(function(){ _swRaf=0; syncShell(); }); }
+  window.addEventListener("resize", syncSoon, {passive:true});
 
   function goClassic(){
     try{ localStorage.setItem(KEY,"classic"); }catch(_){ }         /* preference FIRST, then navigate */
@@ -7356,6 +7975,69 @@ try{
     ".uisw-btn:focus-visible{outline:3px solid var(--accent,#d97706);outline-offset:2px}",
     /* the bottom tab bar is fixed below 1100px — keep clear of it and of #oligoNotices */
     "@media (max-width:1099px){.uisw-foot{margin-bottom:calc(64px + var(--sab,0px))}}",
+    /* R34/D1: >=1100px is a fixed-height shell -- html,body{overflow:hidden} and
+       .app{height:calc(100dvh - 60px - var(--sat))} together fill the viewport, so
+       this bar (body's third flex child) was laid out at y=100dvh and clipped.
+       Measured at 1440x900: top y=900, canScroll false -- the copy, the switch
+       button and the dismiss x were all unreachable, so a desktop user could not
+       even turn the bar off. syncShell() below publishes the measured height as
+       --uisw-h and marks <body class="uisw-on">; .app gives that height back.
+       Specificity: body.uisw-on .app (0,2,0) beats .app (0,1,0) regardless of
+       source order, so this holds against the stylesheet above. */
+    "@media (min-width:1100px){",
+      /* one compact line instead of a stacked block: 77px -> ~60px of shell */
+      ".uisw-foot{padding:8px 18px;text-align:left;justify-content:center}",
+      ".uisw-foot .uisw-msg{flex:0 1 auto}",
+      ".uisw-foot .uisw-where{display:inline;margin-top:0;margin-left:7px}",
+      "body.uisw-on .app{height:calc(100vh - 60px - var(--sat,0px) - var(--uisw-h,60px));",
+        "height:calc(100dvh - 60px - var(--sat,0px) - var(--uisw-h,60px))}",
+    "}",
+    ".uisw-foot[hidden]{display:none}",
+    ".uisw-foot .uisw-msg{flex:1 1 300px;min-width:0}",
+    ".uisw-btn .uisw-bic{display:none}",
+    /* A6 phone: ~169px -> ~84px. The message flexes BESIDE the controls rather
+       than wrapping onto its own rows above them, and "Back to the classic
+       version" collapses to its glyph (the label survives as aria-label).
+       Both controls stay 44x44; none of the copy is dropped. */
+    "@media (max-width:767px){",
+      ".uisw-foot{gap:6px;padding:9px 12px 10px;text-align:left;justify-content:flex-start;",
+        "align-items:center;font-size:11.5px;line-height:1.4}",
+      ".uisw-foot .uisw-msg{flex:1 1 0%;min-width:0}",
+      ".uisw-foot .uisw-where{margin-top:2px;font-size:11px;line-height:1.35}",
+      ".uisw-btn{width:44px;padding:0;display:grid;place-items:center;font-size:18px}",
+      ".uisw-btn .uisw-blbl{display:none}",
+      ".uisw-btn .uisw-bic{display:block}",
+    "}",
+    /* R35/D6: the same compaction on any SHORT viewport regardless of width. A
+       landscape phone (844x390) is wide enough to miss the rule above yet has less
+       vertical room than any portrait phone, and it was spending 77px on this bar.
+       No width guard on purpose: a 1440x500 desktop window wants it too, and up
+       there --uisw-h is measured, so the shell tracks whatever height results. */
+    "@media (max-height:520px){",
+      /* R37/D7: padding-bottom, not margin-bottom. A bottom margin on the last
+         in-flow child is clipped out of the root scrollable overflow, so once R35
+         gave .app a floor and the shell stopped shrinking, the 85px reservation
+         reserved nothing and the tab bar covered 54 of the bar's 61px with zero
+         scroll available. Inside the border box the same 85px genuinely overflows
+         the column: the document scrolls by the bar's height and one flick lifts
+         the copy and both controls clear. The strip carries the bar's own surface
+         colour, which is the tab bar's colour, so it reads as one piece. */
+      ".uisw-foot{gap:6px;text-align:left;justify-content:flex-start;",
+        "align-items:center;font-size:11.5px;line-height:1.4;",
+        "margin-bottom:0;padding:8px 12px calc(8px + 64px + var(--sab,0px))}",
+      ".uisw-foot .uisw-msg{flex:1 1 0%;min-width:0}",
+      ".uisw-foot .uisw-where{display:inline;margin-top:0;margin-left:6px}",
+      ".uisw-btn{width:44px;padding:0;display:grid;place-items:center;font-size:18px}",
+      ".uisw-btn .uisw-blbl{display:none}",
+      ".uisw-btn .uisw-bic{display:block}",
+    "}",
+    ".uisw-foot .uisw-where{display:block;margin-top:3px;color:var(--faint,var(--muted,#7a7065))}",
+    ".uisw-foot .uisw-where .uisw-ic{color:var(--text,#2a2118);font-size:14px}",
+    ".uisw-x{flex:0 0 auto;width:44px;height:44px;min-height:44px;padding:0;border-radius:9px;",
+      "border:1px solid transparent;background:none;color:var(--muted,#5e5447);",
+      "font:inherit;font-size:19px;line-height:1;cursor:pointer}",
+    ".uisw-x:hover{border-color:var(--line-2,var(--line,#d9cfbe));color:var(--text,#2a2118)}",
+    ".uisw-x:focus-visible{outline:3px solid var(--accent,#d97706);outline-offset:2px}",
     ".menu-account .mi[data-uiswitch]{font-weight:500}"
   ].join("");
   document.head.appendChild(st);
@@ -7380,22 +8062,32 @@ try{
       var f=document.createElement("div");
       f.className="uisw-foot"; f.setAttribute("role","region");
       f.setAttribute("aria-label","Interface version");
-      f.innerHTML='<span>You&rsquo;re using the <b>redesigned</b> interface &mdash; same calculations, new layout.</span>'+
-                  '<button type="button" class="uisw-btn" data-uiswitch="classic">Back to the classic version</button>';
+      f.innerHTML='<span class="uisw-msg">You&rsquo;re using the <b>redesigned</b> interface &mdash; same calculations, new layout.'+
+                    '<span class="uisw-where">To switch version: Account menu &#9656; '+
+                      '<span class="uisw-ic" aria-hidden="true">&#8617;</span> Back to the classic version.</span>'+
+                  '</span>'+
+                  '<button type="button" class="uisw-btn" data-uiswitch="classic" aria-label="Back to the classic version" title="Back to the classic version">'+
+                      '<span class="uisw-bic" aria-hidden="true">&#8617;</span>'+
+                      '<span class="uisw-blbl">Back to the classic version</span>'+
+                    '</button>'+
+                  '<button type="button" class="uisw-x" data-uidismiss aria-label="Dismiss this message" title="Dismiss">&#215;</button>';
+      if(dismissed()) f.hidden=true;
       document.body.appendChild(f);
     }
+    syncShell();   /* R34/D1 */
   }
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",mount,{once:true});
   else mount();
 
   document.addEventListener("click",function(e){
-    var t=e.target&&e.target.closest?e.target.closest("[data-uiswitch]"):null;
-    if(!t) return;
+    var n=e.target; if(!n||!n.closest) return;
+    if(n.closest("[data-uidismiss]")){ e.preventDefault(); dismiss(); return; }
+    if(!n.closest("[data-uiswitch]")) return;
     e.preventDefault();
     goClassic();
   },false);
 
-  window.oligoUiSwitch={ toClassic:goClassic, info:U };
+  window.oligoUiSwitch={ toClassic:goClassic, info:U, dismiss:dismiss, dismissed:dismissed };
 })();
 </script>
 </body>
