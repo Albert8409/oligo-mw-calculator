@@ -433,6 +433,39 @@ body[data-mode="dark"] .link-toggle:has(input:checked){color:var(--accent)}
 .link-toggle input{width:17px; height:17px; margin:0; accent-color:var(--accent)}
 .custom-mw-row{display:grid; grid-template-columns:minmax(220px,360px) minmax(0,1fr); align-items:end; gap:14px; padding:12px 14px; margin:6px 0 10px; border:1px solid var(--line); border-radius:12px; background:var(--surface)}
 .custom-mw-row[hidden]{display:none}
+/* inline custom-value field: lives INSIDE the link row, in place of the
+   read-only figure it used to duplicate one row further down */
+.inp-inline{margin:5px 0 2px; max-width:230px; min-height:44px; padding:0 10px}
+.inp[hidden]{display:none}
+.inp-inline input{font-size:15px}
+/* Unit pickers (nM/µM/mM/M, µL/mL/L). Native control on purpose: the caret is
+   the affordance, and it is what the classic build ships.
+   Styled to match classic's `.cinput select` — an opaque --surface-2 segment at
+   the right edge of the field, divided by a rule, --text not --muted, accent on
+   hover — rather than transparent muted text floating in the box. */
+.inp .usel{flex:0 0 auto; align-self:stretch; min-width:62px; max-width:104px;
+  margin-left:10px; margin-right:-13px;
+  border:0; border-left:1px solid var(--line); border-radius:0 9px 9px 0;
+  background-color:var(--surface-2); color:var(--text);
+  font-family:var(--font-head); font-size:12.5px; font-weight:600;
+  padding:0 5px 0 9px; cursor:pointer}
+.inp .usel:hover{border-left-color:var(--accent); color:var(--accent-2)}
+body[data-mode="dark"] .inp .usel:hover{color:var(--accent)}
+.inp .usel:focus-visible{outline:2px solid var(--accent); outline-offset:-2px; border-radius:0 9px 9px 0}
+.big .bu-sel{align-self:center; min-height:44px; border:0; background:none; color:var(--emph-side); font-family:var(--font-head); font-size:15px; font-weight:600; cursor:pointer; padding:0 2px}
+.big .bu-sel:hover{color:var(--emph-val)}
+.big .bu-sel:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+/* THE WHITE DROPDOWN. A <select> whose used color-scheme is `normal` gets the
+   UA's LIGHT option-list popup regardless of how the page is painted, so in dark
+   mode every picker in this build opened a white menu. `color-scheme` is the
+   only thing that controls that; no background/color declaration reaches inside
+   the popup. Applied to every <select>, not just the new ones — they all had it.
+   Deliberately NOT set on :root or body: that would also repaint scrollbars and
+   every other native widget, which is a much wider change than this fixes. */
+body[data-mode="dark"] select{color-scheme:dark}
+body[data-mode="light"] select{color-scheme:light}
+/* .big is the navy instrument panel in BOTH themes, so its picker is always dark. */
+.big .bu-sel, body[data-mode="light"] .big .bu-sel{color-scheme:dark}
 .custom-mw-row .fld label{text-transform:none; font-size:12.5px; color:var(--text)}
 .custom-mw-note{font-size:12px; line-height:1.5; color:var(--muted); padding-bottom:3px}
 .seg button:disabled{cursor:not-allowed; opacity:.42}
@@ -716,7 +749,8 @@ body[data-mode="dark"] .help-faq-item[open] summary::after{color:var(--accent)}
 .help-faq-ans b{color:var(--text)}
 .help-faq-ans a{color:var(--accent-2); overflow-wrap:anywhere}
 body[data-mode="dark"] .help-faq-ans a{color:var(--accent)}
-@media (max-width:600px){.link{align-items:flex-start; flex-wrap:wrap}.link-toggle{width:100%; justify-content:center}.custom-mw-row{grid-template-columns:1fr}.custom-mw-note{padding-bottom:0}}
+@media (max-width:600px){.link .ls{white-space:normal; overflow:hidden; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; line-height:1.35}
+.link{align-items:center; flex-wrap:nowrap; gap:10px; padding:11px 12px}.link-toggle{width:auto; justify-content:center; padding:7px 10px; font-size:12px; gap:6px}.link-toggle input{width:16px; height:16px}.custom-mw-row{grid-template-columns:1fr}.custom-mw-note{padding-bottom:0}.inp-inline{max-width:none}}
 
 /* header tightening 1280–1439 (avoids the tab/control crowding overflow) */
 @media (max-width:1439px){ .brand .tagline{display:none} .topbar{gap:11px; padding:0 14px} .tabnav .tab{padding:9px 12px} }
@@ -1068,6 +1102,10 @@ body[data-demo="1"][data-state="formula-missing"] .r-status .dot{background:var(
 .conc-warn[hidden]{display:none}
 /* Pass 2c: stack the multi-column stat/field grids on narrow phones (labels are too wide to share a row) */
 @media (max-width:600px){ .fields, .dil, .msstat{grid-template-columns:1fr} }
+/* R40: the two recipe cards are the answer -- reading them side by side is the
+   whole point, so they keep the 2-up grid where the input fields do not.
+   .dil.dil-res is (0,2,0) against .dil's (0,1,0), so source order is irrelevant. */
+@media (max-width:600px){ .dil.dil-res{grid-template-columns:1fr 1fr; gap:9px} .dil-res .dcell{padding:11px 12px} .dil-res .dl{font-size:11px; letter-spacing:.02em} .dil-res .dv{font-size:18px} }
 /* Pass 2d: Help is a proper modal dialog — scrim behind it (was focus-trapped but had no backdrop → inconsistent) */
 body[data-overlay="help"] .scrim{display:block}
 body[data-overlay="help"] .topbar{z-index:72}
@@ -1542,13 +1580,10 @@ textarea.catgate-input{font-family:var(--font-num,ui-monospace,monospace);line-h
         <div class="vhead"><h2>Concentration &amp; molarity</h2></div>
         <div class="vsub">Use the current strand’s molecular weight automatically, or enter a known molecular weight for an external oligo.</div>
         <div class="link">
-          <div class="link-main"><div class="ll">Molecular weight</div><div class="lv" id="c-linkmw">— <small style="font-size:12px;color:var(--muted)">g/mol</small></div><div class="ls" id="c-linksub">enter a sequence in the Calculator tab</div></div>
-          <label class="link-toggle"><input type="checkbox" data-ctoggle="useCustomMW"><span>Use custom MW</span></label>
+          <div class="link-main"><div class="ll">Molecular weight</div><div class="lv" id="c-linkmw">— <small style="font-size:12px;color:var(--muted)">g/mol</small></div><div class="inp inp-inline" data-customwrap hidden><input id="c-custommw" type="number" data-conc="customMW" inputmode="decimal" min="0" step="any" placeholder="e.g. 6500" aria-label="Custom molecular weight" aria-describedby="c-custommw-note"><span class="u">g/mol</span></div><div class="ls" id="c-linksub">enter a sequence in the Calculator tab</div></div>
+          <label class="link-toggle"><input type="checkbox" data-ctoggle="useCustomMW" aria-label="Use a custom molecular weight"><span>Custom</span></label>
         </div>
-        <div class="custom-mw-row" data-customwrap hidden>
-          <div class="fld"><label for="c-custommw">Custom molecular weight</label><div class="inp"><input id="c-custommw" type="number" data-conc="customMW" inputmode="decimal" min="0" step="any" placeholder="e.g. 6500" aria-describedby="c-custommw-note"><span class="u">g/mol</span></div></div>
-          <div class="custom-mw-note" id="c-custommw-note">This value replaces the linked sequence MW for the ng/µL and dilution calculations. A₂₆₀ is unavailable because that path needs a sequence-derived extinction coefficient.</div>
-        </div>
+        <p class="sr" id="c-custommw-note">This value replaces the linked sequence MW for the ng/µL and dilution calculations. A₂₆₀ is unavailable because that path needs a sequence-derived extinction coefficient.</p>
         <div class="mwsrc-row" data-mwsrcrow style="display:none">
           <span class="cl" id="mwsrc-l">MW source</span>
           <span class="seg" data-cset="mwSource" role="radiogroup" aria-labelledby="mwsrc-l"><button data-cval="sense" role="radio" aria-checked="true" class="on">Sense</button><button data-cval="antisense" role="radio" aria-checked="false">Antisense</button><button data-cval="duplex" role="radio" aria-checked="false">Duplex</button></span>
@@ -1557,24 +1592,21 @@ textarea.catgate-input{font-family:var(--font-num,ui-monospace,monospace);line-h
         <div class="seg" data-cset="readMode" role="radiogroup" aria-label="Reading mode" style="margin-bottom:4px"><button data-cval="ng" role="radio" aria-checked="true" class="on">ng/µL</button><button data-cval="a260" role="radio" aria-checked="false">A₂₆₀ (OD)</button></div>
         <div class="fields">
           <div class="fld"><label for="c-read" class="ng-only">Nanodrop reading</label><label for="c-read" class="a260-only" style="display:none">Absorbance A₂₆₀</label><div class="inp"><input id="c-read" data-conc="nd" inputmode="decimal" min="0" value="" placeholder="0"><span class="u">ng/µL</span></div></div>
-          <div class="fld"><label for="c-vol">Resuspended in</label><div class="inp"><input id="c-vol" data-conc="vol" inputmode="decimal" min="0" value="" placeholder="0"><span class="u">µL</span></div></div>
+          <div class="fld"><label for="c-vol">Resuspended in</label><div class="inp"><input id="c-vol" data-conc="vol" inputmode="decimal" min="0" value="" placeholder="0"><select class="u usel" data-cu="volUnit" aria-label="Resuspension volume unit"><option>µL</option><option>mL</option><option>L</option></select></div></div>
           <div class="fld fld-path"><label for="c-path">Path length</label><div class="inp"><input id="c-path" data-conc="path" inputmode="decimal" min="0.1" step="0.1" value="1.0"><span class="u">cm</span></div></div>
         </div>
-        <div class="big"><div><div class="bl">Stock concentration</div><div style="display:flex;align-items:baseline;gap:8px;margin-top:4px"><span class="bv" id="c-stock">0</span><span class="bu" id="c-stocku">µM</span></div></div><div class="bside" id="c-side">Total amount <b>—</b><br>Total mass <b>—</b></div></div>
+        <div class="big"><div><div class="bl">Stock concentration</div><div style="display:flex;align-items:baseline;gap:8px;margin-top:4px"><span class="bv" id="c-stock">0</span><select class="bu usel bu-sel" id="c-stocku" data-cu="stockUnit" aria-label="Stock concentration unit"><option>nM</option><option>µM</option><option>mM</option><option>M</option></select></div></div><div class="bside" id="c-side">Total amount <b>—</b><br>Total mass <b>—</b></div></div>
         <div class="sechead"><span><span class="snum" aria-hidden="true">2</span>Dilute the stock · C₁V₁ = C₂V₂</span><span class="sh-note" data-dilnote>using the stock above</span></div>
         <div class="link">
-          <div class="link-main"><div class="ll">Stock used for the dilution</div><div class="ls" id="d-linksub">measured from the reading above</div></div>
-          <label class="link-toggle"><input type="checkbox" data-ctoggle="useCustomStock"><span>Use custom stock conc</span></label>
+          <div class="link-main"><div class="ll">Stock used for the dilution</div><div class="lv" id="d-linkc1">— <small style="font-size:12px;color:var(--muted)">stock</small></div><div class="inp inp-inline" data-customstockwrap hidden><input id="d-customstock" type="number" data-conc="customStock" inputmode="decimal" min="0" step="any" placeholder="e.g. 100" aria-label="Custom stock concentration" aria-describedby="d-customstock-note"><select class="u usel" data-cu="customStockUnit" aria-label="Custom stock concentration unit"><option>nM</option><option>µM</option><option>mM</option><option>M</option></select></div><div class="ls" id="d-linksub">measured from the reading above</div></div>
+          <label class="link-toggle"><input type="checkbox" data-ctoggle="useCustomStock" aria-label="Use a custom stock concentration"><span>Custom</span></label>
         </div>
-        <div class="custom-mw-row" data-customstockwrap hidden>
-          <div class="fld"><label for="d-customstock">Custom stock concentration</label><div class="inp"><input id="d-customstock" type="number" data-conc="customStock" inputmode="decimal" min="0" step="any" placeholder="e.g. 100" aria-describedby="d-customstock-note"><span class="u">µM</span></div></div>
-          <div class="custom-mw-note" id="d-customstock-note">Dilute from a stock you already know — a vendor tube whose concentration is printed on the label, or an aliquot you made earlier. This replaces the measured stock for the C₁V₁ = C₂V₂ recipe only; section 1 keeps reporting what the reading above gives. With a custom stock the dilution needs no molecular weight and no sequence.</div>
-        </div>
+        <p class="sr" id="d-customstock-note">Dilute from a stock you already know — a vendor tube whose concentration is printed on the label, or an aliquot you made earlier. This replaces the measured stock for the C₁V₁ = C₂V₂ recipe only; section 1 keeps reporting what the reading above gives. With a custom stock the dilution needs no molecular weight and no sequence.</p>
         <div class="dil">
-          <div class="fld"><label for="d-c2">Target concentration</label><div class="inp"><input id="d-c2" data-conc="dilC2" inputmode="decimal" min="0" value="" placeholder="0"><span class="u">µM</span></div></div>
-          <div class="fld"><label for="d-v2">Target volume</label><div class="inp"><input id="d-v2" data-conc="dilV2" inputmode="decimal" min="0" value="" placeholder="0"><span class="u">µL</span></div></div>
+          <div class="fld"><label for="d-c2">Target concentration</label><div class="inp"><input id="d-c2" data-conc="dilC2" inputmode="decimal" min="0" value="" placeholder="0"><select class="u usel" data-cu="dilC2Unit" aria-label="Target concentration unit"><option>nM</option><option>µM</option><option>mM</option><option>M</option></select></div></div>
+          <div class="fld"><label for="d-v2">Target volume</label><div class="inp"><input id="d-v2" data-conc="dilV2" inputmode="decimal" min="0" value="" placeholder="0"><select class="u usel" data-cu="dilV2Unit" aria-label="Target volume unit"><option>µL</option><option>mL</option><option>L</option></select></div></div>
         </div>
-        <div class="dil">
+        <div class="dil dil-res">
           <div class="dcell prim"><div class="dl">Add stock</div><div class="dv" id="d-add">—</div></div>
           <div class="dcell"><div class="dl">Add water / buffer</div><div class="dv" id="d-water">—</div></div>
         </div>
@@ -5271,6 +5303,10 @@ function renderConcShell(){
   document.body.dataset.conc = (S.readMode==='a260')?'a260':'ng';
   var ctoggle=document.querySelector('#panel-conc [data-ctoggle="useCustomMW"]'); if(ctoggle) ctoggle.checked=!!S.useCustomMW;
   var customWrap=document.querySelector('#panel-conc [data-customwrap]'); if(customWrap) customWrap.hidden=!S.useCustomMW;
+  /* R40: exactly one place shows the number. With a custom MW the read-only
+     figure repeated, digit for digit, whatever the user was typing two rows
+     below it; now the field takes its place and the figure steps aside. */
+  var lmv=document.getElementById('c-linkmw'); if(lmv) lmv.hidden=!!S.useCustomMW;
   var customInput=document.getElementById('c-custommw');
   if(customInput && document.activeElement!==customInput) customInput.value=S.customMW||'';
   if(customInput){
@@ -5281,7 +5317,7 @@ function renderConcShell(){
   }
   var msr=document.querySelector('#panel-conc [data-mwsrcrow]'); if(msr) msr.style.display=(S.duplexMode!=='off' && !S.useCustomMW)?'flex':'none';
   var lm=document.getElementById('c-linkmw'); if(lm) lm.innerHTML=(MW>0?fmt2(MW):'—')+' <small style="font-size:12px;color:var(--muted)">g/mol</small>';
-  var ls=document.getElementById('c-linksub'); if(ls) ls.textContent = _antiBad?'antisense strand isn’t valid — fix it, or set MW source to Sense':(S.useCustomMW?'custom MW value':(S.duplexMode!=='off'?('linked from '+src.label+' · '+src.n+' nt'):(r.n?('linked from sequence · '+S.seq):'enter a sequence in the Calculator tab')));
+  var ls=document.getElementById('c-linksub'); if(ls) ls.textContent = _antiBad?'antisense strand isn’t valid — fix it, or set MW source to Sense':(S.useCustomMW?'your value — A₂₆₀ unavailable':(S.duplexMode!=='off'?('linked from '+src.label+' · '+src.n+' nt'):(r.n?('linked from sequence · '+S.seq):'enter a sequence in the Calculator tab')));
   var epsn=document.getElementById('c-eps'); if(epsn) epsn.innerHTML = S.useCustomMW?'A₂₆₀ unavailable with custom MW':(eps>0?('ε₂₆₀ '+eps.toLocaleString()+' M⁻¹cm⁻¹'):'ε₂₆₀ — enter a sequence');
   var a260btn=document.querySelector('#panel-conc [data-cset="readMode"] [data-cval="a260"]');
   if(a260btn){ var a260Disabled=!!S.useCustomMW||eps<=0; a260btn.disabled=a260Disabled; a260btn.setAttribute('aria-disabled',a260Disabled?'true':'false'); }
@@ -5305,7 +5341,13 @@ function renderConcShell(){
   var stock=document.getElementById('c-stock'); if(stock) stock.textContent = C1>0?nfmt(C1/uf(su,C_UNITS)):'0';
   /* [data-dilnote] is set in the R39 block below -- it names the stock the dilution
      actually uses, which is no longer necessarily the one measured here. */
-  var stocku=document.getElementById('c-stocku'); if(stocku) stocku.textContent=su;
+  var stocku=document.getElementById('c-stocku'); if(stocku){ if(stocku.tagName==='SELECT') stocku.value=su; else stocku.textContent=su; }
+  /* R40 unit pickers: display-only state, but it has to survive a reload, so the
+     stored value is written back into each <select> on every render. */
+  var _cu=function(key,val){ var el=_q('#panel-conc [data-cu="'+key+'"]'); if(el && el.value!==val) el.value=val; };
+  _cu('volUnit', S.volUnit||'µL');
+  _cu('dilC2Unit', S.dilC2Unit||'µM');
+  _cu('dilV2Unit', S.dilV2Unit||'µL');
   var volL=(parseFloat(S.vol)||0)*uf(S.volUnit||'µL',V_UNITS);
   var a1=autoUnit(C1*volL,MOL_UNITS), m1=autoUnit(C1*MW*volL,M_UNITS);
   var side=document.getElementById('c-side'); if(side) side.innerHTML='Total amount <b>'+nfmt(a1.v)+' '+a1.u+'</b><br>Total mass <b>'+nfmt(m1.v)+' '+m1.u+'</b>';
@@ -5325,18 +5367,24 @@ function renderConcShell(){
   var csu=S.customStockUnit||'µM';
   var csInput=document.getElementById('d-customstock');
   if(csInput && document.activeElement!==csInput) csInput.value=S.customStock||'';
-  var csUnitEl=_q('#panel-conc [data-customstockwrap] .u'); if(csUnitEl) csUnitEl.textContent=csu;
+  var csUnitEl=_q('#panel-conc [data-cu="customStockUnit"]'); if(csUnitEl){ if(csUnitEl.tagName==='SELECT'){ if(csUnitEl.value!==csu) csUnitEl.value=csu; } else csUnitEl.textContent=csu; }
   var csRaw=String(S.customStock||'').trim(), csNum=parseFloat(csRaw);
   _markInp('d-customstock', !!S.useCustomStock && !!csRaw && !(csNum>0));        // entered but not > 0
   var C1dil = S.useCustomStock ? ((isFinite(csNum)&&csNum>0)?csNum*uf(csu,C_UNITS):0) : C1;
   var dsu   = S.useCustomStock ? csu : su;                                       // the unit the dilution talks in
+  var d1v=document.getElementById('d-linkc1');
+  if(d1v){ d1v.hidden=!!S.useCustomStock;
+    d1v.innerHTML=(C1>0?nfmt(C1/uf(su,C_UNITS)):'—')+' <small style="font-size:12px;color:var(--muted)">'+su+'</small>'; }
   var c1ls=document.getElementById('d-linksub');
   if(c1ls) c1ls.textContent = S.useCustomStock
-    ? (C1dil>0?'custom value — no MW or sequence needed':'enter a custom stock concentration')
-    : (C1>0?('measured from the '+(a260mode?'A₂₆₀':'Nanodrop')+' reading above'):'no stock yet — read above, or use a custom one');
+    ? (C1dil>0?'your value — no MW or sequence needed':'enter a custom stock concentration')
+    : (C1>0?('measured from the '+(a260mode?'A₂₆₀':'Nanodrop')+' above'):'no stock yet — read above, or use a custom one');
   var dilnote=_q('#panel-conc [data-dilnote]');
+  /* R40: when the stock is typed, the field IS the readout -- printing the same
+     number again in the header is the duplication this round set out to remove.
+     When it is measured there is no field, so the figure still belongs here. */
   if(dilnote) dilnote.textContent = C1dil>0
-    ? ('from '+nfmt(C1dil/uf(dsu,C_UNITS))+' '+dsu+(S.useCustomStock?' custom stock':' stock'))
+    ? (S.useCustomStock ? 'from your custom stock' : ('from '+nfmt(C1dil/uf(dsu,C_UNITS))+' '+dsu+' stock'))
     : (S.useCustomStock?'enter a custom stock':'using the stock above');
   var C2raw=parseFloat(S.dilC2)||0, V2raw=parseFloat(S.dilV2)||0;
   var C2=C2raw*uf(S.dilC2Unit||'µM',C_UNITS);
@@ -6601,6 +6649,8 @@ try{
 .lab-x.danger{background:var(--err,#c0392b);color:#fff;border-color:transparent;font-weight:600;padding:0 10px;min-width:auto}
 .lab-x[disabled]{opacity:.5;cursor:default}
 @media (max-width:767px){ .lab-x{min-height:44px;min-width:44px} .lab-mem .lm-a{gap:6px} }
+.lab-x.danger:hover{border-color:var(--err); color:var(--err)}
+.lab-x.armed{border-color:var(--err); background:var(--err-soft); color:var(--err); width:auto; min-width:78px; padding:0 9px; font-size:12px; font-weight:700}
 .lab-add{display:flex;gap:6px;margin-top:4px}
 .lab-add input{flex:1;min-width:0;font-size:11.5px;padding:7px 9px;border:1px solid var(--line-2);border-radius:8px;background:var(--surface-2);color:var(--text)}
 .lab-btn{font-family:var(--font-head);font-weight:600;font-size:11.5px;min-height:34px;padding:6px 12px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface-2);color:var(--text);cursor:pointer;white-space:nowrap}
@@ -6813,7 +6863,18 @@ try{
   async function fetchLabMonomers(labId){ return (await rest('GET','custom_bases?lab_id=eq.'+encodeURIComponent(labId)+'&select=*&order=code.asc'))||[]; }
   function mergeMonInto(list){ (list||[]).forEach(function(row){ var c=Object.assign({}, row.data||{}, {code:row.code}); if(!c.code||CUSTOM[c.code]) return; var conj=(c.kind==='conj'); CUSTOM[c.code]={code:c.code,name:c.name||c.code,mass:c.mass,hasPhos:!!c.hasPhos,kind:c.kind||'base',nobond:conj,eff:conj?c.mass:(c.hasPhos?c.mass-LINK.PO:c.mass),_lab:true}; }); }
   async function mergeLabMonomers(labId){ try{ _labMon=await fetchLabMonomers(labId); mergeMonInto(_labMon); }catch(_){ _labMon=[]; } }
-  async function addMonomerToLab(cb,labId){ var uid=await myUid(); if(!uid) throw new Error('Not signed in'); var row={ user_id:uid, code:cb.code, name:cb.name||'', data:cb, lab_id:labId }; await rest('POST','custom_bases?on_conflict=user_id,code',[row],{Prefer:'resolution=merge-duplicates,return=minimal'}); }
+  async function addMonomerToLab(cb,labId){ var uid=await myUid(); if(!uid) throw new Error('Not signed in'); var _d=Object.assign({}, cb, {authorEmail:myEmail()}); var row={ user_id:uid, code:cb.code, name:cb.name||'', data:_d, lab_id:labId }; await rest('POST','custom_bases?on_conflict=user_id,code',[row],{Prefer:'resolution=merge-duplicates,return=minimal'}); }
+  /* Un-share, do NOT delete. A lab monomer row IS the author's own custom_bases
+     row (the POST above upserts on the (user_id, code) unique key and just sets
+     lab_id), so a DELETE here would take the monomer out of the author's own
+     library too. Clearing lab_id is the same move removeFromLab() makes for
+     strands, and it is reversible.
+     `user_id=eq.` is on the request as well as in the UI: PostgREST ANDs it into
+     the WHERE clause, so the row of another member cannot be touched even if the
+     button is reached some other way. The matching author-only RLS policy is in
+     supabase/supabase_custom_bases_author_delete.sql. */
+  async function unshareLabMonomer(rowId){ var uid=await myUid(); if(!uid) throw new Error('Not signed in');
+    await rest('PATCH','custom_bases?id=eq.'+encodeURIComponent(rowId)+'&user_id=eq.'+encodeURIComponent(uid),{lab_id:null},{Prefer:'return=minimal'}); }
   function addLabMonomerToMine(c){
     try{ if(!c||!c.code) return; S.customBases=S.customBases||[];
       if(S.customBases.some(function(x){return x&&String(x.code)===String(c.code);})){ toast('“'+c.code+'” is already in your custom bases.'); return; }
@@ -6822,11 +6883,22 @@ try{
       toast('Added “'+c.code+'” to your custom bases.');
     }catch(e){ toast('Could not add to your bases.'); }
   }
-  function monSectionHTML(){ return '<div class="lab-monsec"><div class="lab-h" style="padding:0 0 4px">Lab monomers</div>'+
-      (_labMon.length? _labMon.map(function(m,i){ var c=Object.assign({},m.data||{},{code:m.code}); return '<div class="lab-mem"><span class="lm-e">'+esc(c.code)+' — '+esc(c.name||'')+'</span><span class="lm-r">'+esc(''+(c.mass||''))+'</span><span class="lm-a"><button type="button" class="lab-x" data-labmon-mine="'+i+'" aria-label="Add '+esc(c.code)+' to my custom bases" title="Add to my bases">＋</button></span></div>'; }).join('') : '<div class="lab-hint" style="padding:2px 0">No shared monomers yet.</div>')+
-      '<div class="lab-add" style="margin-top:6px"><button type="button" class="lab-btn" data-labmon-add>+ Add one of my monomers</button></div></div>'; }
+  /* Author test, same shape as fileCard()'s: the row's user_id when we could
+     resolve our own uid, otherwise the authorEmail stamped into data. */
+  function monIsMine(m, uid, mine){ try{
+    if(uid && m && m.user_id) return m.user_id===uid;
+    var ae=(m&&m.data&&m.data.authorEmail)||''; return !!ae && String(ae).toLowerCase()===mine;
+  }catch(_){ return false; } }
+  function monSectionHTML(uid, mine){ return '<div class="lab-monsec"><div class="lab-h" style="padding:0 0 4px">Lab Customized Bases and Monomers</div>'+
+      (_labMon.length? _labMon.map(function(m,i){ var c=Object.assign({},m.data||{},{code:m.code}); var own=monIsMine(m,uid,mine);
+        return '<div class="lab-mem"><span class="lm-e">'+esc(c.code)+' — '+esc(c.name||'')+(own?' <span class="lm-p">yours</span>':'')+'</span><span class="lm-r">'+esc(''+(c.mass||''))+'</span><span class="lm-a">'+
+          '<button type="button" class="lab-x" data-labmon-mine="'+i+'" aria-label="Add '+esc(c.code)+' to my custom bases" title="Add to my bases">＋</button>'+
+          (own?('<button type="button" class="lab-x danger" data-labmon-rm="'+esc(m.id||'')+'" data-labmon-code="'+esc(c.code)+'" aria-label="Remove '+esc(c.code)+' from the lab" title="Remove from lab">✕</button>'):'')+
+        '</span></div>'; }).join('') : '<div class="lab-hint" style="padding:2px 0">No shared monomers yet.</div>')+
+      '<div class="lab-hint" style="padding:4px 0 0">Anyone in the lab can use these codes. Only the member who shared a monomer can remove it.</div>'+
+      '<div class="lab-add" style="margin-top:6px"><button type="button" class="lab-btn" data-labmon-add>+ Add one of my bases or monomers</button></div></div>'; }
   function openMonPicker(){ var labId=meta().labId; var cbs=(S.customBases||[]).filter(function(c){return c&&c.code;}); var mo=modal();
-    mo.box.innerHTML='<button type="button" class="oshare-btn oshare-x" aria-label="Close">✕</button><h3>Add a monomer to the lab</h3><p class="oshare-sub">Pick one of your custom monomers to share with the lab. Everyone in the lab can then use its code and edit it.</p><div class="oshare-list">'+
+    mo.box.innerHTML='<button type="button" class="oshare-btn oshare-x" aria-label="Close">✕</button><h3>Add to Lab Customized Bases and Monomers</h3><p class="oshare-sub">Pick one of your custom bases or monomers to share with the lab. Everyone in the lab can then use its code; only you can remove it again.</p><div class="oshare-list">'+
       (cbs.length? cbs.map(function(c,i){ return '<div class="lab-pick"><span class="lc-n">'+esc(c.code)+'</span><span class="lc-seq">'+esc(c.name||'')+' · '+esc(''+(c.mass||''))+'</span><button type="button" class="lab-btn" data-monpickadd="'+i+'">Add</button></div>'; }).join('') : '<div class="lab-hint">You have no custom monomers yet.</div>')+'</div>';
     mo.box.addEventListener('click',function(e){ var b=e.target.closest('[data-monpickadd]'); if(!b) return; var c=cbs[+b.getAttribute('data-monpickadd')]; if(!c) return; b.disabled=true; addMonomerToLab(c,labId).then(function(){ toast('Monomer shared to lab'); mo.close(); renderLabList(); }).catch(function(err){ toast(err.message||'Could not add'); b.disabled=false; }); });
   }
@@ -6907,7 +6979,7 @@ try{
         var inF=list.filter(function(e){return e.__folderId===openF;});
         html+= inF.length ? inF.map(function(e){return fileCard(e,mine,uid,labId);}).join('') : '<div class="lab-hint" style="padding:10px 2px">This folder is empty. Drag a strand onto it, or use a strand’s Move button.</div>';
       }
-      if(labId) html+=monSectionHTML();
+      if(labId) html+=monSectionHTML(uid, mine);
       ll.innerHTML=html;
       try{ wireDnD(ll); }catch(_){ }
     }catch(err){ ll.innerHTML='<div class="lab-hint" style="padding:10px 2px">Could not load. '+esc(err.message||'')+'</div>'; }
@@ -6971,6 +7043,21 @@ try{
     if((b=e.target.closest('[data-lab-comments]'))){ openComments(b.getAttribute('data-lab-comments'), b.getAttribute('data-lab-nm')); return; }
     if((b=e.target.closest('[data-labmon-add]'))){ openMonPicker(); return; }
     if((b=e.target.closest('[data-labmon-mine]'))){ var _lm=_labMon[+b.getAttribute('data-labmon-mine')]; if(_lm){ addLabMonomerToMine(Object.assign({},_lm.data||{},{code:_lm.code})); } return; }
+    if((b=e.target.closest('[data-labmon-rm]'))){
+      /* arm-to-confirm rather than a modal: same pattern as [data-pdel] above */
+      if(b.dataset.armed!=='1'){ b.dataset.armed='1'; b.textContent='Remove?'; b.classList.add('armed');
+        setTimeout(function(){ if(b&&b.dataset.armed==='1'){ b.dataset.armed='0'; b.textContent='\u2715'; b.classList.remove('armed'); } },3000); return; }
+      var _rid=b.getAttribute('data-labmon-rm'), _code=b.getAttribute('data-labmon-code')||'';
+      if(!_rid){ toast('This monomer needs to sync before it can be removed.'); return; }
+      b.disabled=true;
+      unshareLabMonomer(_rid).then(function(){
+        /* CUSTOM keeps merged lab codes under a _lab flag; drop it so the code
+           stops resolving in this session too, not just after a reload. */
+        try{ if(_code && CUSTOM[_code] && CUSTOM[_code]._lab) delete CUSTOM[_code]; }catch(_){ }
+        try{ if(typeof applyAll==='function') applyAll(); }catch(_){ }
+        toast('Removed from lab — still in your own bases.'); renderLabList();
+      }).catch(function(err){ toast(err.message||'Could not remove'); b.disabled=false; });
+      return; }
   });
   document.addEventListener('change', function(e){ if(e.target.closest('[data-ls-lab]')){ setScope('lab', e.target.value); } });
 
@@ -7576,15 +7663,59 @@ try{
   var PREF={ d:'d', dee:'d', deoxy:'d', dna:'d',
              r:'r', are:'r', ar:'r', arr:'r', our:'r', ribo:'r', rna:'r',
              m:'m', em:'m', methyl:'m', omethyl:'m',
-             moe:'moe',
+             /* 2'-MOE. Chrome returns "MOE" as Mo / Moh / Mow at least as often
+                as Moe, and none of those were mapped, so the prefix was silently
+                dropped and the base landed bare. */
+             moe:'moe', mo:'moe', moh:'moe', mow:'moe', mowe:'moe', moey:'moe',
              f:'f', ef:'f', fluoro:'f',
-             cet:'cEt' };
-  var BASE={ a:'A', ay:'A', eh:'A', hey:'A', adenine:'A',
+             /* 2'-cEt. "cET" is heard as an ordinary English word far more often
+                than as the spelled letters -- set/sett/seat/sit dominate. None of
+                these collide with a base or linkage token. */
+             cet:'cEt', cett:'cEt', set:'cEt', sett:'cEt', seat:'cEt', sit:'cEt',
+             cit:'cEt', kit:'cEt', chet:'cEt' };
+  var BASE={ a:'A', ay:'A', eh:'A', ea:'A', ae:'A', hey:'A', adenine:'A',
              c:'C', see:'C', sea:'C', cee:'C', si:'C', cytosine:'C',
              g:'G', gee:'G', jee:'G', ji:'G', guanine:'G',
              t:'T', tee:'T', tea:'T', ti:'T', thymine:'T',
              u:'U', you:'U', yew:'U', ewe:'U', yu:'U', uracil:'U' };
   var LINK={ s:1, es:1, ess:1, star:1, asterisk:1, thio:1, phosphorothioate:1, ps:1 };
+
+  /* Longest-match table for re-reading a token the whole-word maps missed.
+     ORDER IS LOAD-BEARING: every multi-character entry must precede any entry
+     that is a prefix of it, or "cet"/"moe" get eaten as c/m and the rest of the
+     token fails to consume. Deliberately NOT included: bare "ome"/"methyl"
+     mid-token, which would make ordinary English words like "come" scan clean.
+     The pre-pass above already collapses those when they stand alone. */
+  var SCAN_UNITS=[
+    ['phosphorothioate',{s:1}],
+    ['methoxyethyl',{p:'moe'}], ['constrainedethyl',{p:'cEt'}],
+    ['adenine',{b:'A'}], ['cytosine',{b:'C'}], ['guanine',{b:'G'}],
+    ['thymine',{b:'T'}], ['uracil',{b:'U'}],
+    ['deoxy',{p:'d'}], ['fluoro',{p:'f'}], ['ribo',{p:'r'}],
+    ['moe',{p:'moe'}], ['cet',{p:'cEt'}], ['sett',{p:'cEt'}], ['seat',{p:'cEt'}], ['set',{p:'cEt'}],
+    ['a',{b:'A'}], ['c',{b:'C'}], ['g',{b:'G'}], ['t',{b:'T'}], ['u',{b:'U'}],
+    ['d',{p:'d'}], ['r',{p:'r'}], ['m',{p:'m'}], ['f',{p:'f'}],
+    ['s',{s:1}]
+  ];
+  /* Returns the token's units, or null if it does not consume end to end or
+     yields no base at all -- so "moea" -> moe+A while "hello" is still ignored
+     and a bare "moe" (a prefix with nothing after it) does not pretend to be a
+     base. */
+  function scanToken(t){
+    var i=0, units=[], bases=0, guard=0;
+    while(i<t.length){
+      if(++guard>256) return null;
+      var hit=null;
+      for(var q=0;q<SCAN_UNITS.length;q++){
+        var e=SCAN_UNITS[q];
+        if(t.substr(i,e[0].length)===e[0]){ hit=e; break; }
+      }
+      if(!hit) return null;
+      units.push(hit[1]); if(hit[1].b) bases++;
+      i+=hit[0].length;
+    }
+    return bases>0 ? units : null;
+  }
 
   function parseVoice(text){
     if(!text) return '';
@@ -7594,8 +7725,10 @@ try{
     // collapse spoken 2'-sugar modifications to a single prefix token. ORDER MATTERS:
     //   MOE (methoxyethyl) before OMe so its "m" isn't taken as O-methyl;
     //   cEt before bases c/t grab the spelled letters.
-    s=s.replace(/\bmethoxy\s*ethyl\b/g,' moe ').replace(/\bm\s+o\s+e\b/g,' moe ');
-    s=s.replace(/\bconstrained\s*ethyl\b/g,' cet ').replace(/\bc\s+e\s+t\b/g,' cet ');
+    s=s.replace(/\bmethoxy\s*ethyl\b/g,' moe ').replace(/\bmethoxy\b/g,' moe ');
+    s=s.replace(/\b(?:m|em|am)\s+(?:o|oh|owe|ow)\s+(?:e|ee|eh|ea|ey)\b/g,' moe ');
+    s=s.replace(/\bconstrained\s*ethyl\b/g,' cet ').replace(/\bconstrained\b/g,' cet ');
+    s=s.replace(/\b(?:c|cee|see|sea|si|ci)\s+(?:e|ee|eh|ea|ey)\s+(?:t|tee|tea|ti|te)\b/g,' cet ');
     s=s.replace(/\b(?:fluoro|floro|flooro)\b/g,' fluoro ');
     s=s.replace(/\bo(?:h)?\s*methyl\b/g,' methyl ').replace(/\bo\s+m\s+e\b/g,' methyl ').replace(/\bome\b/g,' methyl ');
     var toks=s.split(/\s+/).filter(Boolean);
@@ -7611,14 +7744,12 @@ try{
          Re-read the token character by character, but ONLY when EVERY character
          maps to a known base / sugar prefix / linkage -- so "aucg" becomes ACGU
          while "hello" is still ignored. */
-      var cs=t.split(''), ok=cs.length>1, j, c;
-      for(j=0;j<cs.length;j++){ c=cs[j];
-        if(BASE[c]==null && PREF[c]==null && !LINK[c]){ ok=false; break; } }
-      if(ok){
-        for(j=0;j<cs.length;j++){ c=cs[j];
-          if(BASE[c]!=null){ out+=pend+BASE[c]; pend=''; continue; }
-          if(PREF[c]!=null){ pend=PREF[c]; continue; }
-          if(LINK[c]){ out+='s'; pend=''; continue; } }
+      var sc=scanToken(t);
+      if(sc){
+        for(var k=0;k<sc.length;k++){ var u=sc[k];
+          if(u.b){ out+=pend+u.b; pend=''; }
+          else if(u.p){ pend=u.p; }
+          else { out+='s'; pend=''; } }
         continue;
       }
       /* still unrecognised -> ignore */
@@ -7813,7 +7944,7 @@ try{
     var noSR = !SR;
     ov.innerHTML='<div class="catgate-card" style="max-width:560px">'+
       '<div class="catgate-title">🎤 Voice input'+(vtarget==='anti'?' — antisense strand':'')+'</div>'+
-      '<div class="catgate-sub">Say the bases as letters or words — e.g. “D A, D T, D C, D G”, or “deoxy adenine, deoxy thymine…”. Say “star” (or “thio”) for a phosphorothioate <b>s</b> bond. For 2′ sugar mods, say the name — “fluoro A” → fA, “O-methyl A” → mA, “MOE A” → moeA, “cET A” → cEtA. Words are recognized more reliably than single letters; check the result before inserting.</div>'+
+      '<div class="catgate-sub">Say the bases as letters or words — e.g. “D A, D T, D C, D G”, or “deoxy adenine, deoxy thymine…”. Say “star” (or “thio”) for a phosphorothioate <b>s</b> bond. For 2′ sugar mods, say the name — “fluoro A” → fA, “O-methyl A” → mA, “MOE A” (or “methoxyethyl A”) → moeA, “cET A” (or “constrained ethyl A”) → cEtA — A, C, G and U all work for both. Words are recognized more reliably than single letters; check the result before inserting.</div>'+
       (noSR
         ? '<div class="voice-status" style="margin:8px 0">Voice input isn’t supported in this browser. Try Chrome, Edge, or Safari.</div>'
         : '<div style="display:flex;gap:10px;align-items:center;margin:8px 0"><button class="ctl-btn sm primary" data-voicetoggle>● Start</button><span class="voice-status" data-voicestatus role="status" aria-live="polite">Idle — tap Start and allow the mic.</span></div>')+
