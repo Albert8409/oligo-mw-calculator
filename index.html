@@ -2,6 +2,86 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<script>
+/* ============================================================================
+   __OLIGO_VERSION_ROUTER__ — boot-time version router  (VERSION SWITCHER)
+   Must stay the first EXECUTING script in <head> (only <meta charset> above it),
+   so a visitor is handed to the right build before any paint, fetch or storage
+   read.  Purely additive: no engine, namespace or feature changes.
+   Preference contract + rollout switches: see VERSION-SWITCHER-NOTE.md.
+   ========================================================================== */
+(function(){
+  /* ---------- per-build identity + rollout switches (the only lines to edit) ---------- */
+  var MY_VERSION      = "classic";            /* this file's identity: "classic" | "next" */
+  var DEFAULT_VERSION = "next";              /* where an un-routed visitor lands. One-line flip to "classic" for a conservative rollout. */
+  var AUTO_ROUTE      = true;                /* false -> never redirect; the on-page control becomes the only way across. */
+  var ROUTE_TO_NEXT   = true;               /* KILL SWITCH (classic only): false -> this build serves classic to
+                                               EVERYONE, ignoring a stored "next" and DEFAULT_VERSION. No file moves. */
+  var OTHER_PATH      = "next/";         /* RELATIVE path to the other build — same origin, so localStorage + the Supabase session are shared. */
+  var KEY             = "oligoUiVersion";    /* additive, disposable key. No existing namespace is renamed. */
+
+  function readPref(){ try{ var v=localStorage.getItem(KEY); return (v==="classic"||v==="next")?v:null; }catch(_){ return null; } }
+  function writePref(v){ try{ localStorage.setItem(KEY,v); }catch(_){ } }
+  /* remove ONLY the routing param; every other query param is carried byte-identical */
+  function stripV(q){
+    if(!q) return "";
+    var parts=q.replace(/^\?/,"").split("&").filter(function(p){ return p && p!=="v" && p.slice(0,2)!=="v="; });
+    return parts.length ? "?"+parts.join("&") : "";
+  }
+
+  var search=location.search||"", hash=location.hash||"";
+
+  /* (1) ?v=classic | ?v=next — wins this visit AND is remembered. Unknown values are ignored. */
+  var override=null;
+  try{
+    var m=/[?&]v=([^&#]*)/.exec(search);
+    if(m){ var val=decodeURIComponent(m[1]||"").toLowerCase(); if(val==="classic"||val==="next") override=val; }
+  }catch(_){ }
+  if(override) writePref(override);
+
+  /* (2) force-new deep links: a #share= hash is a Part-1 share link -> treat as ?v=next.
+         Deliberately NOT persisted, so one shared link never re-homes a user who chose classic. */
+  var forceNew = /(^|[#&])share=/.test(hash) ? "next" : null;
+
+  /* (3) resolve the target for this visit */
+  var stored=readPref(), target;
+  if(ROUTE_TO_NEXT===false) target="classic";                 /* kill switch: classic serves classic to everyone */
+  else target = override || forceNew || stored || DEFAULT_VERSION;
+
+  /* (4) not my build -> hand over.  Carry the query (minus v) and the WHOLE hash so
+         ?tab=, ?demo=1, magic-link #access_token= and #share= all survive.
+         replace() — never assign/push — so there is no history entry to bounce back into. */
+  var handedOver = (target!==MY_VERSION && AUTO_ROUTE);
+  if(handedOver){
+    try{ location.replace(OTHER_PATH+stripV(search)+hash); }catch(_){ handedOver=false; }
+  }else if(/[?&]v=/.test(search)){
+    /* (5) staying here -> take ?v= out of the address bar; the preference already holds it. */
+    try{ history.replaceState(null,"",location.pathname+stripV(search)+hash); }catch(_){ }
+  }
+
+  /* (6) A share link pasted into the address bar while the visitor is ALREADY here is a
+         same-document hash change: the document is not re-parsed, so (1)-(4) never re-run.
+         Classic has no share handler, so without this the link would silently do nothing.
+         Only classic listens (share belongs to the new build), and only while auto-routing
+         is on and the kill switch is off -> it can never loop back. */
+  if(!handedOver && AUTO_ROUTE && MY_VERSION !== "next" && ROUTE_TO_NEXT !== false){
+    try{
+      window.addEventListener("hashchange", function(){
+        var h = location.hash || "";
+        if(/(^|[#&])share=/.test(h)){
+          try{ location.replace(OTHER_PATH + stripV(location.search||"") + h); }catch(_){ }
+        }
+      });
+    }catch(_){ }
+  }
+
+  /* published for the on-page switch control and for the acceptance tests */
+  window.__oligoUi={ my:MY_VERSION, target:target, other:OTHER_PATH, key:KEY,
+                     stored:stored, override:override, forceNew:!!forceNew,
+                     defaultVersion:DEFAULT_VERSION, autoRoute:AUTO_ROUTE,
+                     routeToNext:ROUTE_TO_NEXT, handedOver:handedOver, stripV:stripV };
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Oligonucleotide MW &amp; Concentration Calculator</title>
 <link rel="icon" type="image/png" href="icons/icon-192.png" />
@@ -4293,6 +4373,70 @@ W.oligoSync={ syncEnabled:syncEnabled, pullCloud:pullCloud, pushStrand:pushStran
   onProReady:onProReady, migrateIds:migrateIds, syncMeta:syncMeta, flushDirty:flushDirty };
 })();
 
+</script>
+<script>/* __OLIGO_VERSION_BAR_BLOCK__ — classic-side "open the new version" affordance.
+   Self-contained + additive, in the same spirit as the other appended blocks:
+   its own <style>, one inserted node above the calculator card, one delegated
+   click handler. Nothing existing in this file is renamed, moved or restyled. */
+(function(){
+  var U=window.__oligoUi;
+  if(!U || U.my!=="classic" || U.handedOver) return;              /* mid-handover -> render nothing, avoid a flash */
+  if(window.__oligoVerBarInstalled) return; window.__oligoVerBarInstalled=true;
+
+  var RETIRED_ON="August 8, 2026";     /* one place to edit the honest fallback date */
+  var KEY=U.key||"oligoUiVersion";
+  var stripV=U.stripV||function(q){ return q||""; };
+
+  var st=document.createElement("style");
+  st.textContent=[
+    /* Deliberately self-contained colours: the calculator's theme vars are scoped to .calc,
+       and this bar is a SIBLING of .calc, so it must not depend on them. */
+    ".oligo-vbar{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:0 0 14px;padding:13px 16px;",
+      "background:#fbf7f0;color:#2a2118;border:1px solid #e2d8c7;border-radius:12px;",
+      "box-shadow:0 10px 30px -22px rgba(0,0,0,.6);font-size:13.5px;line-height:1.5}",
+    ".oligo-vbar-t{margin:0;flex:1 1 260px;min-width:0}",
+    ".oligo-vbar-t b{font-weight:700}",
+    ".oligo-vbar-cta{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;",
+      "min-height:44px;padding:10px 16px;border-radius:9px;border:1px solid #d97706;background:#d97706;",
+      "color:#fff;font:inherit;font-weight:600;text-decoration:none;cursor:pointer}",
+    ".oligo-vbar-cta:hover{background:#b45309;border-color:#b45309}",
+    ".oligo-vbar-cta:focus-visible{outline:3px solid #2563eb;outline-offset:2px}",
+    "@media (max-width:560px){.oligo-vbar{margin-bottom:12px;padding:12px 13px}.oligo-vbar-cta{width:100%}}"
+  ].join("");
+  document.head.appendChild(st);
+
+  var bar=document.createElement("div");
+  bar.className="oligo-vbar"; bar.setAttribute("role","region");
+  bar.setAttribute("aria-label","Interface version");
+  var lead = U.routeToNext===false
+    ? "The redesigned version is available whenever you want it"
+    : "The redesigned version is now the default";
+  bar.innerHTML='<p class="oligo-vbar-t">You&rsquo;re on the <b>classic</b> version, kept as a fallback until ~'+RETIRED_ON+
+      '. '+lead+' &mdash; same calculations, redesigned interface. Your saved strands, custom monomers and Pro sign-in carry across.</p>'+
+    '<a class="oligo-vbar-cta" href="next/" data-uiswitch="next">Open the new version &rarr;</a>';
+
+  function mount(){
+    if(!document.body || bar.parentNode) return;
+    var host=document.querySelector(".web-wrap");
+    if(host) host.insertBefore(bar, host.firstChild);
+    else document.body.insertBefore(bar, document.body.firstChild);
+  }
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",mount,{once:true});
+  else mount();
+
+  /* One click -> remember the choice FIRST, then navigate. replace() so the back button
+     cannot bounce the visitor into a build the router will immediately redirect out of.
+     The plain href is the no-JS fallback (the /next/ router keeps them there). */
+  document.addEventListener("click",function(e){
+    var t=e.target&&e.target.closest?e.target.closest("[data-uiswitch]"):null;
+    if(!t) return;
+    var to=t.getAttribute("data-uiswitch"); if(to!=="classic"&&to!=="next") return;
+    e.preventDefault();
+    try{ localStorage.setItem(KEY,to); }catch(_){ }
+    var url="next/"+stripV(location.search||"")+(location.hash||"");
+    try{ location.replace(url); }catch(_){ location.href=url; }
+  },false);
+})();
 </script>
 </body>
 </html>
