@@ -1423,7 +1423,24 @@ textarea.catgate-input{font-family:var(--font-num,ui-monospace,monospace);line-h
 <script>/* R45: the tab router replaceState()s to ?tab=... during boot and drops the
    fragment, so #signin has to be read here -- first script in the body -- rather
    than in a DOMContentLoaded handler, which runs far too late. */
-window.__ocHash = String(location.hash || '');</script>
+window.__ocHash = String(location.hash || '');
+/* R48: same trap as the fragment -- the router rewrites the query to ?tab=… on
+   boot, so Stripe's ?billing=success is gone before any load handler runs.
+   And it has to be STRIPPED here too, not later: a strip in a load handler is
+   undone by the router's next replaceState, which rebuilds the URL from
+   location.search and carries billing= and session= straight back in. Leaving a
+   Stripe session id in the address bar is the kind of thing that gets pasted
+   into a bug report or a group chat. */
+window.__ocSearch = String(location.search || '');
+if(/[?&]billing=/.test(window.__ocSearch)){
+  try{
+    var _u = new URL(location.href);
+    window.__ocSession = _u.searchParams.get('session') || '';
+    _u.searchParams.delete('billing');
+    _u.searchParams.delete('session');
+    history.replaceState(null, '', _u.pathname + (_u.search || '') + _u.hash);
+  }catch(_e){ }
+}</script>
 <a class="skip" href="#main">Skip to main content</a>
 
 <div class="statusbar" aria-hidden="true"></div>
@@ -3415,7 +3432,7 @@ const DEFAULTS = {
 // Bump BUILD_VERSION whenever the baked-in design changes (accent, fonts, theme,
 // sizes, layout). On their next visit, returning users are auto-refreshed to the
 // new appearance defaults below — their saved strands & sequences are kept.
-const BUILD_VERSION = 26;
+const BUILD_VERSION = 29;
 const APPEARANCE_KEYS = ["platform","theme","accent","fontUI","fontHead","fontNum","fsBase","fsResult","radius","border","density","shadow","btn","keypad","resultpos","align","showChips","showFormula","showCharge","decimals","catalogEnabled","catalogSource","catalogSupabaseUrl","catalogSupabaseAnonKey"];
 let S = load();
 let history = loadHist();
@@ -9025,9 +9042,12 @@ body[data-mode="dark"] .oc-wall-eyebrow{color:var(--accent)}
   function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){
     return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
 
-  /* Billing is not wired to Stripe yet. When it is, flip this one flag and the
-     plan CTAs become checkout calls; nothing else in this file changes. */
-  var BILLING_LIVE=false;
+  /* R48: there is no BILLING_LIVE flag any more. Whether billing is on is a
+     server fact -- stripe-checkout answers {code:'config'} until the Stripe
+     secret exists -- so it cannot drift out of sync with reality, and switching
+     Stripe on does not require shipping a new build. Kept as a getter only
+     because the old export was public. */
+  function BILLING_LIVE_(){ try{ return sessionStorage.getItem('oligoBillLive')==='1'; }catch(_){ return false; } }
 
   var ENT_KEY='oligoEnt', NUDGE_KEY='oligoNudgeSeen';
   var PRICE={ pro:{mo:9,yr:84}, lab:{mo:7,yr:70} };
@@ -9282,8 +9302,9 @@ body[data-mode="dark"] .oc-wall-eyebrow{color:var(--accent)}
       eyebrow:'Monthly scans used — '+lim+' of '+lim,
       title:'That’s this month’s scans',
       body:'Your <b>'+lim+'</b> scans reset at the start of next month. Nothing else is affected — the calculator, voice entry and your library all keep working.',
-      actions:[{label:'OK', prim:true, run:wallClose}],
-      foot:'Need more this month? A top-up pack will be available once billing opens.'
+      actions:[{label:'Add 50 scans', prim:true, run:function(){ if(W.ocBill) W.ocBill.checkout('topup'); else wallClose(); }},
+               {label:'OK', run:wallClose}],
+      foot:'A top-up is a one-off purchase, not a second subscription. Your monthly '+lim+' still reset on their own.'
     });
   }
 
@@ -9539,11 +9560,12 @@ body[data-mode="dark"] .oc-wall-eyebrow{color:var(--accent)}
            mistake, and it is the cheapest trust we will ever buy. */
         else if(k==='pro' && pk==='lab'){ b.textContent='Your lab already covers this'; b.disabled=true; }
         else if(k==='free'){ b.textContent=si?'Included':'Create free account'; b.disabled=si; }
-        else if(k==='pro'){ b.textContent=BILLING_LIVE?'Get Pro':'Get Pro'; b.disabled=false; }
+        else if(k==='pro'){ b.textContent='Get Pro'; b.disabled=false; }
         else { b.textContent='Set up a lab'; b.disabled=false; }
       }
     });
     paintHeader(si, pk, m, e);
+    try{ if(W.ocBillRepaint) W.ocBillRepaint(); }catch(_){ }
     paintPrices();
     paintNudge();
   }
@@ -9670,7 +9692,10 @@ body[data-mode="dark"] .oc-wall-eyebrow{color:var(--accent)}
     if(pick && !pick.disabled){ ev.preventDefault();
       var k=pick.getAttribute('data-ocpick');
       if(k==='free'){ if(!signedIn()) { var f=q('[data-axinput]'); if(f){ try{ f.focus(); f.scrollIntoView({block:'center',behavior:'smooth'}); }catch(_){ } } } return; }
-      if(BILLING_LIVE){ /* checkout goes here when Stripe is wired */ return; }
+      /* R48: ocBill decides. It calls stripe-checkout and lets the SERVER say
+         whether billing exists, so nothing here has to be rebuilt when Stripe is
+         switched on. The sheet below is now only the no-ocBill fallback. */
+      if(W.ocBill && W.ocBill.checkout){ W.ocBill.checkout(k); return; }
       wallSet({
         eyebrow:k==='lab'?'Lab plan':'Pro plan',
         title:'Billing isn’t open yet',
@@ -9763,7 +9788,7 @@ body[data-mode="dark"] .oc-wall-eyebrow{color:var(--accent)}
     scanRejected:scanRejected, pushRejected:pushRejected, reportUnsynced:reportUnsynced,
     wall:wallSet, closeWall:wallClose, plans:PLANS,
     wallStrandsAnon:wallStrandsAnon, wallStrandsFree:wallStrandsFree,
-    signedIn:signedIn, gotoPlans:gotoPlans, billingLive:function(){ return BILLING_LIVE; },
+    signedIn:signedIn, gotoPlans:gotoPlans, billingLive:BILLING_LIVE_,
     signIn:wallSignIn, getStarted:wallStart, initials:initialsOf, authMessage:authMsg
   };
 
@@ -9783,6 +9808,330 @@ body[data-mode="dark"] .oc-wall-eyebrow{color:var(--accent)}
       if(!D.hidden && signedIn() && (Date.now()-_entAt > 300000)) refresh(true);
     });
   }
+  if(D.readyState==='loading') D.addEventListener('DOMContentLoaded', boot); else boot();
+})();
+</script>
+<style id="oc-bill-css">
+.oc-bill-row{display:flex; gap:9px; flex-wrap:wrap; margin-top:16px; padding-top:15px; border-top:1px solid var(--line)}
+.oc-bill-row[hidden]{display:none}
+.oc-spin{display:inline-block; width:15px; height:15px; border-radius:999px; flex:0 0 auto;
+  border:2px solid var(--line-2); border-top-color:var(--accent); animation:ocspin .7s linear infinite}
+@keyframes ocspin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){ .oc-spin{animation:none; border-top-color:var(--line-2)} }
+.oc-wait{display:flex; align-items:center; gap:10px; font-size:13px; color:var(--muted);
+  padding:12px 14px; border-radius:10px; background:var(--surface-2); border:1px solid var(--line); margin-bottom:14px}
+.oc-wait[hidden]{display:none}
+</style>
+<script>
+/* ==========================================================================
+   R48 — Stripe, client side.  window.ocBill.
+   ========================================================================== */
+(function(){
+  'use strict';
+  var W=window, D=document;
+  function q(s,r){ return (r||D).querySelector(s); }
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function P(){ return W.ocPlan||null; }
+
+  var LIVE_KEY='oligoBillLive', PRE_KEY='oligoPrePlan';
+
+  /* Whether billing is switched on is a SERVER fact: stripe-checkout answers
+     {code:'config'} until STRIPE_SECRET_KEY exists. Deriving it from the server
+     rather than a baked-in flag means the day Stripe is configured, billing goes
+     live with no rebuild and no push -- which matters because the person doing
+     the Stripe setup is not the person who can ship a new index.html. */
+  function liveCache(){ try{ return sessionStorage.getItem(LIVE_KEY); }catch(_){ return null; } }
+  function setLive(v){ try{ sessionStorage.setItem(LIVE_KEY, v?'1':'0'); }catch(_){ } }
+
+  async function tok(){ try{ return (typeof proAccessToken==='function') ? await proAccessToken() : null; }catch(_){ return null; } }
+  function base(){ try{ return (typeof sbBase==='function') ? sbBase().replace(/\/+$/,'') : ''; }catch(_){ return ''; } }
+  function key(){ try{ return ((typeof S!=='undefined' && S.catalogSupabaseAnonKey)||'').trim(); }catch(_){ return ''; } }
+
+  async function callFn(name, body){
+    var b=base(), k=key(), t=await tok();
+    if(!b||!k) return { code:'config' };
+    if(!t) return { code:'signin_required' };
+    var r;
+    try{
+      r=await fetch(b+'/functions/v1/'+name, {method:'POST',
+        headers:{apikey:k, Authorization:'Bearer '+t, 'Content-Type':'application/json'},
+        body:JSON.stringify(body||{})});
+    }catch(_){ return { code:'network' }; }
+    var j={}; try{ j=await r.json(); }catch(_){ }
+    if(!r.ok) return { code:j.code||('http_'+r.status), error:j.error, status:r.status };
+    return j;
+  }
+
+  /* An Edge Function that has not been deployed answers 404 NOT_FOUND, which is
+     not the same string as the {code:'config'} a deployed-but-unconfigured one
+     returns -- but to a user the two are the same fact: there is no billing yet.
+     Verified against the live project, which returns exactly
+     {"code":"NOT_FOUND","message":"Requested function was not found"}. */
+  function isMissing(c){
+    return c==='config' || c==='NOT_FOUND' || c==='http_404' || c==='not_found';
+  }
+
+  /* One place that leaves the page. Two reasons it is a function rather than an
+     inline assignment: a harness can replace it (window.location is
+     non-configurable, so there is no way to intercept the redirect from
+     outside), and it is the single point where we can refuse to follow anything
+     that is not an https URL handed back by our own function. */
+  function go(url){
+    if(!/^https:\/\//i.test(String(url||''))) return false;
+    W.location.href=url; return true;
+  }
+
+  function cycle(){
+    var on=q('[data-occyc].on');
+    return (on && on.getAttribute('data-occyc')==='yr') ? 'annual' : 'monthly';
+  }
+
+  /* ---------------- the "billing isn't open" fallback ---------------- */
+  function notOpenYet(plan){
+    setLive(false);
+    var signed = P() && P().signedIn();
+    P().wall({
+      eyebrow: plan==='lab' ? 'Lab plan' : 'Pro plan',
+      title:'Billing isn’t open yet',
+      body: plan==='lab'
+        ? 'Lab plans are being set up one at a time while the shared library is finished. Tell us about your lab and we’ll get you in.'
+        : 'Pro is currently granted by access code. If you were given one, enter it in your account — it unlocks Pro immediately, no card.',
+      actions: signed
+        ? [{label:'Enter an access code', prim:true, run:function(){ P().closeWall(); focusPromo(); }}]
+        : [{label:'Create a free account first', prim:true, run:function(){ P().closeWall(); P().getStarted(); }}],
+      alt:{label:'Close', run:function(){ P().closeWall(); }},
+      foot:'Codes come from the Sheng Lab. Academic labs get 40% off once billing opens.'
+    });
+  }
+  function focusPromo(){
+    P().gotoPlans();
+    setTimeout(function(){ var i=q('[data-ocpromoinput]');
+      if(i){ try{ i.scrollIntoView({block:'center',behavior:'smooth'}); i.focus(); }catch(_){ } } },160);
+  }
+
+  function billErr(title, body, alt){
+    P().wall({ eyebrow:'Billing', title:title, body:body,
+      actions:[{label:'OK', prim:true, run:function(){ P().closeWall(); }}],
+      alt: alt||null, foot:'' });
+  }
+
+  /* ---------------- lab: which one, and are you allowed ---------------- */
+  async function myLabs(){
+    var b=base(), k=key(), t=await tok(); if(!b||!k||!t) return [];
+    try{
+      var r=await fetch(b+'/rest/v1/rpc/my_labs',{method:'POST',
+        headers:{apikey:k, Authorization:'Bearer '+t, 'Content-Type':'application/json'}, body:'{}'});
+      if(!r.ok) return [];
+      var d=await r.json(); return Array.isArray(d)?d:[];
+    }catch(_){ return []; }
+  }
+
+  /* ---------------- checkout ---------------- */
+  async function checkout(plan, opts){
+    opts=opts||{};
+    if(!P()) return;
+    if(!P().signedIn()){ P().signIn(); return; }
+    if(liveCache()==='0' && plan!=='topup'){ notOpenYet(plan); return; }
+
+    var body={ plan:plan, interval: opts.interval||cycle() };
+
+    if(plan==='lab'){
+      var labs=await myLabs();
+      var managed=labs.filter(function(l){ return l && (l.role==='manager'||l.role==='owner'); });
+      if(!managed.length){
+        billErr('Create the lab first',
+          labs.length
+            ? 'You’re a member of a lab but not a manager, so you can’t buy seats for it. Ask whoever set it up — only a manager can, and that is deliberate.'
+            : 'A lab plan pays for a lab that already exists. Create one from the Library first, invite your people, then come back and buy the seats.',
+          {label:'Close', run:function(){ P().closeWall(); }});
+        return;
+      }
+      body.lab_id = managed[0].lab_id;
+      body.seats  = Math.max(1, Number(opts.seats||managed[0].member_count||1));
+    }
+
+    var btn = q('[data-ocplan="'+plan+'"] [data-ocpick]');
+    var old = btn ? btn.textContent : '';
+    if(btn){ btn.disabled=true; btn.textContent='Opening checkout…'; }
+
+    var res = await callFn('stripe-checkout', body);
+
+    if(btn){ btn.disabled=false; btn.textContent=old; }
+
+    if(res && res.url){
+      /* Remember the plan we are leaving, so the return handler can tell
+         "the webhook has landed" from "nothing changed yet" instead of
+         guessing from a timer. */
+      try{ sessionStorage.setItem(PRE_KEY, P().plan()); }catch(_){ }
+      setLive(true);
+      ocBillGo(res.url);
+      return;
+    }
+    var c=(res&&res.code)||'';
+    if(isMissing(c))            { notOpenYet(plan); return; }
+    if(c==='signin_required')   { P().signIn(); return; }
+    if(c==='not_lab_manager')   { billErr('Only a lab manager can buy seats','Ask whoever set the lab up. This is deliberate — a rotating student should not be able to change what the lab pays for.'); return; }
+    if(c==='lab_required')      { billErr('Choose a lab first','A lab plan pays for a specific lab. Create or open one, then buy seats for it.'); return; }
+    if(c==='bad_plan')          { billErr('That plan isn’t available','The server didn’t recognise that plan. If this keeps happening, tell us what you clicked.'); return; }
+    if(c==='network')           { billErr('Couldn’t reach the server','Check your connection and try again. Nothing has been charged.'); return; }
+    billErr('Couldn’t start checkout',
+      'Something went wrong on the way to Stripe. <b>Nothing has been charged.</b> Try again in a moment.');
+  }
+
+  /* ---------------- billing portal ---------------- */
+  async function portal(){
+    if(!P() || !P().signedIn()){ P()&&P().signIn(); return; }
+    var b=q('[data-ocportal]'); var old=b?b.textContent:'';
+    if(b){ b.disabled=true; b.textContent='Opening…'; }
+    var res=await callFn('stripe-portal', {});
+    if(b){ b.disabled=false; b.textContent=old; }
+    if(res && res.url){ ocBillGo(res.url); return; }
+    if(res.code==='no_customer'){
+      billErr('No billing account yet','You don’t have a paid subscription on this account. If your Pro came from an access code or your lab, there’s nothing to manage here — and nothing being charged.');
+      return;
+    }
+    if(isMissing(res.code)){ notOpenYet('pro'); return; }
+    billErr('Couldn’t open the billing portal','Try again in a moment. Your subscription is unaffected.');
+  }
+
+  /* ---------------- coming back from Stripe ----------------
+     The webhook that records the subscription is a SEPARATE request from the
+     redirect, and it frequently has not landed when the browser gets here. If we
+     just repainted, a user who has genuinely just paid would be shown the word
+     "Free" -- the single worst moment a billing flow can produce. So we poll for
+     it, and if it still has not arrived we say so honestly rather than showing a
+     plan we know is stale. */
+  function waitWall(){
+    P().wall({
+      eyebrow:'Payment received',
+      title:'Setting up your account…',
+      body:'Stripe has taken the payment. We’re waiting for it to reach your account — usually a second or two.',
+      foot:'Do not pay again. This page updates on its own.'
+    });
+    var card=q('.oc-wall-card');
+    if(card && !q('.oc-wait',card)){
+      var w=D.createElement('div');
+      w.className='oc-wait';
+      w.innerHTML='<span class="oc-spin" aria-hidden="true"></span><span>Confirming with your account…</span>';
+      var p=q('[data-ocwallp]',card);
+      if(p && p.nextSibling) card.insertBefore(w, p.nextSibling); else card.appendChild(w);
+    }
+  }
+
+  function doneWall(plan){
+    var L=(P().plans[plan]||{}).label||plan;
+    P().wall({
+      eyebrow:'You’re on '+L,
+      title:'Thank you — you’re all set',
+      body:'Your account is on <b>'+esc(L)+'</b> now. Everything you had is still here; the ceilings just moved.',
+      gains: plan==='lab'
+        ? ['<b>Unlimited</b> strands for every member','A shared lab library','<b>20 scans per seat</b>, pooled']
+        : ['<b>Unlimited</b> saved strands','<b>20</b> photo scans a month','All <b>267</b> verified amidites'],
+      actions:[{label:'Back to work', prim:true, run:function(){ P().closeWall(); }}],
+      foot:'Manage or cancel any time under Plans &amp; account. Stripe emails you a receipt.'
+    });
+  }
+
+  function slowWall(){
+    P().wall({
+      eyebrow:'Payment received',
+      title:'Your payment went through',
+      body:'It hasn’t reached your account <i>yet</i> — that last step runs on Stripe’s side and occasionally lags. <b>Do not pay again.</b> It normally lands within a minute.',
+      actions:[{label:'Check again', prim:true, run:function(){ _confirmed=false; P().closeWall(); poll(true); }},
+               {label:'Close', run:function(){ P().closeWall(); }}],
+      foot:'If it is still not showing in ten minutes, send us the receipt Stripe emailed you and we will sort it by hand.'
+    });
+  }
+
+  /* The webhook stays primary -- it is the only thing that sees renewals and
+     cancellations. This is the fallback for its one failure mode, which is
+     silent and takes money: if the platform JWT gate is on, every delivery 401s
+     and the user pays for nothing. We ask Stripe what happened rather than
+     trusting the browser, and both paths upsert on a UNIQUE Stripe id so they
+     cannot duplicate each other. */
+  var _confirmed=false;
+  async function confirmDirect(){
+    var sid=String(W.__ocSession||''); if(!sid || _confirmed) return false;
+    _confirmed=true;
+    var res=await callFn('stripe-confirm', {session_id:sid});
+    return !!(res && res.ok);
+  }
+
+  function poll(quiet){
+    var before=''; try{ before=sessionStorage.getItem(PRE_KEY)||''; }catch(_){ }
+    var tries=0, MAX=14;                       // ~21s at 1.5s
+    if(!quiet) waitWall();
+    (function tick(){
+      /* Four polls (~6s) is long enough for a healthy webhook and short enough
+         that a broken one is not felt as a broken product. */
+      if(tries===4){ confirmDirect().catch(function(){}); }
+      P().refresh(true).then(function(){
+        var now=P().plan();
+        if(now && now!==before && now!=='free' && now!=='anon'){
+          try{ sessionStorage.removeItem(PRE_KEY); }catch(_){ }
+          try{ if(typeof reloadCatalogSource==='function') reloadCatalogSource(); }catch(_){ }
+          P().paint(); doneWall(now); return;
+        }
+        if(++tries>=MAX){ slowWall(); return; }
+        setTimeout(tick, 1500);
+      }).catch(function(){ if(++tries>=MAX) slowWall(); else setTimeout(tick,1500); });
+    })();
+  }
+
+  function handleReturn(){
+    var s=String(W.__ocSearch || location.search || '');
+    var m=s.match(/[?&]billing=([a-z_]+)/i);
+    if(!m) return;
+    var what=m[1].toLowerCase();
+    try{ history.replaceState(null,'',location.pathname); }catch(_){ }
+    if(what==='success'){ P().gotoPlans(); setTimeout(function(){ poll(false); }, 250); return; }
+    if(what==='cancelled'||what==='cancel'){
+      try{ if(typeof notice==='function') notice('Checkout cancelled — nothing was charged.'); }catch(_){ }
+      return;
+    }
+    if(what==='portal_return'){ P().refresh(true).then(function(){ P().paint(); }); return; }
+  }
+
+  /* ---------------- wiring ---------------- */
+  D.addEventListener('click', function(ev){
+    var t=ev.target;
+    if(t.closest('[data-ocportal]')){ ev.preventDefault(); portal(); return; }
+    if(t.closest('[data-octopup]')){ ev.preventDefault(); P().closeWall(); checkout('topup'); return; }
+  }, false);
+
+  function ocBillGo(u){ return (W.ocBill && W.ocBill._go ? W.ocBill._go : go)(u); }
+
+  W.ocBill={ checkout:checkout, portal:portal, handleReturn:handleReturn,
+             notOpenYet:notOpenYet, myLabs:myLabs, cycle:cycle, _go:go };
+
+  function boot(){
+    /* The account card gets a Manage billing button only when there is an actual
+       Stripe subscription behind it. Someone whose Pro came from an access code
+       or their lab has nothing to manage, and offering them a billing portal
+       that 404s is worse than not offering one. */
+    try{
+      var host=q('[data-ocpromo]');
+      if(host && !q('[data-ocbillrow]')){
+        var row=D.createElement('div');
+        row.className='oc-bill-row'; row.setAttribute('data-ocbillrow',''); row.hidden=true;
+        row.innerHTML='<button type="button" class="oc-btn" data-ocportal>Manage billing</button>'
+          +'<span style="font-size:12px;color:var(--muted);align-self:center">Card, invoices, seats, cancel — all handled by Stripe.</span>';
+        host.parentNode.insertBefore(row, host);
+      }
+    }catch(_){ }
+    repaintBilling();
+    try{ new MutationObserver(repaintBilling).observe(D.body,{attributes:true,attributeFilter:['data-tab']}); }catch(_){ }
+    handleReturn();
+  }
+  function repaintBilling(){
+    try{
+      var e=P()&&P().ent(), row=q('[data-ocbillrow]');
+      if(row) row.hidden = !(e && e.subscription && e.subscription.plan_code);
+    }catch(_){ }
+  }
+  W.ocBillRepaint=repaintBilling;
+
   if(D.readyState==='loading') D.addEventListener('DOMContentLoaded', boot); else boot();
 })();
 </script>
