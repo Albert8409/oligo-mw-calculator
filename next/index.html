@@ -154,7 +154,16 @@ button{font-family:inherit; cursor:pointer}
 a{color:var(--accent-2)} body[data-mode="dark"] a{color:var(--accent)}
 :focus-visible{outline:3px solid var(--accent); outline-offset:2px; border-radius:6px}
 .eyebrow{font-family:var(--font-head); font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
-.skip{position:absolute; left:-999px; top:8px; z-index:200; background:var(--accent); color:var(--accent-ink); padding:8px 14px; border-radius:8px; font-weight:600}
+.skip{position:absolute; left:-999px; top:8px; z-index:200; background:var(--accent); color:var(--accent-ink); padding:8px 14px; border-radius:8px; font-weight:600; min-height:44px; display:inline-flex; align-items:center}
+/* R43 F1: `body[data-mode="dark"] a` is (0,1,1) and outranks `.skip` (0,1,0), so
+   in dark mode the link painted --accent on --accent, 1.00:1 — invisible, and it
+   is the first thing a keyboard user reaches. (0,1,2) takes it back.
+   The blanket dark-link rule outranks EVERY single-class link style in this file;
+   `.help-faq-ans a` and `.c-src` already carry their own hand-written counter-
+   rules for the same reason. Narrowing it to
+   `body[data-mode="dark"] :where(a):not([class])` would retire all three, but
+   that is a wider change than a critical fix should carry. */
+body[data-mode="dark"] a.skip{color:var(--accent-ink)}
 .skip:focus{left:8px}
 .sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0)}
 
@@ -443,15 +452,22 @@ body[data-mode="dark"] .link-toggle:has(input:checked){color:var(--accent)}
    Styled to match classic's `.cinput select` — an opaque --surface-2 segment at
    the right edge of the field, divided by a rule, --text not --muted, accent on
    hover — rather than transparent muted text floating in the box. */
-.inp .usel{flex:0 0 auto; align-self:stretch; min-width:62px; max-width:104px;
+/* R43: these MUST be `.inp select.usel` (0,2,1), not `.inp .usel` (0,2,0).
+   The pickers carry class="u usel", and `.inp .u` is also (0,2,0) but sits LATER
+   in source, so it won every tie — silently reclaiming colour and margin (design
+   audit finding 7) and, the moment r43 added `align-self:center` to `.u`, the
+   height as well: the four field pickers collapsed 44px -> 19px while the hero
+   picker, which carries no `.u`, stayed correct. One element selector settles it
+   without touching the generic rule the static suffixes still need. */
+.inp select.usel{flex:0 0 auto; align-self:stretch; min-width:62px; max-width:104px;
   margin-left:10px; margin-right:-13px;
   border:0; border-left:1px solid var(--line); border-radius:0 9px 9px 0;
   background-color:var(--surface-2); color:var(--text);
   font-family:var(--font-head); font-size:12.5px; font-weight:600;
   padding:0 5px 0 9px; cursor:pointer}
-.inp .usel:hover{border-left-color:var(--accent); color:var(--accent-2)}
-body[data-mode="dark"] .inp .usel:hover{color:var(--accent)}
-.inp .usel:focus-visible{outline:2px solid var(--accent); outline-offset:-2px; border-radius:0 9px 9px 0}
+.inp select.usel:hover{border-left-color:var(--accent); color:var(--accent-2)}
+body[data-mode="dark"] .inp select.usel:hover{color:var(--accent)}
+.inp select.usel:focus-visible{outline:2px solid var(--accent); outline-offset:-2px; border-radius:0 9px 9px 0}
 .big .bu-sel{align-self:center; min-height:44px; border:0; background:none; color:var(--emph-side); font-family:var(--font-head); font-size:15px; font-weight:600; cursor:pointer; padding:0 2px}
 .big .bu-sel:hover{color:var(--emph-val)}
 .big .bu-sel:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
@@ -473,7 +489,15 @@ body[data-mode="light"] select{color-scheme:light}
 body[data-conc="ng"] .fld-path{display:none}
 .fld label{display:block; font-family:var(--font-head); font-size:12px; font-weight:600; letter-spacing:.03em; text-transform:uppercase; color:var(--muted); margin-bottom:6px}
 .inp{display:flex; align-items:center; background:var(--surface-2); border:1px solid var(--line); border-radius:10px; padding:0 13px; min-height:46px}
-.inp input{border:0; background:none; outline:none; flex:1 1 auto; min-width:0; font-family:var(--font-num); font-size:15px; color:var(--text)}
+/* R43 F2: `align-self:stretch` on the INPUT only. `.inp` is a div with
+   align-items:center, so the input rendered 20px tall inside a 46px box and the
+   13px above and below it were dead — elementFromPoint returned DIV.inp there and
+   a click in that band left document.activeElement unchanged. Stretching just
+   this item makes the painted box the target; every sibling (.u, .usel) keeps the
+   centring it already had. `.inp` has no vertical padding, so the input fills the
+   full 46px. */
+.inp input{border:0; background:none; outline:none; flex:1 1 auto; align-self:stretch; min-width:0; font-family:var(--font-num); font-size:15px; color:var(--text)}
+.inp .u{align-self:center}
 .inp .u{flex:0 0 auto; white-space:nowrap; margin-left:8px; font-family:var(--font-head); font-size:12.5px; font-weight:600; color:var(--muted)}
 .inp.err{border-color:var(--err); background:var(--err-soft)}
 .errmsg{color:var(--err); font-size:12px; margin-top:6px; font-weight:600; display:flex; gap:6px}
@@ -515,6 +539,10 @@ body[data-conc="ng"] .fld-path{display:none}
 .ladder caption{text-align:left; font-family:var(--font-ui); font-size:12px; color:var(--muted); padding-bottom:8px}
 .ladder th{font-family:var(--font-head); font-size:12px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--muted); text-align:right; padding:9px 12px; border-bottom:1.5px solid var(--line-2)}
 .ladder th:first-child{text-align:left}
+/* R43 F10: <sup> inherits the UA's 0.83em, which lands at 10px here — under the
+   project's own 11px floor, which is stated with no exception. line-height:0
+   keeps the raised glyph from adding a row to the header. */
+.ladder sup{font-size:11px; line-height:0}
 .ladder td{padding:9px 12px; text-align:right; border-bottom:1px solid var(--line); color:var(--text)}
 .ladder td:first-child{text-align:left; color:var(--muted); font-weight:600}
 .ladder tr.hot td{background:var(--accent-soft)}
@@ -530,7 +558,11 @@ body[data-mode="dark"] .ladder tr.hot td:first-child::after{color:var(--accent)}
 .gatebar .g-cta{margin-left:auto; font-family:var(--font-head); font-weight:700; font-size:12px; color:var(--accent-ink); background:var(--accent); border:0; border-radius:999px; padding:8px 15px; min-height:40px}
 .catbar{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px}
 .search{flex:1 1 200px; display:flex; align-items:center; gap:8px; background:var(--surface-2); border:1px solid var(--line); border-radius:10px; padding:0 12px; min-height:44px; color:var(--muted)}
-.search input{border:0; background:none; outline:none; width:100%; font-family:var(--font-ui); font-size:14px; color:var(--text)}
+/* R43 F2: same defect, 44px span over a 20px input with 12px dead each side.
+   Stretching the input alone matters MORE here than on .inp: the "⌕" ahead of it
+   is a bare TEXT NODE, so it is an anonymous flex item — flipping the container to
+   align-items:stretch would stretch the glyph's box and lift it off centre. */
+.search input{border:0; background:none; outline:none; width:100%; align-self:stretch; font-family:var(--font-ui); font-size:14px; color:var(--text)}
 .vendorseg{display:inline-flex; background:var(--surface-2); border:1px solid var(--line); border-radius:999px; padding:3px; gap:2px; overflow-x:auto; max-width:100%}
 .vendorseg button{flex:0 0 auto; border:0; background:none; font-family:var(--font-head); font-weight:600; font-size:12px; color:var(--muted); padding:8px 13px; border-radius:999px; white-space:nowrap; min-height:38px}
 .vendorseg button.on{background:var(--accent); color:var(--accent-ink)}
@@ -1388,6 +1420,10 @@ textarea.catgate-input{font-family:var(--font-num,ui-monospace,monospace);line-h
 @media (max-width:600px){.catgate{padding:14px 10px}.catgate-card{padding:14px}}
 </style></head>
 <body data-tab="mw" data-mode="light" data-state="empty" data-adv="0" data-drawer="closed" data-demo="0" data-conc="ng">
+<script>/* R45: the tab router replaceState()s to ?tab=... during boot and drops the
+   fragment, so #signin has to be read here -- first script in the body -- rather
+   than in a DOMContentLoaded handler, which runs far too late. */
+window.__ocHash = String(location.hash || '');</script>
 <a class="skip" href="#main">Skip to main content</a>
 
 <div class="statusbar" aria-hidden="true"></div>
@@ -1408,7 +1444,9 @@ textarea.catgate-input{font-family:var(--font-num,ui-monospace,monospace);line-h
     <button class="ico-btn lib-btn" aria-label="Library" onclick="setOverlay('library')"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="1" y="1.5" width="3" height="12" rx="1"/><rect x="6" y="1.5" width="3" height="12" rx="1"/><path d="M11 2.5l2.4 11"/></svg></button>
     <button class="ico-btn help-btn" aria-label="Scientific help" onclick="setOverlay('help')"><svg width="17" height="17" viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6.7"/><path d="M6.6 6.4a1.9 1.9 0 1 1 2.6 1.8c-.5.3-.9.6-.9 1.3v.4" stroke-linecap="round"/><circle cx="8.4" cy="12" r=".2" stroke-width="1.2"/></svg></button>
     <span class="demo-ind" aria-hidden="true">● Demonstration data</span>
-    <button class="acct-btn" aria-label="Account" aria-haspopup="menu" aria-expanded="false" onclick="setOverlay('account')"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="5.2" r="2.7"/><path d="M2.8 13.4c.5-2.7 2.6-4.1 5.2-4.1s4.7 1.4 5.2 4.1" stroke-linecap="round"/></svg><span class="acct-lbl">Account</span><span class="caret" aria-hidden="true">▾</span></button>
+    <button class="oc-hdr-btn oc-hdr-login" type="button" data-ocloginbtn>Log in</button>
+    <button class="oc-hdr-btn oc-hdr-start" type="button" data-ocstartbtn>Get started</button>
+    <button class="acct-btn" aria-label="Account" aria-haspopup="menu" aria-expanded="false" onclick="setOverlay('account')"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="5.2" r="2.7"/><path d="M2.8 13.4c.5-2.7 2.6-4.1 5.2-4.1s4.7 1.4 5.2 4.1" stroke-linecap="round"/></svg><span class="oc-ava" data-ocava aria-hidden="true"></span><span class="acct-lbl">Account</span><span class="caret" aria-hidden="true">▾</span></button>
     <div class="modetoggle" role="group" aria-label="Theme">
       <button class="mt-light" aria-pressed="true" onclick="setMode('light')">☀ Light</button>
       <button class="mt-dark" aria-pressed="false" onclick="setMode('dark')">☾ Dark</button>
@@ -1495,7 +1533,7 @@ textarea.catgate-input{font-family:var(--font-num,ui-monospace,monospace);line-h
           <div class="seqctl" data-seqctl="sense">
             <button class="ghost" data-seqpaste="sense" aria-label="Paste a sequence into the sense strand at the cursor">⧉ Paste</button>
             <button class="ghost" data-seqclear="sense" aria-label="Clear the sense sequence">Clear</button>
-            <button class="ghost" data-scan="sense" aria-label="Scan a photo of a sequence to fill the sense strand">📷 Scan</button>
+            <button class="ghost" data-scan="sense" aria-label="Scan a sequence into the sense strand — take a photo or upload one">📷 Scan</button>
             <button class="ghost" data-voice="sense" aria-label="Dictate a sequence by voice">🎤 Voice</button>
           </div>
         </div>
@@ -1509,7 +1547,7 @@ textarea.catgate-input{font-family:var(--font-num,ui-monospace,monospace);line-h
           <div class="seqctl" data-seqctl="antisense" hidden>
             <button class="ghost" data-seqpaste="antisense" aria-label="Paste a sequence into the antisense strand at the cursor">⧉ Paste</button>
             <button class="ghost" data-seqclear="antisense" aria-label="Clear the antisense sequence">Clear</button>
-            <button class="ghost" data-scan="antisense" aria-label="Scan a photo of a sequence to fill the antisense strand">📷 Scan</button>
+            <button class="ghost" data-scan="antisense" aria-label="Scan a sequence into the antisense strand — take a photo or upload one">📷 Scan</button>
             <button class="ghost" data-voice="antisense" aria-label="Dictate the antisense sequence by voice">🎤 Voice</button>
           </div>
           <div class="hint" data-antihint style="display:none"></div>
@@ -1692,49 +1730,176 @@ textarea.catgate-input{font-family:var(--font-num,ui-monospace,monospace);line-h
 
       <!-- PRO -->
       <section id="panel-pro" class="view view-pro" role="tabpanel" aria-labelledby="tab-pro">
-        <div class="crumb"><b>Oligo MW Pro</b><span class="sepc">›</span>Access by request</div>
-        <div class="vhead"><h2>Oligo MW Pro</h2><span class="tag">Preview · access by request</span></div>
-        <div class="vsub">Everything in the calculator stays free. Pro adds an account-bound, cross-device library and the full verified vendor catalog.</div>
-        <div class="pro-grid">
-          <div>
-            <div class="cmp">
-              <div class="cmp-row plan-head"><div class="cmp-feat">What you get</div><div class="cmp-free">Free</div><div class="cmp-pro">Pro</div><div class="cmp-team">Teams</div></div>
-              <div class="cmp-row"><div class="cmp-feat">Vendor catalog<small>verified amidites</small></div><div class="cmp-free">30<span class="cmp-sub">45 listings</span></div><div class="cmp-pro">267<span class="cmp-sub">351 listings</span></div><div class="cmp-team">267<span class="cmp-sub">351 listings</span></div></div>
-              <div class="cmp-row"><div class="cmp-feat">Calculator · Mass Spec · Concentration</div><div class="cmp-free">Full</div><div class="cmp-pro">Full</div><div class="cmp-team">Full</div></div>
-              <div class="cmp-row"><div class="cmp-feat">Saved strands &amp; custom monomers</div><div class="cmp-free">This browser</div><div class="cmp-pro">Cloud · every device</div><div class="cmp-team">Cloud · every device</div></div>
-              <div class="cmp-row"><div class="cmp-feat">Library management<small>folders · tags · notes · batch</small></div><div class="cmp-free">—</div><div class="cmp-pro">Included</div><div class="cmp-team">Included</div></div>
-              <div class="cmp-row"><div class="cmp-feat">Shared lab library<small>members · roles · comments</small></div><div class="cmp-free">—</div><div class="cmp-pro">—</div><div class="cmp-team">Up to 20</div></div>
-              <div class="cmp-row"><div class="cmp-feat">Install as app · offline</div><div class="cmp-free">Free</div><div class="cmp-pro">Free</div><div class="cmp-team">Free</div></div>
-              <div class="cmp-row plan-foot"><div class="cmp-feat">Price</div><div class="cmp-free">$0</div><div class="cmp-pro">Free in preview</div><div class="cmp-team">Free in preview</div></div>
+        <div class="crumb"><b>Plans</b><span class="sepc">›</span>Your account</div>
+        <div class="vhead"><h2>Plans &amp; account</h2><span class="tag" data-ocplantag>Guest</span></div>
+        <div class="vsub">The calculator is free and always will be. An account is what makes it <b>yours</b> — your strands, your monomers, on every device you use.</div>
+
+        <!-- ============ WHERE YOU ARE ============ -->
+        <div class="oc-acct" data-ocacct>
+          <div class="oc-acct-head">
+            <div class="oc-acct-who">
+              <div class="oc-acct-plan"><span class="oc-badge" data-ocbadge>Guest</span></div>
+              <div class="oc-acct-email" data-ocemail>Not signed in — this browser only</div>
+              <div class="oc-acct-src" data-ocsrc hidden></div>
             </div>
-            <div class="pro-note">The full catalog and cloud library are <b>Supabase-backed behind account auth</b>, so signing in genuinely unlocks them. <b>Pro</b> is one account; <b>Teams</b> adds a shared lab library and up to 20 members on one plan. Access is granted per account by the Sheng Lab. Pricing isn't live yet, so Pro and Teams are free during the research preview.</div>
+            <button type="button" class="oc-btn ghost" data-ocsignout hidden>Sign out</button>
           </div>
-          <div>
-            <div class="access">
-              <div class="ax-steps"><span class="s1">Email</span><span aria-hidden="true">›</span><span class="s2">Code</span><span aria-hidden="true">›</span><span class="s3">Access</span></div>
-              <h3>Sign in to Pro</h3>
-              <div class="ax-sub">Passwordless. Enter your email and we send a one-time sign-in code. Once your account is on the lab's allow-list, the same email unlocks the full catalog and cloud library.</div>
-              <!-- one state per screen, driven by body[data-pro] and the real Supabase OTP path -->
-              <div class="ax-state ax-email">
-                <label class="ax-l" for="ax-email-input">Your email</label>
-                <div class="ax-field"><input id="ax-email-input" data-axinput value="" type="email" autocomplete="email" inputmode="email" placeholder="you@university.edu" aria-label="Email address"><button type="button" class="ax-go">Send sign-in code</button></div>
-                <div class="ax-msg err ax-email-err" role="alert" hidden></div>
-              </div>
-              <div class="ax-state ax-enter">
-                <label class="ax-l" for="ax-code-input">Enter the 6-digit code we emailed to <b data-axemail>your address</b></label>
-                <div class="ax-field"><input id="ax-code-input" data-axcode type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="10" placeholder="123456" aria-label="Sign-in code"><button type="button" class="ax-verify">Verify</button></div>
-                <div class="ax-msg err ax-code-err" role="alert" hidden></div>
-                <div class="ax-code-actions"><button type="button" class="ax-resend" data-axresend>Resend code</button><button type="button" class="ax-back" data-axback>‹ Use a different email</button></div>
-                <p class="ax-hint">The one-time sign-in link in the same email also works — open it on this device.</p>
-              </div>
-              <div class="ax-state ax-error"><div class="ax-msg err" data-axerrmsg role="alert">That didn't go through. Check the address and try again.</div><button type="button" class="ax-retry" data-axback>Try again</button></div>
-              <div class="ax-state ax-pending"><div class="ax-msg pending"><b>Signed in — Pro access pending.</b> <span data-axemail>Your account</span> isn't approved for the full catalog yet. You'll get full access automatically once it's approved — you can still save strands and custom monomers locally.</div><button type="button" class="hb ax-signout" data-axsignout>Sign out</button></div>
-              <div class="ax-state ax-approved"><div class="ax-granted"><span class="ck" aria-hidden="true">✓</span><div><div class="gt">Pro access active</div><div class="gs"><span data-axemail>Signed in</span> · full catalog + cloud library unlocked</div></div></div><button type="button" class="hb ax-signout" data-axsignout>Sign out</button></div>
-              <div class="ax-note">There's no password to manage. Full-catalog access is granted per approved account by the lab; email delivery, code expiry, and rate limits are handled by the sign-in service.</div>
+
+          <div class="oc-meters" data-ocmeters>
+            <div class="oc-meter" data-ocmeter="strands">
+              <div class="oc-meter-top"><span class="oc-meter-l">Saved strands</span><span class="oc-meter-v" data-ocmv>0<span class="oc-meter-max" data-ocmx> / 10</span></span></div>
+              <div class="oc-meter-track"><i data-ocmbar style="width:0%"></i></div>
+              <div class="oc-meter-note" data-ocmn>Kept in this browser only</div>
             </div>
-            <button class="hb" style="margin-top:12px" onclick="setTab('cat')">‹ Back to catalog</button>
+            <div class="oc-meter" data-ocmeter="scans">
+              <div class="oc-meter-top"><span class="oc-meter-l">Photo scans</span><span class="oc-meter-v" data-ocmv>0<span class="oc-meter-max" data-ocmx> / 0</span></span></div>
+              <div class="oc-meter-track"><i data-ocmbar style="width:0%"></i></div>
+              <div class="oc-meter-note" data-ocmn>Needs a free account</div>
+            </div>
+          </div>
+
+          <!-- the honest reason to sign up, shown only while signed out and only
+               when there is something real at stake -->
+          <div class="oc-atrisk" data-ocatrisk hidden>
+            <span class="oc-atrisk-ic" aria-hidden="true">⚠</span>
+            <div><b data-ocatriskn>0 strands</b> live only in this browser. Clearing site data, a new laptop, or your phone means starting over. <b>A free account keeps them.</b></div>
+          </div>
+
+          <!-- promo code: the way a mentee or labmate gets Pro without paying -->
+          <div class="oc-promo" data-ocpromo hidden>
+            <label class="oc-promo-l" for="oc-promo-input">Have an access code?</label>
+            <div class="oc-promo-row">
+              <input id="oc-promo-input" data-ocpromoinput type="text" autocapitalize="characters" autocomplete="off" spellcheck="false" placeholder="LABCODE2026" aria-label="Access code">
+              <button type="button" class="oc-btn" data-ocpromogo>Redeem</button>
+            </div>
+            <div class="oc-promo-msg" data-ocpromomsg role="status" hidden></div>
           </div>
         </div>
+
+        <!-- ============ SIGN IN / SIGN UP ============ -->
+        <div class="oc-authwrap" data-ocauthwrap>
+          <div class="access">
+            <div class="ax-steps"><span class="s1">Email</span><span aria-hidden="true">›</span><span class="s2">Code</span><span aria-hidden="true">›</span><span class="s3">Done</span></div>
+            <h3>Create your free account</h3>
+            <div class="ax-sub">No password to invent or forget. We email you a 6-digit code — that's the whole thing. Same box signs you in if you already have an account.</div>
+            <div class="ax-state ax-email">
+              <label class="ax-l" for="ax-email-input">Your email</label>
+              <div class="ax-field"><input id="ax-email-input" data-axinput value="" type="email" autocomplete="email" inputmode="email" placeholder="you@university.edu" aria-label="Email address"><button type="button" class="ax-go">Send code</button></div>
+              <div class="ax-msg err ax-email-err" role="alert" hidden></div>
+              <ul class="oc-signup-gains">
+                <li><b>50 strands</b> saved to your account, on every device</li>
+                <li><b>10 photo scans</b> to try — point a camera at a tube label</li>
+                <li>Voice entry and the 30-amidite catalog, free forever</li>
+              </ul>
+              <div class="oc-signin-line"><span>Already have an account?</span><button type="button" data-ocsigninline>Sign in</button></div>
+            </div>
+            <div class="ax-state ax-enter">
+              <label class="ax-l" for="ax-code-input">Enter the 6-digit code we emailed to <b data-axemail>your address</b></label>
+              <div class="ax-field"><input id="ax-code-input" data-axcode type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="10" placeholder="123456" aria-label="Sign-in code"><button type="button" class="ax-verify">Verify</button></div>
+              <div class="ax-msg err ax-code-err" role="alert" hidden></div>
+              <div class="ax-code-actions"><button type="button" class="ax-resend" data-axresend>Resend code</button><button type="button" class="ax-back" data-axback>‹ Use a different email</button></div>
+              <p class="ax-hint">The one-time sign-in link in the same email also works — open it on this device.</p>
+            </div>
+            <div class="ax-state ax-error"><div class="ax-msg err" data-axerrmsg role="alert">That didn't go through. Check the address and try again.</div><button type="button" class="ax-retry" data-axback>Try again</button></div>
+            <div class="ax-state ax-pending"><div class="ax-msg pending"><b>You're signed in.</b> <span data-axemail>Your account</span> is on the Free plan — 50 strands and 10 scans to try. Everything you had saved in this browser has come with you.</div><button type="button" class="oc-btn ghost ax-signout" data-axsignout>Sign out</button></div>
+            <div class="ax-state ax-approved"><div class="ax-granted"><span class="ck" aria-hidden="true">✓</span><div><div class="gt">Signed in</div><div class="gs"><span data-axemail>Your account</span> · library syncing across your devices</div></div></div><button type="button" class="oc-btn ghost ax-signout" data-axsignout>Sign out</button></div>
+            <div class="ax-note">Email delivery, code expiry and rate limits are handled by the sign-in service. We store your email and your strands — nothing else.</div>
+          </div>
+        </div>
+
+        <!-- ============ PLANS ============ -->
+        <div class="oc-plans-head">
+          <h3 id="oc-plans">Plans</h3>
+          <div class="oc-cyc" role="radiogroup" aria-label="Billing period">
+            <button type="button" class="on" role="radio" aria-checked="true" data-occyc="mo">Monthly</button>
+            <button type="button" role="radio" aria-checked="false" data-occyc="yr">Annual <span class="oc-save">2 months free</span></button>
+          </div>
+        </div>
+
+        <div class="oc-plangrid">
+          <div class="oc-plan" data-ocplan="free">
+            <div class="oc-plan-top">
+              <div class="oc-plan-name">Free</div>
+              <div class="oc-plan-price"><span class="pv">$0</span></div>
+              <div class="oc-plan-tag">Your library, on every device</div>
+            </div>
+            <ul class="oc-plan-list">
+              <li><b>50</b> saved strands, synced to your account</li>
+              <li><b>10</b> photo scans to try</li>
+              <li>Voice entry — unlimited</li>
+              <li><b>30</b> verified amidites · 45 vendor listings</li>
+              <li>Install as an app · works offline</li>
+            </ul>
+            <button type="button" class="oc-btn block" data-ocpick="free">Create free account</button>
+          </div>
+
+          <div class="oc-plan feat" data-ocplan="pro">
+            <div class="oc-ribbon">Most researchers</div>
+            <div class="oc-plan-top">
+              <div class="oc-plan-name">Pro</div>
+              <div class="oc-plan-price"><span class="pv" data-ocprice="pro">$9</span><span class="pu" data-ocper="pro">/month</span></div>
+              <div class="oc-plan-tag">For the bench you're at every week</div>
+            </div>
+            <ul class="oc-plan-list">
+              <li><b>Unlimited</b> saved strands — a notebook that never fills</li>
+              <li><b>20</b> photo scans a month</li>
+              <li>All <b>267</b> verified amidites · 351 vendor listings</li>
+              <li>Folders, tags, notes, batch export</li>
+              <li>Everything in Free</li>
+            </ul>
+            <button type="button" class="oc-btn block prim" data-ocpick="pro">Get Pro</button>
+          </div>
+
+          <div class="oc-plan" data-ocplan="lab">
+            <div class="oc-plan-top">
+              <div class="oc-plan-name">Lab</div>
+              <div class="oc-plan-price"><span class="pv" data-ocprice="lab">$7</span><span class="pu" data-ocper="lab">/seat/month</span></div>
+              <div class="oc-plan-tag">One library your whole lab writes to</div>
+            </div>
+            <ul class="oc-plan-list">
+              <li>Everything in Pro, for <b>every member</b></li>
+              <li>A <b>shared lab library</b> — strands and custom monomers</li>
+              <li>Up to <b>20</b> members</li>
+              <li><b>20 scans per seat</b>, pooled across the lab</li>
+              <li>Roles, so a rotating student can't clear the library</li>
+            </ul>
+            <button type="button" class="oc-btn block" data-ocpick="lab">Set up a lab</button>
+          </div>
+        </div>
+
+        <div class="oc-plannote">
+          <p><b>Pooled scans are deliberate.</b> A lab of five gets 100 scans a month from one pool — the person doing a screen isn't rationed by the person who scanned nothing that week.</p>
+          <p><b>You never lose a strand by downgrading.</b> A quota only stops <i>new</i> saves. Everything already in your library stays readable, exportable and editable on any plan, forever.</p>
+          <p><b>Academic labs get 40% off.</b> Ask for a code — that's what the box above is for.</p>
+        </div>
+
+        <div class="oc-labhow" id="oc-labhow">
+          <h4>How lab plans work</h4>
+          <p class="lead">The question everyone asks first: if my PI buys a lab plan, what happens to <i>my</i> account?</p>
+          <div class="oc-labhow-grid">
+            <div><span class="n">1</span><b>Your PI invites you by email.</b> There is no joining by university domain — <i>@albany.edu</i> is tens of thousands of people, not your lab. An invite is a deliberate act, which is the point.</div>
+            <div><span class="n">2</span><b>You sign in exactly the same way.</b> Same email, same 6-digit code, same box. There is no separate lab login and no lab URL to remember.</div>
+            <div><span class="n">3</span><b>You keep your own account.</b> Joining a lab <i>adds</i> a shared library — it does not take over your personal one. Your own strands stay yours, including if you leave the lab.</div>
+            <div><span class="n">4</span><b>The lab pays, not you.</b> If your lab covers you, we say so and grey out the Pro button instead of quietly taking a second payment.</div>
+          </div>
+        </div>
+
+        <!-- ============ COMPARISON ============ -->
+        <div class="cmp" id="oc-compare">
+          <div class="cmp-row plan-head"><div class="cmp-feat">What you get</div><div class="cmp-free">Free</div><div class="cmp-pro">Pro</div><div class="cmp-team">Lab</div></div>
+          <div class="cmp-row"><div class="cmp-feat">Calculator · Mass Spec · Concentration<small>every mode, every modification</small></div><div class="cmp-free">Full</div><div class="cmp-pro">Full</div><div class="cmp-team">Full</div></div>
+          <div class="cmp-row"><div class="cmp-feat">Saved strands</div><div class="cmp-free">50</div><div class="cmp-pro">Unlimited</div><div class="cmp-team">Unlimited</div></div>
+          <div class="cmp-row"><div class="cmp-feat">Photo scan<small>read a sequence off a label or a page</small></div><div class="cmp-free">10 to try<span class="cmp-sub">one time</span></div><div class="cmp-pro">20<span class="cmp-sub">per month</span></div><div class="cmp-team">20 / seat<span class="cmp-sub">pooled</span></div></div>
+          <div class="cmp-row"><div class="cmp-feat">Voice entry</div><div class="cmp-free">Unlimited</div><div class="cmp-pro">Unlimited</div><div class="cmp-team">Unlimited</div></div>
+          <div class="cmp-row"><div class="cmp-feat">Vendor catalog<small>verified amidites</small></div><div class="cmp-free">30<span class="cmp-sub">45 listings</span></div><div class="cmp-pro">267<span class="cmp-sub">351 listings</span></div><div class="cmp-team">267<span class="cmp-sub">351 listings</span></div></div>
+          <div class="cmp-row"><div class="cmp-feat">Library management<small>folders · tags · notes · batch</small></div><div class="cmp-free">—</div><div class="cmp-pro">Included</div><div class="cmp-team">Included</div></div>
+          <div class="cmp-row"><div class="cmp-feat">Shared lab library<small>members · roles · custom monomers</small></div><div class="cmp-free">—</div><div class="cmp-pro">—</div><div class="cmp-team">Up to 20</div></div>
+          <div class="cmp-row"><div class="cmp-feat">Install as app · offline</div><div class="cmp-free">Yes</div><div class="cmp-pro">Yes</div><div class="cmp-team">Yes</div></div>
+          <div class="cmp-row plan-foot"><div class="cmp-feat">Price</div><div class="cmp-free">$0</div><div class="cmp-pro" data-occmpprice="pro">$9/mo</div><div class="cmp-team" data-occmpprice="lab">$7/seat/mo</div></div>
+        </div>
+
+        <div class="pro-note">Your library and the full catalog are <b>Supabase-backed behind account auth</b>, so an account genuinely unlocks them — nothing here is a client-side flag. <b>Billing isn't open yet.</b> Until it is, Pro is granted by access code; the box in your account is where you enter one.</div>
+        <button type="button" class="oc-btn ghost" style="margin-top:16px" onclick="setTab('cat')">‹ Back to catalog</button>
       </section>
     </div>
   </main>
@@ -1786,7 +1951,10 @@ textarea.catgate-input{font-family:var(--font-num,ui-monospace,monospace);line-h
 <!-- overlays -->
 <button class="scrim" tabindex="-1" aria-hidden="true" onclick="setOverlay('none')"></button>
 <div class="menu menu-account" role="menu" aria-label="Account">
-  <div class="mhead"><button class="m-x" aria-label="Close account menu" onclick="setOverlay('none')">✕</button><div class="me" data-acct-email>Not signed in</div><span class="mp" data-acct-pro style="display:none">★ Pro · active</span></div>
+  <div class="mhead"><button class="m-x" aria-label="Close account menu" onclick="setOverlay('none')">✕</button><div class="me" data-acct-email>Not signed in</div><span class="mp" data-acct-pro style="display:none">★ Pro · active</span><div class="oc-msrc" data-ocmsrc hidden></div></div>
+  <div class="msep"></div>
+  <button class="mi" role="menuitem" data-ocmenuplan><span class="ic" aria-hidden="true">◈</span>Plans &amp; account</button>
+  <button class="mi" role="menuitem" onclick="setTab('hist');setOverlay('none')"><span class="ic" aria-hidden="true">◫</span>Saved strands<span class="cnt" data-count="saved">0</span></button>
   <div class="msep"></div>
   <button class="mi danger" role="menuitem" data-acctbtn data-signed="0"><span class="ic" aria-hidden="true">→</span>Sign in</button>
   <div class="msep"></div>
@@ -3247,7 +3415,7 @@ const DEFAULTS = {
 // Bump BUILD_VERSION whenever the baked-in design changes (accent, fonts, theme,
 // sizes, layout). On their next visit, returning users are auto-refreshed to the
 // new appearance defaults below — their saved strands & sequences are kept.
-const BUILD_VERSION = 22;
+const BUILD_VERSION = 26;
 const APPEARANCE_KEYS = ["platform","theme","accent","fontUI","fontHead","fontNum","fsBase","fsResult","radius","border","density","shadow","btn","keypad","resultpos","align","showChips","showFormula","showCharge","decimals","catalogEnabled","catalogSource","catalogSupabaseUrl","catalogSupabaseAnonKey"];
 let S = load();
 let history = loadHist();
@@ -3270,6 +3438,12 @@ function load(){ try{
 function save(){ localStorage.setItem("oligoKitApp", JSON.stringify(S)); }
 function loadHist(){ try{ return JSON.parse(localStorage.getItem("oligoHistoryApp")||"[]"); }catch(e){ return []; } }
 function saveHist(){ localStorage.setItem("oligoHistoryApp", JSON.stringify(history)); }
+/* R44: this was a hard `if(history.length>60) history.length=60`, which would
+   have silently deleted a Pro user's 61st strand -- on a plan sold as unlimited.
+   The plan quota is enforced at the save gate now (and by RLS), so all that is
+   left here is a localStorage backstop. It must never trim to the current plan's
+   limit: someone who downgrades keeps every strand they already saved. */
+function trimHist(){ if(history.length>5000) history.length=5000; }
 
 /* =================================================================
    RENDER
@@ -3467,7 +3641,8 @@ function saveCurrent(){
   const last=history[0];
   const sig=x=>JSON.stringify([x.seq,x.type,x.linkage,x.five,x.fiveThio,x.three,x.mwSource,x.duplex?[x.duplex.mode,x.duplex.antiSeq,x.duplex.antiType,x.duplex.antiFive,x.duplex.antiThree,x.duplex.antiLinkage]:0]);
   if(last && sig(last)===sig(entry)) return false;
-  history.unshift(entry); if(history.length>60) history.length=60; saveHist();
+  try{ if(window.ocPlan&&window.ocPlan.gateSave&&!window.ocPlan.gateSave(1)) return 'gated'; }catch(_){ }
+  history.unshift(entry); trimHist(); saveHist();
   return true;
 }
 function loadSavedState(h){
@@ -3575,8 +3750,8 @@ document.body.addEventListener("click", e=>{
   if(e.target.closest("[data-dclose]")){ drawerOpen=false; applyAll(); return; }
   if(e.target.closest("[data-save]")){
     const ok=saveCurrent();
-    if(ok){ savedSig=currentSig(); applyAll(); }
-    else { const b=e.target.closest("[data-save]"); b.textContent="Already saved"; setTimeout(()=>applyAll(),900); }
+    if(ok===true){ savedSig=currentSig(); applyAll(); }
+    else if(ok!=='gated'){ const b=e.target.closest("[data-save]"); b.textContent="Already saved"; setTimeout(()=>applyAll(),900); }
     return;
   }
   if(e.target.closest("[data-copyseq]")){ copyText(spaceSeq(S.seq,S.type,S.linkage), e.target.closest("[data-copyseq]")); return; }
@@ -3935,22 +4110,36 @@ function catalogReady(cat){
 /* ---- Pro auth (Supabase email OTP; plain fetch, no library, no redirect) ---- */
 const PRO_SESS_KEY='oligoProSession';
 let proIsPro=false, proPending=false, _proEmail='';
+/* R44: Pro is whatever the SERVER says it is. It used to be inferred from how
+   many catalog rows RLS happened to return, which made "signed in on the free
+   plan" indistinguishable from "the catalog request came back short", and could
+   not see the owner tier at all. ocPlan calls this whenever entitlements land.
+   proPending now means the honest thing: signed in, not on a paid plan. */
+function proApplyPlan(pk){
+  const signed=!!proSession();
+  proIsPro = signed && (pk==='pro'||pk==='lab'||pk==='owner');
+  proPending = signed && !proIsPro;
+}
 function proSession(){ try{ return JSON.parse(localStorage.getItem(PRO_SESS_KEY)||'null'); }catch(_){ return null; } }
 function setProSession(s){ if(s) localStorage.setItem(PRO_SESS_KEY, JSON.stringify(s)); else localStorage.removeItem(PRO_SESS_KEY); }
 function sbBase(){ return (S.catalogSupabaseUrl||'').replace(/\/+$/,''); }
 function sbAuthHeaders(){ return { apikey:(S.catalogSupabaseAnonKey||'').trim(), 'Content-Type':'application/json' }; }
 async function proSendCode(email){
   const r=await fetch(sbBase()+'/auth/v1/otp',{method:'POST',headers:sbAuthHeaders(),body:JSON.stringify({email,create_user:true})});
-  if(!r.ok) throw new Error((await r.text()).slice(0,180)); return true;
+  /* R46: was .slice(0,180), which cut Supabase's JSON body mid-object often
+     enough that the reason could not be recovered downstream. 400 keeps it whole
+     without keeping an unbounded response. */
+  if(!r.ok){ const e=new Error((await r.text()).slice(0,400)); e.status=r.status; throw e; }
+  return true;
 }
 async function proVerifyCode(email, code){
-  const tok=String(code).trim(); let lastErr='';
+  const tok=String(code).trim(); let lastErr='', lastStatus=0;
   for(const type of ['email','signup','magiclink']){          // OTP token type differs: returning login vs first-time signup
     const r=await fetch(sbBase()+'/auth/v1/verify',{method:'POST',headers:sbAuthHeaders(),body:JSON.stringify({email,token:tok,type})});
     if(r.ok){ const d=await r.json(); setProSession({access_token:d.access_token, refresh_token:d.refresh_token, expires_at:d.expires_at, email}); return true; }
-    lastErr=(await r.text()).slice(0,180);
+    lastErr=(await r.text()).slice(0,400); lastStatus=r.status;
   }
-  throw new Error(lastErr||'verification failed');
+  { const e=new Error(lastErr||'verification failed'); e.status=lastStatus; throw e; }
 }
 async function proAccessToken(){
   const s=proSession(); if(!s||!s.access_token) return null;
@@ -3963,13 +4152,13 @@ async function proAccessToken(){
     return d.access_token;
   }catch(_){ return null; }                              // a network outage must not sign the user out
 }
-function proSignOut(){ setProSession(null); proIsPro=false; proPending=false; catalogOffline=false; S.catalogSource='bundled'; save(); reloadCatalogSource(); if(catalogOpen) renderCatalog(); }
+function proSignOut(){ setProSession(null); try{ localStorage.removeItem('oligoEnt'); }catch(_){ } proIsPro=false; proPending=false; catalogOffline=false; S.catalogSource='bundled'; save(); reloadCatalogSource(); if(catalogOpen) renderCatalog(); }
 // status bar shown at the top of the catalog
 function proBarHTML(){
   const s=proSession();
   if(catalogOffline&&s) return `<div class="pro-bar pending"><span>Offline — showing the included Free-30 catalog</span><span class="pro-meta">${cbEsc(s.email)}</span><button class="pro-link" data-prosignout>Sign out</button></div>`;
   if(proIsPro) return `<div class="pro-bar is-pro"><span>★ Pro — full catalog</span><span class="pro-meta">${cbEsc(s?s.email:'')}</span><button class="pro-link" data-prosignout>Sign out</button></div>`;
-  if(s) return `<div class="pro-bar pending"><span>Signed in — Pro access pending</span><span class="pro-meta">${cbEsc(s.email)}</span><button class="pro-link" data-prosignout>Sign out</button></div>`;
+  if(s) return `<div class="pro-bar pending"><span>Free catalog · 30 monomers</span><span class="pro-meta">${cbEsc(s.email)}</span><button class="pro-cta" data-proupgrade>See Pro ▸</button><button class="pro-link" data-prosignout>Sign out</button></div>`;
   return `<div class="pro-bar"><span>Free catalog · 30 common monomers</span><button class="pro-cta" data-proupgrade>Upgrade to Pro ▸</button></div>`;
 }
 function openProAuth(){
@@ -3997,7 +4186,8 @@ async function proDoSend(){
   const email=((eml&&eml.value)||'').trim(); if(!/.+@.+\..+/.test(email)){ proErr('Enter a valid email.'); return; }
   _proEmail=email; proErr(''); const btn=c.querySelector('[data-prosend]'); if(btn){ btn.disabled=true; btn.textContent='Sending…'; }
   try{ await proSendCode(email); calcs.forEach(x=>{ const l=x.querySelector('[data-proemaillabel]'); if(l) l.textContent=email; }); proSetStep('code'); }
-  catch(e){ proErr('Could not send code: '+e.message); }
+  catch(e){ proErr((window.ocPlan&&window.ocPlan.authMessage)?window.ocPlan.authMessage(e).text
+                    :('Could not send code: '+e.message)); }
   finally{ if(btn){ btn.disabled=false; btn.textContent='Send code'; } }
 }
 async function proDoVerify(){
@@ -4009,7 +4199,8 @@ async function proDoVerify(){
     S.catalogSource='supabase'; save();                 // signed in -> pull the live (gated) catalog
     closeProAuth();
     const cat=await loadCatalog(); catalogReady(cat); rebuildCustom(); applyAll(); renderCatalog();
-  }catch(e){ proErr('Verification failed: '+e.message); }
+  }catch(e){ proErr((window.ocPlan&&window.ocPlan.authMessage)?window.ocPlan.authMessage(e).text
+                    :('Verification failed: '+e.message)); }
   finally{ if(btn){ btn.disabled=false; btn.textContent='Verify'; } }
 }
 
@@ -4033,7 +4224,7 @@ async function fetchFromSupabase(){
       vendor:v.vendor, catalog_no:v.catalog_no, product_name:v.product_name, source:v.source||'' }))
   }));
   const vendors = [...new Set(monomers.flatMap(m=>m.vendor_products.map(v=>v.vendor)))];
-  const _signed=!!proSession(); proIsPro=_signed && monomers.length>30; proPending=_signed && !proIsPro;   // infer Pro state from what RLS returned
+  proApplyPlan((window.ocPlan&&window.ocPlan.plan)?window.ocPlan.plan():(proSession()?'free':'anon'));
   return { monomers, vendors };
 }
 // chosen source: bundled inline (offline default) or Supabase (Pro) override, with graceful fallback to bundled
@@ -4391,7 +4582,12 @@ function jwtSub(tok){ try{
   return (JSON.parse(decodeURIComponent(escape(atob(b))))||{}).sub||null;
 }catch(_){ return null; } }
 function syncEnabled(){
-  try{ return !!(proIsPro && typeof proSession==='function' && proSession() && proSession().access_token && sbUrl() && anonKey()); }
+  /* R44: `proIsPro &&` was here, so a signed-up FREE user's strands never left
+     localStorage -- every push, pull and delete short-circuited before it made a
+     request. Cloud sync is what an account IS; gating it on Pro meant signing up
+     bought nothing. The per-plan row quota is enforced by RLS, which is where a
+     quota belongs. */
+  try{ return !!(typeof proSession==='function' && proSession() && proSession().access_token && sbUrl() && anonKey()); }
   catch(_){ return false; }
 }
 async function authHeaders(extra){
@@ -4439,7 +4635,23 @@ async function pushStrand(entry, noQueue){
               folder:entry.folder||null, tags:Array.isArray(entry.tags)?entry.tags:[], data:entry };
     var r=await fetch(sbUrl()+'/rest/v1/strands?on_conflict=user_id,client_id',
       {method:'POST',headers:h,body:JSON.stringify([row])});
-    if(!r.ok) throw new Error(r.status+' '+(await r.text()).slice(0,140));
+    if(!r.ok){
+      var _body=(await r.text()).slice(0,240);
+      /* R44: a 403 here is RLS refusing a row that is over the plan quota. That
+         is permanent, not transient -- queueing it would retry a refusal forever
+         and report "offline" for something that is emphatically not offline. */
+      if(r.status===403){
+        try{ if(window.ocPlan&&window.ocPlan.pushRejected) window.ocPlan.pushRejected(403,_body); }catch(_){ }
+        /* R47: mark it, so pullCloud can tell "never uploaded" from "deleted on
+           another device" and never wipes this row. 'quota' rather than false so
+           firstLoginImport can treat a permanent refusal as terminal instead of
+           retrying the whole library on every app open. */
+        try{ entry.localOnly=1; delete entry.syncedAt; saveHist(); }catch(_){ }
+        return 'quota';
+      }
+      throw new Error(r.status+' '+_body);
+    }
+    try{ entry.syncedAt=Date.now(); delete entry.localOnly; saveHist(); }catch(_){ }
     setStatus('synced'); return true;
   }catch(e){ if(!noQueue) queueDirty({k:'strand',op:'up',key:entry.id}); setStatus('offline'); return false; }
 }
@@ -4498,12 +4710,32 @@ async function pullCloud(){
       var list=rows.map(function(row){
         var d=Object.assign({}, row.data||{});
         d.id=row.client_id||d.id||uuid();
+        /* R47: pushStrand serialises `data` BEFORE stamping syncedAt, so the
+           copy in the cloud never carries it. Without re-stamping here, every
+           row loses its mark on the first pull -- and then the orphan rule below
+           treats the whole library as never-uploaded and stops honouring deletes
+           made on another device. Presence in the cloud IS the proof. */
+        d.syncedAt = d.syncedAt || Date.now();
+        delete d.localOnly;
         if(row.name!=null) d.name=row.name;
         if(row.folder!=null) d.folder=row.folder;
         if(Array.isArray(row.tags)) d.tags=row.tags;
         return d;
       });
-      history.splice(0, history.length); Array.prototype.push.apply(history, list); saveHist();
+      /* R47: this was a straight replace, which deleted every local strand the
+         cloud does not have -- including the ones the server had just refused
+         for quota, seconds earlier, in firstLoginImport. A row is only safe to
+         drop if it REACHED the cloud once (syncedAt) and is now absent, which is
+         a genuine delete from another device. A row that never made it stays. */
+      var _seen={}; list.forEach(function(d){ if(d&&d.id) _seen[d.id]=1; });
+      var _orphans=(history||[]).filter(function(h){ return h && h.id && !_seen[h.id] && !h.syncedAt; });
+      history.splice(0, history.length); Array.prototype.push.apply(history, list);
+      if(_orphans.length){
+        _orphans.forEach(function(o){ o.localOnly=1; });
+        Array.prototype.push.apply(history, _orphans);
+        try{ if(window.ocPlan&&window.ocPlan.reportUnsynced) window.ocPlan.reportUnsynced(_orphans.length); }catch(_){ }
+      }
+      saveHist();
     }
     if(bases && bases.length){
       S.customBases=bases.map(function(b){ return Object.assign({}, b.data||{}, {code:b.code}); });
@@ -4527,11 +4759,21 @@ async function firstLoginImport(){
   var m=syncMeta(); m.imported=m.imported||{};
   if(m.imported[uid]) return false;                     // one-time per account
   migrateIds();
-  var ok=true, i;
+  var ok=true, i, quota=0, res;
   var hs=(history||[]).slice(), cbs=((S.customBases)||[]).slice();
-  for(i=0;i<hs.length;i++){ if(!await pushStrand(hs[i])) ok=false; }
+  for(i=0;i<hs.length;i++){
+    res=await pushStrand(hs[i]);
+    /* R47: 'quota' is the server saying "this row is over your plan" -- a
+       permanent answer. Counting it as a failure left `imported[uid]` unset, so
+       this whole loop re-ran on every app open and re-uploaded the entire
+       library forever. Transient failures are queued by pushStrand itself and
+       are what flushDirty() is for. */
+    if(res==='quota') quota++;
+    else if(!res) ok=false;
+  }
   for(i=0;i<cbs.length;i++){ if(!await pushCustomBase(cbs[i])) ok=false; }
   if(ok){ m=syncMeta(); m.imported=m.imported||{}; m.imported[uid]=true; setSyncMeta(m); }
+  if(quota){ try{ if(window.ocPlan&&window.ocPlan.reportUnsynced) window.ocPlan.reportUnsynced(quota); }catch(_){ } }
   return ok;
 }
 
@@ -4614,7 +4856,12 @@ if(typeof W.fetchFromSupabase==='function'){
   var _origFetchSB=W.fetchFromSupabase;
   W.fetchFromSupabase=async function(){
     var out=await _origFetchSB.apply(this,arguments);
-    try{ if(proIsPro) scheduleProReady(); }catch(_){ }
+    /* R47: `proIsPro` here was left over from when sync was Pro-only. r44 made
+       sync the thing an ACCOUNT buys, so this gate has to match syncEnabled()
+       like the other call site does -- otherwise a free user's first sync fires
+       from one path and not the other, which is exactly the sort of asymmetry
+       that produces a bug nobody can reproduce. */
+    try{ if(syncEnabled()) scheduleProReady(); }catch(_){ }
     return out;
   };
 }
@@ -4809,7 +5056,7 @@ function openBatch(){
     '<textarea class="catgate-input" data-batchin rows="7" spellcheck="false" placeholder="primer-F\tACGTACGTAC&#10;ACGTTTGCA"></textarea>'+
     '<div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">'+
       '<button class="ctl-btn sm primary" data-batchcalc>Compute</button>'+
-      '<button class="ctl-btn sm" data-batchscan title="Read sequences from a photo into this list">⬇ Scan</button>'+
+      '<button class="ctl-btn sm" data-batchscan title="Read sequences from a photo into this list — take one or upload one">⬇ Scan</button>'+
       '<button class="ctl-btn sm" data-batchvoice title="Dictate a sequence into this list">🎤 Voice</button>'+
       '<button class="ctl-btn sm" data-batchsave hidden>Save all to library</button>'+
       '<button class="ctl-btn sm" data-batchexp hidden>Export table</button>'+
@@ -4853,7 +5100,14 @@ document.addEventListener('click', function(e){
   if(t.closest('[data-batchcalc]')){ batchCompute(ov); return; }
   if(t.closest('[data-batchsave]')){
     var added=0;
-    _batchRows.filter(function(r){return r.ok;}).forEach(function(r){
+    /* R44: ask the plan gate ONCE for the whole batch. Asking per row would open
+       the wall on the first refusal and then keep trying behind it. */
+    var _valid=_batchRows.filter(function(r){return r.ok;});
+    var _allow=_valid.length;
+    try{ if(window.ocPlan&&window.ocPlan.gateSave&&_valid.length) _allow=window.ocPlan.gateSave(_valid.length); }catch(_){ }
+    if(_valid.length && !_allow) return;                   // wall is up; leave the sheet untouched
+    var _dropped=_valid.length-_allow;
+    _valid.slice(0,_allow).forEach(function(r){
       var rr=null; try{ rr=compute(r.seq,S.type,S.linkage,S.three||'OH',0); }catch(_){ }
       if(!rr||!rr.n) return;
       var entry={ id:uuid(), seq:r.seq, type:S.type, linkage:S.linkage, five:rr.five, fiveThio:rr.fiveThio,
@@ -4862,7 +5116,12 @@ document.addEventListener('click', function(e){
         mods:[], mw:rr.mw, mwStr:fmt(rr.mw,rr.n), duplex:null, t:Date.now(), folder:'', tags:[], note:'' };
       history.unshift(entry); added++; if(syncEnabled()) pushStrand(entry);
     });
-    saveHist(); applyAll(); ov.remove(); return;
+    saveHist(); applyAll();
+    if(_dropped>0){
+      try{ notice('Saved '+added+' strand'+(added===1?'':'s')+'. '+_dropped+' more would not fit in your plan’s library — they are still listed here.'); }catch(_){ }
+      return;                                              // keep the sheet so nothing is lost
+    }
+    ov.remove(); return;
   }
   if(t.closest('[data-batchexp]')){
     var rows=_batchRows.filter(function(r){return r.ok;});
@@ -5790,7 +6049,10 @@ function _axCooldown(secs){ var btn=_q('.view-pro .ax-resend'); if(!btn) return;
   var tick=function(){ if(left<=0){ btn.disabled=false; btn.textContent='Resend code'; clearInterval(_axCoolT); return; } btn.disabled=true; btn.textContent='Resend in '+left+'s'; left--; };
   tick(); _axCoolT=setInterval(tick,1000); }
 function _axFriendly(m, kind){ m=String(m||'');
-  if(/rate|429|too many/i.test(m)) return 'Too many requests — wait a moment and try again.';
+  if(/rate|429|too many/i.test(m)){
+    var w=m.match(/after (\d+)\s*second/i);
+    return w ? ('One code at a time — you can ask for another in '+w[1]+' seconds.')
+             : 'Too many requests — wait a moment and try again.'; }
   if(navigator.onLine===false || /network|failed to fetch|load failed/i.test(m)) return 'No connection — check your network and try again.';
   if(/not configured/i.test(m)) return 'Sign-in isn’t configured for this build yet.';
   if(kind==='verify'){ if(/expired/i.test(m)) return 'That code has expired — tap “Resend code” for a new one.'; if(/invalid|token|not found|400|403|otp/i.test(m)) return 'That code didn’t match. Check it and try again, or resend.'; return 'Verification failed'+(m?(' ('+m.replace(/[<>]/g,'').slice(0,80)+')'):'')+'.'; }
@@ -5800,8 +6062,10 @@ function _axSend(email, isResend){
   _axErr('.view-pro .ax-email-err',''); _axErr('.view-pro .ax-code-err','');
   _axEmail=email; _setAxEmail(email);
   if(typeof proSendCode!=='function') return Promise.resolve();
-  return proSendCode(email).then(function(){ if(!isResend) proSetState('code'); _axCooldown(30); })
-    .catch(function(err){ var f=_axFriendly(err&&err.message,'send'); if(isResend||document.body.dataset.pro==='code') _axErr('.view-pro .ax-code-err', f); else _axErr('.view-pro .ax-email-err', f); });
+  return proSendCode(email).then(function(){ if(!isResend) proSetState('code'); _axCooldown(60); })
+    .catch(function(err){ var raw=String((err&&err.message)||''), f=_axFriendly(raw,'send');
+      var w=raw.match(/after (\d+)\s*second/i); if(w) _axCooldown(parseInt(w[1],10)||60);
+      if(isResend||document.body.dataset.pro==='code') _axErr('.view-pro .ax-code-err', f); else _axErr('.view-pro .ax-email-err', f); });
 }
 document.body.addEventListener('keydown', function(e){
   if(e.key!=='Enter') return; var t=e.target; if(!t||!t.matches) return;
@@ -5841,7 +6105,12 @@ document.body.addEventListener('click', function(e){
   // Account menu: Sign out (real) / Sign in (→ Pro form)
   var ab=e.target.closest('.menu-account [data-acctbtn]');
   if(ab){ if(ab.dataset.signed==='1'){ if(typeof proSignOut==='function') proSignOut(); document.body.dataset.demo='0'; syncAccountUI(); syncProView(true); if(typeof applyAll==='function') applyAll(); if(typeof setOverlay==='function') setOverlay('none'); }
-    else { if(typeof setOverlay==='function') setOverlay('none'); if(typeof setTab==='function') setTab('pro'); }
+    else { if(typeof setOverlay==='function') setOverlay('none');
+      /* R45: this used to drop the user on the Plans tab, which since r44 is a
+         sales page headed "Create your free account" -- the exact wrong words
+         for someone who already has an account. */
+      if(window.ocPlan&&window.ocPlan.signIn){ window.ocPlan.signIn(); return; }
+      if(typeof setTab==='function') setTab('pro'); }
     return; }
 });
 
@@ -5929,7 +6198,7 @@ document.body.addEventListener('click', function(e){
         if(window._antiInvalid){ _flashBtn(pa, '⚠ Fix the antisense first'); return; }
         var rr=compute(S.seq,S.type,S.linkage);
         if(!rr.n){ _flashBtn(pa, '⚠ Enter a valid sequence'); return; }
-        if(typeof saveCurrent==='function'){ var ok=saveCurrent(); if(ok){ try{ savedSig=currentSig(); }catch(_){} if(typeof renderHistShell==='function') renderHistShell(); applyAll(); _flashBtn(pa, '✓ Saved to library'); } else { _flashBtn(pa, 'Already in your library'); } }
+        if(typeof saveCurrent==='function'){ var ok=saveCurrent(); if(ok===true){ try{ savedSig=currentSig(); }catch(_){} if(typeof renderHistShell==='function') renderHistShell(); applyAll(); _flashBtn(pa, '✓ Saved to library'); } else if(ok!=='gated'){ _flashBtn(pa, 'Already in your library'); } }
       }
       return;
     }
@@ -6576,7 +6845,7 @@ try{
     var pe={ seq:s.seq,type:s.type,linkage:s.linkage,five:s.five,fiveThio:s.fiveThio,three:s.three,advanced:s.advanced,modPreset:s.modPreset,modName:s.modName,modMass:s.modMass,mwSource:s.mwSource,
       duplex:(s.duplex&&s.duplex.mode&&s.duplex.mode!=='off')?{mode:s.duplex.mode,antiSeq:s.duplex.antiSeq||'',antiType:s.duplex.antiType||s.type,antiFive:s.duplex.antiFive||'OH',antiThree:s.duplex.antiThree||'OH',antiLinkage:s.duplex.antiLinkage||'PO'}:null };
     var ok=false;
-    try{ loadSavedState(pe); ok=saveCurrent(); if(ok&&history[0]){ history[0].name=s.name||history[0].name||''; if(!history[0].id&&typeof crypto!=='undefined'&&crypto.randomUUID){ try{ history[0].id=crypto.randomUUID(); }catch(_){ } } saveHist(); if(_syncOn()&&window.oligoSync&&oligoSync.pushStrand) try{ oligoSync.pushStrand(history[0]); }catch(_){ } } }catch(_){ ok=false; }
+    try{ loadSavedState(pe); ok=saveCurrent(); if(ok==='gated') ok=false; if(ok===true&&history[0]){ history[0].name=s.name||history[0].name||''; if(!history[0].id&&typeof crypto!=='undefined'&&crypto.randomUUID){ try{ history[0].id=crypto.randomUUID(); }catch(_){ } } saveHist(); if(_syncOn()&&window.oligoSync&&oligoSync.pushStrand) try{ oligoSync.pushStrand(history[0]); }catch(_){ } } }catch(_){ ok=false; }
     WORK.forEach(function(k){ S[k]=snap[k]; }); try{ save(); }catch(_){ }
     return ok;
   }
@@ -6892,7 +7161,7 @@ try{
   function monSectionHTML(uid, mine){ return '<div class="lab-monsec"><div class="lab-h" style="padding:0 0 4px">Lab Customized Bases and Monomers</div>'+
       (_labMon.length? _labMon.map(function(m,i){ var c=Object.assign({},m.data||{},{code:m.code}); var own=monIsMine(m,uid,mine);
         return '<div class="lab-mem"><span class="lm-e">'+esc(c.code)+' — '+esc(c.name||'')+(own?' <span class="lm-p">yours</span>':'')+'</span><span class="lm-r">'+esc(''+(c.mass||''))+'</span><span class="lm-a">'+
-          '<button type="button" class="lab-x" data-labmon-mine="'+i+'" aria-label="Add '+esc(c.code)+' to my custom bases" title="Add to my bases">＋</button>'+
+          '<button type="button" class="lab-x" data-labmon-mine="'+i+'" aria-label="Add '+esc(c.code)+' to my custom bases" title="Add to my bases">✚</button>'+
           (own?('<button type="button" class="lab-x danger" data-labmon-rm="'+esc(m.id||'')+'" data-labmon-code="'+esc(c.code)+'" aria-label="Remove '+esc(c.code)+' from the lab" title="Remove from lab">✕</button>'):'')+
         '</span></div>'; }).join('') : '<div class="lab-hint" style="padding:2px 0">No shared monomers yet.</div>')+
       '<div class="lab-hint" style="padding:4px 0 0">Anyone in the lab can use these codes. Only the member who shared a monomer can remove it.</div>'+
@@ -7174,7 +7443,23 @@ try{
     '.scan-chip{font-size:11px;padding:2px 8px;border-radius:999px;background:var(--surface-3,#ececec);color:var(--text,#333)}',
     '.scan-chip.warn{background:#fdecec;color:#b42318}',
     '.scan-err{color:#d1242f}',
-    '.scan-row-acts{display:flex;gap:8px;margin-top:8px}',
+    /* R42: three buttons now (use / + Library / Remove). Without flex-wrap the
+       row overflows its card at 390px, and Remove is the one that falls off. */
+    '.scan-row-acts{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;align-items:center}',
+    '#scanOv .scan-row-acts .scan-rm{margin-left:auto}',
+    /* "already in the library" — a settled state, not a disabled one, so it keeps
+       full opacity and reads in --good rather than greying out. */
+    '#scanOv .ctl-btn.done,#scanOv .ctl-btn.done[disabled]{opacity:1;cursor:default;border-color:var(--good,#136a32);background:var(--good-soft,rgba(19,106,50,.13));color:var(--good,#136a32)}',
+    '#scanOv .ctl-btn.done:hover{border-color:var(--good,#136a32)}',
+    /* a row that Save-all could not take: same treatment as an MW mismatch, so
+       "the highlighted rows" in the toast means something the user can see */
+    /* A row that will not compute has no valid action, so it must not carry a
+       filled primary button. Both buttons stay CLICKABLE on purpose -- a truly
+       disabled control explains nothing when tapped, and the toast is the
+       explanation. */
+    '#scanOv .scan-row[data-bad="1"] .ctl-btn.primary{background:var(--surface-2,#f2f2f2);border-color:var(--line,#ccc);color:var(--text,#111)}',
+    '#scanOv .scan-row[data-blocked="1"]{border-color:#d1242f;box-shadow:inset 3px 0 0 #d1242f}',
+    'body[data-mode="dark"] #scanOv .scan-row[data-blocked="1"]{border-color:#f87171;box-shadow:inset 3px 0 0 #f87171}',
     '.scan-foot{display:flex;gap:8px;margin-top:12px;align-items:center}',
     '.scan-spin{padding:26px 8px;text-align:center;color:var(--muted,#777);font-size:14px}',
     // B8: this chip is a button — it opens the monomer picker for a token the
@@ -7188,15 +7473,63 @@ try{
     '.scan-hits{display:flex;flex-direction:column;gap:4px;max-height:186px;overflow:auto}',
     '.scan-hit{text-align:left;font-size:12px;padding:5px 8px;display:block;width:100%}',
     '.scan-hit .hm{color:var(--muted,#777)}',
-    '.scan-pick-f{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}'
+    '.scan-pick-f{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}',
+    /* R41 source sheet. Full-width rows rather than a button pair: this is the
+       first thing the feature asks, it is nearly always answered with a thumb,
+       and a row can carry the one line of explanation that makes the choice
+       obvious without a second glance. */
+    '.scan-src{display:flex;flex-direction:column;gap:9px;margin:2px 0 4px}',
+    '#scanOv .scan-srcbtn{display:flex;align-items:center;gap:13px;width:100%;min-height:62px;padding:12px 14px;text-align:left;border:1px solid var(--line,#ccc);border-radius:11px;background:var(--surface-2,#f2f2f2);color:var(--text,#111);cursor:pointer;font-family:inherit}',
+    '#scanOv .scan-srcbtn:hover{border-color:var(--accent,#d97706);background:var(--accent-soft,rgba(217,119,6,.10))}',
+    '#scanOv .scan-srcbtn:focus-visible{outline:2px solid var(--accent,#d97706);outline-offset:2px}',
+    '#scanOv .scan-srcbtn .ss-ic{flex:0 0 auto;font-size:21px;line-height:1;width:26px;text-align:center}',
+    '#scanOv .scan-srcbtn .ss-tx{display:flex;flex-direction:column;gap:2px;min-width:0}',
+    '#scanOv .scan-srcbtn .ss-t{font-family:var(--font-head,inherit);font-size:14px;font-weight:600;line-height:1.25}',
+    /* --muted on --surface-2 is the pairing the rest of this sheet already uses
+       and audits at 4.5:1+ in both themes; --faint would not clear the floor. */
+    '#scanOv .scan-srcbtn .ss-s{font-size:11.5px;color:var(--muted,#777);line-height:1.35}',
+    '.scan-src-f{display:flex;margin-top:11px}',
+    '.scan-src-f .ctl-btn{margin-left:auto}'
   ].join('');
   document.head.appendChild(st);
 
-  var fileInput=document.createElement('input');
-  fileInput.type='file'; fileInput.accept='image/*'; fileInput.setAttribute('capture','environment');
-  fileInput.style.cssText='position:fixed;left:-9999px;width:1px;height:1px;opacity:0';
-  document.body.appendChild(fileInput);
-  fileInput.addEventListener('change', function(){ var f=fileInput.files&&fileInput.files[0]; if(f) onFile(f); });
+  /* R41: TWO inputs rather than one whose `capture` attribute gets toggled.
+     `capture` is read when the picker opens, so a shared input would be a small
+     state machine that has to be correct at every entry point, on every retry,
+     after every cancel -- for no gain. Two inert inputs have no state to get
+     wrong. Both land in the same onFile(). */
+  function mkFileInput(capture){
+    var i=document.createElement('input');
+    i.type='file'; i.accept='image/*';
+    if(capture) i.setAttribute('capture','environment');
+    i.style.cssText='position:fixed;left:-9999px;width:1px;height:1px;opacity:0';
+    i.setAttribute('tabindex','-1'); i.setAttribute('aria-hidden','true');
+    document.body.appendChild(i);
+    i.addEventListener('change', function(){ var f=i.files&&i.files[0]; if(f) onFile(f); });
+    return i;
+  }
+  var fileInput=mkFileInput(false);   // photo library / file browser
+  var camInput =mkFileInput(true);    // camera, straight to capture
+
+  /* Can this device actually DO anything different with capture="environment"?
+     Desktop browsers ignore the attribute entirely, so offering "Take a photo"
+     there would open the same file dialog as "Upload" and the choice would be
+     a lie. Touch capability is the honest proxy for "has a camera the browser
+     will open in place of a file picker". */
+  function canCapture(){
+    try{
+      if((navigator.maxTouchPoints||0)>0) return true;
+      if(window.matchMedia && window.matchMedia('(pointer:coarse)').matches) return true;
+      return ('ontouchstart' in window);
+    }catch(_){ return false; }
+  }
+  function pickFrom(kind){
+    var inp=(kind==='camera')?camInput:fileInput;
+    /* clear first: picking the same file twice in a row fires no change event
+       otherwise, which reads to the user as the button being dead */
+    try{ inp.value=''; }catch(_){ }
+    try{ inp.click(); }catch(_){ notice('Could not open the picker on this device.'); }
+  }
 
   /* ---- overlay management (reuse the app's .catgate modal look) ---- */
   function ensureOverlay(){
@@ -7217,6 +7550,37 @@ try{
     return ov;
   }
   function closeOverlay(){ var ov=document.getElementById('scanOv'); if(ov) ov.remove(); }
+  /* R41 source sheet. Deliberately stays open behind the OS picker: cancelling
+     the picker fires no event, so closing here first would drop the user back to
+     nothing with no way to try the other option. openSpinner() replaces this
+     card the moment a file actually arrives. */
+  function openSourceSheet(){
+    var ov=ensureOverlay();
+    var anti=(target==='anti'), batch=(target==='batch');
+    ov.setAttribute('aria-label','Scan a label — choose a photo source');
+    ov.innerHTML='<div class="catgate-card" style="max-width:420px">'+
+      '<div class="catgate-title">📷 Scan a label'+(anti?' — antisense strand':(batch?' — batch list':''))+'</div>'+
+      '<div class="catgate-sub">Read a sequence off a tube label, a vendor spec sheet, or a synthesis report'+
+        (anti?' into the <b>antisense</b> strand':(batch?' into the <b>batch</b> list':''))+'.</div>'+
+      '<div class="scan-src">'+
+        '<button type="button" class="scan-srcbtn" data-scansrc="camera">'+
+          '<span class="ss-ic" aria-hidden="true">📷</span>'+
+          '<span class="ss-tx"><span class="ss-t">Take a photo</span><span class="ss-s">Open the camera now</span></span>'+
+        '</button>'+
+        '<button type="button" class="scan-srcbtn" data-scansrc="library">'+
+          '<span class="ss-ic" aria-hidden="true">🖼️</span>'+
+          '<span class="ss-tx"><span class="ss-t">Upload a photo</span><span class="ss-s">From your photos or files</span></span>'+
+        '</button>'+
+      '</div>'+
+      '<div class="scan-src-f"><button class="ctl-btn sm" data-scanclose>Cancel</button></div>'+
+    '</div>';
+    /* No programmatic focus on the first option. ensureOverlay() focuses the
+       dialog container (the pattern r31 established for #voiceOv), which is what
+       makes Escape work and gets the dialog announced; Tab from there lands on
+       this same button. Focusing it here instead painted a full accent
+       :focus-visible ring around "Take a photo" the moment the sheet opened,
+       which reads as a pre-selected choice and quietly biases the answer. */
+  }
   function openSpinner(){
     var ov=ensureOverlay();
     ov.innerHTML='<div class="catgate-card" style="max-width:520px">'+
@@ -7436,6 +7800,16 @@ try{
     var fl=el.querySelector('[data-flags]'); if(fl) fl.innerHTML=flagHtml(r);
     var cf=el.querySelector('[data-conf]');  if(cf) cf.outerHTML=confHtml(r,c);
     try{ el.setAttribute('data-mwck', mwckOf(r,c)); }catch(_){ }
+    /* R42: any edit clears the "left behind" flag (the user is fixing it) and,
+       if this row was already saved, turns + Library back into an Update so the
+       library copy can be brought in line without becoming a second entry. */
+    try{
+      var idx=+el.getAttribute('data-scanrow');
+      if(blocked[idx]){ blocked[idx]=0; el.removeAttribute('data-blocked'); }
+      if(c.ok) el.removeAttribute('data-bad'); else el.setAttribute('data-bad','1');
+      if(savedIds[idx]!=null) dirty[idx]=1;
+      markLibBtn(el, idx);
+    }catch(_){ }
   }
 
   function outHtml(r){
@@ -7446,7 +7820,7 @@ try{
   }
   function rowHtml(r,i){
     var c0=computeRow(r);
-    return '<div class="scan-row" data-scanrow="'+i+'" data-mwck="'+mwckOf(r,c0)+'">'+
+    return '<div class="scan-row" data-scanrow="'+i+'" data-mwck="'+mwckOf(r,c0)+'"'+(c0.ok?'':' data-bad="1"')+'>'+
       '<div class="scan-row-h"><input class="catgate-input scan-name" data-f="name" placeholder="Name (optional)" value="'+scEsc(r.name||'')+'"/>'+
         confHtml(r,c0)+'</div>'+
       '<input class="catgate-input scan-seq" data-f="seq" spellcheck="false" value="'+scEsc(r.seq||'')+'"/>'+
@@ -7458,12 +7832,48 @@ try{
       '<div class="scan-row-acts">'+(target==='anti'
         ? '<button class="ctl-btn sm primary" data-scanuseanti="'+i+'">Use as antisense</button>'
         : '<button class="ctl-btn sm primary" data-scanuse="'+i+'">Use in calculator</button>')+
-        '<button class="ctl-btn sm" data-scanrm="'+i+'">Remove</button></div>'+
+        /* R42: keep ONE strand out of many. "+ Library" is the Catalog tab's
+           existing wording for exactly this move, so it costs no new vocabulary. */
+        '<button class="ctl-btn sm" data-scanlib="'+i+'">+ Library</button>'+
+        '<button class="ctl-btn sm scan-rm" data-scanrm="'+i+'">Remove</button></div>'+
     '</div>';
   }
 
   var rows=[];
+  /* R42: per-review-session bookkeeping for the row-level + Library button.
+     savedIds[i] is the history id that row i wrote, so a second press REPLACES
+     that entry rather than writing a duplicate; dirty[i] marks a row edited
+     since it was saved, which is what turns the button back into an Update. */
+  var savedIds={}, dirty={}, blocked={};
+  function labelOf(r,i){ var n=((r&&r.name)||'').trim(); return n?('“'+n+'”'):('strand '+(i+1)); }
+  function listNames(a){
+    if(a.length<=1) return a[0]||'';
+    if(a.length===2) return a[0]+' and '+a[1];
+    if(a.length===3) return a[0]+', '+a[1]+' and '+a[2];
+    return a[0]+', '+a[1]+' and '+(a.length-2)+' more';
+  }
+  function dropFromHistory(id){
+    if(id==null) return;
+    try{ for(var k=0;k<history.length;k++){ if(history[k] && history[k].id===id){ history.splice(k,1); return; } } }catch(_){ }
+  }
+  /* Returns the new entry, or null when the row will not compute. Callers report
+     that; nothing here is allowed to fail quietly. */
+  function addRowToLibrary(i){
+    var r=rows[i]; if(!r) return null;
+    var en=entryOf(r); if(!en) return null;
+    dropFromHistory(savedIds[i]);          // re-add == update, never a duplicate
+    history.unshift(en);
+    savedIds[i]=en.id; dirty[i]=0; blocked[i]=0;
+    if(syncOn()) pushStrandFn(en);
+    return en;
+  }
+  function markLibBtn(el,i){
+    if(!el) return; var b=el.querySelector('[data-scanlib]'); if(!b) return;
+    if(savedIds[i]!=null && !dirty[i]){ b.textContent='✓ In library'; b.disabled=true; b.classList.add('done'); }
+    else { b.textContent=(savedIds[i]!=null)?'↻ Update in library':'+ Library'; b.disabled=false; b.classList.remove('done'); }
+  }
   function openReview(resp){
+    savedIds={}; dirty={}; blocked={};          // R42: a new scan is a new session
     rows=(resp.strands||[]).map(function(s){ return {
       name:s.name||'', seq:s.coreSequence||'', type:s.type||'DNA', linkage:s.linkage||'PO',
       five:s.five||'OH', fiveThio:!!s.fiveThio, three:s.three||'OH', threeThio:!!s.threeThio,
@@ -7474,7 +7884,7 @@ try{
     var ov=ensureOverlay(); var n=rows.length;
     ov.innerHTML='<div class="catgate-card" style="max-width:820px;max-height:88vh;overflow:auto">'+
       '<div class="catgate-title">📷 Scan result — '+n+' strand'+(n===1?'':'s')+' found</div>'+
-      '<div class="catgate-sub">Review and edit. MW is recomputed by the app engine; any MW printed on the source is only a cross-check. Nothing is saved until you choose.'+
+      '<div class="catgate-sub">Review and edit. MW is recomputed by the app engine; any MW printed on the source is only a cross-check. Nothing is saved until you choose — <b>+ Library</b> keeps one strand, <b>Save all to library</b> keeps every valid one.'+
         (target==='anti'?' “Use as antisense” sends one strand to the manual antisense box; “Save all to library” keeps every strand.':'')+'</div>'+
       '<div data-scanlist>'+rows.map(rowHtml).join('')+'</div>'+
       '<div class="scan-foot">'+
@@ -7531,8 +7941,13 @@ try{
     if(!res.ok){
       var j={}; try{ j=await res.json(); }catch(_){ }
       var err=new Error(j.code||('http_'+res.status));
-      if(res.status===401||j.code==='signin_required') err.userMsg='Sign in (Account ▸ Pro) to use photo scan.';
-      else if(res.status===402||j.code==='trial_exhausted') err.userMsg='Free scan limit reached this month'+(j.limit?(' ('+j.limit+')'):'')+'. Upgrade to Pro for unlimited scans.';
+      /* R44: the server distinguishes a one-time free trial from a monthly Pro
+         allowance; a single "limit reached this month" string was wrong for both. */
+      var _walled=false;
+      try{ _walled=!!(window.ocPlan&&window.ocPlan.scanRejected&&window.ocPlan.scanRejected(j,res.status)); }catch(_){ }
+      if(_walled){ err.handled=true; throw err; }
+      if(res.status===401||j.code==='signin_required') err.userMsg='Sign in to use photo scan.';
+      else if(res.status===402||j.code==='trial_exhausted') err.userMsg='Scan limit reached'+(j.limit?(' ('+j.limit+')'):'')+'. See Plans for more.';
       else if(j.code==='pro_only') err.userMsg='Photo scan is a Pro feature.';
       else if(j.code==='config') err.userMsg='Photo scan isn’t configured on the server yet.';
       else err.userMsg='Recognition failed — try a clearer, straighter photo.';
@@ -7544,15 +7959,26 @@ try{
     if(!file) return;
     openSpinner();
     var dataUrl; try{ dataUrl=await downscale(file); }catch(_){ closeOverlay(); notice('Could not read that image.'); return; }
-    var resp; try{ resp=await callScan(dataUrl); }catch(err){ closeOverlay(); notice((err&&err.userMsg)||'Scan failed. Try again.'); return; }
+    var resp; try{ resp=await callScan(dataUrl); }catch(err){ closeOverlay();
+      if(!(err&&err.handled)) notice((err&&err.userMsg)||'Scan failed. Try again.');
+      return; }
+    try{ if(window.ocPlan&&window.ocPlan.refresh) window.ocPlan.refresh(true); }catch(_){ }
     if(!resp || resp.notFound || !(resp.strands&&resp.strands.length)){ closeOverlay(); notice('No oligo sequence found in that image.'); return; }
     openReview(resp);
   }
 
   function doScan(){
+    /* gates first -- there is no point choosing a photo source for a feature the
+       user cannot reach */
     if(typeof sbBase==='function' && !sbBase()){ notice('Photo scan isn’t configured on this build.'); return; }
-    if(typeof proSession==='function' && !proSession()){ notice('Sign in (Account ▸ Pro) to use photo scan.'); try{ setTab('pro'); }catch(_){ } return; }
-    try{ fileInput.value=''; }catch(_){ } fileInput.click();
+    if(typeof proSession==='function' && !proSession()){
+      /* R44: this used to fire a toast and dump the user on the Pro tab with no
+         idea what to do there. The wall explains the feature and takes the email
+         in place -- a navigation at this exact moment is where funnels die. */
+      try{ if(window.ocPlan&&window.ocPlan.gateScan){ window.ocPlan.gateScan(); return; } }catch(_){ }
+      notice('Sign in to use photo scan.'); try{ setTab('pro'); }catch(_){ } return; }
+    if(canCapture()) openSourceSheet();
+    else pickFrom('library');            // desktop: `capture` is ignored anyway
   }
 
   /* ---- delegated clicks: Scan button + review actions ---- */
@@ -7562,8 +7988,25 @@ try{
     if(e.target.closest('[data-batchscan]')){ e.preventDefault(); target='batch'; doScan(); return; }
     var ov=document.getElementById('scanOv'); if(!ov || !ov.contains(e.target)) return;
     if(e.target.closest('[data-scanclose]')){ closeOverlay(); return; }
+    var src=e.target.closest('[data-scansrc]');
+    if(src){ pickFrom(src.getAttribute('data-scansrc')); return; }
     var rm=e.target.closest('[data-scanrm]');
     if(rm){ var ri=+rm.getAttribute('data-scanrm'); rows[ri]=null; var el=ov.querySelector('[data-scanrow="'+ri+'"]'); if(el) el.remove(); if(!rows.filter(Boolean).length) closeOverlay(); return; }
+    var lb=e.target.closest('[data-scanlib]');
+    if(lb){
+      var li=+lb.getAttribute('data-scanlib'), lrow=ov.querySelector('[data-scanrow="'+li+'"]');
+      var upd=(savedIds[li]!=null);
+      /* re-adding an existing row is an update and does not grow the library, so
+         only a genuinely new row consults the plan gate */
+      if(!upd){ try{ if(window.ocPlan&&window.ocPlan.gateSave&&!window.ocPlan.gateSave(1)) return; }catch(_){ } }
+      var len=addRowToLibrary(li);
+      if(!len){ notice('That strand won’t compute yet — fix the sequence, then add it.'); return; }
+      try{ saveHist(); applyAll(); }catch(_){ }
+      markLibBtn(lrow, li);
+      notice(upd ? ('Updated '+labelOf(rows[li],li)+' in your library.')
+                 : ('Added '+labelOf(rows[li],li)+' to your library. The other strands are still here.'));
+      return;
+    }
     var us=e.target.closest('[data-scanuse]');
     if(us){ var r=rows[+us.getAttribute('data-scanuse')]; if(!r){ return; } var en=entryOf(r);
       if(!en){ notice('Fix the sequence before using it.'); return; }
@@ -7625,9 +8068,52 @@ try{
       return;
     }
     if(e.target.closest('[data-scansaveall]')){
-      var saved=0; rows.filter(Boolean).forEach(function(r){ var en=entryOf(r); if(en){ history.unshift(en); saved++; if(syncOn()) pushStrandFn(en); } });
+      /* R42: the old version incremented `saved` only for rows that computed and
+         said nothing at all about the rest, so "Saved 3 strands" was the only
+         evidence that 2 had been dropped -- and it then CLOSED the sheet,
+         discarding the very rows that needed fixing. Now every row is accounted
+         for out loud, and anything left behind keeps the sheet open. */
+      var saved=0, already=0, bad=[], gated=0, _newSaved=0;
+      /* R44: ask the plan gate once for the whole batch. Per-row gating would
+         open the wall on the first refusal and then report the rest as syntax
+         failures, which is a different problem with a different fix. */
+      var _new=rows.filter(function(r,i){ return r && savedIds[i]==null; }).length;
+      var _allow=_new;
+      try{ if(window.ocPlan&&window.ocPlan.gateSave&&_new) _allow=window.ocPlan.gateSave(_new); }catch(_){ }
+      if(_new && !_allow) return;                          // wall is up; sheet untouched
+      rows.forEach(function(r,i){
+        if(!r) return;                                     // removed by the user
+        if(savedIds[i]!=null && !dirty[i]){ already++; return; }   // added individually already
+        var _isNew=(savedIds[i]==null);
+        if(_isNew && _newSaved>=_allow){ gated++; return; }
+        if(_isNew) _newSaved++;
+        if(!addRowToLibrary(i)){
+          bad.push(labelOf(r,i)); blocked[i]=1;
+          var be=ov.querySelector('[data-scanrow="'+i+'"]'); if(be) be.setAttribute('data-blocked','1');
+          return;
+        }
+        saved++;
+        markLibBtn(ov.querySelector('[data-scanrow="'+i+'"]'), i);
+      });
       if(saved){ try{ saveHist(); applyAll(); }catch(_){ } }
-      notice(saved? ('Saved '+saved+' strand'+(saved===1?'':'s')+' to your library.') : 'Nothing valid to save.');
+      var head=[];
+      if(saved)   head.push('Saved '+saved+' strand'+(saved===1?'':'s')+' to your library');
+      if(already) head.push(already+' already added');
+      if(gated)   head.push(gated+' held back — your plan’s library is full');
+      var msg;
+      if(bad.length){
+        msg=(head.length?head.join(' · ')+'. ':'')+
+            bad.length+' left behind: '+listNames(bad)+' '+(bad.length===1?'does':'do')+'n’t compute yet. '+
+            'The highlighted row'+(bad.length===1?' is':'s are')+' still here — fix and save again.';
+      } else {
+        msg=head.length? (head.join(' · ')+'.') : 'Nothing to save.';
+      }
+      notice(msg);
+      if(bad.length){                                      // keep the sheet open on the first offender
+        var first=ov.querySelector('[data-blocked="1"]');
+        if(first){ try{ first.scrollIntoView({block:'center'}); }catch(_){ } }
+        return;
+      }
       closeOverlay(); return;
     }
   }, false);
@@ -7635,6 +8121,11 @@ try{
   /* expose for testing / external triggers */
   W.oligoScan={ open:doScan, review:openReview, _rows:function(){ return rows; },
     _target:function(t){ if(t) target=t; return target; },
+    /* R41 */
+    _sourceSheet:openSourceSheet, _canCapture:canCapture,
+    _inputs:{ library:fileInput, camera:camInput },
+    /* R42 */
+    _saved:function(){ return { ids:savedIds, dirty:dirty, blocked:blocked }; },
     _pick:{ tokenStarts:tokenStarts, insertCode:insertCode, hits:catHits } };
 })();
 </script>
@@ -8219,6 +8710,1080 @@ try{
   },false);
 
   window.oligoUiSwitch={ toClassic:goClassic, info:U, dismiss:dismiss, dismissed:dismissed };
+})();
+</script>
+<!-- ==========================================================================
+     R44 — PLANS, ACCOUNT & THE UPGRADE FUNNEL
+     Additive. Owns: entitlements (server truth, never inferred), the account
+     dashboard, the plan surface, and the four wall moments.
+     Everything is prefixed oc- because this file is 890KB of existing CSS and
+     an unprefixed class name is a coin flip.
+     ========================================================================== -->
+<style id="oc-auth-css">
+/* ---------- header auth cluster ----------
+   Convention, not invention: NN/g's utility-navigation guidance puts account
+   controls top-right and says to place Log in and the sign-up CTA next to each
+   other with the CTA visually dominant. Across ~40 shipped products the sign-in
+   is a quiet link and the sign-up is the filled button, in that left-to-right
+   order. We follow it exactly. */
+.oc-hdr-btn{flex:0 0 auto; font-family:var(--font-head); font-weight:600; font-size:12.5px;
+  line-height:1; min-height:40px; padding:9px 15px; border-radius:999px; cursor:pointer;
+  display:inline-flex; align-items:center; justify-content:center; white-space:nowrap;
+  border:1px solid transparent; transition:background .15s, border-color .15s}
+.oc-hdr-btn:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.oc-hdr-login{background:transparent; color:var(--text); border-color:transparent}
+.oc-hdr-login:hover{background:var(--surface-2); border-color:var(--line)}
+.oc-hdr-start{background:var(--accent); color:var(--accent-ink); border-color:var(--accent)}
+.oc-hdr-start:hover{background:var(--accent-2); border-color:var(--accent-2); color:#fff}
+body[data-mode="dark"] .oc-hdr-start:hover{color:var(--accent-ink)}
+/* invariant 14 — these all set their own display, so [hidden] needs help */
+.oc-hdr-btn[hidden], .acct-btn[hidden], .oc-ava[hidden], .oc-labhow[hidden],
+.oc-msrc[hidden], .oc-signin-line[hidden]{display:none}
+
+/* Below 768px the header is icon-only and space is real. Keep ONE always-visible
+   sign-in affordance (Canada.ca's contextual sign-in pattern: the label truncates
+   but the control never moves into a menu — hiding navigation costs >20%
+   discoverability per NN/g) and drop the secondary CTA, which is one tap away
+   inside the sheet and on the Plans tab. */
+@media (max-width:767px){ .oc-hdr-start{display:none} }
+
+.oc-ava{flex:0 0 auto; width:24px; height:24px; border-radius:999px; display:none;
+  align-items:center; justify-content:center; font-family:var(--font-head);
+  font-weight:700; font-size:10.5px; letter-spacing:.02em;
+  background:var(--accent); color:var(--accent-ink)}
+.acct-btn.oc-signed .oc-ava{display:inline-flex}
+.acct-btn.oc-signed > svg{display:none}
+.acct-btn.oc-pro{border-color:var(--accent)}
+
+/* Signed out, the account menu holds theme and settings -- not an account. Two
+   controls saying "Log in" and "Account" side by side is one word of competition
+   too many, so it drops to an icon like Help and only earns its label (the plan
+   name) once there is an account behind it. Phone already did this at <=767px;
+   this makes the two widths agree. */
+.acct-btn:not(.oc-signed) .acct-lbl,
+.acct-btn:not(.oc-signed) .caret{display:none}
+.acct-btn:not(.oc-signed){padding:0; width:40px; justify-content:center; gap:0}
+
+/* plan source line in the account menu */
+.menu .oc-msrc{margin-top:6px; font-size:11.5px; line-height:1.45; color:var(--muted)}
+
+/* "already have an account" line under the signup form */
+.oc-signin-line{margin-top:14px; padding-top:13px; border-top:1px solid var(--line);
+  font-size:12.5px; color:var(--muted); display:flex; align-items:center; gap:8px; flex-wrap:wrap}
+.oc-signin-line button{font-family:var(--font-head); font-weight:700; font-size:12.5px;
+  min-height:40px; padding:9px 15px; border-radius:999px; cursor:pointer;
+  border:1px solid var(--line-2); background:var(--surface-2); color:var(--text)}
+.oc-signin-line button:hover{background:var(--surface-3)}
+.oc-signin-line button:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+/* ---------- how lab plans work ---------- */
+.oc-labhow{margin-top:22px; padding:18px; border-radius:var(--radius);
+  border:1px solid var(--line-2); background:var(--surface-2)}
+.oc-labhow h4{margin:0 0 4px; font-family:var(--font-head); font-size:15px; color:var(--text)}
+.oc-labhow .lead{margin:0 0 15px; font-size:12.5px; line-height:1.55; color:var(--muted)}
+.oc-labhow-grid{display:grid; grid-template-columns:1fr; gap:13px}
+@media (min-width:760px){ .oc-labhow-grid{grid-template-columns:1fr 1fr; gap:15px 22px} }
+.oc-labhow-grid > div{position:relative; padding-left:32px; font-size:12.5px;
+  line-height:1.55; color:var(--muted)}
+.oc-labhow-grid b{color:var(--text)}
+.oc-labhow-grid .n{position:absolute; left:0; top:0; width:22px; height:22px; border-radius:999px;
+  display:flex; align-items:center; justify-content:center; font-family:var(--font-head);
+  font-weight:700; font-size:11.5px; background:var(--accent-soft); color:var(--accent-2);
+  border:1px solid var(--accent)}
+body[data-mode="dark"] .oc-labhow-grid .n{color:var(--accent)}
+</style>
+<style id="oc-funnel-css">
+/* ---------- shared atoms ---------- */
+.oc-btn{font-family:var(--font-head); font-weight:600; font-size:13px; line-height:1.2;
+  min-height:44px; padding:11px 18px; border-radius:999px; cursor:pointer;
+  border:1px solid var(--line-2); background:var(--surface-2); color:var(--text);
+  display:inline-flex; align-items:center; justify-content:center; gap:7px;
+  transition:background .15s, border-color .15s, transform .06s}
+.oc-btn:hover{background:var(--surface-3)}
+.oc-btn:active{transform:translateY(1px)}
+.oc-btn:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.oc-btn.prim{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+.oc-btn.prim:hover{background:var(--accent-2); border-color:var(--accent-2); color:#fff}
+body[data-mode="dark"] .oc-btn.prim:hover{color:var(--accent-ink)}
+.oc-btn.ghost{background:transparent; border-color:var(--line-2); color:var(--muted)}
+.oc-btn.ghost:hover{background:var(--surface-2); color:var(--text)}
+.oc-btn.block{width:100%; margin-top:auto}
+.oc-btn[disabled]{opacity:.55; cursor:default; transform:none}
+
+/* `[hidden]` is a USER-AGENT rule, so any author `display:` on the same element
+   outranks it and the element stays on screen no matter what JS sets. Every
+   component below declares its own display, so every one of them has to opt
+   back in. Missing one shows a Sign-out button to a guest, which is how this
+   was found. (0,2,0) beats each component's own (0,1,0). */
+.oc-btn[hidden], .oc-acct[hidden], .oc-acct-src[hidden], .oc-meters[hidden],
+.oc-meter[hidden], .oc-atrisk[hidden], .oc-promo[hidden], .oc-promo-msg[hidden],
+.oc-authwrap[hidden], .oc-plan[hidden], .oc-plangrid[hidden],
+.oc-wall[hidden], .oc-wall-field[hidden], .oc-wall-gains[hidden],
+.oc-wall-actions[hidden], .oc-wall-alt[hidden], .oc-wall-msg[hidden],
+.oc-wall-eyebrow[hidden], .oc-wall-h[hidden], .oc-wall-p[hidden],
+.oc-wall-foot[hidden], .oc-nudge[hidden]{display:none}
+
+/* Pre-existing, found by the same check: `.seqctl{display:flex}` outranks
+   `[hidden]`, so `antictl.hidden=true` at index.html:5195 never actually hid the
+   antisense controls. It only LOOKS fixed because a hidden ancestor and an
+   !important rule for mirror mode cover the two paths that are exercised today —
+   the attribute in the markup does nothing on its own. */
+.seqctl[hidden]{display:none}
+
+.oc-badge{display:inline-flex; align-items:center; gap:5px; font-family:var(--font-head);
+  font-weight:700; font-size:11.5px; letter-spacing:.04em; text-transform:uppercase;
+  padding:5px 11px; border-radius:999px; border:1px solid var(--line-2);
+  background:var(--surface-2); color:var(--muted)}
+.oc-badge[data-plan="free"]{background:var(--surface-3); color:var(--text); border-color:var(--line-2)}
+.oc-badge[data-plan="pro"],.oc-badge[data-plan="lab"]{background:var(--accent-soft); color:var(--accent-2); border-color:var(--accent)}
+body[data-mode="dark"] .oc-badge[data-plan="pro"],
+body[data-mode="dark"] .oc-badge[data-plan="lab"]{color:var(--accent)}
+.oc-badge[data-plan="owner"]{background:var(--good-soft); color:var(--good); border-color:var(--good)}
+
+/* ---------- account card ---------- */
+.oc-acct{border:1px solid var(--line-2); border-radius:var(--radius); background:var(--surface);
+  padding:18px; margin:0 0 20px; box-shadow:var(--shadow-sm)}
+.oc-acct-head{display:flex; align-items:flex-start; justify-content:space-between; gap:14px; flex-wrap:wrap}
+.oc-acct-who{min-width:0; flex:1 1 220px}
+.oc-acct-plan{margin-bottom:7px}
+.oc-acct-email{font-family:var(--font-num); font-size:13px; color:var(--text); overflow-wrap:anywhere}
+.oc-acct-src{font-size:12px; color:var(--muted); margin-top:3px}
+.oc-acct-head .oc-btn{flex:0 0 auto; align-self:flex-start}
+
+.oc-meters{display:grid; grid-template-columns:1fr; gap:14px; margin-top:18px}
+@media (min-width:640px){ .oc-meters{grid-template-columns:1fr 1fr; gap:18px} }
+.oc-meter{min-width:0}
+.oc-meter-top{display:flex; align-items:baseline; justify-content:space-between; gap:10px; margin-bottom:6px}
+.oc-meter-l{font-family:var(--font-head); font-weight:600; font-size:12.5px; color:var(--muted)}
+.oc-meter-v{font-family:var(--font-num); font-size:14px; font-weight:600; color:var(--text); white-space:nowrap}
+.oc-meter-max{color:var(--faint); font-weight:400}
+.oc-meter-track{height:8px; border-radius:999px; background:var(--surface-3);
+  border:1px solid var(--line); overflow:hidden}
+.oc-meter-track > i{display:block; height:100%; width:0; border-radius:999px;
+  background:var(--accent); transition:width .3s ease}
+.oc-meter.warn .oc-meter-track > i{background:#d98a1a}
+.oc-meter.full .oc-meter-track > i{background:var(--err)}
+.oc-meter.full .oc-meter-v{color:var(--err)}
+.oc-meter.inf .oc-meter-track{display:none}
+.oc-meter-note{font-size:11.5px; color:var(--faint); margin-top:5px}
+
+.oc-atrisk{display:flex; gap:10px; align-items:flex-start; margin-top:16px; padding:12px 14px;
+  border-radius:10px; background:var(--accent-soft); border:1px solid var(--accent);
+  font-size:12.5px; line-height:1.5; color:var(--text)}
+.oc-atrisk-ic{flex:0 0 auto; font-size:14px; line-height:1.35; color:var(--accent-2)}
+body[data-mode="dark"] .oc-atrisk-ic{color:var(--accent)}
+
+.oc-promo{margin-top:18px; padding-top:16px; border-top:1px solid var(--line)}
+.oc-promo-l{display:block; font-family:var(--font-head); font-weight:600; font-size:12.5px;
+  color:var(--muted); margin-bottom:7px}
+.oc-promo-row{display:flex; gap:8px; flex-wrap:wrap}
+.oc-promo-row input{flex:1 1 180px; min-width:0; min-height:44px; padding:10px 13px;
+  border-radius:10px; border:1px solid var(--line-2); background:var(--surface-2);
+  color:var(--text); font-family:var(--font-num); font-size:13.5px; letter-spacing:.06em;
+  text-transform:uppercase}
+.oc-promo-row input:focus-visible{outline:2px solid var(--accent); outline-offset:1px}
+.oc-promo-row .oc-btn{flex:0 0 auto}
+.oc-promo-msg{margin-top:9px; font-size:12.5px; line-height:1.5; padding:9px 12px; border-radius:9px}
+.oc-promo-msg.ok{background:var(--good-soft); color:var(--good); border:1px solid var(--good)}
+.oc-promo-msg.bad{background:var(--err-soft); color:var(--err); border:1px solid var(--err)}
+
+/* ---------- sign-up gains list ---------- */
+.oc-signup-gains{list-style:none; margin:14px 0 0; padding:0; display:grid; gap:7px}
+.oc-signup-gains li{position:relative; padding-left:22px; font-size:12.5px; line-height:1.5; color:var(--muted)}
+.oc-signup-gains li::before{content:"✓"; position:absolute; left:0; top:0; color:var(--good); font-weight:700}
+
+/* ---------- plans ---------- */
+.oc-plans-head{display:flex; align-items:center; justify-content:space-between; gap:14px;
+  flex-wrap:wrap; margin:26px 0 14px}
+.oc-plans-head h3{margin:0; font-size:17px; font-family:var(--font-head)}
+.oc-cyc{display:inline-flex; padding:3px; gap:3px; border-radius:999px;
+  border:1px solid var(--line-2); background:var(--surface-2)}
+.oc-cyc button{font-family:var(--font-head); font-weight:600; font-size:12.5px; min-height:38px;
+  padding:8px 15px; border-radius:999px; border:1px solid transparent; background:transparent;
+  color:var(--muted); cursor:pointer; display:inline-flex; align-items:center; gap:7px}
+.oc-cyc button.on{background:var(--surface); border-color:var(--line-2); color:var(--text)}
+.oc-cyc button:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.oc-save{font-size:10.5px; font-weight:700; letter-spacing:.03em; text-transform:uppercase;
+  padding:3px 7px; border-radius:999px; background:var(--good-soft); color:var(--good);
+  white-space:nowrap}
+
+.oc-plangrid{display:grid; grid-template-columns:1fr; gap:14px}
+@media (min-width:820px){ .oc-plangrid{grid-template-columns:repeat(3,1fr); gap:16px; align-items:stretch} }
+.oc-plan{position:relative; display:flex; flex-direction:column; padding:20px 18px 18px;
+  border:1px solid var(--line-2); border-radius:var(--radius); background:var(--surface)}
+.oc-plan.feat{border-color:var(--accent); border-width:2px; padding:20px 17px 17px;
+  box-shadow:var(--shadow-sm)}
+.oc-ribbon{position:absolute; top:-11px; left:17px; font-family:var(--font-head); font-weight:700;
+  font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; padding:4px 11px;
+  border-radius:999px; background:var(--accent); color:var(--accent-ink); white-space:nowrap}
+.oc-plan-name{font-family:var(--font-head); font-weight:700; font-size:15px; color:var(--text)}
+.oc-plan-price{margin:8px 0 4px; display:flex; align-items:baseline; gap:4px; flex-wrap:wrap}
+.oc-plan-price .pv{font-family:var(--font-head); font-weight:700; font-size:30px; line-height:1;
+  color:var(--text); letter-spacing:-.02em}
+.oc-plan-price .pu{font-size:12.5px; color:var(--muted)}
+.oc-plan-tag{font-size:12.5px; color:var(--muted); line-height:1.45; margin-bottom:15px}
+.oc-plan-list{list-style:none; margin:0 0 18px; padding:0; display:grid; gap:9px}
+.oc-plan-list li{position:relative; padding-left:21px; font-size:12.5px; line-height:1.5; color:var(--text)}
+.oc-plan-list li::before{content:"✓"; position:absolute; left:0; top:0; color:var(--good); font-weight:700}
+.oc-plan.cur{border-color:var(--good)}
+.oc-plan.cur .oc-btn{background:var(--good-soft); border-color:var(--good); color:var(--good)}
+
+.oc-plannote{margin-top:16px; display:grid; gap:9px}
+.oc-plannote p{margin:0; font-size:12.5px; line-height:1.6; color:var(--muted)}
+.oc-plannote b{color:var(--text)}
+
+/* ---------- the wall ---------- */
+.oc-wall{position:fixed; inset:0; z-index:90; display:flex; align-items:flex-end; justify-content:center}
+.oc-wall[hidden]{display:none}
+.oc-wall-scrim{position:absolute; inset:0; background:rgba(0,0,0,.5); backdrop-filter:blur(2px)}
+.oc-wall-card{position:relative; z-index:1; width:100%; max-width:520px; max-height:92vh;
+  overflow-y:auto; background:var(--surface); color:var(--text);
+  border:1px solid var(--line-2); border-bottom:0;
+  border-radius:18px 18px 0 0; padding:22px 20px calc(20px + var(--sab));
+  box-shadow:0 -18px 50px -20px rgba(0,0,0,.5)}
+@media (min-width:600px){
+  .oc-wall{align-items:center; padding:20px}
+  .oc-wall-card{border-radius:var(--radius); border-bottom:1px solid var(--line-2);
+    padding:26px 26px 22px; box-shadow:0 24px 60px -24px rgba(0,0,0,.55)}
+}
+.oc-wall-x{position:absolute; top:10px; right:10px; width:40px; height:40px; border-radius:10px;
+  border:1px solid var(--line); background:var(--surface-2); color:var(--muted); cursor:pointer;
+  font-size:15px; line-height:1; display:flex; align-items:center; justify-content:center}
+.oc-wall-x:hover{color:var(--text); background:var(--surface-3)}
+.oc-wall-x:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.oc-wall-eyebrow{font-family:var(--font-head); font-weight:700; font-size:11px; letter-spacing:.07em;
+  text-transform:uppercase; color:var(--accent-2); margin:0 44px 9px 0}
+body[data-mode="dark"] .oc-wall-eyebrow{color:var(--accent)}
+.oc-wall-h{font-family:var(--font-head); font-weight:700; font-size:20px; line-height:1.25;
+  letter-spacing:-.01em; margin:0 44px 9px 0; color:var(--text)}
+@media (min-width:600px){ .oc-wall-h{font-size:22px} }
+.oc-wall-p{margin:0 0 15px; font-size:13.5px; line-height:1.6; color:var(--muted)}
+.oc-wall-p b{color:var(--text)}
+.oc-wall-gains{list-style:none; margin:0 0 18px; padding:14px 15px; display:grid; gap:9px;
+  border-radius:11px; background:var(--surface-2); border:1px solid var(--line)}
+.oc-wall-gains li{position:relative; padding-left:23px; font-size:13px; line-height:1.5; color:var(--text)}
+.oc-wall-gains li::before{content:"✓"; position:absolute; left:0; top:0; color:var(--good); font-weight:700}
+.oc-wall-field{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px}
+.oc-wall-field input{flex:1 1 190px; min-width:0; min-height:46px; padding:12px 14px;
+  border-radius:11px; border:1px solid var(--line-2); background:var(--surface-2); color:var(--text);
+  font-size:15px; font-family:var(--font-ui)}
+.oc-wall-field input:focus-visible{outline:2px solid var(--accent); outline-offset:1px}
+.oc-wall-field .oc-btn{flex:0 0 auto; min-height:46px}
+.oc-wall-actions{display:flex; gap:9px; flex-wrap:wrap; align-items:center; margin-bottom:10px}
+.oc-wall-actions .oc-btn{flex:1 1 auto; min-height:46px}
+.oc-wall-msg{font-size:12.5px; line-height:1.5; padding:9px 12px; border-radius:9px; margin-bottom:11px}
+.oc-wall-msg.bad{background:var(--err-soft); color:var(--err); border:1px solid var(--err)}
+.oc-wall-msg.ok{background:var(--good-soft); color:var(--good); border:1px solid var(--good)}
+.oc-wall-foot{font-size:11.5px; line-height:1.55; color:var(--faint); margin:0}
+.oc-wall-alt{display:block; width:100%; text-align:center; background:none; border:0; cursor:pointer;
+  font-family:var(--font-head); font-weight:600; font-size:12.5px; color:var(--muted);
+  min-height:44px; padding:10px; border-radius:10px}
+.oc-wall-alt:hover{color:var(--text); background:var(--surface-2)}
+.oc-wall-alt:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+/* ---------- inline nudge (library) ---------- */
+.oc-nudge{display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin:0 0 14px;
+  padding:12px 14px; border-radius:11px; border:1px solid var(--accent);
+  background:var(--accent-soft); font-size:12.5px; line-height:1.5; color:var(--text)}
+.oc-nudge-t{flex:1 1 240px; min-width:0}
+.oc-nudge-t b{color:var(--text)}
+.oc-nudge .oc-btn{flex:0 0 auto; min-height:40px; padding:9px 15px; font-size:12.5px}
+.oc-nudge-x{flex:0 0 auto; width:34px; height:34px; border-radius:8px; border:1px solid transparent;
+  background:transparent; color:var(--muted); cursor:pointer; font-size:14px; line-height:1}
+.oc-nudge-x:hover{background:var(--surface-2); color:var(--text)}
+.oc-nudge-x:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+</style>
+
+<div class="oc-wall" data-ocwall hidden role="dialog" aria-modal="true" aria-labelledby="oc-wall-h">
+  <div class="oc-wall-scrim" data-ocwallclose></div>
+  <div class="oc-wall-card">
+    <button type="button" class="oc-wall-x" data-ocwallclose aria-label="Close">✕</button>
+    <div class="oc-wall-eyebrow" data-ocwalleyebrow></div>
+    <h2 class="oc-wall-h" id="oc-wall-h" data-ocwallh></h2>
+    <p class="oc-wall-p" data-ocwallp></p>
+    <ul class="oc-wall-gains" data-ocwallgains hidden></ul>
+    <div class="oc-wall-msg" data-ocwallmsg role="status" hidden></div>
+    <div class="oc-wall-field" data-ocwallfield hidden>
+      <input data-ocwallinput type="email" autocomplete="email" inputmode="email" placeholder="you@university.edu" aria-label="Email address">
+      <button type="button" class="oc-btn prim" data-ocwallgo>Continue</button>
+    </div>
+    <div class="oc-wall-actions" data-ocwallactions hidden></div>
+    <button type="button" class="oc-wall-alt" data-ocwallalt hidden></button>
+    <p class="oc-wall-foot" data-ocwallfoot></p>
+  </div>
+</div>
+
+<script>
+/* ==========================================================================
+   R44 — entitlements + funnel.  window.ocPlan is the public surface.
+   ========================================================================== */
+(function(){
+  'use strict';
+  var W=window, D=document;
+  function q(s,r){ return (r||D).querySelector(s); }
+  function qa(s,r){ return Array.prototype.slice.call((r||D).querySelectorAll(s)); }
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+
+  /* Billing is not wired to Stripe yet. When it is, flip this one flag and the
+     plan CTAs become checkout calls; nothing else in this file changes. */
+  var BILLING_LIVE=false;
+
+  var ENT_KEY='oligoEnt', NUDGE_KEY='oligoNudgeSeen';
+  var PRICE={ pro:{mo:9,yr:84}, lab:{mo:7,yr:70} };
+
+  /* ---- plan table: the ONLY place a limit is written down client-side.
+     The server is the real gate; these numbers exist so the UI can warn
+     BEFORE the server refuses, which is the difference between a wall and
+     a bug. ---- */
+  var PLANS={
+    anon : {label:'Guest', strands:10,       scans:0,  period:'lifetime'},
+    free : {label:'Free',  strands:50,       scans:10, period:'lifetime'},
+    pro  : {label:'Pro',   strands:Infinity, scans:20, period:'month'},
+    lab  : {label:'Lab',   strands:Infinity, scans:20, period:'month'},
+    owner: {label:'Owner', strands:Infinity, scans:Infinity, period:'month'}
+  };
+  var UNLIMITED=2147483647;
+  function isInf(n){ return !isFinite(n) || n>=UNLIMITED; }
+
+  var _ent=null, _entAt=0, _entFetching=null;
+
+  function signedIn(){ try{ return !!(typeof proSession==='function' && proSession()); }catch(_){ return false; } }
+  function sessEmail(){ try{ var s=proSession(); return (s&&s.email)||''; }catch(_){ return ''; } }
+  function localCount(){ try{ return (typeof history!=='undefined'&&history)?history.length:0; }catch(_){ return 0; } }
+
+  function anonEnt(){
+    return { plan:'anon', is_owner:false, source:'anon',
+             strands_used:localCount(), strands_limit:PLANS.anon.strands,
+             scans:{plan:'anon',period:'lifetime',used:0,limit:0,credits:0,remaining:0},
+             full_catalog:false, redemption:null, subscription:null, _local:true };
+  }
+
+  /* The library the user can see IS the strand count we gate on. Using the
+     server's count instead would let the meter say 47/50 while the library
+     lists 50 rows, and a number that disagrees with the list is worse than
+     no number. RLS still enforces the truth server-side. */
+  function entOf(){
+    var e=_ent;
+    if(!e || !signedIn()) return anonEnt();
+    var c=Object.assign({}, e);
+    c.strands_used=localCount();
+    return c;
+  }
+
+  function planKey(){ var e=entOf(); return (e&&e.plan)||'anon'; }
+  function meta(){ return PLANS[planKey()]||PLANS.anon; }
+  function strandLimit(){ var e=entOf(); var n=Number(e.strands_limit); return isFinite(n)&&n>0?n:meta().strands; }
+  function scansOf(){ var e=entOf(); return e.scans||{used:0,limit:0,credits:0,remaining:0,period:'lifetime'}; }
+
+  function cacheRead(){
+    try{ var r=JSON.parse(localStorage.getItem(ENT_KEY)||'null');
+      if(r && r.email===sessEmail() && r.ent) { _ent=r.ent; _entAt=r.t||0; } }catch(_){ }
+  }
+  function cacheWrite(){
+    try{ localStorage.setItem(ENT_KEY, JSON.stringify({email:sessEmail(), ent:_ent, t:Date.now()})); }catch(_){ }
+  }
+  function cacheClear(){ _ent=null; _entAt=0; try{ localStorage.removeItem(ENT_KEY); }catch(_){ } }
+
+  async function refresh(force){
+    if(!signedIn()){ cacheClear(); paint(); return anonEnt(); }
+    if(!force && _ent && (Date.now()-_entAt < 60000)) return entOf();
+    if(_entFetching) return _entFetching;
+    _entFetching=(async function(){
+      try{
+        var base=(typeof sbBase==='function')?sbBase():'';
+        var key=(typeof S!=='undefined'&&S.catalogSupabaseAnonKey)?String(S.catalogSupabaseAnonKey).trim():'';
+        var tok=(typeof proAccessToken==='function')?await proAccessToken():null;
+        if(!base||!key||!tok) return entOf();
+        var r=await fetch(base.replace(/\/+$/,'')+'/rest/v1/rpc/my_entitlements',
+          {method:'POST', headers:{apikey:key, Authorization:'Bearer '+tok,
+            'Content-Type':'application/json', Accept:'application/json'}, body:'{}'});
+        if(!r.ok) return entOf();
+        var d=await r.json();
+        if(d && typeof d==='object'){ _ent=d; _entAt=Date.now(); cacheWrite(); }
+      }catch(_){ }
+      finally{ _entFetching=null; }
+      paint();
+      return entOf();
+    })();
+    return _entFetching;
+  }
+
+  /* ======================= THE WALL ======================= */
+  var wall=null, _wallKind='', _wallEmail='', _lastFocus=null;
+  function W_(sel){ if(!wall) wall=q('[data-ocwall]'); return wall?q(sel,wall):null; }
+
+  function wallClose(){
+    var el=q('[data-ocwall]'); if(!el) return;
+    el.hidden=true; _wallKind='';
+    try{ if(_lastFocus&&_lastFocus.focus) _lastFocus.focus(); }catch(_){ }
+  }
+
+  function wallSet(cfg){
+    var el=q('[data-ocwall]'); if(!el) return;
+    _lastFocus=D.activeElement;
+    var g=q('[data-ocwalleyebrow]',el), h=q('[data-ocwallh]',el), p=q('[data-ocwallp]',el),
+        gl=q('[data-ocwallgains]',el), fd=q('[data-ocwallfield]',el), inp=q('[data-ocwallinput]',el),
+        go=q('[data-ocwallgo]',el), ac=q('[data-ocwallactions]',el), alt=q('[data-ocwallalt]',el),
+        ft=q('[data-ocwallfoot]',el), ms=q('[data-ocwallmsg]',el);
+    if(g){ g.textContent=cfg.eyebrow||''; g.hidden=!cfg.eyebrow; }
+    if(h) h.textContent=cfg.title||'';
+    if(p){ p.innerHTML=cfg.body||''; p.hidden=!cfg.body; }
+    if(gl){ if(cfg.gains&&cfg.gains.length){ gl.innerHTML=cfg.gains.map(function(x){return '<li>'+x+'</li>';}).join(''); gl.hidden=false; } else gl.hidden=true; }
+    if(ms){ ms.hidden=true; ms.textContent=''; ms.className='oc-wall-msg'; }
+    if(fd) fd.hidden=!cfg.field;
+    if(inp&&cfg.field){ inp.type=cfg.field.type||'email'; inp.placeholder=cfg.field.placeholder||'';
+      inp.setAttribute('aria-label',cfg.field.label||'Input');
+      inp.inputMode=cfg.field.type==='text'?'numeric':'email';
+      inp.autocomplete=cfg.field.type==='text'?'one-time-code':'email';
+      inp.value=cfg.field.value||''; }
+    if(go&&cfg.field){ go.textContent=cfg.field.cta||'Continue'; go.disabled=false; }
+    if(ac){ if(cfg.actions&&cfg.actions.length){
+        ac.innerHTML=cfg.actions.map(function(a,i){
+          return '<button type="button" class="oc-btn '+(a.prim?'prim':'')+'" data-ocwallact="'+i+'">'+esc(a.label)+'</button>'; }).join('');
+        ac.hidden=false; ac._acts=cfg.actions;
+      } else { ac.hidden=true; ac.innerHTML=''; ac._acts=null; } }
+    if(alt){ if(cfg.alt){ alt.textContent=cfg.alt.label; alt.hidden=false; alt._act=cfg.alt.run; }
+             else { alt.hidden=true; alt._act=null; } }
+    if(ft){ ft.innerHTML=cfg.foot||''; ft.hidden=!cfg.foot; }
+    el.hidden=false;
+    var f=cfg.field?inp:(q('[data-ocwallact]',el)||q('[data-ocwallclose]',el));
+    if(f) setTimeout(function(){ try{ f.focus(); }catch(_){ } },90);
+  }
+
+  function wallMsg(text, kind){
+    var ms=W_('[data-ocwallmsg]'); if(!ms) return;
+    ms.textContent=text||''; ms.className='oc-wall-msg'+(kind?(' '+kind):''); ms.hidden=!text;
+  }
+
+  /* ---- signup, in place. Navigating a user to a sign-in page at the exact
+     moment they hit a wall is where funnels die; the field is right here. ---- */
+  function stepEmail(cfg){
+    _wallKind=cfg.kind||'';
+    wallSet({
+      eyebrow:cfg.eyebrow, title:cfg.title, body:cfg.body, gains:cfg.gains,
+      field:{type:'email', placeholder:'you@university.edu', label:'Email address', cta:'Send code', value:_wallEmail},
+      alt: cfg.alt || {label:cfg.altLabel||'Not now', run:wallClose},
+      foot:cfg.foot||'No password. Nothing you have saved is deleted or moved.'
+    });
+    W_('[data-ocwallgo]').onclick=doSend;
+    var inp=W_('[data-ocwallinput]');
+    inp.onkeydown=function(e){ if(e.key==='Enter'){ e.preventDefault(); doSend(); } };
+    function doSend(){
+      var email=(inp.value||'').trim();
+      if(!/.+@.+\..+/.test(email)){ wallMsg('Enter a valid email address.','bad'); inp.focus(); return; }
+      _wallEmail=email; wallMsg('');
+      var btn=W_('[data-ocwallgo]'); btn.disabled=true; btn.textContent='Sending…';
+      Promise.resolve()
+        .then(function(){ return proSendCode(email); })
+        .then(function(){ stepCode(cfg); })
+        .catch(function(e){ authFail(e, W_('[data-ocwallgo]'), 'Send code'); });
+    }
+  }
+
+  function stepCode(cfg){
+    wallSet({
+      eyebrow:'Check your email',
+      title:'Enter the 6-digit code',
+      body:'Sent to <b>'+esc(_wallEmail)+'</b>. It arrives in a few seconds — check spam if it doesn’t.',
+      field:{type:'text', placeholder:'123456', label:'Sign-in code', cta:'Verify'},
+      alt:{label:'‹ Use a different email', run:function(){ stepEmail(cfg); }},
+      foot:'The sign-in link in the same email works too — open it on this device.'
+    });
+    var inp=W_('[data-ocwallinput]'), btn=W_('[data-ocwallgo]');
+    btn.onclick=doVerify;
+    inp.onkeydown=function(e){ if(e.key==='Enter'){ e.preventDefault(); doVerify(); } };
+    function doVerify(){
+      var code=(inp.value||'').trim();
+      if(!/^[0-9]{4,10}$/.test(code)){ wallMsg('Enter the numeric code from your email.','bad'); inp.focus(); return; }
+      wallMsg(''); btn.disabled=true; btn.textContent='Verifying…';
+      Promise.resolve()
+        .then(function(){ return proVerifyCode(_wallEmail, code); })
+        .then(function(){
+          try{ S.catalogSource='supabase'; save(); }catch(_){ }
+          return refresh(true);
+        })
+        .then(function(){
+          try{ if(typeof reloadCatalogSource==='function') reloadCatalogSource(); }catch(_){ }
+          try{ if(W.oligoSync && W.oligoSync.pullCloud) W.oligoSync.pullCloud(); }catch(_){ }
+          try{ if(typeof syncProView==='function') syncProView(true); }catch(_){ }
+          stepDone(cfg);
+        })
+        .catch(function(e){ authFail(e, W_('[data-ocwallgo]'), 'Verify'); });
+    }
+  }
+
+  function stepDone(cfg){
+    var n=localCount();
+    wallSet({
+      eyebrow:'You’re in',
+      title:'Your library is now yours',
+      body:(n? ('The <b>'+n+' strand'+(n===1?'':'s')+'</b> you had in this browser have moved to your account. Open the calculator on your phone and they will be there.')
+             : 'Anything you save from here lives on your account, not in this browser.'),
+      gains:['<b>50</b> saved strands','<b>10</b> photo scans to try','Voice entry and the free catalog, unlimited'],
+      actions:[{label:(cfg&&cfg.doneCta)||'Back to work', prim:true, run:function(){ wallClose(); if(cfg&&cfg.onDone) cfg.onDone(); }}],
+      foot:'Have an access code from your lab? Enter it under Plans &amp; account.'
+    });
+    paint();
+  }
+
+  /* ---- the four moments ---- */
+  function wallStrandsAnon(ctx){
+    var n=localCount();
+    stepEmail({
+      kind:'strands-anon',
+      eyebrow:'Library full — '+n+' of '+n,
+      title:'Keep these '+n+' strands',
+      body:'You’ve filled the guest library. A free account raises it to <b>50</b> and — the part that matters — puts them on every device you sign in from.',
+      gains:['Your '+n+' strands move across, nothing retyped',
+             'The same library on your phone at the bench',
+             '<b>10</b> photo scans to try, free'],
+      foot:'Guest strands live in this browser only. Clearing site data loses them; an account does not.',
+      onDone:ctx&&ctx.retry
+    });
+  }
+  function wallStrandsFree(ctx){
+    var lim=strandLimit();
+    wallSet({
+      eyebrow:'Library full — '+lim+' of '+lim,
+      title:'You’ve filled the free library',
+      body:'Pro removes the ceiling entirely. <b>Nothing you have saved is at risk</b> — every strand stays readable, editable and exportable whatever you choose.',
+      gains:['<b>Unlimited</b> saved strands','<b>20</b> photo scans a month','All <b>267</b> verified amidites','Folders, tags and notes'],
+      actions:[{label:'See Pro', prim:true, run:function(){ wallClose(); gotoPlans(); }}],
+      alt:{label:'Not now', run:wallClose},
+      foot:'Have an access code from your lab? Enter it under Plans &amp; account.'
+    });
+  }
+  function wallScanAnon(){
+    stepEmail({
+      kind:'scan-anon',
+      eyebrow:'Photo scan',
+      title:'Point a camera at the label',
+      body:'Photo scan reads a sequence straight off a tube label, a vendor sheet or a page of a notebook. It needs a free account — <b>10 scans to try</b>, no card.',
+      gains:['<b>10</b> photo scans, one-time trial','<b>50</b> saved strands on every device','Voice entry, unlimited'],
+      foot:'Scanning runs on our server, which is why it needs an account. The calculator itself never will.'
+    });
+  }
+  function wallScanFree(j){
+    var lim=(j&&j.limit)||PLANS.free.scans;
+    wallSet({
+      eyebrow:'Scan trial used — '+lim+' of '+lim,
+      title:'You’ve used all '+lim+' scan trials',
+      body:'The trial is one-time, not monthly. Pro gives you <b>20 scans every month</b>, and they reset on their own.',
+      gains:['<b>20</b> photo scans a month','<b>Unlimited</b> saved strands','All <b>267</b> verified amidites'],
+      actions:[{label:'See Pro', prim:true, run:function(){ wallClose(); gotoPlans(); }}],
+      alt:{label:'Type it instead', run:wallClose},
+      foot:'Voice entry stays free and unlimited — say the sequence instead of typing it.'
+    });
+  }
+  function wallScanPro(j){
+    var lim=(j&&j.limit)||PLANS.pro.scans;
+    wallSet({
+      eyebrow:'Monthly scans used — '+lim+' of '+lim,
+      title:'That’s this month’s scans',
+      body:'Your <b>'+lim+'</b> scans reset at the start of next month. Nothing else is affected — the calculator, voice entry and your library all keep working.',
+      actions:[{label:'OK', prim:true, run:wallClose}],
+      foot:'Need more this month? A top-up pack will be available once billing opens.'
+    });
+  }
+
+  /* ---- the returning-user door ---------------------------------------------
+     Same mechanism as signup, deliberately: with no password there is nothing
+     different to do, and every passwordless product surveyed (Vercel, Linear,
+     Notion, Slack) ships exactly one. What differs is the framing -- this sheet
+     sells nothing -- and the fact that it has its own entry point. Each door
+     also points at the other, which is the disambiguation mechanism that
+     actually works; "Sign in" and "Sign up" differ by two letters and are the
+     one label pair every source warns against relying on. ---- */
+  function wallSignIn(){
+    stepEmail({
+      kind:'signin',
+      eyebrow:'Welcome back',
+      title:'Sign in',
+      body:'Enter your email and we’ll send a 6-digit code. <b>One account covers everything</b> — free, Pro, and any lab you belong to. There is no separate lab login.',
+      alt:{label:'New here? Create a free account', run:function(){ wallStart(); }},
+      foot:'No password to remember, and none to have stolen. If you are new, this same box creates your account.'
+    });
+  }
+  function wallStart(){
+    stepEmail({
+      kind:'signup',
+      eyebrow:'Free account',
+      title:'Create your free account',
+      body:'One email, one code, no password. Everything you have saved in this browser comes with you.',
+      gains:['<b>50</b> saved strands, on every device','<b>10</b> photo scans to try','Voice entry and the free catalog, unlimited'],
+      alt:{label:'Already have an account? Sign in', run:function(){ wallSignIn(); }},
+      foot:'We store your email and your strands. Nothing else.'
+    });
+  }
+
+  /* ---- Supabase auth errors, in English -------------------------------------
+     The per-user cooldown (60s by default) is a SEPARATE limit from the
+     project-wide email cap, and custom SMTP does not remove it -- so this is not
+     a message we can configure away. It is permanent UI. ---- */
+  function authMsg(e){
+    var raw=(e&&e.message)||'', b={}, parsed=false;
+    try{ b=JSON.parse(raw)||{}; parsed=(b&&typeof b==='object'); }catch(_){ }
+    var status=(e&&e.status)||b.code||0;
+    var code=String(b.error_code||'')+' '+String(b.error||'');
+    var msg=String(b.msg||b.message||b.error_description||(typeof b==='object'&&!b.msg?'':raw)||raw||'');
+    var m=msg.match(/after (\d+)\s*second/i), wait=m?(parseInt(m[1],10)||0):0;
+
+    if(String(status)==='429' || /rate_?limit/i.test(code+' '+msg))
+      return { text: wait
+          ? ('One code at a time — you can ask for another in '+wait+' seconds. Check your spam folder while you wait.')
+          : 'Too many requests just now. Give it a minute, then try again.',
+        wait: wait||60 };
+    if(/over_email_send_rate_limit/i.test(code))
+      return { text:'We’ve sent as many codes as we can for now. Try again shortly.', wait:60 };
+    if(/otp_expired|expired/i.test(code+' '+msg))
+      return { text:'That code has expired — they’re short-lived on purpose. Ask for a new one.', wait:0 };
+    if(/invalid_?credentials|otp_disabled|bad_jwt|invalid/i.test(code+' '+msg) && /token|code|otp/i.test(code+' '+msg))
+      return { text:'That code didn’t match. Check the digits, or ask for a new one.', wait:0 };
+    if(/validation_failed|invalid_?email/i.test(code) || /invalid.*email|email.*invalid/i.test(msg))
+      return { text:'That email address doesn’t look right.', wait:0 };
+    if(/email_address_not_authorized|signup_disabled/i.test(code))
+      return { text:'That address isn’t allowed to sign up yet. Get in touch and we’ll sort it.', wait:0 };
+    if(String(status)==='0' || /failed to fetch|networkerror/i.test(msg))
+      return { text:'Couldn’t reach the server. Check your connection and try again.', wait:0 };
+    /* Only ever surface a message the server put in a NAMED field. An unparsed
+       body is a server-side string that could say anything -- "internal server
+       error", a stack trace, a proxy's HTML -- and none of that is a sentence
+       for a person waiting on an email. */
+    return { text: (parsed && msg && msg.length<130 && !/^[\[{]/.test(msg))
+        ? msg : 'Something went wrong sending that. Try again in a moment.', wait:0 };
+  }
+
+  /* A disabled button with a live countdown beats a message telling someone to
+     wait, because the number is the answer to the question they are about to
+     ask ("how long?") and they can watch it go down instead of guessing. */
+  var _cdT=null;
+  function authFail(e, btn, label){
+    var r=authMsg(e);
+    wallMsg(r.text,'bad');
+    if(!btn) return;
+    clearTimeout(_cdT);
+    if(!r.wait){ btn.disabled=false; btn.textContent=label; return; }
+    var left=r.wait; btn.disabled=true;
+    (function tick(){
+      if(left<=0){ btn.disabled=false; btn.textContent=label; return; }
+      btn.textContent=label+' · '+left+'s';
+      left--; _cdT=setTimeout(tick,1000);
+    })();
+  }
+
+  function initialsOf(email){
+    var p=String(email||'').split('@')[0].replace(/[^a-z0-9]+/gi,' ').trim().split(/\s+/);
+    if(!p.length||!p[0]) return '?';
+    return (p.length>1 ? (p[0].charAt(0)+p[1].charAt(0)) : p[0].slice(0,2)).toUpperCase();
+  }
+
+  /* Deep link, so a sign-in URL can be pasted into an email to a labmate. */
+  function checkAuthHash(){
+    var h=String(W.__ocHash || location.hash || '').toLowerCase();
+    W.__ocHash='';                                   // one-shot: consume it
+    if(h!=='#signin' && h!=='#login' && h!=='#account') return;
+    try{ history.replaceState(null,'',location.pathname+location.search); }catch(_){ }
+    if(h==='#account'){ gotoPlans(); return; }
+    if(signedIn()) gotoPlans(); else wallSignIn();
+  }
+
+  /* Reported once per session, non-modally. A modal here would interrupt someone
+     who has just signed in and is not trying to save anything -- but saying
+     nothing would mean their library quietly shows rows that only exist on this
+     machine, which is the state most likely to lose work later. */
+  var _unsyncedTold=false;
+  function reportUnsynced(n){
+    if(!n || _unsyncedTold) return; _unsyncedTold=true;
+    var lim=strandLimit(), inf=isInf(lim);
+    var msg = n+' strand'+(n===1?'':'s')+' '+(n===1?'is':'are')+' still on this device only'
+      + (inf ? ' — they will sync on the next try.'
+             : ' — your plan holds '+lim+' in the cloud. Nothing was deleted; they are all still in your library.');
+    try{ if(typeof notice==='function'){ notice(msg); return; } }catch(_){ }
+    try{ console.warn('[sync] '+msg); }catch(_){ }
+  }
+
+  function gotoPlans(){
+    try{ if(typeof setTab==='function') setTab('pro'); }catch(_){ }
+    setTimeout(function(){ var h=q('#panel-pro h2'); if(h){ try{ h.setAttribute('tabindex','-1'); h.focus({preventScroll:false}); }catch(_){ } } },80);
+  }
+
+  /* ======================= GATES ======================= */
+  /* Returns how many of `n` may be saved. 0 means the wall opened. */
+  function gateSave(n, ctx){
+    n=Math.max(1, n|0);
+    var lim=strandLimit(); if(isInf(lim)) return n;
+    var free=Math.max(0, lim-localCount());
+    if(free<=0){ (signedIn()?wallStrandsFree:wallStrandsAnon)(ctx); return 0; }
+    return Math.min(n, free);
+  }
+
+  function gateScan(){
+    if(!signedIn()){ wallScanAnon(); return false; }
+    return true;
+  }
+
+  /* The scan Edge Function is the authority on scan quota — it knows the month
+     boundary and the credit balance. The client only translates its codes. */
+  function scanRejected(j, status){
+    var c=(j&&j.code)||'';
+    if(status===401||c==='signin_required'){ wallScanAnon(); return true; }
+    if(c==='free_trial_exhausted'){ wallScanFree(j); return true; }
+    if(c==='pro_month_exhausted'){ wallScanPro(j); return true; }
+    if(status===402||c==='trial_exhausted'){ (planKey()==='free'?wallScanFree:wallScanPro)(j); return true; }
+    return false;
+  }
+
+  /* A 403 on push is the server refusing a row over quota. It is NOT a network
+     blip, so it must never go on the retry queue — a queued quota rejection
+     retries forever and reports "offline" for a reason that is not offline. */
+  function pushRejected(status, body){
+    if(status!==401 && status!==403) return false;
+    if(status===403 && !/row-level security|violates|policy/i.test(String(body||''))) return false;
+    if(status===401) return false;
+    refresh(true);
+    if(!q('[data-ocwall]')||!q('[data-ocwall]').hidden) return true;
+    (signedIn()?wallStrandsFree:wallStrandsAnon)();
+    return true;
+  }
+
+  /* ======================= PAINT ======================= */
+  function pct(u,l){ if(isInf(l)||!l) return 0; return Math.max(0,Math.min(100, Math.round(u/l*100))); }
+  function nfm(n){ return isInf(n)?'∞':String(n); }
+
+  function paintMeter(el, used, lim, note){
+    if(!el) return;
+    var v=q('[data-ocmv]',el), x=q('[data-ocmx]',el), bar=q('[data-ocmbar]',el), nt=q('[data-ocmn]',el);
+    var inf=isInf(lim), p=pct(used,lim);
+    el.classList.toggle('inf', inf);
+    el.classList.toggle('warn', !inf && p>=80 && p<100);
+    el.classList.toggle('full', !inf && p>=100);
+    /* write into the leading text node, never v.textContent -- textContent would
+       wipe the nested "/ 50" span and the meter would lose its denominator */
+    if(v){ var tn=v.firstChild;
+      if(!tn || tn.nodeType!==3){ tn=D.createTextNode(''); v.insertBefore(tn, v.firstChild||null); }
+      tn.nodeValue=String(used); }
+    if(x) x.textContent=inf?' / unlimited':(' / '+lim);
+    if(bar) bar.style.width=p+'%';
+    if(nt) nt.textContent=note||'';
+  }
+
+  var SRC_LABEL={ owner:'Site owner — every limit lifted',
+                  subscription:'Active subscription',
+                  code:'Unlocked with an access code',
+                  granted:'Granted by the lab',
+                  free:'', anon:'' };
+
+  var _lastPk=null;
+  function paint(){
+    var e=entOf(), pk=planKey(), m=meta(), si=signedIn();
+    var lim=strandLimit(), used=localCount(), sc=scansOf();
+
+    /* proIsPro gates the full catalog and the Pro-tab state machine. It used to
+       be derived inside the catalog fetch, so an owner who never triggered a
+       catalog reload stayed "not Pro" and lost their own catalog. Entitlements
+       are the source of truth; push them out the moment they land. */
+    try{ if(typeof W.proApplyPlan==='function') W.proApplyPlan(pk); }catch(_){ }
+    if(pk!==_lastPk){
+      var _first=(_lastPk===null); _lastPk=pk;
+      if(!_first){                                   // a real plan CHANGE, not first paint
+        try{ if(typeof syncProView==='function') syncProView(true); }catch(_){ }
+        try{ if(typeof renderCatalog==='function' && typeof catalogOpen!=='undefined' && catalogOpen) renderCatalog(); }catch(_){ }
+      }
+    }
+
+    qa('[data-ocplantag]').forEach(function(t){ t.textContent=m.label; });
+    qa('[data-ocbadge]').forEach(function(b){ b.textContent=m.label; b.setAttribute('data-plan', pk); });
+
+    var em=q('[data-ocemail]');
+    if(em) em.textContent = si ? (sessEmail()||'Signed in') : 'Not signed in — this browser only';
+
+    var src=q('[data-ocsrc]');
+    if(src){ var t=SRC_LABEL[e.source]||'';
+      if(e.source==='code' && e.redemption && e.redemption.code) t='Unlocked with code '+e.redemption.code;
+      src.textContent=t; src.hidden=!t; }
+
+    var ms=qa('[data-ocmeter]');
+    if(ms[0]) paintMeter(ms[0], used, lim,
+      isInf(lim) ? 'No ceiling on this plan'
+      : si ? (Math.max(0,lim-used)+' left · synced to your account')
+           : (Math.max(0,lim-used)+' left · this browser only'));
+    if(ms[1]){
+      var sl=Number(sc.limit)||0, su=Number(sc.used)||0, cr=Number(sc.credits)||0;
+      paintMeter(ms[1], su, isInf(sl)?Infinity:sl,
+        !si ? 'Needs a free account'
+        : isInf(sl) ? 'No ceiling on this plan'
+        : (sc.period==='month' ? (Math.max(0,sl-su)+' left this month'+(cr?(' · +'+cr+' credits'):''))
+                               : (Math.max(0,sl-su)+' of a one-time trial left')));
+    }
+
+    var ar=q('[data-ocatrisk]');
+    if(ar){ var show = !si && used>0;
+      ar.hidden=!show;
+      var n=q('[data-ocatriskn]',ar); if(n) n.textContent=used+' strand'+(used===1?'':'s'); }
+
+    var pr=q('[data-ocpromo]'); if(pr) pr.hidden=!si;
+    var so=q('[data-ocsignout]'); if(so) so.hidden=!si;
+    var aw=q('[data-ocauthwrap]'); if(aw) aw.hidden=si;
+
+    qa('[data-ocplan]').forEach(function(card){
+      var k=card.getAttribute('data-ocplan'), cur=(k===pk)||(pk==='owner');
+      card.classList.toggle('cur', cur);
+      var b=q('[data-ocpick]',card);
+      if(b){
+        if(pk==='owner'){ b.textContent='Owner — all plans'; b.disabled=true; }
+        else if(cur){ b.textContent='Your plan'; b.disabled=true; }
+        /* Only Slack refuses this today; everyone else silently takes a second
+           payment from someone their employer already covers. A grad student
+           whose PI bought seats is exactly the person about to make that
+           mistake, and it is the cheapest trust we will ever buy. */
+        else if(k==='pro' && pk==='lab'){ b.textContent='Your lab already covers this'; b.disabled=true; }
+        else if(k==='free'){ b.textContent=si?'Included':'Create free account'; b.disabled=si; }
+        else if(k==='pro'){ b.textContent=BILLING_LIVE?'Get Pro':'Get Pro'; b.disabled=false; }
+        else { b.textContent='Set up a lab'; b.disabled=false; }
+      }
+    });
+    paintHeader(si, pk, m, e);
+    paintPrices();
+    paintNudge();
+  }
+
+  /* Signed out: Log in (quiet) + Get started (filled), the pair in that order.
+     Signed in: both collapse into one avatar control in the same slot, which is
+     what every product surveyed does and what Carbon and Polaris both specify. */
+  function paintHeader(si, pk, m, e){
+    var lg=q('[data-ocloginbtn]'), st=q('[data-ocstartbtn]'), ab=q('.acct-btn');
+    if(lg) lg.hidden=si;
+    if(st) st.hidden=si;
+    if(ab){
+      ab.classList.toggle('oc-signed', si);
+      ab.classList.toggle('oc-pro', si && pk!=='free');
+      var av=q('[data-ocava]',ab); if(av) av.textContent=si?initialsOf(sessEmail()):'';
+      var lb=q('.acct-lbl',ab);
+      if(lb) lb.textContent = (si && pk!=='free') ? m.label : 'Account';
+      ab.setAttribute('aria-label', si ? ('Account — '+(sessEmail()||'signed in')+' — '+m.label+' plan')
+                                        : 'Settings and theme');
+    }
+    /* Ambient plan context. Essentially no vendor shows this persistently, and
+       it is the single most common source of "wait, am I paying for this?" --
+       especially for a lab member who never bought anything. */
+    var ms=q('[data-ocmsrc]');
+    if(ms){
+      var t='';
+      if(!si) t='Your strands are saved in this browser only.';
+      else if(pk==='owner') t='Site owner — no limits.';
+      else if(e.subscription && e.subscription.is_lab) t='Pro through your lab. The lab pays for this, not you.';
+      else if(e.source==='code' && e.redemption && e.redemption.code) t='Unlocked with code '+e.redemption.code+'.';
+      else if(e.source==='granted') t='Pro, granted by the lab.';
+      else if(e.source==='subscription') t='Your own subscription.';
+      else t='Free plan — 50 strands, 10 scans to try.';
+      ms.textContent=t; ms.hidden=!t;
+    }
+  }
+
+  var _cyc='mo';
+  function paintPrices(){
+    var yr=_cyc==='yr';
+    qa('[data-ocprice]').forEach(function(el){
+      var k=el.getAttribute('data-ocprice'), p=PRICE[k]; if(!p) return;
+      el.textContent='$'+(yr?Math.round(p.yr/12):p.mo);
+    });
+    qa('[data-ocper]').forEach(function(el){
+      var k=el.getAttribute('data-ocper');
+      el.textContent=(k==='lab'?'/seat/month':'/month')+(yr?', billed annually':'');
+    });
+    qa('[data-occmpprice]').forEach(function(el){
+      var k=el.getAttribute('data-occmpprice'), p=PRICE[k]; if(!p) return;
+      el.textContent=yr?('$'+p.yr+(k==='lab'?'/seat/yr':'/yr')):('$'+p.mo+(k==='lab'?'/seat/mo':'/mo'));
+    });
+    qa('[data-occyc]').forEach(function(b){
+      var on=b.getAttribute('data-occyc')===_cyc;
+      b.classList.toggle('on', on); b.setAttribute('aria-checked', on?'true':'false');
+    });
+  }
+
+  /* ---- the soft nudge: shown once, in the library, at 80% of the ceiling.
+     A modal here would be an interruption for a problem the user does not
+     have yet. ---- */
+  function paintNudge(){
+    var host=q('[data-histpro]'); if(!host) return;
+    var lim=strandLimit(), used=localCount();
+    var seen=false; try{ seen=localStorage.getItem(NUDGE_KEY)===planKey(); }catch(_){ }
+    if(isInf(lim) || seen || used<Math.ceil(lim*0.8) || used>=lim){
+      var ex=q('.oc-nudge',host); if(ex) ex.remove(); return;
+    }
+    if(q('.oc-nudge',host)) return;
+    var left=lim-used, si=signedIn();
+    var d=D.createElement('div');
+    d.className='oc-nudge';
+    d.innerHTML='<div class="oc-nudge-t"><b>'+left+' slot'+(left===1?'':'s')+' left</b> of your '+lim+'. '+
+      (si?'Pro removes the ceiling and adds 20 scans a month.'
+         :'A free account raises it to 50 and puts them on every device.')+'</div>'+
+      '<button type="button" class="oc-btn prim" data-ocnudgego>'+(si?'See Pro':'Create free account')+'</button>'+
+      '<button type="button" class="oc-nudge-x" data-ocnudgex aria-label="Dismiss">✕</button>';
+    host.hidden=false;
+    host.insertBefore(d, host.firstChild);
+  }
+
+  /* ======================= PROMO ======================= */
+  async function redeem(code){
+    var base=(typeof sbBase==='function')?sbBase():'';
+    var key=(typeof S!=='undefined'&&S.catalogSupabaseAnonKey)?String(S.catalogSupabaseAnonKey).trim():'';
+    var tok=(typeof proAccessToken==='function')?await proAccessToken():null;
+    if(!base||!key||!tok) throw new Error('not signed in');
+    var r=await fetch(base.replace(/\/+$/,'')+'/rest/v1/rpc/redeem_code',
+      {method:'POST', headers:{apikey:key, Authorization:'Bearer '+tok,
+        'Content-Type':'application/json', Accept:'application/json'},
+       body:JSON.stringify({p_code:code})});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    return await r.json();
+  }
+  var REDEEM_MSG={
+    not_found:'We don’t recognise that code. Check for a typo — they are not case-sensitive.',
+    revoked:'That code has been turned off. Ask whoever gave it to you for a current one.',
+    expired:'That code has expired.',
+    exhausted:'That code has been used the maximum number of times.',
+    not_signed_in:'Sign in first, then redeem.'
+  };
+
+  /* ======================= WIRING ======================= */
+  D.addEventListener('click', function(ev){
+    var t=ev.target;
+    if(t.closest('[data-ocwallclose]')){ ev.preventDefault(); wallClose(); return; }
+    var act=t.closest('[data-ocwallact]');
+    if(act){ ev.preventDefault();
+      var ac=act.parentNode, list=ac&&ac._acts, a=list&&list[+act.getAttribute('data-ocwallact')];
+      if(a&&a.run) a.run(); return; }
+    var alt=t.closest('[data-ocwallalt]');
+    if(alt){ ev.preventDefault(); if(alt._act) alt._act(); return; }
+
+    if(t.closest('[data-ocnudgex]')){ ev.preventDefault();
+      try{ localStorage.setItem(NUDGE_KEY, planKey()); }catch(_){ }
+      var n=t.closest('.oc-nudge'); if(n) n.remove(); return; }
+    if(t.closest('[data-ocnudgego]')){ ev.preventDefault();
+      if(signedIn()) gotoPlans(); else wallStrandsAnon(); return; }
+
+    var cyc=t.closest('[data-occyc]');
+    if(cyc){ ev.preventDefault(); _cyc=cyc.getAttribute('data-occyc'); paintPrices(); return; }
+
+    var pick=t.closest('[data-ocpick]');
+    if(pick && !pick.disabled){ ev.preventDefault();
+      var k=pick.getAttribute('data-ocpick');
+      if(k==='free'){ if(!signedIn()) { var f=q('[data-axinput]'); if(f){ try{ f.focus(); f.scrollIntoView({block:'center',behavior:'smooth'}); }catch(_){ } } } return; }
+      if(BILLING_LIVE){ /* checkout goes here when Stripe is wired */ return; }
+      wallSet({
+        eyebrow:k==='lab'?'Lab plan':'Pro plan',
+        title:'Billing isn’t open yet',
+        body:k==='lab'
+          ? 'Lab plans are being set up one at a time while the shared library is finished. Tell us about your lab and we’ll get you in.'
+          : 'Pro is currently granted by access code. If you were given one, enter it in your account — it unlocks Pro immediately, no card.',
+        actions: signedIn()
+          ? [{label:'Enter an access code', prim:true, run:function(){ wallClose(); focusPromo(); }}]
+          : [{label:'Create a free account first', prim:true, run:function(){ wallClose(); gotoPlans(); var f=q('[data-axinput]'); if(f) try{ f.focus(); }catch(_){ } }}],
+        alt:{label:'Close', run:wallClose},
+        foot:'Codes come from the Sheng Lab. Academic labs get 40% off once billing opens.'
+      });
+      return; }
+
+    if(t.closest('[data-ocsignout]')){ ev.preventDefault();
+      cacheClear(); try{ proSignOut(); }catch(_){ }
+      try{ if(typeof syncProView==='function') syncProView(true); }catch(_){ }
+      paint(); return; }
+
+    if(t.closest('[data-ocloginbtn]')){ ev.preventDefault(); wallSignIn(); return; }
+    if(t.closest('[data-ocstartbtn]')){ ev.preventDefault(); wallStart(); return; }
+    if(t.closest('[data-ocsigninline]')){ ev.preventDefault(); wallSignIn(); return; }
+    if(t.closest('[data-ocmenuplan]')){ ev.preventDefault();
+      try{ setOverlay('none'); }catch(_){ } gotoPlans(); return; }
+
+    var pg=t.closest('[data-ocpromogo]');
+    if(pg){ ev.preventDefault(); runRedeem(); return; }
+  }, false);
+
+  function focusPromo(){
+    gotoPlans();
+    setTimeout(function(){ var i=q('[data-ocpromoinput]');
+      if(i){ try{ i.scrollIntoView({block:'center',behavior:'smooth'}); i.focus(); }catch(_){ } } },160);
+  }
+
+  function promoMsg(text, kind){
+    var m=q('[data-ocpromomsg]'); if(!m) return;
+    m.textContent=text||''; m.className='oc-promo-msg'+(kind?(' '+kind):''); m.hidden=!text;
+  }
+
+  function runRedeem(){
+    var i=q('[data-ocpromoinput]'), b=q('[data-ocpromogo]');
+    var code=((i&&i.value)||'').trim();
+    if(!code){ promoMsg('Enter the code you were given.','bad'); if(i) i.focus(); return; }
+    promoMsg(''); if(b){ b.disabled=true; b.textContent='Checking…'; }
+    redeem(code)
+      .then(function(res){
+        if(res && res.ok){
+          return refresh(true).then(function(){
+            try{ if(typeof reloadCatalogSource==='function') reloadCatalogSource(); }catch(_){ }
+            promoMsg(res.reason==='already_redeemed'
+              ? 'You already have this — you’re on '+((PLANS[res.plan]||{}).label||res.plan)+'.'
+              : ((PLANS[res.plan]||{}).label||res.plan)+' unlocked. Your limits have lifted.','ok');
+            if(i) i.value='';
+            paint();
+          });
+        }
+        promoMsg(REDEEM_MSG[res&&res.reason]||'That code could not be redeemed.','bad');
+      })
+      .catch(function(){ promoMsg('Could not reach the server. Check your connection and try again.','bad'); })
+      .finally(function(){ if(b){ b.disabled=false; b.textContent='Redeem'; } });
+  }
+
+  D.addEventListener('keydown', function(e){
+    if(e.key!=='Escape') return;
+    var el=q('[data-ocwall]'); if(el && !el.hidden){ e.preventDefault(); wallClose(); }
+  });
+  D.addEventListener('keydown', function(e){
+    if(e.key!=='Enter') return;
+    if(e.target && e.target.matches && e.target.matches('[data-ocpromoinput]')){ e.preventDefault(); runRedeem(); }
+  });
+
+  /* focus trap — a modal that lets Tab escape behind the scrim is not a modal */
+  D.addEventListener('keydown', function(e){
+    if(e.key!=='Tab') return;
+    var el=q('[data-ocwall]'); if(!el||el.hidden) return;
+    var f=qa('button,input,a[href],[tabindex]:not([tabindex="-1"])',el)
+      .filter(function(x){ return !x.disabled && x.offsetParent!==null; });
+    if(!f.length) return;
+    var first=f[0], last=f[f.length-1];
+    if(e.shiftKey && D.activeElement===first){ e.preventDefault(); last.focus(); }
+    else if(!e.shiftKey && D.activeElement===last){ e.preventDefault(); first.focus(); }
+  });
+
+  /* ======================= PUBLIC ======================= */
+  W.ocPlan={
+    ent:entOf, plan:planKey, refresh:refresh, paint:paint,
+    strandLimit:strandLimit, isUnlimited:isInf,
+    gateSave:gateSave, gateScan:gateScan,
+    scanRejected:scanRejected, pushRejected:pushRejected, reportUnsynced:reportUnsynced,
+    wall:wallSet, closeWall:wallClose, plans:PLANS,
+    wallStrandsAnon:wallStrandsAnon, wallStrandsFree:wallStrandsFree,
+    signedIn:signedIn, gotoPlans:gotoPlans, billingLive:function(){ return BILLING_LIVE; },
+    signIn:wallSignIn, getStarted:wallStart, initials:initialsOf, authMessage:authMsg
+  };
+
+  function boot(){
+    cacheRead();
+    paint();
+    checkAuthHash();
+    W.addEventListener('hashchange', checkAuthHash);
+    if(signedIn()) refresh(false);
+    /* the library count changes from a dozen places; repaint on any of them
+       rather than trying to find and patch every one */
+    try{
+      var mo=new MutationObserver(function(){ paint(); });
+      var hb=q('.view-hist'); if(hb) mo.observe(hb,{childList:true,subtree:true});
+    }catch(_){ }
+    D.addEventListener('visibilitychange', function(){
+      if(!D.hidden && signedIn() && (Date.now()-_entAt > 300000)) refresh(true);
+    });
+  }
+  if(D.readyState==='loading') D.addEventListener('DOMContentLoaded', boot); else boot();
 })();
 </script>
 </body>
