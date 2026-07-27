@@ -2182,6 +2182,17 @@ if(/[?&]billing=/.test(window.__ocSearch)){
           </div>
         </div>
 
+        <!-- R53 gap 4: the scan pack existed only as a button inside a wall
+             nobody sees until they run out. Someone deciding whether to pay
+             should be able to find the price on the page that lists prices. -->
+        <div class="oc-pack" id="oc-pack">
+          <div class="oc-pack-main">
+            <div class="oc-pack-t">Out of scans before the month is up?</div>
+            <div class="oc-pack-s">A pack of <b data-octopupscans>50</b> photo scans is <b data-octopupprice>$5</b>, bought once. Not a subscription. <b>The credits never expire</b>, and your monthly scans still reset on their own.</div>
+          </div>
+          <button type="button" class="oc-btn" data-octopup>Add <span data-octopupscans>50</span> scans · <span data-octopupprice>$5</span></button>
+        </div>
+
         <div class="oc-plannote">
           <p><b>Pooled scans are deliberate.</b> A lab of five gets 100 scans a month from one pool, so the person running a screen is not rationed by the person who scanned nothing that week.</p>
           <p><b>You never lose a strand by downgrading.</b> A quota only stops <i>new</i> saves. Everything already in your library stays readable, exportable and editable on any plan, forever.</p>
@@ -2192,7 +2203,7 @@ if(/[?&]billing=/.test(window.__ocSearch)){
           <h4>How lab plans work</h4>
           <p class="lead">The question everyone asks first: if my PI buys a lab plan, what happens to <i>my</i> account?</p>
           <div class="oc-labhow-grid">
-            <div><span class="n">1</span><b>Your PI pre-authorizes your email address.</b> They add the exact address to the lab roster. There is no joining by university domain, because <i>@albany.edu</i> is tens of thousands of people, not your lab. Naming one address is a deliberate act, which is the point.</div>
+            <div><span class="n">1</span><b>Your PI pre-authorizes your email address.</b> They add the exact address to the lab roster. There is no joining by university domain, because one university domain covers tens of thousands of people, not your lab. Naming one address is a deliberate act, which is the point.</div>
             <div><span class="n">2</span><b>You open Oligo MW and sign in with that address.</b> Same email, same 6-digit code, same box. The lab seat attaches itself the first time you sign in. We do not send you an invitation email, so nothing to wait for and nothing to lose in a spam folder. There is no separate lab login and no lab URL to remember.</div>
             <div><span class="n">3</span><b>You keep your own account.</b> Joining a lab <i>adds</i> a shared library. It does not take over your personal one. Your own strands stay yours, including if you leave the lab.</div>
             <div><span class="n">4</span><b>The lab pays, not you.</b> If your lab covers you, we say so and grey out the Pro button instead of quietly taking a second payment.</div>
@@ -2216,6 +2227,24 @@ if(/[?&]billing=/.test(window.__ocSearch)){
         <div class="pro-note">Your library and the full catalog are <b>Supabase-backed behind account auth</b>, so an account really does unlock them. Nothing here is a flag we set in the browser. <b>Billing isn't open yet.</b> Until it is, Pro is granted by access code; the box in your account is where you enter one.</div>
         <button type="button" class="oc-btn ghost" style="margin-top:16px" onclick="setTab('cat')">‹ Back to catalog</button>
       </section>
+
+      <!-- R53 gaps 1-3: the footer, on every tab. Buttons rather than links,
+           because these open an in-app dialog and there is no second page to
+           navigate to. Relative-path-free by construction, so promoting /next/
+           to the root costs nothing here. -->
+      <footer class="oc-foot">
+        <div class="oc-foot-row">
+          <span class="oc-foot-brand">Oligo MW Calculator</span>
+          <nav class="oc-foot-links" aria-label="About and legal">
+            <button type="button" class="oc-foot-l" data-ocgoplans>Pricing</button>
+            <button type="button" class="oc-foot-l" data-ocdoc="contact">Contact</button>
+            <button type="button" class="oc-foot-l" data-ocdoc="terms">Terms</button>
+            <button type="button" class="oc-foot-l" data-ocdoc="privacy">Privacy</button>
+            <button type="button" class="oc-foot-l" data-ocdoc="refunds">Refunds</button>
+          </nav>
+        </div>
+        <div class="oc-foot-fine">Built and run by Yu-Sheng Chen, out of pocket. <b>Not affiliated with, funded by or endorsed by any university.</b> No cookies, no analytics, no trackers. Check every mass before you pipette.</div>
+      </footer>
     </div>
   </main>
 
@@ -4098,7 +4127,7 @@ const DEFAULTS = {
 // Bump BUILD_VERSION whenever the baked-in design changes (accent, fonts, theme,
 // sizes, layout). On their next visit, returning users are auto-refreshed to the
 // new appearance defaults below -- their saved strands & sequences are kept.
-const BUILD_VERSION = 33;
+const BUILD_VERSION = 34;
 const APPEARANCE_KEYS = ["platform","theme","accent","fontUI","fontHead","fontNum","fsBase","fsResult","radius","border","density","shadow","btn","keypad","resultpos","align","showChips","showFormula","decimals","catalogEnabled","catalogSource","catalogSupabaseUrl","catalogSupabaseAnonKey"];
 let S = load();
 history = loadHist();
@@ -11224,7 +11253,12 @@ body[data-mode="dark"] .oc-wall-eyebrow{color:var(--accent)}
   function BILLING_LIVE_(){ try{ return sessionStorage.getItem('oligoBillLive')==='1'; }catch(_){ return false; } }
 
   var ENT_KEY='oligoEnt', NUDGE_KEY='oligoNudgeSeen';
-  var PRICE={ pro:{mo:9,yr:84}, lab:{mo:7,yr:70} };
+  /* R53 gap 4: the scan pack stated its price NOWHERE -- the button read
+     "Add 50 scans" and the next thing the buyer saw was Stripe Checkout
+     asking for a card. The number lives here for the same reason $9 and $7
+     do: paintPrices() writes it into every surface that mentions it, so a
+     price change cannot land in one place and miss another. */
+  var PRICE={ pro:{mo:9,yr:84}, lab:{mo:7,yr:70}, topup:{usd:5, scans:50} };
 
   /* ---- plan table: the ONLY place a limit is written down client-side.
      The server is the real gate; these numbers exist so the UI can warn
@@ -11318,6 +11352,14 @@ body[data-mode="dark"] .oc-wall-eyebrow{color:var(--accent)}
   function wallSet(cfg){
     var el=q('[data-ocwall]'); if(!el) return;
     _lastFocus=D.activeElement;
+    /* R53: the billing block's waitWall() inserts an .oc-wait row into this
+       card and nothing removed it, so a spinner reading "Confirming with
+       your account..." survived into the NEXT wall -- including the success
+       screen, where it sat under the word "Thank you" contradicting it.
+       Cleared here rather than in each wall, because this is the function
+       that rebuilds the card. waitWall() inserts AFTER calling this, so it
+       is unaffected. */
+    var _w=q('.oc-wait',el); if(_w) _w.remove();
     var g=q('[data-ocwalleyebrow]',el), h=q('[data-ocwallh]',el), p=q('[data-ocwallp]',el),
         gl=q('[data-ocwallgains]',el), fd=q('[data-ocwallfield]',el), inp=q('[data-ocwallinput]',el),
         go=q('[data-ocwallgo]',el), ac=q('[data-ocwallactions]',el), alt=q('[data-ocwallalt]',el),
@@ -11535,9 +11577,12 @@ body[data-mode="dark"] .oc-wall-eyebrow{color:var(--accent)}
       eyebrow:'Monthly scans used, '+lim+' of '+lim,
       title:'That’s this month’s scans',
       body:'Your <b>'+lim+'</b> scans reset at the start of next month. Nothing else changes. The calculator, voice entry and your library all keep working.',
-      actions:[{label:'Add 50 scans', prim:true, run:function(){ if(W.ocBill) W.ocBill.checkout('topup'); else wallClose(); }},
+      actions:[{label:'Add '+PRICE.topup.scans+' scans · $'+PRICE.topup.usd, prim:true, run:function(){ if(W.ocBill) W.ocBill.checkout('topup'); else wallClose(); }},
                {label:'OK', run:wallClose}],
-      foot:'A top-up is a one-off purchase, not a second subscription. Your monthly '+lim+' still reset on their own.'
+      /* R53 gap 4: this wall is the ONLY route to checkout('topup') from
+         inside the app, so the price has to be on it. Action labels are
+         escaped by wallSet; the foot is innerHTML. */
+      foot:'The pack is <b>$'+PRICE.topup.usd+' for '+PRICE.topup.scans+' scans</b>, bought once. It is not a second subscription, the credits never expire, and your monthly '+lim+' still reset on their own.'
     });
   }
 
@@ -11784,11 +11829,20 @@ body[data-mode="dark"] .oc-wall-eyebrow{color:var(--accent)}
            : (Math.max(0,lim-used)+' left · this browser only'));
     if(ms[1]){
       var sl=Number(sc.limit)||0, su=Number(sc.used)||0, cr=Number(sc.credits)||0;
-      paintMeter(ms[1], su, isInf(sl)?Infinity:sl,
+      /* R53 gap 0b: the ceiling used to be sc.limit alone, so someone who had
+         just PAID for headroom was shown a meter saying they had none --
+         "0 / 20 · +50 credits" on an account the server had already told us
+         had 70 scans left. scan_allowance() is the one definition of "scans
+         left"; the meter now reads it instead of re-deriving a worse one.
+         used + remaining, not limit + credits, because `remaining` is what
+         the server will actually honour. */
+      var rem = (sc.remaining==null) ? (Math.max(0,sl-su)+cr) : (Number(sc.remaining)||0);
+      var ceil = isInf(sl) ? Infinity : (su + rem);
+      paintMeter(ms[1], su, ceil,
         !si ? 'Needs a free account'
         : isInf(sl) ? 'No ceiling on this plan'
-        : (sc.period==='month' ? (Math.max(0,sl-su)+' left this month'+(cr?(' · +'+cr+' credits'):''))
-                               : (Math.max(0,sl-su)+' of a one-time trial left')));
+        : (sc.period==='month' ? (rem+' left this month'+(cr?(' · includes '+cr+' bought'):''))
+                               : (rem+' of a one-time trial left'+(cr?(' · includes '+cr+' bought'):''))));
     }
 
     var ar=q('[data-ocatrisk]');
@@ -11871,6 +11925,10 @@ body[data-mode="dark"] .oc-wall-eyebrow{color:var(--accent)}
       var k=el.getAttribute('data-occmpprice'), p=PRICE[k]; if(!p) return;
       el.textContent=yr?('$'+p.yr+(k==='lab'?'/seat/yr':'/yr')):('$'+p.mo+(k==='lab'?'/seat/mo':'/mo'));
     });
+    /* The scan pack is a one-off, so it is deliberately NOT affected by the
+       monthly/annual toggle above. */
+    qa('[data-octopupprice]').forEach(function(el){ el.textContent='$'+PRICE.topup.usd; });
+    qa('[data-octopupscans]').forEach(function(el){ el.textContent=String(PRICE.topup.scans); });
     qa('[data-occyc]').forEach(function(b){
       var on=b.getAttribute('data-occyc')===_cyc;
       b.classList.toggle('on', on); b.setAttribute('aria-checked', on?'true':'false');
@@ -11978,7 +12036,7 @@ body[data-mode="dark"] .oc-wall-eyebrow{color:var(--accent)}
           ? [{label:'Enter an access code', prim:true, run:function(){ wallClose(); focusPromo(); }}]
           : [{label:'Create a free account first', prim:true, run:function(){ wallClose(); gotoPlans(); var f=q('[data-axinput]'); if(f) try{ f.focus(); }catch(_){ /* focus / caret / scroll restoration on a node that may already be gone -- cosmetic, no value is shown or hidden by it */ } }}],
         alt:{label:'Close', run:wallClose},
-        foot:'Codes come from the Sheng Lab. Academic labs get 40% off once billing opens.'
+        foot:'Codes are issued by hand at the moment. Academic labs get 40% off once billing opens.'
       });
       return; }
 
@@ -12066,7 +12124,17 @@ body[data-mode="dark"] .oc-wall-eyebrow{color:var(--accent)}
     wall:wallSet, closeWall:wallClose, plans:PLANS,
     wallStrandsAnon:wallStrandsAnon, wallStrandsFree:wallStrandsFree,
     signedIn:signedIn, gotoPlans:gotoPlans, billingLive:BILLING_LIVE_,
-    signIn:wallSignIn, getStarted:wallStart, initials:initialsOf, authMessage:authMsg
+    signIn:wallSignIn, getStarted:wallStart, initials:initialsOf, authMessage:authMsg,
+    /* R53 gap 4: PRICE lives in this closure, and the billing block below
+       needs the pack price for its confirmation wall. Adding the name to
+       this table is the ONLY thing that makes it reachable -- see
+       agent-memory/02-invariants.md B10a. */
+    topupPack:function(){ return {usd:PRICE.topup.usd, scans:PRICE.topup.scans}; },
+    /* R53 gaps 2-3: the policy documents state prices. One table, read by
+       everything, or the Terms and the plan cards drift apart. */
+    priceTable:function(){ return { pro:{mo:PRICE.pro.mo, yr:PRICE.pro.yr},
+                                    lab:{mo:PRICE.lab.mo, yr:PRICE.lab.yr},
+                                    topup:{usd:PRICE.topup.usd, scans:PRICE.topup.scans} }; }
   };
 
   function boot(){
@@ -12098,6 +12166,14 @@ body[data-mode="dark"] .oc-wall-eyebrow{color:var(--accent)}
 .oc-wait{display:flex; align-items:center; gap:10px; font-size:13px; color:var(--muted);
   padding:12px 14px; border-radius:10px; background:var(--surface-2); border:1px solid var(--line); margin-bottom:14px}
 .oc-wait[hidden]{display:none}
+/* R53 gap 4 -- the scan pack, stated on the Plans page. Existing tokens only. */
+.oc-pack{display:flex; gap:14px; align-items:center; flex-wrap:wrap; margin-top:18px;
+  padding:14px 16px; border:1px solid var(--line); border-radius:12px; background:var(--surface-2)}
+.oc-pack-main{flex:1 1 260px; min-width:0}
+.oc-pack-t{font-weight:650; font-size:14px; margin-bottom:3px}
+.oc-pack-s{font-size:13px; color:var(--muted); line-height:1.5}
+.oc-pack .oc-btn{flex:0 0 auto; min-height:44px}
+@media (max-width:560px){ .oc-pack .oc-btn{width:100%} }
 </style>
 <script>
 /* ==========================================================================
@@ -12177,7 +12253,7 @@ body[data-mode="dark"] .oc-wall-eyebrow{color:var(--accent)}
         ? [{label:'Enter an access code', prim:true, run:function(){ P().closeWall(); focusPromo(); }}]
         : [{label:'Create a free account first', prim:true, run:function(){ P().closeWall(); P().getStarted(); }}],
       alt:{label:'Close', run:function(){ P().closeWall(); }},
-      foot:'Codes come from the Sheng Lab. Academic labs get 40% off once billing opens.'
+      foot:'Codes are issued by hand at the moment. Academic labs get 40% off once billing opens.'
     });
   }
   function focusPromo(){
@@ -12236,10 +12312,18 @@ body[data-mode="dark"] .oc-wall-eyebrow{color:var(--accent)}
     if(btn){ btn.disabled=false; btn.textContent=old; }
 
     if(res && res.url){
-      /* Remember the plan we are leaving, so the return handler can tell
-         "the webhook has landed" from "nothing changed yet" instead of
-         guessing from a timer. */
-      try{ sessionStorage.setItem(PRE_KEY, P().plan()); }catch(_){ /* storage unavailable (private browsing) -- nothing was written and nothing on screen claims it was */ }
+      /* Remember what we are leaving, so the return handler can tell
+         "the purchase has landed" from "nothing changed yet" instead of
+         guessing from a timer.
+
+         R53 gap 0: this used to store the PLAN CODE ALONE, for every plan
+         including 'topup' -- and a top-up never changes the plan. So for an
+         already-Pro buyer the return poll compared 'pro' with 'pro' on all
+         14 attempts and ended on slowWall(), i.e. a $5 payment that had in
+         fact landed on the FIRST poll was reported to the buyer as a
+         failure. The snapshot has to carry enough to see a purchase that
+         moves credits rather than the plan. */
+      try{ sessionStorage.setItem(PRE_KEY, JSON.stringify(entSnap())); }catch(_){ /* storage unavailable (private browsing) -- nothing was written and nothing on screen claims it was */ }
       setLive(true);
       ocBillGo(res.url);
       return;
@@ -12269,6 +12353,43 @@ body[data-mode="dark"] .oc-wall-eyebrow{color:var(--accent)}
     }
     if(isMissing(res.code)){ notOpenYet('pro'); return; }
     billErr('Couldn’t open the billing portal','Try again in a moment. Your subscription is unaffected.');
+  }
+
+  /* ---------------- the pre-checkout snapshot ----------------
+     Three fields, because there are two kinds of purchase. A subscription
+     moves the plan code. A top-up moves neither the plan nor the monthly
+     limit -- it moves `scans.credits`, and therefore `scans.remaining`. */
+  function entSnap(){
+    var s={p:'',c:0,r:0};
+    try{
+      var e=(P()&&P().ent())||{}, sc=e.scans||{};
+      s.p=P().plan()||''; s.c=Number(sc.credits)||0; s.r=Number(sc.remaining)||0;
+    }catch(_e){ ocFail('entSnap#1',_e); }
+    return s;
+  }
+  /* A buyer who left for Stripe on build 33 and comes back on build 34 has a
+     bare plan string sitting in sessionStorage. Read it rather than throwing
+     it away -- the alternative is one cohort of real buyers seeing the exact
+     failure screen this round exists to remove. */
+  function readSnap(){
+    var raw=''; try{ raw=sessionStorage.getItem(PRE_KEY)||''; }catch(_){ /* storage unavailable (private browsing) -- nothing was written and nothing on screen claims it was */ }
+    if(!raw) return null;
+    if(raw.charAt(0)!=='{') return { p:raw, c:null, r:null };
+    try{ var o=JSON.parse(raw)||{}; return { p:String(o.p||''), c:Number(o.c)||0, r:Number(o.r)||0 }; }
+    catch(_e){ ocFail('readSnap#1',_e); return { p:raw, c:null, r:null }; }
+  }
+
+  /* Did a purchase land? Returns '' , 'plan' or 'topup'.
+     INCREASES, not inequality: `remaining` also FALLS when the same account
+     spends a scan on another device, and "different" would have read that
+     as a successful payment. */
+  function purchaseLanded(before, ent, plan){
+    if(!ent) return '';
+    var sc=ent.scans||{};
+    if(plan && plan!=='free' && plan!=='anon' && (!before || plan!==before.p)) return 'plan';
+    if(before && before.c!=null && (Number(sc.credits)||0)   > before.c) return 'topup';
+    if(before && before.r!=null && (Number(sc.remaining)||0) > before.r) return 'topup';
+    return '';
   }
 
   /* ---------------- coming back from Stripe ----------------
@@ -12309,6 +12430,25 @@ body[data-mode="dark"] .oc-wall-eyebrow{color:var(--accent)}
     });
   }
 
+  /* R53 gap 0: a top-up has nothing to do with doneWall(), which announces a
+     PLAN. Showing "You're on Pro" to someone who was already on Pro and just
+     bought scans is the same class of wrong answer as the failure screen it
+     replaces, just quieter. */
+  function topUpWall(){
+    var left=null;
+    try{ var sc=((P()&&P().ent())||{}).scans||{}; if(sc.remaining!=null) left=Number(sc.remaining); }catch(_e){ ocFail('topUpWall#1',_e); }
+    var T=(W.ocPlan&&W.ocPlan.topupPack)?W.ocPlan.topupPack():{usd:5,scans:50};
+    P().wall({
+      eyebrow:'Scan pack added',
+      title:'Thank you. '+T.scans+' scans are on your account.',
+      body:'Your <b>$'+T.usd+'</b> pack of <b>'+T.scans+'</b> scans has landed'+
+           (left!=null && isFinite(left) ? ('. You have <b>'+left+'</b> scans available right now') : '')+
+           '. Bought credits <b>never expire</b>, and your monthly scans still reset on their own.',
+      actions:[{label:'Back to work', prim:true, run:function(){ P().closeWall(); }}],
+      foot:'Your plan has not changed and nothing new is being charged. Stripe emails you a receipt.'
+    });
+  }
+
   function slowWall(){
     P().wall({
       eyebrow:'Payment received',
@@ -12326,28 +12466,40 @@ body[data-mode="dark"] .oc-wall-eyebrow{color:var(--accent)}
      and the user pays for nothing. We ask Stripe what happened rather than
      trusting the browser, and both paths upsert on a UNIQUE Stripe id so they
      cannot duplicate each other. */
-  var _confirmed=false;
+  var _confirmed=false, _confirmKind='';
   async function confirmDirect(){
     var sid=String(W.__ocSession||''); if(!sid || _confirmed) return false;
     _confirmed=true;
     var res=await callFn('stripe-confirm', {session_id:sid});
+    /* R53 gap 0: stripe-confirm asks STRIPE what was bought and answers
+       {ok:true, plan:'pro'|'lab'|'topup'}. That is the only authority
+       available when the snapshot is missing -- private browsing, or a
+       sessionStorage write that threw on the way out. Recording it costs
+       nothing and changes neither when this fires nor what it writes, so
+       the UNIQUE-payment-intent idempotency is untouched. */
+    if(res && res.ok && res.plan) _confirmKind = (res.plan==='topup') ? 'topup' : 'plan';
     return !!(res && res.ok);
   }
 
   function poll(quiet){
-    var before=''; try{ before=sessionStorage.getItem(PRE_KEY)||''; }catch(_){ /* storage unavailable (private browsing) -- nothing was written and nothing on screen claims it was */ }
+    var before=readSnap();
     var tries=0, MAX=14;                       // ~21s at 1.5s
     if(!quiet) waitWall();
     (function tick(){
       /* Four polls (~6s) is long enough for a healthy webhook and short enough
          that a broken one is not felt as a broken product. */
-      if(tries===4){ confirmDirect().catch(function(){}); }
+      if(tries===4){ confirmDirect().catch(function(_e){ ocFail('tick#3',_e); }); }
       P().refresh(true).then(function(){
         var now=P().plan();
-        if(now && now!==before && now!=='free' && now!=='anon'){
+        /* _confirmKind wins: it came from Stripe, the snapshot is only a
+           local guess about what changed. */
+        var kind = _confirmKind || purchaseLanded(before, P().ent(), now);
+        if(kind){
           try{ sessionStorage.removeItem(PRE_KEY); }catch(_){ /* storage unavailable (private browsing) -- nothing was written and nothing on screen claims it was */ }
           try{ if(typeof reloadCatalogSource==='function') reloadCatalogSource(); }catch(_e){ ocFail('tick#2',_e); }
-          P().paint(); doneWall(now); return;
+          P().paint();
+          if(kind==='topup') topUpWall(); else doneWall(now);
+          return;
         }
         if(++tries>=MAX){ slowWall(); return; }
         setTimeout(tick, 1500);
@@ -12849,5 +13001,780 @@ details.r-more > summary .lbl-mini{display:none}
   .r-inner{gap:6px 14px}
 }
 </style>
+<style id="oc-r53-css">
+/* =====================================================================
+   ROUND 53 -- the public-facing surfaces: a footer on every tab, the three
+   policy documents, a contact route, and the delete-account path.
+   Existing tokens only. No new colours, no new fonts.
+   ===================================================================== */
+
+/* ---- footer. It lives at the foot of .ws-scroll, so it appears under
+   whichever view is showing without adding a seventh tab. ---- */
+.oc-foot{max-width:1100px; margin:34px auto 0; padding-top:18px; border-top:1px solid var(--line)}
+.oc-foot-row{display:flex; gap:10px 18px; flex-wrap:wrap; align-items:center; justify-content:space-between}
+.oc-foot-brand{font-family:var(--font-head); font-weight:650; font-size:13px; color:var(--muted)}
+.oc-foot-links{display:flex; gap:2px 4px; flex-wrap:wrap; margin-inline-start:auto}
+.oc-foot-l{appearance:none; background:none; border:1px solid transparent; border-radius:8px;
+  color:var(--muted); font:inherit; font-size:13px; line-height:1.2; padding:11px 10px;
+  min-height:44px; cursor:pointer}
+.oc-foot-l:hover{color:var(--accent-2); border-color:var(--line-2); background:var(--surface-2)}
+.oc-foot-l:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.oc-foot-fine{margin-top:10px; font-size:12px; line-height:1.6; color:var(--faint); max-width:66ch}
+@media (max-width:560px){
+  .oc-foot-row{flex-direction:column; align-items:flex-start; gap:4px}
+  .oc-foot-links{margin-inline-start:0; margin-inline-end:auto}
+  .oc-foot-l{padding-inline:8px}
+}
+
+/* ---- the document dialog. Same shape as the help sheet and the quota wall:
+   a scrim that is the dialog element itself, a card inside it. ---- */
+.oc-doc{position:fixed; inset:0; z-index:9999; display:flex; align-items:center; justify-content:center;
+  padding:16px; background:rgba(15,18,24,.55); backdrop-filter:blur(2px)}
+.oc-doc[hidden]{display:none}
+.oc-doc-card{width:min(760px,100%); max-height:min(88vh,900px); display:flex; flex-direction:column;
+  background:var(--surface); border:1px solid var(--line-2); border-radius:14px; overflow:hidden;
+  box-shadow:0 24px 64px rgba(0,0,0,.28)}
+.oc-doc-head{display:flex; gap:12px; align-items:flex-start; padding:18px 18px 12px; border-bottom:1px solid var(--line)}
+.oc-doc-eyebrow{font-family:var(--font-head); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent-2)}
+.oc-doc-title{font-family:var(--font-head); font-size:19px; line-height:1.25; margin:3px 0 0}
+.oc-doc-title:focus{outline:none}
+.oc-doc-x{flex:0 0 auto; margin-inline-start:auto; width:44px; height:44px; display:grid; place-items:center;
+  border:1px solid var(--line-2); border-radius:10px; background:var(--surface); color:var(--muted);
+  font-size:17px; line-height:1; cursor:pointer}
+.oc-doc-x:hover{border-color:var(--accent); color:var(--accent-2); background:var(--accent-soft)}
+.oc-doc-x:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.oc-doc-body{padding:16px 18px 18px; overflow:auto; -webkit-overflow-scrolling:touch; font-size:14px; line-height:1.65}
+.oc-doc-body:focus-visible{outline:2px solid var(--accent); outline-offset:-2px}
+.oc-doc-body h3{font-family:var(--font-head); font-size:15px; margin:20px 0 6px}
+.oc-doc-body h3:first-child{margin-top:0}
+.oc-doc-body p{margin:0 0 10px; max-width:72ch}
+.oc-doc-body ul{margin:0 0 12px; padding-inline-start:20px}
+.oc-doc-body li{margin-bottom:5px; max-width:70ch}
+.oc-doc-body .oc-doc-lede{font-size:14px; color:var(--muted)}
+.oc-doc-body .oc-doc-key{border:1px solid var(--line); border-radius:10px; background:var(--surface-2);
+  padding:12px 14px; margin:0 0 14px}
+.oc-doc-body .oc-doc-key p:last-child{margin-bottom:0}
+.oc-doc-foot{padding:11px 18px; border-top:1px solid var(--line); background:var(--surface-2);
+  font-size:12px; color:var(--faint)}
+.oc-doc-foot[hidden]{display:none}
+
+/* ---- the contact form, inside the same dialog ---- */
+.oc-cf{display:grid; gap:11px; max-width:52ch}
+.oc-cf label{display:block; font-size:12px; font-weight:650; margin-bottom:4px}
+.oc-cf input,.oc-cf textarea{width:100%; min-height:44px; padding:10px 12px; font:inherit; font-size:14px;
+  color:var(--text); background:var(--surface); border:1px solid var(--line-2); border-radius:10px}
+.oc-cf textarea{min-height:132px; resize:vertical; line-height:1.5}
+.oc-cf input:focus-visible,.oc-cf textarea:focus-visible{outline:2px solid var(--accent); outline-offset:1px; border-color:var(--accent)}
+.oc-cf-row{display:flex; gap:9px; flex-wrap:wrap; align-items:center}
+.oc-cf-msg{font-size:13px; line-height:1.5; padding:10px 12px; border-radius:10px; border:1px solid var(--line);
+  background:var(--surface-2)}
+.oc-cf-msg[hidden]{display:none}
+.oc-cf-msg.bad{border-color:var(--danger,#c2410c); color:var(--danger,#c2410c)}
+.oc-cf-msg.good{border-color:var(--accent); color:var(--accent-2)}
+.oc-cf-hp{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden}
+
+/* ---- your data: export, then delete ---- */
+.oc-data{margin-top:16px; padding-top:15px; border-top:1px solid var(--line)}
+.oc-data[hidden]{display:none}
+.oc-data-t{font-family:var(--font-head); font-weight:650; font-size:13px; margin-bottom:3px}
+.oc-data-s{font-size:12.5px; color:var(--muted); line-height:1.55; max-width:64ch; margin-bottom:11px}
+.oc-data-row{display:flex; gap:9px; flex-wrap:wrap}
+.oc-data-row .oc-btn{min-height:44px}
+.oc-btn.danger{border-color:var(--danger,#c2410c); color:var(--danger,#c2410c)}
+.oc-btn.danger:hover:not(:disabled){background:var(--danger-soft,rgba(194,65,12,.08))}
+.oc-del-confirm{margin-top:12px}
+.oc-del-confirm label{display:block; font-size:12px; font-weight:650; margin-bottom:5px}
+.oc-del-confirm input{width:min(240px,100%); min-height:44px; padding:10px 12px; font:inherit; font-size:14px;
+  letter-spacing:.06em; color:var(--text); background:var(--surface);
+  border:1px solid var(--line-2); border-radius:10px}
+.oc-del-confirm input:focus-visible{outline:2px solid var(--accent); outline-offset:1px; border-color:var(--accent)}
+</style>
+
+<!-- R53 gaps 1-3 + F + G: one focus-managed dialog, reused for every document.
+     It is a direct child of <body> because ocModalOpen() makes the dialog's
+     BODY SIBLINGS inert; nested inside .app it would inert nothing. -->
+<div class="oc-doc" data-ocdocov hidden>
+  <div class="oc-doc-card">
+    <div class="oc-doc-head">
+      <div>
+        <div class="oc-doc-eyebrow" data-ocdoceyebrow></div>
+        <h2 class="oc-doc-title" id="oc-doc-title" tabindex="-1" data-ocdoctitle></h2>
+      </div>
+      <button type="button" class="oc-doc-x" data-ocdocclose aria-label="Close">&#10005;</button>
+    </div>
+    <div class="oc-doc-body" data-ocdocbody tabindex="0"></div>
+    <div class="oc-doc-foot" data-ocdocfoot hidden></div>
+  </div>
+</div>
+
+<script>
+/* ==========================================================================
+   ROUND 53 -- footer, policy documents, contact route, delete account.
+
+   Everything here obeys the Prompt 1 contract: ocFail() for every caught
+   error, ocEsc() for every escape, ocDefer() for anything deferred, and the
+   whole block is a closure that publishes one name.
+   ========================================================================== */
+(function(){
+  'use strict';
+  var W=window, D=document;
+  function q(s,r){ return (r||D).querySelector(s); }
+  function qa(s,r){ return Array.prototype.slice.call((r||D).querySelectorAll(s)); }
+  function esc(s){ return (typeof ocEsc==='function') ? ocEsc(s) : String(s==null?'':s); }
+  function P(){ return W.ocPlan||null; }
+
+  /* Prices come from the plan block's table, never from a second copy here.
+     A policy page that states a price the checkout does not charge is worse
+     than a policy page with no price on it. */
+  function prices(){
+    var d={ pro:{mo:9,yr:84}, lab:{mo:7,yr:70}, topup:{usd:5,scans:50} };
+    try{ if(P() && P().priceTable) return P().priceTable(); }catch(_e){ ocFail('prices#1',_e); }
+    return d;
+  }
+
+  var SELLER   = 'Yu-Sheng Chen';
+  var SUPPORT  = 'support@oligocalculator.com';
+  var LAW      = 'the State of New York, United States';
+  var UPDATED  = '27 July 2026';
+  var REPLY    = 'two business days';
+
+  /* ======================= THE DOCUMENTS ======================= */
+  /* Written in the phase 5 voice: short spoken sentences, no dashes in prose.
+     DRAFTS. Albert is not a lawyer and neither is the agent that wrote them. */
+
+  function tos(){
+    var p=prices();
+    return ''
+    + '<p class="oc-doc-lede">These are the rules for using Oligo MW Calculator at oligocalculator.com. '
+    +   'Using the site means you accept them. Last updated ' + UPDATED + '.</p>'
+
+    + '<div class="oc-doc-key">'
+    +   '<p><b>Who runs this.</b> ' + SELLER + ', an individual in ' + LAW + '. '
+    +     'This is not a company. It is <b>not affiliated with, funded by, or endorsed by any university</b>. '
+    +     'It was built out of pocket and it is paid for out of pocket.</p>'
+    + '</div>'
+
+    + '<h3>1. What this is, and what it is not</h3>'
+    + '<p>Oligo MW Calculator computes molecular weights, extinction coefficients, charge, mass spectrometry '
+    +   'ladders and concentration arithmetic for oligonucleotides. It is a calculator. It is a tool you use, '
+    +   'not advice you rely on.</p>'
+    + '<p><b>Check the number before you pipette.</b> The masses, formulas and vendor catalog entries are '
+    +   'assembled with care and verified against vendor data, but they can still be wrong, out of date, or '
+    +   'right for a monomer that is not the one you actually have in the freezer. You are responsible for '
+    +   'the numbers you use at the bench. Nothing here is a medical, clinical, diagnostic or regulatory '
+    +   'instrument, and it must not be used as one.</p>'
+
+    + '<h3>2. Your account</h3>'
+    + '<p>An account is your email address and nothing else. There is no password. We email you a six digit '
+    +   'code and that code is what signs you in. Anyone who can read your email can sign in as you, so keep '
+    +   'your mailbox secure. Tell us if you think someone else has been in your account.</p>'
+    + '<p>You need to be at least 16 to have an account. One person, one account.</p>'
+
+    + '<h3>3. What you get on each plan</h3>'
+    + '<ul>'
+    +   '<li><b>No account.</b> The whole calculator, and strands saved in that browser only.</li>'
+    +   '<li><b>Free.</b> 50 saved strands, synced to your account. 10 photo scans, one time, not monthly.</li>'
+    +   '<li><b>Pro, $' + p.pro.mo + ' a month or $' + p.pro.yr + ' a year.</b> Unlimited saved strands, 20 photo scans a month, the full verified amidite catalog, folders, tags, notes and batch export.</li>'
+    +   '<li><b>Lab, $' + p.lab.mo + ' per seat per month or $' + p.lab.yr + ' per seat per year.</b> Everything in Pro for every member, a shared lab library, up to 20 members, and 20 scans per seat pooled across the lab.</li>'
+    +   '<li><b>Scan packs, $' + p.topup.usd + ' for ' + p.topup.scans + ' scans.</b> Bought once, not a subscription. The credits never expire.</li>'
+    + '</ul>'
+    + '<p>Prices are in US dollars and exclude any tax we are required to collect. We can change prices, but '
+    +   'not for a period you have already paid for. If a price changes we will say so before your next renewal.</p>'
+
+    + '<h3>4. Paying, cancelling and refunds</h3>'
+    + '<p>Payments are handled by Stripe. We never see or store your card. You can cancel at any time from '
+    +   'the billing portal, and your access runs to the end of the period you paid for. The full rules, '
+    +   'including what is refundable and what is not, are in the <b>Refund and Cancellation Policy</b>.</p>'
+
+    + '<h3>5. Your data stays yours</h3>'
+    + '<p>The strands, custom monomers, folders, tags and notes you create are yours. We store them so we can '
+    +   'give them back to you on your next device. We do not sell them, mine them, or use them to train '
+    +   'anything. You can export your library at any time, and you can delete your account.</p>'
+    + '<p><b>A quota only ever stops a new save.</b> Nothing you have already saved is deleted, hidden or '
+    +   'locked because you downgraded, because a trial ended, or because a lab plan ended. Everything stays '
+    +   'readable, editable and exportable, forever, on every plan.</p>'
+
+    + '<h3>6. Share links are public</h3>'
+    + '<p>A share link carries the strand data inside the link itself. Anyone who has the link can open it. '
+    +   'The name you gave a custom monomer travels with it word for word. Do not share a link to anything '
+    +   'you would not be comfortable seeing forwarded.</p>'
+
+    + '<h3>7. Lab plans, and what happens when one ends</h3>'
+    + '<p>A lab manager buys seats and adds member email addresses. Only a manager can change what the lab '
+    +   'pays for. A member keeps their own personal account and their own personal library the whole time; '
+    +   'joining a lab adds a shared library, it does not take over yours.</p>'
+    + '<p><b>When a lab plan ends, nothing is deleted.</b> The shared library as a shared container goes away. '
+    +   'Every strand in it is moved back to the member who created it, into that person’s own library. '
+    +   'A member who ends up over the free limit keeps every single strand. They simply cannot save a new '
+    +   'one until they are back under the limit or they upgrade. A lab member is not punished for a '
+    +   'decision their manager made.</p>'
+
+    + '<h3>8. Fair use</h3>'
+    + '<p>Please do not attack the service, work around a quota, scrape the vendor catalog wholesale, resell '
+    +   'access, or upload anything illegal. Photo scan sends an image to a third party model, so do not send '
+    +   'images of things you do not have the right to send. We can suspend an account that does these '
+    +   'things, and if we do we will tell you why.</p>'
+
+    + '<h3>9. Availability</h3>'
+    + '<p>This runs on one person’s budget. There is no uptime guarantee and no support contract. The '
+    +   'calculator itself works offline once the page is loaded, which is deliberate, so a lab with no '
+    +   'internet can still weigh an oligo. Sign in, sync, the full catalog and photo scan all need a '
+    +   'connection.</p>'
+    + '<p>We may change or withdraw features. If we withdraw something you are paying for, you can cancel '
+    +   'and we will refund the unused part of that period.</p>'
+
+    + '<h3>10. Liability</h3>'
+    + '<p>The service is provided as is. To the fullest extent the law allows, ' + SELLER + ' is not liable '
+    +   'for indirect or consequential loss, for lost experiments, lost reagents, lost time or lost data, or '
+    +   'for anything arising from a number this calculator produced. Where liability cannot be excluded, it '
+    +   'is limited to the amount you actually paid in the twelve months before the claim. If you paid '
+    +   'nothing, that amount is nothing.</p>'
+    + '<p>Some countries do not allow parts of this to be excluded. If you live in one of them, this section '
+    +   'applies only as far as your local law allows, and your statutory rights are unaffected.</p>'
+
+    + '<h3>11. Changes to these terms</h3>'
+    + '<p>If these terms change in a way that matters, the date at the top changes and we will say so in the '
+    +   'app. Carrying on using the service after that means you accept the new version.</p>'
+
+    + '<h3>12. Law</h3>'
+    + '<p>These terms are governed by the laws of ' + LAW + ', and the courts there have jurisdiction. If you '
+    +   'are a consumer somewhere else, this does not take away rights your own country gives you.</p>'
+
+    + '<h3>13. Contact</h3>'
+    + '<p>Email <b>' + SUPPORT + '</b>, or use the contact form in the footer. We aim to reply within '
+    +   REPLY + '.</p>';
+  }
+
+  function privacy(){
+    return ''
+    + '<p class="oc-doc-lede">What we collect, what we do not, and who else touches it. '
+    +   'Last updated ' + UPDATED + '.</p>'
+
+    + '<div class="oc-doc-key">'
+    +   '<p><b>No cookies. No analytics. No trackers. No advertising.</b> Not a single one. This site sets no '
+    +     'cookie, loads no analytics library, and makes no request to any third party for a font, an icon or '
+    +     'a script. Everything the page needs is inside the page. You can check that yourself with your '
+    +     'browser’s network tab, and we would rather you did.</p>'
+    + '</div>'
+
+    + '<h3>The short version</h3>'
+    + '<p>We hold your email address, the strands and monomers you save, and a record of what you paid for. '
+    +   'That is essentially it. We do not sell anything to anyone, and there is nobody to sell it to.</p>'
+
+    + '<h3>Who is responsible</h3>'
+    + '<p>' + SELLER + ', an individual in ' + LAW + '. Not a company, and not affiliated with, funded by or '
+    +   'endorsed by any university. Contact <b>' + SUPPORT + '</b>.</p>'
+
+    + '<h3>What we store, and why</h3>'
+    + '<ul>'
+    +   '<li><b>Your email address.</b> It is your account name and it is where the six digit sign in code goes. There is no password to store, and therefore none to leak.</li>'
+    +   '<li><b>Your library.</b> Strands, custom monomers, folders, tags and notes. Stored so they reach your other devices. Only you can read them, enforced in the database, not just in the app.</li>'
+    +   '<li><b>Your plan.</b> Which plan you are on, whether it is active, when the period ends, and how many scan credits you have left.</li>'
+    +   '<li><b>Scan counts.</b> One row per photo scan, so a quota can be counted. The row records that a scan happened and when. <b>It does not contain the image.</b></li>'
+    +   '<li><b>Lab membership</b>, if you are in one. Your email address, your role, and which lab.</li>'
+    + '</ul>'
+    + '<p>Anything you use without an account is stored in your own browser and never leaves it.</p>'
+
+    + '<h3>Photo scan, in detail</h3>'
+    + '<p>When you scan a label, the image is sent from your browser to our server function, and from there to '
+    +   '<b>OpenAI</b>, which reads the sequence off it. <b>The image is passed straight through and '
+    +   'discarded.</b> It is not saved in our database, it is not written to a log, and it does not survive '
+    +   'the request. OpenAI is a sub processor for that one call. We never put the vision API key in your '
+    +   'browser; it exists only on the server.</p>'
+    + '<p>If you would rather no image ever left your device, do not use photo scan. Everything else in the '
+    +   'app, including voice entry, works without it.</p>'
+
+    + '<h3>Who else touches your data</h3>'
+    + '<ul>'
+    +   '<li><b>Supabase</b> stores the database and runs sign in. Hosted in the <b>United States</b>.</li>'
+    +   '<li><b>Stripe</b> takes payments. Your card details go to Stripe, never to us. We hold a customer id and a subscription id, not a card number.</li>'
+    +   '<li><b>Resend</b> sends the sign in codes and any reply to a contact form.</li>'
+    +   '<li><b>OpenAI</b>, for photo scan only, as described above.</li>'
+    +   '<li><b>GitHub Pages</b> serves the page itself. Like any web host it sees the IP address that asked for the file.</li>'
+    + '</ul>'
+    + '<p>Each of them is used for exactly one job and nothing else. None of them is given your library to '
+    +   'read for their own purposes.</p>'
+
+    + '<h3>Where your data lives</h3>'
+    + '<p>In the <b>United States</b>. If you are in the EU or the UK, that is a transfer out, and the legal '
+    +   'basis for it is that we need it to give you the service you asked for.</p>'
+
+    + '<h3>How long we keep it</h3>'
+    + '<p>Your library stays until you delete it or delete your account. Payment records are kept as long as '
+    +   'tax and accounting law requires, which is a few years, and Stripe keeps its own copy on the same '
+    +   'basis. Scan count rows are kept so a lifetime trial stays a lifetime trial.</p>'
+
+    + '<h3>Your rights</h3>'
+    + '<ul>'
+    +   '<li><b>Get a copy.</b> Export your library to CSV from the account page, any time, no request needed.</li>'
+    +   '<li><b>Delete it.</b> Delete your account from the account page. It cancels any subscription first, then removes your rows and your login. It cannot be undone.</li>'
+    +   '<li><b>Correct it.</b> Edit anything in the app. Email us to change your email address.</li>'
+    +   '<li><b>Object or complain.</b> Write to <b>' + SUPPORT + '</b>. If you are in the EU or the UK you can also complain to your data protection authority.</li>'
+    + '</ul>'
+    + '<p>One thing to know before you delete: a strand you saved into a <b>shared lab library</b> is data the '
+    +   'lab is working from. When you delete your account, those lab strands stay with the lab and are '
+    +   'transferred to the lab manager. Everything in your own personal library is deleted. The delete screen '
+    +   'says this again before you confirm.</p>'
+
+    + '<h3>Share links</h3>'
+    + '<p>A share link puts the strand data inside the link. It is not stored on a server and there is no '
+    +   'record of who opened it, but anyone holding the link can read what is in it. That includes the names '
+    +   'you gave your custom monomers, word for word.</p>'
+
+    + '<h3>Security</h3>'
+    + '<p>Traffic is encrypted. Row level security in the database is what stops one account reading another, '
+    +   'so it holds even if the app is wrong. There is no password to steal. If something does go wrong and '
+    +   'your data is affected, we will tell you.</p>'
+
+    + '<h3>Children</h3>'
+    + '<p>This is a tool for working scientists and it is not directed at children. Do not create an account '
+    +   'if you are under 16.</p>'
+
+    + '<h3>Changes</h3>'
+    + '<p>If this policy changes the date at the top changes with it, and we will say so in the app if the '
+    +   'change is one that matters.</p>';
+  }
+
+  function refunds(){
+    var p=prices();
+    return ''
+    + '<p class="oc-doc-lede">How cancelling works, what comes back, and what does not. '
+    +   'Last updated ' + UPDATED + '.</p>'
+
+    + '<div class="oc-doc-key">'
+    +   '<p><b>Cancel any time. Keep your data forever.</b> Cancelling never deletes a strand. Your whole '
+    +     'library stays readable, editable and exportable on the free plan. A quota only ever stops a '
+    +     '<i>new</i> save.</p>'
+    + '</div>'
+
+    + '<h3>Cancelling a subscription</h3>'
+    + '<p>Open <b>Plans and account</b> and choose <b>Manage billing</b>. That opens the Stripe billing '
+    +   'portal, where you can cancel in one click. You can also email <b>' + SUPPORT + '</b> and we will do '
+    +   'it for you.</p>'
+    + '<p>When you cancel, your paid access runs to the <b>end of the period you have already paid for</b>. '
+    +   'You are not cut off on the day you cancel, and you are not billed again after it.</p>'
+
+    + '<h3>What is not refunded</h3>'
+    + '<p>We do not refund unused time on a subscription. If you cancel a monthly plan in the middle of a '
+    +   'month, you keep the rest of that month and there is no partial refund.</p>'
+    + '<p><b>Annual plans work the same way and are not pro rated.</b> Cancelling in month three of a year '
+    +   'keeps your access for the remaining nine months. It does not return nine months of money. An annual '
+    +   'plan is already discounted by two months against the monthly price, and that discount is what you '
+    +   'are choosing when you pick it. If that is not the trade you want, take the monthly plan.</p>'
+
+    + '<h3>Scan packs</h3>'
+    + '<p>A scan pack is $' + p.topup.usd + ' for ' + p.topup.scans + ' photo scans, bought once. It is not a '
+    +   'subscription and there is nothing to cancel. <b>The credits never expire.</b></p>'
+    + '<p><b>Unused credits are refundable within 14 days of purchase.</b> Email us and we will refund the '
+    +   'credits you have not spent, at the pack price per scan. Credits you have already used are not '
+    +   'refundable, because the scan was performed and it cost money to perform.</p>'
+
+    + '<h3>If you are in the EU or the UK</h3>'
+    + '<p>You normally have 14 days to withdraw from a purchase of digital services. Because access starts '
+    +   '<b>immediately</b> when you pay, and you asked for it to, you consent to that immediate start and '
+    +   'you accept that the 14 day withdrawal right does not apply once the service has been delivered. '
+    +   'That is what buying a plan here means.</p>'
+    + '<p>The scan pack rule above is more generous than that, and we apply it to everyone.</p>'
+
+    + '<h3>When we do refund</h3>'
+    + '<ul>'
+    +   '<li><b>You were charged twice for the same thing.</b> Tell us. We refund the duplicate, no questions.</li>'
+    +   '<li><b>You paid and did not get what you paid for.</b> Tell us. We fix it or we refund it.</li>'
+    +   '<li><b>We withdrew a feature you were paying for.</b> Cancel and we refund the unused part of that period.</li>'
+    +   '<li><b>You bought the wrong thing minutes ago and have not used it.</b> Tell us. We are one person, not a returns department.</li>'
+    + '</ul>'
+
+    + '<h3>Failed payments</h3>'
+    + '<p>If a renewal fails, Stripe retries it and emails you. Your plan stays active while that happens. If '
+    +   'it never succeeds the plan drops to free. Your library is untouched, and it is still all there when '
+    +   'you come back.</p>'
+
+    + '<h3>How to ask</h3>'
+    + '<p>Email <b>' + SUPPORT + '</b>, or use the contact form in the footer. Include the receipt Stripe '
+    +   'emailed you if you have it. We aim to reply within ' + REPLY + ', and refunds are returned to the '
+    +   'card you paid with.</p>';
+  }
+
+  function contactDoc(){
+    return ''
+    + '<p class="oc-doc-lede">A real person reads these. Expect a reply within ' + REPLY + '. '
+    +   'You can also email <b>' + SUPPORT + '</b> directly.</p>'
+    + '<form class="oc-cf" data-occf novalidate>'
+    +   '<div><label for="oc-cf-name">Your name</label>'
+    +     '<input id="oc-cf-name" name="name" type="text" autocomplete="name" maxlength="120" placeholder="Optional"></div>'
+    +   '<div><label for="oc-cf-email">Your email <span style="font-weight:400;color:var(--faint)">so we can reply</span></label>'
+    +     '<input id="oc-cf-email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="200" placeholder="you@university.edu" required></div>'
+    +   '<div><label for="oc-cf-msg">Message</label>'
+    +     '<textarea id="oc-cf-msg" name="message" maxlength="4000" required placeholder="What happened, and what you expected instead."></textarea></div>'
+    +   '<input class="oc-cf-hp" tabindex="-1" autocomplete="off" aria-hidden="true" data-occfhp name="website" placeholder="Leave this empty">'
+    +   '<div class="oc-cf-msg" data-occfmsg role="status" hidden></div>'
+    +   '<div class="oc-cf-row"><button type="submit" class="oc-btn prim" data-occfgo>Send message</button>'
+    +     '<span style="font-size:12px;color:var(--faint)">We reply from ' + SUPPORT + '</span></div>'
+    + '</form>'
+    + '<h3>Before you write</h3>'
+    + '<p>If it is about a payment, the receipt Stripe emailed you has everything we need to find it. '
+    +   'If it is about a wrong mass, tell us the exact sequence you typed, so we can reproduce it.</p>';
+  }
+
+  var DOCS={
+    terms:   { eyebrow:'Legal',   title:'Terms of Service',              html:tos,
+               foot:'A draft, written in plain words rather than by a lawyer. If anything here reads as unclear or unfair, say so and it will change.' },
+    privacy: { eyebrow:'Legal',   title:'Privacy Policy',                html:privacy,
+               foot:'No cookies, no analytics, no trackers. Verifiable in your own browser.' },
+    refunds: { eyebrow:'Legal',   title:'Refund and Cancellation Policy', html:refunds,
+               foot:'Cancelling never deletes a strand. A quota only ever stops a new save.' },
+    contact: { eyebrow:'Contact', title:'Get in touch',                  html:contactDoc, foot:'' }
+  };
+
+  /* ======================= THE DIALOG ======================= */
+  var _rec=null, _openKey='';
+
+  function docClose(){
+    var ov=q('[data-ocdocov]'); if(!ov) return;
+    if(_rec && typeof ocModalClose==='function'){ ocModalClose(ov); return; }
+    ov.hidden=true; _rec=null; _openKey='';
+  }
+
+  function docOpen(key, opener){
+    var d=DOCS[key], ov=q('[data-ocdocov]');
+    if(!d || !ov) return;
+    if(_openKey===key && !ov.hidden) return;
+    if(!ov.hidden) docClose();
+
+    q('[data-ocdoceyebrow]',ov).textContent=d.eyebrow;
+    q('[data-ocdoctitle]',ov).textContent=d.title;
+    var body=q('[data-ocdocbody]',ov);
+    body.innerHTML=d.html();
+    body.scrollTop=0;
+    var ft=q('[data-ocdocfoot]',ov);
+    ft.textContent=d.foot||''; ft.hidden=!d.foot;
+    ov.hidden=false;
+    _openKey=key;
+
+    if(key==='contact') wireContact(body);
+
+    if(typeof ocModalOpen==='function'){
+      _rec=ocModalOpen(ov, {
+        labelledBy:'oc-doc-title',
+        opener:opener||null,
+        initialFocus: key==='contact' ? '#oc-cf-email' : '[data-ocdoctitle]',
+        onClose:function(){ ov.hidden=true; _rec=null; _openKey=''; }
+      });
+    }
+  }
+
+  /* ======================= THE CONTACT FORM ======================= */
+  function cfMsg(form, text, kind){
+    var m=q('[data-occfmsg]',form); if(!m) return;
+    m.textContent=text||''; m.className='oc-cf-msg'+(kind?(' '+kind):''); m.hidden=!text;
+  }
+
+  function sbBaseSafe(){ try{ return (typeof sbBase==='function') ? sbBase().replace(/\/+$/,'') : ''; }catch(_e){ ocFail('sbBaseSafe#1',_e); return ''; } }
+  function anonKey(){ try{ return ((typeof S!=='undefined' && S.catalogSupabaseAnonKey)||'').trim(); }catch(_e){ ocFail('anonKey#1',_e); return ''; } }
+  async function bearer(){
+    try{ if(typeof proAccessToken==='function'){ var t=await proAccessToken(); if(t) return t; } }
+    catch(_e){ ocFail('bearer#1',_e); }
+    return anonKey();
+  }
+
+  function wireContact(root){
+    var form=q('[data-occf]',root); if(!form) return;
+    form.addEventListener('submit', function(ev){
+      ev.preventDefault();
+      send(form);
+    });
+  }
+
+  async function send(form){
+    var btn=q('[data-occfgo]',form);
+    var name=(q('[name="name"]',form)||{}).value||'';
+    var email=((q('[name="email"]',form)||{}).value||'').trim();
+    var msg=((q('[name="message"]',form)||{}).value||'').trim();
+    var hp=((q('[data-occfhp]',form)||{}).value||'').trim();
+
+    if(!/.+@.+\..+/.test(email)){ cfMsg(form,'Enter an email address we can reply to.','bad'); var e1=q('[name="email"]',form); if(e1) e1.focus(); return; }
+    if(msg.length<10){ cfMsg(form,'Tell us a little more. Ten characters is not enough to act on.','bad'); var m1=q('[name="message"]',form); if(m1) m1.focus(); return; }
+
+    var base=sbBaseSafe(), key=anonKey();
+    if(!base||!key){
+      cfMsg(form,'This browser has no server configured, so the form cannot send. Email '+SUPPORT+' instead and it reaches the same place.','bad');
+      return;
+    }
+
+    var old=btn?btn.textContent:'';
+    if(btn){ btn.disabled=true; btn.textContent='Sending…'; }
+    var tok=await bearer();
+    var res=null, netFail=false;
+    try{
+      var r=await fetch(base+'/functions/v1/contact', {
+        method:'POST',
+        headers:{ apikey:key, Authorization:'Bearer '+tok, 'Content-Type':'application/json' },
+        body:JSON.stringify({ name:name.slice(0,120), email:email.slice(0,200), message:msg.slice(0,4000), website:hp })
+      });
+      try{ res=await r.json(); }catch(_e){ ocFail('send#1',_e); res={}; }
+      if(!r.ok) res.code=res.code||('http_'+r.status);
+    }catch(_e){ ocFail('send#2',_e); netFail=true; }
+    if(btn){ btn.disabled=false; btn.textContent=old; }
+
+    if(netFail){ cfMsg(form,'Could not reach the server. Check your connection, or email '+SUPPORT+' instead.','bad'); return; }
+    if(res && res.ok){
+      cfMsg(form,'Sent. We reply from '+SUPPORT+', usually within '+REPLY+'.','good');
+      var t=q('[name="message"]',form); if(t) t.value='';
+      return;
+    }
+    var c=(res&&res.code)||'';
+    if(c==='rate_limited'){ cfMsg(form,'That is a lot of messages in a short time. Wait a few minutes, or email '+SUPPORT+' directly.','bad'); return; }
+    if(c==='empty'){ cfMsg(form,'The message was empty. Write something and send it again.','bad'); return; }
+    if(c==='config'||c==='NOT_FOUND'||c==='http_404'){
+      cfMsg(form,'The contact form is not switched on yet. Email '+SUPPORT+' and it reaches the same place.','bad'); return;
+    }
+    cfMsg(form,'That did not send. Nothing was lost, your message is still in the box. Try again, or email '+SUPPORT+'.','bad');
+  }
+
+  /* ======================= DELETE ACCOUNT ======================= */
+  var DELWORD='DELETE';
+
+  function delDoc(){
+    var lab='';
+    try{
+      var e=(P()&&P().ent())||{};
+      if(e.subscription && e.subscription.is_lab) lab=e.subscription.plan_code||'lab';
+    }catch(_e){ ocFail('delDoc#1',_e); }
+    return ''
+    + '<p class="oc-doc-lede">This deletes your account and everything in your personal library. '
+    +   '<b>It cannot be undone.</b></p>'
+    + '<div class="oc-doc-key">'
+    +   '<p><b>Take a copy first.</b> Exporting is one click and it costs you nothing. '
+    +     'Someone deleting an account still owns their data.</p>'
+    +   '<p style="margin-top:9px"><button type="button" class="oc-btn" data-ocdelexport>Export my library to CSV</button></p>'
+    + '</div>'
+    + '<h3>What happens, in order</h3>'
+    + '<ul>'
+    +   '<li><b>Any active subscription is cancelled first.</b> This matters more than the rest of it. '
+    +     'Deleting the account while a subscription is still running would keep charging you for an account that no longer exists.</li>'
+    +   '<li>Your strands, custom monomers, folders, scan credits and subscription records are deleted.</li>'
+    +   '<li>Your login is deleted. The six digit code route stops working for that address.</li>'
+    +   '<li>Stripe keeps its own payment records, because tax law requires it. We cannot delete those and neither can you.</li>'
+    + '</ul>'
+    + (lab ? ('<h3>You are in a lab</h3>'
+    +   '<p>Strands you saved into the <b>shared lab library</b> are the lab’s working data. They are '
+    +   '<b>transferred to the lab manager</b> rather than deleted. Everything in your own personal library '
+    +   'is deleted. Deleting a shared strand out from under the people still using it would be the wrong '
+    +   'default, and destroying data is never the fallback here.</p>') : '')
+    + '<h3>Unused scan credits</h3>'
+    + '<p>Credits you paid for and have not used are not automatically refunded. If you want them refunded, '
+    +   '<b>ask before you delete</b>, at ' + SUPPORT + '. After the account is gone there is nothing left to '
+    +   'refund against.</p>'
+    + '<div class="oc-del-confirm">'
+    +   '<label for="oc-del-word">Type <b>' + DELWORD + '</b> to confirm</label>'
+    +   '<input id="oc-del-word" data-ocdelword type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="' + DELWORD + '">'
+    +   '<div class="oc-cf-msg" data-ocdelmsg role="status" hidden style="margin-top:10px"></div>'
+    +   '<div class="oc-cf-row" style="margin-top:11px">'
+    +     '<button type="button" class="oc-btn danger" data-ocdelgo disabled>Delete my account permanently</button>'
+    +     '<button type="button" class="oc-btn ghost" data-ocdelcancel>Keep my account</button>'
+    +   '</div>'
+    + '</div>';
+  }
+
+  function openDelete(opener){
+    var ov=q('[data-ocdocov]'); if(!ov) return;
+    if(!ov.hidden) docClose();
+    q('[data-ocdoceyebrow]',ov).textContent='Your data';
+    q('[data-ocdoctitle]',ov).textContent='Delete your account';
+    var body=q('[data-ocdocbody]',ov);
+    body.innerHTML=delDoc();
+    body.scrollTop=0;
+    var ft=q('[data-ocdocfoot]',ov);
+    ft.textContent='There is no undo, no grace period and no backup we can restore from.'; ft.hidden=false;
+    ov.hidden=false; _openKey='delete';
+
+    var word=q('[data-ocdelword]',body), go=q('[data-ocdelgo]',body);
+    /* The typed confirmation is the gate. The button starts disabled and only a
+       character-for-character match enables it. */
+    if(word && go){
+      word.addEventListener('input', function(){
+        go.disabled = (String(word.value||'').trim().toUpperCase() !== DELWORD);
+      });
+    }
+    if(typeof ocModalOpen==='function'){
+      _rec=ocModalOpen(ov, { labelledBy:'oc-doc-title', opener:opener||null,
+        initialFocus:'[data-ocdoctitle]',
+        onClose:function(){ ov.hidden=true; _rec=null; _openKey=''; } });
+    }
+  }
+
+  function delMsg(text, kind){
+    var m=q('[data-ocdelmsg]'); if(!m) return;
+    m.textContent=text||''; m.className='oc-cf-msg'+(kind?(' '+kind):''); m.hidden=!text;
+  }
+
+  async function doDelete(){
+    var word=q('[data-ocdelword]'), go=q('[data-ocdelgo]');
+    if(!word || String(word.value||'').trim().toUpperCase()!==DELWORD){
+      delMsg('Type ' + DELWORD + ' exactly, in the box above.','bad');
+      if(word) word.focus();
+      return;
+    }
+    var base=sbBaseSafe(), key=anonKey();
+    var tok=null;
+    try{ tok=(typeof proAccessToken==='function') ? await proAccessToken() : null; }catch(_e){ ocFail('doDelete#1',_e); }
+    if(!base||!key||!tok){ delMsg('You are not signed in on this device, so there is no account here to delete.','bad'); return; }
+
+    var old=go?go.textContent:'';
+    if(go){ go.disabled=true; go.textContent='Deleting…'; }
+    var res=null, netFail=false;
+    try{
+      var r=await fetch(base+'/functions/v1/delete-account', {
+        method:'POST',
+        headers:{ apikey:key, Authorization:'Bearer '+tok, 'Content-Type':'application/json' },
+        body:JSON.stringify({ confirm:DELWORD })
+      });
+      try{ res=await r.json(); }catch(_e){ ocFail('doDelete#2',_e); res={}; }
+      if(!r.ok) res.code=res.code||('http_'+r.status);
+    }catch(_e){ ocFail('doDelete#3',_e); netFail=true; }
+
+    if(netFail || !res || !res.ok){
+      if(go){ go.disabled=false; go.textContent=old; }
+      var c=(res&&res.code)||'';
+      if(netFail){ delMsg('Could not reach the server. <b>Nothing was deleted.</b> Try again in a moment.','bad'); return; }
+      if(c==='confirm_required'){ delMsg('The server refused it without the typed confirmation. Nothing was deleted.','bad'); return; }
+      if(c==='config'||c==='NOT_FOUND'||c==='http_404'){
+        delMsg('Account deletion is not switched on yet. <b>Nothing was deleted.</b> Email ' + SUPPORT + ' and it will be done by hand.','bad'); return;
+      }
+      if(c==='stripe_cancel_failed'){
+        delMsg('Your subscription could not be cancelled, so <b>nothing was deleted</b>. Deleting the account while you are still being charged would be worse than stopping here. Email ' + SUPPORT + '.','bad'); return;
+      }
+      delMsg('That did not work, and <b>nothing was deleted</b>. Email ' + SUPPORT + ' and it will be done by hand.','bad');
+      return;
+    }
+
+    /* Gone. Clear this browser too, or the app keeps showing a library that no
+       longer exists anywhere else. */
+    delMsg('Your account is deleted. Signing this browser out…','good');
+    try{
+      ['oligoProSession','oligoEnt','oligoSyncMeta','oligoLabMeta','oligoHistoryApp','oligoUnsynced','oligoBatchPartial','oligoPrePlan','oligoNudgeSeen','oligoGateRefused']
+        .forEach(function(k){ try{ localStorage.removeItem(k); }catch(_){ /* storage unavailable (private browsing) -- there was nothing to remove */ } });
+      try{ sessionStorage.removeItem('oligoBillLive'); sessionStorage.removeItem('oligoPrePlan'); }catch(_){ /* storage unavailable (private browsing) -- there was nothing to remove */ }
+    }catch(_e){ ocFail('doDelete#4',_e); }
+    ocDefer('r53-del-reload', function(){ try{ W.location.reload(); }catch(_e){ ocFail('doDelete#5',_e); } }, 1400);
+  }
+
+  /* ======================= WIRING ======================= */
+  D.addEventListener('click', function(ev){
+    var t=ev.target;
+    if(!t || !t.closest) return;
+
+    var l=t.closest('[data-ocdoc]');
+    if(l){ ev.preventDefault(); docOpen(l.getAttribute('data-ocdoc'), l); return; }
+
+    if(t.closest('[data-ocdocclose]')){ ev.preventDefault(); docClose(); return; }
+    if(t.closest('[data-ocdelcancel]')){ ev.preventDefault(); docClose(); return; }
+
+    if(t.closest('[data-ocgoplans]')){
+      ev.preventDefault();
+      try{ if(P()&&P().gotoPlans) P().gotoPlans(); else if(typeof setTab==='function') setTab('pro'); }
+      catch(_e){ ocFail('wiring#1',_e); }
+      return;
+    }
+
+    if(t.closest('[data-ocdelopen]')){ ev.preventDefault(); openDelete(t.closest('[data-ocdelopen]')); return; }
+    if(t.closest('[data-ocdelgo]')){ ev.preventDefault(); doDelete(); return; }
+
+    if(t.closest('[data-ocdelexport]') || t.closest('[data-ocexportlib]')){
+      ev.preventDefault();
+      try{
+        if(typeof W.exportHistoryCSV==='function') W.exportHistoryCSV();
+        else if(typeof exportHistoryCSV==='function') exportHistoryCSV();
+      }catch(_e){ ocFail('wiring#2',_e); }
+      return;
+    }
+  }, false);
+
+  /* The "your data" block belongs to a signed-in account, so it is built once
+     and shown or hidden by the same paint that moves every other account
+     control. It is inserted rather than written into the markup because the
+     account card is rendered above the billing row, which the billing block
+     also inserts at boot. */
+  function ensureDataBlock(){
+    var host=q('[data-ocacct]');
+    if(!host || q('[data-ocdata]')) return;
+    var d=D.createElement('div');
+    d.className='oc-data'; d.setAttribute('data-ocdata',''); d.hidden=true;
+    d.innerHTML='<div class="oc-data-t">Your data</div>'
+      +'<div class="oc-data-s">Take a copy whenever you like. Deleting your account cancels any subscription first, '
+      +'then removes your login and your personal library. It cannot be undone.</div>'
+      +'<div class="oc-data-row">'
+      +'<button type="button" class="oc-btn" data-ocexportlib>Export my library to CSV</button>'
+      +'<button type="button" class="oc-btn danger" data-ocdelopen>Delete my account</button>'
+      +'</div>';
+    host.appendChild(d);
+  }
+
+  function paintData(){
+    ensureDataBlock();
+    var d=q('[data-ocdata]'); if(!d) return;
+    var si=false;
+    try{ si=!!(P()&&P().signedIn()); }catch(_e){ ocFail('paintData#1',_e); }
+    d.hidden=!si;
+    paintOverLimit(si);
+  }
+
+  /* ---- over the limit, and nothing is wrong ------------------------------
+     The moment this exists for is a lab plan ending: a member who was on an
+     unlimited seat lands on a 50-strand plan holding 60 strands. Nothing was
+     deleted, nothing is hidden, and every one of the 60 is still readable,
+     editable and exportable. What changes is only that a 61st will not save.
+
+     Saying that BEFORE they hit a wall is the whole point. Today they are
+     told nothing until a save is refused: paintNudge() bails at
+     `used >= lim`, so the 80% nudge does not cover being over.
+
+     A notice, not a wall. A wall for a state the user cannot act on right
+     now, and did not cause, would read as punishment for their manager's
+     decision. */
+  var OVER_ID='oligoOverLimit';
+  function paintOverLimit(si){
+    var lim=0, used=0;
+    try{
+      if(!si || !P()) return hideOver();
+      lim=P().strandLimit(); used=(P().ent()||{}).strands_used||0;
+      if(P().isUnlimited(lim)) return hideOver();
+    }catch(_e){ ocFail('paintOverLimit#1',_e); return; }
+    if(!(used>lim)) return hideOver();
+    try{
+      if(!W.__oligoNotice) return;
+      W.__oligoNotice(OVER_ID, {
+        kind:'warn', dismissible:true,
+        text:'Your library holds '+used+' strands and this plan holds '+lim+'. '+
+             'Nothing was lost and nothing was deleted. Every strand here stays readable, '+
+             'editable and exportable. You just cannot save a new one until you are back '+
+             'under '+lim+' or you upgrade.',
+        action:'See plans',
+        onAction:function(){ try{ if(P()&&P().gotoPlans) P().gotoPlans(); }catch(_e){ ocFail('paintOverLimit#2',_e); } }
+      });
+    }catch(_e){ ocFail('paintOverLimit#3',_e); }
+  }
+  function hideOver(){
+    try{ if(W.__oligoRemoveNotice) W.__oligoRemoveNotice(OVER_ID); }catch(_e){ ocFail('hideOver#1',_e); }
+  }
+
+  function boot(){
+    paintData();
+    /* The plan block repaints on every entitlement change and every library
+       mutation. Watching body[data-tab] is what the billing block already does
+       for the same reason, and it costs one attribute observation. */
+    try{ new MutationObserver(paintData).observe(D.body,{attributes:true,attributeFilter:['data-tab']}); }
+    catch(_e){ ocFail('boot#r53a',_e); }
+    try{
+      var aw=q('[data-ocauthwrap]');
+      if(aw) new MutationObserver(paintData).observe(aw,{attributes:true,attributeFilter:['hidden']});
+    }catch(_e){ ocFail('boot#r53b',_e); }
+  }
+
+  W.ocPublic={ open:docOpen, close:docClose, deleteAccount:openDelete, docs:function(){ return Object.keys(DOCS); } };
+
+  if(D.readyState==='loading') D.addEventListener('DOMContentLoaded', boot); else boot();
+})();
+</script>
 </body>
 </html>
