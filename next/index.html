@@ -4122,8 +4122,7 @@ const DEFAULTS = {
   useCustomStock:false, customStock:"", customStockUnit:"µM",
   catalogEnabled:true, catalogVendor:"all", catalogCategory:"all", catalogSource:"supabase",
   catalogSupabaseUrl:"https://rpynsgqgzpgbobmbdnfu.supabase.co",
-  catalogSupabaseAnonKey:"sb_publishable_f_LWVuHTxFIbmii9C4j4aQ_mwcipb4O", catalogUnlocked:false,
-};
+  catalogSupabaseAnonKey:"sb_publishable_f_LWVuHTxFIbmii9C4j4aQ_mwcipb4O",};
 // Bump BUILD_VERSION whenever the baked-in design changes (accent, fonts, theme,
 // sizes, layout). On their next visit, returning users are auto-refreshed to the
 // new appearance defaults below -- their saved strands & sequences are kept.
@@ -5264,19 +5263,14 @@ function removeCatalogFromLibrary(code){               // remove a previously-ad
   S.customBases = (S.customBases||[]).filter(c=>c.code!==code);
   save(); rebuildCustom(); applyAll();
 }
-function openCatGate(){
-  calcs.forEach(c=>{ const g=c.querySelector("[data-catgate]"); if(!g) return;
-    const vis = c.offsetParent!==null; g.hidden = !vis;
-    if(vis){ const err=g.querySelector("[data-catgateerr]"); if(err) err.hidden=true; const inp=g.querySelector("[data-catgateinput]"); if(inp){ inp.value=""; setTimeout(()=>{ if(!ocAlive(inp)) return; try{ inp.focus(); }catch(_){ /* focus restoration raced a re-render -- cosmetic, no value is shown or hidden by it */ } },30); } }
-  });
-}
+/* The catalog password gate was removed here (r54). It was unreachable:
+   the gate's input and unlock-button attributes appear in this file only
+   inside querySelector strings, never as attributes on an element, and
+   nothing calls the opener -- so no box to type into has ever rendered.
+   It also granted nothing: RLS decides what the catalog returns.
+   closeCatGate() below is KEPT -- in the CLASSIC build the gate card
+   itself IS a real element: the Pro sign-in card, opened by openProAuth. */
 function closeCatGate(){ calcs.forEach(c=>{ const g=c.querySelector("[data-catgate]"); if(g) g.hidden=true; }); }
-function tryCatUnlock(inp){
-  if(!inp) return;
-  if(inp.value === "ShengLab"){ S.catalogUnlocked=true; save(); closeCatGate(); setCatalog(true); }
-  else { const g=inp.closest("[data-catgate]"); const err=g&&g.querySelector("[data-catgateerr]"); if(err) err.hidden=false; try{ inp.select(); }catch(_){ /* focus / caret / scroll restoration on a node that may already be gone -- cosmetic, no value is shown or hidden by it */ } }
-}
-document.body.addEventListener("keydown", e=>{ if(e.target.matches && e.target.matches("[data-catgateinput]")){ if(e.key==="Enter"){ e.preventDefault(); tryCatUnlock(e.target); } else if(e.key==="Escape"){ e.preventDefault(); closeCatGate(); } } });
 (function(){
   const kit=document.body;
   kit.addEventListener("focusin", e=>{ const t=e.target.closest("[data-seq],[data-antiseq]"); if(t) lastSeqEl=t; });
@@ -5287,7 +5281,7 @@ document.body.addEventListener("keydown", e=>{ if(e.target.matches && e.target.m
     if(e.target.closest("[data-prosend]")){ proDoSend(); return; }
     if(e.target.closest("[data-proverify]")){ proDoVerify(); return; }
     if(e.target.closest("[data-prosignout]")){ if(window.ocSignOutEverywhere) window.ocSignOutEverywhere(); else proSignOut(); return; }   /* R52 P1-09 */
-    if(e.target.closest("[data-catgateunlock]")){ const g=e.target.closest("[data-catgate]"); tryCatUnlock(g&&g.querySelector("[data-catgateinput]")); return; }
+    
     if(e.target.closest("[data-catgatecancel]")){ closeCatGate(); return; }
     if(e.target.closest("[data-catclose]")){ setCatalog(false); return; }
     const ins=e.target.closest("[data-catinsert]"); if(ins){ insertCatalogCode(ins.dataset.catinsert); return; }
