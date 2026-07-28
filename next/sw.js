@@ -4,7 +4,7 @@
    (network-only) so auth + the Pro catalog are never served stale.
    A new build WAITS until the user accepts the update (no skipWaiting on install);
    the page reloads once, only on a genuine update (not the first install). */
-var CACHE = 'oligo-next-v19';
+var CACHE = 'oligo-next-v20';
 var CACHE_PREFIX = 'oligo-next-';
 var SHELL = ['./', './index.html'];                       // required — install fails if the shell can't be cached
 var ICONS = ['./icons/icon-192.png', './icons/icon-512.png', './icons/icon-maskable-512.png'];
