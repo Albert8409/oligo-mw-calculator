@@ -1786,7 +1786,15 @@ if(/[?&]billing=/.test(window.__ocSearch)){
              does today. Switched by body[data-duplex], never by moving DOM. -->
         <div class="strand-block" data-strand-block="sense">
         <div class="sense-wrap" data-sense-wrap>
-          <div class="seq-top"><label for="seq"><span data-sense-label>Sequence</span> (5′ → 3′)</label><span class="cnt" id="seqcount" aria-live="off">0 nt</span></div>
+          <div class="seq-top"><label for="seq"><span data-sense-label>Sequence</span> (5′ → 3′)</label>
+            <!-- R55 #2: the ✓ belongs beside the field's NAME, not four rows below
+                 the box. .seq-err rides along inside #seqstat and is full-width, so
+                 a blocking error still lands directly above the input it blames. -->
+            <div class="seqstat" id="seqstat">
+              <span class="empty-only">Awaiting sequence</span>
+              <span class="has-seq" hidden><span class="ok">✓ Valid</span><span class="sep">·</span><span data-senseabc>DNA alphabet</span></span><span class="seq-err" role="alert" aria-live="assertive" hidden></span>
+            </div>
+            <span class="cnt" id="seqcount" aria-live="off">0 nt</span></div>
           <!-- R52 (audit LOW): the two [data-affix] spans are removed and the
                sentence that promised them is gone with them. Verified live:
                both were `hidden` AND `display:none`, and nothing in any script
@@ -1794,29 +1802,13 @@ if(/[?&]billing=/.test(window.__ocSearch)){
                that was designed and never wired, so a user reading it looked
                for a lock that does not exist. End groups are set by the 5'/3'
                controls in Strand Configuration; that is the whole mechanism. -->
-          <p class="seq-desc" id="seq-desc">Enter DNA/RNA bases. Spaces are ignored; modified bases use prefixes (mA, fG).</p>
-          <div class="seqwrap">
-            <textarea class="seqbox" id="seq" data-seq spellcheck="false" aria-describedby="seq-desc seqhint" placeholder="Type or paste a sequence, e.g. ATCGATCGAT, or use Quick Insert below"></textarea>
-          </div>
-          <div class="warn" data-warn role="status" hidden></div>
-          <div class="seqstat" id="seqstat">
-            <span class="empty-only">Awaiting sequence</span>
-            <span class="has-seq" hidden><span class="ok">✓ Valid sequence</span><span class="sep">·</span><span data-senseabc>DNA alphabet</span></span><span class="seq-err" role="alert" aria-live="assertive" hidden></span>
-            <span class="spacer"></span>
-          </div>
-          <!-- R53 #6: these two used to be the LAST thing in section 1, after the
-               whole antisense block. Measured in Duplex + Enter manually: 1,046px
-               below this field on desktop, 1,299px on a phone, and 25px below the
-               ANTISENSE chemistry controls, so they read as the antisense's help
-               while this field's aria-describedby pointed at them. They live with
-               their field now, and renderResultPanel hides them once the strand is
-               settled and valid, which is when nobody is reading syntax. -->
-          <p class="hintline" id="seqhint" hidden><span class="hk" aria-hidden="true">›</span><span>Prefixes: <code>m</code> 2′-OMe · <code>f</code> 2′-F · <code>moe</code> 2′-MOE · <code>cEt</code> · an <code>s</code> between two bases marks that linkage phosphorothioate. Spaces are ignored.</span></p>
-          <p class="hintline hint-adv" id="seqhint-adv" hidden><span class="hk" aria-hidden="true">›</span><span>Advanced. Modified-base tokens are in Quick Insert: <code>mA</code> (2′-OMe), <code>fG</code> (2′-F), <code>moeC</code>, <code>cEtA</code>. Multi-letter custom codes insert wrapped, e.g. <code>(GalNAc)</code>. Note <code>moeC</code>/<code>moeU</code> are 5-methyl; <code>cEtC</code>/<code>cEtU</code> are not.</span></p>
-          <!-- R54 #2: Paste / Clear / Scan / Voice sat BELOW the whole Quick
-               Insert block, which on a phone put Scan and Voice about 200px
-               under the field they act on. They are directly under the status
-               line now, and directly above Quick Insert. -->
+          <!-- R55 #2: the description is clipped, not deleted -- #seq's
+               aria-describedby points at it (invariant 11). On screen it was one of
+               four things all saying the same thing above one field. -->
+          <p class="seq-desc sr" id="seq-desc">Enter DNA/RNA bases 5′→3′. Spaces are ignored; modified bases use prefixes such as mA or fG.</p>
+          <!-- R55 #2: the tools act ON the field, so they sit above it, and nothing
+               separates the box from Quick Insert any more. Old order put four
+               explanatory blocks and five buttons between the two. -->
           <div class="seqctl" data-seqctl="sense">
             <button class="ghost" data-scan="sense" aria-label="Scan a sequence into the sense strand. Take a photo or upload one"><span class="ci" aria-hidden="true">📷</span><span class="cw">Scan</span></button>
             <button class="ghost" data-voice="sense" aria-label="Dictate the sense strand by voice"><span class="ci" aria-hidden="true">🎤</span><span class="cw">Voice</span></button>
@@ -1824,7 +1816,14 @@ if(/[?&]billing=/.test(window.__ocSearch)){
             <button class="ghost" data-seqclear="sense" aria-label="Clear the sense strand"><span class="ci" aria-hidden="true">✕</span><span class="cw">Clear</span></button>
             <button class="ghost ctl-copy" data-seqcopy="sense" aria-label="Copy the sense strand to the clipboard"><span class="ci" aria-hidden="true">⧉</span><span class="cw">Copy</span></button>
           </div>
+          <div class="seqwrap">
+            <textarea class="seqbox" id="seq" data-seq spellcheck="false" aria-describedby="seq-desc seqhint" placeholder="Type or paste a sequence, e.g. ATCGATCGAT, or use Quick Insert below"></textarea>
+          </div>
           <div class="moremon-host" data-moremon-host="sense" data-seqfield="seq"></div>
+          <div class="warn" data-warn role="status" hidden></div>
+          <!-- R53 #6: shown only while the strand is not settled-and-valid. -->
+          <p class="hintline" id="seqhint" hidden><span class="hk" aria-hidden="true">›</span><span>Prefixes: <code>m</code> 2′-OMe · <code>f</code> 2′-F · <code>moe</code> 2′-MOE · <code>cEt</code> · an <code>s</code> between two bases marks that linkage phosphorothioate. Spaces are ignored.</span></p>
+          <p class="hintline hint-adv" id="seqhint-adv" hidden><span class="hk" aria-hidden="true">›</span><span>Advanced. Modified bases are in Quick Insert: <code>mA</code> (2′-OMe), <code>fG</code> (2′-F), <code>moeC</code>, <code>cEtA</code>. Multi-letter custom codes insert wrapped, e.g. <code>(GalNAc)</code>. Note <code>moeC</code>/<code>moeU</code> are 5-methyl; <code>cEtC</code>/<code>cEtU</code> are not.</span></p>
         </div>
 
         <!-- R54 #4: moved up out of the page tail so it sits with the strand it
@@ -1837,31 +1836,28 @@ if(/[?&]billing=/.test(window.__ocSearch)){
           <div class="crow"><span class="cl" id="l-lk">Linkage<small>Internucleotide bond</small></span>
             <span class="seg" data-cset="linkage" role="radiogroup" aria-labelledby="l-lk"><button data-cval="PO" role="radio" aria-checked="true" class="on">PO</button><button data-cval="PS" role="radio" aria-checked="false">PS</button><button data-cval="Mixed" role="radio" aria-checked="false">Mixed</button></span>
             <span class="ann"><b>9 bonds · +557.68 Da</b></span></div>
-          <div class="crow"><span class="cl" id="l-5">5′ end<small>End-group contribution</small></span>
-            <span class="seg" data-cset="five" role="radiogroup" aria-labelledby="l-5"><button data-cval="OH" role="radio" aria-checked="true" class="on">OH</button><button data-cval="phosphate" role="radio" aria-checked="false">5′P</button><button data-cval="DMT" role="radio" aria-checked="false">DMT</button></span>
-            <span class="ann">+0.00 Da</span></div>
-          <div class="crow"><span class="cl"><label for="three-end">3′ end</label><small>End-group contribution</small></span>
-            <select class="selbox" id="three-end" data-threesel><option value="OH">3′-OH</option><option value="phosphate">3′-Phosphate</option><option value="invdT">Inverted dT</option><option value="invdA">Inverted dA</option><option value="invdC">Inverted dC</option><option value="invdG">Inverted dG</option></select>
-            <span class="ann">+0.00 Da</span></div>
+          <div class="crow crow-ends"><span class="cl">End groups<small>5′ and 3′ contribution</small></span>
+            <div class="endpair">
+              <span class="endfld"><label for="five-end">5′ end</label><select class="selbox" id="five-end" data-fivesel data-endsel="five"><option value="OH">5′-OH</option><option value="phosphate">5′-Phosphate</option><option value="diphosphate">5′-Diphosphate</option><option value="triphosphate">5′-Triphosphate</option><option value="DMT">5′-DMT</option></select></span>
+              <span class="endfld"><label for="three-end">3′ end</label><select class="selbox" id="three-end" data-threesel data-endsel="three"><option value="OH">3′-OH</option><option value="phosphate">3′-Phosphate</option><option value="invdT">Inverted dT</option><option value="invdA">Inverted dA</option><option value="invdC">Inverted dC</option><option value="invdG">Inverted dG</option></select></span>
+            </div>
+            <span class="ann" data-endann>+0.00 Da</span></div>
         </div>
         </div><!-- /.strand-block -->
         <div class="anti-wrap" data-antiwrap hidden>
           <h3 class="sechead"><span><span class="snum anti" aria-hidden="true">A</span>Antisense strand <span class="anti-gen" data-antigen hidden>Auto-generated</span></span><span class="sh-note" data-antinote>Entered manually · independent of the sense strand · 5′→3′</span></h3>
-          <div class="seq-top"><label for="antiseq">Antisense (5′ → 3′)</label><span class="cnt" id="anticount" aria-live="off">0 nt</span></div>
+          <div class="seq-top"><label for="antiseq">5′ → 3′</label>
+            <div class="seqstat" id="antistat">
+              <span class="empty-only" data-antiempty>Awaiting antisense</span>
+              <span class="has-seq" data-antiok hidden><span class="ok">✓ Valid</span><span class="sep">·</span><span data-antiabc>DNA alphabet</span></span><span class="seq-err" data-antierr role="alert" aria-live="assertive" hidden></span>
+            </div>
+            <span class="cnt" id="anticount" aria-live="off">0 nt</span></div>
           <!-- R53 #4: the sense has had a description since the redesign and this
                field had none, and no aria-describedby to point at one. -->
-          <p class="seq-desc" id="antiseq-desc">Enter the antisense 5′→3′. It is read independently of the sense strand, so its own prefixes, backbone and linkage are what count.</p>
-          <div class="seqwrap"><textarea class="seqbox" id="antiseq" data-antiseq spellcheck="false" aria-describedby="antiseq-desc antihint" placeholder="e.g. ATCGATCGAT" aria-describedby="antiseq-desc antihint"></textarea></div>
-          <!-- R53 #1/#3: a status line that mirrors #seqstat, so a valid antisense
-               is CONFIRMED rather than merely not complained about, and the
-               blocking error lives in a statically declared role="alert" span
-               instead of a role assigned at runtime to a display:none div. -->
-          <div class="seqstat" id="antistat">
-            <span class="empty-only" data-antiempty>Awaiting antisense</span>
-            <span class="has-seq" data-antiok hidden><span class="ok">✓ Valid antisense</span><span class="sep">·</span><span data-antiabc>DNA alphabet</span></span><span class="seq-err" data-antierr role="alert" aria-live="assertive" hidden></span>
-            <span class="spacer"></span>
-          </div>
-          <div class="warn" data-antiwarn role="status" hidden></div>
+          <!-- R55 #2: clipped, and the duplicate aria-describedby is gone (the
+               second one silently won, so the first was dead). The full sentence is
+               already on screen once, in [data-antinote] on the heading above. -->
+          <p class="seq-desc sr" id="antiseq-desc">Entered manually, independent of the sense strand.</p>
           <div class="seqctl" data-seqctl="antisense" hidden>
             <button class="ghost" data-scan="antisense" aria-label="Scan a sequence into the antisense strand. Take a photo or upload one"><span class="ci" aria-hidden="true">📷</span><span class="cw">Scan</span></button>
             <button class="ghost" data-voice="antisense" aria-label="Dictate the antisense strand by voice"><span class="ci" aria-hidden="true">🎤</span><span class="cw">Voice</span></button>
@@ -1869,17 +1865,24 @@ if(/[?&]billing=/.test(window.__ocSearch)){
             <button class="ghost" data-seqclear="antisense" aria-label="Clear the antisense strand"><span class="ci" aria-hidden="true">✕</span><span class="cw">Clear</span></button>
             <button class="ghost ctl-copy" data-seqcopy="antisense" aria-label="Copy the antisense strand to the clipboard"><span class="ci" aria-hidden="true">⧉</span><span class="cw">Copy</span></button>
           </div>
+          <div class="seqwrap"><textarea class="seqbox" id="antiseq" data-antiseq spellcheck="false" placeholder="e.g. ATCGATCGAT" aria-describedby="antiseq-desc antihint"></textarea></div>
           <div class="moremon-host" data-moremon-host="antisense" data-seqfield="antiSeq"></div>
+          <!-- R53 #1/#3: a status line that mirrors #seqstat, so a valid antisense
+               is CONFIRMED rather than merely not complained about, and the
+               blocking error lives in a statically declared role="alert" span
+               instead of a role assigned at runtime to a display:none div. -->
+          <div class="warn" data-antiwarn role="status" hidden></div>
           <div class="hint" id="antihint" data-antihint role="status" hidden></div>
           <p class="hintline" data-antirule style="display:none"><span class="hk" aria-hidden="true">›</span><span>The antisense is built by reversing the sense strand and swapping each base for its partner. Sugar modifications and linkage are kept position by position. Both ends come out plain 5′-OH and 3′-OH.</span></p>
           <h3 class="sechead" data-antichemhead><span><span class="snum anti" aria-hidden="true">2b</span>Antisense Strand Configuration</span><span class="sh-note">backbone, linkage, and end groups</span></h3>
           <div role="group" aria-label="Antisense strand configuration" data-antichem>
             <div class="crow"><span class="cl" id="al-bb">Backbone<small>Sugar identity</small></span>
               <span class="seg" data-cset="antiType" role="radiogroup" aria-labelledby="al-bb"><button data-cval="DNA" role="radio" aria-checked="true" class="on">DNA</button><button data-cval="RNA" role="radio" aria-checked="false">RNA</button><button data-cval="Hybrid" role="radio" aria-checked="false">Hybrid</button></span></div>
-            <div class="crow"><span class="cl" id="al-5">5′ end<small>End group</small></span>
-              <span class="seg" data-cset="antiFive" role="radiogroup" aria-labelledby="al-5"><button data-cval="OH" role="radio" aria-checked="true" class="on">OH</button><button data-cval="phosphate" role="radio" aria-checked="false">5′P</button><button data-cval="DMT" role="radio" aria-checked="false">DMT</button></span></div>
-            <div class="crow"><span class="cl"><label for="antithree">3′ end</label><small>End group</small></span>
-              <select class="selbox" id="antithree" data-antithreesel><option value="OH">3′-OH</option><option value="phosphate">3′-Phosphate</option><option value="invdT">Inverted dT</option><option value="invdA">Inverted dA</option><option value="invdC">Inverted dC</option><option value="invdG">Inverted dG</option></select></div>
+            <div class="crow crow-ends"><span class="cl">End groups<small>5′ and 3′</small></span>
+              <div class="endpair">
+                <span class="endfld"><label for="antifive-end">5′ end</label><select class="selbox" id="antifive-end" data-antifivesel data-endsel="antiFive"><option value="OH">5′-OH</option><option value="phosphate">5′-Phosphate</option><option value="diphosphate">5′-Diphosphate</option><option value="triphosphate">5′-Triphosphate</option><option value="DMT">5′-DMT</option></select></span>
+                <span class="endfld"><label for="antithree">3′ end</label><select class="selbox" id="antithree" data-antithreesel data-endsel="antiThree"><option value="OH">3′-OH</option><option value="phosphate">3′-Phosphate</option><option value="invdT">Inverted dT</option><option value="invdA">Inverted dA</option><option value="invdC">Inverted dC</option><option value="invdG">Inverted dG</option></select></span>
+              </div></div>
             <div class="crow"><span class="cl" id="al-lk">Linkage<small>Internucleotide bond</small></span>
               <span class="seg" data-cset="antiLinkage" role="radiogroup" aria-labelledby="al-lk"><button data-cval="PO" role="radio" aria-checked="true" class="on">PO</button><button data-cval="PS" role="radio" aria-checked="false">PS</button><button data-cval="Mixed" role="radio" aria-checked="false">Mixed</button></span></div>
           </div>
@@ -1995,7 +1998,7 @@ if(/[?&]billing=/.test(window.__ocSearch)){
         </div>
         <div class="catbar catbar-cats"><span class="catfilters" data-catcategory role="group" aria-label="Filter by category"></span></div>
         <p class="catcount"><b>30</b> free amidites</p>
-        <p class="ins-hint">↳ Insert places the code at the cursor in your 5′→3′ sequence on the Calculator tab. <b>+ Library</b> makes it a permanent moremon token.</p>
+        <p class="ins-hint">↳ Insert places the code at the cursor in your 5′→3′ sequence on the Calculator tab. <b>+ Library</b> makes it a permanent entry under More monomers.</p>
         <div class="catlist">
           <div class="catcard"><div class="ci-main"><div class="cn">2′-O-Methyl-A</div><div class="c2"><span class="code">mA</span><span>ChemGenes</span><span class="mass">343.27 g/mol</span><span>2′-sugar</span><span class="ok">✓ verified</span></div></div><div class="ci-act"><button class="btn-ins">Insert</button><button class="btn-lib inlib">✓ Library</button></div></div>
           <div class="catcard"><div class="ci-main"><div class="cn">2′-Fluoro-C</div><div class="c2"><span class="code">fC</span><span>ChemGenes</span><span class="mass">305.20 g/mol</span><span>2′-sugar</span><span class="ok">✓ verified</span></div></div><div class="ci-act"><button class="btn-ins">Insert</button><button class="btn-lib inlib">✓ Library</button></div></div>
@@ -2012,7 +2015,14 @@ if(/[?&]billing=/.test(window.__ocSearch)){
         <div class="vsub">Reopen, copy, or export a strand you saved. Signed in, your account holds the copy that travels between devices and this browser keeps an offline mirror; signed out, strands live in this browser only.</div>
         <div class="histbar">
           <span class="search">⌕ <input placeholder="Search by name or sequence…" aria-label="Search saved strands"></span>
-          <button class="hb" data-hexport>Export selected · CSV</button>
+          <!-- P6e: Scan reaches the Library directly. The review sheet it opens
+             already carries per-row "+ Library" and "Save all to library" (r42),
+             so a label photo can go from camera to saved strands without passing
+             through the Calculator at all. Same [data-scan] contract as the
+             sequence field, so source-sheet gating, the sign-in gate and the
+             desktop/touch split all come along unchanged. -->
+        <button class="hb hb-scan" data-scan="sense" aria-label="Scan a label photo and add strands to your library"><span aria-hidden="true">📷</span> Scan</button>
+        <button class="hb" data-hexport>Export selected · CSV</button>
           <button class="hb" data-hsharesel>Share selected</button>
           <button class="hb" data-hcopylab hidden>Copy to lab</button>
           <!-- R52 (audit LOW): this is unhidden by renderHistShell when the
@@ -2243,7 +2253,7 @@ if(/[?&]billing=/.test(window.__ocSearch)){
             <button type="button" class="oc-foot-l" data-ocdoc="refunds">Refunds</button>
           </nav>
         </div>
-        <div class="oc-foot-fine">Built and run by Yu-Sheng Chen, out of pocket. <b>Not affiliated with, funded by or endorsed by any university.</b> No cookies, no analytics, no trackers. Check every mass before you pipette.</div>
+        <div class="oc-foot-fine">Built and run by Yu-Sheng Chen, a PhD candidate in RNA chemistry in New York, out of pocket. <b>The site is independent: not affiliated with, funded by or endorsed by any university.</b> No cookies, no analytics, no trackers. Check every mass before you pipette.</div>
       </footer>
     </div>
   </main>
@@ -2252,7 +2262,7 @@ if(/[?&]billing=/.test(window.__ocSearch)){
     <div class="r-inner">
       <div class="r-status"><span class="dot" aria-hidden="true"></span><span class="lbl"></span></div>
       <div class="r-empty e-default">Enter a sequence to calculate. Results appear here as you type. <b>No number is shown until the strand is valid.</b></div>
-      <div class="r-empty e-invalid">Nothing to calculate yet. The sequence has a token this app does not know, <b>“X”</b>, at position 5. Remove it, or put a real base there (A, C, G, T or U).</div>
+      <div class="r-empty e-invalid">Nothing to calculate yet. The sequence has a code this app does not know, <b>“X”</b>, at position 5. Remove it, or put a real base there (A, C, G, T or U).</div>
       <div class="r-empty e-partial">Sequence in progress. <b>Keep typing.</b> A result appears once the strand is finished and valid.</div>
       <div class="r-sub has-content">ATCGATCGAT · DNA · all-PO · 5′-OH / 3′-OH</div>
       <div class="r-lead has-content"><span class="eyebrow">Average molecular weight</span></div>
@@ -3437,11 +3447,62 @@ const NUCLEO = {
 const SUGAR_LABEL  = { d:"DNA", r:"RNA", m:"2′-OMe", f:"2′-F", moe:"2′-MOE", cEt:"2′-cEt" };
 const PREFIXES = ["cEt","moe","m","f","d","r"];                 // longest-first for parsing
 const LINK = { PO:61.964, PS:78.025 };                          // phosphodiester / phosphorothioate bridge
-const FIVE = { OH:0, phosphate:79.979, DMT:302.373 };           // 5' end group mass
+/* R55: di- and triphosphate. Each extra phosphate is one more HPO3 -- exactly the
+   existing mono value -- so they are written as multiples and can never drift from
+   it. 5'-triphosphate is what comes off a T7 IVT reaction, so it is the default
+   state of every transcript in the building; 5'-diphosphate is the capping
+   intermediate. Conjugates (biotin, FAM, amino/thiol linkers) deliberately do NOT
+   live here: "5'-biotin" is five different molecules depending on vendor and
+   linker, and each already has a vendor-verified mass in the catalog. */
+const FIVE = { OH:0, phosphate:79.979, diphosphate:79.979*2, triphosphate:79.979*3, DMT:302.373 };
 const FIVE_THIO_DELTA = 16.061;                                 // 5'-phosphate -> 5'-phosphorothioate (O->S)
-const FIVE_LABEL = { OH:"5′-OH", phosphate:"5′-phosphate", DMT:"5′-DMT" };
+const FIVE_LABEL = { OH:"5′-OH", phosphate:"5′-phosphate", diphosphate:"5′-diphosphate", triphosphate:"5′-triphosphate", DMT:"5′-DMT" };
+/* R55: ionisable protons at the 5' end. Was two copies of `five==='phosphate'?2:0`
+   -- one in charge, one in the ladder's maxN -- which is how those two readouts
+   contradicted each other once before. One table, both callers. */
+const FIVE_CHARGE = { OH:0, phosphate:2, diphosphate:3, triphosphate:4, DMT:0 };
+/* ===========================================================================
+   FIVE_PREFIX -- **THE ONE PLACE TO EDIT WHEN ADDING A 5' END GROUP.**
+
+   Before R55c this grammar was hand-written in EIGHT places across four script
+   blocks. The R55 round added diphosphate/triphosphate and missed three of them,
+   which shipped two silent defects: the IDT 3-base grouping stopped working in the
+   sequence field (formatEditorValue bailed to `return raw`), and a scanned label
+   composed without its prefix computed 239.94 Da light. Every site now derives
+   from this table.
+
+   TO ADD A 5' GROUP, edit these five lines and nothing else:
+     1. FIVE          mass in g/mol relative to 5'-OH
+     2. FIVE_LABEL    long name, shown in the result panel
+     3. FIVE_CHARGE   ionisable protons -- drives net charge AND the m/z ladder
+     4. FIVE_PREFIX   the sequence-text prefix (trailing space), '' if none
+     5. FIVE_FML      elemental formula, or monoisotopic reports "needs formula"
+   ...then add an <option> to the two [data-endsel] selects in the markup.
+
+   ORDER IS LOAD-BEARING, and handled for you. FIVE_PREFIX_KEYS sorts
+   longest-tag-first and parseSeq walks that order, so 'PPP' is always tested
+   before 'PP' before 'P'. Add a tag that is a prefix of another and the sort keeps
+   it correct: do NOT hand-order this object and do NOT iterate it directly.
+
+   Derived from this table (nothing else needs touching): parseSeq() detection,
+   serialize(), spaceSeq()'s prefix, lockLen(), fivePrefixStr(), enforceFive(),
+   formatEditorValue() in the moremon block, composeFull() in the scan block,
+   and RESERVED_CODES.
+   =========================================================================== */
+const FIVE_PREFIX = { OH:'', phosphate:'P ', diphosphate:'PP ', triphosphate:'PPP ', DMT:'DMT ' };
+const FIVE_PREFIX_KEYS = Object.keys(FIVE_PREFIX).filter(function(k){ return FIVE_PREFIX[k]; })
+  .sort(function(a,b){ return FIVE_PREFIX[b].trim().length - FIVE_PREFIX[a].trim().length; });
+function fivePrefixTag(five){ return (FIVE_PREFIX[five]||'').trim(); }
+/* CROSS-BLOCK EXPORT -- REQUIRED, not optional. `const` at the top level of a
+   classic script is a script-scope LEXICAL binding, not a property of window, so a
+   later <script> block reading a bare `FIVE_PREFIX` gets undefined. The moremon
+   block's formatEditorValue() and the scan block's composeFull() both need this
+   table, and a silent `typeof` fallback there means the 5' prefix is treated as
+   sequence body -- which is precisely how the IDT grouping broke in R55. If you add
+   a table here, export it here too. */
+window.FIVE_PREFIX=FIVE_PREFIX; window.FIVE_PREFIX_KEYS=FIVE_PREFIX_KEYS; window.fivePrefixTag=fivePrefixTag;
 function fiveLabel(five, thio){ return (five==='phosphate'&&thio) ? "5′-phosphorothioate" : FIVE_LABEL[five]; }
-function fiveTag(five, thio){ return five==='DMT'?"DMT":(five==='phosphate'?(thio?"5′-Ps":"5′-P"):""); }
+function fiveTag(five, thio){ return five==='DMT'?"DMT":(five==='phosphate'?(thio?"5′-Ps":"5′-P"):(five==='diphosphate'?"5′-PP":(five==='triphosphate'?"5′-PPP":""))); }
 
 // 3' end group + custom conjugate/modifier
 /* R52 (audit LOW): these four were stored at 2 dp, so the average mass and the
@@ -3503,6 +3564,37 @@ function epsilon260(tokens){               // modified sugars reuse the natural 
   return Math.max(sumNN - sumMono, 0);
 }
 
+/* M1 (R56): epsilon260 is exact only for canonical A/C/G/T/U. A 2'-modified base
+   reuses its PARENT base's extinction coefficient -- the standard approximation,
+   and the right one, because there are no published nearest-neighbour tables for
+   a fully modified gapmer. A custom or catalog monomer is dropped from the sum
+   entirely by epsilon260's own filter on the line above.
+
+   Both behaviours are defensible. Neither was DISCLOSED, so an A260-derived
+   concentration read as exact when it was an estimate -- and a chemist pipettes
+   against that number. The conjugate case is the worse of the two: dyes absorb at
+   260 nm, so excluding them can be badly wrong in a knowable direction.
+
+   Returns null when the sum is exact, otherwise the reason. Display-only: the
+   value of eps is unchanged, and the ng/uL route (which uses MW, exact for every
+   monomer) is deliberately left unmarked so the user can tell the two apart. */
+function epsQuality(tokens){
+  var mod=false, conj=false;
+  (tokens||[]).forEach(function(t){
+    if(t.custom){ conj=true; return; }
+    if(t.sugar!=='d' && t.sugar!=='r') mod=true;
+  });
+  if(!mod && !conj) return null;
+  return { mod:mod, conj:conj,
+    note: (mod&&conj) ? 'ε estimated from parent bases; conjugates excluded'
+        : mod ? 'ε estimated from parent bases'
+              : 'ε excludes conjugates' };
+}
+/* CROSS-BLOCK EXPORT -- renderConcShell() lives in a LATER <script> block, where a
+   bare `epsQuality` is undefined and the typeof guard there would silently never
+   fire. See the FIVE_PREFIX block for the full rule. */
+window.epsQuality=epsQuality;
+
 /* R52 (audit P1-28): GenBank, Benchling, Ensembl and most vendor spec sheets
    emit lowercase. `parseSeq('atcgatcg')` returned bad:["a","t","c","g",...] and
    the panel said "Unrecognised tokens" without ever mentioning case.
@@ -3554,8 +3646,13 @@ function parseSeq(str, mode){
   else s=raw;
   let i=0;
   let five='OH', fiveThio=false;
-  if(s.startsWith('DMT',i)){ five='DMT'; i+=3; }
-  else if(s[i]==='P'){ five='phosphate'; i++;
+  /* R55c: derived from FIVE_PREFIX, longest tag first, so a new 5' group needs NO
+     edit here. See the FIVE_PREFIX block for the checklist. */
+  for(let pi=0; pi<FIVE_PREFIX_KEYS.length; pi++){
+    const tag=fivePrefixTag(FIVE_PREFIX_KEYS[pi]);
+    if(s.startsWith(tag,i)){ five=FIVE_PREFIX_KEYS[pi]; i+=tag.length; break; }
+  }
+  if(five==='phosphate'){
     let k=i; while(k<s.length && /\s/.test(s[k])) k++;
     if(s[k]==='s'){ fiveThio=true; i=k+1; }                    // 5'-phosphorothioate (s after P, spaces ok)
   }
@@ -3593,6 +3690,92 @@ function parseSeq(str, mode){
   return {tokens, marks, five, fiveThio, bad, needPrefix, threeThio, uToT, danglingLink};
 }
 
+/* ═══ M3 (R56): the backbone toggle follows what the user types ═══════════
+
+   The DNA/RNA/Hybrid toggle exists to say what a BARE letter means, so the bare
+   letters are what should drive it -- exactly the PO -> Mixed promotion argument
+   applied to the sugar instead of the linkage. Before this, typing AUCG under a
+   DNA backbone silently counted the U as a T: same mass, same eps, no signal in
+   the number, and only a blur-gated advisory to catch it.
+
+   TWO RULES KEEP THIS FROM FIGHTING THE USER:
+
+   1. An explicit d/ r prefix is a DECLARATION. `dArUdC` means the user has
+      already decided, and serialize() rewrites d/r sugars to match the type --
+      so overriding the toggle there would silently rewrite their chemistry.
+      bareTypeIntent returns null the moment it sees one.
+
+   2. Only A/C/G typed = ambiguous = leave the toggle alone. T and U are the only
+      two letters that carry sugar information.
+
+   Hybrid is deferred to blur (see autoStrandType). Every bare letter is INVALID
+   in Hybrid -- parseSeq sends them all to `bad` and raises needPrefix -- so
+   switching mid-keystroke would paint a red error the user did not cause, and
+   rewriting the text mid-keystroke would fight the caret. On blur both land in
+   one step: AUCGT -> Hybrid + rArUrCrGdT. */
+function bareTypeIntent(raw){
+  var p; try{ p=parseSeq(raw,'Hybrid'); }catch(_){ return null; }
+  if((p.tokens||[]).some(function(t){ return !t.custom && (t.sugar==='d'||t.sugar==='r'); })) return null;
+  var hasT=false, hasU=false, n=0;
+  (p.bad||[]).forEach(function(x){
+    if(x==='T'){ hasT=true; n++; }
+    else if(x==='U'){ hasU=true; n++; }
+    else if(x==='A'||x==='C'||x==='G'){ n++; }
+  });
+  if(!n) return null;
+  if(hasT&&hasU) return 'Hybrid';
+  if(hasT) return 'DNA';
+  if(hasU) return 'RNA';
+  return null;
+}
+/* Walks the SAME grammar parseSeq walks, off the same PREFIXES and CUSTOM tables,
+   and prefixes only bare bases: T is DNA-only so it takes d, everything else takes
+   r (the presence of a U is what put us in Hybrid, so ribose is the right default
+   for the ambiguous A/C/G). Prefixed bases, custom codes and linkage marks are
+   passed through untouched. Body only -- the caller strips the locked 5' prefix
+   first, or "DMT " would come back as "DMdT". */
+function prefixBareBases(body){
+  var s=String(body||''), out='', i=0;
+  while(i<s.length){
+    var ch=s[i];
+    if(/\s/.test(ch)||ch==='s'||ch==='o'){ out+=ch; i++; continue; }
+    if(ch==='('){ var e=s.indexOf(')',i+1); if(e>i){ out+=s.slice(i,e+1); i=e+1; continue; } out+=ch; i++; continue; }
+    if(CUSTOM[ch]){ out+=ch; i++; continue; }
+    var sug=null, pl=0;
+    for(var k=0;k<PREFIXES.length;k++){ if(s.startsWith(PREFIXES[k],i)){ sug=PREFIXES[k]; pl=PREFIXES[k].length; break; } }
+    var j=i+pl, b=s[j];
+    if(b && /[ACGTU]/.test(b)){ out += sug ? s.slice(i,j+1) : ((b==='T'?'d':'r')+b); i=j+1; continue; }
+    out+=ch; i++;
+  }
+  return out;
+}
+/* Returns true when it changed something, so the caller knows to re-render.
+   Lives in this block because it needs parseSeq, PREFIXES, CUSTOM, lockLen,
+   lockRight, S and save all at once; the blur handler calls the export. */
+function autoStrandType(isAnti, onBlur, rawOverride){
+  var sKey=isAnti?'antiSeq':'seq', tKey=isAnti?'antiType':'type';
+  /* rawOverride is the UNSAVED field text. The live caller must pass it, because
+     enforceFive() runs before the value is stored and re-serializes under the
+     CURRENT type -- which turns the user's U into a T and erases the one signal
+     this function reads. Detect first, then let enforceFive run with the type
+     already corrected. */
+  var raw=(rawOverride!=null)?rawOverride:(S[sKey]||'');
+  var intent=bareTypeIntent(raw);
+  if(!intent) return false;
+  var cur=isAnti?(S.antiType||S.type):S.type;
+  if(intent!=='Hybrid'){ if(cur===intent) return false; S[tKey]=intent; save(); return true; }
+  if(!onBlur) return false;
+  var five=isAnti?(S.antiFive||'OH'):S.five, three=isAnti?(S.antiThree||'OH'):S.three;
+  var hl=lockLen(five), tl=lockRight(three);
+  var body=raw.slice(hl, raw.length-tl);
+  var nb=prefixBareBases(body);
+  if(cur==='Hybrid' && nb===body) return false;
+  S[tKey]='Hybrid';
+  S[sKey]=raw.slice(0,hl)+nb+(tl?raw.slice(raw.length-tl):'');
+  save(); return true;
+}
+window.bareTypeIntent=bareTypeIntent; window.prefixBareBases=prefixBareBases; window.autoStrandType=autoStrandType;
+
 /* =====================================================================
    R51 (audit F-03) -- ONE application-level validity contract.
 
@@ -3618,7 +3801,7 @@ function validateParsedSequence(p){
   if(p.bad && p.bad.length){
     var u=[]; p.bad.forEach(function(t){ if(u.indexOf(t)<0) u.push(t); });
     return {ok:false, reason:'bad', bad:u,
-            message:'Unrecognised '+(u.length>1?'tokens ':'token ')+u.slice(0,8).map(function(t){ return '“'+t+'”'; }).join(', ')+'.'};
+            message:'Unrecognised '+(u.length>1?'codes ':'code ')+u.slice(0,8).map(function(t){ return '“'+t+'”'; }).join(', ')+'.'};
   }
   if(!p.tokens.length) return {ok:false, reason:'empty', message:'No valid bases recognised.'};
   return {ok:true, reason:'', message:''};
@@ -3774,8 +3957,8 @@ function ocModalRelabel(el, label){ if(el && el.__ocModal && label){ el.removeAt
 // Render tokens back to a string for a target backbone + linkage mode.
 function serialize(tokens, marks, type, linkMode, five, fiveThio){
   let out="";
-  if(five==='DMT') out+="DMT ";                                // space sets the 5' group apart
-  else if(five==='phosphate'){ out+="P "; if(fiveThio) out+="s"; }   // thio s sits AFTER the locked "P " space
+  out += (FIVE_PREFIX[five]||'');                              // trailing space sets the 5' group apart
+  if(five==='phosphate' && fiveThio) out+="s";                 // thio s sits AFTER the locked "P " space
   tokens.forEach((t,i)=>{
     if(t.custom){ out += (t.code.length>1 ? `(${t.code})` : t.code);
       if(i<tokens.length-1){ if(linkMode==='PS') out+="s"; else if(linkMode==='Mixed' && marks[i]) out+="s"; } return; }
@@ -3794,7 +3977,11 @@ function rebuild(seq, fromType, toType, linkMode){
   const p=parseSeq(seq, fromType);
   return serialize(p.tokens, p.marks, toType, linkMode, p.five, p.fiveThio);
 }
-const RESERVED_CODES = new Set(["A","C","G","T","U","P","s","o","d","r","m","f"]);
+/* R55c: the 5' tags come from FIVE_PREFIX, so a new prefix can never be shadowed by
+   a custom monomer code of the same name. ("DMT" is newly reserved -- it always
+   should have been.) */
+const RESERVED_CODES = new Set(["A","C","G","T","U","s","o","d","r","m","f"]
+  .concat(FIVE_PREFIX_KEYS.map(fivePrefixTag)));
 /* R52 (audit P1-05 / P1-40): the names that are truthy on any plain object. */
 const PROTO_NAMES = ['__proto__','constructor','prototype','toString','valueOf','hasOwnProperty','isPrototypeOf','propertyIsEnumerable','toLocaleString','__defineGetter__','__defineSetter__','__lookupGetter__','__lookupSetter__'];
 /* A membership test that cannot be satisfied through the prototype chain. Used
@@ -3805,7 +3992,7 @@ function spaceSeq(seq, type, linkMode){
   const ty=type||S.type, lm=linkMode||S.linkage;
   const p=parseSeq(seq, ty);
   if(!p.tokens.length) return seq||"";
-  const pre = p.five==='DMT'?'DMT ':(p.five==='phosphate'?('P '+(p.fiveThio?'s ':'')):'');
+  const pre = (FIVE_PREFIX[p.five]||'') + ((p.five==='phosphate'&&p.fiveThio)?'s ':'');
   const parts=p.tokens.map((t,i)=>{
     let s = t.custom ? (t.code.length>1?`(${t.code})`:t.code)
           : (((t.sugar==='d'||t.sugar==='r') ? (ty==='Hybrid'?t.sugar:'') : t.sugar) + t.base);
@@ -3974,8 +4161,31 @@ function compute(seq, mode, linkMode, three=(S&&S.three)||'OH', modMass=0){
   bonds.forEach(b=> mw+=LINK[b]);
   const counts={A:0,C:0,G:0,T:0,U:0}, sugarCounts={}, customCounts={};
   tokens.forEach(t=>{ if(t.custom){ customCounts[t.code]=(customCounts[t.code]||0)+1; } else { counts[t.base]++; sugarCounts[t.sugar]=(sugarCounts[t.sugar]||0)+1; } });
-  const nPS=bonds.filter(b=>b==='PS').length, nPO=bonds.length-nPS;
   const invN = (three && three.indexOf('inv')===0) ? 1 : 0;   // inverted dT/dA/dC/dG is a real nucleotide -> counts in length
+  /* M2 (R56): the inverted base counts in `n`, so its 3'-3' linkage has to count
+     in the bond tally too. ACGT + 3'-invdT reported "5 nt" next to "3 PO", and a
+     5-mer has 4 bonds. It is a real phosphodiester -- threeThio turns it into a
+     phosphorothioate, which is why that +16.06 already exists a few lines above.
+
+     THE MASS ARRAY IS DELIBERATELY UNTOUCHED. THREE['invdT'] = 304.196 is the dT
+     nucleoside (242.23) PLUS this bond (61.964), so pushing it into `bonds` would
+     double-count 61.96 into the MW. `bonds` stays the mass-bearing array and
+     `charge` keeps counting the inverted end through invN, exactly as before.
+
+     nBonds / bondsMass / endMass are the DISPLAY truth, and they decompose the
+     inverted end the way a chemist reads it: the nucleoside is a terminal group,
+     the linkage is a bond. Every panel that shows a count and a mass side by side
+     now agrees, and the trace table still sums to the MW. */
+  const invPS = !!(invN && threeThio);
+  const nPSbb = bonds.filter(b=>b==='PS').length;
+  const nPS = nPSbb + (invPS?1:0);
+  const nPO = (bonds.length-nPSbb) + ((invN&&!invPS)?1:0);
+  const nBonds = bonds.length + invN;
+  let bondsMass=0; bonds.forEach(b=>{ bondsMass+=LINK[b]; });
+  if(invN) bondsMass += LINK[invPS?'PS':'PO'];
+  const endMass = FIVE[five] + (five==='phosphate'&&fiveThio?FIVE_THIO_DELTA:0)
+    + (THREE[three]||0) + ((threeThio && (three==='phosphate'||invN))?FIVE_THIO_DELTA:0)
+    - (invN ? LINK[invPS?'PS':'PO'] : 0);
   /* R52 (audit P1-24): a conjugate junction is deliberately excluded from
      `bonds` because the conjugate's own formula already carries the phosphate,
      so the MASS is right -- but it is still an ionizable phosphodiester, and
@@ -3984,9 +4194,9 @@ function compute(seq, mode, linkMode, three=(S&&S.three)||'OH', modMass=0){
      m/z ladder one charge state short of the peak the user was looking for. */
   let conjJunctions=0;
   for(let i=0;i<tokens.length-1;i++){ if(!(bondForming[i]&&bondForming[i+1])) conjJunctions++; }
-  const charge = -(bonds.length) - conjJunctions - (five==='phosphate'?2:0) - (three==='phosphate'?2:(invN?1:0));
+  const charge = -(bonds.length) - conjJunctions - (FIVE_CHARGE[five]||0) - (three==='phosphate'?2:(invN?1:0));
   let conjMid=null; for(let i=1;i<tokens.length-1;i++){ if(tokens[i].nobond){ conjMid = tokens[i].code||'·'; break; } }   // a conjugate placed mid-chain (not 5'/3' end)
-  return {n:n+invN, tokens,bonds,bad,mw,counts,sugarCounts,customCounts,nPS,nPO,charge,conjJunctions,invN,five,fiveThio,threeThio,conjThio,three,modMass,needPrefix,uToT,conjMid,danglingLink};
+  return {n:n+invN, tokens,bonds,bad,mw,counts,sugarCounts,customCounts,nPS,nPO,nBonds,bondsMass,endMass,charge,conjJunctions,invN,invPS,five,fiveThio,threeThio,conjThio,three,modMass,needPrefix,uToT,conjMid,danglingLink};
 }
 
 /* =================================================================
@@ -4008,7 +4218,7 @@ const FML = {   // free nucleoside (5\u2032-OH, 3\u2032-OH) element counts, per 
   cEt:{A:{C:12,H:15,N:5,O:4},C:{C:11,H:15,N:3,O:5},G:{C:12,H:15,N:5,O:5},U:{C:11,H:14,N:2,O:6}},
 };
 const BOND_FML = { PO:{H:-1,P:1,O:2}, PS:{H:-1,P:1,O:1,S:1} };
-const FIVE_FML = { OH:{}, phosphate:{H:1,P:1,O:3}, DMT:{C:21,H:18,O:2} };
+const FIVE_FML = { OH:{}, phosphate:{H:1,P:1,O:3}, diphosphate:{H:2,P:2,O:6}, triphosphate:{H:3,P:3,O:9}, DMT:{C:21,H:18,O:2} };
 const THREE_FML = { OH:{}, phosphate:{H:1,P:1,O:3}, invdT:{C:10,H:13,N:2,O:7,P:1}, invdA:{C:10,H:12,N:5,O:5,P:1}, invdC:{C:9,H:12,N:3,O:6,P:1}, invdG:{C:10,H:12,N:5,O:6,P:1} };
 const THIO_FML = {O:-1,S:1};
 function parseFormula(str){
@@ -4050,7 +4260,7 @@ function msData(seq,mode,linkMode,three){
      cap's phosphodiester, which `charge` does count -- so `P ACGT s idT`
      reported charge -6 while maxN was 5 and the two readouts contradicted each
      other on screen. Both are derived from the same terms now. */
-  const nP = r.bonds.length + (r.conjJunctions||0) + (r.five==='phosphate'?2:0)
+  const nP = r.bonds.length + (r.conjJunctions||0) + (FIVE_CHARGE[r.five]||0)
            + (r.three==='phosphate'?2:((r.invN||0)?1:0));   // max deprotonations for the m/z ladder
   return { r, avg:r.mw, mono, formula:f, formulaStr:formatFormula(f), missing:[...new Set(missing)], charge:r.charge, maxN:Math.max(1,nP), n:r.n };
 }
@@ -4234,10 +4444,12 @@ function antiR(){
 }
 function srcStrand(){
   const sense=compute(S.seq,S.type,S.linkage);
-  if(S.duplexMode==='off' || !S.mwSource || S.mwSource==='sense') return {mw:sense.mw, eps:epsilon260(sense.tokens), n:sense.n, label:'sense'};
+  /* M1: `tokens` is additive -- every existing caller destructures mw/eps/n/label.
+     The conc panel needs the tokens to judge whether eps is exact. */
+  if(S.duplexMode==='off' || !S.mwSource || S.mwSource==='sense') return {mw:sense.mw, eps:epsilon260(sense.tokens), n:sense.n, label:'sense', tokens:sense.tokens};
   const anti=antiR();
-  if(S.mwSource==='antisense') return {mw:anti.mw, eps:epsilon260(anti.tokens), n:anti.n, label:'antisense'};
-  return {mw:sense.mw+anti.mw, eps:epsilon260(sense.tokens)+epsilon260(anti.tokens), n:sense.n+anti.n, label:'duplex'};
+  if(S.mwSource==='antisense') return {mw:anti.mw, eps:epsilon260(anti.tokens), n:anti.n, label:'antisense', tokens:anti.tokens};
+  return {mw:sense.mw+anti.mw, eps:epsilon260(sense.tokens)+epsilon260(anti.tokens), n:sense.n+anti.n, label:'duplex', tokens:(sense.tokens||[]).concat(anti.tokens||[])};
 }
 function currentMW(){ if(S.useCustomMW){ const v=parseFloat(S.customMW); return isFinite(v)&&v>0?v:0; } return srcStrand().mw; }
 function setVal(input, v){ if(input && document.activeElement!==input) input.value=v; }
@@ -4247,7 +4459,7 @@ function hintLines(){
   if(S.type==='Hybrid') a.push("Hybrid mode: write every base with a d or r in front (dA, rU), or pick them from Quick Insert.");
   if(S.linkage==='Mixed') a.push("Mixed linkage: type s between two bases for a phosphorothioate. Without it you get PO.");
   if(S.five==='phosphate') a.push("5′-phosphate: type s right after the “P ” (for example P sAUCG…) to make it a 5′-phosphorothioate.");
-  if(S.advanced) a.push("Sugar modifications are on. All 16 of the 2′-OMe, 2′-F, MOE and cEt tokens are in Quick Insert now.");
+  if(S.advanced) a.push("Sugar modifications are on. All 16 of the 2′-OMe, 2′-F, MOE and cEt bases are in Quick Insert now.");
   return a;
 }
 function placeholderFor(){ return placeholderForType(S.type); }
@@ -4261,7 +4473,7 @@ function alphabetLabel(t){ return t==='RNA' ? 'RNA alphabet' : (t==='Hybrid' ? '
 
 function chipsHTML(r){
   const c=[`<span class="chip lead"><b>${r.n}</b> nt</span>`];
-  if(r.bonds.length){ c.push(`<span class="chip"><b>${r.nPO}</b> PO</span>`); if(r.nPS) c.push(`<span class="chip"><b>${r.nPS}</b> PS</span>`); }
+  if(r.nBonds){ c.push(`<span class="chip"><b>${r.nPO}</b> PO</span>`); if(r.nPS) c.push(`<span class="chip"><b>${r.nPS}</b> PS</span>`); }
   if(r.five!=='OH') c.push(`<span class="chip">${fiveTag(r.five,r.fiveThio)}</span>`);
   if(r.three!=='OH') c.push(`<span class="chip">${threeTag(r.three)}</span>`);
   Object.keys(r.customCounts||{}).forEach(code=>{ const tag=cbEsc(code.length>1?'('+code+')':code); c.push(`<span class="chip">${tag} <b>${r.customCounts[code]}</b></span>`); });
@@ -4365,12 +4577,27 @@ function tokenCutLen(before){
 }
 function smartDelete(s){ s=s||""; return s.slice(0, s.length - tokenCutLen(s)); }
 // ---- 5' prefix lock helpers ----
-function lockLen(five=S.five){ return five==='DMT' ? 4 : (five==='phosphate' ? 2 : 0); }   // protected "DMT " / "P "
-function fivePrefixStr(five=S.five, thio=S.fiveThio){ return five==='DMT' ? "DMT " : (five==='phosphate' ? ("P "+(thio?"s":"")) : ""); }
+/* R55: "PPP " is 4, "PP " is 3. lockLen is read at SEVEN call sites (typing,
+   Quick Insert, token-aware delete, clear, caret restore); a wrong value lets the
+   user backspace into the prefix, enforceFive puts it straight back, and the caret
+   jumps on every keystroke. */
+function lockLen(five=S.five){ return (FIVE_PREFIX[five]||'').length; }              // "DMT " / "PPP " / "PP " / "P " / ""
+function fivePrefixStr(five=S.five, thio=S.fiveThio){ return (FIVE_PREFIX[five]||'') + ((five==='phosphate'&&thio)?"s":""); }
 function enforceFive(seq, five=S.five, thio=S.fiveThio, type=S.type){
-  if(five==='phosphate'||five==='DMT'){
+  if(FIVE_PREFIX[five]){                                    // R55c: truthy only for a group that carries a text prefix
     const p=parseSeq(seq,type);
-    if(p.five!==five) return serialize(p.tokens,p.marks,type,S.linkage,five, five==='phosphate'?thio:false);
+    /* R55c: serialize in 'Mixed' so the per-bond marks round-trip VERBATIM. This
+       function's only job is to correct the 5' prefix, but it used to re-serialize
+       under a uniform linkage: with PO that stripped every `s` the user had typed,
+       and with PS it silently put back every `s` they had deleted -- so with any 5'
+       group other than OH, per-bond chemistry could not be edited at all.
+       'Mixed' emits an `s` exactly where marks[i] is true, which is a lossless
+       round-trip of the field for PO, PS and Mixed alike.
+
+       It also read S.linkage for BOTH strands, so a manual antisense was rewritten
+       using the SENSE linkage. Passing 'Mixed' removes that read entirely rather
+       than duplicating the sense/antisense branch here. */
+    if(p.five!==five) return serialize(p.tokens,p.marks,type,'Mixed',five, five==='phosphate'?thio:false);
   }
   return seq;
 }
@@ -4640,17 +4867,24 @@ document.body.addEventListener("input", e=>{
     const _c=ta.selectionStart; ta.value=normalizeSeqCase(ta.value);
     try{ ta.setSelectionRange(_c,_c); }catch(_){ /* focus / caret / scroll restoration on a node that may already be gone -- cosmetic, no value is shown or hidden by it */ }
   }
+  /* M3: this MUST precede enforceFive -- see the rawOverride note in
+     autoStrandType. The type argument below is evaluated after, so enforceFive
+     already sees the corrected backbone. */
+  const _typeSwitched=autoStrandType(isAnti,false,ta.value);
   let v=ta.value; let fixed=enforceFive(v,fKey,fThio,isAnti?(S.antiType||S.type):S.type);
   fixed = isAnti ? enforceThree(fixed, S.antiThree) : enforceThree(fixed);
   if(fixed!==v){ v=fixed; const L=lockLen(fKey); let pos=Math.max(ta.selectionStart,L);
     const rmax=v.length-lockRight(isAnti?S.antiThree:S.three); if(pos>rmax) pos=rmax;
     ta.value=v; try{ta.setSelectionRange(pos,pos);}catch(_){ /* focus / caret / scroll restoration on a node that may already be gone -- cosmetic, no value is shown or hidden by it */ } }
   S[sKey]=v; save();
+  /* M3: DNA <-> RNA switches live, the way PO -> Mixed does. Hybrid is the one
+     case that waits for blur, because it needs the text rewritten too. */
+  if(_typeSwitched) applyAll();
   // Safety: an internucleotide "s" while linkage is PO would be silently ignored (mass unchanged).
   // Promote PO -> Mixed so the phosphorothioate bond is actually counted.
   // R54b: the body of this moved into promoteMixedIfNeeded() so applySeqEdit,
   // which every Quick Insert click goes through, gets the same protection.
-  if(promoteMixedIfNeeded(v, isAnti)){
+  if(promoteMixedIfNeeded(v, isAnti, /^delete/i.test((e&&e.inputType)||''))){
     applyAll();
     calcs.forEach(c=>{ const t2=c.querySelector(sel); if(t2!==ta && document.activeElement!==t2) t2.value=S[sKey]; });
     if(!isAnti && typeof syncMirrorAntisense==='function') syncMirrorAntisense(); return; }
@@ -4668,12 +4902,35 @@ function lockBounds(ta){ const isA=ta.matches("[data-antiseq]");
    appeared when the linkage was already Mixed. r54 makes that token permanent,
    which turns the gap into a live 16.06 Da-per-bond error. One helper, both
    callers. Returns true when it changed the linkage. */
-function promoteMixedIfNeeded(seqValue, isAnti){
+function promoteMixedIfNeeded(seqValue, isAnti, isDelete){
   var key=isAnti?'antiLinkage':'linkage';
-  if((S[key]||'PO')!=='PO') return false;
+  var mode=S[key]||'PO';
+  if(mode!=='PO' && mode!=='PS') return false;
   try{
     var p=parseSeq(seqValue, isAnti?(S.antiType||S.type):S.type);
-    if(p && p.marks && p.marks.some(Boolean)){ S[key]='Mixed'; save(); return true; }
+    if(!p || !p.marks || !p.tokens) return false;
+    if(mode==='PO'){
+      if(p.marks.some(Boolean)){ S[key]='Mixed'; save(); return true; }
+      return false;
+    }
+    /* R55c: PS is the MIRROR of the PO case and had no guard at all. In PS every
+       bond is phosphorothioate REGARDLESS of the marks, so deleting an `s` changed
+       the text and nothing else -- the mass, the PO/PS chips and the m/z ladder all
+       stayed put, 16.06 Da per bond too heavy. Promote to Mixed so the marks are
+       honoured and the deletion actually means something.
+
+       Gated on isDelete because the ABSENCE of an `s` is ambiguous: typing on past
+       `AsTsCsG` to `AsTsCsGA` also leaves an unmarked gap, and promoting there would
+       silently turn the bond the user is still typing into a PO. Only a deletion can
+       have removed one.
+
+       Conjugate junctions are skipped -- they form no backbone bond, so they are
+       legitimately unmarked and must never trigger this. */
+    if(!isDelete) return false;
+    for(var i=0;i<p.tokens.length-1;i++){
+      if(p.tokens[i].nobond || p.tokens[i+1].nobond) continue;
+      if(!p.marks[i]){ S[key]='Mixed'; save(); return true; }
+    }
   }catch(_e){ ocFail('promoteMixedIfNeeded#1',_e); }
   return false;
 }
@@ -4686,6 +4943,11 @@ function applySeqEdit(ta, nv, caret){     // programmatic sequence edit (token-a
   const isAnti=ta.matches("[data-antiseq]"), seqKey=isAnti?'antiSeq':'seq', sel=isAnti?"[data-antiseq]":"[data-seq]";
   const fKey=isAnti?S.antiFive:S.five, fThio=isAnti?false:S.fiveThio, threeK=isAnti?S.antiThree:S.three;
   const typeKey=isAnti?(S.antiType||S.type):S.type;
+  /* R55c: ta.value is still the PRE-edit text at this point (it is written further
+     down), so this is the only place a programmatic edit can tell a delete from an
+     insert -- which is exactly what the PS -> Mixed promotion needs. Covers the
+     Quick Insert backspace and the token-aware delete. */
+  const _prevLen=String(ta.value||'').length;
   nv=normalizeSeqCase(nv);                     /* R52 P1-28, same rule for programmatic edits */
   nv=enforceFive(nv,fKey,fThio,typeKey); nv=enforceThree(nv,threeK);
   if(typeof formatEditorValue==='function'){
@@ -4697,7 +4959,7 @@ function applySeqEdit(ta, nv, caret){     // programmatic sequence edit (token-a
   /* R54b: the same PO -> Mixed safety the typed path has had since r32. Without
      it, inserting `s` from Quick Insert put the marker in the sequence and left
      the mass computed as plain PO. */
-  var _promoted=(typeof promoteMixedIfNeeded==='function') && promoteMixedIfNeeded(nv, isAnti);
+  var _promoted=(typeof promoteMixedIfNeeded==='function') && promoteMixedIfNeeded(nv, isAnti, nv.length < _prevLen);
   const rmax=nv.length-lockRight(threeK); const c=Math.max(Math.min(caret,rmax), lockLen(fKey));
   try{ ta.setSelectionRange(c,c); }catch(_){ /* focus / caret / scroll restoration on a node that may already be gone -- cosmetic, no value is shown or hidden by it */ }
   if(_promoted){ applyAll(); }
@@ -6540,6 +6802,7 @@ function renderControls(){
   // sense textarea value sync (don't clobber while typing)
   var ta=_q('[data-seq]');
   if(ta && document.activeElement!==ta){ ta.value=(typeof formatEditorValue==='function')?formatEditorValue(S.seq,{fKey:S.five,fThio:S.fiveThio,threeKey:S.three,typeKey:S.type,sKey:'seq',isAnti:false}):S.seq; ta.placeholder=placeholderFor(); }
+
   // Strand mode is presented as Single/Duplex, while the preserved engine values remain off/mirror/custom.
   var mode=S.duplexMode, awrap=_q('[data-antiwrap]');
   if(mode!=='mirror' && mode!=='custom') mode='off';
@@ -6601,7 +6864,13 @@ function renderControls(){
       if(antigen) antigen.hidden=false;
       if(antinote) antinote.textContent='Reverse-complement of the sense strand · read-only';
     } else if(mode==='custom'){
-      if(ata){ ata.readOnly=false; ata.removeAttribute('aria-readonly'); if(document.activeElement!==ata) ata.value=S.antiSeq||''; }
+      /* R55 fix: THE writer for the manual antisense field, and it wrote raw
+         S.antiSeq -- so the box showed ungrouped bases while the sense field beside
+         it and the Live Result panel were both IDT-grouped. Never had a formatter
+         call at all; the sense field has had one since R33. Same formatter, same
+         activeElement guard. */
+      if(ata){ ata.readOnly=false; ata.removeAttribute('aria-readonly');
+        if(document.activeElement!==ata) ata.value=(typeof _fmtSeqField==='function')?_fmtSeqField(S.antiSeq||'',true):(S.antiSeq||''); }
       if(antichem) antichem.hidden=false;
       if(antictl){ antictl.hidden=false; antictl.removeAttribute('aria-hidden'); }
       if(antirule) antirule.style.display='none';
@@ -6653,12 +6922,41 @@ function renderRowAnns(r, valid){
   function setAnn(cset, html){ var seg=_q('[data-cset="'+cset+'"]'); if(!seg) return; var row=seg.closest('.crow'); if(!row) return; var a=row.querySelector('.ann'); if(a) a.innerHTML=html; }
   var T=(typeof S!=='undefined')?S.type:'DNA';
   setAnn('type', T==='RNA' ? '2′-OH · <b>r</b>' : (T==='Hybrid' ? 'per base · <b>d / r</b>' : '2′-H · <b>d</b>'));
-  var bmass=0; (r.bonds||[]).forEach(function(b){ bmass+=(typeof LINK!=='undefined'&&LINK[b])?LINK[b]:0; });
-  setAnn('linkage', (valid && r.bonds && r.bonds.length)
-     ? '<b>'+r.bonds.length+' bond'+(r.bonds.length===1?'':'s')+' · +'+bmass.toFixed(2)+' Da</b>'
-     : ('PO +'+((typeof LINK!=='undefined')?LINK.PO.toFixed(2):'61.96')+' · PS +'+((typeof LINK!=='undefined')?LINK.PS.toFixed(2):'78.03')+' Da/bond'));
-  if(typeof FIVE!=='undefined'){ var f5=(FIVE[r.five]||0)+((r.five==='phosphate'&&r.fiveThio&&typeof FIVE_THIO_DELTA!=='undefined')?FIVE_THIO_DELTA:0); setAnn('five', '+'+f5.toFixed(2)+' Da'); }
-  var t3=document.getElementById('three-end'); if(t3){ var row3=t3.closest('.crow'); if(row3){ var a3=row3.querySelector('.ann'); if(a3 && typeof THREE!=='undefined') a3.textContent='+'+((THREE[r.three]||0)).toFixed(2)+' Da'; } }
+  var bmass=(r.bondsMass!=null)?r.bondsMass:0;   // M2: includes the 3'-inverted linkage
+  /* R55b: was ONE nowrap string in a hard 128px column. A 120-mer reads
+     "119 bonds · +7373.72 Da" = 166px, so it leaked out of the panel at every width
+     from 768px up -- and it only grows with strand length. Now two atomic chunks:
+     one line when they fit, two right-aligned lines when they do not, never a clip.
+     The middle "·" is gone deliberately -- on a wrap it dangled at the end of the
+     first line. Mass gets thousands separators to match the result panel's 24,592.03. */
+  var _n2=function(v){ try{ return v.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }catch(_){ return v.toFixed(2); } };
+  /* R55b: the bond COUNT describes the row, the mass IS the row's value -- so the
+     count moves into the label's existing <small> slot, which is in the flexible
+     column and can grow forever, and the fixed 140px value column carries one short
+     number. Chunking the annotation instead kept it inside the box but left the
+     linkage row permanently two lines tall next to two one-line rows.
+     "Internucleotide bond" comes back whenever there is no strand to count. */
+  function setSub(cset, text){
+    var seg=_q('[data-cset="'+cset+'"]'); if(!seg) return;
+    var row=seg.closest('.crow'); if(!row) return;
+    var sm=row.querySelector('.cl small'); if(sm) sm.textContent=text;
+  }
+  var _nb=(valid && r.nBonds) ? r.nBonds : 0;
+  setSub('linkage', _nb ? (_nb.toLocaleString()+' bond'+(_nb===1?'':'s')) : 'Internucleotide bond');
+  setAnn('linkage', _nb
+     ? '<b>+'+_n2(bmass)+' Da</b>'
+     : ('<span>PO +'+((typeof LINK!=='undefined')?LINK.PO.toFixed(2):'61.96')+'</span><span>PS +'+((typeof LINK!=='undefined')?LINK.PS.toFixed(2):'78.03')+' Da/bond</span>'));
+  /* R55: 5′ and 3′ share one row now, so they share one annotation -- the combined
+     end-group contribution, which is the number a user actually wants. */
+  var _ea=_q('[data-endann]');
+  if(_ea){
+    /* M2: r.endMass is the 5'+3' contribution with the inverted linkage moved out
+       to the linkage row, so this row and that row no longer both claim the same
+       61.96 Da. The <option> label still shows the end group's TOTAL (304.20 for
+       inverted dT) -- a different, also-true statement. */
+    var _em=(r.endMass!=null)?r.endMass:0;
+    _ea.innerHTML=_em ? ('<b>+'+_n2(_em)+' Da</b>') : '<span>+0.00 Da</span>';
+  }
   setAnn('duplexMode', S.duplexMode==='mirror'?'mirror':(S.duplexMode==='custom'?'manual':'single'));
 }
 /* =====================================================================
@@ -6784,6 +7082,11 @@ function renderResultPanel(){
       else if(r.uToT) wt='U is not a DNA base, so it is being counted as T. Switch the backbone to RNA if you meant uridine.';
       else if(r.conjMid) wt='Conjugate '+(r.conjMid.length>1?'('+r.conjMid+')':r.conjMid)+' sits inside the sequence. A conjugate adds mass but makes no backbone phosphate.';
     }
+    /* R55 #3: the text is still computed on every keystroke; only its VISIBILITY
+       waits for blur, via body[data-seqfocus] in the R55 stylesheet.
+       promoteMixedIfNeeded() is deliberately NOT deferred -- deferring that would
+       leave the strand 16.06 Da per bond light with no warning at all.
+       Correctness on input, message on blur. */
     warn.textContent=wt; warn.hidden=!wt; }
 
   /* R53b: the antisense surfaces are painted BEFORE the early return below, so
@@ -6812,7 +7115,7 @@ function renderResultPanel(){
         ? 'Check sequence. Hybrid mode needs every base prefixed with d or r. No result.'
         : (danglingS
             ? 'Check sequence. A phosphorothioate marker s has no base after it. No result.'
-            : ('Check sequence. Unrecognised '+(badArr.length>1?'tokens ':'token ')+badArr.join(', ')+'. No result.'));
+            : ('Check sequence. Unrecognised '+(badArr.length>1?'codes ':'code ')+badArr.join(', ')+'. No result.'));
       var ei=_q('#result .e-invalid');
       if(ei){ if(r.needPrefix) ei.innerHTML='Nothing to calculate. <b>Hybrid</b> mode needs a <b>d</b> or <b>r</b> in front of every base (dA, rU). Bare bases are not counted.';
         else if(danglingS) ei.innerHTML='Nothing to calculate. There is a phosphorothioate marker <b>“s”</b> with no base after it. Add the next base, or delete the <b>“s”</b>.';
@@ -6862,7 +7165,7 @@ function renderResultPanel(){
 
   var chips=_q('#result .r-chips');
   if(chips){ var cc=['<span>'+r.n+' nt</span>'];
-    if(r.bonds.length){ cc.push('<span>'+r.nPO+' PO</span>'); if(r.nPS) cc.push('<span>'+r.nPS+' PS</span>'); }
+    if(r.nBonds){ cc.push('<span>'+r.nPO+' PO</span>'); if(r.nPS) cc.push('<span>'+r.nPS+' PS</span>'); }
     cc.push('<span>net '+r.charge+'</span>');
     var comp=['A','C','G','T','U'].filter(function(b){return r.counts[b];}).map(function(b){return b+r.counts[b];}).join(' ');
     if(comp) cc.push('<span>'+comp+'</span>');
@@ -6873,7 +7176,7 @@ function renderResultPanel(){
     r.tokens.forEach(function(t){ if(!t.custom){ var lab=((t.sugar==='d'||t.sugar==='r')?t.sugar:t.sugar)+t.base; if(sug[lab]==null){sug[lab]=0;order.push(lab);} sug[lab]++; }
       else { var lab2=t.code.length>1?'('+t.code+')':t.code; if(sug[lab2]==null){sug[lab2]=0;order.push(lab2);} sug[lab2]++; } });
     var parts=order.map(function(k){ return sug[k]+' '+k; });
-    var _bn=r.bonds.length, _brLbl;
+    var _bn=r.nBonds, _brLbl;
     if(r.nPS===0) _brLbl=_bn+' phosphodiester bridge'+(_bn===1?'':'s');
     else if(r.nPO===0) _brLbl=_bn+' phosphorothioate bridge'+(_bn===1?'':'s');
     else _brLbl=r.nPO+' phosphodiester + '+r.nPS+' phosphorothioate bridges';
@@ -6890,12 +7193,14 @@ function renderResultPanel(){
 
   // trace
   var sumNuc=0; r.tokens.forEach(function(t){ sumNuc += t.custom? t.mass : NUCLEO[t.sugar][t.base]; });
-  var bondsMass=0; r.bonds.forEach(function(b){ bondsMass+=LINK[b]; });
+  /* M2: r.bondsMass includes the 3'-inverted linkage, so "terminal groups" falls
+     to the inverted NUCLEOSIDE alone and the three lines still sum to the MW. */
+  var bondsMass=r.bondsMass;
   var term=r.mw - sumNuc - bondsMass;
   var trs=document.querySelectorAll('#result .p-trace .tr');
   if(trs.length>=4){
     trs[0].querySelector('span').textContent='Σ free nucleosides'; trs[0].querySelector('.tv').textContent=fmt2(sumNuc);
-    trs[1].querySelector('span').textContent='+ '+r.bonds.length+' × '+(r.nPS===0?'PO':(r.nPO===0?'PS':'PO/PS'))+' bridge'; trs[1].querySelector('.tv').textContent=fmt2(bondsMass);
+    trs[1].querySelector('span').textContent='+ '+r.nBonds+' × '+(r.nPS===0?'PO':(r.nPO===0?'PS':'PO/PS'))+' bridge'; trs[1].querySelector('.tv').textContent=fmt2(bondsMass);
     /* R52 (audit LOW): verified live as "+ 5′/3′ terminal groups −0.00" -- a
        negative-zero artifact on a line that should read 0.00. */
     trs[2].querySelector('span').textContent='+ 5′/3′ terminal groups'; trs[2].querySelector('.tv').textContent=fmt2(Object.is(term,-0)?0:term);
@@ -7025,7 +7330,10 @@ function renderConcShell(){
     :(eps>0?('ε₂₆₀ '+eps.toLocaleString()+' M⁻¹cm⁻¹'+(_dupEps?' <b>· sum of both strands</b>':''))
            :'ε₂₆₀, enter a sequence');
   var _dn=document.getElementById('c-eps-dup');
-  if(!_dn && epsn && epsn.parentNode){ _dn=document.createElement('div'); _dn.id='c-eps-dup'; _dn.className='custom-mw-note'; epsn.parentNode.insertBefore(_dn, epsn.nextSibling); }
+  /* Same correction as #c-eps-est: this is a three-line sentence and it was being
+     inserted INTO the flex .sechead, beside the epsilon figure. */
+  var _dh=epsn&&epsn.closest?epsn.closest('.sechead'):null;
+  if(!_dn && _dh && _dh.parentNode){ _dn=document.createElement('div'); _dn.id='c-eps-dup'; _dn.className='eps-note'; _dh.parentNode.insertBefore(_dn, _dh.nextSibling); }
   if(_dn){
     _dn.textContent = (_dupEps && eps>0)
       ? 'This ε₂₆₀ is the two strands added together. A duplex that has annealed absorbs less light than that, so an A₂₆₀ reading will come out low. Use the ng/µL route, or type in a measured ε₂₆₀, when the number has to be right.'
@@ -7051,7 +7359,20 @@ function renderConcShell(){
   var path=(isFinite(pathNum)&&pathNum>0)?pathNum:1;
   var C1 = a260mode ? (a260/(eps*path)) : (MW>0?(nd*1e-3)/MW:0);   // mol/L
   var su=S.stockUnit||'µM';
-  var stock=document.getElementById('c-stock'); if(stock) stock.textContent = C1>0?nfmt(C1/uf(su,C_UNITS)):'0';
+  /* M1: only the A260 route inherits the eps approximation. The ng/uL route runs
+     on MW, which is exact for every monomer including conjugates, so it stays
+     unmarked -- which itself tells the user which of the two readings to trust. */
+  var _eq=(typeof window.epsQuality==='function')?window.epsQuality(src.tokens):null;
+  var _estOn=!!(_eq && a260mode && C1>0);
+  var stock=document.getElementById('c-stock'); if(stock) stock.textContent = C1>0?((_estOn?'≈':'')+nfmt(C1/uf(su,C_UNITS))):'0';
+  var _en=document.getElementById('c-eps-est');
+  /* After the <h3>, not inside it: .sechead is a flex row, so a note inserted next
+     to #c-eps lands on the SAME LINE as the value it qualifies -- and .custom-mw-note
+     is brighter than .sh-note, so the caveat outshouted the number. Its own line,
+     subordinate weight (see .eps-note in the R56 stylesheet). */
+  var _hd=epsn&&epsn.closest?epsn.closest('.sechead'):null;
+  if(!_en && _hd && _hd.parentNode){ _en=document.createElement('div'); _en.id='c-eps-est'; _en.className='eps-note'; _hd.parentNode.insertBefore(_en, _hd.nextSibling); }
+  if(_en){ _en.textContent=_estOn?_eq.note:''; _en.hidden=!_estOn; }
   /* [data-dilnote] is set in the R39 block below -- it names the stock the dilution
      actually uses, which is no longer necessarily the one measured here. */
   var stocku=document.getElementById('c-stocku'); if(stocku){ if(stocku.tagName==='SELECT') stocku.value=su; else stocku.textContent=su; }
@@ -7396,25 +7717,53 @@ function renderCatShell(){
   });
   var uniqShown=new Set(rows.map(function(s){return s.code;})).size;
   var cc=_q('.view-cat .catcount'); if(cc) cc.innerHTML='<b>'+rows.length+'</b> listing'+(rows.length===1?'':'s')+' · '+uniqShown+' unique'+(Object.keys(lib).length?(' · '+Object.keys(lib).length+' in your library'):'');
-  list.innerHTML = rows.length ? rows.map(function(s){
+  /* U5 (R56): was 45 free-tier cards at 79-104px ragged = 4,213px, with no
+     grouping and no index. At the paid 351 that is ~33,000px of flat list -- about
+     70 phone screens -- and a ragged height is also what makes the list
+     impossible to virtualise later.
+
+     Three changes, all here and in .catcard's CSS:
+       1. CATEGORY GROUP HEADERS, sticky, with a per-group count. 351 listings
+          become ~8 navigable blocks. Category moves OUT of the row meta, where it
+          was repeated on every single line, and becomes the thing you scan by.
+       2. FIXED 64px ROW. Code and mass are promoted to real columns -- they are
+          what identifies a monomer at the bench -- and the meta line is clamped
+          to one line so no row can grow. Fixed height is the precondition for
+          virtualisation.
+       3. Vendor, catalogue number and verification drop to a 10.5px second line:
+          still present, no longer competing with the name.
+     Insert stays the filled primary; + Library keeps its own words (the Catalog
+     tab's existing vocabulary) but not the fill. Group order follows first
+     appearance, so the curated free-30 order survives. */
+  var _groups=[], _byCat={};
+  rows.forEach(function(s){ var k=(s.category||'Other').replace("2'","2′");
+    if(!_byCat[k]){ _byCat[k]=[]; _groups.push(k); } _byCat[k].push(s); });
+  function _catRow(s){
     var tag=s.code.length>1?'('+s.code+')':s.code, inlib=!!lib[s.code], conj=(s.kind==='conj');
     var perPosition=s.hasPhos?s.mass:(s.mass+LINK.PO);
-    var massTxt=conj?('+'+s.mass.toFixed(2)+' g/mol once'):(perPosition.toFixed(2)+' g/mol/position');
+    var massVal=conj?('+'+s.mass.toFixed(2)):perPosition.toFixed(2);
+    var massUnit=conj?'g/mol once':'g/mol · per position';
     var massStatus=s.verified
       ? '<span class="ok">✓ '+cbEsc(s.verification||'verified mass')+'</span>'
       : '<span class="needs">mass needs verification</span>';
-    var formulaStatus=s.nucleoside_formula?'':'<span class="needs">average only · monoisotopic needs a formula</span>';
+    var formulaStatus=s.nucleoside_formula?'':'<span class="needs">average only</span>';
     var src=(s.source&&/^https?:\/\//i.test(s.source))
       ? '<a class="c-src" href="'+cbEsc(s.source)+'" target="_blank" rel="noopener noreferrer" aria-label="Open the '+cbEsc(s.vendor||'vendor')+' product page for '+cbEsc(tag)+' in a new tab">↗ '+cbEsc(s.vendor||'source')+'</a>'
       : '<span>'+cbEsc(s.vendor||'')+'</span>';
-    return '<div class="catcard"><div class="ci-main"><div class="cn">'+cbEsc(s.product_name||s.name)+'</div>'+
-      '<div class="c2"><span class="code">'+cbEsc(tag)+'</span>'+src+(s.catalog_no?'<span class="c-cat">#'+cbEsc(s.catalog_no)+'</span>':'')+'<span class="mass">'+massTxt+'</span><span>'+cbEsc((s.category||'').replace("2'","2′"))+'</span>'+
-      massStatus+formulaStatus+'</div></div>'+
+    return '<div class="catcard">'+
+      '<span class="code">'+cbEsc(tag)+'</span>'+
+      '<div class="ci-main"><div class="cn">'+cbEsc(s.product_name||s.name)+'</div>'+
+      '<div class="c2">'+src+(s.catalog_no?'<span class="c-cat">#'+cbEsc(s.catalog_no)+'</span>':'')+massStatus+formulaStatus+'</div></div>'+
+      '<span class="mass"><b>'+massVal+'</b><small>'+massUnit+'</small></span>'+
       '<div class="ci-act"><button type="button" class="btn-ins" data-ins="'+cbEsc(s.code)+'" aria-label="Insert '+cbEsc(tag)+' into the sequence">Insert</button>'+
       (inlib?('<button type="button" class="btn-lib inlib" data-unlib="'+cbEsc(s.code)+'" aria-label="Remove '+cbEsc(tag)+' from your library">✓ Library</button>')
             :('<button type="button" class="btn-lib" data-lib="'+cbEsc(s.code)+'" aria-label="Add '+cbEsc(tag)+' to your moremon library">+ Library</button>'))+
       '</div></div>';
-  }).join('') : '<div class="catcard" style="justify-content:center;color:var(--muted)">No matches. Try a different vendor, category, or search term.</div>';
+  }
+  list.innerHTML = rows.length ? _groups.map(function(k){
+    return '<div class="catgrp"><span>'+cbEsc(k)+'</span><span class="catgrp-n">'+_byCat[k].length+'</span></div>'+
+      _byCat[k].map(_catRow).join('');
+  }).join('') : '<div class="cat-empty">No matches. Try a different vendor, category, or search term.</div>';
 }
 document.body.addEventListener('click', function(e){
   var vb=e.target.closest('.view-cat [data-vendor]');
@@ -8041,13 +8390,20 @@ function scanEditorUnits(body){
 function formatEditorValue(raw,A){
   raw=String(raw==null?'':raw);
   var start=0, prefix='';
-  if(A.fKey==='DMT'){
-    var dm=raw.match(/^DMT\s*/); if(!dm) return raw;
-    start=dm[0].length; prefix='DMT ';
-  } else if(A.fKey==='phosphate'){
-    var pm=raw.match(/^P\s*/); if(!pm) return raw;
-    start=pm[0].length; prefix='P ';
-    if(A.fThio){
+  /* R55c: derived from FIVE_PREFIX. This formatter used to carry its own copy of the
+     grammar and that is exactly what broke in R55 -- see the FIVE_PREFIX block. */
+  var _TBL=window.FIVE_PREFIX||{}, _KEYS=window.FIVE_PREFIX_KEYS||[];
+  var _pfx=_TBL[A.fKey]||'';
+  if(_pfx){
+    var _tag=_pfx.trim();
+    /* a shorter tag must never swallow a longer one (P vs PP vs PPP) */
+    for(var _pk=0;_pk<_KEYS.length;_pk++){
+      var _lt=(_TBL[_KEYS[_pk]]||'').trim();
+      if(_lt.length>_tag.length && raw.indexOf(_lt)===0) return raw;
+    }
+    var _m=raw.match(new RegExp('^'+_tag+'\\s*')); if(!_m) return raw;
+    start=_m[0].length; prefix=_pfx;
+    if(A.fKey==='phosphate' && A.fThio){
       if(raw[start]!=='s') return raw;
       start++; while(start<raw.length&&/\s/.test(raw[start])) start++;
       prefix='P s ';
@@ -8236,7 +8592,7 @@ function quickStripHTML(target){
   var _solo=(shownRows.length===1);
   var _rows=shownRows.map(function(row,ri){ return quickRowHTML(target,row,_solo,(_solo&&ri===0)?quickToolsHTML(target,false):''); }).join('');
   var matrix='<div class="qi-group qi-matrix" role="group" aria-label="'+(advanced?'Ordered chemistry matrix':'Natural bases')+'"><div class="qi-group-title">'+(advanced?'Ordered chemistry':'Natural bases')+'</div><div class="qi-rows">'+(_solo?'':quickToolsHTML(target,true))+_rows+'</div></div>';
-  var saved=shownPersonal.length?'<div class="qi-group qi-saved" role="group" aria-label="Favorite and recent custom or vendor tokens"><div class="qi-group-title">Favorites &amp; recent</div><div class="qi-tokenbox">'+shownPersonal.map(tokChip).join('')+'</div></div>':'';
+  var saved=shownPersonal.length?'<div class="qi-group qi-saved" role="group" aria-label="Favorite and recent custom or vendor monomers"><div class="qi-group-title">Favorites &amp; recent</div><div class="qi-tokenbox">'+shownPersonal.map(tokChip).join('')+'</div></div>':'';
   var layout='<div class="qi-layout'+(advanced?' qi-with-mods':'')+(personal.length?' qi-has-saved':'')+'" id="qi-content-'+target+'">'+matrix+saved+'</div>';
   var expand=(isPhone&&(hidden>0||expanded))?'<button type="button" class="qi-expand" data-qi-expand data-fk="quick-expand" aria-expanded="'+(expanded?'true':'false')+'" aria-controls="qi-content-'+target+'">'+(expanded?'Show fewer tokens':'Show '+hidden+' more token'+(hidden===1?'':'s'))+'</button>':'';
   return '<div class="qi">'+head+layout+expand+'</div>';
@@ -8318,6 +8674,18 @@ function renderMoreMon(){
     var html=quickStripHTML(target)+(MOREMON.open[target]?panelHTML(target):'');
     if(host._mmSig===html && host.firstChild) return;   // identical → skip (keeps focus/caret)
     host._mmSig=html; host.innerHTML=html;
+    /* R55 #2: the More monomers trigger sat top-right of the Quick Insert header
+       while the panel it discloses opens at the BOTTOM of the block -- a
+       disclosure control nowhere near its disclosure. Order is now
+       bases -> Show all bases -> More monomers -> panel. Relocated after render
+       rather than in quickHTML so the header builder and its data-fk focus
+       restoration are untouched. */
+    try{
+      var _qi=host.querySelector('.qi'), _op=host.querySelector('[data-mm-open]');
+      if(_qi&&_op&&_op.parentNode!==_qi) _qi.appendChild(_op);
+      var _ex=host.querySelector('[data-qi-expand]');
+      if(_ex){ _ex.textContent=(_ex.getAttribute('aria-expanded')==='true')?'Show fewer bases':'Show all bases'; if(_op) _qi.appendChild(_op); }
+    }catch(_e){}
   });
   if(fk&&fkHost){ var host2=document.querySelector('[data-moremon-host="'+fkHost+'"]'); if(host2){ var el=host2.querySelector('[data-fk="'+(window.CSS&&CSS.escape?CSS.escape(fk):fk.replace(/"/g,'\\"'))+'"]'); if(el){ try{ el.focus(); if(el.matches('[data-mm-search]')){ el.setSelectionRange(selS,selE); } }catch(_){ /* focus / caret / scroll restoration on a node that may already be gone -- cosmetic, no value is shown or hidden by it */ } } } }
 }
@@ -9188,7 +9556,12 @@ try{
     var host=_q('[data-lab-scope]',v);
     var flat=[_q('.histbar',v), _q('[data-histpro]',v), _q('.hist-th-wrap',v)];
     if(!pro){ if(host) host.remove(); var ll0=_q('[data-lab-lib]',v); if(ll0) ll0.hidden=true; flat.forEach(function(el){ if(el) el.hidden=false; }); return; }
-    flat.forEach(function(el){ if(el) el.hidden=true; });                        // Pro: the folder browser replaces the flat list
+    /* R55 #4: the toolbar is NEVER hidden. It used to be hidden along with the
+       flat list, so signing in REMOVED search, Export selected, Share selected,
+       Copy to lab and row multi-select -- a signed-in user had strictly fewer
+       features than a guest, on the one surface Pro is sold on. What swaps now is
+       only the LIST: personal scope keeps the same table a guest sees, so both
+       tiers get the same layout, and a lab scope brings up the folder browser. */
     var bar=_q('.histbar',v);
     if(!host){ host=document.createElement('div'); host.setAttribute('data-lab-scope',''); host.className='lab-scope'; if(bar&&bar.parentNode) bar.parentNode.insertBefore(host,bar); else v.insertBefore(host, v.firstChild); }
     var m=meta(); var scope=m.scope||'my';
@@ -9196,8 +9569,11 @@ try{
     var html='<span class="ls-l">Library</span><button type="button" class="ls-b'+(scope==='my'?' on':'')+'" data-ls-my>My library</button>';
     ls.forEach(function(l){ html+='<button type="button" class="ls-b lab'+(scope==='lab'&&meta().labId===l.lab_id?' on':'')+'" data-ls-labon data-labid="'+esc(l.lab_id)+'" title="Open the lab shared library">'+esc(l.name)+'</button>'; });
     host.innerHTML=html;
-    var ll=ensureLabLib(); if(ll) ll.hidden=false;
-    renderLabList();
+    var _my=(scope!=='lab');
+    flat.forEach(function(el){ if(el) el.hidden=false; });
+    var _tw=_q('.hist-th-wrap',v); if(_tw) _tw.hidden=!_my;
+    var ll=ensureLabLib(); if(ll) ll.hidden=_my;
+    if(!_my) renderLabList();
   }
   async function renderLabList(){ return renderFolderBrowser(); }
 
@@ -9567,7 +9943,10 @@ try{
 
   /* ---- compose a full engine string from a review row, then compute ---- */
   function composeFull(r){
-    var pre = r.five==='DMT' ? 'DMT ' : (r.five==='phosphate' ? ('P '+(r.fiveThio?'s ':'')) : '');
+    /* R55: fourth copy of the 5' prefix grammar, in the Scan review path. A
+       scanned 5'-triphosphate label composed as a bare sequence here, so the
+       reviewed strand computed ~239.94 Da light. */
+    var pre = ((window.FIVE_PREFIX&&window.FIVE_PREFIX[r.five])||'') + ((r.five==='phosphate'&&r.fiveThio)?'s ':'');
     var body=(r.seq||'').trim();
     if(!body) return '';
     try{ return enforceThree(pre+body, r.three||'OH'); }catch(_){ return pre+body; }
@@ -13768,6 +14147,319 @@ details.r-more > summary .lbl-mini{display:none}
   W.ocPublic={ open:docOpen, close:docClose, deleteAccount:openDelete, docs:function(){ return Object.keys(DOCS); } };
 
   if(D.readyState==='loading') D.addEventListener('DOMContentLoaded', boot); else boot();
+})();
+</script>
+<style id="r55-style">
+/* ═══ R55 ═══ appended last: later source wins every same-specificity tie below. */
+/* 1 · end-group pair -- 5′ left, 3′ right, one row */
+.crow.crow-ends .endpair{display:grid; grid-template-columns:1fr 1fr; gap:12px; min-width:0}
+.crow.crow-ends .endfld{display:flex; flex-direction:column; gap:5px; min-width:0}
+.crow.crow-ends .endfld label{font-family:var(--font-head); font-weight:600; font-size:12px; color:var(--muted)}
+.crow.crow-ends .endfld .selbox{width:100%; min-width:0}
+@media (max-width:600px){ .crow.crow-ends .endpair{grid-template-columns:1fr; gap:10px} }
+/* 2 · status beside the field name; clipped description (invariant 11 -- never display:none) */
+.sense-wrap .seq-top,.anti-wrap .seq-top{display:flex; align-items:center; gap:6px 12px; flex-wrap:wrap}
+.sense-wrap .seq-top>label,.anti-wrap .seq-top>label{flex:0 0 auto; white-space:nowrap}
+.sense-wrap .seq-top .seqstat,.anti-wrap .seq-top .seqstat{margin-top:0; font-size:12px; gap:6px; flex:0 1 auto; min-width:0; row-gap:2px}
+.sense-wrap .seq-top .seqstat .ok,.anti-wrap .seq-top .seqstat .ok{white-space:nowrap}
+.sense-wrap .seq-top .seqstat .has-seq,.anti-wrap .seq-top .seqstat .has-seq{display:inline-flex; align-items:center; gap:6px; flex-wrap:nowrap}
+.sense-wrap .seq-top .cnt,.anti-wrap .seq-top .cnt{margin-left:auto; flex:0 0 auto; white-space:nowrap}
+/* the blocking error is full-width and drops to its own line, directly above the box */
+.sense-wrap .seq-top .seq-err,.anti-wrap .seq-top .seq-err{flex:1 0 100%; margin-top:2px}
+.seq-desc.sr{position:absolute!important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0}
+.seqctl{margin-top:0; margin-bottom:10px}
+.moremon-host{margin-top:9px}
+/* 3 · the advisory waits for blur. (0,3,1) beats .warn[data-warn] (0,2,0);
+      the [hidden] guard still wins when there is no message at all. */
+body[data-seqfocus="sense"] .warn[data-warn]{display:none}
+body[data-seqfocus="antisense"] .warn[data-antiwarn]{display:none}
+/* R55b · the annotation column was starved and the toggle column was not.
+   Each .crow is its OWN grid container, so a max-content column would let the three
+   rows drift out of alignment with each other -- the widths stay fixed and 12px
+   simply moves from the label column (generous: "Internucleotide bond" needs ~130)
+   to the annotation column. Row total unchanged. Scoped to >=768px because the
+   <=767px `.crow{grid-template-columns:1fr}` rule is EARLIER in source at equal
+   specificity, so an unscoped rule here would silently kill the phone collapse. */
+@media (min-width:768px){
+  .crow{grid-template-columns:148px minmax(0,1fr) 140px; gap:12px}
+  /* the toggle gives up 3px a side so the one-line case survives longer strands */
+  .seg button{padding:9px 12px}
+}
+.crow .ann{display:flex; flex-wrap:wrap; justify-content:flex-end; align-items:baseline; gap:0 8px; white-space:normal; line-height:1.35}
+.crow .ann > b,.crow .ann > span{white-space:nowrap}
+@media (max-width:767px){ .crow .ann{justify-content:flex-start} }
+/* R56 M1 · the epsilon caveat is a footnote to the section header: its own line,
+   quieter than the figure it qualifies, and it disappears entirely when eps is
+   exact. --muted against --surface keeps it above the 4.5:1 body-text bar. */
+.eps-note{margin:-2px 0 8px; font-size:11.5px; line-height:1.45; color:var(--muted); max-width:62ch}
+.eps-note[hidden]{display:none}
+#c-eps-est{display:flex; align-items:baseline; gap:6px}
+/* invariant 14, and I broke it with an ID: #c-eps-est{display:flex} is (1,0,0) and
+   outranks .eps-note[hidden]{display:none} at (0,1,1), so the note stayed in flow
+   when hidden and painted a bare ≈ under the heading on every canonical strand.
+   The guard has to match the rule's own strength. */
+#c-eps-est[hidden]{display:none}
+#c-eps-est::before{content:"≈"; font-weight:700; color:var(--accent); font-size:13px; line-height:1}
+/* ═══ R56 · Part 3 target + type floors ═══════════════════════════════════
+   U1 (.c-src) is NOT here: it was already fixed with a centred ::after hit area,
+   24px at top level and 44px under @media (max-width:1099px). The earlier audit
+   reported it failing because the probe measured getBoundingClientRect(), which
+   does not include an absolutely-positioned pseudo-element. Nothing to change --
+   recorded so the next audit does not "fix" it again. */
+
+/* U2 · .hn-edit had min-height:44px ONLY under @media (max-width:767px), so the
+   768-1099px band (44px bar) and desktop (24px bar) both fell through -- it
+   measured 21.5px at 1280. Mirrors .htable .hsort, which already does this
+   correctly. all:unset makes it inline, and min-height does not apply to a
+   non-replaced inline box, so the display change is load-bearing. */
+.hn-edit{display:inline-flex; align-items:center; min-height:24px}
+@media (max-width:1099px){ .hn-edit{min-height:44px} }
+
+/* U3 · the Library select checkbox was 24px at every width -- fine against the
+   desktop 24px bar, 55% of the phone 44px bar, and it is the entry point for
+   share and export. A native checkbox cannot carry a pseudo-element and ignores
+   padding, so the target cannot be grown without appearance:none. Doing that lets
+   the TARGET be 44px while the MARK stays 24px, which is the only way to get the
+   hit area without a giant chequerbox. Drawn from theme tokens so both modes and
+   the accent picker follow. */
+.htable input[type=checkbox]{appearance:none; -webkit-appearance:none; position:relative; width:24px; height:24px; background:none; border:0; cursor:pointer; flex:0 0 auto}
+.htable input[type=checkbox]::before{content:""; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:22px; height:22px; box-sizing:border-box; border-radius:6px; border:2px solid var(--line-2); background:var(--surface-2)}
+.htable input[type=checkbox]:hover::before{border-color:var(--accent)}
+.htable input[type=checkbox]:checked::before{background:var(--accent); border-color:var(--accent)}
+.htable input[type=checkbox]::after{content:""; position:absolute; left:50%; top:50%; width:10px; height:5px; border-left:2.5px solid var(--accent-ink); border-bottom:2.5px solid var(--accent-ink); transform:translate(-50%,-72%) rotate(-45deg); opacity:0}
+.htable input[type=checkbox]:checked::after{opacity:1}
+.htable input[type=checkbox]:focus-visible{outline:2px solid var(--accent); outline-offset:-4px; border-radius:9px}
+@media (max-width:1099px){
+  .htable input[type=checkbox]{width:44px; height:44px}
+  .htable td[data-th="Select"] input[type=checkbox]{margin:0}
+}
+
+/* U4 · both below the project's own 11px floor, at every viewport. The avatar is
+   the only place a signed-in identity appears in the top bar. */
+.oc-ava{font-size:11px}
+.acct-btn .caret{font-size:11px}
+
+/* U5 · catalog rows. Flat list with sticky category headers; the card chrome
+   (border + 12px radius + gap) becomes a single hairline between rows, which is
+   what lets 351 listings read as a directory rather than 351 objects. */
+.view-cat .catlist{gap:0; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:var(--surface)}
+.view-cat .catgrp{position:sticky; top:0; z-index:2; display:flex; align-items:baseline; gap:10px;
+  background:var(--surface-2); border-bottom:1px solid var(--line-2); padding:8px 14px;
+  font-family:var(--font-head); font-weight:700; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.view-cat .catgrp-n{margin-left:auto; letter-spacing:0; font-weight:600; color:var(--text)}
+.view-cat .catcard{display:grid; grid-template-columns:minmax(84px,auto) minmax(0,1fr) auto auto;
+  grid-template-areas:"code main mass act"; align-items:center; column-gap:14px;
+  min-height:64px; padding:9px 14px; border:0; border-radius:0; border-bottom:1px solid var(--line); background:none}
+.view-cat .catcard:last-child{border-bottom:0}
+.view-cat .catcard:hover{background:var(--surface-2)}
+.view-cat .catcard>.code{grid-area:code; justify-self:start; font-size:12.5px}
+.view-cat .catcard .ci-main{grid-area:main; min-width:0}
+.view-cat .catcard .cn{font-size:13.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.view-cat .catcard .c2{grid-area:auto; margin-top:2px; font-size:10.5px; gap:3px 9px; flex-wrap:nowrap; overflow:hidden; white-space:nowrap}
+.view-cat .catcard .mass{grid-area:mass; text-align:right; white-space:nowrap; line-height:1.2}
+.view-cat .catcard .mass b{display:block; font-family:var(--font-num); font-size:13px; color:var(--text)}
+.view-cat .catcard .mass small{font-size:9.5px; color:var(--muted)}
+.view-cat .catcard .ci-act{grid-area:act}
+.view-cat .cat-empty{padding:26px 14px; text-align:center; color:var(--muted); font-size:13px}
+/* the row is 64px, so the buttons must fit inside it and still clear the bars */
+.view-cat .catcard .btn-ins,.view-cat .catcard .btn-lib{min-height:38px; padding:8px 13px}
+@media (max-width:1099px){ .view-cat .catcard .btn-ins,.view-cat .catcard .btn-lib{min-height:44px} }
+/* Phone: the actions column SPANS both text rows rather than taking a third row
+   of its own. A stacked full-width action row measured 170px per listing -- worse
+   than the 94px cards this replaced -- because two 44px targets plus three text
+   rows cannot coexist vertically. Spanning gets the same 44px targets in ~84px.
+   + Library goes icon-only here: Insert is the action people came for, the glyph
+   keeps the ✓/＋ state the Catalog already uses, and the aria-label carries the
+   words for screen readers. */
+@media (max-width:600px){
+  /* The name gets the WIDE row, not a middle column. With "code main act" the
+     code chip claimed 90px of a 360px screen and left the product name 74px --
+     narrower than the chip beside it. Name now spans two columns on row 1; code
+     and mass share row 2, where they are both short and read as one identity
+     line; actions span both rows so the 44px targets cost no extra height. */
+  .view-cat .catcard{grid-template-columns:minmax(0,84px) minmax(0,1fr) auto; grid-template-areas:"main main act" "code mass act";
+    column-gap:9px; row-gap:4px; min-height:0; padding:10px 12px; align-items:center}
+  .view-cat .catcard>.code{align-self:center; justify-self:start; font-size:12px; max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+  /* Hard ceiling on both text rows. Without it a long product name in the ~140px
+     the middle column gets at 360px wrapped to four lines and produced a 424px
+     listing next to a 105px one -- the exact raggedness this round set out to
+     remove, just relocated to the phone. Two lines of name is enough to tell two
+     amidites apart; the full name is in the title attribute and the vendor page. */
+  .view-cat .catcard .cn{white-space:normal; font-size:13px; line-height:1.25;
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden}
+  .view-cat .catcard .c2{flex-wrap:nowrap; white-space:nowrap; overflow:hidden; gap:2px 8px; mask-image:linear-gradient(90deg,#000 88%,transparent)}
+  .view-cat .catcard .mass{text-align:left; display:flex; align-items:baseline; gap:5px}
+  .view-cat .catcard .mass b{display:inline; font-size:12px}
+  .view-cat .catcard .mass small{font-size:9.5px}
+  .view-cat .catcard .ci-act{display:flex; gap:6px; align-self:center}
+  .view-cat .catcard .btn-ins{padding:8px 11px; font-size:11.5px}
+  .view-cat .catcard .btn-lib{width:44px; min-width:44px; padding:0; font-size:0; display:grid; place-content:center}
+  .view-cat .catcard .btn-lib::before{content:"＋"; font-size:16px; line-height:1}
+  .view-cat .catcard .btn-lib.inlib::before{content:"✓"}
+}
+/* ═══ R56 · Part 6 ═══════════════════════════════════════════════════════
+
+   P6b · Library had quietly forked its own control language. Measured at 1280:
+     .histbar .hb        40px  r999  (below the 44px bar)
+     .hact button        44px  r8px
+     .hn-edit            26px  r6px
+     .htable .hsort      28px  r6px
+   against 9px everywhere else in the app (.btn-ins, .btn-lib, .selbox, .inp).
+   Radii collapse to TWO values -- 9px for rectangular controls, 999px for chips
+   and segmented filters -- which is the rule the rest of the app already follows.
+   Sizes are not touched beyond the one that fails a bar. */
+.view-hist .histbar .hb{min-height:44px}
+.view-hist .htable .hact button{border-radius:9px}
+.view-hist .hn-edit,.view-hist .htable .hsort{border-radius:9px}
+.hb-scan{display:inline-flex; align-items:center; gap:6px}
+
+/* P6d · #c-stocku was the one picker r40b missed: transparent background, no
+   border, --muted text -- exactly the "muted text floating in the box" that round
+   was meant to eliminate, and it sits on the MOST prominent figure in the panel.
+   Given the segment treatment against .big's own emphasis tokens (it is the navy
+   instrument panel in both themes, so it cannot borrow --surface-2). */
+.big .bu-sel{background:color-mix(in srgb,var(--emph-fg) 12%,transparent); color:var(--emph-val);
+  border:1px solid var(--pnl-line-ctl); border-radius:8px; padding:0 8px; margin-left:2px}
+.big .bu-sel:hover{background:color-mix(in srgb,var(--emph-fg) 20%,transparent); color:var(--emph-val)}
+
+/* P6c · the Scan review sheet offered "Use in calculator" as a filled primary and
+   "+ Library" as a plain secondary -- but + Library is the REPEATABLE action (it
+   can be taken on every row; the calculator holds one strand at a time), and r42
+   added it precisely so a user could keep 3 of 5. Same size, same weight, same
+   accent family: filled for the exclusive action, accent-outlined for the
+   repeatable one. Two equal-weight actions, one amber fill per row. */
+/* both actions carry the SAME weight -- .ctl-btn.sm.primary computes 400, so
+   bolding only the outlined one made the secondary read louder than the primary,
+   which is the opposite mistake. Equal size, equal weight, different fill. */
+#scanOv .scan-row-acts [data-scanuse],#scanOv .scan-row-acts [data-scanuseanti],
+#scanOv .scan-row-acts [data-scanlib]{font-weight:600}
+#scanOv .scan-row-acts [data-scanlib]{background:var(--accent-soft); color:var(--accent-2);
+  border:1.5px solid var(--accent)}
+body[data-mode="dark"] #scanOv .scan-row-acts [data-scanlib]{color:var(--accent)}
+#scanOv .scan-row-acts [data-scanlib]:hover{background:color-mix(in srgb,var(--accent) 22%,transparent)}
+/* on a row that cannot compute, BOTH actions drop to neutral -- r42's data-bad
+   rule already strips the primary fill, and the outline has to follow it. */
+#scanOv .scan-row[data-bad="1"] .scan-row-acts [data-scanlib]{background:none; color:var(--muted); border-color:var(--line-2); font-weight:600}
+
+/* P6a · landscape phone. At 844x390 the content window measured 145px against
+   2,668px of content. The result panel is the biggest single reclaim: at this
+   height it collapses to value + unit + chevron, and everything it was showing
+   (sub-line, chips, action row) is still one tap away inside details.r-more,
+   which this regime already promotes to a full-height gutter button.
+   NOT VERIFIED IN SIMULATION -- dvh and position:fixed do not reproduce here.
+   Needs a real landscape phone; see the note handed back with this round. */
+@media (max-height:520px){
+  #result .r-sub,#result .r-chips,#result .r-actions{display:none}
+  #result .r-inner{padding-top:8px; padding-bottom:8px}
+  #result .r-hero .hv{font-size:24px; line-height:1.1}
+  #result .r-hero{gap:6px}
+  .vhead h2{font-size:17px}
+}
+/* The 3px left-accent stripe on a 12px-radius box renders as an uneven crescent --
+   the radius curves the stripe away at both ends, so it reads as a rendering
+   fault rather than an accent. It is also the tired "rounded card with a coloured
+   left edge" pattern. The panel is already emphatic: navy --emph-bg against the
+   page, its own shadow, and amber figures. Border goes uniform. */
+.big,.mscard.hero{border-left:1px solid var(--emph-bd)}
+/* 4 · scope rail sits above a toolbar that is now always present */
+.view-hist .lab-scope{margin-bottom:10px}
+</style>
+<script>
+/* ═════ R55 — end-group selects, blur-gated advisory ═════
+   Additive block. Touches no engine function; every entry point is a delegated
+   listener or a wrapper. */
+(function(){
+  function q(s){ return document.querySelector(s); }
+
+  /* ---- 1a. option labels carry the constant, read from the engine's own tables
+          so no mass is ever written twice. End-group masses do not depend on the
+          strand, so this is done once at boot and never re-rendered (which is what
+          would cost the user their focus). ---- */
+  function labelOptions(){
+    try{
+      if(typeof FIVE==='undefined'||typeof THREE==='undefined') return;
+      document.querySelectorAll('[data-endsel]').forEach(function(sel){
+        var tbl=/^(five|antiFive)$/.test(sel.getAttribute('data-endsel'))?FIVE:THREE;
+        Array.prototype.forEach.call(sel.options,function(o){
+          if(o.dataset.massed) return;
+          var m=tbl[o.value]; if(m==null) return;
+          o.textContent=o.textContent+' (+'+m.toFixed(2)+')';
+          o.dataset.massed='1';
+        });
+      });
+    }catch(e){}
+  }
+
+  /* ---- 1b. write stored state back into both selects on every render. Without
+          this the choice is lost on reload -- the exact lesson the unit pickers
+          taught in round 40. ---- */
+  function syncEnds(){
+    try{
+      var a=q('[data-fivesel]'); if(a && a.value!==S.five) a.value=S.five||'OH';
+      var b=q('[data-antifivesel]'); if(b && b.value!==(S.antiFive||'OH')) b.value=S.antiFive||'OH';
+    }catch(e){}
+  }
+  if(typeof renderControls==='function'){
+    var _rc=renderControls;
+    window.renderControls=function(){ var r=_rc.apply(this,arguments); syncEnds(); return r; };
+  }
+
+  /* ---- 1c. changing the 5' group rewrites the locked prefix through the engine's
+          own serializer, so "P " / "PP " / "PPP " / "DMT " and OH all round-trip.
+          enforceFive() alone cannot do this: it returns early for OH, which would
+          leave a stale prefix in the field. ---- */
+  function applyFive(val, isAnti){
+    var typeK=isAnti?(S.antiType||S.type):S.type, linkK=isAnti?(S.antiLinkage||'PO'):S.linkage;
+    var seqK=isAnti?'antiSeq':'seq', fiveK=isAnti?'antiFive':'five';
+    S[fiveK]=val;
+    if(!isAnti && val!=='phosphate') S.fiveThio=false;   /* alpha/beta/gamma is ambiguous on di- and tri- */
+    try{
+      var p=parseSeq(S[seqK]||'', typeK);
+      if(p.five!==val) S[seqK]=serialize(p.tokens,p.marks,typeK,linkK,val,(val==='phosphate'&&!isAnti)?S.fiveThio:false);
+    }catch(e){}
+    try{ save(); }catch(e){}
+    try{ applyAll(); }catch(e){}
+    try{
+      var sel=isAnti?'[data-antiseq]':'[data-seq]';
+      document.querySelectorAll(sel).forEach(function(t){
+        if(document.activeElement!==t && typeof _fmtSeqField==='function') t.value=_fmtSeqField(S[seqK],isAnti);
+      });
+    }catch(e){}
+  }
+  document.body.addEventListener('change',function(e){
+    var f=e.target.closest&&e.target.closest('[data-fivesel]');
+    if(f){ applyFive(f.value,false); return; }
+    var af=e.target.closest&&e.target.closest('[data-antifivesel]');
+    if(af){ applyFive(af.value,true); return; }
+  });
+
+  /* ---- 3. body[data-seqfocus] drives the advisory's visibility in CSS. Doing it
+          declaratively means no render-order race with applyAll(), which repaints
+          [data-warn] on every keystroke. promoteMixedIfNeeded() is untouched and
+          still runs on input. ---- */
+  function focusState(){
+    var a=document.activeElement;
+    if(!a){ delete document.body.dataset.seqfocus; return; }
+    if(a.matches&&a.matches('[data-seq]')) document.body.dataset.seqfocus='sense';
+    else if(a.matches&&a.matches('[data-antiseq]')) document.body.dataset.seqfocus='antisense';
+    else delete document.body.dataset.seqfocus;
+  }
+  /* M3: the Hybrid rewrite happens here, on the way out of the field. */
+  function typeOnBlur(el){
+    if(!el||!el.matches) return;
+    var isAnti=el.matches('[data-antiseq]');
+    if(!isAnti && !el.matches('[data-seq]')) return;
+    if(isAnti && S.duplexMode!=='custom') return;
+    try{ if(window.autoStrandType && window.autoStrandType(isAnti,true)) applyAll(); }catch(_e){}
+  }
+  document.addEventListener('focusin',focusState,true);
+  document.addEventListener('focusout',function(e){ typeOnBlur(e&&e.target); setTimeout(focusState,0); },true);
+  /* a user who never blurs -- taps Save, or switches tab -- still gets the message */
+  document.addEventListener('visibilitychange',function(){ if(document.hidden){ delete document.body.dataset.seqfocus; } });
+
+  function boot(){ labelOptions(); syncEnds(); focusState(); }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',boot);
+  else boot();
 })();
 </script>
 </body>
