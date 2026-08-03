@@ -4100,6 +4100,7 @@ function addCustomBase(){
   if(f.code.length===1 && RESERVED_CODES.has(f.code)){ err('“'+cbEsc(f.code)+'” is reserved for a built-in base. Use another letter, or a 2-or-more character code.','code'); return; }
   if((S.customBases||[]).some((c,i)=>c.code===f.code && (!editing || i!==editIndex))){ err('“'+cbEsc(f.code)+'” is already defined. Edit it in the list above, or pick another code.','code'); return; }
   if(!isFinite(f.mass)||f.mass<=0){ err('Enter a valid positive average mass in g/mol.','mass'); return; }
+  if(f.formula && !parseFormula(f.formula)){ err('Formula not recognized. Use complete element symbols and counts, for example <code>C9H12N2O6</code>.','formula'); return; }
   mark(null);
   const saved={code:f.code, name:f.name, mass:f.mass, hasPhos:f.hasPhos, kind:f.kind, formula:f.formula||''};
   if(editing){
@@ -4224,9 +4225,15 @@ const THIO_FML = {O:-1,S:1};
 function parseFormula(str){
   if(!str||typeof str!=='string') return null;
   const clean=str.replace(/\s+/g,''); if(!clean||!/^[A-Za-z0-9]+$/.test(clean)) return null;
-  const f={}; let ok=false; const re=/([A-Z][a-z]?)(\d*)/g; let m;
-  while((m=re.exec(clean))){ if(!m[1]) continue; f[m[1]]=(f[m[1]]||0)+(m[2]?parseInt(m[2],10):1); ok=true; }
-  return ok? f : null;
+  /* R57: every character must belong to an element token. RegExp#exec with /g
+     searches forward, so without the index/length checks C6h12 became C6 and
+     junkC6H12 became C6H12. A partial chemistry parse is never a valid formula. */
+  const f={}; let ok=false, end=0; const re=/([A-Z][a-z]?)(\d*)/g; let m;
+  while((m=re.exec(clean))){
+    if(m.index!==end) return null;
+    f[m[1]]=(f[m[1]]||0)+(m[2]?parseInt(m[2],10):1); ok=true; end=re.lastIndex;
+  }
+  return (ok&&end===clean.length)? f : null;
 }
 function customFormula(code){                        // resolve a custom/catalog code's element formula (user-entered wins, else catalog)
   const cb=((typeof S!=='undefined'&&S.customBases)||[]).find(c=>c.code===code);
@@ -8913,7 +8920,9 @@ try{
   }
   function computeShared(s){
     if(!validShared(s).ok) return null;
-    try{ var r=compute(s.seq,s.type,s.linkage); if(!r||!r.n) return null; var eps=0; try{ eps=epsilon260(r.tokens); }catch(_e){ ocFail('computeShared#1',_e); }
+    /* R57: recipient-local S.three must never participate in a shared preview.
+       The incoming end state is already validated and is the preview's authority. */
+    try{ var r=compute(s.seq,s.type,s.linkage,s.three||'OH',0); if(!r||!r.n) return null; var eps=0; try{ eps=epsilon260(r.tokens); }catch(_e){ ocFail('computeShared#1',_e); }
       var dmw=null; if(s.duplex && s.duplex.mode && s.duplex.mode!=='off'){ var ar=(s.duplex.mode==='custom'||s.duplex.mode==='manual')?compute(s.duplex.antiSeq||'',s.duplex.antiType||s.type,s.duplex.antiLinkage||'PO',s.duplex.antiThree||'OH',0):((typeof antisense==='function'?antisense(s.seq,s.type,s.linkage):null)||{}).r; if(ar&&ar.n) dmw=r.mw+ar.mw; }
       return {mw:r.mw,n:r.n,eps:eps,dmw:dmw}; }catch(_){ return null; }
   }
@@ -14162,7 +14171,7 @@ details.r-more > summary .lbl-mini{display:none}
 .sense-wrap .seq-top>label,.anti-wrap .seq-top>label{flex:0 0 auto; white-space:nowrap}
 .sense-wrap .seq-top .seqstat,.anti-wrap .seq-top .seqstat{margin-top:0; font-size:12px; gap:6px; flex:0 1 auto; min-width:0; row-gap:2px}
 .sense-wrap .seq-top .seqstat .ok,.anti-wrap .seq-top .seqstat .ok{white-space:nowrap}
-.sense-wrap .seq-top .seqstat .has-seq,.anti-wrap .seq-top .seqstat .has-seq{display:inline-flex; align-items:center; gap:6px; flex-wrap:nowrap}
+.sense-wrap .seq-top .seqstat .has-seq:not([hidden]),.anti-wrap .seq-top .seqstat .has-seq:not([hidden]){display:inline-flex; align-items:center; gap:6px; flex-wrap:nowrap}
 .sense-wrap .seq-top .cnt,.anti-wrap .seq-top .cnt{margin-left:auto; flex:0 0 auto; white-space:nowrap}
 /* the blocking error is full-width and drops to its own line, directly above the box */
 .sense-wrap .seq-top .seq-err,.anti-wrap .seq-top .seq-err{flex:1 0 100%; margin-top:2px}
@@ -14415,7 +14424,13 @@ body[data-mode="dark"] #scanOv .scan-row-acts [data-scanlib]{color:var(--accent)
     if(!isAnti && val!=='phosphate') S.fiveThio=false;   /* alpha/beta/gamma is ambiguous on di- and tri- */
     try{
       var p=parseSeq(S[seqK]||'', typeK);
-      if(p.five!==val) S[seqK]=serialize(p.tokens,p.marks,typeK,linkK,val,(val==='phosphate'&&!isAnti)?S.fiveThio:false);
+      if(p.five!==val){
+        var threeK=isAnti?(S.antiThree||'OH'):(S.three||'OH');
+        var next=enforceThree(serialize(p.tokens,p.marks,typeK,linkK,val,(val==='phosphate'&&!isAnti)?S.fiveThio:false),threeK);
+        /* add3Thio() lives inside the engine closure and is not visible from this
+           late compatibility block. Preserve the exact suffix marker locally. */
+        S[seqK]=p.threeThio?next.replace(/ (idT|idA|idC|idG|P)(\s*)$/, " s $1$2"):next;
+      }
     }catch(e){}
     try{ save(); }catch(e){}
     try{ applyAll(); }catch(e){}
