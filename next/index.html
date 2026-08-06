@@ -1994,10 +1994,18 @@ if(/[?&]billing=/.test(window.__ocSearch)){
         <div class="gatebar" data-catgatebar><span>Free: <b>30 unique amidites</b> · 45 vendor listings. <b>Oligo MW Pro</b> adds the full 267 unique · 351 listings.</span><button class="g-cta" onclick="setTab('pro')">See Oligo MW Pro</button></div>
         <div class="catbar">
           <span class="search">⌕ <input placeholder="Search name, code, vendor, or catalog #…" aria-label="Search catalog"></span>
-          <span class="catfilters" data-catvendor role="group" aria-label="Filter by vendor"></span>
         </div>
-        <div class="catbar catbar-cats"><span class="catfilters" data-catcategory role="group" aria-label="Filter by category"></span></div>
         <p class="catcount"><b>30</b> free amidites</p>
+        <details class="cat-mobile-tools">
+          <summary>Filters and catalog help</summary>
+          <div class="cat-mobile-toolbody">
+            <span class="catfilters" data-catvendor role="group" aria-label="Filter by vendor"></span>
+            <span class="catfilters" data-catcategory role="group" aria-label="Filter by category"></span>
+            <p>Insert places the code at the cursor in your 5 prime to 3 prime sequence. <b>+ Library</b> keeps it under More monomers.</p>
+          </div>
+        </details>
+        <div class="catbar cat-desktop-filters"><span class="catfilters" data-catvendor role="group" aria-label="Filter by vendor"></span></div>
+        <div class="catbar catbar-cats cat-desktop-filters"><span class="catfilters" data-catcategory role="group" aria-label="Filter by category"></span></div>
         <p class="ins-hint">↳ Insert places the code at the cursor in your 5′→3′ sequence on the Calculator tab. <b>+ Library</b> makes it a permanent entry under More monomers.</p>
         <div class="catlist">
           <div class="catcard"><div class="ci-main"><div class="cn">2′-O-Methyl-A</div><div class="c2"><span class="code">mA</span><span>ChemGenes</span><span class="mass">343.27 g/mol</span><span>2′-sugar</span><span class="ok">✓ verified</span></div></div><div class="ci-act"><button class="btn-ins">Insert</button><button class="btn-lib inlib">✓ Library</button></div></div>
@@ -2006,6 +2014,7 @@ if(/[?&]billing=/.test(window.__ocSearch)){
           <div class="catcard"><div class="ci-main"><div class="cn">LNA-G (locked)</div><div class="c2"><span class="code">+G</span><span>Qiagen</span><span class="mass">344.24 g/mol</span><span>Bridged 2′-sugar</span><span class="ok">✓ verified</span></div></div><div class="ci-act"><button class="btn-ins">Insert</button><button class="btn-lib">+ Library</button></div></div>
           <div class="catcard"><div class="ci-main"><div class="cn">6-FAM (5′ fluorescein)</div><div class="c2"><span class="code">FAM</span><span>Glen Research</span><span class="mass">537.46 g/mol</span><span>Label · dye</span><span class="needs">Average mass available; monoisotopic mass unavailable</span></div></div><div class="ci-act"><button class="btn-ins">Insert</button><button class="btn-lib">+ Library</button></div></div>
         </div>
+        <div class="gatebar cat-mobile-gate" data-catgatebar-mobile></div>
       </section>
 
       <!-- SAVED STRANDS -->
@@ -2034,6 +2043,7 @@ if(/[?&]billing=/.test(window.__ocSearch)){
         </div>
         <div class="histpro" data-histpro hidden></div>
         <div class="hist-th-wrap">
+        <div class="hist-empty" data-histempty role="status" hidden></div>
         <table class="htable">
           <thead><tr><th scope="col" style="width:26px"><span class="sr">Select</span></th><th scope="col" aria-sort="none"><button type="button" class="hsort" data-hsortcol="name">Name</button></th><th scope="col">Sequence</th><th scope="col" aria-sort="none"><button type="button" class="hsort" data-hsortcol="len">Type · length</button></th><th scope="col" style="text-align:right" aria-sort="none"><button type="button" class="hsort" data-hsortcol="mw">MW (g/mol)</button></th><th scope="col" aria-sort="descending"><button type="button" class="hsort" data-hsortcol="date">Saved</button></th><th scope="col"><span class="sr">Actions</span></th></tr></thead>
           <tbody>
@@ -4100,7 +4110,7 @@ function addCustomBase(){
   if(f.code.length===1 && RESERVED_CODES.has(f.code)){ err('“'+cbEsc(f.code)+'” is reserved for a built-in base. Use another letter, or a 2-or-more character code.','code'); return; }
   if((S.customBases||[]).some((c,i)=>c.code===f.code && (!editing || i!==editIndex))){ err('“'+cbEsc(f.code)+'” is already defined. Edit it in the list above, or pick another code.','code'); return; }
   if(!isFinite(f.mass)||f.mass<=0){ err('Enter a valid positive average mass in g/mol.','mass'); return; }
-  if(f.formula && !parseFormula(f.formula)){ err('Formula not recognized. Use complete element symbols and counts, for example <code>C9H12N2O6</code>.','formula'); return; }
+  if(f.formula && !parseFormula(f.formula)){ err('Formula not recognized. Use real element symbols with counts of 1 or more, for example <code>C9H12N2O6</code>.','formula'); return; }
   mark(null);
   const saved={code:f.code, name:f.name, mass:f.mass, hasPhos:f.hasPhos, kind:f.kind, formula:f.formula||''};
   if(editing){
@@ -4205,9 +4215,46 @@ function compute(seq, mode, linkMode, three=(S&&S.three)||'OH', modMass=0){
    Na/K adducts. Average mass is exactly what compute() already returns.
    Formulas below are verified to reproduce the NUCLEO average masses.
    ================================================================= */
-const MONO_MASS = {C:12,H:1.0078250319,N:14.0030740052,O:15.9949146221,P:30.97376151,S:31.97207069,F:18.99840322,Cl:34.96885268,Br:78.9183376,I:126.904473,Na:22.98976928,K:38.96370649};
+/* R57: all 118 elements. The first twelve are the original entries, unchanged.
+   Values are the most-abundant STABLE isotope; for an element with no stable
+   nuclide the longest-lived isotope is used, which is the same convention IUPAC
+   uses when it reports a mass number in brackets. */
+const MONO_MASS = {C:12,H:1.0078250319,N:14.0030740052,O:15.9949146221,P:30.97376151,S:31.97207069,F:18.99840322,Cl:34.96885268,Br:78.9183376,I:126.904473,Na:22.98976928,K:38.96370649,
+  He:4.00260325,Li:7.0160034,Be:9.0121831,B:11.0093054,Ne:19.9924401762,Mg:23.985041697,Al:26.98153853,
+  Si:27.9769265347,Ar:39.9623831237,Ca:39.962590863,Sc:44.95590828,Ti:47.94794198,V:50.94395704,
+  Cr:51.94050623,Mn:54.93804391,Fe:55.93493633,Co:58.93319429,Ni:57.93534241,Cu:62.92959772,
+  Zn:63.92914201,Ga:68.9255735,Ge:73.921177761,As:74.92159457,Se:79.9165218,Kr:83.911497728,
+  Rb:84.911789738,Sr:87.9056125,Y:88.9058403,Zr:89.9046977,Nb:92.906373,Mo:97.90540482,Tc:97.9072124,
+  Ru:101.9043441,Rh:102.905498,Pd:105.9034804,Ag:106.9050916,Cd:113.90336509,In:114.903878776,
+  Sn:119.90220163,Sb:120.903812,Te:129.906222748,Xe:131.9041550856,Cs:132.905451961,Ba:137.905247,
+  La:138.9063563,Ce:139.9054431,Pr:140.9076576,Nd:141.907729,Pm:144.9127559,Sm:151.9197397,
+  Eu:152.921238,Gd:157.9241123,Tb:158.9253547,Dy:163.9291819,Ho:164.9303288,Er:165.9302995,
+  Tm:168.9342179,Yb:173.9388664,Lu:174.9407752,Hf:179.946557,Ta:180.9479958,W:183.95093092,
+  Re:186.9557501,Os:191.961477,Ir:192.9629216,Pt:194.9647917,Au:196.96656879,Hg:201.9706434,
+  Tl:204.9744278,Pb:207.9766525,Bi:208.9803991,Po:208.9824308,At:209.9871479,Rn:222.0175782,
+  Fr:223.019736,Ra:226.0254103,Ac:227.0277523,Th:232.0380558,Pa:231.0358842,U:238.0507884,
+  Np:237.0481736,Pu:244.0642053,Am:243.0613813,Cm:247.0703541,Bk:247.0703073,Cf:251.0795886,
+  Es:252.08298,Fm:257.0951061,Md:258.0984315,No:259.10103,Lr:266.11983,Rf:267.12179,Db:268.12567,
+  Sg:269.12863,Bh:270.13336,Hs:269.13375,Mt:278.15631,Ds:281.16451,Rg:282.16912,Cn:285.17712,
+  Nh:286.18221,Fl:289.19042,Mc:290.19598,Lv:293.20449,Ts:294.21046,Og:294.21392};
 const PROTON = 1.007276467;
-const AVG_MASS = {C:12.011,H:1.008,N:14.007,O:15.999,P:30.974,S:32.06,F:18.998,Cl:35.45,Br:79.904,I:126.904,Na:22.990,K:39.098};
+/* R57: all 118 elements, first twelve unchanged. IUPAC standard atomic weights,
+   using the conventional value where IUPAC gives an interval, and the longest-
+   lived isotope's mass number where an element has no stable nuclide.
+   AVG_MASS is now also THE definition of "is this a real element" for
+   parseFormula - one table, so a formula can never parse into a mass we do not
+   have, and a real element can never be rejected as if it were a typo. */
+const AVG_MASS = {C:12.011,H:1.008,N:14.007,O:15.999,P:30.974,S:32.06,F:18.998,Cl:35.45,Br:79.904,I:126.904,Na:22.990,K:39.098,
+  He:4.0026,Li:6.94,Be:9.0122,B:10.81,Ne:20.18,Mg:24.305,Al:26.982,Si:28.085,Ar:39.95,Ca:40.078,
+  Sc:44.956,Ti:47.867,V:50.942,Cr:51.996,Mn:54.938,Fe:55.845,Co:58.933,Ni:58.693,Cu:63.546,Zn:65.38,
+  Ga:69.723,Ge:72.63,As:74.922,Se:78.971,Kr:83.798,Rb:85.468,Sr:87.62,Y:88.906,Zr:91.224,Nb:92.906,
+  Mo:95.95,Tc:97,Ru:101.07,Rh:102.91,Pd:106.42,Ag:107.87,Cd:112.41,In:114.82,Sn:118.71,Sb:121.76,
+  Te:127.6,Xe:131.29,Cs:132.91,Ba:137.33,La:138.91,Ce:140.12,Pr:140.91,Nd:144.24,Pm:145,Sm:150.36,
+  Eu:151.96,Gd:157.25,Tb:158.93,Dy:162.5,Ho:164.93,Er:167.26,Tm:168.93,Yb:173.05,Lu:174.97,Hf:178.49,
+  Ta:180.95,W:183.84,Re:186.21,Os:190.23,Ir:192.22,Pt:195.08,Au:196.97,Hg:200.59,Tl:204.38,Pb:207.2,
+  Bi:208.98,Po:209,At:210,Rn:222,Fr:223,Ra:226,Ac:227,Th:232.04,Pa:231.04,U:238.03,Np:237,Pu:244,Am:243,
+  Cm:247,Bk:247,Cf:251,Es:252,Fm:257,Md:258,No:259,Lr:266,Rf:267,Db:268,Sg:269,Bh:270,Hs:269,Mt:278,
+  Ds:281,Rg:282,Cn:285,Nh:286,Fl:289,Mc:290,Lv:293,Ts:294,Og:294};
 function formulaAvg(f){ return formulaMass(f, AVG_MASS); }
 const ADDUCT = { Na:{avg:21.9818, mono:21.9819, label:"Na\u207a"}, K:{avg:38.0904, mono:37.9559, label:"K\u207a"} };   // (X \u2212 H) neutral-mass shift per adduct
 const FML = {   // free nucleoside (5\u2032-OH, 3\u2032-OH) element counts, per sugar/base
@@ -4231,7 +4278,15 @@ function parseFormula(str){
   const f={}; let ok=false, end=0; const re=/([A-Z][a-z]?)(\d*)/g; let m;
   while((m=re.exec(clean))){
     if(m.index!==end) return null;
-    f[m[1]]=(f[m[1]]||0)+(m[2]?parseInt(m[2],10):1); ok=true; end=re.lastIndex;
+    /* R57: full consumption was necessary but not sufficient. "C0" parsed to
+       {C:0} -- a zero count silently under-reports the exact mass -- and "Xx99"
+       to {Xx:99}, inventing an element. Both were then saved as a monomer.
+       AVG_MASS now covers the whole periodic table, so this single test means
+       both "is a real element" and "we can weigh it". */
+    if(!(m[1] in AVG_MASS)) return null;
+    const cnt = m[2]? parseInt(m[2],10) : 1;
+    if(!(cnt>=1)) return null;
+    f[m[1]]=(f[m[1]]||0)+cnt; ok=true; end=re.lastIndex;
   }
   return (ok&&end===clean.length)? f : null;
 }
@@ -5214,8 +5269,21 @@ function parseCatalogInline(){
   if(el && el.textContent.trim()){ try{ return JSON.parse(el.textContent); }catch(e){ console.warn("[catalog] inline parse failed", e); } }
   return { monomers:[], vendors:[] };
 }
+function catalogCodeReserved(code){
+  return typeof RESERVED_CODES!=='undefined' && RESERVED_CODES &&
+    typeof RESERVED_CODES.has==='function' && RESERVED_CODES.has(code);
+}
 function catalogReady(cat){
-  CATALOG.monomers = (cat.monomers||[]).filter(m=>m.code && typeof m.mass==='number');
+  /* CODE-04: catalog data is an untrusted boundary. Reject engine-reserved
+     tokens before they can enter byCode, the catalog UI, insertion, or CUSTOM. */
+  CATALOG.monomers = (cat.monomers||[]).filter(function(m){
+    var ok=!!(m && m.code && typeof m.mass==='number' && isFinite(m.mass) && m.mass>0);
+    if(ok && catalogCodeReserved(m.code)){
+      try{ console.warn('[catalog] ignoring monomer with reserved code:',m.code); }catch(_e){ ocFail('catalogReady#reserved',_e); }
+      return false;
+    }
+    return ok;
+  });
   CATALOG.vendors  = cat.vendors && cat.vendors.length ? cat.vendors
                    : [...new Set(CATALOG.monomers.flatMap(m=>(m.vendor_products||[]).map(v=>v.vendor)))];
   CATALOG.byCode = {}; CATALOG.monomers.forEach(m=>{ CATALOG.byCode[m.code]=m; });
@@ -5244,8 +5312,31 @@ function proSession(){ try{ return JSON.parse(localStorage.getItem(PRO_SESS_KEY)
 function setProSession(s){ if(s) localStorage.setItem(PRO_SESS_KEY, JSON.stringify(s)); else localStorage.removeItem(PRO_SESS_KEY); }
 function sbBase(){ return (S.catalogSupabaseUrl||'').replace(/\/+$/,''); }
 function sbAuthHeaders(){ return { apikey:(S.catalogSupabaseAnonKey||'').trim(), 'Content-Type':'application/json' }; }
+/* CODE-06: one bounded request helper is installed before auth/catalog boot and
+   then reused by every later feature block. */
+function fetchT(url, opt, ms){
+  opt=opt||{}; ms=ms||15000;
+  if(typeof AbortController!=='function'){
+    return Promise.race([fetch(url,opt),new Promise(function(_resolve,reject){
+      setTimeout(function(){ var e=new Error('Request timed out'); e.name='TimeoutError'; e.code='timeout'; reject(e); },ms);
+    })]);
+  }
+  var ac=new AbortController(), timedOut=false;
+  var t=setTimeout(function(){ timedOut=true; try{ ac.abort(); }catch(_){ /* request already settled */ } },ms);
+  return fetch(url,Object.assign({},opt,{signal:ac.signal})).then(
+    function(r){ clearTimeout(t); return r; },
+    function(e){ clearTimeout(t);
+      /* R57: do NOT mutate the caught error. An abort rejects with a DOMException
+         whose `name` is a getter-only accessor on the prototype; under this block's
+         'use strict' the assignment THROWS, inside the rejection handler, so every
+         timeout surfaced as `TypeError: Cannot set property name` and no caller
+         could branch on e.code==='timeout'. A fresh Error carries the marks safely. */
+      if(timedOut){ var te=new Error('Request timed out'); te.name='TimeoutError'; te.code='timeout'; throw te; }
+      throw e; });
+}
+window.oligoFetchT=fetchT;
 async function proSendCode(email){
-  const r=await fetch(sbBase()+'/auth/v1/otp',{method:'POST',headers:sbAuthHeaders(),body:JSON.stringify({email,create_user:true})});
+  const r=await fetchT(sbBase()+'/auth/v1/otp',{method:'POST',headers:sbAuthHeaders(),body:JSON.stringify({email,create_user:true})},15000);
   /* R46: was .slice(0,180), which cut Supabase's JSON body mid-object often
      enough that the reason could not be recovered downstream. 400 keeps it whole
      without keeping an unbounded response. */
@@ -5261,7 +5352,7 @@ async function proVerifyCode(email, code){
      verification; both are typed codes. (The removed literal is deliberately
      not spelled out here: the r51 harness scans the shipped source for it.) */
   for(const type of ['email','signup']){                      // OTP token type differs: returning login vs first-time signup
-    const r=await fetch(sbBase()+'/auth/v1/verify',{method:'POST',headers:sbAuthHeaders(),body:JSON.stringify({email,token:tok,type})});
+    const r=await fetchT(sbBase()+'/auth/v1/verify',{method:'POST',headers:sbAuthHeaders(),body:JSON.stringify({email,token:tok,type})},15000);
     if(r.ok){ const d=await r.json(); setProSession({access_token:d.access_token, refresh_token:d.refresh_token, expires_at:d.expires_at, email}); return true; }
     lastErr=(await r.text()).slice(0,400); lastStatus=r.status;
   }
@@ -5271,7 +5362,7 @@ async function proAccessToken(){
   const s=proSession(); if(!s||!s.access_token) return null;
   if(s.expires_at && (s.expires_at*1000 - Date.now() > 60000)) return s.access_token;   // still valid
   try{                                                                                   // expired -> refresh
-    const r=await fetch(sbBase()+'/auth/v1/token?grant_type=refresh_token',{method:'POST',headers:sbAuthHeaders(),body:JSON.stringify({refresh_token:s.refresh_token})});
+    const r=await fetchT(sbBase()+'/auth/v1/token?grant_type=refresh_token',{method:'POST',headers:sbAuthHeaders(),body:JSON.stringify({refresh_token:s.refresh_token})},15000);
     if(!r.ok){ if(r.status===400||r.status===401||r.status===403) setProSession(null); return null; }
     const d=await r.json();
     setProSession({access_token:d.access_token, refresh_token:d.refresh_token, expires_at:d.expires_at, email:s.email});
@@ -5337,9 +5428,9 @@ async function fetchFromSupabase(){
   const sel = 'code,name,category,sugar,kind,has_phos,mass,verified,verification,nucleoside_formula,'
             + 'vendor_products(vendor,catalog_no,product_name,source)';
   const tok = await proAccessToken();                  // signed-in Pro user -> JWT; else anon key (RLS returns free-30)
-  const res = await fetch(`${base}/rest/v1/monomers?select=${encodeURIComponent(sel)}`, {
+  const res = await fetchT(`${base}/rest/v1/monomers?select=${encodeURIComponent(sel)}`, {
     headers:{ apikey:key, Authorization:'Bearer '+(tok||key), Accept:'application/json' }
-  });
+  }, 15000);
   if(!res.ok) throw new Error('Supabase '+res.status+' '+(await res.text()).slice(0,160));
   const rows = await res.json();
   const monomers = rows.map(m=>({                       // map snake_case -> the keys catalogReady() expects (only has_phos differs)
@@ -5383,13 +5474,13 @@ function mergeCatalogIntoCustom(){
        the flow, so a bad row is ignored instead of shadowing the alphabet.
        The server-side check is still worth running:
          select code from monomers where length(code)=1;  -- expect zero rows */
-    if(typeof RESERVED_CODES!=='undefined' && RESERVED_CODES[c.code]){
+    if(catalogCodeReserved(c.code)){
       try{ console.warn('[catalog] ignoring monomer with reserved code:', c.code); }catch(_){ /* console itself is unavailable -- there is nowhere left to report to */ }
       return;
     }
     if(!(+c.mass > 0)) return;
     const conj=(c.kind==='conj');
-    CUSTOM[c.code]={ code:c.code, name:c.name, mass:c.mass, hasPhos:!!c.hasPhos, kind:c.kind||'base',
+    CUSTOM[c.code]={ code:c.code, name:c.name, mass:c.mass, hasPhos:!!c.hasPhos, kind:c.kind||'base', formula:c.nucleoside_formula||c.formula||'',
       nobond:conj, eff: conj ? c.mass : (c.hasPhos ? c.mass-LINK.PO : c.mass), _catalog:true };
   });
 }
@@ -5521,6 +5612,10 @@ function insertCatalogCode(code){
 }
 function addCatalogToLibrary(code){                    // the ONE place browsing writes saved data
   const m = CATALOG.byCode[code]; if(!m) return;
+  if(catalogCodeReserved(code)){
+    try{ console.warn('[catalog] refused to save reserved code:',code); }catch(_e){ ocFail('addCatalogToLibrary#reserved',_e); }
+    return;
+  }
   S.customBases = S.customBases || [];
   if(!S.customBases.some(c=>c.code===code)){           // dedupe by code (B5.5)
     S.customBases.push({ code:m.code, name:m.name, mass:m.mass, hasPhos:!!m.hasPhos, kind:m.kind||'base', formula:m.nucleoside_formula||'' });
@@ -5623,6 +5718,7 @@ function closeCatGate(){ calcs.forEach(c=>{ const g=c.querySelector("[data-catga
   fivePrefixStr: [function(){ return fivePrefixStr; }, function(v){ fivePrefixStr = v; }],
   fmt: [function(){ return fmt; }, function(v){ fmt = v; }],
   fmtTime: [function(){ return fmtTime; }, function(v){ fmtTime = v; }],
+  formulaAvg: [function(){ return formulaAvg; }, function(v){ formulaAvg = v; }],
   formulaMass: [function(){ return formulaMass; }, function(v){ formulaMass = v; }],
   hintLines: [function(){ return hintLines; }, function(v){ hintLines = v; }],
   histSel: [function(){ return histSel; }, function(v){ histSel = v; }],
@@ -5847,16 +5943,7 @@ function jwtSub(tok){ try{
    answers, pullCloud's Promise.all hung for the platform default -- minutes --
    and every scheduleProReady() in that window returned immediately, so no sync
    was even attempted after the connection came back. */
-function fetchT(url, opt, ms){
-  opt=opt||{}; ms=ms||15000;
-  if(typeof AbortController!=='function') return fetch(url, opt);
-  var ac=new AbortController();
-  var t=setTimeout(function(){ try{ ac.abort(); }catch(_){ /* teardown of something that may already be gone -- the goal state is reached either way */ } }, ms);
-  return fetch(url, Object.assign({}, opt, {signal:ac.signal}))
-    .then(function(r){ clearTimeout(t); return r; },
-          function(e){ clearTimeout(t); throw e; });
-}
-W.oligoFetchT=fetchT;
+var fetchT=W.oligoFetchT;
 function syncEnabled(){
   /* R44: `proIsPro &&` was here, so a signed-up FREE user's strands never left
      localStorage -- every push, pull and delete short-circuited before it made a
@@ -7697,6 +7784,10 @@ function renderCatFilters(){
   var cats=_catCats(), chost=_q('.view-cat [data-catcategory]');
   if(chost) chost.innerHTML='<button type="button" class="vseg'+(catCategory==='all'?' on':'')+'" data-category="all" aria-pressed="'+(catCategory==='all')+'">All categories</button>'+
     cats.map(function(c){ return '<button type="button" class="vseg'+(catCategory===c?' on':'')+'" data-category="'+cbEsc(c)+'" aria-pressed="'+(catCategory===c)+'">'+cbEsc(c.replace("2'","2′"))+'</button>'; }).join('');
+  /* Desktop and mobile use separate semantic filter containers; keep their
+     selected state identical without visually reordering focusable controls. */
+  document.querySelectorAll('.view-cat [data-catvendor]').forEach(function(host){ if(host!==vhost) host.innerHTML=vhost?vhost.innerHTML:''; });
+  document.querySelectorAll('.view-cat [data-catcategory]').forEach(function(host){ if(host!==chost) host.innerHTML=chost?chost.innerHTML:''; });
 }
 function renderCatGate(){
   var gb=_q('.view-cat [data-catgatebar]'); if(!gb) return;
@@ -7709,9 +7800,19 @@ function renderCatGate(){
   else if(isPro){ gb.dataset.state='pro'; gb.innerHTML='<span>★ <b>Pro: the full catalog.</b> '+uniq+' unique amidites unlocked from Supabase (ChemGenes &amp; Glen Research).</span>'; }
   else if(pending){ gb.dataset.state='pending'; gb.innerHTML='<span><b>Signed in · access pending.</b> Showing the free '+uniq+' The full catalog unlocks by itself once your account is approved.</span><button class="g-cta" onclick="setTab(\'pro\')">Pro status</button>'; }
   else { gb.dataset.state='free'; gb.innerHTML='<span>Free: <b>'+uniq+' unique amidites</b>. <b>Oligo MW Pro</b> unlocks the full 267 verified monomers (351 vendor listings) from Supabase.</span><button class="g-cta" onclick="setTab(\'pro\')">See Oligo MW Pro</button>'; }
+  var mg=_q('.view-cat [data-catgatebar-mobile]');
+  if(mg){
+    mg.dataset.state=gb.dataset.state||'free';
+    if(typeof window.catalogLoadingState==='function'&&window.catalogLoadingState()&&typeof proSession==='function'&&proSession()) mg.innerHTML='<span><b>Loading Pro catalog...</b></span>';
+    else if(catalogOffline&&typeof proSession==='function'&&proSession()) mg.innerHTML='<span><b>Offline.</b> Free-30 catalog shown.</span>';
+    else if(isPro) mg.innerHTML='<span><b>Pro catalog:</b> '+uniq+' monomers unlocked.</span>';
+    else if(pending) mg.innerHTML='<span><b>Access pending.</b> Free-'+uniq+' shown.</span><button class="g-cta" onclick="setTab(\'pro\')">Status</button>';
+    else mg.innerHTML='<span><b>Free-'+uniq+'</b> shown. Pro unlocks 267.</span><button class="g-cta" onclick="setTab(\'pro\')">Pro</button>';
+  }
 }
 function renderCatShell(){
   var list=_q('.view-cat .catlist'); if(!list) return;
+  var mobileGate=_q('.view-cat [data-catgatebar-mobile]');
   renderCatFilters(); renderCatGate();
   var C=(typeof CATALOG!=='undefined')?CATALOG:{skus:[]};
   var lib={}; ((S.customBases)||[]).forEach(function(c){ lib[c.code]=1; });
@@ -7771,6 +7872,8 @@ function renderCatShell(){
     return '<div class="catgrp"><span>'+cbEsc(k)+'</span><span class="catgrp-n">'+_byCat[k].length+'</span></div>'+
       _byCat[k].map(_catRow).join('');
   }).join('') : '<div class="cat-empty">No matches. Try a different vendor, category, or search term.</div>';
+  var firstResult=list.querySelector('.catcard,.cat-empty');
+  if(mobileGate&&firstResult) firstResult.insertAdjacentElement('afterend',mobileGate);
 }
 document.body.addEventListener('click', function(e){
   var vb=e.target.closest('.view-cat [data-vendor]');
@@ -7833,7 +7936,20 @@ function renderHistShell(){
   });
   rows.sort(function(a,b){ var av=histSortVal(a.h,histSort), bv=histSortVal(b.h,histSort); return (av<bv?-1:av>bv?1:0)*histDir; });
   syncHistHeaders();
-  tb.innerHTML = rows.length ? rows.map(function(o){ var h=o.h, i=o.i, expanded=(pro && histExpanded===i);
+  var view=_q('.view-hist'), table=tb.closest('table'), empty=_q('[data-histempty]',view), total=(history||[]).length;
+  if(!rows.length){
+    var filtered=total>0; if(view) view.dataset.histEmpty=filtered?'filtered':'all';
+    if(table) table.hidden=true;
+    if(empty){
+      empty.hidden=false;
+      empty.innerHTML=filtered
+        ? '<h3>No strands match</h3><p>Nothing matches the current search or library filters. Your saved strands are still here.</p><button type="button" class="hb" data-histclearfilters>Clear search and filters</button>'
+        : '<h3>No saved strands yet</h3><p>Build a sequence and choose <b>Save strand</b> in the result panel. You can also use Scan above to import a label photo.</p><button type="button" class="hb" data-histstart>Create a strand</button>';
+    }
+    tb.innerHTML=''; return;
+  }
+  if(view) view.dataset.histEmpty='none'; if(table) table.hidden=false; if(empty) empty.hidden=true;
+  tb.innerHTML = rows.map(function(o){ var h=o.h, i=o.i, expanded=(pro && histExpanded===i);
     var tr='<tr'+(expanded?' class="is-exp"':'')+'>'+
       '<td data-th="Select"><input type="checkbox" data-hpick="'+i+'" aria-label="Select '+cbEsc(h.name||h.seq||'strand')+'"'+(histSelHas(i)?' checked':'')+'></td>'+
       '<td data-th="Name"><button type="button" class="hn-edit" data-hrename="'+i+'" aria-label="Rename '+cbEsc(h.name||'strand')+'">'+cbEsc(h.name||'Untitled strand')+'</button>'+
@@ -7853,9 +7969,12 @@ function renderHistShell(){
       '<div class="hexp-acts"><button type="button" data-libdup="'+i+'">Duplicate</button><button type="button" data-libver="'+i+'">Save as version</button></div>'+
     '</div></td></tr>'; }
     return tr;
-  }).join('') : '<tr><td colspan="7" style="text-align:center;color:var(--muted);padding:26px">No saved strands yet. Build a sequence and press <b>Save strand</b> in the result panel.</td></tr>';
+  }).join('');
 }
 document.body.addEventListener('click', function(e){
+  var start=e.target.closest('[data-histstart]'); if(start){ setTab('mw'); return; }
+  var clearFilters=e.target.closest('[data-histclearfilters]');
+  if(clearFilters){ histQuery=''; var hi=_q('.view-hist .histbar .search input'); if(hi) hi.value=''; if(window.oligoSync){ if(oligoSync.setFolder) oligoSync.setFolder(''); if(oligoSync.setTag) oligoSync.setTag(''); } renderHistShell(); return; }
   var ld=e.target.closest('[data-hloadx]');
   if(ld){ var h=(history||[])[+ld.dataset.hloadx]; if(h){ loadSavedState(h); setTab('mw'); } return; }
   var cpy=e.target.closest('[data-hcopyx]');
@@ -8692,7 +8811,7 @@ function renderMoreMon(){
       if(_qi&&_op&&_op.parentNode!==_qi) _qi.appendChild(_op);
       var _ex=host.querySelector('[data-qi-expand]');
       if(_ex){ _ex.textContent=(_ex.getAttribute('aria-expanded')==='true')?'Show fewer bases':'Show all bases'; if(_op) _qi.appendChild(_op); }
-    }catch(_e){}
+    }catch(_e){ ocFail('renderMoreMon#relocate',_e); }
   });
   if(fk&&fkHost){ var host2=document.querySelector('[data-moremon-host="'+fkHost+'"]'); if(host2){ var el=host2.querySelector('[data-fk="'+(window.CSS&&CSS.escape?CSS.escape(fk):fk.replace(/"/g,'\\"'))+'"]'); if(el){ try{ el.focus(); if(el.matches('[data-mm-search]')){ el.setSelectionRange(selS,selE); } }catch(_){ /* focus / caret / scroll restoration on a node that may already be gone -- cosmetic, no value is shown or hidden by it */ } } } }
 }
@@ -8791,6 +8910,10 @@ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded'
 .oshare-card .mw{font-size:12px;line-height:1.5}
 .oshare-card .mw b{font-family:var(--font-mono,ui-monospace,monospace)}
 .oshare-card .oshare-btn{margin-top:8px}
+.oshare-defnote{font-size:12px;line-height:1.5;color:var(--text);background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 34%,var(--line));border-radius:11px;padding:10px 12px;margin:0 0 12px}
+.oshare-defnote b{font-family:var(--font-head)}
+.oshare-defs{font-size:11.5px;color:var(--muted);line-height:1.45;margin-top:7px}
+.oshare-bad{color:var(--err)}
 .oshare-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
 /* B9: `min-height:auto` here silently defeated the .oshare-btn 44px floor and
    left the close affordance at 32x32. Keep the small glyph, restore the box. */
@@ -8903,7 +9026,18 @@ try{
     sc.appendChild(box);
   }
 
-  function mergeSessionDefs(defs){ (defs||[]).forEach(function(c){ if(CUSTOM[c.code]) return; var conj=(c.kind==='conj'); CUSTOM[c.code]={code:c.code,name:c.name,mass:c.mass,hasPhos:!!c.hasPhos,kind:c.kind||'base',nobond:conj,eff:conj?c.mass:(c.hasPhos?c.mass-LINK.PO:c.mass),_shared:true}; }); }
+  function defFormula(c){ return String((c&&(c.formula||c.nucleoside_formula))||''); }
+  function sameDef(a,b){
+    if(!a||!b) return false;
+    var af=defFormula(a), bf=defFormula(b);
+    return Number(a.mass)===Number(b.mass) && !!a.hasPhos===!!b.hasPhos &&
+      (a.kind||'base')===(b.kind||'base') && (!af||!bf||af===bf);
+  }
+  function existingDef(code){
+    var a=S.customBases||[]; for(var i=0;i<a.length;i++) if(a[i]&&a[i].code===code) return a[i];
+    var c=CUSTOM[code]; return c&&c._shared!==true?c:null;
+  }
+  function mergeSessionDefs(defs){ (defs||[]).forEach(function(c){ if(CUSTOM[c.code]) return; var conj=(c.kind==='conj'); CUSTOM[c.code]={code:c.code,name:c.name,mass:c.mass,hasPhos:!!c.hasPhos,kind:c.kind||'base',formula:c.formula||'',nobond:conj,eff:conj?c.mass:(c.hasPhos?c.mass-LINK.PO:c.mass),_shared:true}; }); }
   /* R51 (audit F-03): one validity contract for an incoming payload, applied
      before preview, before save, and before addDefs() writes anything
      permanent. A crafted link containing ACGX used to preview and save a
@@ -8912,10 +9046,21 @@ try{
     if(!s) return {ok:false, reason:'empty', message:'Empty strand.'};
     try{
       if(typeof validateStrandInput!=='function') return {ok:true, reason:'', message:''};
-      return validateStrandInput({ seq:s.seq, type:s.type,
+      var v=validateStrandInput({ seq:s.seq, type:s.type,
         duplexMode:(s.duplex&&s.duplex.mode)||'off',
         antiSeq:(s.duplex&&s.duplex.antiSeq)||'',
         antiType:(s.duplex&&s.duplex.antiType)||s.type });
+      if(!v.ok) return v;
+      function seqThree(seq){ var m=String(seq||'').match(/\s+(idT|idA|idC|idG|P)\s*$/); if(!m) return 'OH'; return m[1]==='P'?'phosphate':('invd'+m[1].slice(2)); }
+      function endsAgree(seq,type,five,fiveThio,three,checkThio){
+        var p=parseSeq(seq||'',type||'DNA');
+        return p.five===five && (!checkThio||p.fiveThio===!!fiveThio) && seqThree(seq)===three;
+      }
+      if(!endsAgree(s.seq,s.type,s.five,!!s.fiveThio,s.three,true)) return {ok:false,reason:'ends',message:'The strand text and its end-group settings do not agree.'};
+      if(s.duplex&&(s.duplex.mode==='custom'||s.duplex.mode==='manual') &&
+         !endsAgree(s.duplex.antiSeq,s.duplex.antiType,s.duplex.antiFive,false,s.duplex.antiThree,false))
+        return {ok:false,reason:'ends',message:'The antisense text and its end-group settings do not agree.'};
+      return v;
     }catch(_){ return {ok:false, reason:'parse', message:'Could not read this strand.'}; }
   }
   function computeShared(s){
@@ -8927,27 +9072,66 @@ try{
       return {mw:r.mw,n:r.n,eps:eps,dmw:dmw}; }catch(_){ return null; }
   }
   function defsFor(s,allDefs){ var codes={}; strandSeqs(s).forEach(function(pr){ try{ var p=parseSeq(pr[0],pr[1]); (p.tokens||[]).forEach(function(t){ if(t.custom&&t.code) codes[t.code]=1; }); }catch(_e){ ocFail('defsFor#1',_e); } }); return (allDefs||[]).filter(function(d){ return codes[d.code]; }); }
-  function addDefs(defs){ var changed=false; (defs||[]).forEach(function(d){ if(!d||!d.code) return; if(typeof RESERVED_CODES!=='undefined'&&RESERVED_CODES.has&&RESERVED_CODES.has(d.code)) return; if((S.customBases||[]).some(function(x){return x.code===d.code;})) return; if(!S.customBases) S.customBases=[]; S.customBases.push({code:d.code,name:d.name||'',mass:d.mass,hasPhos:!!d.hasPhos,kind:d.kind||'base',formula:d.formula||''}); var conj=(d.kind==='conj'); CUSTOM[d.code]={code:d.code,name:d.name,mass:d.mass,hasPhos:!!d.hasPhos,kind:d.kind||'base',nobond:conj,eff:conj?d.mass:(d.hasPhos?d.mass-LINK.PO:d.mass)}; changed=true; }); if(changed&&typeof save==='function') try{ save(); }catch(_e){ ocFail('addDefs#1',_e); } return changed; }
+  function defsAcross(strands,allDefs){ var seen={},out=[]; (strands||[]).forEach(function(s){ defsFor(s,allDefs).forEach(function(d){ if(!seen[d.code]){ seen[d.code]=1; out.push(d); } }); }); return out; }
+  function missingDefs(defs){ return (defs||[]).filter(function(d){ return !(S.customBases||[]).some(function(x){ return x&&x.code===d.code&&sameDef(x,d); }); }); }
+  function addDefs(defs){
+    var added=[];
+    (defs||[]).forEach(function(d){
+      if(!d||!d.code) return;
+      if(typeof RESERVED_CODES!=='undefined'&&RESERVED_CODES.has&&RESERVED_CODES.has(d.code)) return;
+      var old=(S.customBases||[]).find(function(x){return x&&x.code===d.code;});
+      if(old){ if(!sameDef(old,d)) ocFail('addDefs#conflict',new Error('Conflicting shared custom base '+d.code)); return; }
+      if(!S.customBases) S.customBases=[];
+      var cb={code:d.code,name:d.name||'',mass:d.mass,hasPhos:!!d.hasPhos,kind:d.kind||'base',formula:d.formula||''};
+      S.customBases.push(cb); var conj=(d.kind==='conj');
+      CUSTOM[d.code]={code:d.code,name:d.name,mass:d.mass,hasPhos:!!d.hasPhos,kind:d.kind||'base',formula:d.formula||'',nobond:conj,eff:conj?d.mass:(d.hasPhos?d.mass-LINK.PO:d.mass)};
+      added.push(cb);
+    });
+    if(added.length&&typeof save==='function') try{ save(); }catch(_e){ ocFail('addDefs#1',_e); }
+    added.forEach(function(cb){ try{ if(window.oligoSync&&oligoSync.pushCustomBase) oligoSync.pushCustomBase(cb); }catch(_e){ ocFail('addDefs#sync',_e); } });
+    return added;
+  }
   var WORK=['seq','type','linkage','five','fiveThio','three','advanced','duplexMode','antiSeq','antiType','antiFive','antiThree','antiLinkage','mwSource','modPreset','modName','modMass'];
   function saveShared(s,allDefs){
     if(!validShared(s).ok) return false;      /* R51 F-03: nothing is imported from an invalid payload */
-    addDefs(defsFor(s,allDefs));
     var snap={}; WORK.forEach(function(k){ snap[k]=S[k]; });
     var pe={ seq:s.seq,type:s.type,linkage:s.linkage,five:s.five,fiveThio:s.fiveThio,three:s.three,advanced:s.advanced,modPreset:s.modPreset,modName:s.modName,modMass:s.modMass,mwSource:s.mwSource,
       duplex:(s.duplex&&s.duplex.mode&&s.duplex.mode!=='off')?{mode:s.duplex.mode,antiSeq:s.duplex.antiSeq||'',antiType:s.duplex.antiType||s.type,antiFive:s.duplex.antiFive||'OH',antiThree:s.duplex.antiThree||'OH',antiLinkage:s.duplex.antiLinkage||'PO'}:null };
-    var ok=false;
+    var ok=false, saved=null;
     /* R52 (audit P1-10): 'gated' was flattened to false, so "over quota" and
        "does not compute" produced the identical toast, "Could not save." They
        need different fixes, so they need different words. The literal travels
        up to the caller now. */
-    try{ loadSavedState(pe); ok=saveCurrent(); if(ok==='gated') return 'gated'; if(ok===true&&history[0]){ history[0].name=s.name||history[0].name||''; if(!history[0].id&&typeof crypto!=='undefined'&&crypto.randomUUID){ try{ history[0].id=crypto.randomUUID(); }catch(_){ /* feature probe -- the absence IS the answer */ } } saveHist(); if(_syncOn()&&window.oligoSync&&oligoSync.pushStrand) try{ oligoSync.pushStrand(history[0]); }catch(_e){ ocFail('saveShared#2',_e); } } }catch(_){ ok=false; }
-    WORK.forEach(function(k){ S[k]=snap[k]; }); try{ save(); }catch(_e){ ocFail('saveShared#3',_e); }
-    return ok;
+    try{
+      loadSavedState(pe); ok=saveCurrent();
+      if(ok===true&&history[0]){ saved=history[0]; saved.name=s.name||saved.name||''; if(!saved.id&&typeof crypto!=='undefined'&&crypto.randomUUID){ try{ saved.id=crypto.randomUUID(); }catch(_){ /* feature probe -- the absence IS the answer */ } } saveHist(); }
+    }catch(_e){ ocFail('saveShared#1',_e); ok=false; }
+    finally{ WORK.forEach(function(k){ S[k]=snap[k]; }); try{ save(); }catch(_e){ ocFail('saveShared#3',_e); } }
+    if(ok!=='gated'&&ok!==true) return false;
+    if(ok==='gated') return 'gated';
+    var used=defsFor(s,allDefs), added=addDefs(used);
+    if(saved&&_syncOn()&&window.oligoSync&&oligoSync.pushStrand) try{ oligoSync.pushStrand(saved); }catch(_e){ ocFail('saveShared#2',_e); }
+    return {ok:true,added:added,used:used};
   }
   function fmtEps(e){ if(!e||!isFinite(e)) return '—'; return Math.round(e).toLocaleString()+' M⁻¹cm⁻¹'; }
   function renderRecipient(payload){
-    mergeSessionDefs(payload.customBases);
     function finish(){ try{ if(typeof rebuildCustom==='function') rebuildCustom(); }catch(_e){ ocFail('finish#1',_e); } try{ if(typeof applyAll==='function') applyAll(); }catch(_e){ ocFail('finish#2',_e); } try{ window.history.replaceState(null,'',location.pathname+location.search); }catch(_){ /* URL rewrite refused (sandboxed frame / opaque origin) -- the address bar is cosmetic here */ } }
+    /* Merge only long enough to identify referenced tokens. Rebuild immediately
+       removes unreferenced payload data; all definitions stay session-only until
+       the recipient successfully saves a strand. */
+    mergeSessionDefs(payload.customBases);
+    var referenced=defsAcross(payload.strands,payload.customBases), conflicts=[];
+    try{ if(typeof rebuildCustom==='function') rebuildCustom(); }catch(_e){ ocFail('renderRecipient#rebuild',_e); }
+    referenced.forEach(function(d){ var old=existingDef(d.code); if(old&&!sameDef(old,d)) conflicts.push(d); });
+    payload.customBases=referenced;
+    if(conflicts.length){
+      var cs=openScrim(finish,{label:'Shared custom-base conflict',initialFocus:'none'}), cb=el('div','oshare-box');
+      var cx=el('button','oshare-btn oshare-x','\u2715'); cx.type='button'; cx.setAttribute('aria-label','Close'); cx.addEventListener('click',function(){ cs._close(); }); cb.appendChild(cx);
+      cb.appendChild(el('h3',null,'Custom-base conflict'));
+      cb.appendChild(el('p','oshare-sub','This link defines '+conflicts.map(function(d){return '('+d.code+')';}).join(', ')+' differently from the definition already available in this calculator. Nothing was imported. Ask the sender to reconcile the mass, phosphate state, kind, or formula and share again.'));
+      var cn=el('button','oshare-btn','Close'); cn.type='button'; cn.addEventListener('click',function(){ cs._close(); }); cb.appendChild(cn); cs.appendChild(cb); return;
+    }
+    mergeSessionDefs(referenced);
     /* focus the dialog container, not the first control: this sheet is a review
        list and a :focus-visible ring on "✕ Close" reads as a suggested answer */
     var sc=openScrim(finish,{label:'Shared with you', initialFocus:'none'});
@@ -8955,40 +9139,50 @@ try{
     var x=el('button','oshare-btn oshare-x','✕'); x.type='button'; x.setAttribute('aria-label','Close'); x.addEventListener('click',function(){ sc._close(); }); box.appendChild(x);
     box.appendChild(el('h3',null,'Shared with you'));
     box.appendChild(el('p','oshare-sub', payload.strands.length+' strand'+(payload.strands.length===1?'':'s')+' shared with you. Look them over, then save the ones you want.'));
+    if(referenced.length){
+      var missAll=missingDefs(referenced), dn=el('div','oshare-defnote'); dn.setAttribute('role','status');
+      dn.innerHTML='<b>This share uses '+referenced.length+' custom base'+(referenced.length===1?'':'s')+':</b> '+referenced.map(function(d){return '('+ocEsc(d.code)+') '+ocEsc(d.name||'unnamed');}).join(', ')+'. '+
+        (missAll.length?('Saving a strand also adds the custom base'+(missAll.length===1?'':'s')+' it uses to your Custom bases. Nothing is added if you choose Not now.'):'Those definitions are already available here, so saving will not create duplicates.');
+      box.appendChild(dn);
+    }
     var list=el('div','oshare-list');
     payload.strands.forEach(function(s,idx){
       var card=el('div','oshare-card');
       card.appendChild(el('div','nm', s.name||('Strand '+(idx+1))));
       card.appendChild(el('div','sq', (typeof spaceSeq==='function'?spaceSeq(s.seq,s.type,s.linkage):s.seq)));
+      var sdefs=defsFor(s,payload.customBases), smiss=missingDefs(sdefs);
+      if(sdefs.length) card.appendChild(el('div','oshare-defs','Custom bases: '+sdefs.map(function(d){return '('+d.code+')';}).join(', ')+(smiss.length?(' - '+smiss.length+' will be added when you save'):' - already available')));
       var vs=validShared(s);
       var c=vs.ok?computeShared(s):null, mw=el('div','mw');
       if(c){ mw.innerHTML='MW <b>'+fmt(c.mw,c.n)+'</b> g/mol'+(c.dmw?(' · duplex <b>'+fmt(c.dmw,1)+'</b>'):'')+' · '+s.type+' · '+s.linkage+' · '+c.n+' nt · ε₂₆₀ '+fmtEps(c.eps); }
       else { mw.className='mw oshare-bad'; mw.setAttribute('role','alert');
              mw.textContent='✕ '+(vs.ok?'Could not compute this strand.':vs.message)+' It will not be saved.'; }
       card.appendChild(mw);
-      var b1=el('button','oshare-btn','Save to my library'); b1.type='button';
+      var b1=el('button','oshare-btn',smiss.length?('Save strand + '+smiss.length+' custom base'+(smiss.length===1?'':'s')):'Save to my library'); b1.type='button';
       if(!c){ b1.disabled=true; b1.setAttribute('aria-disabled','true'); b1.title='This strand is not valid, so it cannot be saved.'; }
       else b1.addEventListener('click',function(){
+        try{ if(window.ocPlan&&window.ocPlan.gateSave&&!window.ocPlan.gateSave(1,{retry:function(){ try{ b1.click(); }catch(_e){ ocFail('saveShared#retry',_e); } }})) return; }catch(_e){ ocFail('saveShared#gate',_e); }
         var r=saveShared(s,payload.customBases);
         /* R52 P1-10: name the actual reason */
-        toast(r===true ? 'Saved to your library ✓'
+        toast(r&&r.ok ? ('Saved strand'+(r.added.length?(' and added '+r.added.length+' custom base'+(r.added.length===1?'':'s')):(r.used.length?' - custom bases already available':''))+' ✓')
             : r==='gated' ? 'Your plan’s library is full, so this was not saved.'
             : 'Could not save this strand.');
-        if(r===true){ b1.disabled=true; b1.textContent='Saved ✓'; }
+        if(r&&r.ok){ b1.disabled=true; b1.textContent='Saved ✓'; }
         if(typeof renderHistShell==='function') try{ renderHistShell(); }catch(_e){ ocFail('finish#4',_e); } });
       card.appendChild(b1);
       list.appendChild(card);
     });
     box.appendChild(list);
     var acts=el('div','oshare-actions');
-    var all=el('button','oshare-btn primary','Save all to my library'); all.type='button'; all.addEventListener('click',function(){
+    var allMissing=missingDefs(referenced);
+    var all=el('button','oshare-btn primary',allMissing.length?('Save all + '+allMissing.length+' custom base'+(allMissing.length===1?'':'s')):'Save all to my library'); all.type='button'; all.addEventListener('click',function(){
       /* R51 (audit F-03): every strand is accounted for out loud, and the sheet
          stays open whenever something was left behind -- the r42 precedent.
          R52 (audit P1-10): and the gate is asked ONCE for the whole batch. It
          used to be asked per strand, so a four-strand link rebuilt the wall four
          times -- exactly what the scan and batch paths both carry a comment
          saying must not happen. */
-      var okc=0, invalid=0, other=0, gated=0;
+      var okc=0, invalid=0, other=0, gated=0, addedCodes={};
       var _valid=payload.strands.filter(function(s){ return validShared(s).ok; });
       invalid = payload.strands.length - _valid.length;
       var _allow=_valid.length;
@@ -8998,10 +9192,12 @@ try{
       _valid.forEach(function(s, i){
         if(i>=_allow){ gated++; return; }
         var r=saveShared(s,payload.customBases);
-        if(r===true) okc++; else if(r==='gated') gated++; else other++;
+        if(r&&r.ok){ okc++; (r.added||[]).forEach(function(d){ addedCodes[d.code]=1; }); }
+        else if(r==='gated') gated++; else other++;
       });
       var parts=[];
       if(okc)     parts.push('Saved '+okc+' strand'+(okc===1?'':'s')+' ✓');
+      var addN=Object.keys(addedCodes).length; if(addN) parts.push('added '+addN+' custom base'+(addN===1?'':'s'));
       if(invalid) parts.push(invalid+' skipped, not a valid sequence');
       if(gated)   parts.push(gated+' held back, your plan’s library is full');
       if(other)   parts.push(other+' could not be saved');
@@ -9030,10 +9226,31 @@ try{
         LK=Object.assign(Object.create(null),{PO:1,PS:1,Mixed:1}),
         MS=Object.assign(Object.create(null),{sense:1,antisense:1,duplex:1});
     function ss(v,m){ return (typeof v==='string'?v:'').slice(0,m); }
+    function endValue(v,table){
+      if(v==null||v==='') return 'OH';
+      return typeof v==='string'&&Object.prototype.hasOwnProperty.call(table,v)?v:null;
+    }
     var strands=[];
-    for(var i=0;i<p.strands.length;i++){ var s=p.strands[i]; if(!s||typeof s!=='object') return null; var seq=ss(s.seq,4000); if(!seq) return null;
-      var dx=null; if(s.duplex&&typeof s.duplex==='object'){ var md=s.duplex.mode; if(md==='mirror'||md==='custom'||md==='manual'){ dx={mode:md}; if(md!=='mirror'){ dx.antiSeq=ss(s.duplex.antiSeq,4000); dx.antiType=TY[s.duplex.antiType]?s.duplex.antiType:'DNA'; dx.antiFive=ss(s.duplex.antiFive,24)||'OH'; dx.antiThree=ss(s.duplex.antiThree,24)||'OH'; dx.antiLinkage=LK[s.duplex.antiLinkage]?s.duplex.antiLinkage:'PO'; } } }
-      strands.push({ name:ss(s.name,120),seq:seq,type:TY[s.type]?s.type:'DNA',linkage:LK[s.linkage]?s.linkage:'PO',five:ss(s.five,24)||'OH',fiveThio:!!s.fiveThio,three:ss(s.three,24)||'OH',advanced:!!s.advanced,modPreset:ss(s.modPreset,40),modName:ss(s.modName,80),modMass:(typeof s.modMass==='number'||typeof s.modMass==='string')?s.modMass:'',mwSource:MS[s.mwSource]?s.mwSource:'sense',duplex:dx }); }
+    for(var i=0;i<p.strands.length;i++){
+      var s=p.strands[i]; if(!s||typeof s!=='object') return null; var seq=ss(s.seq,4000); if(!seq) return null;
+      var five=endValue(s.five,FIVE), three=endValue(s.three,THREE); if(five===null||three===null) return null;
+      if(Object.prototype.hasOwnProperty.call(s,'fiveThio')&&typeof s.fiveThio!=='boolean') return null;
+      var fiveThio=s.fiveThio===true; if(fiveThio&&five!=='phosphate') return null;
+      var dx=null;
+      if(s.duplex&&typeof s.duplex==='object'){
+        var md=s.duplex.mode;
+        if(md==='mirror'||md==='custom'||md==='manual'){
+          dx={mode:md};
+          if(md!=='mirror'){
+            dx.antiSeq=ss(s.duplex.antiSeq,4000); dx.antiType=TY[s.duplex.antiType]?s.duplex.antiType:'DNA';
+            dx.antiFive=endValue(s.duplex.antiFive,FIVE); dx.antiThree=endValue(s.duplex.antiThree,THREE);
+            if(dx.antiFive===null||dx.antiThree===null) return null;
+            dx.antiLinkage=LK[s.duplex.antiLinkage]?s.duplex.antiLinkage:'PO';
+          }
+        }
+      }
+      strands.push({ name:ss(s.name,120),seq:seq,type:TY[s.type]?s.type:'DNA',linkage:LK[s.linkage]?s.linkage:'PO',five:five,fiveThio:fiveThio,three:three,advanced:!!s.advanced,modPreset:ss(s.modPreset,40),modName:ss(s.modName,80),modMass:(typeof s.modMass==='number'||typeof s.modMass==='string')?s.modMass:'',mwSource:MS[s.mwSource]?s.mwSource:'sense',duplex:dx });
+    }
     /* R52 (audit P1-11): mergeSessionDefs runs as the FIRST statement of
        renderRecipient -- before the recipient consents to anything -- and
        applied no RESERVED_CODES test, while its sibling addDefs did. A payload
@@ -9045,14 +9262,31 @@ try{
 
        Filtering here means both consumers receive an already-clean list, which
        is the only place that guarantee can be made once. */
-    var cb=[]; if(Array.isArray(p.customBases)){ for(var j=0;j<p.customBases.length;j++){ var c=p.customBases[j];
-      if(!c||typeof c!=='object'||typeof c.code!=='string'||!c.code) continue;
+    var cb=[], seenCb=Object.create(null); if(p.customBases!=null&&!Array.isArray(p.customBases)) return null;
+    if(Array.isArray(p.customBases)){ for(var j=0;j<p.customBases.length;j++){ var c=p.customBases[j];
+      if(!c||typeof c!=='object'||typeof c.code!=='string'||!c.code) return null;
       var code=c.code.slice(0,16);
-      if(typeof RESERVED_CODES!=='undefined' && RESERVED_CODES.has && RESERVED_CODES.has(code)) continue;
-      if(typeof PROTO_NAMES!=='undefined' && PROTO_NAMES.indexOf(code)>=0) continue;
-      if(!/^[A-Za-z0-9+._-]{1,16}$/.test(code)) continue;          // the local form's own charset test
-      var mass=Number(c.mass); if(!isFinite(mass) || mass<=0) continue;
-      cb.push({code:code,name:ss(c.name,80),mass:mass,hasPhos:!!c.hasPhos,kind:c.kind==='conj'?'conj':'base',formula:ss(c.formula,60)}); } }
+      if(typeof RESERVED_CODES!=='undefined' && RESERVED_CODES.has && RESERVED_CODES.has(code)) return null;
+      if(typeof PROTO_NAMES!=='undefined' && PROTO_NAMES.indexOf(code)>=0) return null;
+      if(!/^[A-Za-z0-9+._-]{1,16}$/.test(code)) return null;          // the local form's own charset test
+      if(typeof c.mass!=='number'||!isFinite(c.mass)||c.mass<=0) return null;
+      if(Object.prototype.hasOwnProperty.call(c,'hasPhos')&&typeof c.hasPhos!=='boolean') return null;
+      var kind=c.kind==null?'base':c.kind; if(kind!=='base'&&kind!=='conj') return null;
+      if(c.formula!=null&&typeof c.formula!=='string') return null;
+      var formula=ss(c.formula,60); if(c.formula&&formula!==c.formula) return null;
+      if(formula){ var pf=parseFormula(formula); if(!pf) return null;
+        /* R57: `null` here means a real formula with no mass-table entry (e.g. Fe),
+           which is a supported state -- the recipient shows monoisotopic as
+           unavailable, exactly as a local copy of the same monomer does. Only a
+           non-finite NUMBER is a broken formula. Rejecting null on its own dropped
+           the entire share payload over a monomer the app simply cannot weigh. */
+        try{ var fav=formulaAvg(pf); if(fav!==null&&!isFinite(fav)) return null; }catch(_e){ return null; } }
+      var def={code:code,name:ss(c.name,80),mass:c.mass,hasPhos:c.hasPhos===true,kind:kind,formula:formula};
+      if(seenCb[code]){
+        var old=seenCb[code]; if(old.mass!==def.mass||old.hasPhos!==def.hasPhos||old.kind!==def.kind||old.formula!==def.formula) return null;
+        continue;
+      }
+      seenCb[code]=def; cb.push(def); } }
     return {v:VER,strands:strands,customBases:cb};
   }
   function initFromHash(){
@@ -9120,7 +9354,7 @@ try{
     var tok=(typeof proAccessToken==='function') ? await proAccessToken() : null;
     var h=(typeof sbAuthHeaders==='function') ? sbAuthHeaders() : {'Content-Type':'application/json'};
     if(tok) h.Authorization='Bearer '+tok;
-    var r=await fetch(sbBase()+'/rest/v1/rpc/'+fn,{method:'POST',headers:h,body:JSON.stringify(args||{})});
+    var r=await window.oligoFetchT(sbBase()+'/rest/v1/rpc/'+fn,{method:'POST',headers:h,body:JSON.stringify(args||{})},15000);
     if(!r.ok){ var t=''; try{ t=await r.text(); }catch(_e){ ocFail('callRpc#1',_e); } throw new Error(rpcErr(t)||('rpc '+fn+' '+r.status)); }
     var txt=''; try{ txt=await r.text(); }catch(_e){ ocFail('callRpc#2',_e); } if(!txt) return null; try{ return JSON.parse(txt); }catch(_){ return txt; }
   }
@@ -9283,7 +9517,7 @@ try{
   function jwtSub(t){ try{ return (JSON.parse(decodeURIComponent(escape(atob(t.split('.')[1].replace(/-/g,'+').replace(/_/g,'/')))))||{}).sub||null; }catch(_){ try{ return (JSON.parse(atob(t.split('.')[1]))||{}).sub||null; }catch(e){ return null; } } }
   async function myUid(){ try{ var t=(typeof proAccessToken==='function')?await proAccessToken():null; return t?jwtSub(t):null; }catch(_){ return null; } }
   async function headers(extra){ var t=(typeof proAccessToken==='function')?await proAccessToken():null; var h=(typeof sbAuthHeaders==='function')?sbAuthHeaders():{'Content-Type':'application/json'}; if(t) h.Authorization='Bearer '+t; if(extra){ for(var k in extra) h[k]=extra[k]; } return h; }
-  async function rest(method,path,body,extra){ if(typeof sbBase!=='function'||!sbBase()) throw new Error('Supabase not configured'); var opt={method:method,headers:await headers(extra)}; if(body!==undefined) opt.body=JSON.stringify(body); var r=await fetch(sbBase()+'/rest/v1/'+path,opt); if(!r.ok){ var t=''; try{ t=await r.text(); }catch(_e){ ocFail('rest#1',_e); } throw new Error(rerr(t)||(method+' '+r.status)); } var txt=''; try{ txt=await r.text(); }catch(_e){ ocFail('rest#2',_e); } if(!txt) return null; try{ return JSON.parse(txt); }catch(_){ return txt; } }
+  async function rest(method,path,body,extra){ if(typeof sbBase!=='function'||!sbBase()) throw new Error('Supabase not configured'); var opt={method:method,headers:await headers(extra)}; if(body!==undefined) opt.body=JSON.stringify(body); var r=await window.oligoFetchT(sbBase()+'/rest/v1/'+path,opt,15000); if(!r.ok){ var t=''; try{ t=await r.text(); }catch(_e){ ocFail('rest#1',_e); } throw new Error(rerr(t)||(method+' '+r.status)); } var txt=''; try{ txt=await r.text(); }catch(_e){ ocFail('rest#2',_e); } if(!txt) return null; try{ return JSON.parse(txt); }catch(_){ return txt; } }
   function rerr(t){ try{ var j=JSON.parse(t); return j.message||j.details||j.hint||''; }catch(_){ return (t||'').slice(0,160); } }
   async function rpc(fn,args){ return await rest('POST','rpc/'+fn,args||{}); }
 
@@ -10118,13 +10352,72 @@ try{
 
   /* ---- render helpers ---- */
   function opt(val,cur,label){ return '<option value="'+val+'"'+(val===cur?' selected':'')+'>'+scEsc(label||val)+'</option>'; }
+  function normalizeScanFive(v){
+    var raw=(v==null?'':String(v)).trim(); if(!raw) return {value:'OH',warning:''};
+    var key=raw.toLowerCase().replace(/[\u2032\u2019]/g,"'").replace(/[\/\s'_-]+/g,'');
+    var map={oh:'OH',hydroxyl:'OH','5oh':'OH','5primeoh':'OH',p:'phosphate',phosphate:'phosphate',monophosphate:'phosphate','5p':'phosphate','5phos':'phosphate','5phosphate':'phosphate','5primep':'phosphate','5primemonophosphate':'phosphate',pp:'diphosphate',diphosphate:'diphosphate','5pp':'diphosphate','5diphosphate':'diphosphate','5primepp':'diphosphate','5primediphosphate':'diphosphate',ppp:'triphosphate',triphosphate:'triphosphate','5ppp':'triphosphate','5triphosphate':'triphosphate','5primeppp':'triphosphate','5primetriphosphate':'triphosphate',dmt:'DMT','5dmt':'DMT','5primedmt':'DMT'};
+    if(Object.prototype.hasOwnProperty.call(map,key)) return {value:map[key],warning:''};
+    return {value:'OH',warning:'Unrecognized 5 prime end "'+raw+'" was not applied. Review the 5 prime setting.'};
+  }
+  /* R57 (F2): the 3' sibling of normalizeScanFive, and the two remaining review
+     selects. Exact-key lookup over the same fold, never substring matching, so a
+     strand NAMED "3Phos-control" cannot become an end group. Mirrors the Edge
+     Function tables exactly. */
+  function _scanFold(v){ return (v==null?'':String(v)).trim().toLowerCase().replace(/[\u2032\u2019]/g,"'").replace(/[\/\s'_-]+/g,''); }
+  function normalizeScanThree(v){
+    var raw=(v==null?'':String(v)).trim(); if(!raw) return {value:'OH',warning:''};
+    var map={oh:'OH',hydroxyl:'OH','3oh':'OH','3primeoh':'OH',
+      p:'phosphate',phosphate:'phosphate',monophosphate:'phosphate',
+      '3p':'phosphate','3phos':'phosphate','3phosphate':'phosphate',
+      '3primep':'phosphate','3primephosphate':'phosphate','3primemonophosphate':'phosphate',
+      invdt:'invdT',idt:'invdT','3invdt':'invdT','3idt':'invdT','3primeinvdt':'invdT',
+      inverteddt:'invdT','3inverteddt':'invdT','3primeinverteddt':'invdT',inverteddeoxyt:'invdT',
+      invda:'invdA',ida:'invdA','3invda':'invdA','3ida':'invdA','3primeinvda':'invdA',
+      invertedda:'invdA','3invertedda':'invdA','3primeinvertedda':'invdA',inverteddeoxya:'invdA',
+      invdc:'invdC',idc:'invdC','3invdc':'invdC','3idc':'invdC','3primeinvdc':'invdC',
+      inverteddc:'invdC','3inverteddc':'invdC','3primeinverteddc':'invdC',inverteddeoxyc:'invdC',
+      invdg:'invdG',idg:'invdG','3invdg':'invdG','3idg':'invdG','3primeinvdg':'invdG',
+      inverteddg:'invdG','3inverteddg':'invdG','3primeinverteddg':'invdG',inverteddeoxyg:'invdG'};
+    var key=_scanFold(raw);
+    if(Object.prototype.hasOwnProperty.call(map,key)) return {value:map[key],warning:''};
+    return {value:'OH',warning:'Unrecognized 3 prime end "'+raw+'" was not applied. Review the 3 prime setting.'};
+  }
+  function normalizeScanType(v){
+    var raw=(v==null?'':String(v)).trim(); if(!raw) return {value:'DNA',warning:''};
+    var map={dna:'DNA',deoxy:'DNA',ddna:'DNA','2deoxy':'DNA',
+      rna:'RNA',ribo:'RNA',rrna:'RNA',
+      hybrid:'Hybrid',chimera:'Hybrid',chimeric:'Hybrid',mixed:'Hybrid',gapmer:'Hybrid'};
+    var key=_scanFold(raw);
+    if(Object.prototype.hasOwnProperty.call(map,key)) return {value:map[key],warning:''};
+    return {value:'DNA',warning:'Unrecognized backbone type "'+raw+'" was not applied. Check the DNA/RNA/Hybrid setting.'};
+  }
+  /* Linkage carries one extra job. The engine reads PS bonds from lowercase "s"
+     marks only when the linkage is Mixed; under PO the marks are parsed and then
+     ignored, so a row arriving as linkage:"PO" with an s in it computes 16.06 Da
+     per marked bond too light and says nothing. The calculator already promotes
+     PO -> Mixed on its own typing path (promoteMixedIfNeeded) for exactly this
+     reason. A false promotion cannot change a mass: Mixed with no real marks
+     parses every bond as PO. */
+  function normalizeScanLinkage(v,seq){
+    var raw=(v==null?'':String(v)).trim();
+    var map={po:'PO',phosphodiester:'PO',diester:'PO',natural:'PO',none:'PO',
+      ps:'PS',phosphorothioate:'PS',thioate:'PS',thio:'PS',allps:'PS',fullps:'PS',
+      mixed:'Mixed',mix:'Mixed',chimeric:'Mixed',partialps:'Mixed',gapmer:'Mixed'};
+    var key=_scanFold(raw), out, warn='';
+    if(!raw) out='PO';
+    else if(Object.prototype.hasOwnProperty.call(map,key)) out=map[key];
+    else { out='PO'; warn='Unrecognized linkage "'+raw+'" was not applied. Check the PO/PS/Mixed setting.'; }
+    if(out==='PO' && /[ACGTU]\s*s\s*(?:[ACGTU(]|d|r|m|f|moe|cEt)/.test(String(seq||'')))
+      { out='Mixed'; warn=warn||'The sequence marks a phosphorothioate bond, so the linkage was set to Mixed rather than PO.'; }
+    return {value:out,warning:warn};
+  }
   /* R52 (audit P2-18): the four chemistry selects and the sequence input had
      no aria-label, no placeholder and no <label> -- the visible words "Type",
      "Linkage", "5′", "3′" are bare TEXT NODES, not labels. A screen-reader user
      reviewing five scanned strands heard five unnamed comboboxes each. */
   function selType(r){ return '<select data-f="type" aria-label="Backbone type">'+opt('DNA',r.type,'DNA')+opt('RNA',r.type,'RNA')+opt('Hybrid',r.type,'Hybrid')+'</select>'; }
   function selLink(r){ return '<select data-f="linkage" aria-label="Linkage chemistry">'+opt('PO',r.linkage,'PO')+opt('PS',r.linkage,'PS')+opt('Mixed',r.linkage,'Mixed')+'</select>'; }
-  function selFive(r){ return '<select data-f="five" aria-label="5 prime end group">'+opt('OH',r.five,'OH')+opt('phosphate',r.five,'5′P')+opt('DMT',r.five,'DMT')+'</select>'; }
+  function selFive(r){ return '<select data-f="five" aria-label="5 prime end group">'+opt('OH',r.five,'OH')+opt('phosphate',r.five,'5′P')+opt('diphosphate',r.five,'5′PP')+opt('triphosphate',r.five,'5′PPP')+opt('DMT',r.five,'DMT')+'</select>'; }
   function selThree(r){ return '<select data-f="three" aria-label="3 prime end group">'+opt('OH',r.three,'3′-OH')+opt('phosphate',r.three,'3′-P')+opt('invdT',r.three,'inv dT')+opt('invdA',r.three,'inv dA')+opt('invdC',r.three,'inv dC')+opt('invdG',r.three,'inv dG')+'</select>'; }
   function flagHtml(r){
     var h='';
@@ -10230,7 +10523,7 @@ try{
         confHtml(r,c0)+'</div>'+
       '<input class="catgate-input scan-seq" data-f="seq" spellcheck="false" aria-label="Scanned sequence for '+scEsc(r.name||('strand '+(i+1)))+'" value="'+scEsc(r.seq||'')+'"/>'+
       '<div class="scan-selrow">Type '+selType(r)+' Linkage '+selLink(r)+' 5′ '+selFive(r)+' 3′ '+selThree(r)+
-        ' <label><input type="checkbox" data-f="fiveThio"'+(r.fiveThio?' checked':'')+'/> 5′-PS</label></div>'+
+        ' <label><input type="checkbox" data-f="fiveThio"'+(r.fiveThio?' checked':'')+(r.five!=='phosphate'?' disabled':'')+'/> 5′-PS</label></div>'+
       '<div class="scan-out" data-out>'+outHtml(r)+'</div>'+
       '<div class="scan-flags" data-flags>'+flagHtml(r)+'</div>'+
       '<div data-pickwrap></div>'+
@@ -10279,12 +10572,23 @@ try{
   }
   function openReview(resp){
     savedIds={}; dirty={}; blocked={};          // R42: a new scan is a new session
-    rows=(resp.strands||[]).map(function(s){ return {
-      name:s.name||'', seq:s.coreSequence||'', type:s.type||'DNA', linkage:s.linkage||'PO',
-      five:s.five||'OH', fiveThio:!!s.fiveThio, three:s.three||'OH', threeThio:!!s.threeThio,
+    rows=(resp.strands||[]).map(function(s){
+      /* R57 (F2): every one of the four chemistry selects is whitelisted here, at
+         the single point where an untrusted payload becomes row state. Warnings
+         are unshifted in reverse display order so they read 5' -> 3'. */
+      var nf=normalizeScanFive(s.five), nt=normalizeScanType(s.type),
+          nl=normalizeScanLinkage(s.linkage,s.coreSequence), n3=normalizeScanThree(s.three),
+          ws=Array.isArray(s.warnings)?s.warnings.slice():[];
+      if(n3.warning) ws.unshift(n3.warning);
+      if(nl.warning) ws.unshift(nl.warning);
+      if(nt.warning) ws.unshift(nt.warning);
+      if(nf.warning) ws.unshift(nf.warning);
+      return {
+      name:s.name||'', seq:s.coreSequence||'', type:nt.value, linkage:nl.value,
+      five:nf.value, fiveThio:nf.value==='phosphate'&&!!s.fiveThio, three:n3.value, threeThio:n3.value!=='OH'&&!!s.threeThio,
       vendorMW:(s.vendorMW==null?null:Number(s.vendorMW)), scale:s.scale||'',
       unresolved:s.unresolved||[], confidence:(s.confidence==null?null:Number(s.confidence)),
-      lowConfidenceSpans:s.lowConfidenceSpans||[], warnings:s.warnings||[]
+      lowConfidenceSpans:s.lowConfidenceSpans||[], warnings:ws
     }; });
     var ov=ensureOverlay(); var n=rows.length;
     ov.innerHTML='<div class="catgate-card" style="max-width:820px;max-height:88vh;overflow:auto">'+
@@ -10301,7 +10605,9 @@ try{
     '</div>';
     var card=ov.querySelector('[data-scanlist]');
     function readRow(el){ var idx=+el.getAttribute('data-scanrow'); var r=rows[idx]; if(!r) return null;
-      el.querySelectorAll('[data-f]').forEach(function(f){ var k=f.getAttribute('data-f'); r[k]=(f.type==='checkbox')?f.checked:f.value; }); return r; }
+      el.querySelectorAll('[data-f]').forEach(function(f){ var k=f.getAttribute('data-f'); r[k]=(f.type==='checkbox')?f.checked:f.value; });
+      var th=el.querySelector('[data-f="fiveThio"]'); if(th){ var mono=r.five==='phosphate'; th.disabled=!mono; if(!mono){ th.checked=false; r.fiveThio=false; } }
+      return r; }
     function refresh(el){ var r=readRow(el); if(!r) return; paintRow(el, r); }   /* R26: repaint badge + rail + numbers together */
     card.addEventListener('input', function(e){
       var pq=e.target.closest('[data-pickq]');
@@ -10615,6 +10921,7 @@ try{
   /* expose for testing / external triggers */
   W.oligoScan={ open:doScan, review:openReview, _rows:function(){ return rows; },
     _target:function(t){ if(t) target=t; return target; },
+    _normalizeFive:normalizeScanFive,
     /* R41 */
     _sourceSheet:openSourceSheet, _canCapture:canCapture,
     _inputs:{ library:fileInput, camera:camInput },
@@ -11707,9 +12014,9 @@ body[data-mode="dark"] .oc-wall-eyebrow{color:var(--accent)}
         var key=(typeof S!=='undefined'&&S.catalogSupabaseAnonKey)?String(S.catalogSupabaseAnonKey).trim():'';
         var tok=(typeof proAccessToken==='function')?await proAccessToken():null;
         if(!base||!key||!tok) return entOf();
-        var r=await fetch(base.replace(/\/+$/,'')+'/rest/v1/rpc/my_entitlements',
+        var r=await window.oligoFetchT(base.replace(/\/+$/,'')+'/rest/v1/rpc/my_entitlements',
           {method:'POST', headers:{apikey:key, Authorization:'Bearer '+tok,
-            'Content-Type':'application/json', Accept:'application/json'}, body:'{}'});
+            'Content-Type':'application/json', Accept:'application/json'}, body:'{}'},15000);
         if(!r.ok) return entOf();
         var d=await r.json();
         if(d && typeof d==='object'){ _ent=d; _entAt=Date.now(); cacheWrite(); }
@@ -12351,10 +12658,10 @@ body[data-mode="dark"] .oc-wall-eyebrow{color:var(--accent)}
     var key=(typeof S!=='undefined'&&S.catalogSupabaseAnonKey)?String(S.catalogSupabaseAnonKey).trim():'';
     var tok=(typeof proAccessToken==='function')?await proAccessToken():null;
     if(!base||!key||!tok){ var _e0=new Error('not signed in'); _e0.reason='not_signed_in'; throw _e0; }
-    var r=await fetch(base.replace(/\/+$/,'')+'/rest/v1/rpc/redeem_code',
+    var r=await window.oligoFetchT(base.replace(/\/+$/,'')+'/rest/v1/rpc/redeem_code',
       {method:'POST', headers:{apikey:key, Authorization:'Bearer '+tok,
         'Content-Type':'application/json', Accept:'application/json'},
-       body:JSON.stringify({p_code:code})});
+       body:JSON.stringify({p_code:code})},15000);
     /* R52 (audit P1-38): every non-2xx became `HTTP <status>` and the caller's
        .catch flattened it to "Could not reach the server", so a labmate whose
        token had expired was told to check their router. An unauthenticated
@@ -12588,9 +12895,9 @@ body[data-mode="dark"] .oc-wall-eyebrow{color:var(--accent)}
     if(!t) return { code:'signin_required' };
     var r;
     try{
-      r=await fetch(b+'/functions/v1/'+name, {method:'POST',
+      r=await window.oligoFetchT(b+'/functions/v1/'+name, {method:'POST',
         headers:{apikey:k, Authorization:'Bearer '+t, 'Content-Type':'application/json'},
-        body:JSON.stringify(body||{})});
+        body:JSON.stringify(body||{})},30000);
     }catch(_){ return { code:'network' }; }
     var j={}; try{ j=await r.json(); }catch(_e){ ocFail('callFn#1',_e); }
     if(!r.ok) return { code:j.code||('http_'+r.status), error:j.error, status:r.status };
@@ -12654,8 +12961,8 @@ body[data-mode="dark"] .oc-wall-eyebrow{color:var(--accent)}
   async function myLabs(){
     var b=base(), k=key(), t=await tok(); if(!b||!k||!t) return [];
     try{
-      var r=await fetch(b+'/rest/v1/rpc/my_labs',{method:'POST',
-        headers:{apikey:k, Authorization:'Bearer '+t, 'Content-Type':'application/json'}, body:'{}'});
+      var r=await window.oligoFetchT(b+'/rest/v1/rpc/my_labs',{method:'POST',
+        headers:{apikey:k, Authorization:'Bearer '+t, 'Content-Type':'application/json'}, body:'{}'},15000);
       if(!r.ok) return [];
       var d=await r.json(); return Array.isArray(d)?d:[];
     }catch(_){ return []; }
@@ -13888,11 +14195,11 @@ details.r-more > summary .lbl-mini{display:none}
     var tok=await bearer();
     var res=null, netFail=false;
     try{
-      var r=await fetch(base+'/functions/v1/contact', {
+      var r=await window.oligoFetchT(base+'/functions/v1/contact', {
         method:'POST',
         headers:{ apikey:key, Authorization:'Bearer '+tok, 'Content-Type':'application/json' },
         body:JSON.stringify({ name:name.slice(0,120), email:email.slice(0,200), message:msg.slice(0,4000), website:hp })
-      });
+      },30000);
       try{ res=await r.json(); }catch(_e){ ocFail('send#1',_e); res={}; }
       if(!r.ok) res.code=res.code||('http_'+r.status);
     }catch(_e){ ocFail('send#2',_e); netFail=true; }
@@ -14006,11 +14313,11 @@ details.r-more > summary .lbl-mini{display:none}
     if(go){ go.disabled=true; go.textContent='Deleting…'; }
     var res=null, netFail=false;
     try{
-      var r=await fetch(base+'/functions/v1/delete-account', {
+      var r=await window.oligoFetchT(base+'/functions/v1/delete-account', {
         method:'POST',
         headers:{ apikey:key, Authorization:'Bearer '+tok, 'Content-Type':'application/json' },
         body:JSON.stringify({ confirm:DELWORD })
-      });
+      },30000);
       try{ res=await r.json(); }catch(_e){ ocFail('doDelete#2',_e); res={}; }
       if(!r.ok) res.code=res.code||('http_'+r.status);
     }catch(_e){ ocFail('doDelete#3',_e); netFail=true; }
@@ -14248,6 +14555,32 @@ body[data-seqfocus="antisense"] .warn[data-antiwarn]{display:none}
 .oc-ava{font-size:11px}
 .acct-btn .caret{font-size:11px}
 
+/* UX-03: expose every chip at the minimum width without a hidden nested
+   scroller. Wider phones keep the compact row; short landscape keeps Details. */
+@media (max-width:359px) and (min-height:521px){
+  #result .r-chips{flex-wrap:wrap;overflow-x:visible;overscroll-behavior-x:auto;gap:5px 6px;padding-bottom:0}
+  #result .r-chips span{flex:0 0 auto;max-width:100%;padding:3px 7px}
+}
+
+/* UX-04: mobile reading and focus order is heading, search, result count,
+   compact tools, then inventory. Promotion follows the first result. */
+.cat-mobile-tools,.cat-mobile-gate{display:none}
+@media (max-width:767px){
+  .view-cat>.vsub,.view-cat>[data-catgatebar],.view-cat>.ins-hint,.view-cat>.cat-desktop-filters{display:none}
+  .view-cat .catbar{margin-bottom:5px}
+  .view-cat .catcount{margin:3px 0 7px}
+  .cat-mobile-tools{display:block;border:1px solid var(--line);border-radius:10px;background:var(--surface-2);margin:0 0 9px}
+  .cat-mobile-tools>summary{min-height:44px;display:flex;align-items:center;padding:0 12px;font-family:var(--font-head);font-size:12px;font-weight:700;color:var(--text);cursor:pointer;list-style:none}
+  .cat-mobile-tools>summary::-webkit-details-marker{display:none}
+  .cat-mobile-tools>summary::after{content:"+";margin-left:auto;color:var(--accent-2);font-size:16px}
+  .cat-mobile-tools[open]>summary::after{content:"-"}
+  .cat-mobile-toolbody{padding:0 10px 10px;border-top:1px solid var(--line)}
+  .cat-mobile-toolbody .catfilters{display:flex;flex-wrap:nowrap;overflow-x:auto;max-width:100%;padding:9px 0 2px;overscroll-behavior-x:contain}
+  .cat-mobile-toolbody p{font-size:11.5px;line-height:1.45;color:var(--muted);margin:8px 2px 0}
+  .view-cat .catlist>.cat-mobile-gate{display:flex;margin:0;border-left:0;border-right:0;border-radius:0;padding:8px 12px;font-size:11.5px;min-height:44px}
+  .view-cat .catlist>.cat-mobile-gate .g-cta{min-height:36px;padding:6px 12px}
+}
+
 /* U5 · catalog rows. Flat list with sticky category headers; the card chrome
    (border + 12px radius + gap) becomes a single hairline between rows, which is
    what lets 351 listings read as a directory rather than 351 objects. */
@@ -14321,6 +14654,23 @@ body[data-seqfocus="antisense"] .warn[data-antiwarn]{display:none}
 .view-hist .htable .hact button{border-radius:9px}
 .view-hist .hn-edit,.view-hist .htable .hsort{border-radius:9px}
 .hb-scan{display:inline-flex; align-items:center; gap:6px}
+
+/* UX-05: an empty collection is a task state, not a seven-column table row. */
+.view-hist .htable[hidden],.view-hist .hist-empty[hidden]{display:none}
+.view-hist .hist-empty{border:1px dashed var(--line-2);border-radius:12px;background:var(--surface-2);padding:26px 22px;text-align:center;color:var(--muted)}
+.view-hist .hist-empty h3{font-family:var(--font-head);font-size:16px;color:var(--text);margin:0 0 6px}
+.view-hist .hist-empty p{font-size:13px;line-height:1.55;max-width:52ch;margin:0 auto 14px}
+.view-hist .hist-empty .hb{font-family:var(--font-head);font-weight:700;font-size:12px;min-height:44px;padding:8px 15px;border:1px solid var(--accent);border-radius:9px;background:var(--accent);color:var(--accent-ink);cursor:pointer}
+.view-hist[data-hist-empty="all"] .histbar .search,
+.view-hist[data-hist-empty="all"] .histbar [data-hexport],
+.view-hist[data-hist-empty="all"] .histbar [data-hsharesel],
+.view-hist[data-hist-empty="all"] .histbar [data-hcopylab],
+.view-hist[data-hist-empty="all"] .histbar [data-hclearall],
+.view-hist[data-hist-empty="filtered"] .histbar [data-hexport],
+.view-hist[data-hist-empty="filtered"] .histbar [data-hsharesel],
+.view-hist[data-hist-empty="filtered"] .histbar [data-hcopylab],
+.view-hist[data-hist-empty="filtered"] .histbar [data-hclearall]{display:none}
+@media (max-width:640px){ .view-hist .hist-empty{padding:22px 16px} }
 
 /* P6d · #c-stocku was the one picker r40b missed: transparent background, no
    border, --muted text -- exactly the "muted text floating in the box" that round
@@ -14396,7 +14746,7 @@ body[data-mode="dark"] #scanOv .scan-row-acts [data-scanlib]{color:var(--accent)
           o.dataset.massed='1';
         });
       });
-    }catch(e){}
+    }catch(e){ ocFail('R55.labelOptions',e); }
   }
 
   /* ---- 1b. write stored state back into both selects on every render. Without
@@ -14406,7 +14756,7 @@ body[data-mode="dark"] #scanOv .scan-row-acts [data-scanlib]{color:var(--accent)
     try{
       var a=q('[data-fivesel]'); if(a && a.value!==S.five) a.value=S.five||'OH';
       var b=q('[data-antifivesel]'); if(b && b.value!==(S.antiFive||'OH')) b.value=S.antiFive||'OH';
-    }catch(e){}
+    }catch(e){ ocFail('R55.syncEnds',e); }
   }
   if(typeof renderControls==='function'){
     var _rc=renderControls;
@@ -14420,26 +14770,33 @@ body[data-mode="dark"] #scanOv .scan-row-acts [data-scanlib]{color:var(--accent)
   function applyFive(val, isAnti){
     var typeK=isAnti?(S.antiType||S.type):S.type, linkK=isAnti?(S.antiLinkage||'PO'):S.linkage;
     var seqK=isAnti?'antiSeq':'seq', fiveK=isAnti?'antiFive':'five';
-    S[fiveK]=val;
-    if(!isAnti && val!=='phosphate') S.fiveThio=false;   /* alpha/beta/gamma is ambiguous on di- and tri- */
+    var nextSeq=S[seqK]||'', nextFiveThio=isAnti?false:(val==='phosphate'?!!S.fiveThio:false);
     try{
-      var p=parseSeq(S[seqK]||'', typeK);
-      if(p.five!==val){
+      var p=parseSeq(nextSeq, typeK);
+      if(p.five!==val || (!isAnti&&p.fiveThio!==nextFiveThio)){
         var threeK=isAnti?(S.antiThree||'OH'):(S.three||'OH');
-        var next=enforceThree(serialize(p.tokens,p.marks,typeK,linkK,val,(val==='phosphate'&&!isAnti)?S.fiveThio:false),threeK);
+        var next=enforceThree(serialize(p.tokens,p.marks,typeK,linkK,val,nextFiveThio),threeK);
         /* add3Thio() lives inside the engine closure and is not visible from this
            late compatibility block. Preserve the exact suffix marker locally. */
-        S[seqK]=p.threeThio?next.replace(/ (idT|idA|idC|idG|P)(\s*)$/, " s $1$2"):next;
+        nextSeq=p.threeThio?next.replace(/ (idT|idA|idC|idG|P)(\s*)$/, " s $1$2"):next;
       }
-    }catch(e){}
-    try{ save(); }catch(e){}
-    try{ applyAll(); }catch(e){}
+    }catch(e){
+      ocFail('R55.applyFive#compose',e,{notice:'The 5 prime end could not be applied. The previous strand was kept.'});
+      syncEnds(); return false;
+    }
+    /* Commit only after the full replacement string exists. */
+    S[fiveK]=val; S[seqK]=nextSeq; if(!isAnti) S.fiveThio=nextFiveThio;
+    try{ save(); }catch(e){ ocFail('R55.applyFive#save',e,{notice:'The end-group change is active but could not be saved on this device.'}); }
+    try{ applyAll(); }catch(e){ ocFail('R55.applyFive#applyAll',e,{
+      invalidate:'#result .r-hero, #result .p-trace .tv, #result .p-ladder .pl-c .m, .view-conc .rv, .view-conc .hv, .view-ms .rv, .view-ms .hv',
+      notice:'The end group changed, but the scientific result could not be recalculated. The previous values were cleared.' }); }
     try{
       var sel=isAnti?'[data-antiseq]':'[data-seq]';
       document.querySelectorAll(sel).forEach(function(t){
         if(document.activeElement!==t && typeof _fmtSeqField==='function') t.value=_fmtSeqField(S[seqK],isAnti);
       });
-    }catch(e){}
+    }catch(e){ ocFail('R55.applyFive#repaint',e); }
+    return true;
   }
   document.body.addEventListener('change',function(e){
     var f=e.target.closest&&e.target.closest('[data-fivesel]');
@@ -14465,7 +14822,10 @@ body[data-mode="dark"] #scanOv .scan-row-acts [data-scanlib]{color:var(--accent)
     var isAnti=el.matches('[data-antiseq]');
     if(!isAnti && !el.matches('[data-seq]')) return;
     if(isAnti && S.duplexMode!=='custom') return;
-    try{ if(window.autoStrandType && window.autoStrandType(isAnti,true)) applyAll(); }catch(_e){}
+    try{ if(window.autoStrandType && window.autoStrandType(isAnti,true)) applyAll(); }
+    catch(_e){ ocFail('R55.typeOnBlur',_e,{
+      invalidate:'#result .r-hero, #result .p-trace .tv, #result .p-ladder .pl-c .m, .view-conc .rv, .view-conc .hv, .view-ms .rv, .view-ms .hv',
+      notice:'The strand type changed, but the scientific result could not be recalculated. The previous values were cleared.' }); }
   }
   document.addEventListener('focusin',focusState,true);
   document.addEventListener('focusout',function(e){ typeOnBlur(e&&e.target); setTimeout(focusState,0); },true);
