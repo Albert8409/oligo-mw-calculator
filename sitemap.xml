@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- oligocalculator.com sitemap.
+     Updated 2026-08-09 (R59) for the standalone root deployment.
+
+     ONE entry, on purpose. The application is a single page: the MW Calculator,
+     Concentration and Mass Spec tabs, the FAQ, the history drawer, the catalog
+     and the Terms / Privacy / Refunds / Contact documents are all in-page views
+     with no separate crawlable address. Listing them as URLs would advertise
+     addresses that return the same document, which splits ranking signals
+     instead of concentrating them.
+
+     The previous version listed /next/ as canonical and the root as secondary.
+     That inverted once the standalone build became the only build. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://oligocalculator.com/</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>

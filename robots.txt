@@ -1,0 +1,21 @@
+# oligocalculator.com
+#
+# The whole application is one page served at the site root. There is nothing
+# server-side, no user area with its own URLs, and no admin path — so there is
+# nothing here that needs hiding. This file exists so crawlers stop guessing and
+# so the sitemap is discoverable.
+#
+# Updated 2026-08-08 for the standalone root deployment. The previous version
+# was written when the current build lived at /next/ and the classic build held
+# the root.
+
+User-agent: *
+Allow: /
+
+# The app rewrites the address bar to ?tab=mw / ?tab=conc as you use it. Those
+# are the same page, so they are deliberately NOT disallowed here — a Disallow
+# would stop crawlers reading the page at all. The <link rel="canonical"> in
+# index.html points every variant back to the bare root, which is the correct
+# way to say "these are one page".
+
+Sitemap: https://oligocalculator.com/sitemap.xml
