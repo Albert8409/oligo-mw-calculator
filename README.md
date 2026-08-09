@@ -1,11 +1,11 @@
 # Oligo MW & Concentration Calculator
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20842890.svg)](https://doi.org/10.5281/zenodo.20842890)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A free, single-page tool for oligonucleotide **molecular weight**, **extinction coefficient (&epsilon;<sub>260</sub>)**, **concentration**, and **dilution** calculations — all in one consistent workflow.
 
-**▶ Live tool:** https://albert8409.github.io/oligo-mw-calculator/
+**▶ Live tool:** https://oligocalculator.com/
 
 ## Features
 
@@ -35,4 +35,4 @@ The DOI `10.5281/zenodo.20842890` is the concept DOI and always resolves to the 
 
 ## License
 
-[MIT](LICENSE) © 2026 Yu-Sheng Chen
+MIT © 2026 Yu-Sheng Chen
