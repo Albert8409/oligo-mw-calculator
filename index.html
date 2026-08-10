@@ -150,6 +150,22 @@ catch(_){ /* location.hash unreadable (opaque origin) -- a share link simply wil
      inside this comment -- see the phantom-tag note in CLAUDE.md. -->
 <meta name="description" content="Free oligonucleotide molecular weight calculator. Average and monoisotopic mass, elemental formula, extinction coefficient and nanodrop concentration for DNA, RNA, phosphorothioate, 2'-OMe, 2'-F and 2'-MOE strands, duplexes and custom monomers.">
 <link rel="canonical" href="https://oligocalculator.com/">
+<!-- R64 -- THE TAB ICON. There was none: no <link rel="icon"> and no favicon.ico,
+     so the browser asked for /favicon.ico by path, got a 404, and showed its own
+     globe. apple-touch-icon is iOS home-screen only and never a desktop tab, and
+     the manifest (a runtime blob: URL) is not read for one either.
+     STATIC, not added by initManifest(): that runs at boot#2, long after the
+     browser has resolved a tab icon, and a crawler that does not execute JS sees
+     nothing at all. A <link> is not a script, so the version router above is
+     still the first EXECUTING script in <head>.
+     favicon.ico holds THREE DIFFERENT PICTURES -- the full mark at 48 and 32,
+     the MW monogram cropped out and given the whole frame at 16, where the helix
+     would otherwise land on half-pixels and fill in the counters. The browser
+     picks a frame instead of resampling one. There is deliberately NO
+     favicon.svg: an SVG cannot be size-specific and Chrome prefers it over an
+     .ico, which would silently put the blurry 16px back.
+     Built by tools/round64/make_favicon.py. -->
+<link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Oligo MW Calculator">
 <meta property="og:title" content="Oligo MW Calculator - molecular weight, e260 and concentration">
@@ -2191,13 +2207,13 @@ if(/[?&]billing=/.test(window.__ocSearch)){
           <div class="oc-plan" data-ocplan="lab">
             <div class="oc-plan-top">
               <div class="oc-plan-name">Lab</div>
-              <div class="oc-plan-price"><span class="pv" data-ocprice="lab">$7</span><span class="pu" data-ocper="lab">/seat/month</span></div>
+              <div class="oc-plan-price"><span class="pv" data-ocprice="lab">$6</span><span class="pu" data-ocper="lab">/seat/month</span></div>
               <div class="oc-plan-tag">One library your whole lab writes to</div>
             </div>
             <ul class="oc-plan-list">
               <li>Everything in Pro, for <b>every member</b></li>
               <li>A <b>shared lab library</b> for strands and custom monomers</li>
-              <li>Up to <b>20</b> members</li>
+              <li><b>From 3 seats</b>, no upper limit · add more any time</li>
               <li><b>20 scans per seat</b>, pooled across the lab</li>
               <li>Roles, so a rotating student can't clear the library</li>
             </ul>
@@ -2244,7 +2260,7 @@ if(/[?&]billing=/.test(window.__ocSearch)){
           <div class="cmp-row"><div class="cmp-feat">Library management<small>folders · tags · notes · batch</small></div><div class="cmp-free">—</div><div class="cmp-pro">Included</div><div class="cmp-team">Included</div></div>
           <div class="cmp-row"><div class="cmp-feat">Shared lab library<small>members · roles · custom monomers</small></div><div class="cmp-free">—</div><div class="cmp-pro">—</div><div class="cmp-team">Up to 20</div></div>
           <div class="cmp-row"><div class="cmp-feat">Install as app · offline</div><div class="cmp-free">Yes</div><div class="cmp-pro">Yes</div><div class="cmp-team">Yes</div></div>
-          <div class="cmp-row plan-foot"><div class="cmp-feat">Price</div><div class="cmp-free">$0</div><div class="cmp-pro" data-occmpprice="pro">$9/mo</div><div class="cmp-team" data-occmpprice="lab">$7/seat/mo</div></div>
+          <div class="cmp-row plan-foot"><div class="cmp-feat">Price</div><div class="cmp-free">$0</div><div class="cmp-pro" data-occmpprice="pro">$9/mo</div><div class="cmp-team" data-occmpprice="lab">$6/seat/mo</div></div>
         </div>
 
         <div class="pro-note">Your library and the full catalog are <b>Supabase-backed behind account auth</b>, so an account really does unlock them. Nothing here is a flag we set in the browser. <b>Billing isn't open yet.</b> Until it is, Pro is granted by access code; the box in your account is where you enter one.</div>
@@ -7872,7 +7888,7 @@ function renderCatShell(){
     var massVal=conj?('+'+s.mass.toFixed(2)):perPosition.toFixed(2);
     var massUnit=conj?'g/mol once':'g/mol · per position';
     var massStatus=s.verified
-      ? '<span class="ok">✓ '+cbEsc(s.verification||'verified mass')+'</span>'
+      ? '<span class="ok" title="'+cbEsc(s.verification||'verified mass')+'">✓ '+cbEsc(s.verification||'verified mass')+'</span>'
       : '<span class="needs">mass needs verification</span>';
     var formulaStatus=s.nucleoside_formula?'':'<span class="needs">average only</span>';
     var src=(s.source&&/^https?:\/\//i.test(s.source))
@@ -7880,7 +7896,7 @@ function renderCatShell(){
       : '<span>'+cbEsc(s.vendor||'')+'</span>';
     return '<div class="catcard">'+
       '<span class="code">'+cbEsc(tag)+'</span>'+
-      '<div class="ci-main"><div class="cn">'+cbEsc(s.product_name||s.name)+'</div>'+
+      '<div class="ci-main"><div class="cn" title="'+cbEsc(s.product_name||s.name)+'">'+cbEsc(s.product_name||s.name)+'</div>'+
       '<div class="c2">'+src+(s.catalog_no?'<span class="c-cat">#'+cbEsc(s.catalog_no)+'</span>':'')+massStatus+formulaStatus+'</div></div>'+
       '<span class="mass"><b>'+massVal+'</b><small>'+massUnit+'</small></span>'+
       '<div class="ci-act"><button type="button" class="btn-ins" data-ins="'+cbEsc(s.code)+'" aria-label="Insert '+cbEsc(tag)+' into the sequence">Insert</button>'+
@@ -8977,6 +8993,24 @@ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded'
 .lab-btn{font-family:var(--font-head);font-weight:600;font-size:11.5px;min-height:34px;padding:6px 12px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface-2);color:var(--text);cursor:pointer;white-space:nowrap}
 .lab-btn[disabled]{opacity:.5;cursor:default}
 
+/* R63 -- the address field. Chips wrap; the typing input is the last thing in
+   the box and grows to fill whatever is left on the line. It is never
+   re-created, only the chips are, so the caret does not jump. */
+.oc-invitebox{display:flex;flex-direction:column;gap:7px;margin:14px 0 6px;text-align:left}
+.oci-field{display:flex;flex-wrap:wrap;align-items:center;gap:5px;min-height:44px;padding:6px 8px;border:1px solid var(--line-2);border-radius:9px;background:var(--surface-2);cursor:text}
+.oci-field:focus-within{border-color:var(--accent)}
+.oci-chips{display:contents}
+.oci-in{flex:1 1 150px;min-width:110px;border:0;outline:0;background:transparent;color:var(--text);font-size:13px;padding:5px 2px}
+.oci-chip{display:inline-flex;align-items:center;gap:4px;max-width:100%;padding:3px 4px 3px 9px;border:1px solid var(--line-2);border-radius:999px;background:var(--surface);font-size:12px;line-height:1.5}
+.oci-chip .oci-t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.oci-chip.bad{border-color:var(--err,#c0392b);color:var(--err,#c0392b)}
+.oci-chip.dup{opacity:.55}
+.oci-chip.over{border-color:var(--accent-2);opacity:.75}
+.oci-x{min-width:22px;min-height:22px;display:grid;place-items:center;border:0;border-radius:999px;background:transparent;color:inherit;font-size:14px;line-height:1;cursor:pointer;padding:0}
+.oci-x:hover{background:var(--line-2)}
+.oci-count{font-size:11.5px;color:var(--muted);min-height:15px}
+@media (max-width:767px){ .oci-x{min-width:32px;min-height:32px} .oci-in{font-size:16px} }
+
 /* ----- 3/9 - oligo-lab-lib-css - was line 9437 ----- */
 
 /* Pro Lab tier (Part 2) -- lab shared library view + access control. Reuses .oshare-* modal chrome. */
@@ -9397,7 +9431,18 @@ body[data-mode="dark"] .oc-wall-eyebrow{color:var(--accent)}
    --------------------------------------------------------------------- */
 .topbar{min-width:0}
 .brand{min-width:0}
-.brand h1{min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.brand h1{min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  /* R64 -- the ellipsis above needs overflow:hidden, and overflow:hidden clips
+     at the PADDING box. Poppins' ink is 1.40x its font-size (ascent 1.05 +
+     descent 0.35, measured from this file's own woff2), so the line-height:1.05
+     set on .brand h1 in #oc-css-head gives a 16.8px line box holding 22.4px of
+     ink and 2.8px hangs off each side. Pixel-diffed, not reasoned about: 1.0px
+     of the tagline's descenders across its whole width at 1440, and 0.7px off
+     the g of "Oligo" at 320 where the tagline is display:none.
+     Padding grows the clip box; the equal negative margin gives the outer size
+     back, so the header composition D-01 spent a round on does not move.
+     Raising line-height instead would retune a fixed 60px flex row. */
+  padding-top:4px; padding-bottom:4px; margin-top:-4px; margin-bottom:-4px}
 .topright{min-width:0}
 .tabnav{min-width:0}
 
@@ -9426,6 +9471,22 @@ body[data-mode="dark"] .oc-wall-eyebrow{color:var(--accent)}
   .topright .lib-btn, .topright .help-btn{display:none}
   .menu .mi-narrow{display:flex}
   .oc-hdr-btn{padding:9px 10px; font-size:12px}
+}
+
+/* ---------------------------------------------------------------------
+   D-03 (R64) -- the m/z ladder fits 320px.
+
+   #main is overflow-x:hidden with no scroller anywhere above the table, and
+   nothing scrolls the document sideways either, so at 320 the last 12.75px of
+   the +K adduct column and 24px of the caption were simply unreachable: the
+   table's min-content is 330px inside a 290px column. 9px 12px of cell padding
+   is 96px of the 330. Taking the horizontal half to 5px returns 56px and the
+   table lands at ~274px with room to spare, without shrinking one glyph of
+   text. Clipping is not the fix here and is not used -- same reasoning as D-01.
+   Only below 360: at 360 the table already fits, measured.
+   --------------------------------------------------------------------- */
+@media (max-width:359px){
+  .ladder th,.ladder td{padding-left:5px; padding-right:5px}
 }
 
 /* ---------------------------------------------------------------------
@@ -10031,7 +10092,16 @@ body[data-seqfocus="antisense"] .warn[data-antiwarn]{display:none}
 .view-cat .catcard>.code{grid-area:code; justify-self:start; font-size:12.5px}
 .view-cat .catcard .ci-main{grid-area:main; min-width:0}
 .view-cat .catcard .cn{font-size:13.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
-.view-cat .catcard .c2{grid-area:auto; margin-top:2px; font-size:10.5px; gap:3px 9px; flex-wrap:nowrap; overflow:hidden; white-space:nowrap}
+.view-cat .catcard .c2{grid-area:auto; margin-top:2px; font-size:10.5px; gap:3px 9px; flex-wrap:nowrap; overflow:hidden; white-space:nowrap;
+  /* R64 -- the same fade the narrow rule below already had. Measured at 1440:
+     this box is 410px holding 797px of content, and a derivation note --
+     "Added = amidite - DMT - 2x pivaloyl - CED + PO ... cross-checks Glen HEX
+     744.13" -- was cut mid-sentence with nothing to say so. The phone faded it
+     and the desktop did not, which is backwards: provenance for a derived mass
+     matters more on the screen someone checks it on. The fade only bites where
+     content actually reaches the edge, so short rows are unaffected. The full
+     text is now in the title attribute as well (see _catRow). */
+  mask-image:linear-gradient(90deg,#000 88%,transparent)}
 .view-cat .catcard .mass{grid-area:mass; text-align:right; white-space:nowrap; line-height:1.2}
 .view-cat .catcard .mass b{display:block; font-family:var(--font-num); font-size:13px; color:var(--text)}
 .view-cat .catcard .mass small{font-size:9.5px; color:var(--muted)}
@@ -10155,7 +10225,41 @@ body[data-mode="dark"] #scanOv .scan-row-acts [data-scanlib]{color:var(--accent)
    page, its own shadow, and amber figures. Border goes uniform. */
 .big,.mscard.hero{border-left:1px solid var(--emph-bd)}
 /* 4 · scope rail sits above a toolbar that is now always present */
-.view-hist .lab-scope{margin-bottom:10px}</style>
+.view-hist .lab-scope{margin-bottom:10px}
+/* R62 -- the release list in the seat picker, and the notice for the person
+   whose seat is ending. */
+.oc-seat-rel{display:flex;flex-direction:column;gap:7px;margin-top:4px}
+.oc-seat-rel[hidden]{display:none}
+.oc-seat-rellist{display:flex;flex-direction:column;gap:4px;max-height:190px;overflow:auto}
+.oc-seat-relrow{display:flex;align-items:center;gap:9px;min-height:38px;padding:5px 10px;border:1px solid var(--line-2);border-radius:9px;background:var(--surface-2);cursor:pointer;font-size:13px}
+.oc-seat-relrow[hidden]{display:none}
+.oc-seat-relrow.on{border-color:var(--accent)}
+.oc-seat-relrow.off{opacity:.5;cursor:default}
+.oc-seat-relrow input{width:18px;height:18px;flex:0 0 auto;accent-color:var(--accent);cursor:inherit;pointer-events:none}
+.oc-seat-relrow span{min-width:0;overflow-wrap:anywhere}
+.oc-rel-row{display:block;margin:0 0 10px;padding:10px 12px;border:1px solid var(--line-2);border-radius:10px;background:var(--surface-2);color:var(--text);font-size:12.5px;line-height:1.5}
+.oc-rel-row[hidden]{display:none}
+
+/* R60 -- the seat picker, shown inside the paywall card. */
+.oc-seatbox{display:flex;flex-direction:column;gap:9px;margin:14px 0 6px;text-align:left}
+.oc-seatbox[hidden]{display:none}
+.oc-seat-lab{font-family:var(--font-head);font-weight:600;font-size:12px;color:var(--muted)}
+.oc-seat-name{font:inherit;font-size:14px;padding:10px 12px;border:1px solid var(--line-2);border-radius:10px;background:var(--surface-2);color:var(--text);width:100%;min-height:44px}
+.oc-seat-row{display:flex;align-items:center;gap:8px}
+.oc-seat-row[hidden]{display:none}
+.oc-seat-step{font-family:var(--font-head);font-size:20px;line-height:1;width:44px;height:44px;flex:0 0 auto;border:1px solid var(--line-2);border-radius:10px;background:var(--surface-2);color:var(--text);cursor:pointer}
+.oc-seat-step:hover{border-color:var(--accent)}
+.oc-seat-step[disabled]{opacity:.45;cursor:default}
+.oc-seat-n{font-family:var(--font-num);font-size:17px;text-align:center;width:88px;height:44px;flex:0 0 auto;border:1px solid var(--line-2);border-radius:10px;background:var(--surface-2);color:var(--text)}
+.oc-seat-unit{font-size:13px;color:var(--muted)}
+.oc-seat-cyc{display:flex;gap:6px;flex-wrap:wrap}
+.oc-seat-cyc[hidden]{display:none}
+.oc-seat-cyc button{font-family:var(--font-head);font-weight:600;font-size:12px;min-height:34px;padding:7px 13px;border:1px solid var(--line-2);border-radius:999px;background:transparent;color:var(--muted);cursor:pointer}
+.oc-seat-cyc button.on{border-color:var(--accent);color:var(--text)}
+.oc-seat-tot{font-size:14px;color:var(--text)}
+.oc-seat-tot b{font-family:var(--font-num);font-size:21px}
+.oc-seat-sub{font-size:12px;color:var(--muted)}
+</style>
 <script id="oligo-share-js">
 /* Oligo MW Calculator -- Share (Part 1): free, self-contained link-share + "Shared with you" recipient view.
    No backend: the strand data + any referenced custom-monomer defs travel inside the URL hash (#share=base64url(json)).
@@ -10595,10 +10699,29 @@ try{
       html+='<div class="lab-hint">You don’t manage a lab yet.</div>'+
         '<div class="lab-add"><input data-lab-newname placeholder="Lab name" aria-label="New lab name" maxlength="60"><button type="button" class="lab-btn" data-lab-create>Create lab</button></div>';
     } else {
-      labs.forEach(function(l){ var full=(l.members||0)>=20;
-        html+='<div class="lab" data-lab-id="'+esc(l.lab_id)+'"><div class="lab-name">'+esc(l.name)+' <span class="lab-cap">'+(l.members||0)+'/20</span> <button type="button" class="lab-x" data-lab-leave aria-label="Leave this lab" title="Leave lab">Leave</button><button type="button" class="lab-x" data-lab-delete aria-label="Delete this lab" title="Delete lab">Delete</button></div>'+
+      labs.forEach(function(l){
+        /* R60: seats come from the subscription. Undefined means the
+           server has not been taught to report them yet (the SQL ships
+           separately), so show a bare count rather than a made-up
+           ceiling. A wrong denominator is worse than none. */
+        var _seats=(l.seats==null)?null:Number(l.seats);
+        var _used=(l.members||0);
+        var full=(_seats!=null)&&(_used>=_seats);
+        var _cap=(_seats!=null)
+          ? (_used+' / '+_seats+' seat'+(_seats===1?'':'s'))
+          : (_used+' member'+(_used===1?'':'s'));
+        html+='<div class="lab" data-lab-id="'+esc(l.lab_id)+'"><div class="lab-name">'+esc(l.name)+' <span class="lab-cap">'+esc(_cap)+'</span> <button type="button" class="lab-x" data-lab-leave aria-label="Leave this lab" title="Leave lab">Leave</button><button type="button" class="lab-x" data-lab-delete aria-label="Delete this lab" title="Delete lab">Delete</button></div>'+
           '<div class="lab-roster" data-lab-roster>Loading…</div>'+
-          '<div class="lab-add"><input data-lab-email placeholder="teammate@email.com" aria-label="Pre-authorize a teammate by email address" type="email"><button type="button" class="lab-btn" data-lab-addm'+(full?' disabled':'')+'>'+(full?'Full (20/20)':'Pre-authorize')+'</button></div>'+
+          '<div class="lab-add"><input data-lab-email placeholder="teammate@email.com" aria-label="Pre-authorize a teammate by email address" type="email"><button type="button" class="lab-btn" data-lab-addm'+(full?' disabled':'')+'>'+(full?'All seats used':'Pre-authorize')+'</button>'+
+          /* R60: hitting the ceiling used to be a dead disabled button
+             reading "Full (20/20)". It is the moment a PI most wants one
+             more seat, so it offers one. */
+          '<button type="button" class="lab-btn" data-lab-seats>'+(full?'Add seats':'Seats')+'</button>'+
+          /* R63: the same screen the post-payment wall opens, so "I'll do
+             this later" lands somewhere that looks like where it came from.
+             The one-address field to its left is untouched -- it is the
+             shortcut for adding one person and it works. */
+          '<button type="button" class="lab-btn" data-lab-invite>Add people</button></div>'+
           /* R51 (audit F-09): no invitation is sent by this build, and saying
              otherwise made a PI believe their teammate had been contacted. The
              implemented flow is add_lab_member -> claim_lab_membership on the
@@ -10634,9 +10757,27 @@ try{
     if((b=e.target.closest('[data-lab-leave]'))){ if(b.dataset.armed!=='1'){ b.dataset.armed='1'; b.dataset.o=b.textContent; b.textContent='Confirm leave'; b.classList.add('danger'); setTimeout(function(){ if(b){ b.dataset.armed='0'; b.textContent=b.dataset.o||'Leave'; b.classList.remove('danger'); } },3200); return; } b.disabled=true; callRpc('leave_lab',{p_lab:labId}).then(function(){ toast('Left the lab'); refresh(); try{ if(typeof reflectSession==='function') reflectSession(); }catch(_e){ ocFail('refresh#1',_e); } }).catch(function(err){ toast(err.message||'Could not leave'); b.disabled=false; }); return; }
     if((b=e.target.closest('[data-lab-delete]'))){ if(b.dataset.armed!=='1'){ b.dataset.armed='1'; b.dataset.o=b.textContent; b.textContent='Confirm delete'; b.classList.add('danger'); setTimeout(function(){ if(b){ b.dataset.armed='0'; b.textContent=b.dataset.o||'Delete'; b.classList.remove('danger'); } },3200); return; } b.disabled=true; callRpc('delete_lab',{p_lab:labId}).then(function(){ toast('Lab deleted'); refresh(); }).catch(function(err){ toast(err.message||'Could not delete'); b.disabled=false; }); return; }
     if((b=e.target.closest('[data-lab-addm]'))){ var inp=labEl&&_q('[data-lab-email]',labEl), em=((inp&&inp.value)||'').trim(); if(!em){ toast('Enter an email to add.'); return; } b.disabled=true; callRpc('add_lab_member',{p_lab:labId,p_email:em}).then(function(){ toast(em+' is pre-authorized. Ask them to sign in with that address. We sent no email.'); refresh(); }).catch(function(err){ toast(err.message||'Could not add member'); b.disabled=false; }); return; }
+    if((b=e.target.closest('[data-lab-invite]'))){
+      var _l=null, _ls=_managed||[];
+      for(var _i=0;_i<_ls.length;_i++){ if(_ls[_i].lab_id===labId){ _l=_ls[_i]; break; } }
+      try{ if(window.ocLabInvite) window.ocLabInvite.open({lab_id:labId,
+             name:(_l&&_l.name)||'your lab',
+             seats:(_l&&_l.seats!=null)?Number(_l.seats):null}); }
+      catch(err){ toast(err.message||'Could not open'); }
+      return;
+    }
     if((b=e.target.closest('[data-lab-remove]'))){ b.disabled=true; callRpc('remove_lab_member',{p_lab:labId,p_email:b.getAttribute('data-lab-remove')}).then(function(){ toast('Removed'); refresh(); }).catch(function(err){ toast(err.message||'Could not remove'); b.disabled=false; }); return; }
     if((b=e.target.closest('[data-lab-promote]'))){ b.disabled=true; callRpc('promote_lab_member',{p_lab:labId,p_email:b.getAttribute('data-lab-promote'),p_role:'manager'}).then(function(){ toast('Promoted'); refresh(); }).catch(function(err){ toast(err.message||'Could not promote'); b.disabled=false; }); return; }
     if((b=e.target.closest('[data-lab-demote]'))){ b.disabled=true; callRpc('promote_lab_member',{p_lab:labId,p_email:b.getAttribute('data-lab-demote'),p_role:'member'}).then(function(){ toast('Updated'); refresh(); }).catch(function(err){ toast(err.message||'Could not update'); b.disabled=false; }); return; }
+    if((b=e.target.closest('[data-lab-seats]'))){
+      /* Owned by the billing block, which runs LATER in the file. Reading
+         it here is safe only because this runs on a click, long after
+         both blocks have booted -- the same late-read shape the block map
+         lists nine of. Guarded, so a build without the billing block
+         degrades to a sentence instead of a TypeError. */
+      try{ if(window.ocBill && window.ocBill.seatPanel){ window.ocBill.seatPanel(); return; } }
+      catch(_e){ ocFail('labSeats#1',_e); }
+      toast('Open Plans and account to change your seats.'); return; }
     if((b=e.target.closest('[data-lab-create]'))){ var ni=_q('[data-lab-newname]',sec), nm=((ni&&ni.value)||'').trim()||'My Lab'; b.disabled=true; callRpc('create_lab',{p_name:nm}).then(function(){ toast('Lab created'); refresh(); }).catch(function(err){ toast(err.message||'Could not create lab'); b.disabled=false; }); return; }
   });
 
@@ -12620,7 +12761,7 @@ try{
      asking for a card. The number lives here for the same reason $9 and $7
      do: paintPrices() writes it into every surface that mentions it, so a
      price change cannot land in one place and miss another. */
-  var PRICE={ pro:{mo:9,yr:84}, lab:{mo:7,yr:70}, topup:{usd:5, scans:50} };
+  var PRICE={ pro:{mo:9,yr:84}, lab:{mo:6,yr:60}, topup:{usd:5, scans:50} };
 
   /* ---- plan table: the ONLY place a limit is written down client-side.
      The server is the real gate; these numbers exist so the UI can warn
@@ -12759,6 +12900,15 @@ try{
        that rebuilds the card. waitWall() inserts AFTER calling this, so it
        is unaffected. */
     var _w=q('.oc-wait',el); if(_w) _w.remove();
+    /* R60: same reasoning as .oc-wait above -- the seat picker is inserted
+       into this card by the billing block, so the function that rebuilds
+       the card is the one place that can guarantee it does not survive
+       into an unrelated wall. */
+    var _sb=q('.oc-seatbox',el); if(_sb) _sb.remove();
+    /* R63: third of the same shape. A box inserted into this card by another
+       block has to be removed by the function that rebuilds the card, or it
+       survives into a wall that knows nothing about it. */
+    var _ib=q('.oc-invitebox',el); if(_ib) _ib.remove();
     var g=q('[data-ocwalleyebrow]',el), h=q('[data-ocwallh]',el), p=q('[data-ocwallp]',el),
         gl=q('[data-ocwallgains]',el), fd=q('[data-ocwallfield]',el), inp=q('[data-ocwallinput]',el),
         go=q('[data-ocwallgo]',el), ac=q('[data-ocwallactions]',el), alt=q('[data-ocwallalt]',el),
@@ -13650,6 +13800,438 @@ try{
       alt: alt||null, foot:'' });
   }
 
+  /* ---------------- seats ----------------
+     R60. Before this round the lab branch of checkout() read
+     `managed[0].member_count`, and my_labs() has never returned a field by
+     that name -- so `Number(undefined||1)` fell through to 1 and EVERY lab
+     checkout ever created bought exactly one seat, whatever the size of the
+     lab. The seat count is now chosen by the buyer and nothing guesses it. */
+  var SEAT_MAX=100;   /* not a product limit -- a typo guard, so a slipped
+                         keystroke cannot open a four-figure subscription.
+                         Stripe's own ceiling is 500. */
+  /* R61. At $6 a seat a ONE-seat Lab would be Pro wearing a hat: everything
+     Pro has, plus the shared library, for $3 less -- so nobody would ever buy
+     Pro again. Three seats is $18, clear of Pro's $9. The server enforces the
+     same floor in stripe-checkout and stripe-seats, because this line can be
+     edited in a browser and those cannot. */
+  var SEAT_MIN=3;
+  /* `have` is the seat count the lab is paying for right now, null when it
+     is not paying for any. `people` is how many are actually in it. Both
+     are only known for an existing lab, and both drive the note under the
+     total rather than any arithmetic. */
+  /* `roster` is the lab's actual members, and `release` the addresses the
+     manager has ticked to go at the renewal. Both are empty for a lab that
+     does not exist yet. */
+  var _seat={ n:5, cyc:'mo', labId:null, name:'', have:null, people:null,
+              roster:[], release:[], busy:false };
+
+  function qa(s,r){ return Array.prototype.slice.call((r||D).querySelectorAll(s)); }
+
+  function seatPrice(){
+    try{ var t=P()&&P().priceTable&&P().priceTable(); if(t&&t.lab) return t.lab; }
+    catch(_e){ ocFail('seatPrice#1',_e); }
+    return {mo:6,yr:60};
+  }
+  function seatClamp(n){
+    n=Math.floor(Number(n));
+    if(!isFinite(n)||n<SEAT_MIN) return SEAT_MIN;
+    return n>SEAT_MAX?SEAT_MAX:n;
+  }
+
+  /* A lab that is already paying cannot go through Checkout again: Checkout in
+     subscription mode creates a NEW subscription every time, so "add seats"
+     that way would leave the lab paying two of them. Quantity changes belong
+     to the portal (or, later, a dedicated function). */
+  function labSub(){
+    try{
+      var s=((P()&&P().ent())||{}).subscription;
+      if(s && s.is_lab && (s.status==='active'||s.status==='trialing')) return s;
+    }catch(_e){ ocFail('labSub#1',_e); }
+    return null;
+  }
+
+  function seatPaint(){
+    var t=q('[data-ocseattot]'); if(!t) return;
+    var pr=seatPrice(), yr=_seat.cyc==='yr', n=_seat.n;
+    var each=yr?pr.yr:pr.mo, tot=each*n;
+    t.innerHTML='<b>$'+tot+'</b> '+(yr?'per year':'per month')
+      +' <span class="oc-seat-sub">· '+n+' seat'+(n===1?'':'s')+' × $'+each+(yr?'/yr':'/mo')+'</span>'
+      +(yr?(' <span class="oc-seat-sub">· works out at $'+(Math.round(tot/12*100)/100)+' a month</span>'):'');
+    /* Do not fight the caret. Writing the clamped value back while the field
+       has focus makes a half-typed "1" jump to "1" and then refuse the "5". */
+    var inp=q('[data-ocseatn]');
+    if(inp && D.activeElement!==inp && String(inp.value)!==String(n)) inp.value=n;
+    var dec=q('[data-ocseatdec]'); if(dec) dec.disabled=(n<=SEAT_MIN);
+    var inc=q('[data-ocseatinc]'); if(inc) inc.disabled=(n>=SEAT_MAX);
+    /* R61: three different things can be worth saying under the total, and
+       only one of them at a time. Ordered by how much it costs the reader to
+       find out the hard way. */
+    var note=q('[data-ocseatnote]');
+    if(note){
+      var t2='';
+      if(_seat.have!=null && n<_seat.have){
+        t2='Fewer than you have now ('+_seat.have+'). This takes effect at your next renewal — '
+          +'you keep '+_seat.have+' until then, and nothing is refunded.';
+      } else if(_seat.have!=null && n>_seat.have){
+        t2='You will be charged the difference for the rest of this period, and the '
+          +(n-_seat.have)+' new seat'+((n-_seat.have)===1?'':'s')+' work straight away.';
+      }
+      if(!t2 && _seat.people!=null && n<_seat.people){
+        t2='Your lab has '+_seat.people+' people in it. With '+n+' seats you cannot add anyone new '
+          +'until you are back under — nobody is removed.';
+      }
+      note.innerHTML=esc(t2); note.hidden=!t2;
+    }
+    seatRelPaint();
+    qa('[data-ocseatcyc]').forEach(function(b){
+      var on=b.getAttribute('data-ocseatcyc')===_seat.cyc;
+      b.classList.toggle('on', on); b.setAttribute('aria-pressed', on?'true':'false');
+    });
+  }
+
+  /* How many people have to go for the chosen number to add up. Zero when the
+     seats cover everybody, which is the ordinary case. */
+  function seatShort(){
+    if(_seat.people==null) return 0;
+    return Math.max(0, _seat.people - _seat.n);
+  }
+
+  /* The roster, with a tick box each, shown only when the number the manager
+     has chosen does not fit the people already in the lab. Their own seat is
+     not offered: a manager releasing themselves is a different act with
+     different consequences, and Leave already does it. */
+  function seatRelPaint(){
+    var host=q('[data-ocseatrel]'); if(!host) return;
+    /* The list is rebuilt wholesale on every tick, so without this the box the
+       manager just ticked jumps off screen on a lab of twenty. */
+    var _sc=0; try{ var _l=q('.oc-seat-rellist',host); if(_l) _sc=_l.scrollTop; }catch(_e){ ocFail('seatRelPaint#2',_e); }
+    /* ...and which row the person was on, for the same reason. */
+    var _fo=null; try{ var _a=D.activeElement, _ar=_a&&_a.closest&&_a.closest('[data-ocseatrelrow]');
+      if(_ar) _fo=_ar.getAttribute('data-ocseatrelrow'); }catch(_e){ ocFail('seatRelPaint#4',_e); }
+    var need=seatShort();
+    /* Never hold more names than we are asking for. Putting the seats back up
+       has to drop the picks with them, or the manager sends three addresses
+       for a change that releases nobody. */
+    if(_seat.release.length>need) _seat.release.length=need;
+    if(!need || !_seat.roster.length){
+      host.hidden=true; host.innerHTML=''; host.__ocrel='';
+      /* This function is the only thing that disables Update, so it is the
+         only thing that can give it back. Without this, a manager who dips
+         below their headcount and then thinks better of it is left with a
+         dead button. Caught by r61.mjs section 4, not by r62.mjs. */
+      if(!_seat.busy){ var g0=q('[data-ocwallactions] [data-ocwallact="0"]'); if(g0) g0.disabled=false; }
+      return;
+    }
+    var me=''; try{ var s=(typeof proSession==='function')?proSession():null; me=(s&&s.email?String(s.email):'').toLowerCase(); }
+    catch(_e){ ocFail('seatRelPaint#1',_e); }
+    var rows=_seat.roster.filter(function(m){ return String(m.email||'').toLowerCase()!==me; });
+    var picked=_seat.release.length;
+    var html=
+      '<div class="oc-seat-lab">Who leaves at your next renewal'
+        +' <span class="oc-seat-sub">· choose '+need+', chosen '+picked+'</span></div>'
+      +'<div class="oc-seat-rellist">'
+      + rows.map(function(m){
+          var e2=String(m.email||''), on=_seat.release.indexOf(e2.toLowerCase())>=0;
+          var full=(!on && picked>=need);
+          return '<label class="oc-seat-relrow'+(on?' on':'')+(full?' off':'')+'"'
+            +' data-ocseatrelrow="'+esc(e2)+'" role="checkbox" tabindex="'+(full?'-1':'0')+'"'
+            +' aria-checked="'+(on?'true':'false')+'"'+(full?' aria-disabled="true"':'')+'>'
+            +'<input type="checkbox" data-ocseatrelpick="'+esc(e2)+'"'+(on?' checked':'')+(full?' disabled':'')+' tabindex="-1">'
+            +'<span>'+esc(e2)+'</span>'
+            +(m.role==='manager'?'<span class="oc-seat-sub">manager</span>':'')
+            +(m.linked?'':'<span class="oc-seat-sub">not signed in yet</span>')
+            +'</label>';
+        }).join('')
+      +'</div>'
+      +'<div class="oc-seat-sub">They keep working until the renewal date, and we email them '
+      +'now so it is not a surprise. Anything they saved comes back to them as their own.</div>';
+    /* ONLY when it actually changed. seatPaint() repaints the whole box on
+       every keystroke and on blur -- including the blur that fires the instant
+       the manager clicks out of the seat field and into this list. Rewriting
+       innerHTML there deletes the row between the hit test and the dispatch,
+       the browser raises no click at all, and the first tick is lost in
+       silence. Measured, tools/round62/diag62.mjs. */
+    if(host.__ocrel!==html){
+      host.innerHTML=html; host.__ocrel=html;
+      /* The row they were on is a different element now. Matched by value
+         rather than by selector because an address is not a safe selector. */
+      if(_fo!=null){ try{ qa('[data-ocseatrelrow]',host).some(function(r2){
+        if(r2.getAttribute('data-ocseatrelrow')!==_fo) return false;
+        if(r2.focus) r2.focus(); return true; }); }catch(_e){ ocFail('seatRelPaint#5',_e); } }
+    }
+    host.hidden=false;
+    try{ var _l2=q('.oc-seat-rellist',host); if(_l2) _l2.scrollTop=_sc; }catch(_e){ ocFail('seatRelPaint#3',_e); }
+    var go=q('[data-ocwallactions] [data-ocwallact="0"]');
+    if(go) go.disabled=(picked!==need);
+  }
+
+  /* Inserted into the wall card rather than into [data-ocwallp], which is a
+     <p> -- a <div> written into a paragraph is re-parented by the parser and
+     the controls end up as siblings of the text instead of children of the
+     box. Same insertion point and same idea as waitWall(). */
+  function seatBox(askName){
+    var card=q('.oc-wall-card'); if(!card) return;
+    var old=q('.oc-seatbox',card); if(old) old.remove();
+    var box=D.createElement('div');
+    box.className='oc-seatbox';
+    box.innerHTML=
+      (askName
+        ? '<label class="oc-seat-lab" for="oc-seat-name">Lab name</label>'
+          +'<input id="oc-seat-name" class="oc-seat-name" data-ocseatname type="text" maxlength="60" placeholder="Chen Lab" autocomplete="organization" value="'+esc(_seat.name)+'">'
+        : '')
+      +'<label class="oc-seat-lab" for="oc-seat-n">How many people, including you'
+          +' <span class="oc-seat-sub">· from '+SEAT_MIN+'</span></label>'
+      +'<div class="oc-seat-row">'
+        +'<button type="button" class="oc-seat-step" data-ocseatdec aria-label="One fewer seat">−</button>'
+        +'<input id="oc-seat-n" class="oc-seat-n" data-ocseatn type="number" min="'+SEAT_MIN+'" max="'+SEAT_MAX+'" step="1" inputmode="numeric" aria-label="Number of seats" value="'+_seat.n+'">'
+        +'<button type="button" class="oc-seat-step" data-ocseatinc aria-label="One more seat">+</button>'
+        +'<span class="oc-seat-unit">seats</span>'
+      +'</div>'
+      +'<div class="oc-seat-cyc" role="group" aria-label="Billing period">'
+        +'<button type="button" data-ocseatcyc="mo" aria-pressed="true">Monthly</button>'
+        +'<button type="button" data-ocseatcyc="yr" aria-pressed="false">Annual · 2 months free</button>'
+      +'</div>'
+      +'<div class="oc-seat-tot" data-ocseattot role="status"></div>'
+      +'<div class="oc-seat-sub" data-ocseatnote role="status" hidden></div>'
+      +'<div class="oc-seat-rel" data-ocseatrel hidden></div>';
+    var p=q('[data-ocwallp]',card);
+    if(p && p.nextSibling) card.insertBefore(box, p.nextSibling); else card.appendChild(box);
+    /* Bound HERE, on the box, rather than delegated from `document`, so it dies
+       with the box and cannot outlive the wall it belongs to. An earlier note
+       here claimed a real click inside the wall card never reaches `document`.
+       That was wrong -- diag62.mjs shows `document` receiving it in both
+       phases, and the wall's own buttons are delegated from there and work. */
+    function relToggle(rr){
+      if(!rr) return;
+      var on=rr.classList.contains('on');
+      if(!on && rr.classList.contains('off')) return;   /* already at the limit */
+      var em=String(rr.getAttribute('data-ocseatrelrow')||'').toLowerCase();
+      var at=_seat.release.indexOf(em);
+      if(at>=0) _seat.release.splice(at,1);
+      else if(_seat.release.length<seatShort()) _seat.release.push(em);
+      seatRelPaint();
+    }
+    box.addEventListener('click', function(ev){
+      var rr=ev.target.closest && ev.target.closest('[data-ocseatrelrow]');
+      if(!rr) return;
+      /* Cancels the <label>'s activation behaviour, so the checkbox inside is
+         never toggled by the browser and `change` never fires for a pick. The
+         array is the only state; the box is drawn from it. */
+      ev.preventDefault();
+      relToggle(rr);
+    }, false);
+    /* Space and Enter, because the rows carry role="checkbox" and a manager
+       who cannot use a mouse still has to be able to reduce their seats. */
+    box.addEventListener('keydown', function(ev){
+      if(ev.key!==' ' && ev.key!=='Enter' && ev.key!=='Spacebar') return;
+      var rr=ev.target.closest && ev.target.closest('[data-ocseatrelrow]');
+      if(!rr) return;
+      ev.preventDefault();
+      relToggle(rr);
+    }, false);
+    seatPaint();
+  }
+
+  async function labRoster(labId){
+    var b=base(), k=key(), t=await tok(); if(!b||!k||!t) return [];
+    try{
+      var r=await window.oligoFetchT(b+'/rest/v1/rpc/list_lab_members',{method:'POST',
+        headers:{apikey:k, Authorization:'Bearer '+t, 'Content-Type':'application/json'},
+        body:JSON.stringify({p_lab:labId})},15000);
+      if(!r.ok) return [];
+      var d=await r.json();
+      return Array.isArray(d)?d:[];
+    }catch(_){ return []; }
+  }
+
+  /* create_lab() returns a bare uuid, so PostgREST hands back a JSON string
+     rather than an object. Both shapes are read because a future revision that
+     returns a row should not break the button. */
+  async function createLab(name){
+    var b=base(), k=key(), t=await tok();
+    if(!b||!k||!t) return {ok:false,msg:''};
+    try{
+      var r=await window.oligoFetchT(b+'/rest/v1/rpc/create_lab',{method:'POST',
+        headers:{apikey:k, Authorization:'Bearer '+t, 'Content-Type':'application/json'},
+        body:JSON.stringify({p_name:name})},15000);
+      var d=null; try{ d=await r.json(); }catch(_e){ ocFail('createLab#1',_e); }
+      if(!r.ok) return {ok:false, msg:String((d&&(d.message||d.error))||'')};
+      return {ok:true, lab_id:(typeof d==='string')?d:String((d&&d.lab_id)||'')};
+    }catch(_){ return {ok:false,msg:''}; }
+  }
+
+  function seatWall(existing, sub){
+    var isNew=!existing;
+    var paying=!!sub;
+    _seat.labId  = existing ? existing.lab_id : null;
+    _seat.name   = existing ? String(existing.name||'') : '';
+    _seat.have   = paying ? seatClamp(sub.seats||SEAT_MIN) : null;
+    _seat.people = existing ? (existing.members||null) : null;
+    _seat.n      = seatClamp(paying ? _seat.have : (existing ? (existing.members||SEAT_MIN) : 5));
+    _seat.cyc    = (cycle()==='annual') ? 'yr' : 'mo';
+    P().wall({
+      eyebrow:'Lab plan',
+      title: isNew ? 'Set up your lab'
+           : paying ? ('Seats for '+(existing.name||'your lab'))
+           : ('Buy seats for '+(existing.name||'your lab')),
+      body: isNew
+        ? 'Name it, and say how many people will use it — you included. Nobody has to have signed up yet; you add their addresses afterwards.'
+        : paying
+          ? ('This lab pays for <b>'+esc(String(_seat.have))+'</b> seat'+(_seat.have===1?'':'s')+' today.')
+          : 'Say how many people will use it, you included.',
+      actions:[{label: paying ? 'Update seats' : 'Continue to payment', prim:true, run:seatGo},
+               {label:'Cancel', run:function(){ P().closeWall(); }}],
+      foot: paying
+        ? 'Handled by Stripe. More seats are charged now; fewer take effect at your next renewal.'
+        : 'Billed through Stripe · cancel any time · you can add seats later. Nothing is charged until you finish on Stripe.'
+    });
+    seatBox(isNew);
+    if(paying){ var c=q('[data-ocseatcyc]'); var g=c&&c.parentNode; if(g) g.hidden=true; }
+  }
+
+  async function seatGo(){
+    var nameEl=q('[data-ocseatname]');
+    if(nameEl) _seat.name=String(nameEl.value||'').trim();
+    var numEl=q('[data-ocseatn]');
+    if(numEl) _seat.n=seatClamp(numEl.value);
+
+    var btn=q('[data-ocwallactions] [data-ocwallact="0"]');
+    var old=btn?btn.textContent:'';
+    var changing=(_seat.have!=null);
+    if(btn){ btn.disabled=true; btn.textContent = changing ? 'Updating…' : 'Opening checkout…'; }
+    _seat.busy=true;
+
+    /* A lab that already pays never goes near Checkout: it makes a NEW
+       subscription every time, and the lab would end up paying two. */
+    if(changing){
+      await changeSeats();
+      _seat.busy=false;
+      if(btn){ btn.disabled=false; btn.textContent=old||'Update seats'; }
+      return;
+    }
+
+    var labId=_seat.labId;
+    if(!labId){
+      var made=await createLab(_seat.name||'My Lab');
+      if(!made.ok || !made.lab_id){
+        _seat.busy=false;
+        if(btn){ btn.disabled=false; btn.textContent=old||'Continue to payment'; }
+        billErr('Couldn’t create the lab',
+          made.msg ? esc(made.msg) : 'Something went wrong before we reached Stripe. <b>Nothing has been charged.</b>');
+        return;
+      }
+      labId=made.lab_id;
+      _seat.labId=labId;
+    }
+    _seat.busy=false;
+    if(btn){ btn.disabled=false; btn.textContent=old||'Continue to payment'; }
+    checkout('lab', {seats:_seat.n, lab_id:labId,
+                     interval:(_seat.cyc==='yr'?'annual':'monthly')});
+  }
+
+  /* The entry point for "Set up a lab" and for the Lab panel's Seats button. */
+  async function seatStart(){
+    if(!P()) return;
+    if(!P().signedIn()){ P().signIn(); return; }
+    if(liveCache()==='0'){ notOpenYet('lab'); return; }
+
+    /* R61: a lab that already pays gets the picker too. R60 sent it to the
+       Stripe portal, which was correct -- Checkout in subscription mode makes
+       a NEW subscription every time, so buying again would leave the lab
+       paying two -- but it was a dead end. stripe-seats changes the quantity
+       on the subscription that already exists. */
+    var sub=labSub();
+
+    var labs=await myLabs();
+    var managed=labs.filter(function(l){ return l && (l.role==='manager'||l.role==='owner'); });
+    if(labs.length && !managed.length){
+      billErr('Only a lab manager can buy seats',
+        'You are a member of a lab but not a manager, so you cannot change what it pays for. Ask whoever set it up — that is deliberate, so a rotating student cannot.');
+      return;
+    }
+    var existing=managed[0]||null;
+    if(existing){
+      /* my_labs() carries no headcount, so ask for the roster rather than
+         inventing a number. This is exactly the assumption that made every
+         previous lab checkout buy one seat. The rows themselves are what the
+         release list offers, so this is one call, not two. */
+      _seat.roster=await labRoster(existing.lab_id);
+      existing.members=Math.max(1,_seat.roster.length);
+    } else { _seat.roster=[]; }
+    _seat.release=[]; _seat.busy=false;
+    if(sub && !existing){
+      /* Paying for a lab the caller does not manage. Nothing to show them. */
+      billErr('Only a lab manager can change the seats',
+        'Ask whoever set the lab up. That is deliberate — a rotating student should not be able to change what the lab pays for.');
+      return;
+    }
+    seatWall(existing, sub);
+  }
+
+  /* ---------------- changing the seats on a live subscription ----------- */
+  async function changeSeats(){
+    var res=await callFn('stripe-seats',
+      {lab_id:_seat.labId, seats:_seat.n, release:_seat.release.slice()});
+    var c=(res&&res.code)||'';
+    if(res && res.ok){
+      if(res.applied==='now'){
+        P().wall({
+          eyebrow:'Seats updated',
+          title:'You now have '+res.seats+' seats',
+          body:'Up from '+res.was+'. Stripe has charged the difference for the rest of this period, '
+              +'and the new seats work straight away. Add your people under Plans and account.',
+          actions:[{label:'Back to work', prim:true, run:function(){ P().closeWall(); }}],
+          foot:'Stripe emails you an invoice. Your renewal date has not moved.'
+        });
+      } else if(res.applied==='at_renewal'){
+        var when='';
+        try{ if(res.effective) when=new Date(res.effective).toLocaleDateString(undefined,{day:'numeric',month:'long',year:'numeric'}); }
+        catch(_e){ ocFail('changeSeats#1',_e); }
+        P().wall({
+          eyebrow:'Scheduled',
+          title:'Dropping to '+res.pending+' seats'+(when?(' on '+when):' at your next renewal'),
+          body:'<b>Nothing has changed yet and nothing has been charged.</b> You keep your '
+              +res.seats+' seats until then, because we do not bill for time you have not used '
+              +'and we do not take back time you have already paid for.'
+              +((res.released && res.released.length)
+                 ? ('<br><br>Leaving on that date: <b>'+esc(res.released.join(', '))+'</b>. '
+                   +(res.notified_all
+                       ? 'They have been emailed, so it will not be a surprise. '
+                       : '<b>We could not email them — please tell them yourself.</b> ')
+                   +'They keep working until then, and anything they saved comes back to them '
+                   +'as their own.')
+                 : (res.headcount>res.pending
+                     ? (' Your lab has '+res.headcount+' people in it — after the change you will not be able to '
+                       +'add anyone new until you are under '+res.pending+'. Nobody is removed.')
+                     : '')),
+          actions:[{label:'Keep '+res.seats+' seats', prim:true, run:function(){ P().closeWall(); _seat.n=res.seats; changeSeats(); }},
+                   {label:'That’s right', run:function(){ P().closeWall(); }}],
+          foot:'You can undo this any time before the renewal date.'
+        });
+      } else {
+        P().closeWall();
+        try{ if(typeof notice==='function') notice('No change — that is what you already have.'); }
+        catch(_e){ ocFail('changeSeats#2',_e); }
+      }
+      P().refresh(true).then(function(){ P().paint(); }).catch(function(_e){ ocFail('changeSeats#3',_e); });
+      return;
+    }
+    if(c==='below_minimum')     { billErr('A lab starts at '+(res.min||SEAT_MIN)+' seats','Fewer than that is what the Pro plan is for, and it costs less.'); return; }
+    /* The server does the same arithmetic the picker does, and it is the one
+       that counts. Reaching here means the two disagreed -- a member added in
+       another tab while this wall was open, most likely. */
+    if(c==='release_required')  { billErr('Choose who leaves',
+        'Your lab has <b>'+esc(String(res.headcount))+'</b> people and you have asked for <b>'
+        +esc(String(res.seats))+'</b> seats, so <b>'+esc(String(res.need))+'</b> would have to go. '
+        +'The list may have changed since you opened this — close it and try again.'); return; }
+    if(c==='not_lab_manager')   { billErr('Only a lab manager can change the seats','Ask whoever set the lab up.'); return; }
+    if(c==='no_subscription')   { billErr('This lab has no subscription yet','Buy seats for it first.'); return; }
+    if(c==='signin_required')   { P().signIn(); return; }
+    if(isMissing(c))            { notOpenYet('lab'); return; }
+    if(c==='network')           { billErr('Couldn’t reach the server','Check your connection and try again. <b>Nothing has been charged.</b>'); return; }
+    billErr('Couldn’t change the seats','Something went wrong on the way to Stripe. <b>Nothing has been charged.</b> Try again in a moment.');
+  }
+
   /* ---------------- lab: which one, and are you allowed ---------------- */
   async function myLabs(){
     var b=base(), k=key(), t=await tok(); if(!b||!k||!t) return [];
@@ -13671,18 +14253,14 @@ try{
     var body={ plan:plan, interval: opts.interval||cycle() };
 
     if(plan==='lab'){
-      var labs=await myLabs();
-      var managed=labs.filter(function(l){ return l && (l.role==='manager'||l.role==='owner'); });
-      if(!managed.length){
-        billErr('Create the lab first',
-          labs.length
-            ? 'You’re a member of a lab but not a manager, so you can’t buy seats for it. Ask whoever set it up — only a manager can, and that is deliberate.'
-            : 'A lab plan pays for a lab that already exists. Create one from the Library first, invite your people, then come back and buy the seats.',
-          {label:'Close', run:function(){ P().closeWall(); }});
-        return;
-      }
-      body.lab_id = managed[0].lab_id;
-      body.seats  = Math.max(1, Number(opts.seats||managed[0].member_count||1));
+      /* R60. Without an explicit seat count and lab, this is the first click
+         on "Set up a lab" and there is nothing to buy yet -- open the picker
+         instead of quietly purchasing a number nobody chose. The old code
+         read `managed[0].member_count`, a field my_labs() does not return, so
+         it bought one seat every single time. */
+      if(!opts.lab_id || !opts.seats){ await seatStart(); return; }
+      body.lab_id = String(opts.lab_id);
+      body.seats  = seatClamp(opts.seats);
     }
 
     var btn = q('[data-ocplan="'+plan+'"] [data-ocpick]');
@@ -13807,7 +14385,15 @@ try{
       gains: plan==='lab'
         ? ['<b>Unlimited</b> strands for every member','A shared lab library','<b>20 scans per seat</b>, pooled']
         : ['<b>Unlimited</b> saved strands','<b>20</b> photo scans a month','All <b>267</b> verified amidites'],
-      actions:[{label:'Back to work', prim:true, run:function(){ P().closeWall(); }}],
+      /* R63: the seats are paid for and empty. This is the moment to ask who
+         they are for, and the only moment the manager is certain to be here.
+         Later is a real answer, not a dead end -- the Lab panel opens the same
+         screen. Offered only when the invite block loaded, so the button can
+         never be a button that does nothing. */
+      actions:(plan==='lab' && W.ocLabInvite && W.ocLabInvite.openMine)
+        ? [{label:'Add your people', prim:true, run:function(){ W.ocLabInvite.openMine(); }},
+           {label:'I’ll do this later', run:function(){ P().closeWall(); }}]
+        : [{label:'Back to work', prim:true, run:function(){ P().closeWall(); }}],
       foot:'Manage or cancel any time under Plans &amp; account. Stripe emails you a receipt.'
     });
   }
@@ -13908,12 +14494,50 @@ try{
     var t=ev.target;
     if(t.closest('[data-ocportal]')){ ev.preventDefault(); portal(); return; }
     if(t.closest('[data-octopup]')){ ev.preventDefault(); P().closeWall(); checkout('topup'); return; }
+    /* R60 seat picker. Delegated, because the box is rebuilt on every wall. */
+    if(t.closest('[data-ocseatdec]')){ ev.preventDefault(); _seat.n=seatClamp(_seat.n-1); seatPaint(); return; }
+    if(t.closest('[data-ocseatinc]')){ ev.preventDefault(); _seat.n=seatClamp(_seat.n+1); seatPaint(); return; }
+    var sc=t.closest('[data-ocseatcyc]');
+    if(sc){ ev.preventDefault(); _seat.cyc=sc.getAttribute('data-ocseatcyc')==='yr'?'yr':'mo'; seatPaint(); return; }
+    /* The release rows are NOT here -- they are bound on the box itself in
+       seatBox(), so the handler dies with the box. They were never broken by
+       delegation: diag62.mjs shows a real click reaching `document` from
+       inside the wall card in both phases, which is what the stepper and the
+       cycle buttons above have always relied on. */
   }, false);
+
+  /* Typing in the number field. Clamped on the way in so the total can never
+     show a price for a seat count the server would refuse. */
+  D.addEventListener('input', function(ev){
+    var el=ev.target;
+    if(el && el.hasAttribute && el.hasAttribute('data-ocseatn')){
+      _seat.n=seatClamp(el.value); seatPaint();
+    }
+  }, false);
+
+  /* There is deliberately no `change` listener for the release tick boxes.
+     seatBox()'s click handler calls preventDefault() on every row, which
+     cancels the <label>'s activation behaviour, so the checkbox is never
+     toggled by the browser and `change` cannot fire for a pick -- the one
+     that used to sit here was unreachable. _seat.release is the only state
+     and the boxes are drawn from it. */
+  /* ...and normalised on the way out, so an empty or silly field does not sit
+     there disagreeing with the total underneath it. */
+  D.addEventListener('blur', function(ev){
+    var el=ev.target;
+    if(el && el.hasAttribute && el.hasAttribute('data-ocseatn')){
+      el.value=_seat.n; seatPaint();
+    }
+  }, true);
 
   function ocBillGo(u){ return (W.ocBill && W.ocBill._go ? W.ocBill._go : go)(u); }
 
   W.ocBill={ checkout:checkout, portal:portal, handleReturn:handleReturn,
-             notOpenYet:notOpenYet, myLabs:myLabs, cycle:cycle, _go:go };
+             notOpenYet:notOpenYet, myLabs:myLabs, cycle:cycle, _go:go,
+             /* R60: the Lab panel in the account menu needs the same
+                picker this block owns. Adding the name here is the ONLY
+                thing that makes it reachable from another block. */
+             seatPanel:seatStart, seatPrice:seatPrice };
 
   function boot(){
     /* The account card gets a Manage billing button only when there is an actual
@@ -13931,6 +14555,7 @@ try{
       }
     }catch(_e){ ocFail('boot#6',_e); }
     repaintBilling();
+    paintRelease().catch(function(_e){ ocFail('boot#8',_e); });
     try{ new MutationObserver(repaintBilling).observe(D.body,{attributes:true,attributeFilter:['data-tab']}); }catch(_e){ ocFail('boot#7',_e); }
     handleReturn();
   }
@@ -13940,6 +14565,38 @@ try{
       if(row) row.hidden = !(e && e.subscription && e.subscription.plan_code);
     }catch(_e){ ocFail('repaintBilling#1',_e); }
   }
+
+  /* R62. The email is the primary notice and it goes on the day the manager
+     decides. This is the same sentence inside the app, for the case where it
+     went to spam or to an address they no longer read. It states what is NOT
+     lost as prominently as what is, because "you are being removed" read alone
+     sounds like the work goes too. */
+  async function paintRelease(){
+    if(!P() || !P().signedIn()) return;
+    var b=base(), k=key(), t=await tok(); if(!b||!k||!t) return;
+    var rows=[];
+    try{
+      var r=await window.oligoFetchT(b+'/rest/v1/rpc/my_lab_release',{method:'POST',
+        headers:{apikey:k, Authorization:'Bearer '+t, 'Content-Type':'application/json'}, body:'{}'},15000);
+      if(r.ok){ var d=await r.json(); if(Array.isArray(d)) rows=d; }
+    }catch(_e){ ocFail('paintRelease#1',_e); }
+    var host=q('[data-ocpromo]'); if(!host||!host.parentNode) return;
+    var el=q('[data-ocrelrow]');
+    if(!rows.length){ if(el) el.hidden=true; return; }
+    if(!el){
+      el=D.createElement('div'); el.className='oc-rel-row'; el.setAttribute('data-ocrelrow','');
+      host.parentNode.insertBefore(el, host);
+    }
+    var x=rows[0], when='';
+    try{ when=new Date(x.removes_at).toLocaleDateString(undefined,{day:'numeric',month:'long',year:'numeric'}); }
+    catch(_e){ ocFail('paintRelease#2',_e); }
+    el.innerHTML='<b>Your place in '+esc(String(x.lab_name||'your lab'))+' ends on '+esc(when)+'.</b> '
+      +'Nothing changes before then. After it you keep everything you saved — it moves into your own '
+      +'library rather than being deleted. What ends is the shared library and the lab’s pooled scans. '
+      +'Whoever runs the lab scheduled this and can undo it any time before the date.';
+    el.hidden=false;
+  }
+  W.ocReleaseRepaint=paintRelease;
   W.ocBillRepaint=repaintBilling;
 
   if(D.readyState==='loading') D.addEventListener('DOMContentLoaded', boot); else boot();
@@ -13985,7 +14642,7 @@ try{
      A policy page that states a price the checkout does not charge is worse
      than a policy page with no price on it. */
   function prices(){
-    var d={ pro:{mo:9,yr:84}, lab:{mo:7,yr:70}, topup:{usd:5,scans:50} };
+    var d={ pro:{mo:9,yr:84}, lab:{mo:6,yr:60}, topup:{usd:5,scans:50} };
     try{ if(P() && P().priceTable) return P().priceTable(); }catch(_e){ ocFail('prices#1',_e); }
     return d;
   }
@@ -14928,5 +15585,348 @@ try{
 })();
 </script>
 
+<script id="oligo-labinvite-js">
+/* Oligo MW Calculator -- R63: putting the people INTO the lab you just paid for.
+
+   Until this block, buying seats and filling them were separated by a silence:
+   Stripe sent the manager back, doneWall() said "Thank you", and nothing
+   mentioned that a lab with twelve seats and one person in it is a lab with
+   eleven empty seats. The roster lived one menu away and took one address at a
+   time.
+
+   ONE control, two habits. Slack's invite field takes addresses one at a time
+   and never takes a list; Google Workspace takes a list but only as a CSV
+   upload behind a different menu item. A field that turns whatever you give it
+   into chips does both without them being two features: TYPE an address and
+   press Enter (or comma) and it becomes a chip -- typo and all, so you can see
+   it is wrong -- or PASTE twelve out of a spreadsheet, a mail client or a text
+   file and get twelve chips at once.
+
+   TWO RULES FROM R62, WHICH THIS BLOCK IS EXACTLY THE SHAPE TO REPEAT:
+     1. The typing <input> is NEVER re-created. Only the chip list is rebuilt.
+        Rewriting a control while somebody is pointing at it deletes it between
+        the browser's hit test and the click, and the click is lost in silence.
+     2. Handlers are bound on the box, so they die with it. */
+(function(){
+'use strict';
+try{
+  var W=window, D=document;
+  function q(s,r){ return (r||D).querySelector(s); }
+  function esc(s){ try{ return ocEsc(s); }catch(_){
+    return String(s==null?'':s).replace(/[&<>"']/g,function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); } }
+  function fail(w,e){ try{ ocFail(w,e); }catch(_){ /* the reporter itself is optional */ } }
+  function P(){ return W.ocPlan||null; }
+
+  /* ---------------- addresses in, addresses out ---------------- */
+
+  /* A pasted blob is whatever was on the clipboard: a column out of a
+     spreadsheet, one per line from a text file, or "Jane Doe <jane@uni.edu>,
+     Ravi <ravi@uni.edu>" straight out of a mail client. Only the things that
+     could be an address are kept -- names and stray punctuation are not turned
+     into chips the manager then has to delete one by one. */
+  function harvest(text){
+    /* ENTRIES first, then addresses inside them. Scanning the whole blob for
+       address-shaped runs ignores the display names correctly and ALSO drops
+       "jane.uni.edu" without a word -- a real typo out of a real spreadsheet
+       column, and the manager would never learn which line went missing.
+       An entry with no address in it becomes a chip they can see. */
+    var parts=String(text==null?'':text).split(/[\n\r,;]+/), out=[], i, j;
+    for(i=0;i<parts.length;i++){
+      var e=parts[i].replace(/^\s+|\s+$/g,'');
+      if(!e) continue;
+      var m=e.match(/[^\s,;:<>"'()\[\]]+@[^\s,;:<>"'()\[\]]+/g);
+      if(m){ for(j=0;j<m.length;j++) out.push(m[j].replace(/[.,;:]+$/,'').toLowerCase()); }
+      else { out.push(e.replace(/[<>"']/g,'').replace(/\s+/g,' ').toLowerCase()); }
+    }
+    return out;
+  }
+  /* A TYPED entry is taken whole, valid or not, so a typo shows up as a red
+     chip instead of vanishing and leaving the manager wondering. */
+  function typed(text){ return String(text==null?'':text).trim().toLowerCase(); }
+
+  /* Stricter than the server on purpose -- it only requires an '@' -- because
+     catching "jane@uni" here costs a keystroke and catching it there costs a
+     seat. Never LOOSER than the server, which would let something through
+     that then fails in a place with no room to explain itself. */
+  function valid(a){ return /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(a); }
+
+  /* ---------------- the field ---------------- */
+
+  /* mount(host, opts) -> a controller. opts:
+       roster  array of addresses already in the lab (lower case)
+       free    how many seats are open; null means "no ceiling known"
+       onChange(state) fired whenever the chips change  */
+  function mount(host, opts){
+    if(!host) return null;
+    opts=opts||{};
+    var roster={}, i;
+    for(i=0;i<(opts.roster||[]).length;i++) roster[String(opts.roster[i]||'').toLowerCase()]=1;
+    var free=(opts.free==null)?null:Math.max(0,Number(opts.free)||0);
+    var chips=[];
+
+    host.innerHTML=
+      '<div class="oci-field" data-ocifield>'
+      +  '<span class="oci-chips" data-ocichips></span>'
+      +  '<input class="oci-in" data-ociin type="text" autocomplete="off" autocapitalize="off" '
+      +      'spellcheck="false" aria-label="Email addresses" '
+      +      'placeholder="'+esc(opts.placeholder||'name@university.edu — or paste a whole list')+'">'
+      +'</div>'
+      +'<div class="oci-count" data-ocicount role="status"></div>';
+
+    var field=q('[data-ocifield]',host), chipEl=q('[data-ocichips]',host),
+        inp=q('[data-ociin]',host), cnt=q('[data-ocicount]',host);
+
+    function state(){
+      var good=[], dup=[], bad=[], over=[], seen={};
+      for(var j=0;j<chips.length;j++){
+        var a=chips[j];
+        if(!valid(a)) { bad.push(a); continue; }
+        if(roster[a])  { dup.push(a); continue; }
+        if(seen[a])    { dup.push(a); continue; }
+        seen[a]=1;
+        if(free!=null && good.length>=free) { over.push(a); continue; }
+        good.push(a);
+      }
+      return {good:good, dup:dup, bad:bad, over:over, all:chips.slice()};
+    }
+
+    /* Only the chips are redrawn. The <input> above is never touched, so the
+       caret does not jump and a click on an x is not deleted mid-flight. */
+    function paint(){
+      var s=state(), seen={}, html='';
+      for(var j=0;j<chips.length;j++){
+        var a=chips[j], kind='ok', why='';
+        if(!valid(a)){ kind='bad'; why='that does not look like an email address'; }
+        else if(roster[a]){ kind='dup'; why='already in the lab'; }
+        else if(seen[a]){ kind='dup'; why='listed twice'; }
+        else if(s.over.indexOf(a)>=0){ kind='over'; why='no seat left for this one'; }
+        else seen[a]=1;
+        html+='<span class="oci-chip '+kind+'" data-ocichip="'+j+'"'
+            + (why?(' title="'+esc(why)+'"'):'')+'>'
+            + '<span class="oci-t">'+esc(a)+'</span>'
+            + '<button type="button" class="oci-x" data-ocidrop="'+j+'" tabindex="-1" '
+            +   'aria-label="Remove '+esc(a)+'">&#215;</button></span>';
+      }
+      if(chipEl.__h!==html){ chipEl.innerHTML=html; chipEl.__h=html; }
+      var bits=[];
+      if(s.good.length) bits.push(s.good.length+' to add');
+      if(s.dup.length)  bits.push(s.dup.length+' already in the lab');
+      if(s.bad.length)  bits.push(s.bad.length+' not an address');
+      if(s.over.length) bits.push('<b>'+s.over.length+' with no seat</b>');
+      if(!bits.length && free!=null) bits.push(free+' seat'+(free===1?'':'s')+' open');
+      cnt.innerHTML=bits.join(' · ');
+      try{ if(opts.onChange) opts.onChange(s); }catch(e){ fail('labinvite#onChange',e); }
+    }
+
+    function add(list){
+      for(var j=0;j<list.length;j++){ var a=list[j]; if(a) chips.push(a); }
+      paint();
+    }
+    function commitTyped(){
+      var t=typed(inp.value);
+      if(!t) return false;
+      /* Somebody who types a comma-separated run and then presses Enter meant
+         a list, not one address with commas in it. */
+      add(/[\s,;]/.test(t) ? harvest(t) : [t]);
+      inp.value='';
+      return true;
+    }
+
+    inp.addEventListener('keydown', function(ev){
+      if(ev.key==='Enter' || ev.key===',' || ev.key===';'){
+        if(commitTyped()) ev.preventDefault();
+        else if(ev.key!=='Enter') ev.preventDefault();
+        return;
+      }
+      if(ev.key==='Backspace' && !inp.value && chips.length){
+        /* Put it back in the box rather than destroying it -- a mis-keyed
+           backspace should cost a keystroke, not an address. */
+        inp.value=chips.pop(); paint(); ev.preventDefault();
+      }
+    }, false);
+    inp.addEventListener('blur', function(){ commitTyped(); }, false);
+    inp.addEventListener('paste', function(ev){
+      var t=''; try{ t=(ev.clipboardData||W.clipboardData).getData('text'); }catch(e){ fail('labinvite#paste',e); }
+      if(!t) return;
+      ev.preventDefault();
+      var got=harvest(t);
+      /* Nothing in it looked like an address, so let the paste through and let
+         them see what they pasted rather than swallowing it. */
+      if(!got.length){ inp.value=(inp.value||'')+t.replace(/\s+/g,' ').trim(); return; }
+      add(got);
+    }, false);
+
+    /* On the box, so it dies with the box (R62). */
+    field.addEventListener('click', function(ev){
+      var x=ev.target.closest && ev.target.closest('[data-ocidrop]');
+      if(x){ ev.preventDefault(); chips.splice(+x.getAttribute('data-ocidrop'),1); paint();
+             try{ inp.focus(); }catch(e){ fail('labinvite#focus',e); } return; }
+      if(ev.target===field || ev.target===chipEl){ try{ inp.focus(); }catch(e){ fail('labinvite#focus2',e); } }
+    }, false);
+
+    paint();
+    return {
+      state:state,
+      focus:function(){ try{ inp.focus(); }catch(e){ fail('labinvite#focus3',e); } },
+      commit:commitTyped,
+      clear:function(){ chips=[]; inp.value=''; paint(); },
+      setRoster:function(list){ roster={}; for(var j=0;j<(list||[]).length;j++) roster[String(list[j]||'').toLowerCase()]=1; paint(); },
+      setFree:function(n){ free=(n==null)?null:Math.max(0,Number(n)||0); paint(); }
+    };
+  }
+
+  /* ---------------- talking to the server ---------------- */
+
+  async function rpc(fn,args){
+    if(typeof sbBase!=='function' || !sbBase()) throw new Error('Supabase not configured');
+    var tok=(typeof proAccessToken==='function') ? await proAccessToken() : null;
+    var h=(typeof sbAuthHeaders==='function') ? sbAuthHeaders() : {'Content-Type':'application/json'};
+    if(tok) h.Authorization='Bearer '+tok;
+    var r=await W.oligoFetchT(sbBase()+'/rest/v1/rpc/'+fn,
+      {method:'POST',headers:h,body:JSON.stringify(args||{})},15000);
+    var txt=''; try{ txt=await r.text(); }catch(e){ fail('labinvite#rpcread',e); }
+    if(!r.ok){
+      var msg='';
+      try{ var j=JSON.parse(txt); msg=String(j.message||j.error||j.hint||''); }catch(e){ msg=txt||''; }
+      throw new Error(msg||('rpc '+fn+' '+r.status));
+    }
+    if(!txt) return null;
+    try{ return JSON.parse(txt); }catch(_){ return txt; }
+  }
+
+  /* add_lab_member is one call per address and returns void, so a run can be
+     part success and part refusal. Every address gets its own answer and the
+     report is built from what came back -- never from what was asked for. */
+  async function addAll(labId, list){
+    var res=[];
+    for(var j=0;j<list.length;j++){
+      var a=list[j];
+      try{ await rpc('add_lab_member',{p_lab:labId, p_email:a}); res.push({email:a, ok:true}); }
+      catch(e){ res.push({email:a, ok:false, msg:String((e&&e.message)||'refused')}); }
+    }
+    return res;
+  }
+
+  async function roster(labId){
+    try{ var r=await rpc('list_lab_members',{p_lab:labId}); return Array.isArray(r)?r:[]; }
+    catch(e){ fail('labinvite#roster',e); return []; }
+  }
+
+  /* ---------------- the wall ---------------- */
+
+  function box(){
+    var card=q('.oc-wall-card'); if(!card) return null;
+    var old=q('.oc-invitebox',card); if(old) old.remove();
+    var el=D.createElement('div');
+    el.className='oc-invitebox';
+    var p=q('[data-ocwallp]',card);
+    if(p && p.nextSibling) card.insertBefore(el, p.nextSibling); else card.appendChild(el);
+    return el;
+  }
+
+  /* open({lab_id, name, seats}) -- seats may be null when nothing has told us
+     what the lab pays for; the field then has no ceiling and the server keeps
+     the only one that matters. */
+  async function open(o){
+    o=o||{};
+    if(!P() || !o.lab_id) return;
+    var rows=await roster(o.lab_id);
+    var have=rows.map(function(m){ return String(m.email||'').toLowerCase(); });
+    var seats=(o.seats==null)?null:Number(o.seats);
+    var free=(seats==null)?null:Math.max(0, seats-have.length);
+    var name=String(o.name||'your lab');
+
+    P().wall({
+      eyebrow:'Your lab',
+      title:'Add your people',
+      body:(free===0
+        ? ('<b>'+esc(name)+'</b> has '+have.length+' of '+seats+' seats taken. There is no room for '
+          +'anyone else until you add seats.')
+        : ('Put in the addresses your lab signs in with. '
+          +(free!=null ? ('There '+(free===1?'is <b>1</b> seat':'are <b>'+free+'</b> seats')+' open.') : '')
+          +' You can type them one at a time, or paste the lot.')),
+      actions:[{label:'Add them', prim:true, run:function(){ /* replaced below */ }},
+               {label:'I’ll do this later', run:function(){ P().closeWall(); }}],
+      foot:'Adding an address is what authorises it. <b>No email goes out from here</b> — tell them to '
+          +'sign in with that exact address and the seat attaches itself.'
+    });
+
+    var b=box(); if(!b) return;
+    var go=q('[data-ocwallactions] [data-ocwallact="0"]');
+    var acts=q('[data-ocwallactions]');
+    function sync(s){ if(go) go.disabled=!(s && s.good.length); }
+    var ctl=mount(b, {roster:have, free:free, onChange:sync});
+    sync(ctl.state());
+    setTimeout(function(){ try{ ctl.focus(); }catch(e){ fail('labinvite#openfocus',e); } },120);
+
+    if(acts && acts._acts && acts._acts[0]){
+      acts._acts[0].run=async function(){
+        ctl.commit();
+        var s=ctl.state();
+        if(!s.good.length) return;
+        if(go){ go.disabled=true; go.textContent='Adding…'; }
+        var out=await addAll(o.lab_id, s.good);
+        report(o, out, s);
+      };
+    }
+  }
+
+  /* What actually happened, per address. The wording never claims an invite
+     was sent, because none is. */
+  function report(o, out, s){
+    var okList=out.filter(function(r){ return r.ok; }).map(function(r){ return r.email; });
+    var noList=out.filter(function(r){ return !r.ok; });
+    var body='';
+    if(okList.length){
+      body+='<b>'+okList.length+' address'+(okList.length===1?'':'es')+' added.</b> '
+          + esc(okList.join(', '))+'.';
+    } else {
+      body+='<b>Nothing was added.</b>';
+    }
+    if(noList.length){
+      body+='<br><br><b>'+noList.length+' could not be added.</b><br>'
+          + noList.map(function(r){ return esc(r.email)+' — '+esc(r.msg); }).join('<br>');
+    }
+    if(s.dup.length){
+      body+='<br><br>'+esc(s.dup.join(', '))+' '+(s.dup.length===1?'was':'were')
+          + ' already in the lab, so nothing changed.';
+    }
+    if(s.bad.length){
+      body+='<br><br><b>Not an address, so not tried:</b> '+esc(s.bad.join(', '))+'.';
+    }
+    if(s.over.length){
+      body+='<br><br><b>No seat for these:</b> '+esc(s.over.join(', '))
+          + '. Add seats under Plans and account, then add them.';
+    }
+    P().wall({
+      eyebrow:'Lab roster',
+      title: okList.length ? 'Added to '+String(o.name||'your lab') : 'Nothing changed',
+      body:body,
+      actions:[{label:'Add more', run:function(){ open(o); }},
+               {label:'Back to work', prim:true, run:function(){ P().closeWall(); }}],
+      foot:'Nobody has been emailed. They get in by signing in with the address you added.'
+    });
+    try{ if(W.oligoLab && W.oligoLab.refresh) W.oligoLab.refresh(); }catch(e){ fail('labinvite#refresh',e); }
+  }
+
+  /* The success screen after Stripe knows a plan, not a lab. Rather than
+     thread a lab id through the billing block, ask the server which lab this
+     person manages -- the same call the Lab panel already makes, and the only
+     answer that cannot be stale. */
+  async function openMine(){
+    try{
+      var labs=await rpc('my_managed_labs',{});
+      var l=(Array.isArray(labs)?labs:[])[0];
+      if(!l){ if(P()) P().closeWall(); return; }
+      await open({lab_id:l.lab_id, name:l.name, seats:(l.seats==null?null:Number(l.seats))});
+    }catch(e){ fail('labinvite#openMine',e); if(P()) P().closeWall(); }
+  }
+
+  W.ocLabInvite={ open:open, openMine:openMine, mount:mount,
+                  harvest:harvest, valid:valid, _addAll:addAll };
+}catch(e){ try{ ocFail('labinvite#boot',e); }catch(_){ /* nothing left to report with */ } }
+})();
+</script>
 </body>
 </html>
