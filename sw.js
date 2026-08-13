@@ -69,15 +69,34 @@ self.addEventListener('fetch', function(e){
 
   // Navigations (including ?tab=… deep links): try the network, fall back to the cached shell when offline
   // so a bookmarked deep link still opens the app with no connection.
+  //
+  // ⚠ R71 step 2d: ONLY THE APP SHELL MAY BE WRITTEN TO './index.html'.
+  // Until R71 there was one navigable document at this origin, so "any
+  // same-origin navigation" and "the app" were the same set and this branch was
+  // right by accident. The language landing pages (/ja/, /zh-Hant/, /zh-Hans/)
+  // are DIFFERENT documents under the same root scope. Without this test a user
+  // who opens /ja/ overwrites their cached app shell with a 3.9 KB doorway and
+  // the PWA opens to the doorway next time they are offline.
+  //
+  // The test is on pathname only: `?tab=…`, `?share=…` and `?lang=…` live in
+  // the search string and must all keep resolving to the shell.
   if(req.mode === 'navigate'){
+    var isShell = (url.pathname === '/' || url.pathname === '/index.html');
     e.respondWith(
       fetch(req).then(function(res){
-        if(res && res.ok && res.type === 'basic'){
+        if(isShell && res && res.ok && res.type === 'basic'){
           var copy = res.clone();
           caches.open(CACHE).then(function(c){ c.put('./index.html', copy); }).catch(function(){});
         }
         return res;
       }).catch(function(){
+        // Offline. The shell falls back to the shell; anything else falls back
+        // to ITSELF if we happen to hold it, and otherwise fails honestly.
+        // ⚠ Serving the whole app from /ja/ would be worse than a network error:
+        // it puts the calculator at an address that is supposed to be a doorway.
+        if(!isShell){
+          return caches.match(req).then(function(hit){ return hit || Response.error(); });
+        }
         return caches.match('./index.html').then(function(hit){ return hit || caches.match('./'); });
       })
     );

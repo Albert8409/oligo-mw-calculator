@@ -11,11 +11,34 @@
 
      The previous version listed /next/ as canonical and the root as secondary.
      That inverted once the standalone build became the only build. -->
+<!-- R71 step 2a: the language landing pages.  Each is a DIFFERENT
+     document in a different language, which is why each carries its
+     own canonical and is listed here.  The in-page tab views are
+     still deliberately absent: those are one document and the root
+     canonical says so. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://oligocalculator.com/</loc>
-    <lastmod>2026-08-09</lastmod>
+    <lastmod>2026-08-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://oligocalculator.com/zh-Hant/</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://oligocalculator.com/zh-Hans/</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://oligocalculator.com/ja/</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>

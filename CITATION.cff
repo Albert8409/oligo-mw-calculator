@@ -3,9 +3,12 @@ message: "If you use this software, please cite it using the metadata from this 
 title: "Oligo MW & Concentration Calculator"
 abstract: >-
   A free tool for oligonucleotide molecular weight, extinction coefficient
-  (epsilon-260), concentration, and dilution. Supports DNA/RNA/hybrid strands,
+  (epsilon-260), concentration and dilution, nearest-neighbour melting
+  temperature with per-residue coverage reporting, and ESI mass spec (exact
+  mass, elemental formula, m/z ladder). Supports DNA/RNA/hybrid strands,
   modified bases, phosphorothioate and mixed backbones, 5' and 3' end groups,
-  user-defined custom monomers and conjugates, and duplexes (siRNA/ASO).
+  2'-sugar modifications, user-defined custom monomers and conjugates, and
+  duplexes (siRNA/ASO).
 type: software
 authors:
   - family-names: Chen
@@ -13,9 +16,16 @@ authors:
     orcid: "https://orcid.org/0000-0002-1713-4190"
 version: "1.0.0"
 date-released: "2026-06-25"
-license: MIT
+# NOTE: no `license:` key. Albert, 2026-08-12: the licence claim is withdrawn
+# from this repository until the ownership determination is issued in writing.
+# It used to read `license: MIT`, which said the same thing README.md said, and
+# leaving it here would have contradicted the README's new License section in
+# the one file GitHub reads for the sidebar citation.
+# ⚠ This does NOT retract anything already published on Zenodo under DOI
+# 10.5281/zenodo.20842890 -- that record cannot be edited under the same gate,
+# and this file is not a retraction of it.
 repository-code: "https://github.com/Albert8409/oligo-mw-calculator"
-url: "https://albert8409.github.io/oligo-mw-calculator/"
+url: "https://oligocalculator.com"
 doi: "10.5281/zenodo.20842890"
 identifiers:
   - type: doi
