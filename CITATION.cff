@@ -8,7 +8,9 @@ abstract: >-
   mass, elemental formula, m/z ladder). Supports DNA/RNA/hybrid strands,
   modified bases, phosphorothioate and mixed backbones, 5' and 3' end groups,
   2'-sugar modifications, user-defined custom monomers and conjugates, and
-  duplexes (siRNA/ASO).
+  duplexes (siRNA/ASO). Also a browsable catalogue of verified
+  phosphoramidite monomers with vendor listings. Published under the title
+  above; the tool is now called Oligo Calculator.
 type: software
 authors:
   - family-names: Chen
@@ -42,3 +44,6 @@ keywords:
   - siRNA
   - antisense oligonucleotide
   - primer
+  - melting temperature
+  - mass spectrometry
+  - phosphoramidite

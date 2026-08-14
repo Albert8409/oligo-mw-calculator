@@ -46,7 +46,7 @@ One HTML file. No framework, no build step, no dependencies. Every number is wor
 - Read a sequence off a tube label or a page with your camera
 - Voice entry
 - Share a strand as a link, with no account needed at either end
-- English, 繁體中文 and 简体中文
+- English, 繁體中文, 简体中文 and 日本語
 - Installable as an app, and it works offline
 
 ## Usage
