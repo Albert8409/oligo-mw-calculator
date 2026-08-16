@@ -17,9 +17,18 @@
      still deliberately absent: those are one document and the root
      canonical says so. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- R76c, review row R76b-2: ⚠ ONLY THIS ENTRY MOVED, and that is the whole
+       decision. All four entries said 2026-08-13. The three landing pages
+       really have not changed since then, so a blanket bump would have put a
+       false date on three URLs in order to fix a true one.
+       ⚠⚠ THIS DATE IS A GUESS WITH A CORRECTION STEP, not a measurement. It is
+       R76c's build date, and the honest value is the day index.html actually
+       goes up, which cannot be known while writing the file.
+       docs/R76c-DEPLOY-STEPS.md step 5 tells Albert to change this one number
+       if he uploads on a later day. -->
   <url>
     <loc>https://oligocalculator.com/</loc>
-    <lastmod>2026-08-13</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
