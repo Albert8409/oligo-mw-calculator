@@ -277,6 +277,9 @@ var I18N = {
   "ui.catgate.pendingcta":"Pro status",
   "ui.acct.free":"Free plan",
   "ui.acct.signout":"Sign out",
+  "ui.lib.readonly":"Read only",
+  "ui.lib.rolab!":"This belongs to a lab you are no longer in. You can still open and copy it, but you cannot edit or delete it.",
+  "ui.sync.delkept!":"That deletion only removed the data on this device. Your account still holds the original data, so it will appear again at the next sync.",
   "ui.sync.labgone!":"That change was not saved. You are no longer in the lab this belongs to, and the copy in the lab is unchanged.",
   "ui.sync.labrefused!":"That change was not saved. The lab this belongs to did not allow it, and the copy in the lab is unchanged.",
   "ui.catgate.free":"Free: <b>{n} unique amidites</b>. <b>Oligo Calculator Pro</b> unlocks the full 267 verified amidites (351 vendor listings) from Supabase.",
@@ -1186,6 +1189,9 @@ var I18N = {
   "ui.catgate.pendingcta":"Pro \u72c0\u614b",
   "ui.acct.free":"Free \u65b9\u6848",
   "ui.acct.signout":"\u767b\u51fa",
+  "ui.lib.readonly":"\u552f\u8b80",
+  "ui.lib.rolab!":"\u4f60\u5df2\u4e0d\u5728\u9019\u7b46\u8cc7\u6599\u6240\u5c6c\u7684\u5be6\u9a57\u5ba4\u3002\u4f60\u4ecd\u7136\u53ef\u4ee5\u958b\u555f\u548c\u8907\u88fd\uff0c\u4f46\u7121\u6cd5\u7de8\u8f2f\u6216\u522a\u9664\u3002",
+  "ui.sync.delkept!":"\u9019\u6b21\u522a\u9664\u53ea\u79fb\u9664\u4e86\u9019\u53f0\u88dd\u7f6e\u4e0a\u7684\u8cc7\u6599\u3002\u4f60\u7684\u5e33\u6236\u4e2d\u4ecd\u4fdd\u7559\u539f\u59cb\u8cc7\u6599\uff0c\u4e0b\u6b21\u540c\u6b65\u6642\u6703\u518d\u6b21\u51fa\u73fe\u3002",
   "ui.sync.labgone!":"\u9019\u9805\u8b8a\u66f4\u672a\u5132\u5b58\u3002\u4f60\u5df2\u4e0d\u5728\u9019\u7b46\u8cc7\u6599\u6240\u5c6c\u7684\u5be6\u9a57\u5ba4\uff0c\u5be6\u9a57\u5ba4\u88e1\u7684\u7248\u672c\u6c92\u6709\u8b8a\u52d5\u3002",
   "ui.sync.labrefused!":"\u9019\u9805\u8b8a\u66f4\u672a\u5132\u5b58\u3002\u9019\u7b46\u8cc7\u6599\u6240\u5c6c\u7684\u5be6\u9a57\u5ba4\u4e0d\u63a5\u53d7\u9019\u9805\u8b8a\u66f4\uff0c\u5be6\u9a57\u5ba4\u88e1\u7684\u7248\u672c\u6c92\u6709\u8b8a\u52d5\u3002",
   "ui.catgate.free":"\u514d\u8cbb\uff1a<b>{n} \u7a2e\u4e9e\u78f7\u91af\u80fa</b>\u3002<b>Oligo Calculator Pro</b> \u53ef\u5f9e Supabase \u89e3\u9396\u5b8c\u6574\u7684 267 \u7a2e\u5df2\u9a57\u8b49\u4e9e\u78f7\u91af\u80fa\uff08351 \u7b46\u5ee0\u5546\u54c1\u9805\uff09\u3002",
@@ -1351,7 +1357,7 @@ var I18N = {
   "lab.leave.done":"\u4f60\u5df2\u96e2\u958b\u8a72\u5be6\u9a57\u5ba4\u3002",
   "lab.leave.go":"\u96e2\u958b\u9019\u500b\u5be6\u9a57\u5ba4",
   "lab.leave.q":"\u8981\u96e2\u958b {name} \u55ce\uff1f",
-  "lab.leave.why!":"\u4f60\u5c07\u5931\u53bb\u5171\u7528\u8cc7\u6599\u5eab\u7684\u5b58\u53d6\u6b0a\u3002\u4f60\u52a0\u5165\u7684\u5167\u5bb9\u6703\u7559\u5728\u5be6\u9a57\u5ba4\uff0c\u4e26\u56de\u5230\u4f60\u81ea\u5df1\u7684\u8cc7\u6599\u5eab\u3002",
+  "lab.leave.why!":"\u4f60\u5c07\u5931\u53bb\u5171\u7528\u8cc7\u6599\u5eab\u7684\u5b58\u53d6\u6b0a\u3002\u4f60\u65b0\u589e\u7684\u5167\u5bb9\u6703\u7559\u5728\u5be6\u9a57\u5ba4\uff0c\u4e26\u56de\u5230\u4f60\u81ea\u5df1\u7684\u8cc7\u6599\u5eab\u3002",
   "lab.lib.go":"\u958b\u555f\u5171\u7528\u8cc7\u6599\u5eab",
   "lab.lib.h":"\u5171\u7528\u8cc7\u6599\u5eab",
   "lab.lib.p":"\u5be6\u9a57\u5ba4\u7684\u5e8f\u5217\u653e\u5728\u5df2\u5132\u5b58\u5e8f\u5217\u9801\u9762\u3002\u628a\u7bc4\u570d\u5207\u63db\u5230\u5be6\u9a57\u5ba4\u5c31\u770b\u5f97\u5230\u3002",
@@ -1377,7 +1383,7 @@ var I18N = {
   "lab.promote.go":"\u8a2d\u70ba\u7ba1\u7406\u8005",
   "lab.renews":"{date} \u7e8c\u8a02",
   "lab.retry":"\u518d\u8a66\u4e00\u6b21",
-  "lab.rm.confirm!":"{email} \u5c07\u5931\u53bb\u5171\u7528\u8cc7\u6599\u5eab\u7684\u5b58\u53d6\u6b0a\u3002\u5c0d\u65b9\u52a0\u5165\u7684\u5167\u5bb9\u6703\u7559\u5728\u5be6\u9a57\u5ba4\uff0c\u4e26\u56de\u5230\u5c0d\u65b9\u81ea\u5df1\u7684\u8cc7\u6599\u5eab\u3002",
+  "lab.rm.confirm!":"{email} \u5c07\u5931\u53bb\u5171\u7528\u8cc7\u6599\u5eab\u7684\u5b58\u53d6\u6b0a\u3002\u5c0d\u65b9\u65b0\u589e\u7684\u5167\u5bb9\u6703\u7559\u5728\u5be6\u9a57\u5ba4\uff0c\u4e26\u56de\u5230\u5c0d\u65b9\u81ea\u5df1\u7684\u8cc7\u6599\u5eab\u3002",
   "lab.rm.do":"\u5f9e\u5be6\u9a57\u5ba4\u79fb\u9664",
   "lab.rm.done":"\u5df2\u5c07 {email} \u79fb\u51fa\u5be6\u9a57\u5ba4\uff0c\u6211\u5011\u5df2\u7d93\u5bc4\u51fa\u96fb\u5b50\u90f5\u4ef6\u901a\u77e5\u5c0d\u65b9\u3002",
   "lab.rm.nomail":"\u5df2\u5c07 {email} \u79fb\u51fa\u5be6\u9a57\u5ba4\uff0c\u4f46\u901a\u77e5\u4fe1\u5bc4\u9001\u5931\u6557\u3002\u8acb\u76f4\u63a5\u901a\u77e5\u5c0d\u65b9\u3002",
@@ -2090,6 +2096,9 @@ var I18N = {
   "ui.catgate.pendingcta":"Pro \u72b6\u6001",
   "ui.acct.free":"Free \u7248",
   "ui.acct.signout":"\u9000\u51fa\u767b\u5f55",
+  "ui.lib.readonly":"\u53ea\u8bfb",
+  "ui.lib.rolab!":"\u4f60\u5df2\u4e0d\u5728\u8fd9\u4efd\u8d44\u6599\u6240\u5c5e\u7684\u5b9e\u9a8c\u5ba4\u3002\u4f60\u4ecd\u7136\u53ef\u4ee5\u6253\u5f00\u548c\u590d\u5236\uff0c\u4f46\u65e0\u6cd5\u7f16\u8f91\u6216\u5220\u9664\u3002",
+  "ui.sync.delkept!":"\u8fd9\u6b21\u5220\u9664\u53ea\u79fb\u9664\u4e86\u8fd9\u53f0\u8bbe\u5907\u4e0a\u7684\u6570\u636e\u3002\u4f60\u7684\u8d26\u6237\u4e2d\u4ecd\u4fdd\u7559\u539f\u59cb\u6570\u636e\uff0c\u4e0b\u6b21\u540c\u6b65\u65f6\u4f1a\u518d\u6b21\u51fa\u73b0\u3002",
   "ui.sync.labgone!":"\u8fd9\u9879\u66f4\u6539\u672a\u4fdd\u5b58\u3002\u4f60\u5df2\u4e0d\u5728\u8fd9\u4efd\u8d44\u6599\u6240\u5c5e\u7684\u5b9e\u9a8c\u5ba4\uff0c\u5b9e\u9a8c\u5ba4\u91cc\u7684\u7248\u672c\u6ca1\u6709\u53d8\u52a8\u3002",
   "ui.sync.labrefused!":"\u8fd9\u9879\u66f4\u6539\u672a\u4fdd\u5b58\u3002\u8fd9\u4efd\u8d44\u6599\u6240\u5c5e\u7684\u5b9e\u9a8c\u5ba4\u4e0d\u63a5\u53d7\u8fd9\u9879\u66f4\u6539\uff0c\u5b9e\u9a8c\u5ba4\u91cc\u7684\u7248\u672c\u6ca1\u6709\u53d8\u52a8\u3002",
   "ui.catgate.free":"\u514d\u8d39\uff1a<b>{n} \u79cd\u4e9a\u78f7\u9170\u80fa</b>\u3002<b>Oligo Calculator Pro</b> \u53ef\u4ece Supabase \u89e3\u9501\u5b8c\u6574\u7684 267 \u79cd\u5df2\u9a8c\u8bc1\u4e9a\u78f7\u9170\u80fa\uff08351 \u6761\u5382\u5546\u4ea7\u54c1\uff09\u3002",
@@ -2255,7 +2264,7 @@ var I18N = {
   "lab.leave.done":"\u4f60\u5df2\u79bb\u5f00\u8be5\u5b9e\u9a8c\u5ba4\u3002",
   "lab.leave.go":"\u79bb\u5f00\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4",
   "lab.leave.q":"\u8981\u79bb\u5f00 {name} \u5417\uff1f",
-  "lab.leave.why!":"\u4f60\u5c06\u5931\u53bb\u5171\u7528\u8d44\u6e90\u5e93\u7684\u8bbf\u95ee\u6743\u3002\u4f60\u6dfb\u52a0\u7684\u5185\u5bb9\u4f1a\u7559\u5728\u5b9e\u9a8c\u5ba4\uff0c\u5e76\u56de\u5230\u4f60\u81ea\u5df1\u7684\u8d44\u6e90\u5e93\u3002",
+  "lab.leave.why!":"\u4f60\u5c06\u5931\u53bb\u5171\u7528\u8d44\u6e90\u5e93\u7684\u8bbf\u95ee\u6743\u9650\u3002\u4f60\u6dfb\u52a0\u7684\u5185\u5bb9\u4f1a\u7559\u5728\u5b9e\u9a8c\u5ba4\uff0c\u5e76\u56de\u5230\u4f60\u81ea\u5df1\u7684\u8d44\u6e90\u5e93\u3002",
   "lab.lib.go":"\u6253\u5f00\u5171\u7528\u8d44\u6e90\u5e93",
   "lab.lib.h":"\u5171\u7528\u8d44\u6e90\u5e93",
   "lab.lib.p":"\u5b9e\u9a8c\u5ba4\u7684\u5e8f\u5217\u653e\u5728\u5df2\u4fdd\u5b58\u5e8f\u5217\u9875\u9762\u3002\u628a\u8303\u56f4\u5207\u6362\u5230\u5b9e\u9a8c\u5ba4\u5c31\u770b\u5f97\u5230\u3002",
@@ -2281,7 +2290,7 @@ var I18N = {
   "lab.promote.go":"\u8bbe\u4e3a\u7ba1\u7406\u8005",
   "lab.renews":"{date} \u7eed\u8ba2",
   "lab.retry":"\u518d\u8bd5\u4e00\u6b21",
-  "lab.rm.confirm!":"{email} \u5c06\u5931\u53bb\u5171\u7528\u8d44\u6e90\u5e93\u7684\u8bbf\u95ee\u6743\u3002\u5bf9\u65b9\u6dfb\u52a0\u7684\u5185\u5bb9\u4f1a\u7559\u5728\u5b9e\u9a8c\u5ba4\uff0c\u5e76\u56de\u5230\u5bf9\u65b9\u81ea\u5df1\u7684\u8d44\u6e90\u5e93\u3002",
+  "lab.rm.confirm!":"{email} \u5c06\u5931\u53bb\u5171\u7528\u8d44\u6e90\u5e93\u7684\u8bbf\u95ee\u6743\u9650\u3002\u5bf9\u65b9\u6dfb\u52a0\u7684\u5185\u5bb9\u4f1a\u7559\u5728\u5b9e\u9a8c\u5ba4\uff0c\u5e76\u56de\u5230\u5bf9\u65b9\u81ea\u5df1\u7684\u8d44\u6e90\u5e93\u3002",
   "lab.rm.do":"\u4ece\u5b9e\u9a8c\u5ba4\u79fb\u9664",
   "lab.rm.done":"\u5df2\u5c06 {email} \u79fb\u51fa\u5b9e\u9a8c\u5ba4\uff0c\u6211\u4eec\u5df2\u7ecf\u53d1\u9001\u7535\u5b50\u90ae\u4ef6\u901a\u77e5\u5bf9\u65b9\u3002",
   "lab.rm.nomail":"\u5df2\u5c06 {email} \u79fb\u51fa\u5b9e\u9a8c\u5ba4\uff0c\u4f46\u901a\u77e5\u90ae\u4ef6\u53d1\u9001\u5931\u8d25\u3002\u8bf7\u76f4\u63a5\u901a\u77e5\u5bf9\u65b9\u3002",
@@ -2994,6 +3003,9 @@ var I18N = {
   "ui.catgate.pendingcta":"Pro \u306e\u72b6\u614b",
   "ui.acct.free":"Free \u30d7\u30e9\u30f3",
   "ui.acct.signout":"\u30b5\u30a4\u30f3\u30a2\u30a6\u30c8",
+  "ui.lib.readonly":"\u8aad\u307f\u53d6\u308a\u5c02\u7528",
+  "ui.lib.rolab!":"\u3053\u306e\u9805\u76ee\u304c\u5c5e\u3059\u308b\u30e9\u30dc\u306e\u30e1\u30f3\u30d0\u30fc\u3067\u306f\u306a\u304f\u306a\u308a\u307e\u3057\u305f\u3002\u958b\u3044\u305f\u308a\u30b3\u30d4\u30fc\u3057\u305f\u308a\u3059\u308b\u3053\u3068\u306f\u3067\u304d\u307e\u3059\u304c\u3001\u7de8\u96c6\u3084\u524a\u9664\u306f\u3067\u304d\u307e\u305b\u3093\u3002",
+  "ui.sync.delkept!":"\u524a\u9664\u3055\u308c\u305f\u306e\u306f\u3001\u3053\u306e\u7aef\u672b\u306b\u3042\u308b\u30c7\u30fc\u30bf\u3060\u3051\u3067\u3059\u3002\u30a2\u30ab\u30a6\u30f3\u30c8\u5074\u306e\u30c7\u30fc\u30bf\u306f\u6b8b\u3063\u3066\u3044\u308b\u305f\u3081\u3001\u6b21\u306e\u540c\u671f\u3067\u307e\u305f\u8868\u793a\u3055\u308c\u307e\u3059\u3002",
   "ui.sync.labgone!":"\u3053\u306e\u5909\u66f4\u306f\u4fdd\u5b58\u3055\u308c\u3066\u3044\u307e\u305b\u3093\u3002\u3053\u306e\u9805\u76ee\u304c\u3042\u308b\u30e9\u30dc\u306e\u30e1\u30f3\u30d0\u30fc\u3067\u306f\u306a\u304f\u306a\u3063\u3066\u3044\u308b\u305f\u3081\u3001\u30e9\u30dc\u5074\u306e\u5185\u5bb9\u306f\u305d\u306e\u307e\u307e\u3067\u3059\u3002",
   "ui.sync.labrefused!":"\u3053\u306e\u5909\u66f4\u306f\u4fdd\u5b58\u3055\u308c\u3066\u3044\u307e\u305b\u3093\u3002\u3053\u306e\u9805\u76ee\u304c\u3042\u308b\u30e9\u30dc\u304c\u3053\u306e\u5909\u66f4\u3092\u53d7\u3051\u4ed8\u3051\u306a\u304b\u3063\u305f\u305f\u3081\u3001\u30e9\u30dc\u5074\u306e\u5185\u5bb9\u306f\u305d\u306e\u307e\u307e\u3067\u3059\u3002",
   "ui.catgate.free":"\u7121\u6599: <b>{n} \u7a2e\u985e\u306e\u30a2\u30df\u30c0\u30a4\u30c8</b>\u3002<b>Oligo Calculator Pro</b> \u3067\u306f Supabase \u304b\u3089\u691c\u8a3c\u6e08\u307f\u30a2\u30df\u30c0\u30a4\u30c8 267 \u7a2e\u985e (\u30d9\u30f3\u30c0\u30fc\u63b2\u8f09 351 \u4ef6) \u3059\u3079\u3066\u304c\u4f7f\u3048\u307e\u3059\u3002",
@@ -3159,7 +3171,7 @@ var I18N = {
   "lab.leave.done":"\u30e9\u30dc\u304b\u3089\u9000\u51fa\u3057\u307e\u3057\u305f\u3002",
   "lab.leave.go":"\u3053\u306e\u30e9\u30dc\u304b\u3089\u9000\u51fa",
   "lab.leave.q":"{name} \u304b\u3089\u9000\u51fa\u3057\u307e\u3059\u304b?",
-  "lab.leave.why!":"\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u30a2\u30af\u30bb\u30b9\u3067\u304d\u306a\u304f\u306a\u308a\u307e\u3059\u3002\u8ffd\u52a0\u3057\u305f\u3082\u306e\u306f\u30e9\u30dc\u306b\u6b8b\u308a\u3001\u3055\u3089\u306b\u3054\u81ea\u8eab\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u3082\u623b\u308a\u307e\u3059\u3002",
+  "lab.leave.why!":"\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u30a2\u30af\u30bb\u30b9\u3067\u304d\u306a\u304f\u306a\u308a\u307e\u3059\u3002\u8ffd\u52a0\u3057\u305f\u3082\u306e\u306f\u30e9\u30dc\u306b\u6b8b\u308a\u3001\u3054\u81ea\u8eab\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u3082\u623b\u308a\u307e\u3059\u3002",
   "lab.lib.go":"\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u3092\u958b\u304f",
   "lab.lib.h":"\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea",
   "lab.lib.p":"\u30e9\u30dc\u306e\u914d\u5217\u306f\u4fdd\u5b58\u3057\u305f\u914d\u5217\u306b\u3042\u308a\u307e\u3059\u3002\u8868\u793a\u7bc4\u56f2\u3092\u30e9\u30dc\u306b\u5207\u308a\u66ff\u3048\u308b\u3068\u898b\u3089\u308c\u307e\u3059\u3002",
@@ -3185,7 +3197,7 @@ var I18N = {
   "lab.promote.go":"\u7ba1\u7406\u8005\u306b\u3059\u308b",
   "lab.renews":"{date} \u306b\u66f4\u65b0",
   "lab.retry":"\u3082\u3046\u4e00\u5ea6\u8a66\u3059",
-  "lab.rm.confirm!":"{email} \u306f\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u30a2\u30af\u30bb\u30b9\u3067\u304d\u306a\u304f\u306a\u308a\u307e\u3059\u3002\u305d\u306e\u65b9\u304c\u8ffd\u52a0\u3057\u305f\u3082\u306e\u306f\u30e9\u30dc\u306b\u6b8b\u308a\u3001\u3055\u3089\u306b\u3054\u672c\u4eba\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u3082\u623b\u308a\u307e\u3059\u3002",
+  "lab.rm.confirm!":"{email} \u306f\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u30a2\u30af\u30bb\u30b9\u3067\u304d\u306a\u304f\u306a\u308a\u307e\u3059\u3002\u305d\u306e\u65b9\u304c\u8ffd\u52a0\u3057\u305f\u3082\u306e\u306f\u30e9\u30dc\u306b\u6b8b\u308a\u3001\u305d\u306e\u65b9\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u3082\u623b\u308a\u307e\u3059\u3002",
   "lab.rm.do":"\u30e9\u30dc\u304b\u3089\u524a\u9664",
   "lab.rm.done":"{email} \u3092\u3053\u306e\u30e9\u30dc\u304b\u3089\u524a\u9664\u3057\u3001\u3053\u306e\u30a2\u30c9\u30ec\u30b9\u5b9b\u306b\u30e1\u30fc\u30eb\u3067\u304a\u77e5\u3089\u305b\u3057\u307e\u3057\u305f\u3002",
   "lab.rm.nomail":"{email} \u3092\u3053\u306e\u30e9\u30dc\u304b\u3089\u524a\u9664\u3057\u307e\u3057\u305f\u304c\u3001\u3053\u306e\u30a2\u30c9\u30ec\u30b9\u5b9b\u306e\u30e1\u30fc\u30eb\u9001\u4fe1\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002\u304a\u624b\u6570\u3067\u3059\u304c\u3001\u3054\u672c\u4eba\u306b\u76f4\u63a5\u304a\u77e5\u3089\u305b\u304f\u3060\u3055\u3044\u3002",
@@ -5547,6 +5559,11 @@ body[data-mode="dark"] .hp-lead{color:var(--accent)}
 .hn-edit{all:unset; cursor:text; font-family:var(--font-head); font-weight:600; font-size:13px; color:var(--text); border-radius:6px; padding:1px 3px}
 .hn-edit:hover{background:var(--surface-2); box-shadow:inset 0 -1px 0 var(--line-2)}
 .hn-edit:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+/* R76b: the same name, rendered for a row this account may not rename. It is
+   .hn-edit without the affordances -- no cursor:text, no hover fill, no focus
+   ring -- because every one of those invites an edit that cannot be made. Ink
+   only; it is never a background. */
+.hn-ro{display:inline-block; font-family:var(--font-head); font-weight:600; font-size:13px; color:var(--text); padding:1px 3px}
 .hn-input{font-family:var(--font-head); font-weight:600; font-size:13px; color:var(--text); background:var(--surface); border:1px solid var(--accent); border-radius:7px; padding:4px 7px; min-height:32px; width:100%; max-width:220px; box-sizing:border-box; outline:none; box-shadow:0 0 0 3px var(--accent-soft)}
 .h-chip{display:inline-block; margin:2px 0 0 6px; font-family:var(--font-head); font-size:12px; font-weight:600; color:var(--text); background:var(--surface-2); border:1px solid var(--line-2); border-radius:999px; padding:2px 9px; vertical-align:middle}
 .h-chip.tag{color:var(--accent-2); border-color:color-mix(in srgb,var(--accent) 26%,var(--line))}
@@ -10212,20 +10229,61 @@ async function pushStrand(entry, noQueue){
     setStatus('synced'); return true;
   }catch(e){ if(!noQueue) queueDirty({k:'strand',op:'up',key:entry.id}); setStatus('offline'); return false; }
 }
+/* R76b: ⚠⚠ A DELETE THAT REMOVES ZERO ROWS IS NOT AN ERROR, AND THAT IS THE
+   WHOLE BUG. PostgREST answers 204, `r.ok` is true, the client reports success,
+   the row leaves the screen and comes back at the next pull. Measured on a real
+   Postgres as review row R76a-3, and measured in a browser here: nothing at all
+   told the user.
+   ⚠ THIS WARNS ONLY ON A MEASURED POSITIVE, which is the mirror of
+   isForeignLab's rule. A zero-row delete is ALSO exactly what a row already
+   deleted on another device looks like, and telling THAT user their delete
+   failed would be a false alarm on a correct outcome. So the second request
+   asks the one question that separates the two: is the row still there?
+   Anything short of a clear yes says nothing at all.
+   ⚠ It takes the FILTER, not the id, so the delete-all path can reuse it
+   without a second copy of the same reasoning.
+   ⚠⚠ AND THE FILTER KEEPS ITS `/rest/v1/` PREFIX, WHICH IS NOT COSMETIC.
+   i18n-lint rule 7 calls any literal ending in a full stop a SENTENCE, and a
+   PostgREST equality prefix always ends in one, so splitting the path off
+   `strands?user_id=eq.` invented a new user-facing literal out of a URL. It was
+   caught by running the rule, reverted, and written this way instead: the two
+   literals here are byte-for-byte the ones this file already shipped. */
+async function tellIfKept(filter, res){
+  try{
+    var gone=null; try{ gone=await res.json(); }catch(_){ return; }
+    if(!Array.isArray(gone)||gone.length) return;
+    var h2=await authHeaders(); if(!h2) return;
+    var q=await fetchT(sbUrl()+filter+'&select=client_id',{headers:h2});
+    if(!q.ok) return;
+    var left=null; try{ left=await q.json(); }catch(_){ return; }
+    if(!Array.isArray(left)||!left.length) return;
+    var m=(typeof W.t==='function')?W.t('ui.sync.delkept!'):'';
+    if(m && W.__oligoNotice) W.__oligoNotice('oligoDelKept',{kind:'warn', dismissible:true, text:m});
+  }catch(_e){ ocFail('tellIfKept#1',_e); }
+}
 async function deleteStrandCloud(cid, noQueue){
   if(!syncEnabled()||!cid) return false;
   try{
-    var h=await authHeaders(); if(!h) throw new Error('no session');
-    var r=await fetchT(sbUrl()+'/rest/v1/strands?client_id=eq.'+encodeURIComponent(cid)+'&lab_id=is.null',{method:'DELETE',headers:h});
-    if(!r.ok) throw new Error(r.status); setStatus('synced'); return true;
+    /* return=representation is what turns a silent 204 into a countable answer */
+    var h=await authHeaders({Prefer:'return=representation'}); if(!h) throw new Error('no session');
+    var _f='/rest/v1/strands?client_id=eq.'+encodeURIComponent(cid)+'&lab_id=is.null';
+    var r=await fetchT(sbUrl()+_f,{method:'DELETE',headers:h});
+    if(!r.ok) throw new Error(r.status); setStatus('synced');
+    await tellIfKept(_f, r);
+    return true;
   }catch(e){ if(!noQueue) queueDirty({k:'strand',op:'del',key:cid}); setStatus('offline'); return false; }
 }
 async function deleteAllStrandsCloud(noQueue){
   if(!syncEnabled()) return false;
   try{
-    var uid=await userId(), h=await authHeaders(); if(!uid||!h) throw new Error('no session');
-    var r=await fetchT(sbUrl()+'/rest/v1/strands?user_id=eq.'+encodeURIComponent(uid)+'&lab_id=is.null',{method:'DELETE',headers:h});
+    /* R76b: the same silent-204 defect, one control over. "Clear all" on a
+       free account emptied the screen, removed nothing, and refilled itself at
+       the next pull. It shares tellIfKept rather than repeating the reasoning. */
+    var uid=await userId(), h=await authHeaders({Prefer:'return=representation'}); if(!uid||!h) throw new Error('no session');
+    var _fa='/rest/v1/strands?user_id=eq.'+encodeURIComponent(uid)+'&lab_id=is.null';
+    var r=await fetchT(sbUrl()+_fa,{method:'DELETE',headers:h});
     if(!r.ok) throw new Error(r.status);
+    await tellIfKept(_fa, r);
     setStatus('synced'); return true;
   }catch(_){ if(!noQueue) queueDirty({k:'strand',op:'clear',key:'all'}); setStatus('offline'); return false; }
 }
@@ -12198,18 +12256,39 @@ function renderHistShell(){
     tb.innerHTML=''; return;
   }
   if(view) view.dataset.histEmpty='none'; if(table) table.hidden=false; if(empty) empty.hidden=true;
-  tb.innerHTML = rows.map(function(o){ var h=o.h, i=o.i, expanded=(pro && histExpanded===i);
+  /* R76b: ⚠⚠ A ROW YOU CANNOT CHANGE MUST NOT OFFER TO CHANGE. R76a stops an
+     ex-member's edit from being SENT and says so afterwards; this stops the
+     field being offered. The two labels are read ONCE per render rather than
+     per row, and an absent i18n table yields '' rather than a hard-coded
+     English literal, which rule 7 would count as new. */
+  var _roL='', _roW='';
+  try{ if(typeof window.t==='function'){ _roL=window.t('ui.lib.readonly'); _roW=window.t('ui.lib.rolab!'); } }
+  catch(_e){ ocFail('renderHistShell#ro1',_e); }
+  tb.innerHTML = rows.map(function(o){ var h=o.h, i=o.i;
+    /* ⚠ THE PREDICATE ANSWERS TRUE ONLY ON A MEASURED NEGATIVE (see
+       isForeignLabNow). Anything it does not know answers false, and the row
+       keeps every control it has today. */
+    var ro=false;
+    try{ ro=!!(window.oligoLabLib && oligoLabLib.isForeignLabNow && oligoLabLib.isForeignLabNow(h.__labId||'')); }
+    catch(_e2){ ocFail('renderHistShell#ro2',_e2); }
+    /* the ⋯ panel edits folder, tags and note straight onto the entry and
+       pushes it, so it is the same discarded-typing defect one control over */
+    var expanded=(pro && histExpanded===i && !ro);
     var tr='<tr'+(expanded?' class="is-exp"':'')+'>'+
       '<td data-th="Select"><input type="checkbox" data-hpick="'+i+'" aria-label="Select '+cbEsc(h.name||h.seq||'strand')+'"'+(histSelHas(i)?' checked':'')+'></td>'+
-      '<td data-th="Name"><button type="button" class="hn-edit" data-hrename="'+i+'" aria-label="Rename '+cbEsc(h.name||'strand')+'">'+cbEsc(h.name||'Untitled strand')+'</button>'+
+      '<td data-th="Name">'+(ro
+        ? '<span class="hn-ro" title="'+cbEsc(_roW)+'">'+cbEsc(h.name||'Untitled strand')+'</span>'
+        : '<button type="button" class="hn-edit" data-hrename="'+i+'" aria-label="Rename '+cbEsc(h.name||'strand')+'">'+cbEsc(h.name||'Untitled strand')+'</button>')+
         (h.folder?'<span class="h-chip">'+cbEsc(h.folder)+'</span>':'')+((h.tags&&h.tags.length)?h.tags.map(function(t){return '<span class="h-chip tag">'+cbEsc(t)+'</span>';}).join(''):'')+'</td>'+
       '<td data-th="Sequence"><span class="hseq">'+cbEsc(h.duplex?((h.seq||'').replace(/\s+/g,'')+' / '+(h.duplex.antiSeq||'').replace(/\s+/g,'')):((h.seq||'').replace(/\s+/g,'')))+'</span></td>'+
       '<td data-th="Type"><span class="badge'+(h.type==='DNA'?' dna':'')+'">'+cbEsc(h.type||'')+(h.duplex?' '+t('mk.0044'):'')+' · '+(h.n||0)+' nt</span></td>'+
       '<td data-th="MW" class="hmw">'+(h.duplex?cbEsc(h.duplex.duplexMwStr||''):(h.mwStr?cbEsc(h.mwStr):fmt(h.mw||0,h.n||0)))+'</td>'+
       '<td data-th="Saved" style="color:var(--muted)">'+cbEsc(fmtTime(h.t))+'</td>'+
       '<td data-th="Actions"><div class="hact"><button type="button" class="load" data-hloadx="'+i+'">Load</button><button type="button" data-hcopyx="'+i+'">Copy</button><button type="button" data-hsharex="'+i+'" aria-label="Share '+cbEsc(h.name||'strand')+'">Share</button>'+
-        (pro?'<button type="button" class="hmore" data-hmore="'+i+'" aria-expanded="'+(expanded?'true':'false')+'" aria-label="Library options for '+cbEsc(h.name||'strand')+'">⋯</button>':'')+
-        '<button type="button" class="hdel" data-hdelx="'+i+'" aria-label="Delete '+cbEsc(h.name||'strand')+'">✕</button></div></td>'+
+        ((pro&&!ro)?'<button type="button" class="hmore" data-hmore="'+i+'" aria-expanded="'+(expanded?'true':'false')+'" aria-label="Library options for '+cbEsc(h.name||'strand')+'">⋯</button>':'')+
+        (ro
+          ? (_roL?('<span class="lc-ro" title="'+cbEsc(_roW)+'">'+cbEsc(_roL)+'</span>'):'')
+          : '<button type="button" class="hdel" data-hdelx="'+i+'" aria-label="Delete '+cbEsc(h.name||'strand')+'">✕</button>')+'</div></td>'+
     '</tr>';
     if(expanded){ tr+='<tr class="hexp"><td colspan="7"><div class="hexp-grid">'+
       '<label class="hexp-f">Folder<input data-libf="'+i+'" value="'+cbEsc(h.folder||'')+'" placeholder="e.g. siRNA project"></label>'+
@@ -15914,6 +15993,22 @@ try{
     for(var i=0;i<LS.length;i++){ if(LS[i]&&LS[i].lab_id===labId) return false; }
     return true;
   }
+  /* R76b: the SYNCHRONOUS half of the same question, because a RENDERER cannot
+     await. It reads the SAME cache and obeys the SAME rule: true only on a
+     measured negative, so a lab list that was never asked for, could not be
+     obtained, or belongs to an account that is not signed in and Pro answers
+     FALSE and the row keeps its controls.
+     ⚠ IT NEVER FETCHES. A renderer that starts a request starts one per paint.
+     Filling the cache is ensureScope()'s job, and ensureScope repaints the flat
+     table once it has -- without that the guard would fire only on some later
+     re-render, which is a guard that mostly does not fire. */
+  function isForeignLabNow(labId){
+    if(!labId) return false;
+    if(!(isPro()&&signedIn())) return false;
+    if(!_labs||!_labsOk) return false;
+    for(var i=0;i<_labs.length;i++){ if(_labs[i]&&_labs[i].lab_id===labId) return false; }
+    return true;
+  }
 
   function rowToEntry(row){ var d=Object.assign({}, row.data||{}); d.id=row.client_id||d.id; if(row.name!=null)d.name=row.name; if(row.folder!=null)d.folder=row.folder; if(Array.isArray(row.tags))d.tags=row.tags; d.__rowId=row.id; d.__uid=row.user_id; d.__author=(row.data&&row.data.authorEmail)||''; d.__folderId=row.folder_id||''; d.__labId=row.lab_id||''; return d; }
   async function fetchLabStrands(labId){ var rows=await rest('GET','strands?lab_id=eq.'+encodeURIComponent(labId)+'&select=*&order=updated_at.desc'); return (rows||[]).map(rowToEntry); }
@@ -15933,6 +16028,12 @@ try{
     var qs='strands?client_id=eq.'+encodeURIComponent(cid)+(uid?('&user_id=eq.'+encodeURIComponent(uid)):'');
     await rest('PATCH',qs,{lab_id:null},{Prefer:'return=minimal'});
   }
+  /* R76b: ⚠ ONE READER OF THE READ-ONLY LABEL, for both surfaces that show
+     it -- this card and the saved-strands table. Albert's ruling is that the
+     control says "Read only"; the English literal this replaces was already in
+     tools/i18n/literal-baseline.json, so keying it SHRINKS the live literal
+     count and touches no baseline. */
+  function _roLabel(){ try{ return (typeof window.t==='function')?window.t('ui.lib.readonly'):''; }catch(_){ return ''; } }
   function labMW(e){ try{ var r=compute(e.seq,e.type,e.linkage); return r&&r.n?fmt(r.mw,r.n):(e.mwStr||''); }catch(_){ return e.mwStr||''; } }
 
   // ---- comments (any lab member; delete own or manager, enforced by RLS) ----
@@ -16123,7 +16224,7 @@ try{
     var shared = !labId && !!e.__labId;
     if(isAuthor && !shared) acts+='<button type="button" class="lab-x2" data-lab-move="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'">Move</button>';
     if(labId){ acts+='<button type="button" class="lab-x2" data-lab-comments="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'">Comments</button>';
-      acts+= isAuthor ? ('<button type="button" class="lab-x2" data-lab-access="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'">Manage access</button><button type="button" class="lab-x2" data-lab-rmlab="'+esc(e.id)+'">Remove</button>') : '<span class="lc-ro">view only</span>';
+      acts+= isAuthor ? ('<button type="button" class="lab-x2" data-lab-access="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'">Manage access</button><button type="button" class="lab-x2" data-lab-rmlab="'+esc(e.id)+'">Remove</button>') : ('<span class="lc-ro">'+esc(_roLabel())+'</span>');
     } else if(!shared) { acts+='<button type="button" class="lab-x2" data-pdel="'+esc(e.id)+'">Delete</button>'; }
     return '<div class="lab-card"'+(isAuthor?' draggable="true"':'')+' data-rowid="'+esc(e.__rowId||'')+'"><div class="lab-card-h"><input type="checkbox" class="lab-pick-cb" data-labpick="'+esc(e.id)+'" aria-label="Select '+esc(e.name||'strand')+'"'+(_sel.has(e.id)?' checked':'')+'><span class="lc-n">'+esc(e.name||'Untitled')+'</span><span class="lc-mw">'+esc(labMW(e))+' g/mol</span></div>'+
       '<div class="lc-seq">'+esc((typeof spaceSeq==='function')?spaceSeq(e.seq,e.type,e.linkage):e.seq||'')+'</div>'+
@@ -16222,6 +16323,18 @@ try{
     var _tw=_q('.hist-th-wrap',v); if(_tw) _tw.hidden=!_my;
     var ll=ensureLabLib(); if(ll) ll.hidden=_my;
     if(!_my) renderLabList();
+    /* R76b: ⚠ THE FLAT TABLE **IS** THE PERSONAL LIBRARY -- R55 #4 above says
+       so, and a browser measured it: in personal scope the folder browser is
+       hidden and renders nothing. That table is painted SYNCHRONOUSLY by
+       _applyTab, long before the await above resolves, so its read-only rows
+       cannot know the lab list on the first paint. Repaint once it is known.
+       ⚠ NOT over an inline rename in progress: removing a focused input
+       COMMITS the half-typed name in Chromium rather than discarding it, so
+       either way the decision is taken away from the reader. Same guard, and
+       the same reason, as the oligo:lang listener's. */
+    else if(typeof renderHistShell==='function' && !_q('.view-hist .hn-input')){
+      try{ renderHistShell(); }catch(_e){ ocFail('ensureScope#ro',_e); }
+    }
   }
   async function renderLabList(){ return renderFolderBrowser(); }
 
@@ -16307,7 +16420,7 @@ try{
   try{ new MutationObserver(maybe).observe(document.body,{attributes:true,attributeFilter:['data-tab']}); }catch(_e){ ocFail('maybe#1',_e); }
   setTimeout(maybe, 400);
   window.oligoLabLib={ ensureScope:ensureScope, renderLabList:renderLabList, addToLab:addToLab, fetchLabStrands:fetchLabStrands, _openAccess:openAccess, _openPicker:openPicker,
-    invalidateLabs:invalidateLabs, isForeignLab:isForeignLab,
+    invalidateLabs:invalidateLabs, isForeignLab:isForeignLab, isForeignLabNow:isForeignLabNow,
     getSelected:function(){ return (_lastList||[]).filter(function(e){return _sel.has(e.id);}); }, clearSelected:function(){ _sel.clear(); try{ renderLabList(); }catch(_e){ ocFail('maybe#2',_e); } },
     copyToLab: async function(entries){ var labId=meta().labId; if(!labId){ toast('Join or create a lab first (Account ▸ Lab).'); return; }
       var labNm='the lab'; try{ var _ls=await labs(); var _L=_ls.filter(function(x){return x.lab_id===labId;})[0]; if(_L) labNm=_L.name; }catch(_e){ ocFail('maybe#3',_e); }
