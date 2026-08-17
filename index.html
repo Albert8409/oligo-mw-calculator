@@ -717,6 +717,53 @@ var I18N = {
   "lab.tree.local!":"Sorting and searching change only your own view. Nobody else sees the change.",
   "lab.tree.deep":"Folders go three levels deep, and this one is already at the limit. Make the new folder one level up, or use this folder as it is.",
   "lab.tree.cycle":"A folder cannot be moved inside itself or inside one of its own subfolders.",
+  "lab.md.h":"Order and inventory",
+  "lab.md.name":"Name",
+  "lab.md.seq":"Sequence",
+  "lab.md.type":"Type",
+  "lab.md.folder":"Folder",
+  "lab.md.tags":"Tags",
+  "lab.md.note":"Note",
+  "lab.md.scale":"Scale",
+  "lab.md.purif":"Purification",
+  "lab.md.supplier":"Supplier",
+  "lab.md.catno":"Catalog no.",
+  "lab.md.ordered":"Ordered",
+  "lab.md.lot":"Lot",
+  "lab.md.plate":"Plate",
+  "lab.md.well":"Well",
+  "lab.md.freezer":"Freezer location",
+  "lab.md.tmimp":"Tm from the file",
+  "lab.md.tmwhy!":"This melting temperature was read from a file. This calculator did not compute it and cannot say which model or salt conditions produced it. Open the Tm tab for a value that names its model.",
+  "lab.md.from":"From {file}",
+  "lab.md.fromwhy!":"A marked value was read from a file, not computed here. Editing it clears the mark.",
+  "lab.imp.btn":"Import a file",
+  "lab.imp.h":"Import sequences from a file",
+  "lab.imp.sub!":"CSV only for now. The file is read in this browser. It is never uploaded and never kept.",
+  "lab.imp.pick":"Choose a CSV file",
+  "lab.imp.bad!":"This file could not be read as CSV.",
+  "lab.imp.empty!":"That file has no rows to import.",
+  "lab.imp.big!":"That file has {n} rows. {max} is the most this can take at once.",
+  "lab.imp.own":"This is an Oligo Calculator full record. Every column was matched.",
+  "lab.imp.maph":"Match your columns",
+  "lab.imp.mapsub":"Pick what each column holds. A column left as Do not import is ignored.",
+  "lab.imp.skip":"Do not import",
+  "lab.imp.auto":"{n} of {total} columns matched by name.",
+  "lab.imp.needseq!":"Choose which column holds the sequence before going on.",
+  "lab.imp.dupe!":"Two columns are set to {field}. Only one column can be.",
+  "lab.imp.next":"Check the rows",
+  "lab.imp.checkh":"Check before importing",
+  "lab.imp.ok":"{n} ready to import",
+  "lab.imp.bad":"{n} cannot be imported",
+  "lab.imp.rowseq":"row {n}: {why}",
+  "lab.imp.rownoseq":"row {n}: no sequence",
+  "lab.imp.rowdate":"row {n}: the date was not understood. Write it as 2026-08-16.",
+  "lab.imp.quota!":"Your plan holds {max} saved sequences and {used} are in use, so {fit} of these {n} will fit.",
+  "lab.imp.go":"Import {n}",
+  "lab.imp.none":"Nothing here can be imported.",
+  "lab.imp.done":"{n} imported.",
+  "lab.exp.btn":"Export full record",
+  "lab.exp.why!":"A full record holds every value needed to rebuild each sequence, so importing it back reproduces this list exactly. Export CSV beside it is for reading, not for importing.",
   "lab.priv.who!":"Only you and your lab manager can see what is in here.",
   "lab.priv.empty!":"Nothing here yet. Move a strand in to work on it before it goes to the lab's shared library. Only you and your lab manager can see it.",
   "lab.fold.empty":"This folder is empty. Drag a strand onto it, or use a strand’s Move button.",
@@ -1660,6 +1707,53 @@ var I18N = {
   "lab.tree.local!":"\u6392\u5e8f\u548c\u641c\u5c0b\u53ea\u6703\u6539\u8b8a\u4f60\u81ea\u5df1\u770b\u5230\u7684\u756b\u9762\uff0c\u5176\u4ed6\u4eba\u770b\u5230\u7684\u4e0d\u6703\u8b8a\u3002",
   "lab.tree.deep":"\u8cc7\u6599\u593e\u6700\u591a\u4e09\u5c64\uff0c\u9019\u4e00\u5c64\u5df2\u7d93\u5230\u4e0a\u9650\u3002\u8acb\u628a\u65b0\u8cc7\u6599\u593e\u5efa\u5728\u4e0a\u4e00\u5c64\uff0c\u6216\u76f4\u63a5\u4f7f\u7528\u76ee\u524d\u9019\u500b\u8cc7\u6599\u593e\u3002",
   "lab.tree.cycle":"\u8cc7\u6599\u593e\u4e0d\u80fd\u79fb\u5230\u81ea\u5df1\u88e1\u9762\uff0c\u4e5f\u4e0d\u80fd\u79fb\u5230\u81ea\u5df1\u7684\u5b50\u8cc7\u6599\u593e\u88e1\u9762\u3002",
+  "lab.md.h":"\u8a02\u8cfc\u8207\u5eab\u5b58",
+  "lab.md.name":"\u540d\u7a31",
+  "lab.md.seq":"\u5e8f\u5217",
+  "lab.md.type":"\u985e\u578b",
+  "lab.md.folder":"\u8cc7\u6599\u593e",
+  "lab.md.tags":"\u6a19\u7c64",
+  "lab.md.note":"\u5099\u8a3b",
+  "lab.md.scale":"\u5408\u6210\u898f\u6a21",
+  "lab.md.purif":"\u7d14\u5316",
+  "lab.md.supplier":"\u4f9b\u61c9\u5546",
+  "lab.md.catno":"\u578b\u9304\u7de8\u865f",
+  "lab.md.ordered":"\u8a02\u8cfc\u65e5\u671f",
+  "lab.md.lot":"\u6279\u865f",
+  "lab.md.plate":"\u5fae\u5b54\u76e4",
+  "lab.md.well":"\u5b54\u4f4d",
+  "lab.md.freezer":"\u51b0\u7bb1\u4f4d\u7f6e",
+  "lab.md.tmimp":"\u6a94\u6848\u4e2d\u7684 Tm",
+  "lab.md.tmwhy!":"\u9019\u500b\u7194\u89e3\u6eab\u5ea6\u662f\u5f9e\u6a94\u6848\u8b80\u9032\u4f86\u7684\u3002\u672c\u8a08\u7b97\u6a5f\u6c92\u6709\u7b97\u904e\u5b83\uff0c\u4e5f\u8aaa\u4e0d\u51fa\u5b83\u662f\u7528\u54ea\u500b\u6a21\u578b\u3001\u54ea\u7a2e\u9e7d\u985e\u689d\u4ef6\u7b97\u51fa\u4f86\u7684\u3002\u60f3\u770b\u6709\u6a19\u660e\u6a21\u578b\u7684\u6578\u503c\uff0c\u8acb\u958b\u555f Tm \u5206\u9801\u3002",
+  "lab.md.from":"\u4f86\u81ea {file}",
+  "lab.md.fromwhy!":"\u6709\u6a19\u8a18\u7684\u6578\u503c\u662f\u5f9e\u6a94\u6848\u8b80\u9032\u4f86\u7684\uff0c\u4e0d\u662f\u5728\u9019\u88e1\u7b97\u51fa\u4f86\u7684\u3002\u4f60\u4e00\u6539\u52d5\u5b83\uff0c\u6a19\u8a18\u5c31\u6703\u6d88\u5931\u3002",
+  "lab.imp.btn":"\u532f\u5165\u6a94\u6848",
+  "lab.imp.h":"\u5f9e\u6a94\u6848\u532f\u5165\u5e8f\u5217",
+  "lab.imp.sub!":"\u76ee\u524d\u53ea\u652f\u63f4 CSV\u3002\u6a94\u6848\u5728\u9019\u500b\u700f\u89bd\u5668\u88e1\u8b80\u53d6\uff0c\u4e0d\u6703\u4e0a\u50b3\uff0c\u4e5f\u4e0d\u6703\u7559\u4e0b\u3002",
+  "lab.imp.pick":"\u9078\u64c7 CSV \u6a94\u6848",
+  "lab.imp.bad!":"\u9019\u500b\u6a94\u6848\u7121\u6cd5\u7576\u6210 CSV \u8b80\u53d6\u3002",
+  "lab.imp.empty!":"\u9019\u500b\u6a94\u6848\u6c92\u6709\u53ef\u4ee5\u532f\u5165\u7684\u8cc7\u6599\u5217\u3002",
+  "lab.imp.big!":"\u9019\u500b\u6a94\u6848\u6709 {n} \u5217\u3002\u4e00\u6b21\u6700\u591a\u53ea\u80fd\u8655\u7406 {max} \u5217\u3002",
+  "lab.imp.own":"\u9019\u662f Oligo Calculator \u7684\u5b8c\u6574\u7d00\u9304\uff0c\u6bcf\u4e00\u6b04\u90fd\u5df2\u7d93\u5c0d\u61c9\u597d\u4e86\u3002",
+  "lab.imp.maph":"\u8a2d\u5b9a\u6b04\u4f4d\u5c0d\u61c9",
+  "lab.imp.mapsub":"\u8acb\u6307\u5b9a\u6bcf\u4e00\u6b04\u7684\u5167\u5bb9\u3002\u8a2d\u70ba\u300c\u4e0d\u8981\u532f\u5165\u300d\u7684\u6b04\u4f4d\u6703\u88ab\u7565\u904e\u3002",
+  "lab.imp.skip":"\u4e0d\u8981\u532f\u5165",
+  "lab.imp.auto":"\u5df2\u4f9d\u540d\u7a31\u81ea\u52d5\u5c0d\u61c9 {n} \u6b04\uff0c\u5171 {total} \u6b04\u3002",
+  "lab.imp.needseq!":"\u8acb\u5148\u6307\u5b9a\u54ea\u4e00\u6b04\u662f\u5e8f\u5217\uff0c\u518d\u7e7c\u7e8c\u3002",
+  "lab.imp.dupe!":"\u6709\u5169\u6b04\u90fd\u8a2d\u6210 {field}\uff0c\u4f46\u53ea\u80fd\u6709\u4e00\u6b04\u3002",
+  "lab.imp.next":"\u6aa2\u67e5\u8cc7\u6599\u5217",
+  "lab.imp.checkh":"\u532f\u5165\u524d\u5148\u6aa2\u67e5",
+  "lab.imp.ok":"{n} \u7b46\u53ef\u4ee5\u532f\u5165",
+  "lab.imp.bad":"{n} \u7b46\u7121\u6cd5\u532f\u5165",
+  "lab.imp.rowseq":"\u7b2c {n} \u5217\uff1a{why}",
+  "lab.imp.rownoseq":"\u7b2c {n} \u5217\uff1a\u6c92\u6709\u5e8f\u5217",
+  "lab.imp.rowdate":"\u7b2c {n} \u5217\uff1a\u7121\u6cd5\u8fa8\u8b58\u9019\u500b\u65e5\u671f\u3002\u8acb\u5beb\u6210 2026-08-16 \u9019\u7a2e\u683c\u5f0f\u3002",
+  "lab.imp.quota!":"\u4f60\u7684\u65b9\u6848\u53ef\u4ee5\u5b58 {max} \u7b46\u5e8f\u5217\uff0c\u76ee\u524d\u5df2\u7d93\u7528\u6389 {used} \u7b46\uff0c\u6240\u4ee5\u9019 {n} \u7b46\u88e1\u9762\u653e\u5f97\u4e0b {fit} \u7b46\u3002",
+  "lab.imp.go":"\u532f\u5165 {n} \u7b46",
+  "lab.imp.none":"\u9019\u88e1\u6c92\u6709\u53ef\u4ee5\u532f\u5165\u7684\u8cc7\u6599\u3002",
+  "lab.imp.done":"\u5df2\u532f\u5165 {n} \u7b46\u3002",
+  "lab.exp.btn":"\u532f\u51fa\u5b8c\u6574\u7d00\u9304",
+  "lab.exp.why!":"\u5b8c\u6574\u7d00\u9304\u6703\u5b58\u4e0b\u91cd\u5efa\u6bcf\u4e00\u7b46\u5e8f\u5217\u6240\u9700\u8981\u7684\u5168\u90e8\u6578\u503c\uff0c\u6240\u4ee5\u518d\u532f\u5165\u56de\u4f86\u5c31\u6703\u4e00\u6a21\u4e00\u6a23\u3002\u65c1\u908a\u7684\u532f\u51fa CSV \u662f\u7d66\u4eba\u770b\u7684\uff0c\u4e0d\u662f\u62ff\u4f86\u532f\u5165\u7684\u3002",
   "lab.priv.who!":"\u53ea\u6709\u4f60\u548c\u5be6\u9a57\u5ba4\u7ba1\u7406\u8005\u770b\u5f97\u5230\u9019\u88e1\u9762\u7684\u5167\u5bb9\u3002",
   "lab.priv.empty!":"\u9019\u88e1\u9084\u6c92\u6709\u6771\u897f\u3002\u4f60\u53ef\u4ee5\u5148\u628a\u5e8f\u5217\u79fb\u5230\u9019\u500b\u7a7a\u9593\u8655\u7406\uff0c\u4e4b\u5f8c\u518d\u653e\u9032\u5be6\u9a57\u5ba4\u7684\u5171\u7528\u8cc7\u6599\u5eab\u3002\u9019\u500b\u7a7a\u9593\u88e1\u7684\u5167\u5bb9\uff0c\u53ea\u6709\u4f60\u548c\u5be6\u9a57\u5ba4\u7ba1\u7406\u8005\u770b\u5f97\u5230\u3002",
   "lab.fold.empty":"\u9019\u500b\u8cc7\u6599\u593e\u662f\u7a7a\u7684\u3002\u4f60\u53ef\u4ee5\u628a\u5e8f\u5217\u62d6\u5230\u9019\u88e1\uff0c\u6216\u4f7f\u7528\u5e8f\u5217\u4e0a\u7684\u300c\u79fb\u52d5\u300d\u3002",
@@ -2598,6 +2692,53 @@ var I18N = {
   "lab.tree.local!":"\u6392\u5e8f\u548c\u641c\u7d22\u53ea\u4f1a\u6539\u53d8\u4f60\u81ea\u5df1\u770b\u5230\u7684\u89c6\u56fe\uff0c\u5176\u4ed6\u4eba\u770b\u5230\u7684\u4e0d\u4f1a\u53d8\u3002",
   "lab.tree.deep":"\u6587\u4ef6\u5939\u6700\u591a\u4e09\u5c42\uff0c\u8fd9\u4e00\u5c42\u5df2\u7ecf\u5230\u4e0a\u9650\u3002\u8bf7\u628a\u65b0\u6587\u4ef6\u5939\u5efa\u5728\u4e0a\u4e00\u5c42\uff0c\u6216\u76f4\u63a5\u4f7f\u7528\u5f53\u524d\u8fd9\u4e2a\u6587\u4ef6\u5939\u3002",
   "lab.tree.cycle":"\u6587\u4ef6\u5939\u4e0d\u80fd\u79fb\u5230\u81ea\u5df1\u91cc\u9762\uff0c\u4e5f\u4e0d\u80fd\u79fb\u5230\u81ea\u5df1\u7684\u5b50\u6587\u4ef6\u5939\u91cc\u9762\u3002",
+  "lab.md.h":"\u8ba2\u8d2d\u4e0e\u5e93\u5b58",
+  "lab.md.name":"\u540d\u79f0",
+  "lab.md.seq":"\u5e8f\u5217",
+  "lab.md.type":"\u7c7b\u578b",
+  "lab.md.folder":"\u6587\u4ef6\u5939",
+  "lab.md.tags":"\u6807\u7b7e",
+  "lab.md.note":"\u5907\u6ce8",
+  "lab.md.scale":"\u5408\u6210\u89c4\u6a21",
+  "lab.md.purif":"\u7eaf\u5316",
+  "lab.md.supplier":"\u4f9b\u5e94\u5546",
+  "lab.md.catno":"\u76ee\u5f55\u7f16\u53f7",
+  "lab.md.ordered":"\u8ba2\u8d2d\u65e5\u671f",
+  "lab.md.lot":"\u6279\u53f7",
+  "lab.md.plate":"\u5fae\u5b54\u677f",
+  "lab.md.well":"\u5b54\u4f4d",
+  "lab.md.freezer":"\u51b0\u7bb1\u4f4d\u7f6e",
+  "lab.md.tmimp":"\u6587\u4ef6\u4e2d\u7684 Tm",
+  "lab.md.tmwhy!":"\u8fd9\u4e2a\u89e3\u94fe\u6e29\u5ea6\u662f\u4ece\u6587\u4ef6\u8bfb\u8fdb\u6765\u7684\u3002\u672c\u8ba1\u7b97\u5668\u6ca1\u6709\u7b97\u8fc7\u5b83\uff0c\u4e5f\u8bf4\u4e0d\u51fa\u5b83\u662f\u7528\u54ea\u4e2a\u6a21\u578b\u3001\u54ea\u79cd\u76d0\u7c7b\u6761\u4ef6\u7b97\u51fa\u6765\u7684\u3002\u60f3\u770b\u6807\u660e\u4e86\u6a21\u578b\u7684\u6570\u503c\uff0c\u8bf7\u6253\u5f00 Tm \u9009\u9879\u5361\u3002",
+  "lab.md.from":"\u6765\u81ea {file}",
+  "lab.md.fromwhy!":"\u6709\u6807\u8bb0\u7684\u6570\u503c\u662f\u4ece\u6587\u4ef6\u8bfb\u8fdb\u6765\u7684\uff0c\u4e0d\u662f\u5728\u8fd9\u91cc\u7b97\u51fa\u6765\u7684\u3002\u4f60\u4e00\u6539\u52a8\u5b83\uff0c\u6807\u8bb0\u5c31\u4f1a\u6d88\u5931\u3002",
+  "lab.imp.btn":"\u5bfc\u5165\u6587\u4ef6",
+  "lab.imp.h":"\u4ece\u6587\u4ef6\u5bfc\u5165\u5e8f\u5217",
+  "lab.imp.sub!":"\u76ee\u524d\u53ea\u652f\u6301 CSV\u3002\u6587\u4ef6\u5728\u8fd9\u4e2a\u6d4f\u89c8\u5668\u91cc\u8bfb\u53d6\uff0c\u4e0d\u4f1a\u4e0a\u4f20\uff0c\u4e5f\u4e0d\u4f1a\u7559\u4e0b\u3002",
+  "lab.imp.pick":"\u9009\u62e9 CSV \u6587\u4ef6",
+  "lab.imp.bad!":"\u8fd9\u4e2a\u6587\u4ef6\u65e0\u6cd5\u5f53\u6210 CSV \u8bfb\u53d6\u3002",
+  "lab.imp.empty!":"\u8fd9\u4e2a\u6587\u4ef6\u6ca1\u6709\u53ef\u4ee5\u5bfc\u5165\u7684\u6570\u636e\u884c\u3002",
+  "lab.imp.big!":"\u8fd9\u4e2a\u6587\u4ef6\u6709 {n} \u884c\u3002\u4e00\u6b21\u6700\u591a\u53ea\u80fd\u5904\u7406 {max} \u884c\u3002",
+  "lab.imp.own":"\u8fd9\u662f Oligo Calculator \u7684\u5b8c\u6574\u8bb0\u5f55\uff0c\u6bcf\u4e00\u5217\u90fd\u5df2\u7ecf\u5bf9\u5e94\u597d\u4e86\u3002",
+  "lab.imp.maph":"\u8bbe\u7f6e\u5217\u5bf9\u5e94",
+  "lab.imp.mapsub":"\u8bf7\u6307\u5b9a\u6bcf\u4e00\u5217\u7684\u5185\u5bb9\u3002\u8bbe\u4e3a\u300c\u4e0d\u8981\u5bfc\u5165\u300d\u7684\u5217\u4f1a\u88ab\u7565\u8fc7\u3002",
+  "lab.imp.skip":"\u4e0d\u8981\u5bfc\u5165",
+  "lab.imp.auto":"\u5df2\u6309\u540d\u79f0\u81ea\u52a8\u5bf9\u5e94 {n} \u5217\uff0c\u5171 {total} \u5217\u3002",
+  "lab.imp.needseq!":"\u8bf7\u5148\u6307\u5b9a\u54ea\u4e00\u5217\u662f\u5e8f\u5217\uff0c\u518d\u7ee7\u7eed\u3002",
+  "lab.imp.dupe!":"\u6709\u4e24\u5217\u90fd\u8bbe\u6210 {field}\uff0c\u4f46\u53ea\u80fd\u6709\u4e00\u5217\u3002",
+  "lab.imp.next":"\u68c0\u67e5\u6570\u636e\u884c",
+  "lab.imp.checkh":"\u5bfc\u5165\u524d\u5148\u68c0\u67e5",
+  "lab.imp.ok":"{n} \u6761\u53ef\u4ee5\u5bfc\u5165",
+  "lab.imp.bad":"{n} \u6761\u65e0\u6cd5\u5bfc\u5165",
+  "lab.imp.rowseq":"\u7b2c {n} \u884c\uff1a{why}",
+  "lab.imp.rownoseq":"\u7b2c {n} \u884c\uff1a\u6ca1\u6709\u5e8f\u5217",
+  "lab.imp.rowdate":"\u7b2c {n} \u884c\uff1a\u65e0\u6cd5\u8bc6\u522b\u8fd9\u4e2a\u65e5\u671f\u3002\u8bf7\u5199\u6210 2026-08-16 \u8fd9\u79cd\u683c\u5f0f\u3002",
+  "lab.imp.quota!":"\u4f60\u7684\u65b9\u6848\u53ef\u4ee5\u5b58 {max} \u6761\u5e8f\u5217\uff0c\u76ee\u524d\u5df2\u7ecf\u7528\u6389 {used} \u6761\uff0c\u6240\u4ee5\u8fd9 {n} \u6761\u91cc\u9762\u653e\u5f97\u4e0b {fit} \u6761\u3002",
+  "lab.imp.go":"\u5bfc\u5165 {n} \u6761",
+  "lab.imp.none":"\u8fd9\u91cc\u6ca1\u6709\u53ef\u4ee5\u5bfc\u5165\u7684\u6570\u636e\u3002",
+  "lab.imp.done":"\u5df2\u5bfc\u5165 {n} \u6761\u3002",
+  "lab.exp.btn":"\u5bfc\u51fa\u5b8c\u6574\u8bb0\u5f55",
+  "lab.exp.why!":"\u5b8c\u6574\u8bb0\u5f55\u4f1a\u5b58\u4e0b\u91cd\u5efa\u6bcf\u4e00\u6761\u5e8f\u5217\u6240\u9700\u8981\u7684\u5168\u90e8\u6570\u503c\uff0c\u6240\u4ee5\u518d\u5bfc\u5165\u56de\u6765\u5c31\u4f1a\u4e00\u6a21\u4e00\u6837\u3002\u65c1\u8fb9\u7684\u5bfc\u51fa CSV \u662f\u7ed9\u4eba\u770b\u7684\uff0c\u4e0d\u662f\u62ff\u6765\u5bfc\u5165\u7684\u3002",
   "lab.priv.who!":"\u53ea\u6709\u4f60\u548c\u5b9e\u9a8c\u5ba4\u7ba1\u7406\u8005\u770b\u5f97\u5230\u8fd9\u91cc\u9762\u7684\u5185\u5bb9\u3002",
   "lab.priv.empty!":"\u8fd9\u91cc\u8fd8\u6ca1\u6709\u4e1c\u897f\u3002\u4f60\u53ef\u4ee5\u5148\u628a\u5e8f\u5217\u79fb\u5230\u8fd9\u4e2a\u7a7a\u95f4\u5904\u7406\uff0c\u4e4b\u540e\u518d\u653e\u8fdb\u5b9e\u9a8c\u5ba4\u7684\u5171\u7528\u8d44\u6e90\u5e93\u3002\u8fd9\u4e2a\u7a7a\u95f4\u91cc\u7684\u5185\u5bb9\uff0c\u53ea\u6709\u4f60\u548c\u5b9e\u9a8c\u5ba4\u7ba1\u7406\u8005\u770b\u5f97\u5230\u3002",
   "lab.fold.empty":"\u8fd9\u4e2a\u6587\u4ef6\u5939\u662f\u7a7a\u7684\u3002\u4f60\u53ef\u4ee5\u628a\u5e8f\u5217\u62d6\u5230\u8fd9\u91cc\uff0c\u6216\u4f7f\u7528\u5e8f\u5217\u4e0a\u7684\u300c\u79fb\u52a8\u300d\u3002",
@@ -3536,6 +3677,53 @@ var I18N = {
   "lab.tree.local!":"\u4e26\u3079\u66ff\u3048\u3068\u691c\u7d22\u306f\u81ea\u5206\u306e\u753b\u9762\u3060\u3051\u306b\u53cd\u6620\u3055\u308c\u307e\u3059\u3002\u307b\u304b\u306e\u4eba\u306e\u753b\u9762\u306f\u5909\u308f\u308a\u307e\u305b\u3093\u3002",
   "lab.tree.deep":"\u30d5\u30a9\u30eb\u30c0\u30fc\u306f 3 \u968e\u5c64\u307e\u3067\u3067\u3001\u3053\u306e\u968e\u5c64\u304c\u4e0a\u9650\u3067\u3059\u3002\u65b0\u3057\u3044\u30d5\u30a9\u30eb\u30c0\u30fc\u306f1 \u3064\u4e0a\u306e\u968e\u5c64\u306b\u4f5c\u308b\u304b\u3001\u4eca\u306e\u30d5\u30a9\u30eb\u30c0\u30fc\u3092\u305d\u306e\u307e\u307e\u304a\u4f7f\u3044\u304f\u3060\u3055\u3044\u3002",
   "lab.tree.cycle":"\u30d5\u30a9\u30eb\u30c0\u30fc\u3092\u3001\u305d\u306e\u30d5\u30a9\u30eb\u30c0\u30fc\u81ea\u8eab\u306e\u4e2d\u3084\u914d\u4e0b\u306e\u30b5\u30d6\u30d5\u30a9\u30eb\u30c0\u30fc\u306e\u4e2d\u306b\u79fb\u52d5\u3059\u308b\u3053\u3068\u306f\u3067\u304d\u307e\u305b\u3093\u3002",
+  "lab.md.h":"\u767a\u6ce8\u3068\u5728\u5eab",
+  "lab.md.name":"\u540d\u524d",
+  "lab.md.seq":"\u914d\u5217",
+  "lab.md.type":"\u7a2e\u985e",
+  "lab.md.folder":"\u30d5\u30a9\u30eb\u30c0\u30fc",
+  "lab.md.tags":"\u30bf\u30b0",
+  "lab.md.note":"\u30e1\u30e2",
+  "lab.md.scale":"\u5408\u6210\u30b9\u30b1\u30fc\u30eb",
+  "lab.md.purif":"\u7cbe\u88fd",
+  "lab.md.supplier":"\u30b5\u30d7\u30e9\u30a4\u30e4\u30fc",
+  "lab.md.catno":"\u30ab\u30bf\u30ed\u30b0\u756a\u53f7",
+  "lab.md.ordered":"\u767a\u6ce8\u65e5",
+  "lab.md.lot":"\u30ed\u30c3\u30c8",
+  "lab.md.plate":"\u30d7\u30ec\u30fc\u30c8",
+  "lab.md.well":"\u30a6\u30a7\u30eb",
+  "lab.md.freezer":"\u4fdd\u7ba1\u5834\u6240",
+  "lab.md.tmimp":"\u30d5\u30a1\u30a4\u30eb\u306e Tm",
+  "lab.md.tmwhy!":"\u3053\u306e\u878d\u89e3\u6e29\u5ea6\u306f\u30d5\u30a1\u30a4\u30eb\u304b\u3089\u8aad\u307f\u8fbc\u3093\u3060\u5024\u3067\u3059\u3002\u3053\u306e\u8a08\u7b97\u6a5f\u304c\u8a08\u7b97\u3057\u305f\u3082\u306e\u3067\u306f\u306a\u304f\u3001\u3069\u306e\u30e2\u30c7\u30eb\u3084\u5869\u6761\u4ef6\u3067\u6c42\u3081\u305f\u5024\u304b\u3082\u5206\u304b\u308a\u307e\u305b\u3093\u3002\u30e2\u30c7\u30eb\u304c\u660e\u793a\u3055\u308c\u305f\u5024\u306f Tm \u30bf\u30d6\u3067\u3054\u78ba\u8a8d\u304f\u3060\u3055\u3044\u3002",
+  "lab.md.from":"{file} \u304b\u3089",
+  "lab.md.fromwhy!":"\u30de\u30fc\u30af\u306e\u4ed8\u3044\u305f\u5024\u306f\u30d5\u30a1\u30a4\u30eb\u304b\u3089\u8aad\u307f\u8fbc\u3093\u3060\u3082\u306e\u3067\u3001\u3053\u3053\u3067\u8a08\u7b97\u3057\u305f\u5024\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002\u66f8\u304d\u63db\u3048\u308b\u3068\u30de\u30fc\u30af\u306f\u5916\u308c\u307e\u3059\u3002",
+  "lab.imp.btn":"\u30d5\u30a1\u30a4\u30eb\u3092\u8aad\u307f\u8fbc\u3080",
+  "lab.imp.h":"\u30d5\u30a1\u30a4\u30eb\u304b\u3089\u914d\u5217\u3092\u8aad\u307f\u8fbc\u3080",
+  "lab.imp.sub!":"\u4eca\u306e\u3068\u3053\u308d CSV \u306e\u307f\u3067\u3059\u3002\u30d5\u30a1\u30a4\u30eb\u306f\u3053\u306e\u30d6\u30e9\u30a6\u30b6\u30fc\u5185\u3067\u8aad\u307f\u53d6\u308a\u3001\u30a2\u30c3\u30d7\u30ed\u30fc\u30c9\u3082\u4fdd\u5b58\u3082\u3057\u307e\u305b\u3093\u3002",
+  "lab.imp.pick":"CSV \u30d5\u30a1\u30a4\u30eb\u3092\u9078\u3076",
+  "lab.imp.bad!":"\u3053\u306e\u30d5\u30a1\u30a4\u30eb\u306f CSV \u3068\u3057\u3066\u8aad\u307f\u53d6\u308c\u307e\u305b\u3093\u3067\u3057\u305f\u3002",
+  "lab.imp.empty!":"\u3053\u306e\u30d5\u30a1\u30a4\u30eb\u306b\u306f\u8aad\u307f\u8fbc\u3081\u308b\u884c\u304c\u3042\u308a\u307e\u305b\u3093\u3002",
+  "lab.imp.big!":"\u3053\u306e\u30d5\u30a1\u30a4\u30eb\u306f {n} \u884c\u3042\u308a\u307e\u3059\u3002\u4e00\u5ea6\u306b\u8aad\u307f\u8fbc\u3081\u308b\u306e\u306f {max} \u884c\u307e\u3067\u3067\u3059\u3002",
+  "lab.imp.own":"\u3053\u308c\u306f Oligo Calculator \u306e\u5b8c\u5168\u30ec\u30b3\u30fc\u30c9\u3067\u3059\u3002\u3059\u3079\u3066\u306e\u5217\u304c\u5bfe\u5fdc\u3057\u307e\u3057\u305f\u3002",
+  "lab.imp.maph":"\u5217\u3092\u5bfe\u5fdc\u3055\u305b\u308b",
+  "lab.imp.mapsub":"\u5404\u5217\u306e\u4e2d\u8eab\u3092\u9078\u3093\u3067\u304f\u3060\u3055\u3044\u3002\u300c\u8aad\u307f\u8fbc\u307e\u306a\u3044\u300d\u306e\u307e\u307e\u306e\u5217\u306f\u7121\u8996\u3055\u308c\u307e\u3059\u3002",
+  "lab.imp.skip":"\u8aad\u307f\u8fbc\u307e\u306a\u3044",
+  "lab.imp.auto":"{total} \u5217\u306e\u3046\u3061 {n} \u5217\u304c\u540d\u524d\u3067\u81ea\u52d5\u7684\u306b\u5bfe\u5fdc\u3057\u307e\u3057\u305f\u3002",
+  "lab.imp.needseq!":"\u5148\u306b\u3069\u306e\u5217\u304c\u914d\u5217\u304b\u3092\u6307\u5b9a\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
+  "lab.imp.dupe!":"2 \u3064\u306e\u5217\u304c {field} \u306b\u306a\u3063\u3066\u3044\u307e\u3059\u3002{field} \u306b\u3067\u304d\u308b\u306e\u306f 1 \u5217\u3060\u3051\u3067\u3059\u3002",
+  "lab.imp.next":"\u884c\u3092\u78ba\u8a8d\u3059\u308b",
+  "lab.imp.checkh":"\u8aad\u307f\u8fbc\u3080\u524d\u306b\u78ba\u8a8d",
+  "lab.imp.ok":"{n} \u4ef6\u304c\u8aad\u307f\u8fbc\u3081\u307e\u3059",
+  "lab.imp.bad":"{n} \u4ef6\u306f\u8aad\u307f\u8fbc\u3081\u307e\u305b\u3093",
+  "lab.imp.rowseq":"{n} \u884c\u76ee: {why}",
+  "lab.imp.rownoseq":"{n} \u884c\u76ee: \u914d\u5217\u304c\u3042\u308a\u307e\u305b\u3093",
+  "lab.imp.rowdate":"{n} \u884c\u76ee: \u65e5\u4ed8\u3092\u8aad\u307f\u53d6\u308c\u307e\u305b\u3093\u3067\u3057\u305f\u30022026-08-16 \u306e\u5f62\u5f0f\u3067\u3054\u8a18\u5165\u304f\u3060\u3055\u3044\u3002",
+  "lab.imp.quota!":"\u3054\u5229\u7528\u306e\u30d7\u30e9\u30f3\u3067\u4fdd\u5b58\u3067\u304d\u308b\u914d\u5217\u306f {max} \u4ef6\u3067\u3001\u3059\u3067\u306b {used} \u4ef6\u3092\u4f7f\u3063\u3066\u3044\u307e\u3059\u3002\u3053\u306e {n} \u4ef6\u306e\u3046\u3061 {fit} \u4ef6\u304c\u5165\u308a\u307e\u3059\u3002",
+  "lab.imp.go":"{n} \u4ef6\u3092\u8aad\u307f\u8fbc\u3080",
+  "lab.imp.none":"\u8aad\u307f\u8fbc\u3081\u308b\u3082\u306e\u304c\u3042\u308a\u307e\u305b\u3093\u3002",
+  "lab.imp.done":"{n} \u4ef6\u3092\u8aad\u307f\u8fbc\u307f\u307e\u3057\u305f\u3002",
+  "lab.exp.btn":"\u5b8c\u5168\u30ec\u30b3\u30fc\u30c9\u3092\u66f8\u304d\u51fa\u3059",
+  "lab.exp.why!":"\u5b8c\u5168\u30ec\u30b3\u30fc\u30c9\u306b\u306f\u5404\u914d\u5217\u3092\u5fa9\u5143\u3059\u308b\u305f\u3081\u306b\u5fc5\u8981\u306a\u5024\u304c\u3059\u3079\u3066\u5165\u3063\u3066\u3044\u308b\u306e\u3067\u3001\u8aad\u307f\u8fbc\u307f\u76f4\u305b\u3070\u3053\u306e\u4e00\u89a7\u3092\u305d\u306e\u307e\u307e\u518d\u73fe\u3067\u304d\u307e\u3059\u3002\u96a3\u306e CSV \u3092\u66f8\u304d\u51fa\u3059 \u306f\u8aad\u3080\u305f\u3081\u306e\u3082\u306e\u3067\u3001\u8aad\u307f\u8fbc\u307f\u7528\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002",
   "lab.priv.who!":"\u3053\u3053\u306b\u3042\u308b\u3082\u306e\u3092\u95b2\u89a7\u3067\u304d\u308b\u306e\u306f\u3001\u3042\u306a\u305f\u3068\u30e9\u30dc\u7ba1\u7406\u8005\u3060\u3051\u3067\u3059\u3002",
   "lab.priv.empty!":"\u3053\u3053\u306b\u306f\u307e\u3060\u4f55\u3082\u3042\u308a\u307e\u305b\u3093\u3002\u914d\u5217\u3092\u3053\u306e\u30b9\u30da\u30fc\u30b9\u306b\u79fb\u52d5\u3059\u308c\u3070\u3001\u30e9\u30dc\u306e\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u51fa\u3059\u524d\u306b\u4f5c\u696d\u3067\u304d\u307e\u3059\u3002\u3053\u306e\u30b9\u30da\u30fc\u30b9\u306e\u5185\u5bb9\u3092\u95b2\u89a7\u3067\u304d\u308b\u306e\u306f\u3001\u3042\u306a\u305f\u3068\u30e9\u30dc\u7ba1\u7406\u8005\u3060\u3051\u3067\u3059\u3002",
   "lab.fold.empty":"\u3053\u306e\u30d5\u30a9\u30eb\u30c0\u30fc\u306f\u7a7a\u3067\u3059\u3002\u914d\u5217\u3092\u3053\u3053\u306b\u30c9\u30e9\u30c3\u30b0\u3059\u308b\u304b\u3001\u914d\u5217\u306e\u300c\u79fb\u52d5\u300d\u3092\u4f7f\u3063\u3066\u304f\u3060\u3055\u3044\u3002",
@@ -9969,6 +10157,7 @@ function closeCatGate(){ calcs.forEach(c=>{ const g=c.querySelector("[data-catga
   RESERVED_CODES: [function(){ return RESERVED_CODES; }, function(){ ocFail('export:RESERVED_CODES', new Error('RESERVED_CODES is a constant of this block and cannot be reassigned from outside it')); }],
   S: [function(){ return S; }, function(v){ S = v; }],
   THREE: [function(){ return THREE; }, function(){ ocFail('export:THREE', new Error('THREE is a constant of this block and cannot be reassigned from outside it')); }],
+  SUGAR_LABEL: [function(){ return SUGAR_LABEL; }, function(){ ocFail('export:SUGAR_LABEL', new Error('SUGAR_LABEL is a constant of this block and cannot be reassigned from outside it')); }],
   THREE_LABEL: [function(){ return THREE_LABEL; }, function(){ ocFail('export:THREE_LABEL', new Error('THREE_LABEL is a constant of this block and cannot be reassigned from outside it')); }],
   V_UNITS: [function(){ return V_UNITS; }, function(){ ocFail('export:V_UNITS', new Error('V_UNITS is a constant of this block and cannot be reassigned from outside it')); }],
   addCatalogToLibrary: [function(){ return addCatalogToLibrary; }, function(v){ addCatalogToLibrary = v; }],
@@ -12342,7 +12531,7 @@ function renderHistToolbar(){
   bar.innerHTML='<span class="hp-lead">★ Pro library</span>'+
     '<select class="hp-sel" data-histfolder aria-label="Filter by folder"><option value="">All folders</option>'+folders.map(function(f){return '<option'+(lf===f?' selected':'')+'>'+cbEsc(f)+'</option>';}).join('')+'</select>'+
     '<select class="hp-sel" data-histtag aria-label="Filter by tag"><option value="">All tags</option>'+tags.map(function(t){return '<option'+(lt===t?' selected':'')+'>'+cbEsc(t)+'</option>';}).join('')+'</select>'+
-    '<button type="button" class="hp-btn" data-libbatch>Batch entry</button>'+
+    '<button type="button" class="hp-btn" data-libbatch>Batch entry</button>'+'<button type="button" class="hp-btn" data-sheetimp>'+cbEsc(window.t('lab.imp.btn'))+'</button>'+'<button type="button" class="hp-btn" data-sheetexp title="'+cbEsc(window.t('lab.exp.why!'))+'">'+cbEsc(window.t('lab.exp.btn'))+'</button>'+
     '<span class="hp-meta">'+(history||[]).length+' strand'+((history||[]).length===1?'':'s')+' · folders · tags · notes · versions</span>';
 }
 /* R52 (audit LOW): reveal Move to lab when there is a lab to move to.
@@ -12357,6 +12546,11 @@ function _syncCopyToLab(){
     b.hidden=!can;
   }catch(_e){ ocFail('_syncCopyToLab#1',_e); }
 }
+window.oligoSheetHost={
+  rerender:function(){ try{ renderHistShell(); }catch(_e){ ocFail('sheetHost#1',_e); } },
+  selected:function(){ var _p=(_histPro()&&window.oligoLabLib&&window.oligoLabLib.getSelected)
+    ?window.oligoLabLib.getSelected():null; return _p!==null?_p:histSelected(); },
+  pro:function(){ return _histPro(); } };
 function renderHistShell(){
   var tb=_q('.view-hist table.htable tbody'); if(!tb) return;
   var pro=_histPro(); renderHistToolbar();
@@ -12421,7 +12615,7 @@ function renderHistShell(){
       '<label class="hexp-f">Folder<input data-libf="'+i+'" value="'+cbEsc(h.folder||'')+'" placeholder="e.g. siRNA project"></label>'+
       '<label class="hexp-f">Tags<input data-libt="'+i+'" value="'+cbEsc((h.tags||[]).join(', '))+'" placeholder="comma-separated"></label>'+
       '<label class="hexp-f hexp-note">Note<input data-libn="'+i+'" value="'+cbEsc(h.note||'')+'" placeholder="optional note"></label>'+
-      '<div class="hexp-acts"><button type="button" data-libdup="'+i+'">Duplicate</button><button type="button" data-libver="'+i+'">Save as version</button></div>'+
+      (window.oligoSheet?window.oligoSheet.mdPanel(h,i):'')+'<div class="hexp-acts"><button type="button" data-libdup="'+i+'">Duplicate</button><button type="button" data-libver="'+i+'">Save as version</button></div>'+
     '</div></td></tr>'; }
     return tr;
   }).join('');
@@ -24679,6 +24873,752 @@ document.addEventListener('click', function(){ setTimeout(schedule,0); }, true);
 if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', schedule);
 else schedule();
 window.addEventListener('oligo:lang', function(){ sync(); });
+})();
+</script>
+<script id="oligo-sheet-js">
+/* __OLIGO_SHEET_BLOCK__  --  R76f, 2026-08-16.  THE SPREADSHEET BRIDGE, slice 1.
+
+   Albert's ruling on review row R76d-1: "fill the gap that lab plan is referring
+   to."  docs/LAB-WORKSPACE-PLAN.md §1f found the gap and it is one sentence:
+   ordering portals share ORDERS, sequence software shares SEQUENCES, nobody
+   shares both.  A lab moves oligo lists between them by hand, in Excel.
+
+   WHAT THIS BLOCK IS, AND WHAT IT DELIBERATELY IS NOT
+     It is: nine typed metadata fields on a strand, a CSV importer with a column
+     mapping step and a validation pass BEFORE anything is written, and a
+     lossless "full record" export the importer reads back exactly.
+     It is NOT: XLSX, and NOT the Eurofins / IDT plate layouts.  Both are slice 2
+     and both are deferred on a measurement, not on a guess -- docs/R76f-SCOPE.md.
+
+   ⚠⚠ THE FILE IS NEVER STORED.  FileReader, in this browser, and the text is
+      dropped when the overlay closes.  Supabase Storage is not wired into this
+      project at all and its bill is egress from a pool shared with the database.
+      docs/LAB-WORKSPACE-PLAN.md §2a.  Import the sheet; do not keep it.
+
+   ⚠⚠ AN IMPORTED NUMBER HAS NO MODEL BEHIND IT, AND THAT IS THE WHOLE POINT OF
+      `imp`.  docs/NORTH-STAR.md calls traceability moat #2 and "the whole
+      citation strategy".  Measured before this was written:
+        - every number a saved strand SHOWS is recomputed -- loadSavedState()
+          restores ~15 inputs and compute()/epsilon260()/msData() derive MW,
+          eps260, monoisotopic mass and the m/z ladder from them.  So an
+          imported strand's MASS still names its model.  No hole there.
+        - `Tm` IS NOT STORED ON A STRAND TODAY.  saveCurrent()'s entry object has
+          no tm field; block #23 computes it live from the sequence plus the
+          salt, Mg and concentration the reader sets.  An imported Tm would be
+          the first Tm this product ever HELD.
+      ⚠ Albert's ruling, 2026-08-16: keep it, mark it, and segregate it.  It is
+      stored at `md.tm`, rendered ONLY in the panel below with `lab.md.tmwhy!`
+      beside it, and it MUST NEVER be rendered on the Tm tab or in a result
+      cell.  A later round that "helpfully" surfaces it there un-does moat #2.
+
+   ⚠ `window.t`, never a bare `t()`.  And note `history`: block #7 declares it as
+     a top-level `let`, which shadows `window.history` page-wide, so the bare
+     name here is the app's array and `window.history` is the browser's.
+
+   ⚠ NO NEW <style> BLOCK (hard stop 6) and NO NEW GLYPH.  Every class used here
+     already ships: catgate, catgate-card, catgate-title, catgate-sub,
+     catgate-input, ctl-btn, hp-btn, hexp-f, hexp-grid, h-chip, lab-hint. */
+(function(){
+  'use strict';
+  var W = window;
+  var MAX_ROWS = 2000;
+
+  /* An absent i18n table yields '' rather than a hard-coded English literal --
+     i18n-lint rule 7 would count one as new, and R76b set this pattern. */
+  function T(k, vars){
+    try { return (typeof W.t === 'function') ? W.t(k, vars) : ''; }
+    catch(_e){ return ''; }
+  }
+  function hesc(s){
+    return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  function fail(w, e){ try { if (typeof W.ocFail === 'function') W.ocFail(w, e); } catch(_e){} }
+
+  /* ==================================================================
+     1. CSV, HAND-ROLLED, RFC 4180
+     ⚠ Albert's ruling D2, 2026-08-16, on measured numbers: 1,847 B raw and
+       +789 B gzipped whole-file, against papaparse's +6,891 B and THIRTEEN new
+       English prose literals a user could reach ("Quoted field unterminated").
+       docs/NORTH-STAR.md moat #4 is "no framework, no build step, no
+       dependencies", and this feature uses none of what papaparse adds.
+     Handles: quoted fields, "" escapes, embedded commas and newlines, CRLF and
+     LF, a UTF-8 BOM, and comma / tab / semicolon.
+     ================================================================== */
+  function csvParse(text, delim){
+    text = String(text == null ? '' : text);
+    if (text.charCodeAt(0) === 0xFEFF) text = text.slice(1);
+    if (!delim){
+      var nl = text.search(/\r?\n/);
+      var head = nl < 0 ? text : text.slice(0, nl);
+      var best = ',', n = -1;
+      [',', '\t', ';'].forEach(function(d){
+        var c = head.split(d).length; if (c > n){ n = c; best = d; }
+      });
+      delim = best;
+    }
+    var rows = [], row = [], field = '', i = 0, q = false, L = text.length;
+    while (i < L){
+      var c = text.charAt(i);
+      if (q){
+        if (c === '"'){
+          if (text.charAt(i + 1) === '"'){ field += '"'; i += 2; continue; }
+          q = false; i++; continue;
+        }
+        field += c; i++; continue;
+      }
+      if (c === '"' && field === ''){ q = true; i++; continue; }
+      if (c === delim){ row.push(field); field = ''; i++; continue; }
+      if (c === '\r'){ i++; continue; }
+      if (c === '\n'){ row.push(field); rows.push(row); row = []; field = ''; i++; continue; }
+      field += c; i++;
+    }
+    if (field !== '' || row.length){ row.push(field); rows.push(row); }
+    return { rows: rows, delimiter: delim };
+  }
+
+  /* ⚠⚠ THE APOSTROPHE IS PART OF THE ROUND TRIP, NOT AN EXCEPTION TO IT.
+     R52 (audit P1-31) established that quoting a cell does NOT stop Excel or
+     LibreOffice evaluating it: a strand named =HYPERLINK("...") opened as a
+     live formula.  The defence is a leading apostrophe -- which is a REWRITE,
+     and a rewrite is exactly what makes an export unable to round-trip.
+     So the pair is defined together: cellOut adds it, cellIn removes exactly
+     one, and only where cellOut could have added one.  Anything else the user
+     typed survives untouched.  The gate pins both directions. */
+  var RISK = /^[=+\-@\t\r]/;
+  function cellOut(v, delim){
+    v = String(v == null ? '' : v);
+    if (RISK.test(v)) v = "'" + v;
+    return (v.indexOf('"') >= 0 || v.indexOf(delim) >= 0 || v.indexOf('\n') >= 0 || v.indexOf('\r') >= 0)
+      ? '"' + v.replace(/"/g, '""') + '"' : v;
+  }
+  function cellIn(v){
+    v = String(v == null ? '' : v);
+    return (v.charAt(0) === "'" && RISK.test(v.slice(1))) ? v.slice(1) : v;
+  }
+  function csvWrite(cols, rows, delim){
+    delim = delim || ',';
+    var out = [cols.map(function(c){ return cellOut(c, delim); }).join(delim)];
+    rows.forEach(function(r){
+      out.push(r.map(function(c){ return cellOut(c, delim); }).join(delim));
+    });
+    /* the BOM is what makes Excel read UTF-8; csvParse strips it again */
+    return '﻿' + out.join('\r\n');
+  }
+
+  /* ==================================================================
+     2. THE TYPED METADATA, AND WHY IT NEEDS NO SQL
+     Measured against production 2026-08-16 (tools/round76f/probe-strands-shape.mjs):
+     `strands` has twelve columns and `data` is `jsonb`.  pushStrand() and
+     addToLab() both send `data: entry` -- the WHOLE client entry -- and
+     rowToEntry() reads it straight back.  So a new field on the entry object
+     reaches the server on the next push and returns on the next pull with no
+     column, no migration, no policy and no paste.
+     ⚠ And that is consistent with R76e rather than a shortcut around it: Albert
+     ruled that sorting and searching are LOCAL to the viewer, so a field the
+     server never sorts on does not need to be a column.
+     ⚠ 5' and 3' MODIFICATION ARE NOT HERE ON PURPOSE.  The engine already owns
+     `five` and `three`; a second copy would be a second answer.
+     ================================================================== */
+  var MD = [
+    { k: 'scale',    t: 'lab.md.scale' },
+    { k: 'purif',    t: 'lab.md.purif' },
+    { k: 'supplier', t: 'lab.md.supplier' },
+    { k: 'catno',    t: 'lab.md.catno' },
+    { k: 'ordered',  t: 'lab.md.ordered', date: true },
+    { k: 'lot',      t: 'lab.md.lot' },
+    { k: 'plate',    t: 'lab.md.plate' },
+    { k: 'well',     t: 'lab.md.well' },
+    { k: 'freezer',  t: 'lab.md.freezer' },
+    /* ⚠⚠ IMPORT-ONLY, AND SEGREGATED. See the header. Never rendered on the Tm
+       tab, never in a result cell, and there is no way to type one by hand --
+       a Tm you did not import is one this calculator computed. */
+    { k: 'tm',       t: 'lab.md.tmimp', imported_only: true }
+  ];
+  function mdOf(h){ return (h && h.md && typeof h.md === 'object') ? h.md : {}; }
+  function impOf(h){ return (h && h.imp && typeof h.imp === 'object') ? h.imp : null; }
+  function fromFile(h, k){
+    var im = impOf(h);
+    return !!(im && im.f && im.f.indexOf(k) >= 0);
+  }
+
+  /* ==================================================================
+     3. THE LOSSLESS FULL RECORD
+     ⚠ Measured first (tools/round76f/measure-roundtrip-loss.py): of the fifteen
+     fields loadSavedState() restores, exactly ONE survives the shipped CSV.
+     Seven are written only as a display rendering -- spaceSeq() spaces the
+     sequence, linkText() writes "all-PO", fiveLabel()/THREE_LABEL[] write
+     labels, toLocaleString() writes a locale-dependent date -- and seven have no
+     column at all.  So the shipped CSV is a REPORT and this is the RECORD.
+     ⚠ Column names carry an `oc_` prefix so a vendor's own sheet can never be
+     mistaken for one, and so the importer can recognise its own file by header.
+     ================================================================== */
+  var FULL = [
+    ['oc_name',        function(h){ return h.name || ''; },        function(h, v){ h.name = v; }],
+    ['oc_seq',         function(h){ return h.seq || ''; },         function(h, v){ h.seq = v; }],
+    ['oc_type',        function(h){ return h.type || ''; },        function(h, v){ h.type = v; }],
+    ['oc_linkage',     function(h){ return h.linkage || ''; },     function(h, v){ h.linkage = v; }],
+    ['oc_five',        function(h){ return h.five || ''; },        function(h, v){ h.five = v; }],
+    ['oc_five_thio',   function(h){ return h.fiveThio ? '1' : ''; }, function(h, v){ h.fiveThio = !!v; }],
+    ['oc_three',       function(h){ return h.three || ''; },       function(h, v){ h.three = v; }],
+    ['oc_advanced',    function(h){ return h.advanced ? '1' : ''; }, function(h, v){ h.advanced = !!v; }],
+    ['oc_mw_source',   function(h){ return h.mwSource || ''; },    function(h, v){ h.mwSource = v; }],
+    ['oc_mod_preset',  function(h){ return h.modPreset || ''; },   function(h, v){ h.modPreset = v; }],
+    ['oc_mod_name',    function(h){ return h.modName || ''; },     function(h, v){ h.modName = v; }],
+    ['oc_mod_mass',    function(h){ return h.modMass === '' || h.modMass == null ? '' : String(h.modMass); },
+                                                                   function(h, v){ h.modMass = v === '' ? '' : Number(v); }],
+    ['oc_duplex',      function(h){ return h.duplex ? (h.duplex.mode || '') : ''; },  dxSet('mode')],
+    ['oc_anti_seq',    function(h){ return h.duplex ? (h.duplex.antiSeq || '') : ''; },     dxSet('antiSeq')],
+    ['oc_anti_type',   function(h){ return h.duplex ? (h.duplex.antiType || '') : ''; },    dxSet('antiType')],
+    ['oc_anti_five',   function(h){ return h.duplex ? (h.duplex.antiFive || '') : ''; },    dxSet('antiFive')],
+    ['oc_anti_three',  function(h){ return h.duplex ? (h.duplex.antiThree || '') : ''; },   dxSet('antiThree')],
+    ['oc_anti_linkage',function(h){ return h.duplex ? (h.duplex.antiLinkage || '') : ''; }, dxSet('antiLinkage')],
+    ['oc_folder',      function(h){ return h.folder || ''; },      function(h, v){ h.folder = v; }],
+    /* ⚠ JSON, not "a; b".  A tag holding the separator would otherwise split in
+       two on the way back, which is a silent corruption rather than an error. */
+    ['oc_tags',        function(h){ return (h.tags && h.tags.length) ? JSON.stringify(h.tags) : ''; },
+                       function(h, v){ try { h.tags = v ? JSON.parse(v) : []; } catch(_e){ h.tags = []; } }],
+    ['oc_note',        function(h){ return h.note || ''; },        function(h, v){ h.note = v; }],
+    /* ⚠ ISO 8601 UTC, never toLocaleString().  The shipped exporter writes a
+       locale-dependent date, so the same library exports differently in two
+       languages and neither one parses back reliably. */
+    ['oc_saved',       function(h){ try { return h.t ? new Date(h.t).toISOString() : ''; } catch(_e){ return ''; } },
+                       function(h, v){ var n = v ? Date.parse(v) : NaN; if (!isNaN(n)) h.t = n; }]
+  ];
+  function dxSet(prop){
+    return function(h, v){
+      if (v === '' && prop !== 'mode') return;
+      if (!h.duplex) h.duplex = {};
+      h.duplex[prop] = v;
+    };
+  }
+  MD.forEach(function(f){
+    FULL.push(['oc_' + f.k,
+      function(h){ var m = mdOf(h); return m[f.k] == null ? '' : String(m[f.k]); },
+      function(h, v){ if (v === '') return; if (!h.md) h.md = {}; h.md[f.k] = v; }]);
+  });
+  FULL.push(['oc_from_file',
+    function(h){ var im = impOf(h); return im ? (im.file || '') : ''; },
+    function(h, v){ if (!v) return; if (!h.imp) h.imp = { f: [] }; h.imp.file = v; }]);
+  FULL.push(['oc_from_file_at',
+    function(h){ var im = impOf(h); try { return (im && im.at) ? new Date(im.at).toISOString() : ''; } catch(_e){ return ''; } },
+    function(h, v){ if (!v) return; var n = Date.parse(v); if (isNaN(n)) return; if (!h.imp) h.imp = { f: [] }; h.imp.at = n; }]);
+  FULL.push(['oc_from_file_fields',
+    function(h){ var im = impOf(h); return (im && im.f && im.f.length) ? JSON.stringify(im.f) : ''; },
+    function(h, v){ if (!v) return; try { var a = JSON.parse(v); if (a && a.length){ if (!h.imp) h.imp = {}; h.imp.f = a; } } catch(_e){} }]);
+
+  var FULL_COLS = FULL.map(function(c){ return c[0]; });
+
+  function fullRow(h){ return FULL.map(function(c){ return c[1](h); }); }
+  function fullCsv(list){
+    return csvWrite(FULL_COLS, (list || []).map(fullRow), ',');
+  }
+  /* ⚠ Nothing is derived here.  n, mw, mwStr, comp and mods are recomputed by
+     the app the moment the strand is loaded, so writing them into the record
+     would create a second, stale answer -- and the whole reason an imported
+     strand can still name its model is that the engine, not the file, produces
+     its numbers. */
+  function fullEntry(cells, byName){
+    var h = { name: '', seq: '', type: 'DNA', linkage: 'PO', five: 'OH', three: 'OH',
+              tags: [], t: Date.now() };
+    FULL.forEach(function(c){
+      var i = byName[c[0]];
+      if (i == null) return;
+      c[2](h, cellIn(cells[i] == null ? '' : cells[i]));
+    });
+    return h;
+  }
+  function isFullRecord(header){
+    return header.indexOf('oc_seq') >= 0 && header.indexOf('oc_type') >= 0;
+  }
+
+  /* ==================================================================
+     4. MAPPING A SHEET THAT IS NOT OURS
+     ⚠ The mapping step with a validation pass BEFORE commit is what
+     docs/LAB-WORKSPACE-PLAN.md §2.2 identifies as the difference between a demo
+     and a tool -- Benchling and Geneious both do it and Benchling blocks the
+     import on validation errors.
+     ================================================================== */
+  var TARGETS = [
+    { k: 'name',   t: 'lab.md.name',  syn: ['name', 'oligoname', 'strandname', 'id', 'oligo', 'primername'] },
+    { k: 'seq',    t: 'lab.md.seq',   syn: ['sequence', 'seq', 'sequence53', 'oligosequence', 'sequence53'] },
+    { k: 'type',   t: 'lab.md.type',  syn: ['type', 'chemistry'] },
+    { k: 'folder', t: 'lab.md.folder', syn: ['folder', 'project'] },
+    { k: 'tags',   t: 'lab.md.tags',  syn: ['tags', 'tag', 'labels'] },
+    { k: 'note',   t: 'lab.md.note',  syn: ['note', 'notes', 'comment', 'comments', 'remark'] }
+  ];
+  MD.forEach(function(f){
+    var syn = {
+      scale:    ['scale', 'synthesisscale'],
+      purif:    ['purification', 'purity', 'purif'],
+      supplier: ['supplier', 'vendor', 'manufacturer'],
+      catno:    ['catalogno', 'catalognumber', 'catno', 'productno', 'sku', 'partno'],
+      ordered:  ['ordered', 'orderdate', 'dateordered'],
+      lot:      ['lot', 'lotno', 'batch', 'batchno'],
+      plate:    ['plate', 'platename', 'plateid'],
+      well:     ['well', 'wellposition', 'position'],
+      freezer:  ['freezer', 'freezerlocation', 'location', 'storage'],
+      tm:       ['tm', 'meltingtemp', 'meltingtemperature']
+    }[f.k] || [f.k];
+    TARGETS.push({ k: f.k, t: f.t, syn: syn, md: true });
+  });
+
+  function norm(s){ return String(s == null ? '' : s).toLowerCase().replace(/[^a-z0-9]/g, ''); }
+  function autoMap(header){
+    var map = {}, taken = {};
+    header.forEach(function(hd, i){
+      var n = norm(hd);
+      if (!n) return;
+      for (var j = 0; j < TARGETS.length; j++){
+        var tg = TARGETS[j];
+        if (taken[tg.k]) continue;
+        if (tg.syn.indexOf(n) >= 0){ map[i] = tg.k; taken[tg.k] = 1; return; }
+      }
+    });
+    return map;
+  }
+
+  /* ⚠ A DATE THAT CANNOT BE READ IS REPORTED, NEVER GUESSED.  Date.parse on a
+     bare "03/04/2026" is ambiguous between two continents and the wrong reading
+     is silent.  So only ISO-like and unambiguous forms are accepted; anything
+     else becomes a row problem the reader sees before committing. */
+  function readDate(v){
+    v = String(v || '').trim();
+    if (!v) return { ok: true, v: '' };
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(v);
+    if (m) return { ok: true, v: v };
+    var d = /^(\d{1,2})\s+([A-Za-z]{3,})\s+(\d{4})$/.exec(v);
+    if (d){
+      var n = Date.parse(v);
+      if (!isNaN(n)) return { ok: true, v: new Date(n).toISOString().slice(0, 10) };
+    }
+    return { ok: false, v: v };
+  }
+
+  function entriesFrom(rows, header, map, fileName){
+    var out = [], problems = [], full = isFullRecord(header), byName = {};
+    if (full) header.forEach(function(hd, i){ byName[hd] = i; });
+    var stamp = Date.now();
+    for (var r = 0; r < rows.length; r++){
+      var cells = rows[r], rowNo = r + 2;      // +2: 1-based, and the header is row 1
+      if (!cells.length || cells.join('').trim() === '') continue;
+      var h, impFields = [];
+      if (full){
+        h = fullEntry(cells, byName);
+      } else {
+        h = { name: '', seq: '', type: (typeof S!=='undefined' && S.type) || 'DNA',
+              linkage: (typeof S!=='undefined' && S.linkage) || 'PO', five: 'OH',
+              three: (typeof S!=='undefined' && S.three) || 'OH', tags: [], t: stamp, md: {} };
+        var bad = null;
+        for (var ci in map){
+          if (!Object.prototype.hasOwnProperty.call(map, ci)) continue;
+          var field = map[ci], raw = cellIn(cells[ci] == null ? '' : cells[ci]).trim();
+          if (raw === '') continue;
+          if (field === 'name') h.name = raw;
+          else if (field === 'seq') h.seq = raw;
+          else if (field === 'type') h.type = raw;
+          else if (field === 'folder') h.folder = raw;
+          else if (field === 'note') h.note = raw;
+          else if (field === 'tags') h.tags = raw.split(/[;,]/).map(function(s){ return s.trim(); }).filter(Boolean);
+          else {
+            if (field === 'ordered'){
+              var dv = readDate(raw);
+              if (!dv.ok){ bad = T('lab.imp.rowdate', { n: rowNo }); continue; }
+              raw = dv.v;
+            }
+            h.md[field] = raw;
+            impFields.push(field);
+          }
+        }
+        if (bad){ problems.push(bad); continue; }
+      }
+      if (!h.seq){ problems.push(T('lab.imp.rownoseq', { n: rowNo })); continue; }
+      /* ⚠ THE WHOLE ROW HAS TO BE VALID, not "parsed to at least one token".
+         R51 (audit F-03) is the precedent: `primer<TAB>ACGX` was accepted as a
+         3 nt strand carrying the invalid text, then saved and exported. */
+      var v = null;
+      try { v = (typeof W.validateSequence === 'function') ? W.validateSequence(h.seq, h.type) : { ok: true }; }
+      catch(_e){ fail('sheet#validate', _e); v = { ok: false, message: '' }; }
+      if (!v || !v.ok){
+        problems.push(T('lab.imp.rowseq', { n: rowNo, why: (v && v.message) || '' }));
+        continue;
+      }
+      if (!full && impFields.length){
+        h.imp = { file: String(fileName || ''), at: stamp, f: impFields };
+      }
+      out.push(h);
+    }
+    return { entries: out, problems: problems };
+  }
+
+  /* ⚠ The numbers a strand SHOWS are the engine's, not the file's.  This is
+     what keeps moat #2 intact for an imported row: compute() runs here, exactly
+     as it does for a strand somebody typed. */
+  function derive(h){
+    try {
+      var r = W.compute(h.seq || '', h.type, h.linkage, h.three || 'OH', h.modMass || 0);
+      if (r && r.n){
+        h.n = r.n; h.nPO = r.nPO; h.nPS = r.nPS; h.mw = r.mw;
+        h.mwStr = W.fmt(r.mw, r.n);
+        h.five = r.five; h.fiveThio = r.fiveThio;
+        h.comp = ['A', 'C', 'G', 'T', 'U'].filter(function(b){ return r.counts[b]; })
+          .map(function(b){ return b + r.counts[b]; }).join(' ');
+        /* ⚠⚠ `mods` IS DERIVED THE WAY saveCurrent() DERIVES IT, not left empty.
+           A first draft set it to [] and an imported gapmer reported NO
+           modifications on every surface that reads it, the shipped report CSV
+           included -- measured: mA*fC*mG*dT came back n=4, mw=1,251.88, mods=[].
+
+           ⚠⚠ AND THE SECOND DRAFT WAS WRONG TOO, FOR A MORE USEFUL REASON.
+           It read a BARE `SUGAR_LABEL`, on the theory that a top-level `const`
+           in block #7 is a global lexical binding.  Measured in a browser:
+           `typeof SUGAR_LABEL` is **undefined**, while `NUCLEO`, `LINK` and
+           `THREE_LABEL` all resolve.  Block #7 does not publish its names by
+           being "GLOBAL" -- it publishes a chosen list through an explicit
+           getter/setter EXPORT TABLE, and SUGAR_LABEL was simply not in it.
+           A `typeof` guard turned that into silence rather than an error.
+           ⚠ So the round adds it to that table (js edit 5) and reads it through
+           `window`, which is the block's own documented contract and the thing
+           `depcheck.mjs` actually understands. */
+        var SUG = W.SUGAR_LABEL, THR = W.THREE_LABEL;
+        h.mods = [];
+        try {
+          var seen = {};
+          r.tokens.forEach(function(tk){
+            if (!tk || tk.sugar === 'd' || tk.sugar === 'r' || seen[tk.sugar]) return;
+            seen[tk.sugar] = 1;
+            if (SUG && SUG[tk.sugar]) h.mods.push(SUG[tk.sugar]);
+          });
+          if (r.three && r.three !== 'OH' && THR && THR[r.three]) h.mods.push(THR[r.three]);
+          Object.keys(r.customCounts || {}).forEach(function(code){
+            h.mods.push((code.length > 1 ? '(' + code + ')' : code) + '×' + r.customCounts[code]);
+          });
+        } catch(_e2){ fail('sheet#mods', _e2); }
+      }
+    } catch(_e){ fail('sheet#derive', _e); }
+    return h;
+  }
+
+  /* ==================================================================
+     5. THE OVERLAY.  Three stages, one element, no new CSS.
+     ================================================================== */
+  var IMP = null;
+
+  function close(){
+    var ov = document.getElementById('sheetOv');
+    if (!ov) return;
+    try { if (typeof W.ocModalClose === 'function' && W.ocModalClose(ov)) { IMP = null; return; } }
+    catch(_e){ fail('sheet#close', _e); }
+    if (ov.parentNode) ov.parentNode.removeChild(ov);
+    IMP = null;                                    // ⚠ the file text goes with it
+  }
+
+  function shell(){
+    var old = document.getElementById('sheetOv');
+    if (old) close();
+    var ov = document.createElement('div');
+    ov.id = 'sheetOv'; ov.className = 'catgate';
+    ov.innerHTML = '<div class="catgate-card" style="max-width:820px">'
+      + '<div class="catgate-title" id="sheetOvTitle">' + hesc(T('lab.imp.h')) + '</div>'
+      + '<div class="catgate-sub">' + hesc(T('lab.imp.sub!')) + '</div>'
+      + '<div data-sheetbody></div></div>';
+    document.body.appendChild(ov);
+    try {
+      if (typeof W.ocModalOpen === 'function'){
+        W.ocModalOpen(ov, { labelledBy: 'sheetOvTitle',
+          onClose: function(){ if (ov.parentNode) ov.parentNode.removeChild(ov); IMP = null; } });
+      } else {
+        ov.addEventListener('click', function(ev){ if (ev.target === ov) close(); });
+      }
+    } catch(_e){ ov.addEventListener('click', function(ev){ if (ev.target === ov) close(); }); }
+    return ov;
+  }
+
+  function body(html){
+    var b = document.querySelector('#sheetOv [data-sheetbody]');
+    if (b) b.innerHTML = html;
+  }
+  function btn(attr, key, cls){
+    return '<button type="button" class="ctl-btn sm' + (cls ? ' ' + cls : '') + '" ' + attr + '>'
+      + hesc(T(key)) + '</button>';
+  }
+
+  function stagePick(){
+    body('<p><input type="file" accept=".csv,.txt,text/csv,text/plain" data-sheetfile '
+      + 'aria-label="' + hesc(T('lab.imp.pick')) + '"></p>'
+      + '<div style="display:flex;gap:8px;margin-top:10px">'
+      + btn('data-sheetcancel', 'lab.cancel') + '</div>');
+  }
+
+  function stageMap(){
+    var hd = IMP.header, opts = TARGETS.map(function(tg){
+      return { k: tg.k, label: T(tg.t) };
+    });
+    var matched = 0;
+    for (var k in IMP.map){ if (Object.prototype.hasOwnProperty.call(IMP.map, k)) matched++; }
+    var rowsHtml = hd.map(function(name, i){
+      var sel = '<select data-sheetmap="' + i + '"><option value="">'
+        + hesc(T('lab.imp.skip')) + '</option>'
+        + opts.map(function(o){
+            return '<option value="' + hesc(o.k) + '"' + (IMP.map[i] === o.k ? ' selected' : '') + '>'
+              + hesc(o.label) + '</option>';
+          }).join('') + '</select>';
+      var sample = (IMP.rows[0] && IMP.rows[0][i] != null) ? IMP.rows[0][i] : '';
+      return '<tr><td style="padding:2px 8px 2px 0"><b>' + hesc(name) + '</b></td>'
+        + '<td style="padding:2px 8px 2px 0;color:var(--muted)">' + hesc(String(sample).slice(0, 28)) + '</td>'
+        + '<td style="padding:2px 0">' + sel + '</td></tr>';
+    }).join('');
+    body('<div class="catgate-sub">' + hesc(T('lab.imp.maph')) + '</div>'
+      + '<div class="lab-hint">' + hesc(T('lab.imp.mapsub')) + '</div>'
+      + '<div class="lab-hint">' + hesc(T('lab.imp.auto', { n: matched, total: hd.length })) + '</div>'
+      + '<div style="max-height:300px;overflow:auto;margin-top:8px"><table>' + rowsHtml + '</table></div>'
+      + '<div data-sheetwarn class="lab-hint" role="status"></div>'
+      + '<div style="display:flex;gap:8px;margin-top:10px">'
+      + btn('data-sheetcheck', 'lab.imp.next', 'primary')
+      + btn('data-sheetcancel', 'lab.cancel') + '</div>');
+  }
+
+  function stageCheck(){
+    var res = entriesFrom(IMP.rows, IMP.header, IMP.map, IMP.file);
+    IMP.ready = res.entries;
+    var n = res.entries.length, lim = -1, unlimited = true, fit = n;
+    try {
+      if (W.ocPlan && W.ocPlan.strandLimit){
+        lim = W.ocPlan.strandLimit();
+        unlimited = !!(W.ocPlan.isUnlimited && W.ocPlan.isUnlimited(lim));
+        if (!unlimited) fit = Math.max(0, lim - ((history || []).length || 0));
+      }
+    } catch(_e){ fail('sheet#quota', _e); }
+    var quota = (!unlimited && lim >= 0 && fit < n)
+      ? '<div class="lab-hint">' + hesc(T('lab.imp.quota!', {
+          max: lim, used: (history || []).length, fit: Math.min(fit, n), n: n })) + '</div>'
+      : '';
+    var probs = res.problems.length
+      ? '<div class="lab-hint"><b>' + hesc(T('lab.imp.bad', { n: res.problems.length })) + '</b><br>'
+        + res.problems.slice(0, 12).map(hesc).join('<br>') + '</div>'
+      : '';
+    body('<div class="catgate-sub">' + hesc(T('lab.imp.checkh')) + '</div>'
+      + '<div class="lab-hint"><b>' + hesc(T('lab.imp.ok', { n: n })) + '</b></div>'
+      + probs + quota
+      + '<div style="display:flex;gap:8px;margin-top:10px">'
+      + (n ? '<button type="button" class="ctl-btn sm primary" data-sheetgo>'
+             + hesc(T('lab.imp.go', { n: Math.min(fit, n) })) + '</button>'
+           : '<span class="lab-hint">' + hesc(T('lab.imp.none')) + '</span>')
+      + btn('data-sheetback', 'lab.tree.back')
+      + btn('data-sheetcancel', 'lab.cancel') + '</div>');
+  }
+
+  function commit(){
+    var list = (IMP && IMP.ready) || [];
+    if (!list.length) return;
+    /* ⚠ gateSave() IS the gate, not the number printed a moment ago.  It knows
+       the plan, raises the wall itself when nothing fits, and returns how many
+       of n may be written.  Reporting one number and writing by another is how
+       a limit becomes a support ticket. */
+    var allowed = list.length;
+    try { if (W.ocPlan && W.ocPlan.gateSave) allowed = W.ocPlan.gateSave(list.length) | 0; }
+    catch(_e){ fail('sheet#gate', _e); }
+    if (allowed <= 0){ close(); return; }
+    var take = list.slice(0, allowed).map(derive);
+    for (var i = take.length - 1; i >= 0; i--) history.unshift(take[i]);
+    try { W.trimHist(); W.saveHist(); } catch(_e){ fail('sheet#save', _e); }
+    try {
+      if (W.oligoSync && W.oligoSync.pushStrand && W.oligoSync.syncEnabled && W.oligoSync.syncEnabled()){
+        take.forEach(function(h){ try { W.oligoSync.pushStrand(h); } catch(_e2){ fail('sheet#push', _e2); } });
+      }
+    } catch(_e){ fail('sheet#sync', _e); }
+    try { if (W.oligoSheetHost && W.oligoSheetHost.rerender) W.oligoSheetHost.rerender(); }
+    catch(_e){ fail('sheet#render', _e); }
+    try { if (typeof W.applyAll === 'function') W.applyAll(); } catch(_e){ fail('sheet#apply', _e); }
+    try {
+      if (W.__oligoNotice) W.__oligoNotice('oligoSheetDone', {
+        dismissible: true, text: T('lab.imp.done', { n: take.length }) });
+    } catch(_e){ fail('sheet#toast', _e); }
+    close();
+  }
+
+  function openImport(){
+    IMP = { stage: 'pick' };
+    shell();
+    stagePick();
+  }
+
+  function onFile(file){
+    if (!file) return;
+    var fr = new FileReader();
+    fr.onerror = function(){ body('<div class="lab-hint">' + hesc(T('lab.imp.bad!')) + '</div>'); };
+    fr.onload = function(){
+      var parsed;
+      try { parsed = csvParse(String(fr.result || '')); }
+      catch(_e){ fail('sheet#parse', _e); body('<div class="lab-hint">' + hesc(T('lab.imp.bad!')) + '</div>'); return; }
+      var all = parsed.rows;
+      if (!all.length || all.length < 2){
+        body('<div class="lab-hint">' + hesc(T('lab.imp.empty!')) + '</div>');
+        return;
+      }
+      var header = all[0].map(function(s){ return String(s == null ? '' : s).trim(); });
+      var rows = all.slice(1);
+      if (rows.length > MAX_ROWS){
+        body('<div class="lab-hint">' + hesc(T('lab.imp.big!', { n: rows.length, max: MAX_ROWS })) + '</div>');
+        return;
+      }
+      IMP = { header: header, rows: rows, file: file.name || '', map: {}, ready: [] };
+      if (isFullRecord(header)){
+        /* our own file: every column is already named, so the mapping step has
+           nothing to ask and skipping it is not a shortcut, it is the round
+           trip working */
+        IMP.map = {};
+        stageCheck();
+        var b = document.querySelector('#sheetOv [data-sheetbody]');
+        if (b) b.insertAdjacentHTML('afterbegin', '<div class="lab-hint">' + hesc(T('lab.imp.own')) + '</div>');
+        return;
+      }
+      IMP.map = autoMap(header);
+      stageMap();
+    };
+    fr.readAsText(file);
+  }
+
+  /* ==================================================================
+     6. THE METADATA PANEL, inside the row the ⋯ button already expands.
+     ⚠ No new table column and no new overlay: renderHistShell() already
+     renders `hexp-grid` with Folder / Tags / Note, so this extends a surface
+     whose layout clipscan has already seen.
+     ================================================================== */
+  function mdPanel(h, i){
+    var m = mdOf(h), im = impOf(h), out = [];
+    out.push('<div class="hexp-f" style="grid-column:1/-1;color:var(--muted)">'
+      + hesc(T('lab.md.h')) + '</div>');
+    MD.forEach(function(f){
+      var v = m[f.k] == null ? '' : String(m[f.k]);
+      var mark = fromFile(h, f.k)
+        ? ' <span class="h-chip" title="' + hesc(T('lab.md.fromwhy!')) + '">'
+          + hesc(T('lab.md.from', { file: (im && im.file) || '' })) + '</span>' : '';
+      if (f.imported_only){
+        /* ⚠⚠ READ ONLY, AND IT NEVER LEAVES THIS PANEL.  Albert's D1 ruling,
+           2026-08-16.  There is no input: a Tm you can type is a Tm somebody
+           will read as computed. */
+        if (!v) return;
+        out.push('<label class="hexp-f" style="grid-column:1/-1">' + hesc(T(f.t))
+          + '<output data-mdtm="' + i + '">' + hesc(v) + '</output>' + mark
+          + '<span class="lab-hint">' + hesc(T('lab.md.tmwhy!')) + '</span></label>');
+        return;
+      }
+      out.push('<label class="hexp-f">' + hesc(T(f.t)) + mark
+        + '<input data-mdf="' + i + '" data-mdk="' + hesc(f.k) + '" value="' + hesc(v) + '"></label>');
+    });
+    return out.join('');
+  }
+
+  /* ⚠ EDITING CLEARS THE MARK.  A value the reader has changed is no longer the
+     value the file carried, and leaving the marker on would make the provenance
+     claim false in the one direction that matters. */
+  document.body.addEventListener('change', function(e){
+    var f = e.target.closest ? e.target.closest('[data-mdf]') : null;
+    if (!f) return;
+    var i = +f.getAttribute('data-mdf'), k = f.getAttribute('data-mdk');
+    var h = (history || [])[i];
+    if (!h) return;
+    if (!h.md) h.md = {};
+    var v = String(f.value || '').trim();
+    if (v === '') delete h.md[k]; else h.md[k] = v;
+    if (h.imp && h.imp.f){
+      h.imp.f = h.imp.f.filter(function(x){ return x !== k; });
+      if (!h.imp.f.length) delete h.imp;
+    }
+    try { W.saveHist(); } catch(_e){ fail('sheet#mdsave', _e); }
+    try {
+      if (W.oligoSync && W.oligoSync.pushStrand && W.oligoSync.syncEnabled && W.oligoSync.syncEnabled())
+        W.oligoSync.pushStrand(h);
+    } catch(_e){ fail('sheet#mdpush', _e); }
+  });
+
+  document.body.addEventListener('change', function(e){
+    var fi = e.target.closest ? e.target.closest('[data-sheetfile]') : null;
+    if (fi){ onFile(fi.files && fi.files[0]); return; }
+    var ms = e.target.closest ? e.target.closest('[data-sheetmap]') : null;
+    if (ms && IMP){
+      var i = +ms.getAttribute('data-sheetmap'), v = ms.value || '';
+      if (v) IMP.map[i] = v; else delete IMP.map[i];
+      return;
+    }
+  });
+
+  document.body.addEventListener('click', function(e){
+    var b;
+    if ((b = e.target.closest('[data-sheetimp]'))){ openImport(); return; }
+    if ((b = e.target.closest('[data-sheetexp]'))){
+      var sel = [];
+      try { sel = (typeof W.histSelected === 'function') ? W.histSelected() : []; }
+      catch(_e){ fail('sheet#sel', _e); }
+      exportFull(sel && sel.length ? sel : (history || []).slice());
+      return;
+    }
+    if ((b = e.target.closest('[data-sheetcancel]'))){ close(); return; }
+    if ((b = e.target.closest('[data-sheetback]'))){ if (IMP) stageMap(); return; }
+    if ((b = e.target.closest('[data-sheetcheck]'))){
+      if (!IMP) return;
+      var used = {}, dupe = '';
+      var hasSeq = false;
+      for (var k in IMP.map){
+        if (!Object.prototype.hasOwnProperty.call(IMP.map, k)) continue;
+        var v = IMP.map[k];
+        if (v === 'seq') hasSeq = true;
+        if (used[v]) dupe = v; else used[v] = 1;
+      }
+      var warn = document.querySelector('#sheetOv [data-sheetwarn]');
+      if (dupe){
+        var lbl = '';
+        TARGETS.forEach(function(tg){ if (tg.k === dupe) lbl = T(tg.t); });
+        if (warn) warn.textContent = T('lab.imp.dupe!', { field: lbl });
+        return;
+      }
+      if (!hasSeq){ if (warn) warn.textContent = T('lab.imp.needseq!'); return; }
+      stageCheck();
+      return;
+    }
+    if ((b = e.target.closest('[data-sheetgo]'))){ commit(); return; }
+  });
+
+  function exportFull(list){
+    if (!list || !list.length) return;
+    var csv = fullCsv(list);
+    var blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url; a.download = 'oligo-full-record.csv';
+    document.body.appendChild(a); a.click();
+    setTimeout(function(){ a.remove(); URL.revokeObjectURL(url); }, 100);
+  }
+
+  /* ⚠ The panel is rebuilt by renderHistShell on every render, so it picks up
+     the current language for free.  This listener exists for the OVERLAY, which
+     is written with innerHTML and would otherwise stay in the boot language --
+     docs/rules/translation.md §3b.
+     ⚠⚠ AND IT HAS TO REWRITE THE TITLE AND THE SUBTITLE, NOT ONLY THE BODY.
+     A first draft re-rendered the stage and left `shell()`'s heading alone, so
+     switching language mid-session gave a Japanese body under an English
+     heading.  tools/round76f/probe-surface.mjs S16 caught it before upload --
+     ⚠ it is the SAME defect R76g is chartered to fix for block #14, shipped
+     one round early by a listener that looked complete. */
+  W.addEventListener('oligo:lang', function(){
+    var ov = document.getElementById('sheetOv');
+    if (!ov) return;
+    var ti = ov.querySelector('.catgate-title'); if (ti) ti.textContent = T('lab.imp.h');
+    var su = ov.querySelector('.catgate-sub');   if (su) su.textContent = T('lab.imp.sub!');
+    if (!IMP) return;
+    if (IMP.ready && IMP.ready.length) stageCheck();
+    else if (IMP.header) stageMap();
+    else stagePick();
+  });
+
+  W.oligoSheet = {
+    csvParse: csvParse, csvWrite: csvWrite, cellOut: cellOut, cellIn: cellIn,
+    FULL_COLS: FULL_COLS, fullRow: fullRow, fullCsv: fullCsv, fullEntry: fullEntry,
+    isFullRecord: isFullRecord, autoMap: autoMap, entriesFrom: entriesFrom,
+    readDate: readDate, derive: derive, MD: MD, TARGETS: TARGETS,
+    mdPanel: mdPanel, openImport: openImport, exportFull: exportFull,
+    MAX_ROWS: MAX_ROWS
+  };
 })();
 </script>
 </body>
