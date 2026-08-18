@@ -714,6 +714,113 @@ var I18N = {
   "lab.tree.byname":"Name",
   "lab.tree.bydate":"Date modified",
   "lab.tree.find":"Find a folder",
+  "lab.dlg.close":"Close",
+  "lab.dlg.loading":"Loading…",
+  "lab.dlg.seq":"Sequence",
+  "lab.dlg.aseq":"sequence",
+  "lab.dlg.generic":"Dialog",
+  "lab.cmt.h":"Comments",
+  "lab.cmt.on":"Comments on {name}",
+  "lab.cmt.nosync":"This sequence needs to sync before commenting.",
+  "lab.cmt.ph":"Add a comment…",
+  "lab.cmt.aria":"Add a comment",
+  "lab.cmt.post":"Post",
+  "lab.cmt.del":"Delete comment",
+  "lab.cmt.none":"No comments yet.",
+  "lab.cmt.failload":"Could not load comments.",
+  "lab.cmt.someone":"someone",
+  "lab.mon.h":"Lab custom bases and monomers",
+  "lab.mon.skip1":"{n} lab monomer could not be read (no valid mass) and was skipped.",
+  "lab.mon.skipN":"{n} lab monomers could not be read (no valid mass) and were skipped.",
+  "lab.mon.nomass":"That monomer is missing a valid mass, so it was not added.",
+  "lab.mon.dupe":"“{code}” is already in your custom bases.",
+  "lab.mon.added":"Added “{code}” to your custom bases.",
+  "lab.mon.failmine":"Could not add to your custom bases.",
+  "lab.mon.yours":"shared by you",
+  "lab.mon.mine":"Add {code} to my custom bases",
+  "lab.mon.mineT":"Add to my bases",
+  "lab.mon.rm":"Remove {code} from the lab",
+  "lab.mon.rmT":"Remove from lab",
+  "lab.mon.none":"No shared monomers yet.",
+  "lab.mon.who":"Anyone in the lab can use these codes. Only the member who shared a monomer can remove it.",
+  "lab.mon.add":"+ Share one of my bases or monomers",
+  "lab.mon.pick":"Share a monomer with the lab",
+  "lab.mon.pickh":"Add to Lab custom bases and monomers",
+  "lab.mon.picksub":"Pick one of your custom bases or monomers to share with the lab. Everyone in the lab can then use its code; only you can remove it again.",
+  "lab.mon.pickadd":"Add",
+  "lab.mon.pickempty":"You have no custom monomers yet.",
+  "lab.mon.shared":"Monomer shared to lab",
+  "lab.mon.armrm":"Remove?",
+  "lab.mon.nosync":"This monomer needs to sync before it can be removed.",
+  "lab.mon.unshared":"Removed from the lab. It is still in your own bases.",
+  "lab.fold.all":"All",
+  "lab.fold.unfiled":"Unfiled",
+  "lab.fold.open":"Open folder {name}",
+  "lab.fold.menu":"Rename or delete folder {name}",
+  "lab.fold.menuT":"Rename or delete",
+  "lab.fold.new":"+ New folder",
+  "lab.fold.newh":"New folder",
+  "lab.fold.nameph":"Folder name",
+  "lab.fold.create":"Create",
+  "lab.fold.needname":"Enter a folder name.",
+  "lab.fold.created":"Folder created",
+  "lab.fold.rename":"Rename",
+  "lab.fold.needname2":"Enter a name.",
+  "lab.fold.renamed":"Renamed",
+  "lab.fold.del":"Delete folder",
+  "lab.fold.confirm":"Confirm delete",
+  "lab.fold.deleted":"Folder deleted",
+  "lab.fold.delwhy!":"Deleting a folder moves its sequences to Unfiled. Nothing is lost.",
+  "lab.fold.moveh":"Move to…",
+  "lab.fold.movearia":"Move {name} to a folder",
+  "lab.fold.moved":"Moved",
+  "lab.card.open":"Open",
+  "lab.card.rmlab":"Remove",
+  "lab.card.rmdone":"Removed from lab",
+  "lab.card.del":"Delete",
+  "lab.card.armdel":"Delete?",
+  "lab.card.deleted":"Deleted",
+  "lab.card.sel":"Select {name}",
+  "lab.card.untitled":"Untitled",
+  "lab.card.by":"shared by {email}",
+  "lab.card.shared":"shared",
+  "lab.card.you":"you",
+  "lab.lib.mine":"My library",
+  "lab.lib.label":"Library",
+  "lab.lib.crumb":"Lab: {name}",
+  "lab.lib.openlab":"Open the lab shared library",
+  "lab.lib.emptylab":"No sequences shared to this lab yet.",
+  "lab.lib.emptymine":"No saved sequences yet. Save one from the calculator, then sort it into folders here.",
+  "lab.lib.picknone":"You have no saved sequences yet.",
+  "lab.lib.nth":"Sequence {n}",
+  "lab.lib.opened!":"Opened as your own copy. Changes you make here are visible only to you until you add that copy back to the lab.",
+  "lab.lib.failopen":"Could not open.",
+  "lab.off.h":"Offline. Showing the last library this device synced.",
+  "lab.off.n1":"{n} sequence saved on this device: open, calculate, copy and export all work here.",
+  "lab.off.nN":"{n} sequences saved on this device: open, calculate, copy and export all work here.",
+  "lab.off.why!":"The folder browser and lab sharing need a connection. Both are hidden until you are back online.",
+  "lab.off.retry":"Retry",
+  "lab.acc.h":"Manage access",
+  "lab.acc.to":"Manage access to {name}",
+  "lab.acc.nosync":"This sequence needs to sync before you can manage access.",
+  "lab.acc.sub":"Everyone in the lab can view this. Choose who can also edit.",
+  "lab.acc.author":"author",
+  "lab.acc.edit":"Edit",
+  "lab.acc.can":"Can edit ✓",
+  "lab.acc.view":"View only",
+  "lab.acc.nomembers":"No members.",
+  "lab.acc.failload":"Could not load access.",
+  "lab.err.signin":"Not signed in",
+  "lab.err.nocfg":"Supabase not configured",
+  "lab.err.post":"Could not post",
+  "lab.err.del":"Could not delete",
+  "lab.err.add":"Could not add",
+  "lab.err.move":"Could not move",
+  "lab.err.create":"Could not create",
+  "lab.err.rename":"Could not rename",
+  "lab.err.remove":"Could not remove",
+  "lab.err.grant":"Could not grant edit access",
+  "lab.err.revoke":"Could not revoke edit access",
   "lab.tree.local!":"Sorting and searching change only your own view. Nobody else sees the change.",
   "lab.tree.deep":"Folders go three levels deep, and this one is already at the limit. Make the new folder one level up, or use this folder as it is.",
   "lab.tree.cycle":"A folder cannot be moved inside itself or inside one of its own subfolders.",
@@ -739,9 +846,9 @@ var I18N = {
   "lab.md.fromwhy!":"A marked value was read from a file, not computed here. Editing it clears the mark.",
   "lab.imp.btn":"Import a file",
   "lab.imp.h":"Import sequences from a file",
-  "lab.imp.sub!":"CSV only for now. The file is read in this browser. It is never uploaded and never kept.",
-  "lab.imp.pick":"Choose a CSV file",
-  "lab.imp.bad!":"This file could not be read as CSV.",
+  "lab.imp.sub!":"CSV and Excel. The file is read in this browser. It is never uploaded and never kept.",
+  "lab.imp.pick":"Choose a CSV or Excel file",
+  "lab.imp.bad!":"This file could not be read as a spreadsheet.",
   "lab.imp.empty!":"That file has no rows to import.",
   "lab.imp.big!":"That file has {n} rows. {max} is the most this can take at once.",
   "lab.imp.own":"This is an Oligo Calculator full record. Every column was matched.",
@@ -762,7 +869,31 @@ var I18N = {
   "lab.imp.go":"Import {n}",
   "lab.imp.none":"Nothing here can be imported.",
   "lab.imp.done":"{n} imported.",
-  "lab.exp.btn":"Export full record",
+  "lab.exp.h":"Export sequences to a file",
+  "lab.exp.sub!":"A vendor file carries only that vendor's own columns. Everything else on the record stays in the library.",
+  "lab.exp.full":"Full record",
+  "lab.exp.europlate":"Eurofins plate",
+  "lab.exp.europlatewhy!":"Eurofins' plate order columns. A name is at most 20 characters with no comma, period, apostrophe or space, and every sequence needs a well.",
+  "lab.exp.eurotube":"Eurofins tube",
+  "lab.exp.eurotubewhy!":"The Eurofins plate columns without the plate and the well. A name is at most 17 characters.",
+  "lab.exp.idtplate":"IDT plate",
+  "lab.exp.idtplatewhy!":"IDT's plate columns. The IDT upload page does not take CSV, so this one is written as .xlsx. One worksheet per plate, and every sequence needs a well.",
+  "lab.exp.modwhy!":"The sequence and the modification columns use this calculator's own notation. Every vendor has its own codes, so check yours against their code list before you order.",
+  "lab.exp.checkh":"What goes in the file",
+  "lab.exp.ok":"{n} ready to export.",
+  "lab.exp.bad":"{n} cannot go in this file:",
+  "lab.exp.go":"Export {n}",
+  "lab.exp.none":"None of these sequences fits this file.",
+  "lab.exp.done":"{n} exported.",
+  "lab.exp.rowname":"{n}: this sequence has no name, and the form needs one.",
+  "lab.exp.rowlong":"{n} {name}: the name is {len} characters and this form allows {max}.",
+  "lab.exp.rowchar":"{n} {name}: this form does not take a comma, a period, an apostrophe or a space in a name.",
+  "lab.exp.rowwell":"{n} {name}: this file needs a well position like A1.",
+  "lab.exp.rowdupe":"{n}: {well} is used more than once, and a plate holds one sequence per well.",
+  "lab.imp.sheet":"Sheet",
+  "lab.imp.sheeth":"This file has more than one sheet. Which one holds the sequences?",
+  "lab.imp.noxlsx!":"This browser is too old to open .xlsx files. Save the sheet as CSV and import that instead.",
+  "lab.exp.btn":"Export sequences",
   "lab.exp.why!":"A full record holds every value needed to rebuild each sequence, so importing it back reproduces this list exactly. Export CSV beside it is for reading, not for importing.",
   "lab.priv.who!":"Only you and your lab manager can see what is in here.",
   "lab.priv.empty!":"Nothing here yet. Move a strand in to work on it before it goes to the lab's shared library. Only you and your lab manager can see it.",
@@ -1416,7 +1547,7 @@ var I18N = {
   "lab.del.done":"{name} \u5df2\u522a\u9664\u3002",
   "lab.del.go":"\u522a\u9664\u9019\u500b\u5be6\u9a57\u5ba4",
   "lab.del.keep!":"\u6bcf\u500b\u4eba\u90fd\u4fdd\u7559\u81ea\u5df1\u7684\u5e8f\u5217\u8207\u81ea\u8a02\u55ae\u9ad4\uff0c\u5b83\u5011\u8f49\u70ba\u500b\u4eba\u8cc7\u6599\u3002\u672a\u7528\u5b8c\u7684\u6383\u63cf\u9ede\u6578\u6703\u8f49\u5230\u4f60\u540d\u4e0b\u3002",
-  "lab.del.lose!":"\u5171\u7528\u8cc7\u6599\u5eab\u8207\u5be6\u9a57\u5ba4\u7684\u8cc7\u6599\u593e\u6703\u4e00\u4f75\u6d88\u5931\u3002\u539f\u672c\u6b78\u6a94\u5728\u90a3\u4e9b\u8cc7\u6599\u593e\u88e1\u7684\u5e8f\u5217\u5c07\u8b8a\u6210\u672a\u6b78\u6a94\u3002",
+  "lab.del.lose!":"\u5171\u7528\u8cc7\u6599\u5eab\u8207\u5be6\u9a57\u5ba4\u7684\u8cc7\u6599\u593e\u6703\u4e00\u4f75\u6d88\u5931\u3002\u539f\u672c\u6b78\u6a94\u5728\u90a3\u4e9b\u8cc7\u6599\u593e\u88e1\u7684\u5e8f\u5217\u5c07\u8b8a\u6210\u672a\u5206\u985e\u3002",
   "lab.del.now!":"\u9019\u500b\u5be6\u9a57\u5ba4\u6c92\u6709\u8a02\u95b1\uff0c\u6240\u4ee5\u6c92\u6709\u5df2\u4ed8\u8cbb\u7684\u671f\u9593\u9700\u8981\u8d70\u5b8c\u3002\u4f60\u4e00\u78ba\u8a8d\u5b83\u5c31\u95dc\u9589\u3002",
   "lab.del.ph":"\u5be6\u9a57\u5ba4\u540d\u7a31",
   "lab.del.sched":"{name} \u5c07\u65bc {date} \u95dc\u9589\u3002",
@@ -1704,6 +1835,113 @@ var I18N = {
   "lab.tree.byname":"\u540d\u7a31",
   "lab.tree.bydate":"\u4fee\u6539\u65e5\u671f",
   "lab.tree.find":"\u641c\u5c0b\u8cc7\u6599\u593e",
+  "lab.dlg.close":"\u95dc\u9589",
+  "lab.dlg.loading":"\u8f09\u5165\u4e2d…",
+  "lab.dlg.seq":"\u5e8f\u5217",
+  "lab.dlg.aseq":"\u5e8f\u5217",
+  "lab.dlg.generic":"\u5c0d\u8a71\u65b9\u584a",
+  "lab.cmt.h":"\u7559\u8a00",
+  "lab.cmt.on":"\u300c{name}\u300d\u7684\u7559\u8a00",
+  "lab.cmt.nosync":"\u9019\u7b46\u5e8f\u5217\u8981\u5148\u540c\u6b65\u624d\u80fd\u7559\u8a00\u3002",
+  "lab.cmt.ph":"\u65b0\u589e\u7559\u8a00…",
+  "lab.cmt.aria":"\u65b0\u589e\u7559\u8a00",
+  "lab.cmt.post":"\u767c\u8868",
+  "lab.cmt.del":"\u522a\u9664\u7559\u8a00",
+  "lab.cmt.none":"\u9084\u6c92\u6709\u7559\u8a00\u3002",
+  "lab.cmt.failload":"\u7121\u6cd5\u8f09\u5165\u7559\u8a00\u3002",
+  "lab.cmt.someone":"\u67d0\u4eba",
+  "lab.mon.h":"\u5be6\u9a57\u5ba4\u81ea\u8a02\u9e7c\u57fa\u8207\u55ae\u9ad4",
+  "lab.mon.skip1":"\u6709 {n} \u500b\u5be6\u9a57\u5ba4\u55ae\u9ad4\u6c92\u6709\u6709\u6548\u8cea\u91cf\uff0c\u7121\u6cd5\u8b80\u53d6\uff0c\u5df2\u7565\u904e\u3002",
+  "lab.mon.skipN":"\u6709 {n} \u500b\u5be6\u9a57\u5ba4\u55ae\u9ad4\u6c92\u6709\u6709\u6548\u8cea\u91cf\uff0c\u7121\u6cd5\u8b80\u53d6\uff0c\u5df2\u7565\u904e\u3002",
+  "lab.mon.nomass":"\u9019\u500b\u55ae\u9ad4\u6c92\u6709\u6709\u6548\u8cea\u91cf\uff0c\u56e0\u6b64\u6c92\u6709\u65b0\u589e\u3002",
+  "lab.mon.dupe":"\u300c{code}\u300d\u5df2\u7d93\u5728\u4f60\u7684\u81ea\u8a02\u9e7c\u57fa\u88e1\u3002",
+  "lab.mon.added":"\u5df2\u5c07\u300c{code}\u300d\u52a0\u5165\u4f60\u7684\u81ea\u8a02\u9e7c\u57fa\u3002",
+  "lab.mon.failmine":"\u7121\u6cd5\u52a0\u5165\u4f60\u7684\u81ea\u8a02\u9e7c\u57fa\u3002",
+  "lab.mon.yours":"\u4f60\u5206\u4eab\u7684",
+  "lab.mon.mine":"\u5c07 {code} \u52a0\u5165\u6211\u7684\u81ea\u8a02\u9e7c\u57fa",
+  "lab.mon.mineT":"\u52a0\u5165\u6211\u7684\u9e7c\u57fa",
+  "lab.mon.rm":"\u5c07 {code} \u79fb\u51fa\u5be6\u9a57\u5ba4",
+  "lab.mon.rmT":"\u79fb\u51fa\u5be6\u9a57\u5ba4",
+  "lab.mon.none":"\u9084\u6c92\u6709\u5171\u7528\u7684\u55ae\u9ad4\u3002",
+  "lab.mon.who":"\u5be6\u9a57\u5ba4\u88e1\u7684\u6bcf\u500b\u4eba\u90fd\u53ef\u4ee5\u4f7f\u7528\u9019\u4e9b\u4ee3\u78bc\u3002\u53ea\u6709\u5206\u4eab\u8a72\u55ae\u9ad4\u7684\u6210\u54e1\u53ef\u4ee5\u628a\u5b83\u79fb\u51fa\u3002",
+  "lab.mon.add":"+ \u5206\u4eab\u6211\u7684\u9e7c\u57fa\u6216\u55ae\u9ad4",
+  "lab.mon.pick":"\u8207\u5be6\u9a57\u5ba4\u5206\u4eab\u55ae\u9ad4",
+  "lab.mon.pickh":"\u52a0\u5165\u5be6\u9a57\u5ba4\u81ea\u8a02\u9e7c\u57fa\u8207\u55ae\u9ad4",
+  "lab.mon.picksub":"\u9078\u4e00\u500b\u4f60\u7684\u81ea\u8a02\u9e7c\u57fa\u6216\u55ae\u9ad4\u8207\u5be6\u9a57\u5ba4\u5206\u4eab\u3002\u4e4b\u5f8c\u5be6\u9a57\u5ba4\u88e1\u7684\u6bcf\u500b\u4eba\u90fd\u53ef\u4ee5\u4f7f\u7528\u5b83\u7684\u4ee3\u78bc\uff0c\u800c\u53ea\u6709\u4f60\u53ef\u4ee5\u518d\u628a\u5b83\u79fb\u51fa\u3002",
+  "lab.mon.pickadd":"\u65b0\u589e",
+  "lab.mon.pickempty":"\u4f60\u9084\u6c92\u6709\u81ea\u8a02\u55ae\u9ad4\u3002",
+  "lab.mon.shared":"\u55ae\u9ad4\u5df2\u5206\u4eab\u5230\u5be6\u9a57\u5ba4",
+  "lab.mon.armrm":"\u78ba\u5b9a\u79fb\u51fa\uff1f",
+  "lab.mon.nosync":"\u9019\u500b\u55ae\u9ad4\u8981\u5148\u540c\u6b65\u624d\u80fd\u79fb\u51fa\u3002",
+  "lab.mon.unshared":"\u5df2\u79fb\u51fa\u5be6\u9a57\u5ba4\u3002\u5b83\u4ecd\u7136\u7559\u5728\u4f60\u81ea\u5df1\u7684\u9e7c\u57fa\u88e1\u3002",
+  "lab.fold.all":"\u5168\u90e8",
+  "lab.fold.unfiled":"\u672a\u5206\u985e",
+  "lab.fold.open":"\u958b\u555f\u8cc7\u6599\u593e {name}",
+  "lab.fold.menu":"\u91cd\u65b0\u547d\u540d\u6216\u522a\u9664\u8cc7\u6599\u593e {name}",
+  "lab.fold.menuT":"\u91cd\u65b0\u547d\u540d\u6216\u522a\u9664",
+  "lab.fold.new":"+ \u65b0\u589e\u8cc7\u6599\u593e",
+  "lab.fold.newh":"\u65b0\u589e\u8cc7\u6599\u593e",
+  "lab.fold.nameph":"\u8cc7\u6599\u593e\u540d\u7a31",
+  "lab.fold.create":"\u5efa\u7acb",
+  "lab.fold.needname":"\u8acb\u8f38\u5165\u8cc7\u6599\u593e\u540d\u7a31\u3002",
+  "lab.fold.created":"\u5df2\u5efa\u7acb\u8cc7\u6599\u593e",
+  "lab.fold.rename":"\u91cd\u65b0\u547d\u540d",
+  "lab.fold.needname2":"\u8acb\u8f38\u5165\u540d\u7a31\u3002",
+  "lab.fold.renamed":"\u5df2\u91cd\u65b0\u547d\u540d",
+  "lab.fold.del":"\u522a\u9664\u8cc7\u6599\u593e",
+  "lab.fold.confirm":"\u78ba\u5b9a\u522a\u9664",
+  "lab.fold.deleted":"\u5df2\u522a\u9664\u8cc7\u6599\u593e",
+  "lab.fold.delwhy!":"\u522a\u9664\u8cc7\u6599\u593e\u6703\u628a\u88e1\u9762\u7684\u5e8f\u5217\u79fb\u5230\u300c\u672a\u5206\u985e\u300d\uff0c\u4e0d\u6703\u907a\u5931\u4efb\u4f55\u6771\u897f\u3002",
+  "lab.fold.moveh":"\u79fb\u52d5\u5230…",
+  "lab.fold.movearia":"\u5c07 {name} \u79fb\u52d5\u5230\u8cc7\u6599\u593e",
+  "lab.fold.moved":"\u5df2\u79fb\u52d5",
+  "lab.card.open":"\u958b\u555f",
+  "lab.card.rmlab":"\u79fb\u51fa",
+  "lab.card.rmdone":"\u5df2\u79fb\u51fa\u5be6\u9a57\u5ba4",
+  "lab.card.del":"\u522a\u9664",
+  "lab.card.armdel":"\u78ba\u5b9a\u522a\u9664\uff1f",
+  "lab.card.deleted":"\u5df2\u522a\u9664",
+  "lab.card.sel":"\u9078\u53d6 {name}",
+  "lab.card.untitled":"\u672a\u547d\u540d",
+  "lab.card.by":"\u7531 {email} \u5206\u4eab",
+  "lab.card.shared":"\u5df2\u5206\u4eab",
+  "lab.card.you":"\u4f60",
+  "lab.lib.mine":"\u6211\u7684\u8cc7\u6599\u5eab",
+  "lab.lib.label":"\u8cc7\u6599\u5eab",
+  "lab.lib.crumb":"\u5be6\u9a57\u5ba4\uff1a{name}",
+  "lab.lib.openlab":"\u958b\u555f\u5be6\u9a57\u5ba4\u7684\u5171\u7528\u8cc7\u6599\u5eab",
+  "lab.lib.emptylab":"\u9084\u6c92\u6709\u5e8f\u5217\u5206\u4eab\u5230\u9019\u500b\u5be6\u9a57\u5ba4\u3002",
+  "lab.lib.emptymine":"\u9084\u6c92\u6709\u5df2\u5132\u5b58\u7684\u5e8f\u5217\u3002\u5148\u5f9e\u8a08\u7b97\u6a5f\u5132\u5b58\u4e00\u7b46\uff0c\u518d\u5728\u9019\u88e1\u6b78\u5165\u8cc7\u6599\u593e\u3002",
+  "lab.lib.picknone":"\u4f60\u9084\u6c92\u6709\u5df2\u5132\u5b58\u7684\u5e8f\u5217\u3002",
+  "lab.lib.nth":"\u5e8f\u5217 {n}",
+  "lab.lib.opened!":"\u5df2\u958b\u555f\u6210\u4f60\u81ea\u5df1\u7684\u526f\u672c\u3002\u4f60\u5728\u9019\u88e1\u505a\u7684\u8b8a\u66f4\u53ea\u6709\u4f60\u770b\u5f97\u5230\uff0c\u76f4\u5230\u4f60\u628a\u9019\u4efd\u526f\u672c\u52a0\u56de\u5be6\u9a57\u5ba4\u70ba\u6b62\u3002",
+  "lab.lib.failopen":"\u7121\u6cd5\u958b\u555f\u3002",
+  "lab.off.h":"\u96e2\u7dda\u3002\u986f\u793a\u9019\u53f0\u88dd\u7f6e\u6700\u5f8c\u4e00\u6b21\u540c\u6b65\u7684\u8cc7\u6599\u5eab\u3002",
+  "lab.off.n1":"\u9019\u53f0\u88dd\u7f6e\u4e0a\u6709 {n} \u7b46\u5e8f\u5217\uff0c\u4ecd\u53ef\u6b63\u5e38\u958b\u555f\u3001\u8a08\u7b97\u3001\u8907\u88fd\u8207\u532f\u51fa\u3002",
+  "lab.off.nN":"\u9019\u53f0\u88dd\u7f6e\u4e0a\u6709 {n} \u7b46\u5e8f\u5217\uff0c\u4ecd\u53ef\u6b63\u5e38\u958b\u555f\u3001\u8a08\u7b97\u3001\u8907\u88fd\u8207\u532f\u51fa\u3002",
+  "lab.off.why!":"\u8cc7\u6599\u593e\u700f\u89bd\u8207\u5be6\u9a57\u5ba4\u5171\u7528\u90fd\u9700\u8981\u7db2\u8def\u9023\u7dda\uff0c\u5169\u8005\u5728\u4f60\u91cd\u65b0\u9023\u7dda\u4e4b\u524d\u90fd\u6703\u96b1\u85cf\u8d77\u4f86\u3002",
+  "lab.off.retry":"\u91cd\u8a66",
+  "lab.acc.h":"\u7ba1\u7406\u5b58\u53d6\u6b0a",
+  "lab.acc.to":"\u7ba1\u7406\u300c{name}\u300d\u7684\u5b58\u53d6\u6b0a",
+  "lab.acc.nosync":"\u9019\u7b46\u5e8f\u5217\u8981\u5148\u540c\u6b65\uff0c\u624d\u80fd\u7ba1\u7406\u5b58\u53d6\u6b0a\u3002",
+  "lab.acc.sub":"\u5be6\u9a57\u5ba4\u88e1\u7684\u6bcf\u500b\u4eba\u90fd\u53ef\u4ee5\u6aa2\u8996\u9019\u4e00\u7b46\u3002\u8acb\u9078\u64c7\u8ab0\u4e5f\u53ef\u4ee5\u7de8\u8f2f\u3002",
+  "lab.acc.author":"\u5efa\u7acb\u8005",
+  "lab.acc.edit":"\u7de8\u8f2f",
+  "lab.acc.can":"\u53ef\u7de8\u8f2f ✓",
+  "lab.acc.view":"\u50c5\u53ef\u6aa2\u8996",
+  "lab.acc.nomembers":"\u6c92\u6709\u6210\u54e1\u3002",
+  "lab.acc.failload":"\u7121\u6cd5\u8f09\u5165\u5b58\u53d6\u6b0a\u3002",
+  "lab.err.signin":"\u5c1a\u672a\u767b\u5165",
+  "lab.err.nocfg":"\u5c1a\u672a\u8a2d\u5b9a Supabase",
+  "lab.err.post":"\u7121\u6cd5\u767c\u8868",
+  "lab.err.del":"\u7121\u6cd5\u522a\u9664",
+  "lab.err.add":"\u7121\u6cd5\u65b0\u589e",
+  "lab.err.move":"\u7121\u6cd5\u79fb\u52d5",
+  "lab.err.create":"\u7121\u6cd5\u5efa\u7acb",
+  "lab.err.rename":"\u7121\u6cd5\u91cd\u65b0\u547d\u540d",
+  "lab.err.remove":"\u7121\u6cd5\u79fb\u51fa",
+  "lab.err.grant":"\u7121\u6cd5\u6388\u4e88\u7de8\u8f2f\u6b0a\u9650",
+  "lab.err.revoke":"\u7121\u6cd5\u6536\u56de\u7de8\u8f2f\u6b0a\u9650",
   "lab.tree.local!":"\u6392\u5e8f\u548c\u641c\u5c0b\u53ea\u6703\u6539\u8b8a\u4f60\u81ea\u5df1\u770b\u5230\u7684\u756b\u9762\uff0c\u5176\u4ed6\u4eba\u770b\u5230\u7684\u4e0d\u6703\u8b8a\u3002",
   "lab.tree.deep":"\u8cc7\u6599\u593e\u6700\u591a\u4e09\u5c64\uff0c\u9019\u4e00\u5c64\u5df2\u7d93\u5230\u4e0a\u9650\u3002\u8acb\u628a\u65b0\u8cc7\u6599\u593e\u5efa\u5728\u4e0a\u4e00\u5c64\uff0c\u6216\u76f4\u63a5\u4f7f\u7528\u76ee\u524d\u9019\u500b\u8cc7\u6599\u593e\u3002",
   "lab.tree.cycle":"\u8cc7\u6599\u593e\u4e0d\u80fd\u79fb\u5230\u81ea\u5df1\u88e1\u9762\uff0c\u4e5f\u4e0d\u80fd\u79fb\u5230\u81ea\u5df1\u7684\u5b50\u8cc7\u6599\u593e\u88e1\u9762\u3002",
@@ -1729,9 +1967,9 @@ var I18N = {
   "lab.md.fromwhy!":"\u6709\u6a19\u8a18\u7684\u6578\u503c\u662f\u5f9e\u6a94\u6848\u8b80\u9032\u4f86\u7684\uff0c\u4e0d\u662f\u5728\u9019\u88e1\u7b97\u51fa\u4f86\u7684\u3002\u4f60\u4e00\u6539\u52d5\u5b83\uff0c\u6a19\u8a18\u5c31\u6703\u6d88\u5931\u3002",
   "lab.imp.btn":"\u532f\u5165\u6a94\u6848",
   "lab.imp.h":"\u5f9e\u6a94\u6848\u532f\u5165\u5e8f\u5217",
-  "lab.imp.sub!":"\u76ee\u524d\u53ea\u652f\u63f4 CSV\u3002\u6a94\u6848\u5728\u9019\u500b\u700f\u89bd\u5668\u88e1\u8b80\u53d6\uff0c\u4e0d\u6703\u4e0a\u50b3\uff0c\u4e5f\u4e0d\u6703\u7559\u4e0b\u3002",
-  "lab.imp.pick":"\u9078\u64c7 CSV \u6a94\u6848",
-  "lab.imp.bad!":"\u9019\u500b\u6a94\u6848\u7121\u6cd5\u7576\u6210 CSV \u8b80\u53d6\u3002",
+  "lab.imp.sub!":"\u652f\u63f4 CSV \u8207 Excel\u3002\u6a94\u6848\u5728\u9019\u500b\u700f\u89bd\u5668\u88e1\u8b80\u53d6\uff0c\u4e0d\u6703\u4e0a\u50b3\uff0c\u4e5f\u4e0d\u6703\u7559\u4e0b\u3002",
+  "lab.imp.pick":"\u9078\u64c7 CSV \u6216 Excel \u6a94\u6848",
+  "lab.imp.bad!":"\u9019\u500b\u6a94\u6848\u7121\u6cd5\u7576\u6210\u8a66\u7b97\u8868\u8b80\u53d6\u3002",
   "lab.imp.empty!":"\u9019\u500b\u6a94\u6848\u6c92\u6709\u53ef\u4ee5\u532f\u5165\u7684\u8cc7\u6599\u5217\u3002",
   "lab.imp.big!":"\u9019\u500b\u6a94\u6848\u6709 {n} \u5217\u3002\u4e00\u6b21\u6700\u591a\u53ea\u80fd\u8655\u7406 {max} \u5217\u3002",
   "lab.imp.own":"\u9019\u662f Oligo Calculator \u7684\u5b8c\u6574\u7d00\u9304\uff0c\u6bcf\u4e00\u6b04\u90fd\u5df2\u7d93\u5c0d\u61c9\u597d\u4e86\u3002",
@@ -1752,7 +1990,31 @@ var I18N = {
   "lab.imp.go":"\u532f\u5165 {n} \u7b46",
   "lab.imp.none":"\u9019\u88e1\u6c92\u6709\u53ef\u4ee5\u532f\u5165\u7684\u8cc7\u6599\u3002",
   "lab.imp.done":"\u5df2\u532f\u5165 {n} \u7b46\u3002",
-  "lab.exp.btn":"\u532f\u51fa\u5b8c\u6574\u7d00\u9304",
+  "lab.exp.h":"\u628a\u5e8f\u5217\u532f\u51fa\u6210\u6a94\u6848",
+  "lab.exp.sub!":"\u5ee0\u5546\u7684\u6a94\u6848\u53ea\u6703\u5e36\u4e0a\u8a72\u5ee0\u5546\u81ea\u5df1\u7684\u6b04\u4f4d\u3002\u7d00\u9304\u4e0a\u7684\u5176\u4ed6\u5167\u5bb9\u90fd\u7559\u5728\u8cc7\u6599\u5eab\u88e1\u3002",
+  "lab.exp.full":"\u5b8c\u6574\u7d00\u9304",
+  "lab.exp.europlate":"Eurofins \u5fae\u5b54\u76e4",
+  "lab.exp.europlatewhy!":"Eurofins \u5fae\u5b54\u76e4\u8a02\u8cfc\u8868\u55ae\u7684\u6b04\u4f4d\u3002\u540d\u7a31\u6700\u591a 20 \u500b\u5b57\u5143\uff0c\u4e0d\u80fd\u6709\u9017\u865f\u3001\u53e5\u865f\u3001\u55ae\u5f15\u865f\u6216\u7a7a\u683c\uff0c\u800c\u4e14\u6bcf\u4e00\u7b46\u5e8f\u5217\u90fd\u8981\u6709\u5b54\u4f4d\u3002",
+  "lab.exp.eurotube":"Eurofins \u8a66\u7ba1",
+  "lab.exp.eurotubewhy!":"Eurofins \u5fae\u5b54\u76e4\u7684\u6b04\u4f4d\uff0c\u5c11\u4e86\u5fae\u5b54\u76e4\u8207\u5b54\u4f4d\u3002\u540d\u7a31\u6700\u591a 17 \u500b\u5b57\u5143\u3002",
+  "lab.exp.idtplate":"IDT \u5fae\u5b54\u76e4",
+  "lab.exp.idtplatewhy!":"IDT \u5fae\u5b54\u76e4\u7684\u6b04\u4f4d\u3002IDT \u7684\u4e0a\u50b3\u9801\u9762\u4e0d\u63a5\u53d7 CSV\uff0c\u6240\u4ee5\u9019\u500b\u5beb\u6210 .xlsx\u3002\u4e00\u500b\u5fae\u5b54\u76e4\u4e00\u5f35\u5de5\u4f5c\u8868\uff0c\u800c\u4e14\u6bcf\u4e00\u7b46\u5e8f\u5217\u90fd\u8981\u6709\u5b54\u4f4d\u3002",
+  "lab.exp.modwhy!":"\u5e8f\u5217\u8207\u4fee\u98fe\u6b04\u4f4d\u7528\u7684\u662f\u9019\u500b\u8a08\u7b97\u6a5f\u81ea\u5df1\u7684\u8a18\u6cd5\u3002\u6bcf\u5bb6\u5ee0\u5546\u90fd\u6709\u81ea\u5df1\u7684\u4ee3\u78bc\uff0c\u4e0b\u55ae\u4e4b\u524d\u8acb\u5c0d\u8457\u8a72\u5ee0\u5546\u7684\u4ee3\u78bc\u8868\u6838\u5c0d\u4e00\u6b21\u3002",
+  "lab.exp.checkh":"\u6a94\u6848\u88e1\u6703\u6709\u4ec0\u9ebc",
+  "lab.exp.ok":"{n} \u7b46\u53ef\u4ee5\u532f\u51fa\u3002",
+  "lab.exp.bad":"{n} \u7b46\u4e0d\u80fd\u653e\u9032\u9019\u500b\u6a94\u6848\uff1a",
+  "lab.exp.go":"\u532f\u51fa {n} \u7b46",
+  "lab.exp.none":"\u9019\u4e9b\u5e8f\u5217\u6c92\u6709\u4e00\u7b46\u653e\u5f97\u9032\u9019\u500b\u6a94\u6848\u3002",
+  "lab.exp.done":"\u5df2\u532f\u51fa {n} \u7b46\u3002",
+  "lab.exp.rowname":"\u7b2c {n} \u7b46\uff1a\u9019\u7b46\u5e8f\u5217\u6c92\u6709\u540d\u7a31\uff0c\u8868\u55ae\u9700\u8981\u4e00\u500b\u3002",
+  "lab.exp.rowlong":"\u7b2c {n} \u7b46 {name}\uff1a\u540d\u7a31\u6709 {len} \u500b\u5b57\u5143\uff0c\u9019\u4efd\u8868\u55ae\u6700\u591a\u53ea\u80fd\u6709 {max} \u500b\u3002",
+  "lab.exp.rowchar":"\u7b2c {n} \u7b46 {name}\uff1a\u9019\u4efd\u8868\u55ae\u7684\u540d\u7a31\u4e0d\u80fd\u6709\u9017\u865f\u3001\u53e5\u865f\u3001\u55ae\u5f15\u865f\u6216\u7a7a\u683c\u3002",
+  "lab.exp.rowwell":"\u7b2c {n} \u7b46 {name}\uff1a\u9019\u500b\u6a94\u6848\u9700\u8981\u50cf A1 \u9019\u6a23\u7684\u5b54\u4f4d\u3002",
+  "lab.exp.rowdupe":"\u7b2c {n} \u7b46\uff1a{well} \u7528\u4e86\u8d85\u904e\u4e00\u6b21\uff0c\u800c\u4e00\u500b\u5fae\u5b54\u76e4\u7684\u6bcf\u500b\u5b54\u4f4d\u53ea\u80fd\u653e\u4e00\u7b46\u5e8f\u5217\u3002",
+  "lab.imp.sheet":"\u5de5\u4f5c\u8868",
+  "lab.imp.sheeth":"\u9019\u500b\u6a94\u6848\u6709\u591a\u5f35\u5de5\u4f5c\u8868\u3002\u5e8f\u5217\u5728\u54ea\u4e00\u5f35\uff1f",
+  "lab.imp.noxlsx!":"\u9019\u500b\u700f\u89bd\u5668\u592a\u820a\uff0c\u6253\u4e0d\u958b .xlsx \u6a94\u6848\u3002\u8acb\u628a\u5de5\u4f5c\u8868\u5b58\u6210 CSV\uff0c\u6539\u7528 CSV \u532f\u5165\u3002",
+  "lab.exp.btn":"\u532f\u51fa\u5e8f\u5217",
   "lab.exp.why!":"\u5b8c\u6574\u7d00\u9304\u6703\u5b58\u4e0b\u91cd\u5efa\u6bcf\u4e00\u7b46\u5e8f\u5217\u6240\u9700\u8981\u7684\u5168\u90e8\u6578\u503c\uff0c\u6240\u4ee5\u518d\u532f\u5165\u56de\u4f86\u5c31\u6703\u4e00\u6a21\u4e00\u6a23\u3002\u65c1\u908a\u7684\u532f\u51fa CSV \u662f\u7d66\u4eba\u770b\u7684\uff0c\u4e0d\u662f\u62ff\u4f86\u532f\u5165\u7684\u3002",
   "lab.priv.who!":"\u53ea\u6709\u4f60\u548c\u5be6\u9a57\u5ba4\u7ba1\u7406\u8005\u770b\u5f97\u5230\u9019\u88e1\u9762\u7684\u5167\u5bb9\u3002",
   "lab.priv.empty!":"\u9019\u88e1\u9084\u6c92\u6709\u6771\u897f\u3002\u4f60\u53ef\u4ee5\u5148\u628a\u5e8f\u5217\u79fb\u5230\u9019\u500b\u7a7a\u9593\u8655\u7406\uff0c\u4e4b\u5f8c\u518d\u653e\u9032\u5be6\u9a57\u5ba4\u7684\u5171\u7528\u8cc7\u6599\u5eab\u3002\u9019\u500b\u7a7a\u9593\u88e1\u7684\u5167\u5bb9\uff0c\u53ea\u6709\u4f60\u548c\u5be6\u9a57\u5ba4\u7ba1\u7406\u8005\u770b\u5f97\u5230\u3002",
@@ -2401,7 +2663,7 @@ var I18N = {
   "lab.del.done":"{name} \u5df2\u5220\u9664\u3002",
   "lab.del.go":"\u5220\u9664\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4",
   "lab.del.keep!":"\u6bcf\u4e2a\u4eba\u90fd\u4fdd\u7559\u81ea\u5df1\u7684\u94fe\u4e0e\u81ea\u5b9a\u4e49\u5355\u4f53\uff0c\u5b83\u4eec\u8f6c\u4e3a\u4e2a\u4eba\u8d44\u6599\u3002\u672a\u7528\u5b8c\u7684\u626b\u63cf\u70b9\u6570\u4f1a\u8f6c\u5230\u4f60\u540d\u4e0b\u3002",
-  "lab.del.lose!":"\u5171\u7528\u8d44\u6e90\u5e93\u4e0e\u5b9e\u9a8c\u5ba4\u7684\u6587\u4ef6\u5939\u4f1a\u4e00\u5e76\u6d88\u5931\u3002\u539f\u672c\u5f52\u6863\u5728\u90a3\u4e9b\u6587\u4ef6\u5939\u91cc\u7684\u94fe\u5c06\u53d8\u6210\u672a\u5f52\u6863\u3002",
+  "lab.del.lose!":"\u5171\u7528\u8d44\u6e90\u5e93\u4e0e\u5b9e\u9a8c\u5ba4\u7684\u6587\u4ef6\u5939\u4f1a\u4e00\u5e76\u6d88\u5931\u3002\u539f\u672c\u5f52\u6863\u5728\u90a3\u4e9b\u6587\u4ef6\u5939\u91cc\u7684\u94fe\u5c06\u53d8\u6210\u672a\u5206\u7c7b\u3002",
   "lab.del.now!":"\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u6ca1\u6709\u8ba2\u9605\uff0c\u6240\u4ee5\u6ca1\u6709\u5df2\u4ed8\u8d39\u7684\u671f\u95f4\u9700\u8981\u8d70\u5b8c\u3002\u4f60\u4e00\u786e\u8ba4\u5b83\u5c31\u5173\u95ed\u3002",
   "lab.del.ph":"\u5b9e\u9a8c\u5ba4\u540d\u79f0",
   "lab.del.sched":"{name} \u5c06\u4e8e {date} \u5173\u95ed\u3002",
@@ -2689,6 +2951,113 @@ var I18N = {
   "lab.tree.byname":"\u540d\u79f0",
   "lab.tree.bydate":"\u4fee\u6539\u65e5\u671f",
   "lab.tree.find":"\u641c\u7d22\u6587\u4ef6\u5939",
+  "lab.dlg.close":"\u5173\u95ed",
+  "lab.dlg.loading":"\u52a0\u8f7d\u4e2d…",
+  "lab.dlg.seq":"\u5e8f\u5217",
+  "lab.dlg.aseq":"\u5e8f\u5217",
+  "lab.dlg.generic":"\u5bf9\u8bdd\u6846",
+  "lab.cmt.h":"\u8bc4\u8bba",
+  "lab.cmt.on":"\u300c{name}\u300d\u7684\u8bc4\u8bba",
+  "lab.cmt.nosync":"\u8fd9\u6761\u5e8f\u5217\u8981\u5148\u540c\u6b65\u624d\u80fd\u8bc4\u8bba\u3002",
+  "lab.cmt.ph":"\u6dfb\u52a0\u8bc4\u8bba…",
+  "lab.cmt.aria":"\u6dfb\u52a0\u8bc4\u8bba",
+  "lab.cmt.post":"\u53d1\u8868",
+  "lab.cmt.del":"\u5220\u9664\u8bc4\u8bba",
+  "lab.cmt.none":"\u8fd8\u6ca1\u6709\u8bc4\u8bba\u3002",
+  "lab.cmt.failload":"\u65e0\u6cd5\u52a0\u8f7d\u8bc4\u8bba\u3002",
+  "lab.cmt.someone":"\u67d0\u4eba",
+  "lab.mon.h":"\u5b9e\u9a8c\u5ba4\u81ea\u5b9a\u4e49\u78b1\u57fa\u4e0e\u5355\u4f53",
+  "lab.mon.skip1":"\u6709 {n} \u4e2a\u5b9e\u9a8c\u5ba4\u5355\u4f53\u6ca1\u6709\u6709\u6548\u8d28\u91cf\uff0c\u65e0\u6cd5\u8bfb\u53d6\uff0c\u5df2\u8df3\u8fc7\u3002",
+  "lab.mon.skipN":"\u6709 {n} \u4e2a\u5b9e\u9a8c\u5ba4\u5355\u4f53\u6ca1\u6709\u6709\u6548\u8d28\u91cf\uff0c\u65e0\u6cd5\u8bfb\u53d6\uff0c\u5df2\u8df3\u8fc7\u3002",
+  "lab.mon.nomass":"\u8fd9\u4e2a\u5355\u4f53\u6ca1\u6709\u6709\u6548\u8d28\u91cf\uff0c\u56e0\u6b64\u6ca1\u6709\u6dfb\u52a0\u3002",
+  "lab.mon.dupe":"\u300c{code}\u300d\u5df2\u7ecf\u5728\u4f60\u7684\u81ea\u5b9a\u4e49\u78b1\u57fa\u91cc\u3002",
+  "lab.mon.added":"\u5df2\u5c06\u300c{code}\u300d\u52a0\u5165\u4f60\u7684\u81ea\u5b9a\u4e49\u78b1\u57fa\u3002",
+  "lab.mon.failmine":"\u65e0\u6cd5\u52a0\u5165\u4f60\u7684\u81ea\u5b9a\u4e49\u78b1\u57fa\u3002",
+  "lab.mon.yours":"\u4f60\u5206\u4eab\u7684",
+  "lab.mon.mine":"\u5c06 {code} \u52a0\u5165\u6211\u7684\u81ea\u5b9a\u4e49\u78b1\u57fa",
+  "lab.mon.mineT":"\u52a0\u5165\u6211\u7684\u78b1\u57fa",
+  "lab.mon.rm":"\u5c06 {code} \u79fb\u51fa\u5b9e\u9a8c\u5ba4",
+  "lab.mon.rmT":"\u79fb\u51fa\u5b9e\u9a8c\u5ba4",
+  "lab.mon.none":"\u8fd8\u6ca1\u6709\u5171\u7528\u7684\u5355\u4f53\u3002",
+  "lab.mon.who":"\u5b9e\u9a8c\u5ba4\u91cc\u7684\u6bcf\u4e2a\u4eba\u90fd\u53ef\u4ee5\u4f7f\u7528\u8fd9\u4e9b\u4ee3\u7801\u3002\u53ea\u6709\u5206\u4eab\u8be5\u5355\u4f53\u7684\u6210\u5458\u53ef\u4ee5\u628a\u5b83\u79fb\u51fa\u3002",
+  "lab.mon.add":"+ \u5206\u4eab\u6211\u7684\u78b1\u57fa\u6216\u5355\u4f53",
+  "lab.mon.pick":"\u4e0e\u5b9e\u9a8c\u5ba4\u5206\u4eab\u5355\u4f53",
+  "lab.mon.pickh":"\u52a0\u5165\u5b9e\u9a8c\u5ba4\u81ea\u5b9a\u4e49\u78b1\u57fa\u4e0e\u5355\u4f53",
+  "lab.mon.picksub":"\u9009\u4e00\u4e2a\u4f60\u7684\u81ea\u5b9a\u4e49\u78b1\u57fa\u6216\u5355\u4f53\u4e0e\u5b9e\u9a8c\u5ba4\u5206\u4eab\u3002\u4e4b\u540e\u5b9e\u9a8c\u5ba4\u91cc\u7684\u6bcf\u4e2a\u4eba\u90fd\u53ef\u4ee5\u4f7f\u7528\u5b83\u7684\u4ee3\u7801\uff0c\u800c\u53ea\u6709\u4f60\u53ef\u4ee5\u518d\u628a\u5b83\u79fb\u51fa\u3002",
+  "lab.mon.pickadd":"\u6dfb\u52a0",
+  "lab.mon.pickempty":"\u4f60\u8fd8\u6ca1\u6709\u81ea\u5b9a\u4e49\u5355\u4f53\u3002",
+  "lab.mon.shared":"\u5355\u4f53\u5df2\u5206\u4eab\u5230\u5b9e\u9a8c\u5ba4",
+  "lab.mon.armrm":"\u786e\u5b9a\u79fb\u51fa\uff1f",
+  "lab.mon.nosync":"\u8fd9\u4e2a\u5355\u4f53\u8981\u5148\u540c\u6b65\u624d\u80fd\u79fb\u51fa\u3002",
+  "lab.mon.unshared":"\u5df2\u79fb\u51fa\u5b9e\u9a8c\u5ba4\u3002\u5b83\u4ecd\u7136\u7559\u5728\u4f60\u81ea\u5df1\u7684\u78b1\u57fa\u91cc\u3002",
+  "lab.fold.all":"\u5168\u90e8",
+  "lab.fold.unfiled":"\u672a\u5206\u7c7b",
+  "lab.fold.open":"\u6253\u5f00\u6587\u4ef6\u5939 {name}",
+  "lab.fold.menu":"\u91cd\u547d\u540d\u6216\u5220\u9664\u6587\u4ef6\u5939 {name}",
+  "lab.fold.menuT":"\u91cd\u547d\u540d\u6216\u5220\u9664",
+  "lab.fold.new":"+ \u65b0\u5efa\u6587\u4ef6\u5939",
+  "lab.fold.newh":"\u65b0\u5efa\u6587\u4ef6\u5939",
+  "lab.fold.nameph":"\u6587\u4ef6\u5939\u540d\u79f0",
+  "lab.fold.create":"\u521b\u5efa",
+  "lab.fold.needname":"\u8bf7\u8f93\u5165\u6587\u4ef6\u5939\u540d\u79f0\u3002",
+  "lab.fold.created":"\u5df2\u521b\u5efa\u6587\u4ef6\u5939",
+  "lab.fold.rename":"\u91cd\u547d\u540d",
+  "lab.fold.needname2":"\u8bf7\u8f93\u5165\u540d\u79f0\u3002",
+  "lab.fold.renamed":"\u5df2\u91cd\u547d\u540d",
+  "lab.fold.del":"\u5220\u9664\u6587\u4ef6\u5939",
+  "lab.fold.confirm":"\u786e\u5b9a\u5220\u9664",
+  "lab.fold.deleted":"\u5df2\u5220\u9664\u6587\u4ef6\u5939",
+  "lab.fold.delwhy!":"\u5220\u9664\u6587\u4ef6\u5939\u4f1a\u628a\u91cc\u9762\u7684\u5e8f\u5217\u79fb\u5230\u300c\u672a\u5206\u7c7b\u300d\uff0c\u4e0d\u4f1a\u4e22\u5931\u4efb\u4f55\u4e1c\u897f\u3002",
+  "lab.fold.moveh":"\u79fb\u52a8\u5230…",
+  "lab.fold.movearia":"\u5c06 {name} \u79fb\u52a8\u5230\u6587\u4ef6\u5939",
+  "lab.fold.moved":"\u5df2\u79fb\u52a8",
+  "lab.card.open":"\u6253\u5f00",
+  "lab.card.rmlab":"\u79fb\u51fa",
+  "lab.card.rmdone":"\u5df2\u79fb\u51fa\u5b9e\u9a8c\u5ba4",
+  "lab.card.del":"\u5220\u9664",
+  "lab.card.armdel":"\u786e\u5b9a\u5220\u9664\uff1f",
+  "lab.card.deleted":"\u5df2\u5220\u9664",
+  "lab.card.sel":"\u9009\u53d6 {name}",
+  "lab.card.untitled":"\u672a\u547d\u540d",
+  "lab.card.by":"\u7531 {email} \u5206\u4eab",
+  "lab.card.shared":"\u5df2\u5206\u4eab",
+  "lab.card.you":"\u4f60",
+  "lab.lib.mine":"\u6211\u7684\u8d44\u6e90\u5e93",
+  "lab.lib.label":"\u8d44\u6e90\u5e93",
+  "lab.lib.crumb":"\u5b9e\u9a8c\u5ba4\uff1a{name}",
+  "lab.lib.openlab":"\u6253\u5f00\u5b9e\u9a8c\u5ba4\u7684\u5171\u7528\u8d44\u6e90\u5e93",
+  "lab.lib.emptylab":"\u8fd8\u6ca1\u6709\u5e8f\u5217\u5206\u4eab\u5230\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u3002",
+  "lab.lib.emptymine":"\u8fd8\u6ca1\u6709\u5df2\u4fdd\u5b58\u7684\u5e8f\u5217\u3002\u5148\u4ece\u8ba1\u7b97\u5668\u4fdd\u5b58\u4e00\u6761\uff0c\u518d\u5728\u8fd9\u91cc\u5f52\u5165\u6587\u4ef6\u5939\u3002",
+  "lab.lib.picknone":"\u4f60\u8fd8\u6ca1\u6709\u5df2\u4fdd\u5b58\u7684\u5e8f\u5217\u3002",
+  "lab.lib.nth":"\u5e8f\u5217 {n}",
+  "lab.lib.opened!":"\u5df2\u6253\u5f00\u4e3a\u4f60\u81ea\u5df1\u7684\u526f\u672c\u3002\u4f60\u5728\u8fd9\u91cc\u505a\u7684\u66f4\u6539\u53ea\u6709\u4f60\u770b\u5f97\u5230\uff0c\u76f4\u5230\u4f60\u628a\u8fd9\u4efd\u526f\u672c\u52a0\u56de\u5b9e\u9a8c\u5ba4\u4e3a\u6b62\u3002",
+  "lab.lib.failopen":"\u65e0\u6cd5\u6253\u5f00\u3002",
+  "lab.off.h":"\u79bb\u7ebf\u3002\u663e\u793a\u8fd9\u53f0\u8bbe\u5907\u6700\u540e\u4e00\u6b21\u540c\u6b65\u7684\u8d44\u6e90\u5e93\u3002",
+  "lab.off.n1":"\u8fd9\u53f0\u8bbe\u5907\u4e0a\u6709 {n} \u6761\u5e8f\u5217\uff0c\u4ecd\u53ef\u6b63\u5e38\u6253\u5f00\u3001\u8ba1\u7b97\u3001\u590d\u5236\u4e0e\u5bfc\u51fa\u3002",
+  "lab.off.nN":"\u8fd9\u53f0\u8bbe\u5907\u4e0a\u6709 {n} \u6761\u5e8f\u5217\uff0c\u4ecd\u53ef\u6b63\u5e38\u6253\u5f00\u3001\u8ba1\u7b97\u3001\u590d\u5236\u4e0e\u5bfc\u51fa\u3002",
+  "lab.off.why!":"\u6587\u4ef6\u5939\u6d4f\u89c8\u4e0e\u5b9e\u9a8c\u5ba4\u5171\u7528\u90fd\u9700\u8981\u8054\u7f51\uff0c\u4e24\u8005\u5728\u4f60\u91cd\u65b0\u8054\u7f51\u4e4b\u524d\u90fd\u4f1a\u9690\u85cf\u8d77\u6765\u3002",
+  "lab.off.retry":"\u91cd\u8bd5",
+  "lab.acc.h":"\u7ba1\u7406\u8bbf\u95ee\u6743\u9650",
+  "lab.acc.to":"\u7ba1\u7406\u300c{name}\u300d\u7684\u8bbf\u95ee\u6743\u9650",
+  "lab.acc.nosync":"\u8fd9\u6761\u5e8f\u5217\u8981\u5148\u540c\u6b65\uff0c\u624d\u80fd\u7ba1\u7406\u8bbf\u95ee\u6743\u9650\u3002",
+  "lab.acc.sub":"\u5b9e\u9a8c\u5ba4\u91cc\u7684\u6bcf\u4e2a\u4eba\u90fd\u53ef\u4ee5\u67e5\u770b\u8fd9\u4e00\u6761\u3002\u8bf7\u9009\u62e9\u8c01\u4e5f\u53ef\u4ee5\u7f16\u8f91\u3002",
+  "lab.acc.author":"\u521b\u5efa\u8005",
+  "lab.acc.edit":"\u7f16\u8f91",
+  "lab.acc.can":"\u53ef\u7f16\u8f91 ✓",
+  "lab.acc.view":"\u4ec5\u53ef\u67e5\u770b",
+  "lab.acc.nomembers":"\u6ca1\u6709\u6210\u5458\u3002",
+  "lab.acc.failload":"\u65e0\u6cd5\u52a0\u8f7d\u8bbf\u95ee\u6743\u9650\u3002",
+  "lab.err.signin":"\u5c1a\u672a\u767b\u5f55",
+  "lab.err.nocfg":"\u5c1a\u672a\u8bbe\u7f6e Supabase",
+  "lab.err.post":"\u65e0\u6cd5\u53d1\u8868",
+  "lab.err.del":"\u65e0\u6cd5\u5220\u9664",
+  "lab.err.add":"\u65e0\u6cd5\u6dfb\u52a0",
+  "lab.err.move":"\u65e0\u6cd5\u79fb\u52a8",
+  "lab.err.create":"\u65e0\u6cd5\u521b\u5efa",
+  "lab.err.rename":"\u65e0\u6cd5\u91cd\u547d\u540d",
+  "lab.err.remove":"\u65e0\u6cd5\u79fb\u51fa",
+  "lab.err.grant":"\u65e0\u6cd5\u6388\u4e88\u7f16\u8f91\u6743\u9650",
+  "lab.err.revoke":"\u65e0\u6cd5\u6536\u56de\u7f16\u8f91\u6743\u9650",
   "lab.tree.local!":"\u6392\u5e8f\u548c\u641c\u7d22\u53ea\u4f1a\u6539\u53d8\u4f60\u81ea\u5df1\u770b\u5230\u7684\u89c6\u56fe\uff0c\u5176\u4ed6\u4eba\u770b\u5230\u7684\u4e0d\u4f1a\u53d8\u3002",
   "lab.tree.deep":"\u6587\u4ef6\u5939\u6700\u591a\u4e09\u5c42\uff0c\u8fd9\u4e00\u5c42\u5df2\u7ecf\u5230\u4e0a\u9650\u3002\u8bf7\u628a\u65b0\u6587\u4ef6\u5939\u5efa\u5728\u4e0a\u4e00\u5c42\uff0c\u6216\u76f4\u63a5\u4f7f\u7528\u5f53\u524d\u8fd9\u4e2a\u6587\u4ef6\u5939\u3002",
   "lab.tree.cycle":"\u6587\u4ef6\u5939\u4e0d\u80fd\u79fb\u5230\u81ea\u5df1\u91cc\u9762\uff0c\u4e5f\u4e0d\u80fd\u79fb\u5230\u81ea\u5df1\u7684\u5b50\u6587\u4ef6\u5939\u91cc\u9762\u3002",
@@ -2714,9 +3083,9 @@ var I18N = {
   "lab.md.fromwhy!":"\u6709\u6807\u8bb0\u7684\u6570\u503c\u662f\u4ece\u6587\u4ef6\u8bfb\u8fdb\u6765\u7684\uff0c\u4e0d\u662f\u5728\u8fd9\u91cc\u7b97\u51fa\u6765\u7684\u3002\u4f60\u4e00\u6539\u52a8\u5b83\uff0c\u6807\u8bb0\u5c31\u4f1a\u6d88\u5931\u3002",
   "lab.imp.btn":"\u5bfc\u5165\u6587\u4ef6",
   "lab.imp.h":"\u4ece\u6587\u4ef6\u5bfc\u5165\u5e8f\u5217",
-  "lab.imp.sub!":"\u76ee\u524d\u53ea\u652f\u6301 CSV\u3002\u6587\u4ef6\u5728\u8fd9\u4e2a\u6d4f\u89c8\u5668\u91cc\u8bfb\u53d6\uff0c\u4e0d\u4f1a\u4e0a\u4f20\uff0c\u4e5f\u4e0d\u4f1a\u7559\u4e0b\u3002",
-  "lab.imp.pick":"\u9009\u62e9 CSV \u6587\u4ef6",
-  "lab.imp.bad!":"\u8fd9\u4e2a\u6587\u4ef6\u65e0\u6cd5\u5f53\u6210 CSV \u8bfb\u53d6\u3002",
+  "lab.imp.sub!":"\u652f\u6301 CSV \u4e0e Excel\u3002\u6587\u4ef6\u5728\u8fd9\u4e2a\u6d4f\u89c8\u5668\u91cc\u8bfb\u53d6\uff0c\u4e0d\u4f1a\u4e0a\u4f20\uff0c\u4e5f\u4e0d\u4f1a\u7559\u4e0b\u3002",
+  "lab.imp.pick":"\u9009\u62e9 CSV \u6216 Excel \u6587\u4ef6",
+  "lab.imp.bad!":"\u8fd9\u4e2a\u6587\u4ef6\u65e0\u6cd5\u5f53\u6210\u7535\u5b50\u8868\u683c\u8bfb\u53d6\u3002",
   "lab.imp.empty!":"\u8fd9\u4e2a\u6587\u4ef6\u6ca1\u6709\u53ef\u4ee5\u5bfc\u5165\u7684\u6570\u636e\u884c\u3002",
   "lab.imp.big!":"\u8fd9\u4e2a\u6587\u4ef6\u6709 {n} \u884c\u3002\u4e00\u6b21\u6700\u591a\u53ea\u80fd\u5904\u7406 {max} \u884c\u3002",
   "lab.imp.own":"\u8fd9\u662f Oligo Calculator \u7684\u5b8c\u6574\u8bb0\u5f55\uff0c\u6bcf\u4e00\u5217\u90fd\u5df2\u7ecf\u5bf9\u5e94\u597d\u4e86\u3002",
@@ -2737,7 +3106,31 @@ var I18N = {
   "lab.imp.go":"\u5bfc\u5165 {n} \u6761",
   "lab.imp.none":"\u8fd9\u91cc\u6ca1\u6709\u53ef\u4ee5\u5bfc\u5165\u7684\u6570\u636e\u3002",
   "lab.imp.done":"\u5df2\u5bfc\u5165 {n} \u6761\u3002",
-  "lab.exp.btn":"\u5bfc\u51fa\u5b8c\u6574\u8bb0\u5f55",
+  "lab.exp.h":"\u628a\u5e8f\u5217\u5bfc\u51fa\u6210\u6587\u4ef6",
+  "lab.exp.sub!":"\u5382\u5546\u7684\u6587\u4ef6\u53ea\u4f1a\u5e26\u4e0a\u8be5\u5382\u5546\u81ea\u5df1\u7684\u5217\u3002\u8bb0\u5f55\u4e0a\u7684\u5176\u4ed6\u5185\u5bb9\u90fd\u7559\u5728\u8d44\u6e90\u5e93\u91cc\u3002",
+  "lab.exp.full":"\u5b8c\u6574\u8bb0\u5f55",
+  "lab.exp.europlate":"Eurofins \u5fae\u5b54\u677f",
+  "lab.exp.europlatewhy!":"Eurofins \u5fae\u5b54\u677f\u8ba2\u8d2d\u8868\u5355\u7684\u5217\u3002\u540d\u79f0\u6700\u591a 20 \u4e2a\u5b57\u7b26\uff0c\u4e0d\u80fd\u6709\u9017\u53f7\u3001\u53e5\u53f7\u3001\u5355\u5f15\u53f7\u6216\u7a7a\u683c\uff0c\u800c\u4e14\u6bcf\u4e00\u6761\u5e8f\u5217\u90fd\u8981\u6709\u5b54\u4f4d\u3002",
+  "lab.exp.eurotube":"Eurofins \u8bd5\u7ba1",
+  "lab.exp.eurotubewhy!":"Eurofins \u5fae\u5b54\u677f\u7684\u5217\uff0c\u5c11\u4e86\u5fae\u5b54\u677f\u4e0e\u5b54\u4f4d\u3002\u540d\u79f0\u6700\u591a 17 \u4e2a\u5b57\u7b26\u3002",
+  "lab.exp.idtplate":"IDT \u5fae\u5b54\u677f",
+  "lab.exp.idtplatewhy!":"IDT \u5fae\u5b54\u677f\u7684\u5217\u3002IDT \u7684\u4e0a\u4f20\u9875\u9762\u4e0d\u63a5\u53d7 CSV\uff0c\u6240\u4ee5\u8fd9\u4e2a\u5199\u6210 .xlsx\u3002\u4e00\u4e2a\u5fae\u5b54\u677f\u4e00\u5f20\u5de5\u4f5c\u8868\uff0c\u800c\u4e14\u6bcf\u4e00\u6761\u5e8f\u5217\u90fd\u8981\u6709\u5b54\u4f4d\u3002",
+  "lab.exp.modwhy!":"\u5e8f\u5217\u4e0e\u4fee\u9970\u5217\u7528\u7684\u662f\u8fd9\u4e2a\u8ba1\u7b97\u5668\u81ea\u5df1\u7684\u8bb0\u6cd5\u3002\u6bcf\u5bb6\u5382\u5546\u90fd\u6709\u81ea\u5df1\u7684\u4ee3\u7801\uff0c\u4e0b\u5355\u4e4b\u524d\u8bf7\u5bf9\u7740\u8be5\u5382\u5546\u7684\u4ee3\u7801\u8868\u6838\u5bf9\u4e00\u6b21\u3002",
+  "lab.exp.checkh":"\u6587\u4ef6\u91cc\u4f1a\u6709\u4ec0\u4e48",
+  "lab.exp.ok":"{n} \u6761\u53ef\u4ee5\u5bfc\u51fa\u3002",
+  "lab.exp.bad":"{n} \u6761\u4e0d\u80fd\u653e\u8fdb\u8fd9\u4e2a\u6587\u4ef6\uff1a",
+  "lab.exp.go":"\u5bfc\u51fa {n} \u6761",
+  "lab.exp.none":"\u8fd9\u4e9b\u5e8f\u5217\u6ca1\u6709\u4e00\u6761\u653e\u5f97\u8fdb\u8fd9\u4e2a\u6587\u4ef6\u3002",
+  "lab.exp.done":"\u5df2\u5bfc\u51fa {n} \u6761\u3002",
+  "lab.exp.rowname":"\u7b2c {n} \u6761\uff1a\u8fd9\u6761\u5e8f\u5217\u6ca1\u6709\u540d\u79f0\uff0c\u8868\u5355\u9700\u8981\u4e00\u4e2a\u3002",
+  "lab.exp.rowlong":"\u7b2c {n} \u6761 {name}\uff1a\u540d\u79f0\u6709 {len} \u4e2a\u5b57\u7b26\uff0c\u8fd9\u4efd\u8868\u5355\u6700\u591a\u53ea\u80fd\u6709 {max} \u4e2a\u3002",
+  "lab.exp.rowchar":"\u7b2c {n} \u6761 {name}\uff1a\u8fd9\u4efd\u8868\u5355\u7684\u540d\u79f0\u4e0d\u80fd\u6709\u9017\u53f7\u3001\u53e5\u53f7\u3001\u5355\u5f15\u53f7\u6216\u7a7a\u683c\u3002",
+  "lab.exp.rowwell":"\u7b2c {n} \u6761 {name}\uff1a\u8fd9\u4e2a\u6587\u4ef6\u9700\u8981\u50cf A1 \u8fd9\u6837\u7684\u5b54\u4f4d\u3002",
+  "lab.exp.rowdupe":"\u7b2c {n} \u6761\uff1a{well} \u7528\u4e86\u8d85\u8fc7\u4e00\u6b21\uff0c\u800c\u4e00\u4e2a\u5fae\u5b54\u677f\u7684\u6bcf\u4e2a\u5b54\u4f4d\u53ea\u80fd\u653e\u4e00\u6761\u5e8f\u5217\u3002",
+  "lab.imp.sheet":"\u5de5\u4f5c\u8868",
+  "lab.imp.sheeth":"\u8fd9\u4e2a\u6587\u4ef6\u6709\u591a\u5f20\u5de5\u4f5c\u8868\u3002\u5e8f\u5217\u5728\u54ea\u4e00\u5f20\uff1f",
+  "lab.imp.noxlsx!":"\u8fd9\u4e2a\u6d4f\u89c8\u5668\u592a\u65e7\uff0c\u6253\u4e0d\u5f00 .xlsx \u6587\u4ef6\u3002\u8bf7\u628a\u5de5\u4f5c\u8868\u5b58\u6210 CSV\uff0c\u6539\u7528 CSV \u5bfc\u5165\u3002",
+  "lab.exp.btn":"\u5bfc\u51fa\u5e8f\u5217",
   "lab.exp.why!":"\u5b8c\u6574\u8bb0\u5f55\u4f1a\u5b58\u4e0b\u91cd\u5efa\u6bcf\u4e00\u6761\u5e8f\u5217\u6240\u9700\u8981\u7684\u5168\u90e8\u6570\u503c\uff0c\u6240\u4ee5\u518d\u5bfc\u5165\u56de\u6765\u5c31\u4f1a\u4e00\u6a21\u4e00\u6837\u3002\u65c1\u8fb9\u7684\u5bfc\u51fa CSV \u662f\u7ed9\u4eba\u770b\u7684\uff0c\u4e0d\u662f\u62ff\u6765\u5bfc\u5165\u7684\u3002",
   "lab.priv.who!":"\u53ea\u6709\u4f60\u548c\u5b9e\u9a8c\u5ba4\u7ba1\u7406\u8005\u770b\u5f97\u5230\u8fd9\u91cc\u9762\u7684\u5185\u5bb9\u3002",
   "lab.priv.empty!":"\u8fd9\u91cc\u8fd8\u6ca1\u6709\u4e1c\u897f\u3002\u4f60\u53ef\u4ee5\u5148\u628a\u5e8f\u5217\u79fb\u5230\u8fd9\u4e2a\u7a7a\u95f4\u5904\u7406\uff0c\u4e4b\u540e\u518d\u653e\u8fdb\u5b9e\u9a8c\u5ba4\u7684\u5171\u7528\u8d44\u6e90\u5e93\u3002\u8fd9\u4e2a\u7a7a\u95f4\u91cc\u7684\u5185\u5bb9\uff0c\u53ea\u6709\u4f60\u548c\u5b9e\u9a8c\u5ba4\u7ba1\u7406\u8005\u770b\u5f97\u5230\u3002",
@@ -3674,6 +4067,113 @@ var I18N = {
   "lab.tree.byname":"\u540d\u524d",
   "lab.tree.bydate":"\u66f4\u65b0\u65e5",
   "lab.tree.find":"\u30d5\u30a9\u30eb\u30c0\u30fc\u3092\u691c\u7d22",
+  "lab.dlg.close":"\u9589\u3058\u308b",
+  "lab.dlg.loading":"\u8aad\u307f\u8fbc\u307f\u4e2d…",
+  "lab.dlg.seq":"\u914d\u5217",
+  "lab.dlg.aseq":"\u914d\u5217",
+  "lab.dlg.generic":"\u30c0\u30a4\u30a2\u30ed\u30b0",
+  "lab.cmt.h":"\u30b3\u30e1\u30f3\u30c8",
+  "lab.cmt.on":"\u300c{name}\u300d\u306e\u30b3\u30e1\u30f3\u30c8",
+  "lab.cmt.nosync":"\u3053\u306e\u914d\u5217\u306b\u30b3\u30e1\u30f3\u30c8\u3059\u308b\u306b\u306f\u3001\u5148\u306b\u540c\u671f\u304c\u5fc5\u8981\u3067\u3059\u3002",
+  "lab.cmt.ph":"\u30b3\u30e1\u30f3\u30c8\u3092\u8ffd\u52a0…",
+  "lab.cmt.aria":"\u30b3\u30e1\u30f3\u30c8\u3092\u8ffd\u52a0",
+  "lab.cmt.post":"\u6295\u7a3f",
+  "lab.cmt.del":"\u30b3\u30e1\u30f3\u30c8\u3092\u524a\u9664",
+  "lab.cmt.none":"\u307e\u3060\u30b3\u30e1\u30f3\u30c8\u306f\u3042\u308a\u307e\u305b\u3093\u3002",
+  "lab.cmt.failload":"\u30b3\u30e1\u30f3\u30c8\u3092\u8aad\u307f\u8fbc\u3081\u307e\u305b\u3093\u3067\u3057\u305f\u3002",
+  "lab.cmt.someone":"\u4e0d\u660e",
+  "lab.mon.h":"\u30e9\u30dc\u306e\u30ab\u30b9\u30bf\u30e0\u5869\u57fa\u3068\u30e2\u30ce\u30de\u30fc",
+  "lab.mon.skip1":"\u30e9\u30dc\u306e\u30e2\u30ce\u30de\u30fc {n} \u4ef6\u306f\u6709\u52b9\u306a\u8cea\u91cf\u304c\u306a\u304f\u8aad\u307f\u53d6\u308c\u306a\u3044\u305f\u3081\u3001\u30b9\u30ad\u30c3\u30d7\u3057\u307e\u3057\u305f\u3002",
+  "lab.mon.skipN":"\u30e9\u30dc\u306e\u30e2\u30ce\u30de\u30fc {n} \u4ef6\u306f\u6709\u52b9\u306a\u8cea\u91cf\u304c\u306a\u304f\u8aad\u307f\u53d6\u308c\u306a\u3044\u305f\u3081\u3001\u30b9\u30ad\u30c3\u30d7\u3057\u307e\u3057\u305f\u3002",
+  "lab.mon.nomass":"\u3053\u306e\u30e2\u30ce\u30de\u30fc\u306b\u306f\u6709\u52b9\u306a\u8cea\u91cf\u304c\u306a\u3044\u305f\u3081\u3001\u8ffd\u52a0\u3057\u307e\u305b\u3093\u3067\u3057\u305f\u3002",
+  "lab.mon.dupe":"\u300c{code}\u300d\u306f\u3059\u3067\u306b\u30ab\u30b9\u30bf\u30e0\u5869\u57fa\u306b\u3042\u308a\u307e\u3059\u3002",
+  "lab.mon.added":"\u300c{code}\u300d\u3092\u30ab\u30b9\u30bf\u30e0\u5869\u57fa\u306b\u8ffd\u52a0\u3057\u307e\u3057\u305f\u3002",
+  "lab.mon.failmine":"\u30ab\u30b9\u30bf\u30e0\u5869\u57fa\u306b\u8ffd\u52a0\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f\u3002",
+  "lab.mon.yours":"\u3042\u306a\u305f\u304c\u5171\u6709\u3057\u305f\u3082\u306e",
+  "lab.mon.mine":"{code} \u3092\u81ea\u5206\u306e\u30ab\u30b9\u30bf\u30e0\u5869\u57fa\u306b\u8ffd\u52a0",
+  "lab.mon.mineT":"\u81ea\u5206\u306e\u5869\u57fa\u306b\u8ffd\u52a0",
+  "lab.mon.rm":"{code} \u3092\u30e9\u30dc\u304b\u3089\u5916\u3059",
+  "lab.mon.rmT":"\u30e9\u30dc\u304b\u3089\u5916\u3059",
+  "lab.mon.none":"\u5171\u6709\u3055\u308c\u305f\u30e2\u30ce\u30de\u30fc\u306f\u307e\u3060\u3042\u308a\u307e\u305b\u3093\u3002",
+  "lab.mon.who":"\u30e9\u30dc\u306e\u30e1\u30f3\u30d0\u30fc\u306f\u8ab0\u3067\u3082\u3053\u308c\u3089\u306e\u30b3\u30fc\u30c9\u3092\u4f7f\u3048\u307e\u3059\u3002\u30e2\u30ce\u30de\u30fc\u3092\u5916\u305b\u308b\u306e\u306f\u3001\u5171\u6709\u3057\u305f\u672c\u4eba\u3060\u3051\u3067\u3059\u3002",
+  "lab.mon.add":"+ \u81ea\u5206\u306e\u5869\u57fa\u307e\u305f\u306f\u30e2\u30ce\u30de\u30fc\u3092\u5171\u6709",
+  "lab.mon.pick":"\u30e2\u30ce\u30de\u30fc\u3092\u30e9\u30dc\u3068\u5171\u6709",
+  "lab.mon.pickh":"\u30e9\u30dc\u306e\u30ab\u30b9\u30bf\u30e0\u5869\u57fa\u3068\u30e2\u30ce\u30de\u30fc\u306b\u8ffd\u52a0",
+  "lab.mon.picksub":"\u5171\u6709\u3059\u308b\u30ab\u30b9\u30bf\u30e0\u5869\u57fa\u307e\u305f\u306f\u30e2\u30ce\u30de\u30fc\u3092 1 \u3064\u9078\u3093\u3067\u304f\u3060\u3055\u3044\u3002\u30e9\u30dc\u306e\u5168\u54e1\u304c\u305d\u306e\u30b3\u30fc\u30c9\u3092\u4f7f\u3048\u308b\u3088\u3046\u306b\u306a\u308a\u3001\u5916\u305b\u308b\u306e\u306f\u3042\u306a\u305f\u3060\u3051\u3067\u3059\u3002",
+  "lab.mon.pickadd":"\u8ffd\u52a0",
+  "lab.mon.pickempty":"\u30ab\u30b9\u30bf\u30e0\u30e2\u30ce\u30de\u30fc\u306f\u307e\u3060\u3042\u308a\u307e\u305b\u3093\u3002",
+  "lab.mon.shared":"\u30e2\u30ce\u30de\u30fc\u3092\u30e9\u30dc\u306b\u5171\u6709\u3057\u307e\u3057\u305f",
+  "lab.mon.armrm":"\u5916\u3057\u307e\u3059\u304b\uff1f",
+  "lab.mon.nosync":"\u3053\u306e\u30e2\u30ce\u30de\u30fc\u3092\u5916\u3059\u306b\u306f\u3001\u5148\u306b\u540c\u671f\u304c\u5fc5\u8981\u3067\u3059\u3002",
+  "lab.mon.unshared":"\u30e9\u30dc\u304b\u3089\u5916\u3057\u307e\u3057\u305f\u3002\u3054\u81ea\u8eab\u306e\u5869\u57fa\u306b\u306f\u6b8b\u3063\u3066\u3044\u307e\u3059\u3002",
+  "lab.fold.all":"\u3059\u3079\u3066",
+  "lab.fold.unfiled":"\u672a\u5206\u985e",
+  "lab.fold.open":"\u30d5\u30a9\u30eb\u30c0\u30fc {name} \u3092\u958b\u304f",
+  "lab.fold.menu":"\u30d5\u30a9\u30eb\u30c0\u30fc {name} \u306e\u540d\u524d\u5909\u66f4\u307e\u305f\u306f\u524a\u9664",
+  "lab.fold.menuT":"\u540d\u524d\u5909\u66f4\u307e\u305f\u306f\u524a\u9664",
+  "lab.fold.new":"+ \u65b0\u3057\u3044\u30d5\u30a9\u30eb\u30c0\u30fc",
+  "lab.fold.newh":"\u65b0\u3057\u3044\u30d5\u30a9\u30eb\u30c0\u30fc",
+  "lab.fold.nameph":"\u30d5\u30a9\u30eb\u30c0\u30fc\u540d",
+  "lab.fold.create":"\u4f5c\u6210",
+  "lab.fold.needname":"\u30d5\u30a9\u30eb\u30c0\u30fc\u540d\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
+  "lab.fold.created":"\u30d5\u30a9\u30eb\u30c0\u30fc\u3092\u4f5c\u6210\u3057\u307e\u3057\u305f",
+  "lab.fold.rename":"\u540d\u524d\u3092\u5909\u66f4",
+  "lab.fold.needname2":"\u540d\u524d\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
+  "lab.fold.renamed":"\u540d\u524d\u3092\u5909\u66f4\u3057\u307e\u3057\u305f",
+  "lab.fold.del":"\u30d5\u30a9\u30eb\u30c0\u30fc\u3092\u524a\u9664",
+  "lab.fold.confirm":"\u524a\u9664\u3059\u308b",
+  "lab.fold.deleted":"\u30d5\u30a9\u30eb\u30c0\u30fc\u3092\u524a\u9664\u3057\u307e\u3057\u305f",
+  "lab.fold.delwhy!":"\u30d5\u30a9\u30eb\u30c0\u30fc\u3092\u524a\u9664\u3059\u308b\u3068\u3001\u4e2d\u306e\u914d\u5217\u306f\u300c\u672a\u5206\u985e\u300d\u306b\u79fb\u308a\u307e\u3059\u3002\u5931\u308f\u308c\u308b\u3082\u306e\u306f\u3042\u308a\u307e\u305b\u3093\u3002",
+  "lab.fold.moveh":"\u79fb\u52d5\u5148…",
+  "lab.fold.movearia":"{name} \u3092\u30d5\u30a9\u30eb\u30c0\u30fc\u306b\u79fb\u52d5",
+  "lab.fold.moved":"\u79fb\u52d5\u3057\u307e\u3057\u305f",
+  "lab.card.open":"\u958b\u304f",
+  "lab.card.rmlab":"\u5916\u3059",
+  "lab.card.rmdone":"\u30e9\u30dc\u304b\u3089\u5916\u3057\u307e\u3057\u305f",
+  "lab.card.del":"\u524a\u9664",
+  "lab.card.armdel":"\u524a\u9664\u3057\u307e\u3059\u304b\uff1f",
+  "lab.card.deleted":"\u524a\u9664\u3057\u307e\u3057\u305f",
+  "lab.card.sel":"{name} \u3092\u9078\u629e",
+  "lab.card.untitled":"\u540d\u79f0\u672a\u8a2d\u5b9a",
+  "lab.card.by":"\u5171\u6709\u5143: {email}",
+  "lab.card.shared":"\u5171\u6709\u6e08\u307f",
+  "lab.card.you":"\u3042\u306a\u305f",
+  "lab.lib.mine":"\u30de\u30a4\u30e9\u30a4\u30d6\u30e9\u30ea",
+  "lab.lib.label":"\u30e9\u30a4\u30d6\u30e9\u30ea",
+  "lab.lib.crumb":"\u30e9\u30dc: {name}",
+  "lab.lib.openlab":"\u30e9\u30dc\u306e\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u3092\u958b\u304f",
+  "lab.lib.emptylab":"\u3053\u306e\u30e9\u30dc\u306b\u5171\u6709\u3055\u308c\u305f\u914d\u5217\u306f\u307e\u3060\u3042\u308a\u307e\u305b\u3093\u3002",
+  "lab.lib.emptymine":"\u4fdd\u5b58\u3055\u308c\u305f\u914d\u5217\u306f\u307e\u3060\u3042\u308a\u307e\u305b\u3093\u3002\u307e\u305a\u8a08\u7b97\u30c4\u30fc\u30eb\u304b\u3089\u4fdd\u5b58\u3057\u3001\u3053\u3053\u3067\u30d5\u30a9\u30eb\u30c0\u30fc\u306b\u6574\u7406\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
+  "lab.lib.picknone":"\u4fdd\u5b58\u3055\u308c\u305f\u914d\u5217\u306f\u307e\u3060\u3042\u308a\u307e\u305b\u3093\u3002",
+  "lab.lib.nth":"\u914d\u5217 {n}",
+  "lab.lib.opened!":"\u3042\u306a\u305f\u81ea\u8eab\u306e\u30b3\u30d4\u30fc\u3068\u3057\u3066\u958b\u304d\u307e\u3057\u305f\u3002\u3053\u3053\u3067\u306e\u5909\u66f4\u306f\u3001\u305d\u306e\u30b3\u30d4\u30fc\u3092\u30e9\u30dc\u306b\u623b\u3059\u307e\u3067\u3042\u306a\u305f\u4ee5\u5916\u306b\u306f\u898b\u3048\u307e\u305b\u3093\u3002",
+  "lab.lib.failopen":"\u958b\u3051\u307e\u305b\u3093\u3067\u3057\u305f\u3002",
+  "lab.off.h":"\u30aa\u30d5\u30e9\u30a4\u30f3\u3067\u3059\u3002\u3053\u306e\u7aef\u672b\u304c\u6700\u5f8c\u306b\u540c\u671f\u3057\u305f\u30e9\u30a4\u30d6\u30e9\u30ea\u3092\u8868\u793a\u3057\u3066\u3044\u307e\u3059\u3002",
+  "lab.off.n1":"\u3053\u306e\u7aef\u672b\u306b\u914d\u5217\u304c {n} \u4ef6\u3042\u308a\u307e\u3059\u3002\u958b\u304f\u3001\u8a08\u7b97\u3001\u30b3\u30d4\u30fc\u3001\u66f8\u304d\u51fa\u3057\u306f\u3059\u3079\u3066\u4f7f\u3048\u307e\u3059\u3002",
+  "lab.off.nN":"\u3053\u306e\u7aef\u672b\u306b\u914d\u5217\u304c {n} \u4ef6\u3042\u308a\u307e\u3059\u3002\u958b\u304f\u3001\u8a08\u7b97\u3001\u30b3\u30d4\u30fc\u3001\u66f8\u304d\u51fa\u3057\u306f\u3059\u3079\u3066\u4f7f\u3048\u307e\u3059\u3002",
+  "lab.off.why!":"\u30d5\u30a9\u30eb\u30c0\u30fc\u306e\u8868\u793a\u3068\u30e9\u30dc\u5171\u6709\u306b\u306f\u63a5\u7d9a\u304c\u5fc5\u8981\u3067\u3059\u3002\u3069\u3061\u3089\u3082\u30aa\u30f3\u30e9\u30a4\u30f3\u306b\u623b\u308b\u307e\u3067\u975e\u8868\u793a\u306b\u306a\u308a\u307e\u3059\u3002",
+  "lab.off.retry":"\u518d\u8a66\u884c",
+  "lab.acc.h":"\u30a2\u30af\u30bb\u30b9\u6a29\u3092\u7ba1\u7406",
+  "lab.acc.to":"\u300c{name}\u300d\u306e\u30a2\u30af\u30bb\u30b9\u6a29\u3092\u7ba1\u7406",
+  "lab.acc.nosync":"\u3053\u306e\u914d\u5217\u306e\u30a2\u30af\u30bb\u30b9\u6a29\u3092\u7ba1\u7406\u3059\u308b\u306b\u306f\u3001\u5148\u306b\u540c\u671f\u304c\u5fc5\u8981\u3067\u3059\u3002",
+  "lab.acc.sub":"\u30e9\u30dc\u306e\u5168\u54e1\u304c\u3053\u308c\u3092\u95b2\u89a7\u3067\u304d\u307e\u3059\u3002\u7de8\u96c6\u3082\u3067\u304d\u308b\u4eba\u3092\u9078\u3093\u3067\u304f\u3060\u3055\u3044\u3002",
+  "lab.acc.author":"\u4f5c\u6210\u8005",
+  "lab.acc.edit":"\u7de8\u96c6",
+  "lab.acc.can":"\u7de8\u96c6\u53ef ✓",
+  "lab.acc.view":"\u95b2\u89a7\u306e\u307f",
+  "lab.acc.nomembers":"\u30e1\u30f3\u30d0\u30fc\u304c\u3044\u307e\u305b\u3093\u3002",
+  "lab.acc.failload":"\u30a2\u30af\u30bb\u30b9\u6a29\u3092\u8aad\u307f\u8fbc\u3081\u307e\u305b\u3093\u3067\u3057\u305f\u3002",
+  "lab.err.signin":"\u30b5\u30a4\u30f3\u30a4\u30f3\u3057\u3066\u3044\u307e\u305b\u3093",
+  "lab.err.nocfg":"Supabase \u304c\u8a2d\u5b9a\u3055\u308c\u3066\u3044\u307e\u305b\u3093",
+  "lab.err.post":"\u6295\u7a3f\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f",
+  "lab.err.del":"\u524a\u9664\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f",
+  "lab.err.add":"\u8ffd\u52a0\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f",
+  "lab.err.move":"\u79fb\u52d5\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f",
+  "lab.err.create":"\u4f5c\u6210\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f",
+  "lab.err.rename":"\u540d\u524d\u3092\u5909\u66f4\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f",
+  "lab.err.remove":"\u5916\u305b\u307e\u305b\u3093\u3067\u3057\u305f",
+  "lab.err.grant":"\u7de8\u96c6\u6a29\u9650\u3092\u4ed8\u4e0e\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f",
+  "lab.err.revoke":"\u7de8\u96c6\u6a29\u9650\u3092\u89e3\u9664\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f",
   "lab.tree.local!":"\u4e26\u3079\u66ff\u3048\u3068\u691c\u7d22\u306f\u81ea\u5206\u306e\u753b\u9762\u3060\u3051\u306b\u53cd\u6620\u3055\u308c\u307e\u3059\u3002\u307b\u304b\u306e\u4eba\u306e\u753b\u9762\u306f\u5909\u308f\u308a\u307e\u305b\u3093\u3002",
   "lab.tree.deep":"\u30d5\u30a9\u30eb\u30c0\u30fc\u306f 3 \u968e\u5c64\u307e\u3067\u3067\u3001\u3053\u306e\u968e\u5c64\u304c\u4e0a\u9650\u3067\u3059\u3002\u65b0\u3057\u3044\u30d5\u30a9\u30eb\u30c0\u30fc\u306f1 \u3064\u4e0a\u306e\u968e\u5c64\u306b\u4f5c\u308b\u304b\u3001\u4eca\u306e\u30d5\u30a9\u30eb\u30c0\u30fc\u3092\u305d\u306e\u307e\u307e\u304a\u4f7f\u3044\u304f\u3060\u3055\u3044\u3002",
   "lab.tree.cycle":"\u30d5\u30a9\u30eb\u30c0\u30fc\u3092\u3001\u305d\u306e\u30d5\u30a9\u30eb\u30c0\u30fc\u81ea\u8eab\u306e\u4e2d\u3084\u914d\u4e0b\u306e\u30b5\u30d6\u30d5\u30a9\u30eb\u30c0\u30fc\u306e\u4e2d\u306b\u79fb\u52d5\u3059\u308b\u3053\u3068\u306f\u3067\u304d\u307e\u305b\u3093\u3002",
@@ -3699,9 +4199,9 @@ var I18N = {
   "lab.md.fromwhy!":"\u30de\u30fc\u30af\u306e\u4ed8\u3044\u305f\u5024\u306f\u30d5\u30a1\u30a4\u30eb\u304b\u3089\u8aad\u307f\u8fbc\u3093\u3060\u3082\u306e\u3067\u3001\u3053\u3053\u3067\u8a08\u7b97\u3057\u305f\u5024\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002\u66f8\u304d\u63db\u3048\u308b\u3068\u30de\u30fc\u30af\u306f\u5916\u308c\u307e\u3059\u3002",
   "lab.imp.btn":"\u30d5\u30a1\u30a4\u30eb\u3092\u8aad\u307f\u8fbc\u3080",
   "lab.imp.h":"\u30d5\u30a1\u30a4\u30eb\u304b\u3089\u914d\u5217\u3092\u8aad\u307f\u8fbc\u3080",
-  "lab.imp.sub!":"\u4eca\u306e\u3068\u3053\u308d CSV \u306e\u307f\u3067\u3059\u3002\u30d5\u30a1\u30a4\u30eb\u306f\u3053\u306e\u30d6\u30e9\u30a6\u30b6\u30fc\u5185\u3067\u8aad\u307f\u53d6\u308a\u3001\u30a2\u30c3\u30d7\u30ed\u30fc\u30c9\u3082\u4fdd\u5b58\u3082\u3057\u307e\u305b\u3093\u3002",
-  "lab.imp.pick":"CSV \u30d5\u30a1\u30a4\u30eb\u3092\u9078\u3076",
-  "lab.imp.bad!":"\u3053\u306e\u30d5\u30a1\u30a4\u30eb\u306f CSV \u3068\u3057\u3066\u8aad\u307f\u53d6\u308c\u307e\u305b\u3093\u3067\u3057\u305f\u3002",
+  "lab.imp.sub!":"CSV \u3068 Excel \u306b\u5bfe\u5fdc\u3057\u3066\u3044\u307e\u3059\u3002\u30d5\u30a1\u30a4\u30eb\u306f\u3053\u306e\u30d6\u30e9\u30a6\u30b6\u30fc\u5185\u3067\u8aad\u307f\u53d6\u3089\u308c\u3001\u30a2\u30c3\u30d7\u30ed\u30fc\u30c9\u3082\u4fdd\u5b58\u3082\u3055\u308c\u307e\u305b\u3093\u3002",
+  "lab.imp.pick":"CSV \u307e\u305f\u306f Excel \u30d5\u30a1\u30a4\u30eb\u3092\u9078\u3076",
+  "lab.imp.bad!":"\u3053\u306e\u30d5\u30a1\u30a4\u30eb\u306f\u8868\u8a08\u7b97\u30d5\u30a1\u30a4\u30eb\u3068\u3057\u3066\u8aad\u307f\u53d6\u308c\u307e\u305b\u3093\u3067\u3057\u305f\u3002",
   "lab.imp.empty!":"\u3053\u306e\u30d5\u30a1\u30a4\u30eb\u306b\u306f\u8aad\u307f\u8fbc\u3081\u308b\u884c\u304c\u3042\u308a\u307e\u305b\u3093\u3002",
   "lab.imp.big!":"\u3053\u306e\u30d5\u30a1\u30a4\u30eb\u306f {n} \u884c\u3042\u308a\u307e\u3059\u3002\u4e00\u5ea6\u306b\u8aad\u307f\u8fbc\u3081\u308b\u306e\u306f {max} \u884c\u307e\u3067\u3067\u3059\u3002",
   "lab.imp.own":"\u3053\u308c\u306f Oligo Calculator \u306e\u5b8c\u5168\u30ec\u30b3\u30fc\u30c9\u3067\u3059\u3002\u3059\u3079\u3066\u306e\u5217\u304c\u5bfe\u5fdc\u3057\u307e\u3057\u305f\u3002",
@@ -3722,7 +4222,31 @@ var I18N = {
   "lab.imp.go":"{n} \u4ef6\u3092\u8aad\u307f\u8fbc\u3080",
   "lab.imp.none":"\u8aad\u307f\u8fbc\u3081\u308b\u3082\u306e\u304c\u3042\u308a\u307e\u305b\u3093\u3002",
   "lab.imp.done":"{n} \u4ef6\u3092\u8aad\u307f\u8fbc\u307f\u307e\u3057\u305f\u3002",
-  "lab.exp.btn":"\u5b8c\u5168\u30ec\u30b3\u30fc\u30c9\u3092\u66f8\u304d\u51fa\u3059",
+  "lab.exp.h":"\u914d\u5217\u3092\u30d5\u30a1\u30a4\u30eb\u306b\u66f8\u304d\u51fa\u3059",
+  "lab.exp.sub!":"\u30d9\u30f3\u30c0\u30fc\u7528\u306e\u30d5\u30a1\u30a4\u30eb\u306b\u306f\u3001\u305d\u306e\u30d9\u30f3\u30c0\u30fc\u81ea\u8eab\u306e\u5217\u3060\u3051\u304c\u5165\u308a\u307e\u3059\u3002\u30ec\u30b3\u30fc\u30c9\u306e\u305d\u308c\u4ee5\u5916\u306e\u5185\u5bb9\u306f\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u6b8b\u308a\u307e\u3059\u3002",
+  "lab.exp.full":"\u5b8c\u5168\u30ec\u30b3\u30fc\u30c9",
+  "lab.exp.europlate":"Eurofins \u30d7\u30ec\u30fc\u30c8",
+  "lab.exp.europlatewhy!":"Eurofins \u306e\u30d7\u30ec\u30fc\u30c8\u767a\u6ce8\u30d5\u30a9\u30fc\u30e0\u306e\u5217\u3067\u3059\u3002\u540d\u524d\u306f 20 \u6587\u5b57\u307e\u3067\u3067\u3001\u30ab\u30f3\u30de\u3001\u30d4\u30ea\u30aa\u30c9\u3001\u30a2\u30dd\u30b9\u30c8\u30ed\u30d5\u30a3\u3001\u30b9\u30da\u30fc\u30b9\u306f\u4f7f\u3048\u307e\u305b\u3093\u3002\u914d\u5217\u3054\u3068\u306b\u30a6\u30a7\u30eb\u304c\u5fc5\u8981\u3067\u3059\u3002",
+  "lab.exp.eurotube":"Eurofins \u30c1\u30e5\u30fc\u30d6",
+  "lab.exp.eurotubewhy!":"Eurofins \u306e\u30d7\u30ec\u30fc\u30c8\u306e\u5217\u304b\u3089\u3001\u30d7\u30ec\u30fc\u30c8\u3068\u30a6\u30a7\u30eb\u3092\u9664\u3044\u305f\u3082\u306e\u3067\u3059\u3002\u540d\u524d\u306f 17 \u6587\u5b57\u307e\u3067\u3067\u3059\u3002",
+  "lab.exp.idtplate":"IDT \u30d7\u30ec\u30fc\u30c8",
+  "lab.exp.idtplatewhy!":"IDT \u306e\u30d7\u30ec\u30fc\u30c8\u7528\u306e\u5217\u3067\u3059\u3002IDT \u306e\u30a2\u30c3\u30d7\u30ed\u30fc\u30c9\u30da\u30fc\u30b8\u306f CSV \u3092\u53d7\u3051\u4ed8\u3051\u306a\u3044\u305f\u3081\u3001\u3053\u308c\u306f .xlsx \u3067\u66f8\u304d\u51fa\u3057\u307e\u3059\u3002\u30d7\u30ec\u30fc\u30c8 1 \u679a\u306b\u3064\u304d\u30ef\u30fc\u30af\u30b7\u30fc\u30c8 1 \u679a\u3067\u3001\u914d\u5217\u3054\u3068\u306b\u30a6\u30a7\u30eb\u304c\u5fc5\u8981\u3067\u3059\u3002",
+  "lab.exp.modwhy!":"\u914d\u5217\u3068\u4fee\u98fe\u306e\u5217\u306b\u306f\u3001\u3053\u306e\u8a08\u7b97\u6a5f\u81ea\u8eab\u306e\u8868\u8a18\u3092\u4f7f\u3044\u307e\u3059\u3002\u30d9\u30f3\u30c0\u30fc\u3054\u3068\u306b\u72ec\u81ea\u306e\u30b3\u30fc\u30c9\u304c\u3042\u308b\u306e\u3067\u3001\u767a\u6ce8\u3059\u308b\u524d\u306b\u305d\u306e\u30d9\u30f3\u30c0\u30fc\u306e\u30b3\u30fc\u30c9\u8868\u3068\u7167\u3089\u3057\u5408\u308f\u305b\u3066\u304f\u3060\u3055\u3044\u3002",
+  "lab.exp.checkh":"\u30d5\u30a1\u30a4\u30eb\u306b\u5165\u308b\u9805\u76ee",
+  "lab.exp.ok":"{n} \u4ef6\u3092\u66f8\u304d\u51fa\u305b\u307e\u3059\u3002",
+  "lab.exp.bad":"{n} \u4ef6\u306f\u3053\u306e\u30d5\u30a1\u30a4\u30eb\u306b\u5165\u308c\u3089\u308c\u307e\u305b\u3093\uff1a",
+  "lab.exp.go":"{n} \u4ef6\u3092\u66f8\u304d\u51fa\u3059",
+  "lab.exp.none":"\u3053\u308c\u3089\u306e\u914d\u5217\u306f\u3001\u3069\u308c\u3082\u3053\u306e\u30d5\u30a1\u30a4\u30eb\u306b\u5165\u308c\u3089\u308c\u307e\u305b\u3093\u3002",
+  "lab.exp.done":"{n} \u4ef6\u3092\u66f8\u304d\u51fa\u3057\u307e\u3057\u305f\u3002",
+  "lab.exp.rowname":"{n} \u4ef6\u76ee\uff1a\u3053\u306e\u914d\u5217\u306b\u306f\u540d\u524d\u304c\u306a\u304f\u3001\u30d5\u30a9\u30fc\u30e0\u306b\u306f\u540d\u524d\u304c\u5fc5\u8981\u3067\u3059\u3002",
+  "lab.exp.rowlong":"{n} \u4ef6\u76ee {name}\uff1a\u540d\u524d\u304c {len} \u6587\u5b57\u3042\u308a\u3001\u3053\u306e\u30d5\u30a9\u30fc\u30e0\u3067\u4f7f\u3048\u308b\u306e\u306f {max} \u6587\u5b57\u307e\u3067\u3067\u3059\u3002",
+  "lab.exp.rowchar":"{n} \u4ef6\u76ee {name}\uff1a\u3053\u306e\u30d5\u30a9\u30fc\u30e0\u3067\u306f\u540d\u524d\u306b\u30ab\u30f3\u30de\u3001\u30d4\u30ea\u30aa\u30c9\u3001\u30a2\u30dd\u30b9\u30c8\u30ed\u30d5\u30a3\u3001\u30b9\u30da\u30fc\u30b9\u3092\u4f7f\u3048\u307e\u305b\u3093\u3002",
+  "lab.exp.rowwell":"{n} \u4ef6\u76ee {name}\uff1a\u3053\u306e\u30d5\u30a1\u30a4\u30eb\u306b\u306f A1 \u306e\u3088\u3046\u306a\u30a6\u30a7\u30eb\u4f4d\u7f6e\u304c\u5fc5\u8981\u3067\u3059\u3002",
+  "lab.exp.rowdupe":"{n} \u4ef6\u76ee\uff1a{well} \u304c\u8907\u6570\u56de\u4f7f\u308f\u308c\u3066\u3044\u307e\u3059\u3002\u30d7\u30ec\u30fc\u30c8\u306f 1 \u3064\u306e\u30a6\u30a7\u30eb\u306b 1 \u3064\u306e\u914d\u5217\u3067\u3059\u3002",
+  "lab.imp.sheet":"\u30b7\u30fc\u30c8",
+  "lab.imp.sheeth":"\u3053\u306e\u30d5\u30a1\u30a4\u30eb\u306b\u306f\u30b7\u30fc\u30c8\u304c\u8907\u6570\u3042\u308a\u307e\u3059\u3002\u914d\u5217\u304c\u5165\u3063\u3066\u3044\u308b\u306e\u306f\u3069\u308c\u3067\u3059\u304b\u3002",
+  "lab.imp.noxlsx!":"\u3053\u306e\u30d6\u30e9\u30a6\u30b6\u30fc\u306f\u53e4\u3044\u305f\u3081 .xlsx \u30d5\u30a1\u30a4\u30eb\u3092\u958b\u3051\u307e\u305b\u3093\u3002\u30b7\u30fc\u30c8\u3092 CSV \u3068\u3057\u3066\u4fdd\u5b58\u3057\u3001CSV \u3092\u8aad\u307f\u8fbc\u3093\u3067\u304f\u3060\u3055\u3044\u3002",
+  "lab.exp.btn":"\u914d\u5217\u3092\u66f8\u304d\u51fa\u3059",
   "lab.exp.why!":"\u5b8c\u5168\u30ec\u30b3\u30fc\u30c9\u306b\u306f\u5404\u914d\u5217\u3092\u5fa9\u5143\u3059\u308b\u305f\u3081\u306b\u5fc5\u8981\u306a\u5024\u304c\u3059\u3079\u3066\u5165\u3063\u3066\u3044\u308b\u306e\u3067\u3001\u8aad\u307f\u8fbc\u307f\u76f4\u305b\u3070\u3053\u306e\u4e00\u89a7\u3092\u305d\u306e\u307e\u307e\u518d\u73fe\u3067\u304d\u307e\u3059\u3002\u96a3\u306e CSV \u3092\u66f8\u304d\u51fa\u3059 \u306f\u8aad\u3080\u305f\u3081\u306e\u3082\u306e\u3067\u3001\u8aad\u307f\u8fbc\u307f\u7528\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002",
   "lab.priv.who!":"\u3053\u3053\u306b\u3042\u308b\u3082\u306e\u3092\u95b2\u89a7\u3067\u304d\u308b\u306e\u306f\u3001\u3042\u306a\u305f\u3068\u30e9\u30dc\u7ba1\u7406\u8005\u3060\u3051\u3067\u3059\u3002",
   "lab.priv.empty!":"\u3053\u3053\u306b\u306f\u307e\u3060\u4f55\u3082\u3042\u308a\u307e\u305b\u3093\u3002\u914d\u5217\u3092\u3053\u306e\u30b9\u30da\u30fc\u30b9\u306b\u79fb\u52d5\u3059\u308c\u3070\u3001\u30e9\u30dc\u306e\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u51fa\u3059\u524d\u306b\u4f5c\u696d\u3067\u304d\u307e\u3059\u3002\u3053\u306e\u30b9\u30da\u30fc\u30b9\u306e\u5185\u5bb9\u3092\u95b2\u89a7\u3067\u304d\u308b\u306e\u306f\u3001\u3042\u306a\u305f\u3068\u30e9\u30dc\u7ba1\u7406\u8005\u3060\u3051\u3067\u3059\u3002",
@@ -12531,7 +13055,7 @@ function renderHistToolbar(){
   bar.innerHTML='<span class="hp-lead">★ Pro library</span>'+
     '<select class="hp-sel" data-histfolder aria-label="Filter by folder"><option value="">All folders</option>'+folders.map(function(f){return '<option'+(lf===f?' selected':'')+'>'+cbEsc(f)+'</option>';}).join('')+'</select>'+
     '<select class="hp-sel" data-histtag aria-label="Filter by tag"><option value="">All tags</option>'+tags.map(function(t){return '<option'+(lt===t?' selected':'')+'>'+cbEsc(t)+'</option>';}).join('')+'</select>'+
-    '<button type="button" class="hp-btn" data-libbatch>Batch entry</button>'+'<button type="button" class="hp-btn" data-sheetimp>'+cbEsc(window.t('lab.imp.btn'))+'</button>'+'<button type="button" class="hp-btn" data-sheetexp title="'+cbEsc(window.t('lab.exp.why!'))+'">'+cbEsc(window.t('lab.exp.btn'))+'</button>'+
+    '<button type="button" class="hp-btn" data-libbatch>Batch entry</button>'+'<button type="button" class="hp-btn" data-sheetimp>'+cbEsc(window.t('lab.imp.btn'))+'</button>'+'<button type="button" class="hp-btn" data-sheetexp title="'+cbEsc(window.t('lab.exp.sub!'))+'">'+cbEsc(window.t('lab.exp.btn'))+'</button>'+
     '<span class="hp-meta">'+(history||[]).length+' strand'+((history||[]).length===1?'':'s')+' · folders · tags · notes · versions</span>';
 }
 /* R52 (audit LOW): reveal Move to lab when there is a lab to move to.
@@ -16274,7 +16798,14 @@ try{
   function jwtSub(t){ try{ return (JSON.parse(decodeURIComponent(escape(atob(t.split('.')[1].replace(/-/g,'+').replace(/_/g,'/')))))||{}).sub||null; }catch(_){ try{ return (JSON.parse(atob(t.split('.')[1]))||{}).sub||null; }catch(e){ return null; } } }
   async function myUid(){ try{ var t=(typeof proAccessToken==='function')?await proAccessToken():null; return t?jwtSub(t):null; }catch(_){ return null; } }
   async function headers(extra){ var t=(typeof proAccessToken==='function')?await proAccessToken():null; var h=(typeof sbAuthHeaders==='function')?sbAuthHeaders():{'Content-Type':'application/json'}; if(t) h.Authorization='Bearer '+t; if(extra){ for(var k in extra) h[k]=extra[k]; } return h; }
-  async function rest(method,path,body,extra){ if(typeof sbBase!=='function'||!sbBase()) throw new Error('Supabase not configured'); var opt={method:method,headers:await headers(extra)}; if(body!==undefined) opt.body=JSON.stringify(body); var r=await window.oligoFetchT(sbBase()+'/rest/v1/'+path,opt,15000); if(!r.ok){ var t=''; try{ t=await r.text(); }catch(_e){ ocFail('rest#1',_e); } throw new Error(rerr(t)||(method+' '+r.status)); } var txt=''; try{ txt=await r.text(); }catch(_e){ ocFail('rest#2',_e); } if(!txt) return null; try{ return JSON.parse(txt); }catch(_){ return txt; } }
+  /* R76g. ⚠ THIS ONE IS REACHABLE, which is why it is keyed rather than left
+     as a build diagnostic. `sbBase()` reads `S.catalogSupabaseUrl`, which ships
+     with a value AND is editable from the settings panel (`data-textset=
+     "catalogSupabaseUrl"`), so a reader who clears that field gets this
+     message through `toast(err.message||…)` on every lab action.
+     ⚠ `Supabase` is in tools/i18n/never-translate.json, so rule 8 keeps the
+     token identical in all four locales and only the sentence around it moves. */
+  async function rest(method,path,body,extra){ if(typeof sbBase!=='function'||!sbBase()) throw new Error(_t('lab.err.nocfg')); var opt={method:method,headers:await headers(extra)}; if(body!==undefined) opt.body=JSON.stringify(body); var r=await window.oligoFetchT(sbBase()+'/rest/v1/'+path,opt,15000); if(!r.ok){ var t=''; try{ t=await r.text(); }catch(_e){ ocFail('rest#1',_e); } throw new Error(rerr(t)||(method+' '+r.status)); } var txt=''; try{ txt=await r.text(); }catch(_e){ ocFail('rest#2',_e); } if(!txt) return null; try{ return JSON.parse(txt); }catch(_){ return txt; } }
   function rerr(t){ try{ var j=JSON.parse(t); return j.message||j.details||j.hint||''; }catch(_){ return (t||'').slice(0,160); } }
   async function rpc(fn,args){ return await rest('POST','rpc/'+fn,args||{}); }
 
@@ -16333,7 +16864,7 @@ try{
 
   function rowToEntry(row){ var d=Object.assign({}, row.data||{}); d.id=row.client_id||d.id; if(row.name!=null)d.name=row.name; if(row.folder!=null)d.folder=row.folder; if(Array.isArray(row.tags))d.tags=row.tags; d.__rowId=row.id; d.__uid=row.user_id; d.__author=(row.data&&row.data.authorEmail)||''; d.__folderId=row.folder_id||''; d.__labId=row.lab_id||''; return d; }
   async function fetchLabStrands(labId){ var rows=await rest('GET','strands?lab_id=eq.'+encodeURIComponent(labId)+'&select=*&order=updated_at.desc'); return (rows||[]).map(rowToEntry); }
-  async function addToLab(entry,labId){ if(!entry.id){ entry.id=(window.oligoSync&&oligoSync.uuid)?oligoSync.uuid():('id-'+(''+Math.random()).slice(2)); try{ saveHist(); }catch(_e){ ocFail('addToLab#1',_e); } } var uid=await myUid(); if(!uid) throw new Error('Not signed in'); var data=Object.assign({}, entry, {authorEmail:myEmail()}); delete data.__rowId; delete data.__uid; delete data.__author; var row={ user_id:uid, client_id:entry.id, name:entry.name||'', seq:entry.seq||'', folder:entry.folder||null, tags:Array.isArray(entry.tags)?entry.tags:[], data:data, lab_id:labId }; await rest('POST','strands?on_conflict=user_id,client_id',[row],{Prefer:'resolution=merge-duplicates,return=minimal'}); }
+  async function addToLab(entry,labId){ if(!entry.id){ entry.id=(window.oligoSync&&oligoSync.uuid)?oligoSync.uuid():('id-'+(''+Math.random()).slice(2)); try{ saveHist(); }catch(_e){ ocFail('addToLab#1',_e); } } var uid=await myUid(); if(!uid) throw new Error(_t('lab.err.signin')); var data=Object.assign({}, entry, {authorEmail:myEmail()}); delete data.__rowId; delete data.__uid; delete data.__author; var row={ user_id:uid, client_id:entry.id, name:entry.name||'', seq:entry.seq||'', folder:entry.folder||null, tags:Array.isArray(entry.tags)?entry.tags:[], data:data, lab_id:labId }; await rest('POST','strands?on_conflict=user_id,client_id',[row],{Prefer:'resolution=merge-duplicates,return=minimal'}); }
   /* R52 (audit P1-35): the comment block on the MONOMER un-share spells out
      exactly why it needs &user_id=eq.<uid> -- "PostgREST ANDs it into the WHERE
      clause, so the row of another member cannot be touched even if the button
@@ -16377,15 +16908,54 @@ try{
   function _n(x){ try{ return new Intl.NumberFormat((window.ocI18n&&window.ocI18n.get)?window.ocI18n.get():'en').format(x); }catch(_){ return String(x); } }
   function labMW(e){ try{ var r=compute(e.seq,e.type,e.linkage); return r&&r.n?fmt(r.mw,r.n):(e.mwStr||''); }catch(_){ return e.mwStr||''; } }
 
+  /* R76g.  ⚠⚠ THE OPEN DIALOG HAS TO REPAINT TOO, AND R76f SHIPPED THE DEFECT
+     THIS EXISTS TO PREVENT.  Every dialog in this block writes its WHOLE box
+     with innerHTML -- heading, subtitle and body in one string -- and
+     applyLang() can only rewrite a node it holds an English baseline for, which
+     a node written after boot never had.  R76f's import overlay re-rendered
+     only its BODY on `oligo:lang`, so a reader who switched language mid-session
+     got a Japanese body under an English heading; probe-surface S16 caught it
+     one revert before upload.
+     ⚠ So what the listener re-runs is the SHELL PAINTER, not the body painter.
+     Exactly one dialog is open at a time (modal() appends a scrim and every
+     opener closes the previous one), so one slot is enough, and modal()'s close
+     clears it -- a stale painter would write into a box that is no longer in
+     the document. */
+  var _dlgPaint = null;
+  function _setDlgPaint(fn){ _dlgPaint = (typeof fn === 'function') ? fn : null; }
+  /* ⚠ Carry what the reader has TYPED across the repaint.  A reader comparing
+     two languages mid-comment is exactly the reader who switches, and losing
+     their half-written text to a language change is the same class of harm as
+     R73b's re-render committing a half-typed rename. */
+  function _keepVal(box, sel){ try{ var el=box.querySelector(sel); return el?(el.value||''):''; }catch(_){ return ''; } }
+  function _putVal(box, sel, v){ try{ var el=box.querySelector(sel); if(el && v) el.value=v; }catch(_){ /* the field is gone; there is nothing to restore into */ } }
+
   // ---- comments (any lab member; delete own or manager, enforced by RLS) ----
   async function fetchComments(rowId){ return (await rest('GET','strand_comments?strand_id=eq.'+encodeURIComponent(rowId)+'&select=*&order=created_at.asc'))||[]; }
-  async function addComment(rowId,txt){ var uid=await myUid(); if(!uid) throw new Error('Not signed in'); await rest('POST','strand_comments',[{strand_id:rowId,user_id:uid,author_email:myEmail(),body:txt}],{Prefer:'return=minimal'}); }
+  async function addComment(rowId,txt){ var uid=await myUid(); if(!uid) throw new Error(_t('lab.err.signin')); await rest('POST','strand_comments',[{strand_id:rowId,user_id:uid,author_email:myEmail(),body:txt}],{Prefer:'return=minimal'}); }
   async function deleteComment(id){ await rest('DELETE','strand_comments?id=eq.'+encodeURIComponent(id),undefined,{Prefer:'return=minimal'}); }
-  function openComments(rowId,name){ if(!rowId){ toast('This strand needs to sync before commenting.'); return; } var mo=modal('Comments on '+(name||'strand'),'none'); var mine=myEmail();
-    mo.box.innerHTML='<button type="button" class="oshare-btn oshare-x" aria-label="Close">✕</button><h3>Comments</h3><p class="oshare-sub">'+esc(name||'Strand')+'</p><div data-cmt-body><div class="lab-hint">Loading…</div></div><div class="oshare-row"><input data-cmt-input placeholder="Add a comment…" aria-label="Add a comment" maxlength="1000"><button type="button" class="oshare-btn primary" data-cmt-send>Post</button></div>';
-    mo.box.addEventListener('click',function(e){ var s=e.target.closest('[data-cmt-send]'); if(s){ var inp=mo.box.querySelector('[data-cmt-input]'); var v=((inp&&inp.value)||'').trim(); if(!v) return; s.disabled=true; addComment(rowId,v).then(function(){ if(inp)inp.value=''; s.disabled=false; paint(); }).catch(function(err){ toast(err.message||'Could not post'); s.disabled=false; }); return; } var d=e.target.closest('[data-cmt-del]'); if(d){ deleteComment(d.getAttribute('data-cmt-del')).then(paint).catch(function(err){ toast(err.message||'Could not delete'); }); } });
-    async function paint(){ var body=mo.box.querySelector('[data-cmt-body]'); try{ var rows=await fetchComments(rowId); body.innerHTML=(rows.length? rows.map(function(c){ var own=(String(c.author_email||'').toLowerCase()===mine); return '<div class="lab-cmt"><div class="lc-cmt-h"><span class="lc-cmt-a">'+esc(c.author_email||'someone')+'</span>'+(own?'<button type="button" class="lab-x" data-cmt-del="'+esc(c.id)+'" aria-label="Delete comment">✕</button>':'')+'</div><div class="lc-cmt-b">'+esc(c.body||'')+'</div></div>'; }).join('') : '<div class="lab-hint">No comments yet.</div>'); }catch(err){ body.innerHTML='<div class="lab-hint">Could not load comments.</div>'; } }
-    paint();
+  function openComments(rowId,name){ if(!rowId){ toast(_t('lab.cmt.nosync')); return; } var _nm=name||_t('lab.dlg.aseq'); var mo=modal(_t('lab.cmt.on',{name:_nm}),'none'); var mine=myEmail();
+    /* ⚠ `maxlength` LEADS THE KEYED ATTRIBUTES ON PURPOSE, at all three inputs
+       in this block.  Routing a placeholder through _t() splits the literal, and
+       if a fixed attribute follows the last keyed one then the tail piece begins
+       in the MIDDLE of a tag -- a stray quote, an attribute name, its value,
+       then the next element.  i18n-lint rule 7 reads that as a sentence, because
+       its markup stripper removes a TRAILING partial tag and not a LEADING one.
+       Put the fixed attributes first and the tail begins at the tag boundary
+       instead, which it correctly ignores.  Do not "tidy" the order back: rule 7
+       refuses the build if you do.
+       ⚠⚠ AND THIS COMMENT IS DELIBERATELY WRITTEN WITHOUT SPELLING A TAG.  A
+       first draft quoted the two shapes verbatim, and glyph-gate counted the
+       opening tag inside the comment as a control and reported a 26th site for
+       U+2715.  A guard that cannot tell a comment from code, instance thirteen,
+       inside the comment explaining a lint.  CLAUDE.md: describe a pinned
+       string, never spell it. */
+    function shell(){ var keep=_keepVal(mo.box,'[data-cmt-input]');
+      mo.box.innerHTML='<button type="button" class="oshare-btn oshare-x" aria-label="'+esc(_t('lab.dlg.close'))+'">✕</button><h3>'+esc(_t('lab.cmt.h'))+'</h3><p class="oshare-sub">'+esc(name||_t('lab.dlg.seq'))+'</p><div data-cmt-body><div class="lab-hint">'+esc(_t('lab.dlg.loading'))+'</div></div><div class="oshare-row"><input data-cmt-input maxlength="1000" placeholder="'+esc(_t('lab.cmt.ph'))+'" aria-label="'+esc(_t('lab.cmt.aria'))+'"><button type="button" class="oshare-btn primary" data-cmt-send>'+esc(_t('lab.cmt.post'))+'</button></div>';
+      _putVal(mo.box,'[data-cmt-input]',keep); paint(); }
+    mo.box.addEventListener('click',function(e){ var s=e.target.closest('[data-cmt-send]'); if(s){ var inp=mo.box.querySelector('[data-cmt-input]'); var v=((inp&&inp.value)||'').trim(); if(!v) return; s.disabled=true; addComment(rowId,v).then(function(){ if(inp)inp.value=''; s.disabled=false; paint(); }).catch(function(err){ toast(err.message||_t('lab.err.post')); s.disabled=false; }); return; } var d=e.target.closest('[data-cmt-del]'); if(d){ deleteComment(d.getAttribute('data-cmt-del')).then(paint).catch(function(err){ toast(err.message||_t('lab.err.del')); }); } });
+    async function paint(){ var body=mo.box.querySelector('[data-cmt-body]'); if(!body) return; try{ var rows=await fetchComments(rowId); body.innerHTML=(rows.length? rows.map(function(c){ var own=(String(c.author_email||'').toLowerCase()===mine); return '<div class="lab-cmt"><div class="lc-cmt-h"><span class="lc-cmt-a">'+esc(c.author_email||_t('lab.cmt.someone'))+'</span>'+(own?'<button type="button" class="lab-x" data-cmt-del="'+esc(c.id)+'" aria-label="'+esc(_t('lab.cmt.del'))+'">✕</button>':'')+'</div><div class="lc-cmt-b">'+esc(c.body||'')+'</div></div>'; }).join('') : '<div class="lab-hint">'+esc(_t('lab.cmt.none'))+'</div>'); }catch(err){ body.innerHTML='<div class="lab-hint">'+esc(_t('lab.cmt.failload'))+'</div>'; } }
+    _setDlgPaint(shell); shell();
   }
   // ---- lab monomers (any lab member edit; merged into CUSTOM so lab codes resolve) ----
   var _labMon=[];
@@ -16417,7 +16987,12 @@ try{
       var conj=(c.kind==='conj');
       CUSTOM[c.code]={code:c.code,name:c.name||c.code,mass:Number(c.mass),hasPhos:!!c.hasPhos,kind:c.kind||'base',nobond:conj,eff:conj?Number(c.mass):(c.hasPhos?Number(c.mass)-LINK.PO:Number(c.mass)),_lab:true};
     });
-    if(_labMonSkipped) toast(_labMonSkipped+' lab monomer'+(_labMonSkipped===1?'':'s')+' could not be read (no valid mass) and '+(_labMonSkipped===1?'was':'were')+' skipped.');
+    /* R76g. ⚠ THE PLURAL WAS THREE ENGLISH FRAGMENTS IN TWO TERNARIES, and
+       R75a's rule is that `js-literals.mjs` cannot see fragments that short --
+       ' lab monomer', 's', 'was', 'were' are all under its prose floor. Two
+       whole keys instead, so no target language has to inflect an English
+       stem. `_n()` because a count is a displayed number. */
+    if(_labMonSkipped) toast(_t(_labMonSkipped===1?'lab.mon.skip1':'lab.mon.skipN',{n:_n(_labMonSkipped)}));
   }
   /* R52 (audit P1-26): mergeMonInto writes lab codes into CUSTOM with
      _lab:true, and rebuildCustom() rebuilds CUSTOM EXCLUSIVELY from
@@ -16440,7 +17015,7 @@ try{
     }
   }catch(_e){ ocFail('_remergeLabMon#2',_e); }
   async function mergeLabMonomers(labId){ try{ _labMon=await fetchLabMonomers(labId); mergeMonInto(_labMon); }catch(_){ _labMon=[]; } }
-  async function addMonomerToLab(cb,labId){ var uid=await myUid(); if(!uid) throw new Error('Not signed in'); var _d=Object.assign({}, cb, {authorEmail:myEmail()}); var row={ user_id:uid, code:cb.code, name:cb.name||'', data:_d, lab_id:labId }; await rest('POST','custom_bases?on_conflict=user_id,code',[row],{Prefer:'resolution=merge-duplicates,return=minimal'}); }
+  async function addMonomerToLab(cb,labId){ var uid=await myUid(); if(!uid) throw new Error(_t('lab.err.signin')); var _d=Object.assign({}, cb, {authorEmail:myEmail()}); var row={ user_id:uid, code:cb.code, name:cb.name||'', data:_d, lab_id:labId }; await rest('POST','custom_bases?on_conflict=user_id,code',[row],{Prefer:'resolution=merge-duplicates,return=minimal'}); }
   /* Un-share, do NOT delete. A lab monomer row IS the author's own custom_bases
      row (the POST above upserts on the (user_id, code) unique key and just sets
      lab_id), so a DELETE here would take the monomer out of the author's own
@@ -16450,16 +17025,20 @@ try{
      the WHERE clause, so the row of another member cannot be touched even if the
      button is reached some other way. The matching author-only RLS policy is in
      supabase/supabase_custom_bases_author_delete.sql. */
-  async function unshareLabMonomer(rowId){ var uid=await myUid(); if(!uid) throw new Error('Not signed in');
+  async function unshareLabMonomer(rowId){ var uid=await myUid(); if(!uid) throw new Error(_t('lab.err.signin'));
     await rest('PATCH','custom_bases?id=eq.'+encodeURIComponent(rowId)+'&user_id=eq.'+encodeURIComponent(uid),{lab_id:null},{Prefer:'return=minimal'}); }
   function addLabMonomerToMine(c){
-    try{ if(!labMonOk(c)){ toast('That monomer is missing a valid mass, so it was not added.'); return; }   /* R52 P1-25 */
+    try{ if(!labMonOk(c)){ toast(_t('lab.mon.nomass')); return; }   /* R52 P1-25 */
       S.customBases=S.customBases||[];
-      if(S.customBases.some(function(x){return x&&String(x.code)===String(c.code);})){ toast('“'+c.code+'” is already in your custom bases.'); return; }
+      /* ⚠ The curly quotes were HALF of two literals each ('“'+code and
+         '” is already…'), so the target language could not move them. They
+         are inside the key now, where a locale that quotes differently can
+         say so. */
+      if(S.customBases.some(function(x){return x&&String(x.code)===String(c.code);})){ toast(_t('lab.mon.dupe',{code:c.code})); return; }
       S.customBases.push({code:c.code,name:c.name||'',mass:c.mass,hasPhos:!!c.hasPhos,kind:c.kind||'base',formula:c.formula||''});
       if(typeof save==='function') save(); if(typeof rebuildCustom==='function') rebuildCustom(); if(typeof applyAll==='function') applyAll();
-      toast('Added “'+c.code+'” to your custom bases.');
-    }catch(e){ toast('Could not add to your bases.'); }
+      toast(_t('lab.mon.added',{code:c.code}));
+    }catch(e){ toast(_t('lab.mon.failmine')); }
   }
   /* Author test, same shape as fileCard()'s: the row's user_id when we could
      resolve our own uid, otherwise the authorEmail stamped into data. */
@@ -16467,18 +17046,20 @@ try{
     if(uid && m && m.user_id) return m.user_id===uid;
     var ae=(m&&m.data&&m.data.authorEmail)||''; return !!ae && String(ae).toLowerCase()===mine;
   }catch(_){ return false; } }
-  function monSectionHTML(uid, mine){ return '<div class="lab-monsec"><div class="lab-h" style="padding:0 0 4px">Lab Customized Bases and Monomers</div>'+
+  function monSectionHTML(uid, mine){ return '<div class="lab-monsec"><div class="lab-h" style="padding:0 0 4px">'+esc(_t('lab.mon.h'))+'</div>'+
       (_labMon.length? _labMon.map(function(m,i){ var c=Object.assign({},m.data||{},{code:m.code}); var own=monIsMine(m,uid,mine);
-        return '<div class="lab-mem"><span class="lm-e">'+esc(c.code)+' · '+esc(c.name||'')+(own?' <span class="lm-p">yours</span>':'')+'</span><span class="lm-r">'+esc(''+(c.mass||''))+'</span><span class="lm-a">'+
-          '<button type="button" class="lab-x" data-labmon-mine="'+i+'" aria-label="Add '+esc(c.code)+' to my custom bases" title="Add to my bases">✚</button>'+
-          (own?('<button type="button" class="lab-x danger" data-labmon-rm="'+esc(m.id||'')+'" data-labmon-code="'+esc(c.code)+'" aria-label="Remove '+esc(c.code)+' from the lab" title="Remove from lab">✕</button>'):'')+
-        '</span></div>'; }).join('') : '<div class="lab-hint" style="padding:2px 0">No shared monomers yet.</div>')+
-      '<div class="lab-hint" style="padding:4px 0 0">Anyone in the lab can use these codes. Only the member who shared a monomer can remove it.</div>'+
-      '<div class="lab-add" style="margin-top:6px"><button type="button" class="lab-btn" data-labmon-add>+ Add one of my bases or monomers</button></div></div>'; }
-  function openMonPicker(){ var labId=meta().labId; var cbs=(S.customBases||[]).filter(function(c){return c&&c.code;}); var mo=modal('Share a monomer with the lab','none');
-    mo.box.innerHTML='<button type="button" class="oshare-btn oshare-x" aria-label="Close">✕</button><h3>Add to Lab Customized Bases and Monomers</h3><p class="oshare-sub">Pick one of your custom bases or monomers to share with the lab. Everyone in the lab can then use its code; only you can remove it again.</p><div class="oshare-list">'+
-      (cbs.length? cbs.map(function(c,i){ return '<div class="lab-pick"><span class="lc-n">'+esc(c.code)+'</span><span class="lc-seq">'+esc(c.name||'')+' · '+esc(''+(c.mass||''))+'</span><button type="button" class="lab-btn" data-monpickadd="'+i+'">Add</button></div>'; }).join('') : '<div class="lab-hint">You have no custom monomers yet.</div>')+'</div>';
-    mo.box.addEventListener('click',function(e){ var b=e.target.closest('[data-monpickadd]'); if(!b) return; var c=cbs[+b.getAttribute('data-monpickadd')]; if(!c) return; b.disabled=true; addMonomerToLab(c,labId).then(function(){ toast('Monomer shared to lab'); mo.close(); renderLabList(); }).catch(function(err){ toast(err.message||'Could not add'); b.disabled=false; }); });
+        return '<div class="lab-mem"><span class="lm-e">'+esc(c.code)+' · '+esc(c.name||'')+(own?' <span class="lm-p">'+esc(_t('lab.mon.yours'))+'</span>':'')+'</span><span class="lm-r">'+esc(''+(c.mass||''))+'</span><span class="lm-a">'+
+          '<button type="button" class="lab-x" data-labmon-mine="'+i+'" aria-label="'+esc(_t('lab.mon.mine',{code:c.code}))+'" title="'+esc(_t('lab.mon.mineT'))+'">✚</button>'+
+          (own?('<button type="button" class="lab-x danger" data-labmon-rm="'+esc(m.id||'')+'" data-labmon-code="'+esc(c.code)+'" aria-label="'+esc(_t('lab.mon.rm',{code:c.code}))+'" title="'+esc(_t('lab.mon.rmT'))+'">✕</button>'):'')+
+        '</span></div>'; }).join('') : '<div class="lab-hint" style="padding:2px 0">'+esc(_t('lab.mon.none'))+'</div>')+
+      '<div class="lab-hint" style="padding:4px 0 0">'+esc(_t('lab.mon.who'))+'</div>'+
+      '<div class="lab-add" style="margin-top:6px"><button type="button" class="lab-btn" data-labmon-add>'+esc(_t('lab.mon.add'))+'</button></div></div>'; }
+  function openMonPicker(){ var labId=meta().labId; var cbs=(S.customBases||[]).filter(function(c){return c&&c.code;}); var mo=modal(_t('lab.mon.pick'),'none');
+    function shell(){
+      mo.box.innerHTML='<button type="button" class="oshare-btn oshare-x" aria-label="'+esc(_t('lab.dlg.close'))+'">✕</button><h3>'+esc(_t('lab.mon.pickh'))+'</h3><p class="oshare-sub">'+esc(_t('lab.mon.picksub'))+'</p><div class="oshare-list">'+
+        (cbs.length? cbs.map(function(c,i){ return '<div class="lab-pick"><span class="lc-n">'+esc(c.code)+'</span><span class="lc-seq">'+esc(c.name||'')+' · '+esc(''+(c.mass||''))+'</span><button type="button" class="lab-btn" data-monpickadd="'+i+'">'+esc(_t('lab.mon.pickadd'))+'</button></div>'; }).join('') : '<div class="lab-hint">'+esc(_t('lab.mon.pickempty'))+'</div>')+'</div>'; }
+    mo.box.addEventListener('click',function(e){ var b=e.target.closest('[data-monpickadd]'); if(!b) return; var c=cbs[+b.getAttribute('data-monpickadd')]; if(!c) return; b.disabled=true; addMonomerToLab(c,labId).then(function(){ toast(_t('lab.mon.shared')); mo.close(); renderLabList(); }).catch(function(err){ toast(err.message||_t('lab.err.add')); b.disabled=false; }); });
+    _setDlgPaint(shell); shell();
   }
 
   // ---- FOLDERS (RPC-gated; shared in lab scope). Move requires edit rights (RLS enforces). ----
@@ -16550,8 +17131,8 @@ try{
   function folderCounts(list){ var c={__unfiled:0,__all:list.length}; list.forEach(function(e){ if(e.__folderId) c[e.__folderId]=(c[e.__folderId]||0)+1; else c.__unfiled++; }); return c; }
   function folderRailHTML(folders, list, cur){ var c=folderCounts(list);
     var html='<div class="frail" data-frail>'+
-      '<button type="button" class="fchip'+(cur===''?' on':'')+'" data-fchip="__all">All<span class="fcount">'+c.__all+'</span></button>'+
-      '<button type="button" class="fchip'+(cur==='__unfiled'?' on':'')+'" data-fchip="__unfiled" data-drop="__unfiled">Unfiled<span class="fcount">'+c.__unfiled+'</span></button>';
+      '<button type="button" class="fchip'+(cur===''?' on':'')+'" data-fchip="__all">'+esc(_t('lab.fold.all'))+'<span class="fcount">'+_n(c.__all)+'</span></button>'+
+      '<button type="button" class="fchip'+(cur==='__unfiled'?' on':'')+'" data-fchip="__unfiled" data-drop="__unfiled">'+esc(_t('lab.fold.unfiled'))+'<span class="fcount">'+_n(c.__unfiled)+'</span></button>';
     /* R51 (audit F-07): this nested a role="button" INSIDE a real <button>.
        Invalid, ambiguous to activate, and the nested control had click wiring
        but no Enter/Space handling, so it was keyboard-dead. Two native sibling
@@ -16559,35 +17140,50 @@ try{
        accessible names, and the drop target moves to the wrapper so
        drag-and-drop for pointer users is unchanged. */
     (folders||[]).forEach(function(f){ html+='<span class="fchipwrap'+(cur===f.id?' on':'')+'" data-drop="'+esc(f.id)+'">'+
-      '<button type="button" class="fchip'+(cur===f.id?' on':'')+'" data-fchip="'+esc(f.id)+'" aria-label="Open folder '+esc(f.name)+'">'+esc(f.name)+'<span class="fcount">'+(c[f.id]||0)+'</span></button>'+
-      '<button type="button" class="fmenu" data-fmenu="'+esc(f.id)+'" data-fname="'+esc(f.name)+'" aria-label="Rename or delete folder '+esc(f.name)+'" title="Rename or delete">⋯</button>'+
+      '<button type="button" class="fchip'+(cur===f.id?' on':'')+'" data-fchip="'+esc(f.id)+'" aria-label="'+esc(_t('lab.fold.open',{name:f.name}))+'">'+esc(f.name)+'<span class="fcount">'+_n(c[f.id]||0)+'</span></button>'+
+      '<button type="button" class="fmenu" data-fmenu="'+esc(f.id)+'" data-fname="'+esc(f.name)+'" aria-label="'+esc(_t('lab.fold.menu',{name:f.name}))+'" title="'+esc(_t('lab.fold.menuT'))+'">⋯</button>'+
       '</span>'; });
-    html+='<button type="button" class="fchip fnew" data-fnew>+ New folder</button></div>';
+    html+='<button type="button" class="fchip fnew" data-fnew>'+esc(_t('lab.fold.new'))+'</button></div>';
     return html;
   }
-  function openMoveTo(rowId,name){ var mo=modal('Move '+(name||'strand')+' to a folder','none');
-    mo.box.innerHTML='<button type="button" class="oshare-btn oshare-x" aria-label="Close">✕</button><h3>Move to…</h3><p class="oshare-sub">'+esc(name||'Strand')+'</p><div class="oshare-list">'+
-      '<div class="lab-pick"><span class="lc-n">Unfiled</span><button type="button" class="lab-btn" data-moveto="">Move</button></div>'+
-      (_folders||[]).map(function(f){ return '<div class="lab-pick"><span class="lc-n">'+esc(fName(f))+'</span><button type="button" class="lab-btn" data-moveto="'+esc(f.id)+'">'+esc(_t('lab.mv.go'))+'</button></div>'; }).join('')+'</div>';
-    mo.box.addEventListener('click',function(e){ var b=e.target.closest('[data-moveto]'); if(!b) return; b.disabled=true; strandMove(rowId, b.getAttribute('data-moveto')||null).then(function(){ toast('Moved'); mo.close(); renderLabList(); }).catch(function(err){ toast(err.message||'Could not move'); b.disabled=false; }); });
+  function openMoveTo(rowId,name){ var _nm=name||_t('lab.dlg.aseq'); var mo=modal(_t('lab.fold.movearia',{name:_nm}),'none');
+    function shell(){
+      mo.box.innerHTML='<button type="button" class="oshare-btn oshare-x" aria-label="'+esc(_t('lab.dlg.close'))+'">✕</button><h3>'+esc(_t('lab.fold.moveh'))+'</h3><p class="oshare-sub">'+esc(name||_t('lab.dlg.seq'))+'</p><div class="oshare-list">'+
+        '<div class="lab-pick"><span class="lc-n">'+esc(_t('lab.fold.unfiled'))+'</span><button type="button" class="lab-btn" data-moveto="">'+esc(_t('lab.mv.go'))+'</button></div>'+
+        (_folders||[]).map(function(f){ return '<div class="lab-pick"><span class="lc-n">'+esc(fName(f))+'</span><button type="button" class="lab-btn" data-moveto="'+esc(f.id)+'">'+esc(_t('lab.mv.go'))+'</button></div>'; }).join('')+'</div>'; }
+    mo.box.addEventListener('click',function(e){ var b=e.target.closest('[data-moveto]'); if(!b) return; b.disabled=true; strandMove(rowId, b.getAttribute('data-moveto')||null).then(function(){ toast(_t('lab.fold.moved')); mo.close(); renderLabList(); }).catch(function(err){ toast(err.message||_t('lab.err.move')); b.disabled=false; }); });
+    _setDlgPaint(shell); shell();
   }
-  function openNewFolder(){ var labId=scopeLabId(); var mo=modal('New folder','[data-fname-input]');
-    mo.box.innerHTML='<button type="button" class="oshare-btn oshare-x" aria-label="Close">✕</button><h3>New folder</h3><div class="oshare-row"><input data-fname-input placeholder="Folder name" aria-label="Folder name" maxlength="60"><button type="button" class="oshare-btn primary" data-fcreate>Create</button></div>';
-    mo.box.addEventListener('click',function(e){ var b=e.target.closest('[data-fcreate]'); if(!b) return; var inp=mo.box.querySelector('[data-fname-input]'); var nm=((inp&&inp.value)||'').trim(); if(!nm){ toast('Enter a folder name.'); return; } b.disabled=true; folderCreate(nm,labId,meta().openFolder||null).then(function(){ toast('Folder created'); mo.close(); renderLabList(); }).catch(function(err){ toast(_rpcMsg(err)||'Could not create'); b.disabled=false; }); });
+  function openNewFolder(){ var labId=scopeLabId(); var mo=modal(_t('lab.fold.newh'),'[data-fname-input]');
+    function shell(){ var keep=_keepVal(mo.box,'[data-fname-input]');
+      mo.box.innerHTML='<button type="button" class="oshare-btn oshare-x" aria-label="'+esc(_t('lab.dlg.close'))+'">✕</button><h3>'+esc(_t('lab.fold.newh'))+'</h3><div class="oshare-row"><input data-fname-input maxlength="60" placeholder="'+esc(_t('lab.fold.nameph'))+'" aria-label="'+esc(_t('lab.fold.nameph'))+'"><button type="button" class="oshare-btn primary" data-fcreate>'+esc(_t('lab.fold.create'))+'</button></div>';
+      _putVal(mo.box,'[data-fname-input]',keep); }
+    mo.box.addEventListener('click',function(e){ var b=e.target.closest('[data-fcreate]'); if(!b) return; var inp=mo.box.querySelector('[data-fname-input]'); var nm=((inp&&inp.value)||'').trim(); if(!nm){ toast(_t('lab.fold.needname')); return; } b.disabled=true; folderCreate(nm,labId,meta().openFolder||null).then(function(){ toast(_t('lab.fold.created')); mo.close(); renderLabList(); }).catch(function(err){ toast(_rpcMsg(err)||_t('lab.err.create')); b.disabled=false; }); });
+    _setDlgPaint(shell); shell();
   }
-  function openFolderMenu(id,name){ var mo=modal('Rename or delete folder '+(name||''),'[data-frename-input]');
-    mo.box.innerHTML='<button type="button" class="oshare-btn oshare-x" aria-label="Close">✕</button><h3>Folder</h3><div class="oshare-row"><input data-frename-input value="'+esc(name||'')+'" aria-label="Folder name" maxlength="60"><button type="button" class="oshare-btn primary" data-frename>Rename</button></div><div class="oshare-actions"><button type="button" class="oshare-btn" data-fdelete>Delete folder</button></div><p class="oshare-priv">Deleting a folder moves its strands to Unfiled. No strand is lost.</p>';
-    mo.box.addEventListener('click',function(e){ if(e.target.closest('[data-frename]')){ var inp=mo.box.querySelector('[data-frename-input]'); var nm=((inp&&inp.value)||'').trim(); if(!nm){ toast('Enter a name.'); return; } folderRename(id,nm).then(function(){ toast('Renamed'); mo.close(); renderLabList(); }).catch(function(err){ toast(err.message||'Could not rename'); }); return; } var d=e.target.closest('[data-fdelete]'); if(d){ if(d.dataset.armed!=='1'){ d.dataset.armed='1'; d.textContent='Confirm delete'; setTimeout(function(){ if(d){ d.dataset.armed='0'; d.textContent='Delete folder'; } },3000); return; } folderDelete(id).then(function(){ toast('Folder deleted'); if(curFolder()===id) setFolder(''); mo.close(); renderLabList(); }).catch(function(err){ toast(err.message||'Could not delete'); }); } });
+  function openFolderMenu(id,name){ var mo=modal(_t('lab.fold.menu',{name:name||''}),'[data-frename-input]');
+    /* ⚠ The armed Delete button is re-armed by textContent, so its label has to
+       come from the same key on the repaint. A dialog left armed when the
+       language changes repaints to the UNARMED label, which is the safe
+       direction: the reader has to press again, rather than a stray second
+       click landing on a control whose word has just changed under them. */
+    function shell(){ var keep=_keepVal(mo.box,'[data-frename-input]');
+      mo.box.innerHTML='<button type="button" class="oshare-btn oshare-x" aria-label="'+esc(_t('lab.dlg.close'))+'">✕</button><h3>'+esc(_t('lab.md.folder'))+'</h3><div class="oshare-row"><input data-frename-input maxlength="60" value="'+esc(name||'')+'" aria-label="'+esc(_t('lab.fold.nameph'))+'"><button type="button" class="oshare-btn primary" data-frename>'+esc(_t('lab.fold.rename'))+'</button></div><div class="oshare-actions"><button type="button" class="oshare-btn" data-fdelete>'+esc(_t('lab.fold.del'))+'</button></div><p class="oshare-priv">'+esc(_t('lab.fold.delwhy!'))+'</p>';
+      if(keep) _putVal(mo.box,'[data-frename-input]',keep); }
+    mo.box.addEventListener('click',function(e){ if(e.target.closest('[data-frename]')){ var inp=mo.box.querySelector('[data-frename-input]'); var nm=((inp&&inp.value)||'').trim(); if(!nm){ toast(_t('lab.fold.needname2')); return; } folderRename(id,nm).then(function(){ toast(_t('lab.fold.renamed')); mo.close(); renderLabList(); }).catch(function(err){ toast(err.message||_t('lab.err.rename')); }); return; } var d=e.target.closest('[data-fdelete]'); if(d){ if(d.dataset.armed!=='1'){ d.dataset.armed='1'; d.textContent=_t('lab.fold.confirm'); setTimeout(function(){ if(d){ d.dataset.armed='0'; d.textContent=_t('lab.fold.del'); } },3000); return; } folderDelete(id).then(function(){ toast(_t('lab.fold.deleted')); if(curFolder()===id) setFolder(''); mo.close(); renderLabList(); }).catch(function(err){ toast(err.message||_t('lab.err.del')); }); } });
+    _setDlgPaint(shell); shell();
   }
   function wireDnD(host){ try{
     host.querySelectorAll('.lab-card[draggable="true"]').forEach(function(cd){ cd.addEventListener('dragstart',function(ev){ try{ ev.dataTransfer.setData('text/plain', cd.getAttribute('data-rowid')||''); ev.dataTransfer.effectAllowed='move'; }catch(_){ /* drag-and-drop hint the browser may refuse -- the drop itself still works */ } cd.classList.add('dragging'); }); cd.addEventListener('dragend',function(){ cd.classList.remove('dragging'); }); });
-    host.querySelectorAll('[data-drop]').forEach(function(t){ t.addEventListener('dragover',function(ev){ ev.preventDefault(); try{ ev.dataTransfer.dropEffect='move'; }catch(_){ /* drag-and-drop hint the browser may refuse -- the drop itself still works */ } t.classList.add('drop-hi'); }); t.addEventListener('dragleave',function(){ t.classList.remove('drop-hi'); }); t.addEventListener('drop',function(ev){ ev.preventDefault(); t.classList.remove('drop-hi'); var rid=''; try{ rid=ev.dataTransfer.getData('text/plain'); }catch(_){ /* drag-and-drop hint the browser may refuse -- the drop itself still works */ } var fid=t.getAttribute('data-drop'); if(fid==='__unfiled') fid=''; if(rid){ strandMove(rid, fid||null).then(function(){ toast('Moved'); renderLabList(); }).catch(function(err){ toast(err.message||'Could not move'); }); } }); });
+    host.querySelectorAll('[data-drop]').forEach(function(t){ t.addEventListener('dragover',function(ev){ ev.preventDefault(); try{ ev.dataTransfer.dropEffect='move'; }catch(_){ /* drag-and-drop hint the browser may refuse -- the drop itself still works */ } t.classList.add('drop-hi'); }); t.addEventListener('dragleave',function(){ t.classList.remove('drop-hi'); }); t.addEventListener('drop',function(ev){ ev.preventDefault(); t.classList.remove('drop-hi'); var rid=''; try{ rid=ev.dataTransfer.getData('text/plain'); }catch(_){ /* drag-and-drop hint the browser may refuse -- the drop itself still works */ } var fid=t.getAttribute('data-drop'); if(fid==='__unfiled') fid=''; if(rid){ strandMove(rid, fid||null).then(function(){ toast(_t('lab.fold.moved')); renderLabList(); }).catch(function(err){ toast(err.message||_t('lab.err.move')); }); } }); });
   }catch(_){ /* drag-and-drop hint the browser may refuse -- the drop itself still works */ } }
 
   // ---- Drive/Finder-like folder browser (both scopes: personal + lab) ----
   function scopeLabId(){ return (meta().scope==='lab') ? (meta().labId||null) : null; }
   function setOpenFolder(fid){ var m=meta(); m.openFolder=fid||''; setMeta(m); }
-  function labName(labId){ try{ var L=(_labs||[]).filter(function(x){return x.lab_id===labId;})[0]; return L?L.name:'Lab'; }catch(_){ return 'Lab'; } }
+  /* ⚠ The fallback is `lab.h`, the same key the Lab tab uses, so a lab whose
+     name has not arrived yet is named the way the rest of the app names one. */
+  function labName(labId){ try{ var L=(_labs||[]).filter(function(x){return x.lab_id===labId;})[0]; return L?L.name:_t('lab.h'); }catch(_){ return _t('lab.h'); } }
   /* R75c. Personal = MY rows that no lab I am still in is showing me.
      It used to be 'rows with no lab', which is why a removed member's own
      work vanished from every screen they had: the scope still pointed at
@@ -16618,20 +17214,36 @@ try{
   async function fetchStrandsScope(labId){ return labId ? await fetchLabStrands(labId) : await fetchPersonalStrands(); }
   function fileCard(e, mine, uid, labId){
     var isAuthor = labId ? ((uid&&e.__uid===uid)||(!!e.__author&&e.__author===mine)) : true;
-    var acts='<button type="button" class="lab-x2" data-lab-load="'+esc(e.id)+'">Open</button>';
+    var acts='<button type="button" class="lab-x2" data-lab-load="'+esc(e.id)+'">'+esc(_t('lab.card.open'))+'</button>';
     var shared = !labId && !!e.__labId;
-    if(isAuthor && !shared) acts+='<button type="button" class="lab-x2" data-lab-move="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'">Move</button>';
-    if(labId){ acts+='<button type="button" class="lab-x2" data-lab-comments="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'">Comments</button>';
-      acts+= isAuthor ? ('<button type="button" class="lab-x2" data-lab-access="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'">Manage access</button><button type="button" class="lab-x2" data-lab-rmlab="'+esc(e.id)+'">Remove</button>') : ('<span class="lc-ro">'+esc(_roLabel())+'</span>');
-    } else if(!shared) { acts+='<button type="button" class="lab-x2" data-pdel="'+esc(e.id)+'">Delete</button>'; }
-    return '<div class="lab-card"'+(isAuthor?' draggable="true"':'')+' data-rowid="'+esc(e.__rowId||'')+'"><div class="lab-card-h"><input type="checkbox" class="lab-pick-cb" data-labpick="'+esc(e.id)+'" aria-label="Select '+esc(e.name||'strand')+'"'+(_sel.has(e.id)?' checked':'')+'><span class="lc-n">'+esc(e.name||'Untitled')+'</span><span class="lc-mw">'+esc(labMW(e))+' g/mol</span></div>'+
+    if(isAuthor && !shared) acts+='<button type="button" class="lab-x2" data-lab-move="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'">'+esc(_t('lab.mv.go'))+'</button>';
+    if(labId){ acts+='<button type="button" class="lab-x2" data-lab-comments="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'">'+esc(_t('lab.cmt.h'))+'</button>';
+      /* ⚠⚠ "Remove" AND "Delete" ARE DIFFERENT OUTCOMES AND REUSING THE SHIPPED
+         KEY WOULD HAVE COLLAPSED THEM IN JAPANESE.  Remove un-shares the row
+         from the lab (removeFromLab clears lab_id and the author keeps it);
+         Delete destroys the personal copy.  The shipped `lab.rm.go` renders
+         *Remove* with the Japanese verb for *delete*, correctly, because there
+         it removes a PERSON -- so reusing it here would have put "delete" on
+         the button that does not delete.  `lab.card.rmlab` is its own key and
+         its ja value is the verb for taking something out of a set.  The two
+         buttons never appear on one card (Remove needs a lab scope, Delete a
+         personal one), so this is about the word being TRUE, not about telling
+         them apart.
+         ⚠ The Japanese is DESCRIBED and not spelled here on purpose: a literal
+         CJK character in build/index.html is a paste artefact ninety-nine times
+         in a hundred, and chkjs.py rejects one wherever it appears -- comments
+         included.  A first draft of this comment quoted the two verbs and the
+         gate refused the build, correctly. */
+      acts+= isAuthor ? ('<button type="button" class="lab-x2" data-lab-access="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'">'+esc(_t('lab.acc.h'))+'</button><button type="button" class="lab-x2" data-lab-rmlab="'+esc(e.id)+'">'+esc(_t('lab.card.rmlab'))+'</button>') : ('<span class="lc-ro">'+esc(_roLabel())+'</span>');
+    } else if(!shared) { acts+='<button type="button" class="lab-x2" data-pdel="'+esc(e.id)+'">'+esc(_t('lab.card.del'))+'</button>'; }
+    return '<div class="lab-card"'+(isAuthor?' draggable="true"':'')+' data-rowid="'+esc(e.__rowId||'')+'"><div class="lab-card-h"><input type="checkbox" class="lab-pick-cb" data-labpick="'+esc(e.id)+'" aria-label="'+esc(_t('lab.card.sel',{name:e.name||_t('lab.dlg.aseq')}))+'"'+(_sel.has(e.id)?' checked':'')+'><span class="lc-n">'+esc(e.name||_t('lab.card.untitled'))+'</span><span class="lc-mw">'+esc(labMW(e))+' g/mol</span></div>'+
       '<div class="lc-seq">'+esc((typeof spaceSeq==='function')?spaceSeq(e.seq,e.type,e.linkage):e.seq||'')+'</div>'+
-      (labId?('<div class="lc-meta">'+(e.__author?('by '+esc(e.__author)):'shared')+(isAuthor?' · <b>you</b>':'')+'</div>'):'')+
+      (labId?('<div class="lc-meta">'+(e.__author?esc(_t('lab.card.by',{email:e.__author})):esc(_t('lab.card.shared')))+(isAuthor?' · <b>'+esc(_t('lab.card.you'))+'</b>':'')+'</div>'):'')+
       '<div class="lc-acts">'+acts+'</div></div>';
   }
   async function renderFolderBrowser(){
     var ll=ensureLabLib(); if(!ll) return; var m=meta(); var labId=scopeLabId(); var openF=m.openFolder||'';
-    ll.innerHTML='<div class="lab-hint" style="padding:8px 2px">Loading…</div>';
+    ll.innerHTML='<div class="lab-hint" style="padding:8px 2px">'+esc(_t('lab.dlg.loading'))+'</div>';
     var mine=myEmail(), uid=await myUid();
     try{
       if(labId) await mergeLabMonomers(labId);
@@ -16641,13 +17253,13 @@ try{
       var here=openF?folders.filter(function(f){return f.id===openF;})[0]:null; if(openF&&!here){ openF=''; setOpenFolder(''); }
       var hereSp=fIsSpace(here);
       var _v=_view(), _crumbs=fPath(folders, openF);
-      var crumb='<div class="fbread"><button type="button" class="fcrumb" data-fhome>'+(labId?('Lab: '+esc(labName(labId))):'My library')+'</button>'+_crumbs.map(function(cf,ci){ var last=(ci===_crumbs.length-1); return ' <span class="fsep">›</span> '+(last?('<span class="fhere">'+esc(fName(cf))+'</span> '):('<button type="button" class="fcrumb" data-fopen="'+esc(cf.id)+'">'+esc(fName(cf))+'</button>')); }).join('')+(here?(''+(hereSp?'':'<button type="button" class="fmenu fmenu-crumb" data-fmenu="'+esc(here.id)+'" data-fname="'+esc(here.name)+'" title="Rename or delete" aria-label="Rename or delete folder '+esc(here.name)+'">⋯</button>')):'')+'</div>'
+      var crumb='<div class="fbread"><button type="button" class="fcrumb" data-fhome>'+(labId?esc(_t('lab.lib.crumb',{name:labName(labId)})):esc(_t('lab.lib.mine')))+'</button>'+_crumbs.map(function(cf,ci){ var last=(ci===_crumbs.length-1); return ' <span class="fsep">›</span> '+(last?('<span class="fhere">'+esc(fName(cf))+'</span> '):('<button type="button" class="fcrumb" data-fopen="'+esc(cf.id)+'">'+esc(fName(cf))+'</button>')); }).join('')+(here?(''+(hereSp?'':'<button type="button" class="fmenu fmenu-crumb" data-fmenu="'+esc(here.id)+'" data-fname="'+esc(here.name)+'" title="'+esc(_t('lab.fold.menuT'))+'" aria-label="'+esc(_t('lab.fold.menu',{name:here.name}))+'">⋯</button>')):'')+'</div>'
         /* ⚠⚠ R76d/D3. THE SENTENCE THAT MAKES THIS HONEST. It names BOTH
            people who can see in, because the lab manager CAN read and
            edit what is here (D3, and R76a everywhere else in the lab).
            ⚠ Never "private", never "only you", never "nobody else". */
         +(hereSp?('<div class="lab-hint" style="padding:0 2px 8px">'+esc(_t('lab.priv.who!'))+' '+esc(_t('lab.priv.perm'))+'</div>'):'');
-      var html=crumb+'<div class="lab-libbar">'+(openF?('<button type="button" class="lab-btn" data-fhome>‹ '+esc(_t('lab.tree.back'))+'</button><button type="button" class="lab-btn" data-fnew>'+esc(_t('lab.tree.newsub'))+'</button>'):'<button type="button" class="lab-btn" data-fnew>+ New folder</button>')+(labId?'<button type="button" class="lab-btn" data-lablib-add>+ '+esc(_t('lab.mv.pick'))+'</button>':'')+'</div>';
+      var html=crumb+'<div class="lab-libbar">'+(openF?('<button type="button" class="lab-btn" data-fhome>‹ '+esc(_t('lab.tree.back'))+'</button><button type="button" class="lab-btn" data-fnew>'+esc(_t('lab.tree.newsub'))+'</button>'):'<button type="button" class="lab-btn" data-fnew>'+esc(_t('lab.fold.new'))+'</button>')+(labId?'<button type="button" class="lab-btn" data-lablib-add>+ '+esc(_t('lab.mv.pick'))+'</button>':'')+'</div>';
       /* R76e. ⚠ THE LOCAL VIEW BAR. Read from meta(), written back by the
          delegate. Nothing here touches folders.sort or folder_reorder. */
       var _kids=fFind(fSort(fKids(folders, openF||null), _v.by), _v.q);
@@ -16658,11 +17270,11 @@ try{
              deleted by anybody, so offering the control would be a
              button whose only outcome is an error. The RPC guard is
              still the boundary; this is the courtesy. */
-          (sp?'':'<button type="button" class="fmenu" data-fmenu="'+esc(f.id)+'" data-fname="'+esc(f.name)+'" title="Rename or delete" aria-label="Rename or delete folder '+esc(f.name)+'">⋯</button>')+
+          (sp?'':'<button type="button" class="fmenu" data-fmenu="'+esc(f.id)+'" data-fname="'+esc(f.name)+'" title="'+esc(_t('lab.fold.menuT'))+'" aria-label="'+esc(_t('lab.fold.menu',{name:f.name}))+'">⋯</button>')+
           '</div>'; }).join('')+'</div>') : '';
       if(!openF){
         var un=list.filter(function(e){return !e.__folderId;});
-        html+= un.length ? un.map(function(e){return fileCard(e,mine,uid,labId);}).join('') : (folders.length?'':'<div class="lab-hint" style="padding:10px 2px">'+(labId?'No strands shared to this lab yet.':'No saved strands yet. Save one from the calculator, then sort it into folders here.')+'</div>');
+        html+= un.length ? un.map(function(e){return fileCard(e,mine,uid,labId);}).join('') : (folders.length?'':'<div class="lab-hint" style="padding:10px 2px">'+esc(_t(labId?'lab.lib.emptylab':'lab.lib.emptymine'))+'</div>');
       } else {
         var inF=list.filter(function(e){return e.__folderId===openF;});
         html+= inF.length ? inF.map(function(e){return fileCard(e,mine,uid,labId);}).join('') : ('<div class="lab-hint" style="padding:10px 2px">'+esc(_t(hereSp?'lab.priv.empty!':'lab.fold.empty'))+'</div>');
@@ -16695,14 +17307,17 @@ try{
   function offlineFallback(ll, err){
     _hideFlat(false);
     var n=0; try{ n=(typeof history!=='undefined'&&history)?history.length:0; }catch(_e){ ocFail('offlineFallback#1',_e); }
+    /* R76g. ⚠ The count was three English fragments (' strand', 's') spliced
+       around a number, which no target language can inflect. Two keys, and
+       `_n()` for the number. */
     ll.innerHTML='<div class="lab-offline" data-lab-offline role="status">'+
       '<span class="lo-ic" aria-hidden="true">⚠</span>'+
-      '<span class="lo-t"><b>Offline. Showing the last library this device synced.</b> '+
-        n+' strand'+(n===1?'':'s')+' saved on this device: open, calculate, copy and export all work here. '+
-        'Folders and lab sharing need a connection, so they are hidden until it returns.'+
+      '<span class="lo-t"><b>'+esc(_t('lab.off.h'))+'</b> '+
+        esc(_t(n===1?'lab.off.n1':'lab.off.nN',{n:_n(n)}))+' '+
+        esc(_t('lab.off.why!'))+
         ((err&&err.message)?('<span class="lo-e">'+esc(String(err.message).slice(0,140))+'</span>'):'')+
       '</span>'+
-      '<button type="button" class="lab-btn" data-lab-retry>Retry</button></div>';
+      '<button type="button" class="lab-btn" data-lab-retry>'+esc(_t('lab.off.retry'))+'</button></div>';
     try{ if(typeof renderHistShell==='function') renderHistShell(); }catch(_e){ ocFail('offlineFallback#2',_e); }
     clearTimeout(_offRetryT);
     _offRetryT=setTimeout(function(){ try{ if(navigator.onLine && _q('[data-lab-offline]')) renderLabList(); }catch(_e){ ocFail('offlineFallback#3',_e); } }, 15000);
@@ -16728,8 +17343,8 @@ try{
     if(!host){ host=document.createElement('div'); host.setAttribute('data-lab-scope',''); host.className='lab-scope'; if(bar&&bar.parentNode) bar.parentNode.insertBefore(host,bar); else v.insertBefore(host, v.firstChild); }
     var m=meta(); var scope=m.scope||'my';
     if(scope==='lab' && !ls.some(function(l){return l.lab_id===m.labId;})){ if(ls.length){ setScope('lab', ls[0].lab_id); } else { setScope('my'); } scope=meta().scope||'my'; }
-    var html='<span class="ls-l">Library</span><button type="button" class="ls-b'+(scope==='my'?' on':'')+'" data-ls-my>My library</button>';
-    ls.forEach(function(l){ html+='<button type="button" class="ls-b lab'+(scope==='lab'&&meta().labId===l.lab_id?' on':'')+'" data-ls-labon data-labid="'+esc(l.lab_id)+'" title="Open the lab shared library">'+esc(l.name)+'</button>'; });
+    var html='<span class="ls-l">'+esc(_t('lab.lib.label'))+'</span><button type="button" class="ls-b'+(scope==='my'?' on':'')+'" data-ls-my>'+esc(_t('lab.lib.mine'))+'</button>';
+    ls.forEach(function(l){ html+='<button type="button" class="ls-b lab'+(scope==='lab'&&meta().labId===l.lab_id?' on':'')+'" data-ls-labon data-labid="'+esc(l.lab_id)+'" title="'+esc(_t('lab.lib.openlab'))+'">'+esc(l.name)+'</button>'; });
     host.innerHTML=html;
     var _my=(scope!=='lab');
     flat.forEach(function(el){ if(el) el.hidden=false; });
@@ -16763,7 +17378,7 @@ try{
     var closed=false, rec=null;
     function fallbackClose(){ if(closed) return; closed=true; if(sc.parentNode) sc.parentNode.removeChild(sc); }
     if(typeof ocModalOpen==='function'){
-      rec=ocModalOpen(sc, { label:label||'Dialog',
+      rec=ocModalOpen(sc, { label:label||_t('lab.dlg.generic'),
         initialFocus:(initialFocus!=null?initialFocus:'none'),
         onClose:function(){ if(sc.parentNode) sc.parentNode.removeChild(sc); } });
     } else {
@@ -16771,26 +17386,37 @@ try{
       if(label) box.setAttribute('aria-label', label);
       sc.addEventListener('click',function(e){ if(e.target===sc) fallbackClose(); });
     }
-    function close(){ if(rec) rec.close(); else fallbackClose(); }
+    /* R76g. ⚠ Clearing the painter is part of closing. A painter left
+       registered would, on the next language change, write into a box that is
+       no longer in the document -- silently, because nothing throws. */
+    function close(){ _setDlgPaint(null); if(rec) rec.close(); else fallbackClose(); }
     sc.addEventListener('click',function(e){ if(e.target.closest && e.target.closest('.oshare-x')) close(); });
     return {sc:sc, box:box, close:close};
   }
   function openPicker(){ var labId=meta().labId; var hist=(typeof history!=='undefined'&&history)?history:[]; var mo=modal(_t('lab.mv.h'),'none');
-    mo.box.innerHTML='<button type="button" class="oshare-btn oshare-x" aria-label="Close">✕</button><h3>'+esc(_t('lab.mv.h'))+'</h3><p class="oshare-sub">'+esc(_t('lab.mv.sub!'))+'</p><div class="oshare-list">'+
-      (hist.length? hist.map(function(h,i){ return '<div class="lab-pick"><span class="lc-n">'+esc(h.name||('Strand '+(i+1)))+'</span><span class="lc-seq">'+esc(h.seq||'')+'</span><button type="button" class="lab-btn" data-pickadd="'+i+'">'+esc(_t('lab.mv.go'))+'</button></div>'; }).join('') : '<div class="lab-hint">You have no saved strands yet.</div>')+'</div>';
-    mo.box.addEventListener('click',function(e){ var b=e.target.closest('[data-pickadd]'); if(!b) return; var h=hist[+b.getAttribute('data-pickadd')]; if(!h) return; b.disabled=true; addToLab(h,labId).then(function(){ toast(_t('lab.mv.done')); mo.close(); renderLabList(); }).catch(function(err){ toast(err.message||'Could not add'); b.disabled=false; }); });
+    function shell(){
+      mo.box.innerHTML='<button type="button" class="oshare-btn oshare-x" aria-label="'+esc(_t('lab.dlg.close'))+'">✕</button><h3>'+esc(_t('lab.mv.h'))+'</h3><p class="oshare-sub">'+esc(_t('lab.mv.sub!'))+'</p><div class="oshare-list">'+
+        (hist.length? hist.map(function(h,i){ return '<div class="lab-pick"><span class="lc-n">'+esc(h.name||_t('lab.lib.nth',{n:_n(i+1)}))+'</span><span class="lc-seq">'+esc(h.seq||'')+'</span><button type="button" class="lab-btn" data-pickadd="'+i+'">'+esc(_t('lab.mv.go'))+'</button></div>'; }).join('') : '<div class="lab-hint">'+esc(_t('lab.lib.picknone'))+'</div>')+'</div>'; }
+    mo.box.addEventListener('click',function(e){ var b=e.target.closest('[data-pickadd]'); if(!b) return; var h=hist[+b.getAttribute('data-pickadd')]; if(!h) return; b.disabled=true; addToLab(h,labId).then(function(){ toast(_t('lab.mv.done')); mo.close(); renderLabList(); }).catch(function(err){ toast(err.message||_t('lab.err.add')); b.disabled=false; }); });
+    _setDlgPaint(shell); shell();
   }
-  async function openAccess(rowId,name){ if(!rowId){ toast('This strand needs to sync before you can manage access.'); return; } var labId=meta().labId; var mo=modal('Manage access to '+(name||'strand'),'none');
-    mo.box.innerHTML='<button type="button" class="oshare-btn oshare-x" aria-label="Close">✕</button><h3>Manage access</h3><p class="oshare-sub">'+esc(name||'Strand')+' Everyone in the lab can view this. Choose who can also edit.</p><div data-access-body><div class="lab-hint">Loading…</div></div>';
-    mo.box.addEventListener('click',function(e){ var g=e.target.closest('[data-acc-grant]'); if(g){ g.disabled=true; rpc('grant_strand_edit',{p_strand:rowId,p_email:g.getAttribute('data-acc-grant')}).then(paint).catch(function(err){ toast(err.message||'Could not grant'); g.disabled=false; }); return; } var rv=e.target.closest('[data-acc-revoke]'); if(rv){ rv.disabled=true; rpc('revoke_strand_edit',{p_strand:rowId,p_email:rv.getAttribute('data-acc-revoke')}).then(paint).catch(function(err){ toast(err.message||'Could not revoke'); rv.disabled=false; }); } });
-    async function paint(){ var body=mo.box.querySelector('[data-access-body]'); try{ var members=(await rpc('list_lab_members',{p_lab:labId}))||[]; var editors=(await rpc('list_strand_editors',{p_strand:rowId}))||[]; var eset={}; editors.forEach(function(x){ eset[String(x.email).toLowerCase()]=1; }); var mine=myEmail();
+  async function openAccess(rowId,name){ if(!rowId){ toast(_t('lab.acc.nosync')); return; } var labId=meta().labId; var _nm=name||_t('lab.dlg.aseq'); var mo=modal(_t('lab.acc.to',{name:_nm}),'none');
+    /* ⚠ The English ran the record's name straight into the next sentence with
+       only a space between them ("Untitled Everyone in the lab can view this"),
+       which reads as one run-on line and cannot be reordered by a target
+       grammar. The name and the sentence are two nodes now. */
+    function shell(){
+      mo.box.innerHTML='<button type="button" class="oshare-btn oshare-x" aria-label="'+esc(_t('lab.dlg.close'))+'">✕</button><h3>'+esc(_t('lab.acc.h'))+'</h3><p class="oshare-sub"><b>'+esc(name||_t('lab.dlg.seq'))+'</b> '+esc(_t('lab.acc.sub'))+'</p><div data-access-body><div class="lab-hint">'+esc(_t('lab.dlg.loading'))+'</div></div>';
+      paint(); }
+    mo.box.addEventListener('click',function(e){ var g=e.target.closest('[data-acc-grant]'); if(g){ g.disabled=true; rpc('grant_strand_edit',{p_strand:rowId,p_email:g.getAttribute('data-acc-grant')}).then(paint).catch(function(err){ toast(err.message||_t('lab.err.grant')); g.disabled=false; }); return; } var rv=e.target.closest('[data-acc-revoke]'); if(rv){ rv.disabled=true; rpc('revoke_strand_edit',{p_strand:rowId,p_email:rv.getAttribute('data-acc-revoke')}).then(paint).catch(function(err){ toast(err.message||_t('lab.err.revoke')); rv.disabled=false; }); } });
+    async function paint(){ var body=mo.box.querySelector('[data-access-body]'); if(!body) return; try{ var members=(await rpc('list_lab_members',{p_lab:labId}))||[]; var editors=(await rpc('list_strand_editors',{p_strand:rowId}))||[]; var eset={}; editors.forEach(function(x){ eset[String(x.email).toLowerCase()]=1; }); var mine=myEmail();
       body.innerHTML=members.map(function(mm){ var em=String(mm.email).toLowerCase(); var author=(em===mine); var canEdit=author||!!eset[em];
-        return '<div class="lab-mem"><span class="lm-e">'+esc(mm.email)+(author?' <span class="lm-p">author</span>':'')+'</span>'+(author?'<span class="lm-r">Edit</span>':'<span class="lm-a">'+(canEdit?'<button type="button" class="lab-btn" data-acc-revoke="'+esc(mm.email)+'">Can edit ✓</button>':'<button type="button" class="lab-btn" data-acc-grant="'+esc(mm.email)+'">View only</button>')+'</span>')+'</div>';
-      }).join('')||'<div class="lab-hint">No members.</div>';
-    }catch(err){ body.innerHTML='<div class="lab-hint">Could not load access. '+esc(err.message||'')+'</div>'; } }
-    paint();
+        return '<div class="lab-mem"><span class="lm-e">'+esc(mm.email)+(author?' <span class="lm-p">'+esc(_t('lab.acc.author'))+'</span>':'')+'</span>'+(author?'<span class="lm-r">'+esc(_t('lab.acc.edit'))+'</span>':'<span class="lm-a">'+(canEdit?'<button type="button" class="lab-btn" data-acc-revoke="'+esc(mm.email)+'">'+esc(_t('lab.acc.can'))+'</button>':'<button type="button" class="lab-btn" data-acc-grant="'+esc(mm.email)+'">'+esc(_t('lab.acc.view'))+'</button>')+'</span>')+'</div>';
+      }).join('')||'<div class="lab-hint">'+esc(_t('lab.acc.nomembers'))+'</div>';
+    }catch(err){ body.innerHTML='<div class="lab-hint">'+esc(_t('lab.acc.failload'))+' '+esc(err.message||'')+'</div>'; } }
+    _setDlgPaint(shell); shell();
   }
-  async function loadLabStrand(cid){ try{ var list=await fetchLabStrands(meta().labId); var e=list.filter(function(x){return x.id===cid;})[0]; if(e&&typeof loadSavedState==='function'){ loadSavedState(e); if(typeof setTab==='function') setTab('mw'); toast('Opened. Changes you make here are yours alone until you add it back to the lab.'); } }catch(_){ toast('Could not open.'); } }
+  async function loadLabStrand(cid){ try{ var list=await fetchLabStrands(meta().labId); var e=list.filter(function(x){return x.id===cid;})[0]; if(e&&typeof loadSavedState==='function'){ loadSavedState(e); if(typeof setTab==='function') setTab('mw'); toast(_t('lab.lib.opened!')); } }catch(_){ toast(_t('lab.lib.failopen')); } }
 
   document.addEventListener('click', function(e){
     var b;
@@ -16799,7 +17425,7 @@ try{
     if((b=e.target.closest('[data-fnew]'))){ openNewFolder(); return; }
     if((b=e.target.closest('[data-fopen]'))){ setOpenFolder(b.getAttribute('data-fopen')); renderLabList(); return; }
     if((b=e.target.closest('[data-fhome]'))){ setOpenFolder(''); renderLabList(); return; }
-    if((b=e.target.closest('[data-pdel]'))){ if(b.dataset.armed!=='1'){ b.dataset.armed='1'; var _o=b.textContent; b.textContent='Delete?'; setTimeout(function(){ if(b){ b.dataset.armed='0'; b.textContent=_o||'Delete'; } },2500); return; } var cid=b.getAttribute('data-pdel'); try{ var hi=(typeof history!=='undefined'&&history)?history:[]; for(var i=0;i<hi.length;i++){ if(hi[i]&&hi[i].id===cid){ hi.splice(i,1); break; } } if(typeof saveHist==='function') saveHist(); }catch(_e){ ocFail('loadLabStrand#1',_e); } try{ if(window.oligoSync&&oligoSync.deleteStrandCloud) oligoSync.deleteStrandCloud(cid); }catch(_e){ ocFail('loadLabStrand#2',_e); } try{ if(typeof applyAll==='function') applyAll(); }catch(_e){ ocFail('loadLabStrand#3',_e); } toast('Deleted'); renderLabList(); return; }
+    if((b=e.target.closest('[data-pdel]'))){ if(b.dataset.armed!=='1'){ b.dataset.armed='1'; var _o=b.textContent; b.textContent=_t('lab.card.armdel'); setTimeout(function(){ if(b){ b.dataset.armed='0'; b.textContent=_o||_t('lab.card.del'); } },2500); return; } var cid=b.getAttribute('data-pdel'); try{ var hi=(typeof history!=='undefined'&&history)?history:[]; for(var i=0;i<hi.length;i++){ if(hi[i]&&hi[i].id===cid){ hi.splice(i,1); break; } } if(typeof saveHist==='function') saveHist(); }catch(_e){ ocFail('loadLabStrand#1',_e); } try{ if(window.oligoSync&&oligoSync.deleteStrandCloud) oligoSync.deleteStrandCloud(cid); }catch(_e){ ocFail('loadLabStrand#2',_e); } try{ if(typeof applyAll==='function') applyAll(); }catch(_e){ ocFail('loadLabStrand#3',_e); } toast(_t('lab.card.deleted')); renderLabList(); return; }
     if((b=e.target.closest('[data-lab-move]'))){ openMoveTo(b.getAttribute('data-lab-move'), b.getAttribute('data-lab-nm')); return; }
     if((b=e.target.closest('[data-ls-my]'))){ setScope('my'); ensureScope(); return; }
     if((b=e.target.closest('[data-labpick]'))){ var pid=b.getAttribute('data-labpick'); if(b.checked) _sel.add(pid); else _sel.delete(pid); return; }
@@ -16808,27 +17434,112 @@ try{
     if((b=e.target.closest('[data-lablib-add]'))){ openPicker(); return; }
     if((b=e.target.closest('[data-lab-load]'))){ loadLabStrand(b.getAttribute('data-lab-load')); return; }
     if((b=e.target.closest('[data-lab-access]'))){ openAccess(b.getAttribute('data-lab-access'), b.getAttribute('data-lab-nm')); return; }
-    if((b=e.target.closest('[data-lab-rmlab]'))){ var cid=b.getAttribute('data-lab-rmlab'); b.disabled=true; removeFromLab(cid).then(function(){ toast('Removed from lab'); renderLabList(); }).catch(function(err){ toast(err.message||'Could not remove'); b.disabled=false; }); return; }
+    if((b=e.target.closest('[data-lab-rmlab]'))){ var cid=b.getAttribute('data-lab-rmlab'); b.disabled=true; removeFromLab(cid).then(function(){ toast(_t('lab.card.rmdone')); renderLabList(); }).catch(function(err){ toast(err.message||_t('lab.err.remove')); b.disabled=false; }); return; }
     if((b=e.target.closest('[data-lab-comments]'))){ openComments(b.getAttribute('data-lab-comments'), b.getAttribute('data-lab-nm')); return; }
     if((b=e.target.closest('[data-labmon-add]'))){ openMonPicker(); return; }
     if((b=e.target.closest('[data-labmon-mine]'))){ var _lm=_labMon[+b.getAttribute('data-labmon-mine')]; if(_lm){ addLabMonomerToMine(Object.assign({},_lm.data||{},{code:_lm.code})); } return; }
     if((b=e.target.closest('[data-labmon-rm]'))){
       /* arm-to-confirm rather than a modal: same pattern as [data-pdel] above */
-      if(b.dataset.armed!=='1'){ b.dataset.armed='1'; b.textContent='Remove?'; b.classList.add('armed');
+      if(b.dataset.armed!=='1'){ b.dataset.armed='1'; b.textContent=_t('lab.mon.armrm'); b.classList.add('armed');
         setTimeout(function(){ if(b&&b.dataset.armed==='1'){ b.dataset.armed='0'; b.textContent='\u2715'; b.classList.remove('armed'); } },3000); return; }
       var _rid=b.getAttribute('data-labmon-rm'), _code=b.getAttribute('data-labmon-code')||'';
-      if(!_rid){ toast('This monomer needs to sync before it can be removed.'); return; }
+      if(!_rid){ toast(_t('lab.mon.nosync')); return; }
       b.disabled=true;
       unshareLabMonomer(_rid).then(function(){
         /* CUSTOM keeps merged lab codes under a _lab flag; drop it so the code
            stops resolving in this session too, not just after a reload. */
         try{ if(_code && CUSTOM[_code] && CUSTOM[_code]._lab) delete CUSTOM[_code]; }catch(_e){ ocFail('loadLabStrand#4',_e); }
         try{ if(typeof applyAll==='function') applyAll(); }catch(_e){ ocFail('loadLabStrand#5',_e); }
-        toast('Removed from the lab. It is still in your own bases.'); renderLabList();
-      }).catch(function(err){ toast(err.message||'Could not remove'); b.disabled=false; });
+        toast(_t('lab.mon.unshared')); renderLabList();
+      }).catch(function(err){ toast(err.message||_t('lab.err.remove')); b.disabled=false; });
       return; }
   });
   document.addEventListener('change', function(e){ if(e.target.closest('[data-ls-lab]')){ setScope('lab', e.target.value); } });
+
+  /* =====================================================================
+     R76g.  ⚠⚠ THE FOLDER SEARCH BOX HAD NO HANDLER AND HAS NEVER WORKED.
+
+     R76e rendered `<input data-ffind>` and reads `_view().q` back when it
+     paints, but NOTHING EVER WROTE `q`.  Measured on the shipped build: the
+     string `ffind` occurs EXACTLY ONCE in the whole file -- the render site --
+     and `_setView` is called only by the `data-fsort` branch.  So the control
+     is inert, and it has been since R76e shipped.
+
+     ⚠ It is fixed here rather than deferred because THIS ROUND'S OWN
+     DELIVERABLE depends on it: R76g promises the `oligo:lang` re-render
+     preserves the search term, and a term that is never stored is a promise
+     about nothing.  It is on the review table as work this round was not
+     chartered to do.
+
+     ⚠ It re-renders on `input`, and re-rendering removes the focused input,
+     so focus and the caret are restored explicitly -- the same hazard R73b
+     recorded for the inline rename, one control over.
+     ===================================================================== */
+  var _findT=null;
+  document.addEventListener('input', function(e){
+    var f = e.target && e.target.closest && e.target.closest('[data-ffind]');
+    if(!f) return;
+    var v=_view(); v.q=f.value||''; _setView(v);
+    clearTimeout(_findT);
+    _findT=setTimeout(function(){
+      try{
+        var pos=null; try{ pos=f.selectionStart; }catch(_){ pos=null; }
+        renderLabList().then(function(){
+          try{ var n=_q('[data-ffind]'); if(n){ n.focus(); if(pos!=null) n.setSelectionRange(pos,pos); } }catch(_e){ ocFail('ffind#1',_e); }
+        });
+      }catch(_e){ ocFail('ffind#2',_e); }
+    }, 180);
+  }, false);
+
+  /* =====================================================================
+     R76g.  ⚠⚠ THE `oligo:lang` LISTENER THIS BLOCK HAS NEVER HAD.
+
+     Measured on the build R76g started from: eight of these listeners existed
+     in this file, in blocks #9 (three), #13, #17, #23, #24 and #25 -- and ZERO
+     in block #14.  This is the ninth.
+     ⚠ The registration call is DESCRIBED here rather than spelled, on purpose.
+     A first draft wrote it out, and the patch's own "block #14 has a language
+     listener" assertion then counted TWO -- the listener, and the comment above
+     it explaining how many exist elsewhere.  Instance twelve of a guard that
+     cannot tell a comment from code, and this comment SHIPS.
+     ⚠ The count is frozen to the INPUT build for the same reason a count in a
+     change note is: this file is the thing that changes it.
+
+     Everything this block draws is written with
+     innerHTML AFTER boot, and `applyLang()` only rewrites a node it holds an
+     English baseline for, so a reader who switched language mid-session was
+     left looking at the boot language across the whole lab library.
+
+     ⚠ WHAT IT REPAINTS, AND WHY EACH ONE:
+       1. the OPEN DIALOG's shell -- heading, subtitle AND body. R76f shipped
+          a listener that repainted only the body and left the heading in the
+          boot language; that is the defect this ordering exists to avoid.
+       2. `ensureScope()`, which rewrites the scope bar (its "Library" label
+          and "My library" button are innerHTML, invisible to applyLang) and
+          then repaints whichever list is showing.
+
+     ⚠ WHAT SURVIVES IT, and it survives because it is not held in the DOM:
+       open folder   meta().openFolder
+       search term   meta()['v:'+scope].q     (writable at last -- see above)
+       sort order    meta()['v:'+scope].by
+       selection     `_sel`, a module-level Set the renderer never clears
+     Re-reading them IS the preservation; nothing has to be carried by hand.
+
+     ⚠ NOT OVER AN INLINE RENAME IN PROGRESS. Removing a focused input COMMITS
+     the half-typed name in Chromium rather than discarding it, so a language
+     change would silently rename the reader's strand. Same guard, and the
+     same reason, as ensureScope()'s own.
+     ===================================================================== */
+  try{
+    window.addEventListener('oligo:lang', function(){
+      try{ if(_dlgPaint) _dlgPaint(); }catch(_e){ ocFail('lab#lang1',_e); }
+      try{
+        var v=view(); if(!v) return;
+        if(_q('.view-hist .hn-input')) return;      /* an inline rename is open */
+        ensureScope();
+      }catch(_e){ ocFail('lab#lang2',_e); }
+    });
+  }catch(_e){ ocFail('lab#lang3',_e); }
 
   function maybe(){ if((document.body.dataset.tab||'')==='hist') ensureScope(); }
   try{ new MutationObserver(maybe).observe(document.body,{attributes:true,attributeFilter:['data-tab']}); }catch(_e){ ocFail('maybe#1',_e); }
@@ -16837,7 +17548,13 @@ try{
     invalidateLabs:invalidateLabs, isForeignLab:isForeignLab, isForeignLabNow:isForeignLabNow,
     getSelected:function(){ return (_lastList||[]).filter(function(e){return _sel.has(e.id);}); }, clearSelected:function(){ _sel.clear(); try{ renderLabList(); }catch(_e){ ocFail('maybe#2',_e); } },
     copyToLab: async function(entries){ var labId=meta().labId; if(!labId){ toast(_t('lab.mv.nolab')); return; }
-      var labNm='the lab'; try{ var _ls=await labs(); var _L=_ls.filter(function(x){return x.lab_id===labId;})[0]; if(_L) labNm=_L.name; }catch(_e){ ocFail('maybe#3',_e); }
+      /* R76g. ⚠ THE FALLBACK PRODUCED "the the lab". Every consumer of
+         {labname} sits after a definite article -- lab.mv.ok1 is "moved into
+         the {labname} library" -- so 'the lab' rendered "into the the lab
+         library." whenever labs() failed or the lab was not in the list. It is
+         `lab.h` now, which reads "into the Lab library." and is the same word
+         the Lab tab uses. A shipped English defect, found by keying around it. */
+      var labNm=_t('lab.h'); try{ var _ls=await labs(); var _L=_ls.filter(function(x){return x.lab_id===labId;})[0]; if(_L) labNm=_L.name; }catch(_e){ ocFail('maybe#3',_e); }
       var existing=[]; try{ existing=await fetchLabStrands(labId); }catch(_e){ ocFail('maybe#4',_e); }
       var keyOf=function(e){ return (String(e.name||'').trim().toLowerCase()+'\u0000'+String(e.seq||'').trim()); };
       var have={}; existing.forEach(function(e){ have[keyOf(e)]=1; });
@@ -25141,7 +25858,7 @@ window.addEventListener('oligo:lang', function(){ sync(); });
      ================================================================== */
   var TARGETS = [
     { k: 'name',   t: 'lab.md.name',  syn: ['name', 'oligoname', 'strandname', 'id', 'oligo', 'primername'] },
-    { k: 'seq',    t: 'lab.md.seq',   syn: ['sequence', 'seq', 'sequence53', 'oligosequence', 'sequence53'] },
+    { k: 'seq',    t: 'lab.md.seq',   syn: ['sequence', 'seq', 'sequence53', 'sequence5to3', 'oligosequence'] },
     { k: 'type',   t: 'lab.md.type',  syn: ['type', 'chemistry'] },
     { k: 'folder', t: 'lab.md.folder', syn: ['folder', 'project'] },
     { k: 'tags',   t: 'lab.md.tags',  syn: ['tags', 'tag', 'labels'] },
@@ -25306,20 +26023,27 @@ window.addEventListener('oligo:lang', function(){ sync(); });
   function close(){
     var ov = document.getElementById('sheetOv');
     if (!ov) return;
-    try { if (typeof W.ocModalClose === 'function' && W.ocModalClose(ov)) { IMP = null; return; } }
+    try { if (typeof W.ocModalClose === 'function' && W.ocModalClose(ov)) {
+      IMP = null; PAINT = null; OVK = { h: 'lab.imp.h', sub: 'lab.imp.sub!' }; return; } }
     catch(_e){ fail('sheet#close', _e); }
     if (ov.parentNode) ov.parentNode.removeChild(ov);
     IMP = null;                                    // ⚠ the file text goes with it
+    PAINT = null; OVK = { h: 'lab.imp.h', sub: 'lab.imp.sub!' };
   }
 
-  function shell(){
+  /* ⚠ R76h: the overlay is now used by the exporter too, so the keys
+     its heading and subtitle carry are a property of the MODE rather
+     than a constant, and the oligo:lang listener reads them back. */
+  var OVK = { h: 'lab.imp.h', sub: 'lab.imp.sub!' }, PAINT = null;
+  function shell(keys){
+    OVK = keys || { h: 'lab.imp.h', sub: 'lab.imp.sub!' };
     var old = document.getElementById('sheetOv');
     if (old) close();
     var ov = document.createElement('div');
     ov.id = 'sheetOv'; ov.className = 'catgate';
     ov.innerHTML = '<div class="catgate-card" style="max-width:820px">'
-      + '<div class="catgate-title" id="sheetOvTitle">' + hesc(T('lab.imp.h')) + '</div>'
-      + '<div class="catgate-sub">' + hesc(T('lab.imp.sub!')) + '</div>'
+      + '<div class="catgate-title" id="sheetOvTitle">' + hesc(T(OVK.h)) + '</div>'
+      + '<div class="catgate-sub">' + hesc(T(OVK.sub)) + '</div>'
       + '<div data-sheetbody></div></div>';
     document.body.appendChild(ov);
     try {
@@ -25343,7 +26067,7 @@ window.addEventListener('oligo:lang', function(){ sync(); });
   }
 
   function stagePick(){
-    body('<p><input type="file" accept=".csv,.txt,text/csv,text/plain" data-sheetfile '
+    body('<p><input type="file" accept=".csv,.txt,.xlsx,text/csv,text/plain,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" data-sheetfile '
       + 'aria-label="' + hesc(T('lab.imp.pick')) + '"></p>'
       + '<div style="display:flex;gap:8px;margin-top:10px">'
       + btn('data-sheetcancel', 'lab.cancel') + '</div>');
@@ -25444,13 +26168,29 @@ window.addEventListener('oligo:lang', function(){ sync(); });
 
   function onFile(file){
     if (!file) return;
+    /* ⚠ A workbook is bytes, not text, so it cannot go through the
+       reader below at all -- it is handed to block #26 whole. */
+    if (W.oligoSheet2 && W.oligoSheet2.isXlsx && W.oligoSheet2.isXlsx(file)){
+      try { W.oligoSheet2.openXlsx(file); return; }
+      catch(_e){ fail('sheet#xlsx', _e); }
+    }
     var fr = new FileReader();
     fr.onerror = function(){ body('<div class="lab-hint">' + hesc(T('lab.imp.bad!')) + '</div>'); };
     fr.onload = function(){
       var parsed;
       try { parsed = csvParse(String(fr.result || '')); }
       catch(_e){ fail('sheet#parse', _e); body('<div class="lab-hint">' + hesc(T('lab.imp.bad!')) + '</div>'); return; }
-      var all = parsed.rows;
+      beginRows(parsed.rows, file.name || '');
+    };
+    fr.readAsText(file);
+  }
+
+  /* ⚠ THE SEAM BETWEEN A FORMAT AND THE PIPELINE.  Whatever produced
+     the rows -- the CSV reader here, or block #26's workbook reader --
+     everything from the row limit onwards is the same, and having it
+     in one place is what stops the two paths drifting. */
+  function beginRows(all, fileName){
+      all = all || [];
       if (!all.length || all.length < 2){
         body('<div class="lab-hint">' + hesc(T('lab.imp.empty!')) + '</div>');
         return;
@@ -25461,7 +26201,7 @@ window.addEventListener('oligo:lang', function(){ sync(); });
         body('<div class="lab-hint">' + hesc(T('lab.imp.big!', { n: rows.length, max: MAX_ROWS })) + '</div>');
         return;
       }
-      IMP = { header: header, rows: rows, file: file.name || '', map: {}, ready: [] };
+      IMP = { header: header, rows: rows, file: fileName || '', map: {}, ready: [] };
       if (isFullRecord(header)){
         /* our own file: every column is already named, so the mapping step has
            nothing to ask and skipping it is not a shortcut, it is the round
@@ -25474,8 +26214,6 @@ window.addEventListener('oligo:lang', function(){ sync(); });
       }
       IMP.map = autoMap(header);
       stageMap();
-    };
-    fr.readAsText(file);
   }
 
   /* ==================================================================
@@ -25550,7 +26288,9 @@ window.addEventListener('oligo:lang', function(){ sync(); });
       var sel = [];
       try { sel = (typeof W.histSelected === 'function') ? W.histSelected() : []; }
       catch(_e){ fail('sheet#sel', _e); }
-      exportFull(sel && sel.length ? sel : (history || []).slice());
+      var _list = sel && sel.length ? sel : (history || []).slice();
+      if (W.oligoSheet2 && W.oligoSheet2.openExport) W.oligoSheet2.openExport(_list);
+      else exportFull(_list);
       return;
     }
     if ((b = e.target.closest('[data-sheetcancel]'))){ close(); return; }
@@ -25603,8 +26343,9 @@ window.addEventListener('oligo:lang', function(){ sync(); });
   W.addEventListener('oligo:lang', function(){
     var ov = document.getElementById('sheetOv');
     if (!ov) return;
-    var ti = ov.querySelector('.catgate-title'); if (ti) ti.textContent = T('lab.imp.h');
-    var su = ov.querySelector('.catgate-sub');   if (su) su.textContent = T('lab.imp.sub!');
+    var ti = ov.querySelector('.catgate-title'); if (ti) ti.textContent = T(OVK.h);
+    var su = ov.querySelector('.catgate-sub');   if (su) su.textContent = T(OVK.sub);
+    if (PAINT){ try { PAINT(); } catch(_e){ fail('sheet#paint', _e); } return; }
     if (!IMP) return;
     if (IMP.ready && IMP.ready.length) stageCheck();
     else if (IMP.header) stageMap();
@@ -25612,12 +26353,657 @@ window.addEventListener('oligo:lang', function(){ sync(); });
   });
 
   W.oligoSheet = {
+    shell: shell, body: body, close: close, beginRows: beginRows,
+    setPaint: function(fn){ PAINT = fn || null; },
     csvParse: csvParse, csvWrite: csvWrite, cellOut: cellOut, cellIn: cellIn,
     FULL_COLS: FULL_COLS, fullRow: fullRow, fullCsv: fullCsv, fullEntry: fullEntry,
     isFullRecord: isFullRecord, autoMap: autoMap, entriesFrom: entriesFrom,
     readDate: readDate, derive: derive, MD: MD, TARGETS: TARGETS,
     mdPanel: mdPanel, openImport: openImport, exportFull: exportFull,
     MAX_ROWS: MAX_ROWS
+  };
+})();
+</script>
+<script id="oligo-sheet2-js">
+/* __OLIGO_SHEET2_BLOCK__  --  R76h, 2026-08-17.  THE SPREADSHEET BRIDGE, slice 2.
+
+   R76f built the record and the CSV importer and named what it could not do:
+   "XLSX is not read" and "the vendor plate layouts do not exist yet".  This is
+   both of those.  docs/LAB-WORKSPACE-PLAN.md 1f: a shared strand library that
+   exports straight into the vendors' own plate layouts is a product nobody
+   currently sells.
+
+   WHAT IS HERE
+     1. an XLSX reader.  A .xlsx is a ZIP of XML; the browser already inflates
+        (DecompressionStream) and already parses XML (DOMParser), so what is
+        left is the ZIP directory and the two sheet grammars.
+     2. an XLSX writer, STORED (uncompressed) entries only.
+     3. three vendor layouts, and the published constraints enforced BEFORE the
+        file is written rather than by the vendor's form afterwards.
+
+   ⚠⚠ WHY A WRITER AND NOT ONLY A READER, AND IT IS A VENDOR CONSTRAINT RATHER
+      THAN SYMMETRY.  Read from IDT's own plate ordering page on 2026-08-17:
+      the plate upload takes .xls or .xlsx and NOT .csv.  An "IDT plate" export
+      written as CSV is a file that vendor's uploader refuses, and shipping a
+      named vendor layout that does not work with that vendor is worse than not
+      shipping it.  Eurofins takes .csv for both of its forms, so exactly one
+      of the three layouts needs this.
+
+   ⚠⚠ THE COLUMN NAMES ARE THE VENDOR'S AND ARE NEVER TRANSLATED, for the same
+      reason docs/rules/translation.md 2b gives for the catalog: what the reader
+      hands to a vendor's form is what that form expects to receive, and
+      translating it makes the order fail.  Four of them are recorded in
+      tools/i18n/literal-baseline.json BY HAND, with that reason, and the round
+      note says so.
+
+   ⚠ NO PLATE IS FILLED.  R76f-3, Albert 2026-08-17: the user supplies the well
+     and this lays it out in the vendor's columns.  A row with no well is
+     REFUSED and named, never invented.
+
+   ⚠ THE ONLY VALUE THIS REWRITES ON THE WAY OUT IS A WELL'S LETTER CASE.
+     Everything else is written exactly as the record holds it, which is what
+     lets the full record keep round-tripping.
+
+   ⚠ NO NEW <style> BLOCK (hard stop 6) and NO NEW GLYPH.  Every class used
+     here already ships: catgate, catgate-card, catgate-title, catgate-sub,
+     ctl-btn, hp-btn, lab-hint.
+
+   ⚠ window.t, never a bare t().  And `history` is block #7's top-level `let`,
+     so the bare name here is the app's array, not the browser's. */
+(function(){
+  'use strict';
+  var W = window;
+
+  function T(k, vars){
+    try { return (typeof W.t === 'function') ? W.t(k, vars) : ''; }
+    catch(_e){ return ''; }
+  }
+  function hesc(s){
+    return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  function fail(w, e){ try { if (typeof W.ocFail === 'function') W.ocFail(w, e); } catch(_e){} }
+  function host(){ return W.oligoSheet || null; }
+
+  /* ==================================================================
+     1. READING A .xlsx
+     ⚠ Measured before it was written (tools/round76h/measure-xlsx.py):
+       hand-rolled  +2,778 B gz whole-file and ZERO new English literals
+       read-excel-file 5.8.7  +10,075 B gz and THIRTY-FOUR, every one of which
+       would have to go into literal-baseline.json by hand, and it cannot write.
+     R76f set the precedent for CSV; this is the same call on numbers that are
+     further apart, and what the hand-rolled reader does NOT do is written down
+     in docs/R76h-SCOPE.md 2 rather than left to be discovered.
+     ================================================================== */
+  function u16(d, o){ return d.getUint16(o, true); }
+  function u32(d, o){ return d.getUint32(o, true); }
+
+  /* The End Of Central Directory record is last, but a zip comment may follow
+     it, so it is found by scanning backwards for its signature. */
+  function zipEntries(buf){
+    var d = new DataView(buf), n = buf.byteLength, eo = -1;
+    for (var i = n - 22; i >= 0 && i >= n - 66000; i--){
+      if (u32(d, i) === 0x06054b50){ eo = i; break; }
+    }
+    if (eo < 0) throw new Error('zip');
+    var count = u16(d, eo + 10), off = u32(d, eo + 16), out = {};
+    for (var k = 0, p = off; k < count && p + 46 <= n; k++){
+      if (u32(d, p) !== 0x02014b50) break;
+      var nl = u16(d, p + 28), el = u16(d, p + 30), cl = u16(d, p + 32);
+      var name = '', bytes = new Uint8Array(buf, p + 46, nl);
+      for (var b = 0; b < nl; b++) name += String.fromCharCode(bytes[b]);
+      out[name] = { m: u16(d, p + 10), cs: u32(d, p + 20), lo: u32(d, p + 42) };
+      p += 46 + nl + el + cl;
+    }
+    return out;
+  }
+  /* ⚠ The name and extra lengths in the LOCAL header are the ones that place
+     the data; the central directory's may differ. */
+  function zipRaw(buf, e){
+    var d = new DataView(buf);
+    if (u32(d, e.lo) !== 0x04034b50) throw new Error('zip');
+    var start = e.lo + 30 + u16(d, e.lo + 26) + u16(d, e.lo + 28);
+    return new Uint8Array(buf, start, e.cs);
+  }
+  function inflate(bytes, method){
+    if (method === 0) return Promise.resolve(bytes);
+    if (method !== 8) throw new Error('method');
+    if (typeof W.DecompressionStream !== 'function') throw new Error('nostream');
+    var s = new Blob([bytes]).stream().pipeThrough(new W.DecompressionStream('deflate-raw'));
+    return new Response(s).arrayBuffer().then(function(ab){ return new Uint8Array(ab); });
+  }
+  function xmlOf(bytes){
+    var doc = new DOMParser().parseFromString(new TextDecoder('utf-8').decode(bytes), 'application/xml');
+    if (doc.getElementsByTagName('parsererror').length) throw new Error('xml');
+    return doc;
+  }
+  function tags(node, name){
+    var a = node.getElementsByTagName(name);
+    return a.length ? a : node.getElementsByTagNameNS('*', name);
+  }
+  /* A1 -> 0, AA1 -> 26.  The reference is the ONLY place a column index lives:
+     a row may leave an empty cell out of the file entirely. */
+  function colOf(ref){
+    var c = 0, i = 0;
+    while (i < ref.length){
+      var ch = ref.charCodeAt(i);
+      if (ch < 65 || ch > 90) break;
+      c = c * 26 + (ch - 64); i++;
+    }
+    return c - 1;
+  }
+  /* Excel stores a date as a number and says it is one only through the style.
+     Built-ins 14-22 and 45-47 are dates; a custom code counts if it carries a
+     date letter outside a quoted or bracketed run. */
+  var DATEFMT = { 14:1, 15:1, 16:1, 17:1, 18:1, 19:1, 20:1, 21:1, 22:1, 45:1, 46:1, 47:1 };
+  function dateStyles(doc){
+    var isDate = {};
+    if (!doc) return isDate;
+    var custom = {}, nf = tags(doc, 'numFmt');
+    for (var i = 0; i < nf.length; i++){
+      var code = nf[i].getAttribute('formatCode') || '';
+      if (/[ymdh]/i.test(code.replace(/"[^"]*"/g, '').replace(/\[[^\]]*\]/g, '')))
+        custom[nf[i].getAttribute('numFmtId')] = 1;
+    }
+    var xfs = tags(doc, 'cellXfs');
+    if (!xfs.length) return isDate;
+    var xf = tags(xfs[0], 'xf');
+    for (var j = 0; j < xf.length; j++){
+      var f = xf[j].getAttribute('numFmtId');
+      if (f != null && (DATEFMT[+f] || custom[f])) isDate[j] = 1;
+    }
+    return isDate;
+  }
+  /* ⚠ The 1900 system counts 1900 as a leap year, which it was not, so every
+     serial from 60 up is one day ahead.  It looks like a bug and is not. */
+  function serialDate(n){
+    var days = Math.floor(n);
+    if (days > 59) days -= 1;
+    var dt = new Date(Date.UTC(1899, 11, 31) + days * 86400000);
+    return dt.getUTCFullYear() + '-'
+      + ('0' + (dt.getUTCMonth() + 1)).slice(-2) + '-'
+      + ('0' + dt.getUTCDate()).slice(-2);
+  }
+  function sharedStrings(doc){
+    var out = [];
+    if (!doc) return out;
+    var si = tags(doc, 'si');
+    for (var i = 0; i < si.length; i++){
+      var ts = tags(si[i], 't'), s = '';
+      for (var j = 0; j < ts.length; j++) s += ts[j].textContent || '';
+      out.push(s);
+    }
+    return out;
+  }
+  function sheetRows(doc, sst, isDate){
+    var rows = [], rs = tags(doc, 'row');
+    for (var i = 0; i < rs.length; i++){
+      var cs = tags(rs[i], 'c'), row = [];
+      for (var j = 0; j < cs.length; j++){
+        var c = cs[j], ref = c.getAttribute('r') || '', ty = c.getAttribute('t') || 'n';
+        var idx = ref ? colOf(ref) : j, v = '';
+        if (ty === 'inlineStr'){
+          var is = tags(c, 't');
+          for (var k = 0; k < is.length; k++) v += is[k].textContent || '';
+        } else {
+          var vv = tags(c, 'v');
+          v = vv.length ? (vv[0].textContent || '') : '';
+          if (ty === 's') v = sst[+v] != null ? sst[+v] : '';
+          else if (ty === 'b') v = (v === '1') ? '1' : '0';
+          else if (ty === 'n' && v !== ''){
+            var st = c.getAttribute('s');
+            if (st != null && isDate[+st] && isFinite(+v)) v = serialDate(+v);
+          }
+        }
+        while (row.length < idx) row.push('');
+        row[idx] = v;
+      }
+      rows.push(row);
+    }
+    return rows;
+  }
+  var RELNS = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships';
+  /* ⚠⚠ SHEET ORDER IS NOT PART ORDER.  The workbook lists sheets in display
+     order and points at each through an r:id; the relationship file maps that
+     id to a path.  A reader that assumes "sheet N is sheet<N>.xml" reads the
+     wrong sheet, and the fixture is built to make that fail. */
+  function readWorkbook(buf){
+    var ent = zipEntries(buf);
+    function part(name){
+      var e = ent[name];
+      if (!e) return Promise.resolve(null);
+      return inflate(zipRaw(buf, e), e.m).then(xmlOf);
+    }
+    return Promise.all([part('xl/workbook.xml'), part('xl/_rels/workbook.xml.rels')])
+      .then(function(r){
+        var wb = r[0], rels = r[1];
+        if (!wb) throw new Error('notxlsx');
+        var target = {};
+        if (rels){
+          var rl = tags(rels, 'Relationship');
+          for (var i = 0; i < rl.length; i++){
+            var tg = rl[i].getAttribute('Target') || '';
+            if (tg.charAt(0) === '/') tg = tg.slice(1);
+            else if (tg.slice(0, 3) !== 'xl/') tg = 'xl/' + tg.replace(/^\.\//, '');
+            target[rl[i].getAttribute('Id')] = tg;
+          }
+        }
+        var sh = tags(wb, 'sheet'), sheets = [];
+        for (var j = 0; j < sh.length; j++){
+          var rid = sh[j].getAttributeNS ? sh[j].getAttributeNS(RELNS, 'id') : null;
+          if (!rid) rid = sh[j].getAttribute('r:id');
+          sheets.push({ name: sh[j].getAttribute('name') || '',
+                        path: target[rid] || ('xl/worksheets/sheet' + (j + 1) + '.xml') });
+        }
+        if (!sheets.length) throw new Error('nosheet');
+        return {
+          sheets: sheets.map(function(s){ return s.name; }),
+          rows: function(i){
+            var s = sheets[i] || sheets[0];
+            return Promise.all([part('xl/sharedStrings.xml'), part('xl/styles.xml'), part(s.path)])
+              .then(function(p){
+                if (!p[2]) throw new Error('nosheet');
+                return sheetRows(p[2], sharedStrings(p[0]), dateStyles(p[1]));
+              });
+          }
+        };
+      });
+  }
+
+  /* ==================================================================
+     2. WRITING A .xlsx
+     A ZIP entry may be STORED, which removes deflate from the problem
+     entirely.  What is left is CRC-32, two headers and four small XML parts.
+     Every cell is written as an inline string, so there is no sharedStrings
+     part and no number format to get wrong: a well, a name and a sequence are
+     text, and a sequence Excel decided was a number would be a corruption.
+     ⚠ The timestamp is fixed at the DOS epoch on purpose, so the same rows
+       give byte-identical output and a gate can pin it.
+     ================================================================== */
+  var CRCT = null;
+  function crc32(bytes){
+    if (!CRCT){
+      CRCT = new Int32Array(256);
+      for (var n = 0; n < 256; n++){
+        var c = n;
+        for (var k = 0; k < 8; k++) c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
+        CRCT[n] = c;
+      }
+    }
+    var t = CRCT, x = -1;
+    for (var i = 0; i < bytes.length; i++) x = t[(x ^ bytes[i]) & 0xFF] ^ (x >>> 8);
+    return (x ^ -1) >>> 0;
+  }
+  function utf8(s){ return new TextEncoder().encode(s); }
+  function xesc(s){
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      /* a control character is not legal in XML 1.0 and Excel refuses the whole
+         workbook for one, so they are dropped rather than escaped */
+      .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F]/g, '');
+  }
+  function colName(i){
+    var s = '';
+    i = i + 1;
+    while (i > 0){ var r = (i - 1) % 26; s = String.fromCharCode(65 + r) + s; i = (i - r - 1) / 26; }
+    return s;
+  }
+  function sheetXml(rows){
+    var out = ['<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+      + '<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">'
+      + '<sheetData>'];
+    for (var r = 0; r < rows.length; r++){
+      out.push('<row r="' + (r + 1) + '">');
+      var row = rows[r] || [];
+      for (var c = 0; c < row.length; c++){
+        var v = row[c];
+        if (v == null || v === '') continue;
+        /* ⚠ THE TYPE ATTRIBUTE COMES FIRST SO NO FRAGMENT BEGINS MID-TAG.
+           With the reference first, the piece after it starts inside a tag,
+           and js-literals' stripper removes a TRAILING partial tag and not a
+           LEADING one, so rule 7 read it as a sentence.  R76g earned that on a
+           t() placeholder; it is the same shape one layer down. */
+        out.push('<c t="inlineStr" r="' + colName(c) + (r + 1) + '"><is><t xml:space="preserve">'
+          + xesc(v) + '</t></is></c>');
+      }
+      out.push('</row>');
+    }
+    out.push('</sheetData></worksheet>');
+    return out.join('');
+  }
+  /* ⚠ A sheet name is the vendor's identifier for the plate, and a workbook
+     refuses five characters in one plus anything over 31.  Cleaned here so no
+     caller can forget. */
+  function sheetName(s, i){
+    s = String(s == null ? '' : s).replace(/[\\\/\?\*\[\]:]/g, ' ').trim().slice(0, 31);
+    return s || ('Sheet' + (i + 1));
+  }
+  function xlsxParts(sheets){
+    /* ⚠ THE TRAILING DOT IS DELIBERATELY NOT HERE.  A literal that ENDS in a
+       full stop passes js-literals' "is this a sentence" test, so factoring the
+       prefix out WITH its dot made rule 7 count a MIME type as prose.  Measured
+       on the applied build, not guessed. */
+    var CTW = 'application/vnd.openxmlformats-officedocument.spreadsheetml';
+    var ct = ['<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+      + '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">'
+      + '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>'
+      + '<Default Extension="xml" ContentType="application/xml"/>'
+      + '<Override PartName="/xl/workbook.xml" ContentType="' + CTW + '.sheet.main+xml"/>'];
+    var wb = ['<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+      + '<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"'
+      + ' xmlns:r="' + RELNS + '"><sheets>'];
+    var rl = ['<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+      + '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'];
+    var files = [];
+    sheets.forEach(function(s, i){
+      var path = 'xl/worksheets/sheet' + (i + 1) + '.xml';
+      ct.push('<Override PartName="/' + path + '" ContentType="' + CTW + '.worksheet+xml"/>');
+      wb.push('<sheet name="' + xesc(sheetName(s.name, i)) + '" sheetId="' + (i + 1)
+        + '" r:id="rId' + (i + 1) + '"/>');
+      rl.push('<Relationship Id="rId' + (i + 1) + '" Type="' + RELNS
+        + '/worksheet" Target="worksheets/sheet' + (i + 1) + '.xml"/>');
+      files.push([path, sheetXml(s.rows || [])]);
+    });
+    ct.push('</Types>'); wb.push('</sheets></workbook>'); rl.push('</Relationships>');
+    return [
+      ['[Content_Types].xml', ct.join('')],
+      ['_rels/.rels', '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+        + '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'
+        + '<Relationship Id="rId1" Type="' + RELNS + '/officeDocument" Target="xl/workbook.xml"/>'
+        + '</Relationships>'],
+      ['xl/workbook.xml', wb.join('')],
+      ['xl/_rels/workbook.xml.rels', rl.join('')]
+    ].concat(files);
+  }
+  function xlsxWrite(sheets){
+    var files = xlsxParts(sheets), chunks = [], central = [], offset = 0;
+    function n16(v){ return [v & 0xFF, (v >>> 8) & 0xFF]; }
+    function n32(v){ return [v & 0xFF, (v >>> 8) & 0xFF, (v >>> 16) & 0xFF, (v >>> 24) & 0xFF]; }
+    files.forEach(function(f){
+      var name = utf8(f[0]), data = utf8(f[1]), crc = crc32(data);
+      /* flag 0x0800 says the name is UTF-8; date 0x0021 is 1980-01-01 */
+      var head = [0x50, 0x4B, 0x03, 0x04].concat(n16(20), n16(0x0800), n16(0), n16(0), n16(0x21),
+        n32(crc), n32(data.length), n32(data.length), n16(name.length), n16(0));
+      chunks.push(new Uint8Array(head), name, data);
+      central.push({ name: name, crc: crc, size: data.length, off: offset });
+      offset += head.length + name.length + data.length;
+    });
+    var cd = [], cdLen = 0;
+    central.forEach(function(e){
+      var h = [0x50, 0x4B, 0x01, 0x02].concat(n16(20), n16(20), n16(0x0800), n16(0), n16(0),
+        n16(0x21), n32(e.crc), n32(e.size), n32(e.size), n16(e.name.length), n16(0), n16(0),
+        n16(0), n16(0), n32(0), n32(e.off));
+      cd.push(new Uint8Array(h), e.name);
+      cdLen += h.length + e.name.length;
+    });
+    var eocd = new Uint8Array([0x50, 0x4B, 0x05, 0x06].concat(n16(0), n16(0),
+      n16(central.length), n16(central.length), n32(cdLen), n32(offset), n16(0)));
+    return new Blob(chunks.concat(cd, [eocd]),
+      { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+  }
+
+  /* ==================================================================
+     3. THE VENDOR LAYOUTS
+     ⚠⚠ EVERY COLUMN NAME AND EVERY LIMIT BELOW WAS READ OFF THE VENDOR'S OWN
+        PAGE ON 2026-08-17, not from this repository's summary of it, and two
+        of the summary's figures did not survive that:
+          - the recorded Eurofins headers are approximate.  The form says
+            Sequence (5' to 3'), 5'Modification and 3'Modification.
+          - the recorded "25 characters for tubes" is not sourced anywhere and
+            the tube order page says names are at most SEVENTEEN.  This uses
+            17, which is the safer of the two in the only direction that
+            matters: a name short enough for 17 passes a form that allows 25.
+        docs/R76h-SCOPE.md 4 records both, and the review table asks about the
+        second.
+     ⚠ The banned-character list is applied ONLY where it is published, which is
+       the plate form.  Inventing a constraint for the tube form would be the
+       same mistake in the other direction.
+     ================================================================== */
+  var EURO_BAN = /[,.' ]/;
+  /* 96- and 384-well, case-insensitive, with or without a leading zero. */
+  var WELLRE = /^[A-Pa-p](0?[1-9]|1[0-9]|2[0-4])$/;
+
+  var LAYOUTS = [
+    { k: 'full', n: 'lab.exp.full', w: 'lab.exp.why!', ext: 'csv', file: 'oligo-full-record.csv' },
+    { k: 'europlate', n: 'lab.exp.europlate', w: 'lab.exp.europlatewhy!', ext: 'csv',
+      file: 'eurofins-plate.csv', max: 20, ban: EURO_BAN, well: true, plate: true,
+      cols: ['Well Position', 'Oligo Name', "Sequence (5' to 3')", 'Plate Name',
+             "5'Modification", "3'Modification", 'Notes'] },
+    { k: 'eurotube', n: 'lab.exp.eurotube', w: 'lab.exp.eurotubewhy!', ext: 'csv',
+      file: 'eurofins-tube.csv', max: 17,
+      cols: ['Oligo Name', "Sequence (5' to 3')", "5'Modification", "3'Modification", 'Notes'] },
+    { k: 'idtplate', n: 'lab.exp.idtplate', w: 'lab.exp.idtplatewhy!', ext: 'xlsx',
+      file: 'idt-plate.xlsx', well: true, plate: true, sheets: true,
+      cols: ['Well Position', 'Name', 'Sequence'] }
+  ];
+
+  function mdOf(h){ return (h && h.md && typeof h.md === 'object') ? h.md : {}; }
+  function endOf(v){ return (!v || v === 'OH') ? '' : String(v); }
+
+  function cellsFor(lay, h){
+    var m = mdOf(h), well = String(m.well || '').toUpperCase();
+    if (lay.k === 'europlate')
+      return [well, h.name || '', h.seq || '', m.plate || '',
+              endOf(h.five), endOf(h.three), h.note || ''];
+    if (lay.k === 'eurotube')
+      return [h.name || '', h.seq || '', endOf(h.five), endOf(h.three), h.note || ''];
+    return [well, h.name || '', h.seq || ''];
+  }
+
+  /* ⚠ THE CHECK RUNS BEFORE ANYTHING IS WRITTEN, which is what
+     docs/LAB-WORKSPACE-PLAN.md 2.3 means by enforcing the vendor's constraints
+     at export time.  A row that cannot go is NAMED and left out; nothing is
+     silently renamed, and nothing the reader stored is changed. */
+  function checkAll(lay, list){
+    var ok = [], problems = [], seen = {};
+    (list || []).forEach(function(h, i){
+      var n = i + 1, name = String(h.name || ''), m = mdOf(h), bad = null;
+      if (lay.k !== 'full'){
+        if (!name) bad = T('lab.exp.rowname', { n: n });
+        else if (lay.max && name.length > lay.max)
+          bad = T('lab.exp.rowlong', { n: n, name: name, len: name.length, max: lay.max });
+        else if (lay.ban && lay.ban.test(name)) bad = T('lab.exp.rowchar', { n: n, name: name });
+        if (!bad && lay.well){
+          var well = String(m.well || '').trim();
+          if (!well || !WELLRE.test(well)) bad = T('lab.exp.rowwell', { n: n, name: name });
+          else {
+            var key = String(m.plate || '') + ' ' + well.toUpperCase();
+            if (seen[key]) bad = T('lab.exp.rowdupe', { n: n, well: well.toUpperCase() });
+            else seen[key] = 1;
+          }
+        }
+      }
+      if (bad) problems.push(bad); else ok.push(h);
+    });
+    return { ok: ok, problems: problems };
+  }
+
+  function download(blob, name){
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url; a.download = name;
+    document.body.appendChild(a); a.click();
+    setTimeout(function(){ a.remove(); URL.revokeObjectURL(url); }, 100);
+  }
+
+  /* One worksheet per plate, which is what the IDT upload wants; a row with no
+     plate name is its own group, so a single-plate order needs no plate name. */
+  function byPlate(lay, list){
+    var order = [], groups = {};
+    list.forEach(function(h){
+      var p = String(mdOf(h).plate || '');
+      if (!groups[p]){ groups[p] = []; order.push(p); }
+      groups[p].push(h);
+    });
+    return order.map(function(p){
+      return { name: p, rows: [lay.cols].concat(groups[p].map(function(h){ return cellsFor(lay, h); })) };
+    });
+  }
+
+  function writeOut(lay, list){
+    var S = host();
+    if (lay.k === 'full'){
+      if (S && S.exportFull) S.exportFull(list);
+      return list.length;
+    }
+    if (lay.ext === 'xlsx'){
+      download(xlsxWrite(byPlate(lay, list)), lay.file);
+      return list.length;
+    }
+    var rows = list.map(function(h){ return cellsFor(lay, h); });
+    var csv = (S && S.csvWrite) ? S.csvWrite(lay.cols, rows, ',') : '';
+    download(new Blob([csv], { type: 'text/csv;charset=utf-8' }), lay.file);
+    return list.length;
+  }
+
+  /* ==================================================================
+     4. THE OVERLAY.  It is block #25's overlay, in a second mode.
+     ⚠⚠ THE HEADING AND SUBTITLE ARE REPAINTED BY THE oligo:lang LISTENER, NOT
+        ONLY THE BODY.  R76f shipped that defect for one revert and R76g fixed
+        the same shape in block #14, so this registers a painter with the host
+        rather than owning a second listener.
+     ================================================================== */
+  var EXP = null, WB = null;
+
+  function body(html){ var S = host(); if (S && S.body) S.body(html); }
+
+  function stagePickLayout(){
+    var rows = LAYOUTS.map(function(l){
+      return '<div style="margin:8px 0"><button type="button" class="ctl-btn sm" data-explay="'
+        + hesc(l.k) + '">' + hesc(T(l.n)) + '</button>'
+        + '<div class="lab-hint">' + hesc(T(l.w)) + '</div></div>';
+    }).join('');
+    body('<div class="lab-hint">' + hesc(T('lab.exp.modwhy!')) + '</div>' + rows
+      + '<div style="display:flex;gap:8px;margin-top:10px">'
+      + '<button type="button" class="ctl-btn sm" data-expcancel>' + hesc(T('lab.cancel'))
+      + '</button></div>');
+  }
+
+  function stageCheck(){
+    var lay = EXP.lay, res = checkAll(lay, EXP.list);
+    EXP.ready = res.ok;
+    var probs = res.problems.length
+      ? '<div class="lab-hint"><b>' + hesc(T('lab.exp.bad', { n: res.problems.length }))
+        + '</b><br>' + res.problems.slice(0, 12).map(hesc).join('<br>') + '</div>'
+      : '';
+    body('<div class="catgate-sub">' + hesc(T('lab.exp.checkh')) + '</div>'
+      + '<div class="lab-hint">' + hesc(T(lay.w)) + '</div>'
+      + '<div class="lab-hint"><b>' + hesc(T('lab.exp.ok', { n: res.ok.length })) + '</b></div>'
+      + probs
+      + '<div style="display:flex;gap:8px;margin-top:10px">'
+      + (res.ok.length
+          ? '<button type="button" class="ctl-btn sm primary" data-expgo>'
+            + hesc(T('lab.exp.go', { n: res.ok.length })) + '</button>'
+          : '<span class="lab-hint">' + hesc(T('lab.exp.none')) + '</span>')
+      + '<button type="button" class="ctl-btn sm" data-expback>' + hesc(T('lab.tree.back')) + '</button>'
+      + '<button type="button" class="ctl-btn sm" data-expcancel>' + hesc(T('lab.cancel'))
+      + '</button></div>');
+  }
+
+  function repaint(){ if (!EXP) return; if (EXP.lay) stageCheck(); else stagePickLayout(); }
+
+  function openExport(list){
+    var S = host();
+    if (!S || !S.shell){ return; }
+    EXP = { list: (list || []).slice(), lay: null, ready: [] };
+    S.shell({ h: 'lab.exp.h', sub: 'lab.exp.sub!' });
+    if (S.setPaint) S.setPaint(repaint);
+    stagePickLayout();
+  }
+
+  /* ==================================================================
+     5. THE IMPORT HOOK.  Block #25 owns the pipeline; this owns the format.
+     ================================================================== */
+  function isXlsx(file){
+    return /\.xlsx$/i.test(String((file && file.name) || ''));
+  }
+
+  function stageSheetPick(wb, fileName){
+    var opts = wb.sheets.map(function(n, i){
+      return '<option value="' + i + '">' + hesc(n) + '</option>';
+    }).join('');
+    body('<div class="catgate-sub">' + hesc(T('lab.imp.sheeth')) + '</div>'
+      + '<p><label>' + hesc(T('lab.imp.sheet'))
+      + ' <select data-impsheet>' + opts + '</select></label></p>'
+      + '<div style="display:flex;gap:8px;margin-top:10px">'
+      + '<button type="button" class="ctl-btn sm primary" data-impsheetgo>'
+      + hesc(T('lab.imp.next')) + '</button>'
+      + '<button type="button" class="ctl-btn sm" data-sheetcancel>' + hesc(T('lab.cancel'))
+      + '</button></div>');
+    EXP = null;
+    WB = { wb: wb, file: fileName };
+    var S = host();
+    if (S && S.setPaint) S.setPaint(function(){ stageSheetPick(wb, fileName); });
+  }
+
+  function takeSheet(wb, i, fileName){
+    var S = host();
+    wb.rows(i).then(function(rows){
+      if (S && S.beginRows) S.beginRows(rows, fileName);
+      if (S && S.setPaint) S.setPaint(null);
+    })['catch'](function(e){ fail('sheet2#rows', e); badFile(e); });
+  }
+
+  function badFile(e){
+    var code = (e && e.message) || '';
+    body('<div class="lab-hint">'
+      + hesc(T(code === 'nostream' ? 'lab.imp.noxlsx!' : 'lab.imp.bad!')) + '</div>');
+  }
+
+  function openXlsx(file){
+    var fr = new FileReader();
+    fr.onerror = function(){ badFile(null); };
+    fr.onload = function(){
+      var wb;
+      try { wb = readWorkbook(fr.result); }
+      catch(e){ fail('sheet2#zip', e); badFile(e); return; }
+      wb.then(function(w){
+        if (w.sheets.length > 1) stageSheetPick(w, file.name || '');
+        else takeSheet(w, 0, file.name || '');
+      })['catch'](function(e){ fail('sheet2#wb', e); badFile(e); });
+    };
+    fr.readAsArrayBuffer(file);
+  }
+
+  document.body.addEventListener('click', function(e){
+    var b = e.target.closest ? e.target.closest('[data-explay]') : null;
+    if (b){
+      var k = b.getAttribute('data-explay');
+      if (!EXP) return;
+      for (var i = 0; i < LAYOUTS.length; i++) if (LAYOUTS[i].k === k) EXP.lay = LAYOUTS[i];
+      stageCheck();
+      return;
+    }
+    if (e.target.closest && e.target.closest('[data-expback]')){
+      if (EXP){ EXP.lay = null; stagePickLayout(); }
+      return;
+    }
+    if (e.target.closest && e.target.closest('[data-expcancel]')){
+      var S = host(); if (S && S.close) S.close();
+      return;
+    }
+    if (e.target.closest && e.target.closest('[data-impsheetgo]')){
+      var sel = document.querySelector('#sheetOv [data-impsheet]');
+      if (sel && WB) takeSheet(WB.wb, +sel.value || 0, WB.file);
+      return;
+    }
+    if (e.target.closest && e.target.closest('[data-expgo]')){
+      if (!EXP || !EXP.ready || !EXP.ready.length) return;
+      var n = writeOut(EXP.lay, EXP.ready);
+      try {
+        if (W.__oligoNotice) W.__oligoNotice('oligoSheetOut', {
+          dismissible: true, text: T('lab.exp.done', { n: n }) });
+      } catch(_e){ fail('sheet2#toast', _e); }
+      var S2 = host(); if (S2 && S2.close) S2.close();
+      return;
+    }
+  });
+
+  W.oligoSheet2 = {
+    readWorkbook: readWorkbook, xlsxWrite: xlsxWrite, xlsxParts: xlsxParts,
+    colOf: colOf, colName: colName, serialDate: serialDate, crc32: crc32,
+    LAYOUTS: LAYOUTS, cellsFor: cellsFor, checkAll: checkAll, byPlate: byPlate,
+    openExport: openExport, openXlsx: openXlsx, isXlsx: isXlsx, WELLRE: WELLRE
   };
 })();
 </script>
