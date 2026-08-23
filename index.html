@@ -343,9 +343,13 @@ var I18N = {
   "lab.acc.edit":"Edit",
   "lab.acc.failload":"Could not load access.",
   "lab.acc.h":"Manage access",
+  "lab.acc.movewarn!":"Everyone in {lab} will be able to see it.",
+  "lab.acc.nodel!":"People you give edit access to can change this record. They cannot delete it or remove it from the lab.",
   "lab.acc.nomembers":"No members.",
   "lab.acc.nosync":"This sequence needs to sync before you can manage access.",
   "lab.acc.sub":"Everyone in the lab can view this. Choose who can also edit.",
+  "lab.acc.subspace":"Move it into {lab} before giving anyone edit access.",
+  "lab.acc.sum":"All {n} lab members can view · {m} can edit · created by {author}",
   "lab.acc.to":"Manage access to {name}",
   "lab.acc.view":"View only",
   "lab.add.already":"{email} is already in this lab, so nothing changed.",
@@ -376,7 +380,7 @@ var I18N = {
   "lab.bulk.moveh":"File in a folder",
   "lab.bulk.moveok":"Filed {ok}.",
   "lab.bulk.movepart":"Filed {ok}. {bad} stayed where they were: you can only file records you wrote, unless you manage the lab.",
-  "lab.bulk.movepro":"Filed {ok}. {bad} stayed where they were: filing needs an active plan.",
+  "lab.bulk.movepro":"Nothing was filed. Filing needs an active plan, so all {bad} stayed where they were.",
   "lab.bulk.movesub":"Choose where these {n} go. They stay in the shared library.",
   "lab.bulk.moving":"Filing {n} of {total}...",
   "lab.bulk.n1":"1 entry selected",
@@ -392,6 +396,7 @@ var I18N = {
   "lab.card.by":"shared by {email}",
   "lab.card.del":"Delete",
   "lab.card.deleted":"Deleted",
+  "lab.card.editlab":"Edit the shared copy",
   "lab.card.open":"Open",
   "lab.card.opencopy":"Open a copy",
   "lab.card.rmdone":"Removed from lab",
@@ -436,6 +441,23 @@ var I18N = {
   "lab.dlg.generic":"Dialog",
   "lab.dlg.loading":"Loading…",
   "lab.dlg.seq":"Sequence",
+  "lab.ed.all!":"Everyone in the lab sees your changes.",
+  "lab.ed.band":"Editing {name} in {lab}",
+  "lab.ed.clash!":"{who} saved this record while you were editing it.",
+  "lab.ed.copied":"Saved a copy in {where}.",
+  "lab.ed.copy":"Save a copy in {where}",
+  "lab.ed.discard":"Discard my changes and open the latest version",
+  "lab.ed.fell!":"{lab} could not accept the copy, so it is in your own library instead.",
+  "lab.ed.gone!":"This record is not in the lab library any more.",
+  "lab.ed.goneb!":"It was deleted, taken out of the lab, or moved somewhere you cannot see. Opening it again will not bring it back.",
+  "lab.ed.keep":"Keep editing",
+  "lab.ed.leave":"Discard my changes and close",
+  "lab.ed.meta":"Version {v} · last saved by {who}, {when}",
+  "lab.ed.metat":"Last saved {when}",
+  "lab.ed.norights!":"Your edit access to this record was removed.",
+  "lab.ed.norightsb!":"The record is still in the lab and you can still open it. You just cannot save changes to it any more.",
+  "lab.ed.ok":"Saved to the lab.",
+  "lab.ed.save":"Save to the lab",
   "lab.err.add":"Could not add",
   "lab.err.create":"Could not create",
   "lab.err.del":"Could not delete",
@@ -1322,6 +1344,7 @@ var I18N = {
   "ui.lib.mwgoneT":"This record uses {codes}, which this calculator cannot resolve now, so no molecular weight is shown. The molecular weight saved with it was {was}.",
   "ui.lib.readonly":"Read only",
   "ui.lib.rolab!":"This belongs to a lab you are no longer in. You can still open and copy it, but you cannot edit or delete it.",
+  "ui.nav.mwshort":"Calc",
   "ui.seatbig.back!":"Go back and change it",
   "ui.seatbig.body!":"{n} seats is {usd} {per}, billed to this account. Most labs buy between 3 and 30. If that is what you meant, carry on.",
   "ui.seatbig.eyebrow!":"Check this",
@@ -1520,14 +1543,18 @@ var I18N = {
   "lab.about.h":"\u9019\u500b\u5be6\u9a57\u5ba4",
   "lab.acc.author":"\u5efa\u7acb\u8005",
   "lab.acc.can":"\u53ef\u7de8\u8f2f",
-  "lab.acc.dogrant":"\u7d66\u4e88\u7de8\u8f2f\u6b0a\u9650",
+  "lab.acc.dogrant":"\u6388\u4e88\u7de8\u8f2f\u6b0a\u9650",
   "lab.acc.dorevoke":"\u79fb\u9664\u7de8\u8f2f\u6b0a\u9650",
   "lab.acc.edit":"\u7de8\u8f2f",
   "lab.acc.failload":"\u7121\u6cd5\u8f09\u5165\u5b58\u53d6\u6b0a\u3002",
   "lab.acc.h":"\u7ba1\u7406\u5b58\u53d6\u6b0a",
+  "lab.acc.movewarn!":"{lab} \u88e1\u7684\u6240\u6709\u4eba\u90fd\u5c07\u53ef\u4ee5\u6aa2\u8996\u5b83\u3002",
+  "lab.acc.nodel!":"\u4f60\u6388\u4e88\u7de8\u8f2f\u6b0a\u9650\u7684\u4eba\u53ef\u4ee5\u66f4\u6539\u9019\u4e00\u7b46\uff0c\u4f46\u4e0d\u80fd\u522a\u9664\u5b83\uff0c\u4e5f\u4e0d\u80fd\u628a\u5b83\u79fb\u51fa\u5be6\u9a57\u5ba4\u3002",
   "lab.acc.nomembers":"\u6c92\u6709\u6210\u54e1\u3002",
   "lab.acc.nosync":"\u9019\u7b46\u5e8f\u5217\u8981\u5148\u540c\u6b65\uff0c\u624d\u80fd\u7ba1\u7406\u5b58\u53d6\u6b0a\u3002",
-  "lab.acc.sub":"\u5be6\u9a57\u5ba4\u88e1\u7684\u6bcf\u500b\u4eba\u90fd\u53ef\u4ee5\u6aa2\u8996\u9019\u4e00\u7b46\u3002\u8acb\u9078\u64c7\u8ab0\u4e5f\u53ef\u4ee5\u7de8\u8f2f\u3002",
+  "lab.acc.sub":"\u5be6\u9a57\u5ba4\u88e1\u7684\u6bcf\u500b\u4eba\u90fd\u53ef\u4ee5\u6aa2\u8996\u9019\u4e00\u7b46\u3002\u8acb\u9078\u64c7\u9084\u6709\u8ab0\u53ef\u4ee5\u7de8\u8f2f\u3002",
+  "lab.acc.subspace":"\u8acb\u5148\u628a\u5b83\u79fb\u5230 {lab}\uff0c\u518d\u6388\u4e88\u4efb\u4f55\u4eba\u7de8\u8f2f\u6b0a\u9650\u3002",
+  "lab.acc.sum":"{n} \u4f4d\u5be6\u9a57\u5ba4\u6210\u54e1\u90fd\u53ef\u4ee5\u6aa2\u8996 · {m} \u4f4d\u53ef\u4ee5\u7de8\u8f2f · \u7531 {author} \u5efa\u7acb",
   "lab.acc.to":"\u7ba1\u7406\u300c{name}\u300d\u7684\u5b58\u53d6\u6b0a",
   "lab.acc.view":"\u50c5\u53ef\u6aa2\u8996",
   "lab.add.already":"{email} \u5df2\u7d93\u662f\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u6210\u54e1\uff0c\u6240\u4ee5\u6c92\u6709\u4efb\u4f55\u8b8a\u66f4\u3002",
@@ -1558,7 +1585,7 @@ var I18N = {
   "lab.bulk.moveh":"\u653e\u5165\u8cc7\u6599\u593e",
   "lab.bulk.moveok":"\u5df2\u653e\u5165 {ok} \u9805\u3002",
   "lab.bulk.movepart":"\u5df2\u653e\u5165 {ok} \u7b46\u3002{bad} \u7b46\u7559\u5728\u539f\u4f4d\uff1a\u4f60\u53ea\u80fd\u5c07\u81ea\u5df1\u5efa\u7acb\u7684\u8a18\u9304\u653e\u5165\u8cc7\u6599\u593e\uff0c\u9664\u975e\u4f60\u662f\u5be6\u9a57\u5ba4\u7ba1\u7406\u8005\u3002",
-  "lab.bulk.movepro":"\u5df2\u653e\u5165 {ok} \u7b46\u3002{bad} \u7b46\u7559\u5728\u539f\u4f4d\uff1a\u653e\u5165\u8cc7\u6599\u593e\u9700\u8981\u6709\u6548\u7684\u8a02\u95b1\u65b9\u6848\u3002",
+  "lab.bulk.movepro":"\u6c92\u6709\u4efb\u4f55\u4e00\u7b46\u88ab\u653e\u5165\u8cc7\u6599\u593e\u3002\u653e\u5165\u8cc7\u6599\u593e\u9700\u8981\u6709\u6548\u7684\u8a02\u95b1\u65b9\u6848\uff0c\u6240\u4ee5 {bad} \u7b46\u5168\u90e8\u7559\u5728\u539f\u4f4d\u3002",
   "lab.bulk.movesub":"\u9078\u64c7\u9019 {n} \u9805\u8981\u653e\u5230\u54ea\u88e1\u3002\u5b83\u5011\u4ecd\u7136\u7559\u5728\u5171\u7528\u8cc7\u6599\u5eab\u88e1\u3002",
   "lab.bulk.moving":"\u6b63\u5728\u653e\u5165\u7b2c {n} / {total} \u9805…",
   "lab.bulk.n1":"\u5df2\u9078 1 \u7b46\u8a18\u9304",
@@ -1574,6 +1601,7 @@ var I18N = {
   "lab.card.by":"\u7531 {email} \u5206\u4eab",
   "lab.card.del":"\u522a\u9664",
   "lab.card.deleted":"\u5df2\u522a\u9664",
+  "lab.card.editlab":"\u7de8\u8f2f\u5be6\u9a57\u5ba4\u7248\u672c",
   "lab.card.open":"\u958b\u555f",
   "lab.card.opencopy":"\u958b\u555f\u526f\u672c",
   "lab.card.rmdone":"\u5df2\u79fb\u51fa\u5be6\u9a57\u5ba4",
@@ -1618,6 +1646,23 @@ var I18N = {
   "lab.dlg.generic":"\u5c0d\u8a71\u65b9\u584a",
   "lab.dlg.loading":"\u8f09\u5165\u4e2d…",
   "lab.dlg.seq":"\u5e8f\u5217",
+  "lab.ed.all!":"\u5be6\u9a57\u5ba4\u4e2d\u7684\u6bcf\u500b\u4eba\u90fd\u6703\u770b\u5230\u4f60\u7684\u8b8a\u66f4\u3002",
+  "lab.ed.band":"\u6b63\u5728\u7de8\u8f2f {lab} \u4e2d\u7684 {name}",
+  "lab.ed.clash!":"\u5728\u4f60\u7de8\u8f2f\u671f\u9593\uff0c{who} \u5132\u5b58\u4e86\u9019\u4e00\u7b46\u3002",
+  "lab.ed.copied":"\u5df2\u5728\u300c{where}\u300d\u5132\u5b58\u526f\u672c\u3002",
+  "lab.ed.copy":"\u5728\u300c{where}\u300d\u5132\u5b58\u526f\u672c",
+  "lab.ed.discard":"\u6368\u68c4\u6211\u7684\u8b8a\u66f4\uff0c\u958b\u555f\u6700\u65b0\u7248\u672c",
+  "lab.ed.fell!":"{lab} \u7121\u6cd5\u63a5\u53d7\u9019\u4efd\u526f\u672c\uff0c\u56e0\u6b64\u5b83\u6539\u70ba\u5b58\u5728\u4f60\u81ea\u5df1\u7684\u8cc7\u6599\u5eab\u88e1\u3002",
+  "lab.ed.gone!":"\u9019\u4e00\u7b46\u5df2\u7d93\u4e0d\u5728\u5be6\u9a57\u5ba4\u7684\u5171\u7528\u8cc7\u6599\u5eab\u88e1\u4e86\u3002",
+  "lab.ed.goneb!":"\u5b83\u53ef\u80fd\u88ab\u522a\u9664\u3001\u79fb\u51fa\u5be6\u9a57\u5ba4\uff0c\u6216\u79fb\u5230\u4f60\u770b\u4e0d\u5230\u7684\u5730\u65b9\u4e86\u3002\u518d\u958b\u555f\u4e00\u6b21\u4e5f\u4e0d\u6703\u628a\u5b83\u627e\u56de\u4f86\u3002",
+  "lab.ed.keep":"\u7e7c\u7e8c\u7de8\u8f2f",
+  "lab.ed.leave":"\u6368\u68c4\u6211\u7684\u8b8a\u66f4\u4e26\u95dc\u9589",
+  "lab.ed.meta":"\u7248\u672c {v} · \u4e0a\u6b21\u7531 {who} \u5132\u5b58\u65bc {when}",
+  "lab.ed.metat":"\u4e0a\u6b21\u5132\u5b58\u65bc {when}",
+  "lab.ed.norights!":"\u4f60\u5c0d\u9019\u4e00\u7b46\u7684\u7de8\u8f2f\u6b0a\u9650\u5df2\u88ab\u79fb\u9664\u3002",
+  "lab.ed.norightsb!":"\u9019\u4e00\u7b46\u9084\u5728\u5be6\u9a57\u5ba4\u88e1\uff0c\u4f60\u4ecd\u7136\u53ef\u4ee5\u958b\u555f\u5b83\uff0c\u53ea\u662f\u4e0d\u80fd\u518d\u628a\u8b8a\u66f4\u5132\u5b58\u56de\u53bb\u3002",
+  "lab.ed.ok":"\u5df2\u5132\u5b58\u5230\u5be6\u9a57\u5ba4\u3002",
+  "lab.ed.save":"\u5132\u5b58\u5230\u5be6\u9a57\u5ba4",
   "lab.err.add":"\u7121\u6cd5\u65b0\u589e",
   "lab.err.create":"\u7121\u6cd5\u5efa\u7acb",
   "lab.err.del":"\u7121\u6cd5\u522a\u9664",
@@ -1837,7 +1882,7 @@ var I18N = {
   "lab.priv.other":"\u6210\u54e1\u7684\u7a7a\u9593",
   "lab.priv.othwho!":"\u9019\u662f\u6210\u54e1\u81ea\u5df1\u7684\u79c1\u4eba\u7a7a\u9593\u3002\u4f60\u770b\u5f97\u5230\u88e1\u9762\u7684\u5167\u5bb9\uff0c\u662f\u56e0\u70ba\u4f60\u7ba1\u7406\u9019\u500b\u5be6\u9a57\u5ba4\u3002",
   "lab.priv.perm":"\u9019\u500b\u7a7a\u9593\u8207\u4f60\u5728\u5be6\u9a57\u5ba4\u7684\u5e2d\u4f4d\u7d81\u5b9a\uff0c\u7121\u6cd5\u6539\u540d\u6216\u522a\u9664\u3002",
-  "lab.priv.who!":"\u53ea\u6709\u4f60\u548c\u5be6\u9a57\u5ba4\u7ba1\u7406\u8005\u770b\u5f97\u5230\u9019\u88e1\u9762\u7684\u5167\u5bb9\u3002",
+  "lab.priv.who!":"\u53ea\u6709\u4f60\u548c\u5be6\u9a57\u5ba4\u7ba1\u7406\u54e1\u770b\u5f97\u5230\u9019\u88e1\u9762\u7684\u5167\u5bb9\u3002",
   "lab.promote.confirm!":"{email} \u5c07\u53ef\u4ee5\u65b0\u589e\u6216\u79fb\u9664\u6210\u54e1\u3001\u8b8a\u66f4\u89d2\u8272\uff0c\u4e26\u8cfc\u8cb7\u5e2d\u4f4d\u3002",
   "lab.promote.do":"\u8a2d\u70ba\u7ba1\u7406\u8005",
   "lab.promote.done":"{email} \u73fe\u5728\u662f\u7ba1\u7406\u8005\u4e86\u3002",
@@ -2697,14 +2742,18 @@ var I18N = {
   "lab.about.h":"\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4",
   "lab.acc.author":"\u521b\u5efa\u8005",
   "lab.acc.can":"\u53ef\u7f16\u8f91",
-  "lab.acc.dogrant":"\u7ed9\u4e88\u7f16\u8f91\u6743\u9650",
+  "lab.acc.dogrant":"\u6388\u4e88\u7f16\u8f91\u6743\u9650",
   "lab.acc.dorevoke":"\u79fb\u9664\u7f16\u8f91\u6743\u9650",
   "lab.acc.edit":"\u7f16\u8f91",
   "lab.acc.failload":"\u65e0\u6cd5\u52a0\u8f7d\u8bbf\u95ee\u6743\u9650\u3002",
   "lab.acc.h":"\u7ba1\u7406\u8bbf\u95ee\u6743\u9650",
+  "lab.acc.movewarn!":"{lab} \u91cc\u7684\u6240\u6709\u4eba\u90fd\u5c06\u53ef\u4ee5\u67e5\u770b\u5b83\u3002",
+  "lab.acc.nodel!":"\u4f60\u6388\u4e88\u7f16\u8f91\u6743\u9650\u7684\u4eba\u53ef\u4ee5\u66f4\u6539\u8fd9\u4e00\u6761\uff0c\u4f46\u4e0d\u80fd\u5220\u9664\u5b83\uff0c\u4e5f\u4e0d\u80fd\u628a\u5b83\u79fb\u51fa\u5b9e\u9a8c\u5ba4\u3002",
   "lab.acc.nomembers":"\u6ca1\u6709\u6210\u5458\u3002",
   "lab.acc.nosync":"\u8fd9\u6761\u5e8f\u5217\u8981\u5148\u540c\u6b65\uff0c\u624d\u80fd\u7ba1\u7406\u8bbf\u95ee\u6743\u9650\u3002",
-  "lab.acc.sub":"\u5b9e\u9a8c\u5ba4\u91cc\u7684\u6bcf\u4e2a\u4eba\u90fd\u53ef\u4ee5\u67e5\u770b\u8fd9\u4e00\u6761\u3002\u8bf7\u9009\u62e9\u8c01\u4e5f\u53ef\u4ee5\u7f16\u8f91\u3002",
+  "lab.acc.sub":"\u5b9e\u9a8c\u5ba4\u91cc\u7684\u6bcf\u4e2a\u4eba\u90fd\u53ef\u4ee5\u67e5\u770b\u8fd9\u4e00\u6761\u3002\u8bf7\u9009\u62e9\u53ef\u4ee5\u7f16\u8f91\u7684\u6210\u5458\u3002",
+  "lab.acc.subspace":"\u8bf7\u5148\u628a\u5b83\u79fb\u5230 {lab}\uff0c\u518d\u6388\u4e88\u4efb\u4f55\u4eba\u7f16\u8f91\u6743\u9650\u3002",
+  "lab.acc.sum":"{n} \u4f4d\u5b9e\u9a8c\u5ba4\u6210\u5458\u90fd\u53ef\u4ee5\u67e5\u770b · {m} \u4f4d\u53ef\u4ee5\u7f16\u8f91 · \u7531 {author} \u521b\u5efa",
   "lab.acc.to":"\u7ba1\u7406\u300c{name}\u300d\u7684\u8bbf\u95ee\u6743\u9650",
   "lab.acc.view":"\u4ec5\u53ef\u67e5\u770b",
   "lab.add.already":"{email} \u5df2\u7ecf\u662f\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u6210\u5458\uff0c\u6240\u4ee5\u6ca1\u6709\u4efb\u4f55\u53d8\u66f4\u3002",
@@ -2735,7 +2784,7 @@ var I18N = {
   "lab.bulk.moveh":"\u653e\u5165\u6587\u4ef6\u5939",
   "lab.bulk.moveok":"\u5df2\u653e\u5165 {ok} \u9879\u3002",
   "lab.bulk.movepart":"\u5df2\u653e\u5165 {ok} \u6761\u3002{bad} \u6761\u7559\u5728\u539f\u4f4d\uff1a\u4f60\u53ea\u80fd\u5c06\u81ea\u5df1\u521b\u5efa\u7684\u8bb0\u5f55\u653e\u5165\u6587\u4ef6\u5939\uff0c\u9664\u975e\u4f60\u662f\u5b9e\u9a8c\u5ba4\u7ba1\u7406\u8005\u3002",
-  "lab.bulk.movepro":"\u5df2\u653e\u5165 {ok} \u6761\u3002{bad} \u6761\u7559\u5728\u539f\u4f4d\uff1a\u653e\u5165\u6587\u4ef6\u5939\u9700\u8981\u6709\u6548\u7684\u8ba2\u9605\u65b9\u6848\u3002",
+  "lab.bulk.movepro":"\u6ca1\u6709\u4efb\u4f55\u4e00\u6761\u88ab\u653e\u5165\u6587\u4ef6\u5939\u3002\u653e\u5165\u6587\u4ef6\u5939\u9700\u8981\u6709\u6548\u7684\u8ba2\u9605\u65b9\u6848\uff0c\u6240\u4ee5 {bad} \u6761\u5168\u90e8\u7559\u5728\u539f\u4f4d\u3002",
   "lab.bulk.movesub":"\u9009\u62e9\u8fd9 {n} \u9879\u8981\u653e\u5230\u54ea\u91cc\u3002\u5b83\u4eec\u4ecd\u7136\u7559\u5728\u5171\u7528\u8d44\u6e90\u5e93\u91cc\u3002",
   "lab.bulk.moving":"\u6b63\u5728\u653e\u5165\u7b2c {n} / {total} \u9879…",
   "lab.bulk.n1":"\u5df2\u9009 1 \u6761\u8bb0\u5f55",
@@ -2751,6 +2800,7 @@ var I18N = {
   "lab.card.by":"\u7531 {email} \u5206\u4eab",
   "lab.card.del":"\u5220\u9664",
   "lab.card.deleted":"\u5df2\u5220\u9664",
+  "lab.card.editlab":"\u7f16\u8f91\u5b9e\u9a8c\u5ba4\u7248\u672c",
   "lab.card.open":"\u6253\u5f00",
   "lab.card.opencopy":"\u6253\u5f00\u526f\u672c",
   "lab.card.rmdone":"\u5df2\u79fb\u51fa\u5b9e\u9a8c\u5ba4",
@@ -2795,6 +2845,23 @@ var I18N = {
   "lab.dlg.generic":"\u5bf9\u8bdd\u6846",
   "lab.dlg.loading":"\u52a0\u8f7d\u4e2d…",
   "lab.dlg.seq":"\u5e8f\u5217",
+  "lab.ed.all!":"\u5b9e\u9a8c\u5ba4\u4e2d\u7684\u6bcf\u4e2a\u4eba\u90fd\u4f1a\u770b\u5230\u4f60\u7684\u66f4\u6539\u3002",
+  "lab.ed.band":"\u6b63\u5728\u7f16\u8f91 {lab} \u4e2d\u7684 {name}",
+  "lab.ed.clash!":"\u5728\u4f60\u7f16\u8f91\u671f\u95f4\uff0c{who} \u4fdd\u5b58\u4e86\u8fd9\u4e00\u6761\u3002",
+  "lab.ed.copied":"\u5df2\u5728\u300c{where}\u300d\u4fdd\u5b58\u526f\u672c\u3002",
+  "lab.ed.copy":"\u5728\u300c{where}\u300d\u4fdd\u5b58\u526f\u672c",
+  "lab.ed.discard":"\u820d\u5f03\u6211\u7684\u66f4\u6539\uff0c\u6253\u5f00\u6700\u65b0\u7248\u672c",
+  "lab.ed.fell!":"{lab} \u65e0\u6cd5\u63a5\u53d7\u8fd9\u4efd\u526f\u672c\uff0c\u56e0\u6b64\u5b83\u6539\u4e3a\u5b58\u5728\u4f60\u81ea\u5df1\u7684\u8d44\u6e90\u5e93\u91cc\u3002",
+  "lab.ed.gone!":"\u8fd9\u4e00\u6761\u5df2\u7ecf\u4e0d\u5728\u5b9e\u9a8c\u5ba4\u7684\u5171\u7528\u8d44\u6e90\u5e93\u91cc\u4e86\u3002",
+  "lab.ed.goneb!":"\u5b83\u53ef\u80fd\u88ab\u5220\u9664\u3001\u79fb\u51fa\u5b9e\u9a8c\u5ba4\uff0c\u6216\u79fb\u5230\u4f60\u770b\u4e0d\u5230\u7684\u5730\u65b9\u4e86\u3002\u518d\u6253\u5f00\u4e00\u6b21\u4e5f\u4e0d\u4f1a\u628a\u5b83\u627e\u56de\u6765\u3002",
+  "lab.ed.keep":"\u7ee7\u7eed\u7f16\u8f91",
+  "lab.ed.leave":"\u820d\u5f03\u6211\u7684\u66f4\u6539\u5e76\u5173\u95ed",
+  "lab.ed.meta":"\u7248\u672c {v} · \u4e0a\u6b21\u7531 {who} \u4fdd\u5b58\u4e8e {when}",
+  "lab.ed.metat":"\u4e0a\u6b21\u4fdd\u5b58\u4e8e {when}",
+  "lab.ed.norights!":"\u4f60\u5bf9\u8fd9\u4e00\u6761\u7684\u7f16\u8f91\u6743\u9650\u5df2\u88ab\u79fb\u9664\u3002",
+  "lab.ed.norightsb!":"\u8fd9\u4e00\u6761\u8fd8\u5728\u5b9e\u9a8c\u5ba4\u91cc\uff0c\u4f60\u4ecd\u7136\u53ef\u4ee5\u6253\u5f00\u5b83\uff0c\u53ea\u662f\u4e0d\u80fd\u518d\u628a\u66f4\u6539\u4fdd\u5b58\u56de\u53bb\u3002",
+  "lab.ed.ok":"\u5df2\u4fdd\u5b58\u5230\u5b9e\u9a8c\u5ba4\u3002",
+  "lab.ed.save":"\u4fdd\u5b58\u5230\u5b9e\u9a8c\u5ba4",
   "lab.err.add":"\u65e0\u6cd5\u6dfb\u52a0",
   "lab.err.create":"\u65e0\u6cd5\u521b\u5efa",
   "lab.err.del":"\u65e0\u6cd5\u5220\u9664",
@@ -3014,7 +3081,7 @@ var I18N = {
   "lab.priv.other":"\u6210\u5458\u7684\u7a7a\u95f4",
   "lab.priv.othwho!":"\u8fd9\u662f\u6210\u5458\u81ea\u5df1\u7684\u79c1\u4eba\u7a7a\u95f4\u3002\u4f60\u770b\u5f97\u5230\u91cc\u9762\u7684\u5185\u5bb9\uff0c\u662f\u56e0\u4e3a\u4f60\u7ba1\u7406\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u3002",
   "lab.priv.perm":"\u8fd9\u4e2a\u7a7a\u95f4\u4e0e\u4f60\u5728\u5b9e\u9a8c\u5ba4\u7684\u5e2d\u4f4d\u7ed1\u5b9a\uff0c\u65e0\u6cd5\u6539\u540d\u6216\u5220\u9664\u3002",
-  "lab.priv.who!":"\u53ea\u6709\u4f60\u548c\u5b9e\u9a8c\u5ba4\u7ba1\u7406\u8005\u770b\u5f97\u5230\u8fd9\u91cc\u9762\u7684\u5185\u5bb9\u3002",
+  "lab.priv.who!":"\u53ea\u6709\u4f60\u548c\u5b9e\u9a8c\u5ba4\u7ba1\u7406\u5458\u770b\u5f97\u5230\u8fd9\u91cc\u9762\u7684\u5185\u5bb9\u3002",
   "lab.promote.confirm!":"{email} \u5c06\u53ef\u4ee5\u6dfb\u52a0\u6216\u79fb\u9664\u6210\u5458\u3001\u53d8\u66f4\u89d2\u8272\uff0c\u5e76\u8d2d\u4e70\u5e2d\u4f4d\u3002",
   "lab.promote.do":"\u8bbe\u4e3a\u7ba1\u7406\u8005",
   "lab.promote.done":"{email} \u73b0\u5728\u662f\u7ba1\u7406\u8005\u4e86\u3002",
@@ -3875,13 +3942,17 @@ var I18N = {
   "lab.acc.author":"\u4f5c\u6210\u8005",
   "lab.acc.can":"\u7de8\u96c6\u53ef",
   "lab.acc.dogrant":"\u7de8\u96c6\u6a29\u9650\u3092\u4ed8\u4e0e",
-  "lab.acc.dorevoke":"\u7de8\u96c6\u6a29\u9650\u3092\u89e3\u9664",
+  "lab.acc.dorevoke":"\u7de8\u96c6\u6a29\u9650\u3092\u53d6\u308a\u6d88\u3059",
   "lab.acc.edit":"\u7de8\u96c6",
   "lab.acc.failload":"\u30a2\u30af\u30bb\u30b9\u6a29\u3092\u8aad\u307f\u8fbc\u3081\u307e\u305b\u3093\u3067\u3057\u305f\u3002",
   "lab.acc.h":"\u30a2\u30af\u30bb\u30b9\u6a29\u3092\u7ba1\u7406",
+  "lab.acc.movewarn!":"{lab} \u306e\u30e1\u30f3\u30d0\u30fc\u5168\u54e1\u304c\u95b2\u89a7\u3067\u304d\u308b\u3088\u3046\u306b\u306a\u308a\u307e\u3059\u3002",
+  "lab.acc.nodel!":"\u7de8\u96c6\u6a29\u9650\u3092\u4e0e\u3048\u305f\u76f8\u624b\u306f\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u3092\u5909\u66f4\u3067\u304d\u307e\u3059\u304c\u3001\u524a\u9664\u3059\u308b\u3053\u3068\u3082\u3001\u30e9\u30dc\u306e\u5916\u306b\u79fb\u3059\u3053\u3068\u3082\u3067\u304d\u307e\u305b\u3093\u3002",
   "lab.acc.nomembers":"\u30e1\u30f3\u30d0\u30fc\u304c\u3044\u307e\u305b\u3093\u3002",
   "lab.acc.nosync":"\u3053\u306e\u914d\u5217\u306e\u30a2\u30af\u30bb\u30b9\u6a29\u3092\u7ba1\u7406\u3059\u308b\u306b\u306f\u3001\u5148\u306b\u540c\u671f\u304c\u5fc5\u8981\u3067\u3059\u3002",
   "lab.acc.sub":"\u30e9\u30dc\u306e\u5168\u54e1\u304c\u3053\u308c\u3092\u95b2\u89a7\u3067\u304d\u307e\u3059\u3002\u7de8\u96c6\u3082\u3067\u304d\u308b\u4eba\u3092\u9078\u3093\u3067\u304f\u3060\u3055\u3044\u3002",
+  "lab.acc.subspace":"\u7de8\u96c6\u6a29\u9650\u3092\u4e0e\u3048\u308b\u524d\u306b\u3001\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u3092 {lab} \u306b\u79fb\u52d5\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
+  "lab.acc.sum":"\u30e9\u30dc\u306e\u30e1\u30f3\u30d0\u30fc {n} \u4eba\u304c\u95b2\u89a7\u53ef · {m} \u4eba\u304c\u7de8\u96c6\u53ef · \u4f5c\u6210\u8005 {author}",
   "lab.acc.to":"\u300c{name}\u300d\u306e\u30a2\u30af\u30bb\u30b9\u6a29\u3092\u7ba1\u7406",
   "lab.acc.view":"\u95b2\u89a7\u306e\u307f",
   "lab.add.already":"{email} \u306f\u3059\u3067\u306b\u3053\u306e\u30e9\u30dc\u306b\u53c2\u52a0\u3057\u3066\u3044\u308b\u305f\u3081\u3001\u5909\u66f4\u306f\u3042\u308a\u307e\u305b\u3093\u3002",
@@ -3912,7 +3983,7 @@ var I18N = {
   "lab.bulk.moveh":"\u30d5\u30a9\u30eb\u30c0\u30fc\u306b\u5165\u308c\u308b",
   "lab.bulk.moveok":"{ok} \u4ef6\u5165\u308c\u307e\u3057\u305f\u3002",
   "lab.bulk.movepart":"{ok} \u4ef6\u3092\u30d5\u30a9\u30eb\u30c0\u30fc\u306b\u5165\u308c\u307e\u3057\u305f\u3002{bad} \u4ef6\u306f\u5143\u306e\u5834\u6240\u306b\u6b8b\u308a\u307e\u3057\u305f\u3002\u30ec\u30b3\u30fc\u30c9\u3092\u30d5\u30a9\u30eb\u30c0\u30fc\u306b\u5165\u308c\u3089\u308c\u308b\u306e\u306f\u3001\u305d\u308c\u3092\u4f5c\u6210\u3057\u305f\u672c\u4eba\u307e\u305f\u306f\u30e9\u30dc\u7ba1\u7406\u8005\u3067\u3059\u3002",
-  "lab.bulk.movepro":"{ok} \u4ef6\u3092\u30d5\u30a9\u30eb\u30c0\u30fc\u306b\u5165\u308c\u307e\u3057\u305f\u3002{bad} \u4ef6\u306f\u5143\u306e\u5834\u6240\u306b\u6b8b\u308a\u307e\u3057\u305f\u3002\u30d5\u30a9\u30eb\u30c0\u30fc\u306b\u5165\u308c\u308b\u306b\u306f\u6709\u52b9\u306a\u30d7\u30e9\u30f3\u304c\u5fc5\u8981\u3067\u3059\u3002",
+  "lab.bulk.movepro":"\u30d5\u30a9\u30eb\u30c0\u30fc\u306b\u306f 1 \u4ef6\u3082\u5165\u308a\u307e\u305b\u3093\u3067\u3057\u305f\u3002\u30d5\u30a9\u30eb\u30c0\u30fc\u306b\u5165\u308c\u308b\u306b\u306f\u6709\u52b9\u306a\u30d7\u30e9\u30f3\u304c\u5fc5\u8981\u306a\u305f\u3081\u3001{bad} \u4ef6\u306f\u3059\u3079\u3066\u5143\u306e\u5834\u6240\u306b\u6b8b\u308a\u307e\u3057\u305f\u3002",
   "lab.bulk.movesub":"\u3053\u306e {n} \u4ef6\u306e\u79fb\u52d5\u5148\u3092\u9078\u3093\u3067\u304f\u3060\u3055\u3044\u3002\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u5185\u306b\u6b8b\u308a\u307e\u3059\u3002",
   "lab.bulk.moving":"{total} \u4ef6\u4e2d {n} \u4ef6\u3092\u30d5\u30a9\u30eb\u30c0\u30fc\u306b\u5165\u308c\u3066\u3044\u307e\u3059…",
   "lab.bulk.n1":"\u30ec\u30b3\u30fc\u30c9 1 \u4ef6\u3092\u9078\u629e\u4e2d",
@@ -3928,6 +3999,7 @@ var I18N = {
   "lab.card.by":"\u5171\u6709\u5143: {email}",
   "lab.card.del":"\u524a\u9664",
   "lab.card.deleted":"\u524a\u9664\u3057\u307e\u3057\u305f",
+  "lab.card.editlab":"\u30e9\u30dc\u306e\u539f\u672c\u3092\u7de8\u96c6",
   "lab.card.open":"\u958b\u304f",
   "lab.card.opencopy":"\u30b3\u30d4\u30fc\u3092\u958b\u304f",
   "lab.card.rmdone":"\u30e9\u30dc\u304b\u3089\u5916\u3057\u307e\u3057\u305f",
@@ -3972,6 +4044,23 @@ var I18N = {
   "lab.dlg.generic":"\u30c0\u30a4\u30a2\u30ed\u30b0",
   "lab.dlg.loading":"\u8aad\u307f\u8fbc\u307f\u4e2d…",
   "lab.dlg.seq":"\u914d\u5217",
+  "lab.ed.all!":"\u30e9\u30dc\u306e\u5168\u54e1\u306b\u3042\u306a\u305f\u306e\u5909\u66f4\u304c\u898b\u3048\u307e\u3059\u3002",
+  "lab.ed.band":"{lab} \u306e {name} \u3092\u7de8\u96c6\u4e2d",
+  "lab.ed.clash!":"\u3042\u306a\u305f\u304c\u7de8\u96c6\u3057\u3066\u3044\u308b\u9593\u306b {who} \u304c\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u3092\u4fdd\u5b58\u3057\u307e\u3057\u305f\u3002",
+  "lab.ed.copied":"\u300c{where}\u300d\u306b\u30b3\u30d4\u30fc\u3092\u4fdd\u5b58\u3057\u307e\u3057\u305f\u3002",
+  "lab.ed.copy":"\u300c{where}\u300d\u306b\u30b3\u30d4\u30fc\u3092\u4fdd\u5b58",
+  "lab.ed.discard":"\u81ea\u5206\u306e\u5909\u66f4\u3092\u7834\u68c4\u3057\u3066\u6700\u65b0\u7248\u3092\u958b\u304f",
+  "lab.ed.fell!":"{lab} \u304c\u3053\u306e\u30b3\u30d4\u30fc\u3092\u53d7\u3051\u53d6\u308c\u306a\u304b\u3063\u305f\u305f\u3081\u3001\u3042\u306a\u305f\u81ea\u8eab\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u4fdd\u5b58\u3057\u307e\u3057\u305f\u3002",
+  "lab.ed.gone!":"\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u306f\u30e9\u30dc\u306e\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u3082\u3046\u3042\u308a\u307e\u305b\u3093\u3002",
+  "lab.ed.goneb!":"\u3053\u308c\u306f\u524a\u9664\u3055\u308c\u305f\u304b\u3001\u30e9\u30dc\u304b\u3089\u5916\u3055\u308c\u305f\u304b\u3001\u3042\u306a\u305f\u306b\u306f\u898b\u3048\u306a\u3044\u5834\u6240\u3078\u79fb\u3055\u308c\u307e\u3057\u305f\u3002\u3082\u3046\u4e00\u5ea6\u958b\u3044\u3066\u3082\u623b\u3063\u3066\u304d\u307e\u305b\u3093\u3002",
+  "lab.ed.keep":"\u7de8\u96c6\u3092\u7d9a\u3051\u308b",
+  "lab.ed.leave":"\u81ea\u5206\u306e\u5909\u66f4\u3092\u7834\u68c4\u3057\u3066\u9589\u3058\u308b",
+  "lab.ed.meta":"\u30d0\u30fc\u30b8\u30e7\u30f3 {v} · \u6700\u7d42\u4fdd\u5b58 {who}\u3001{when}",
+  "lab.ed.metat":"\u6700\u7d42\u4fdd\u5b58 {when}",
+  "lab.ed.norights!":"\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u306e\u7de8\u96c6\u6a29\u9650\u304c\u53d6\u308a\u6d88\u3055\u308c\u307e\u3057\u305f\u3002",
+  "lab.ed.norightsb!":"\u30ec\u30b3\u30fc\u30c9\u306f\u30e9\u30dc\u306b\u6b8b\u3063\u3066\u3044\u3066\u3001\u958b\u304f\u3053\u3068\u306f\u3067\u304d\u307e\u3059\u3002\u305f\u3060\u3001\u5909\u66f4\u3092\u4fdd\u5b58\u3059\u308b\u3053\u3068\u304c\u3082\u3046\u3067\u304d\u307e\u305b\u3093\u3002",
+  "lab.ed.ok":"\u30e9\u30dc\u306b\u4fdd\u5b58\u3057\u307e\u3057\u305f\u3002",
+  "lab.ed.save":"\u30e9\u30dc\u306b\u4fdd\u5b58",
   "lab.err.add":"\u8ffd\u52a0\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f",
   "lab.err.create":"\u4f5c\u6210\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f",
   "lab.err.del":"\u524a\u9664\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f",
@@ -3983,7 +4072,7 @@ var I18N = {
   "lab.err.post":"\u6295\u7a3f\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f",
   "lab.err.remove":"\u5916\u305b\u307e\u305b\u3093\u3067\u3057\u305f",
   "lab.err.rename":"\u540d\u524d\u3092\u5909\u66f4\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f",
-  "lab.err.revoke":"\u7de8\u96c6\u6a29\u9650\u3092\u89e3\u9664\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f",
+  "lab.err.revoke":"\u7de8\u96c6\u6a29\u9650\u3092\u53d6\u308a\u6d88\u305b\u307e\u305b\u3093\u3067\u3057\u305f",
   "lab.err.signin":"\u30b5\u30a4\u30f3\u30a4\u30f3\u3057\u3066\u3044\u307e\u305b\u3093",
   "lab.err.stale":"\u8aad\u307f\u8fbc\u307f\u76f4\u305b\u307e\u305b\u3093\u3067\u3057\u305f\u3002\u524d\u56de\u8aad\u307f\u8fbc\u3093\u3060\u5185\u5bb9\u3092\u8868\u793a\u3057\u3066\u3044\u307e\u3059\u3002",
   "lab.exp.bad":"{n} \u4ef6\u306f\u3053\u306e\u30d5\u30a1\u30a4\u30eb\u306b\u5165\u308c\u3089\u308c\u307e\u305b\u3093\uff1a",
@@ -6210,10 +6299,25 @@ body[data-tab="hist"] .result{display:none}
   .demo-ind{font-size:12px; padding:4px 8px}
 }
 /* bottom tab bar (mobile only) */
-.tabbar{display:grid; position:fixed; left:0; right:0; bottom:0; z-index:35; grid-template-columns:repeat(6,1fr); background:var(--surface); border-top:1px solid var(--line); padding-bottom:var(--sab)}
+.tabbar{display:grid; position:fixed; left:0; right:0; bottom:0; z-index:35; grid-template-columns:repeat(6,minmax(0,1fr)); background:var(--surface); border-top:1px solid var(--line); padding-bottom:var(--sab)}
 @media (min-width:1100px){ .tabbar{display:none} }  /* bottom bar below 1100; top tabnav takes over at >=1100 */
-.tabbar button{border:0; background:none; display:flex; flex-direction:column; align-items:center; gap:3px; padding:7px 2px; color:var(--muted); min-height:54px}
-.tabbar button .tl{font-family:var(--font-head); font-weight:600; font-size:11px}
+.tabbar button{border:0; background:none; display:flex; flex-direction:column; align-items:center; gap:3px; padding:7px 0; color:var(--muted); min-height:54px}
+.tabbar button .tl{font-family:var(--font-head); font-weight:600; font-size:11px; overflow-wrap:anywhere}
+/* R83a JOB 4 (Albert, 2026-08-23). `Calculator` needs 59.11px on one line
+   and the six columns are the viewport / 6 below 768, so it fits from
+   354.66px up. MEASURED on the shipped build by tools/round83a/tabgeom83a.mjs:
+   it breaks inside the word at 354 and is on one line at 355. Below the
+   threshold the English label is the abbreviation and nothing else changes.
+   ⛔ ENGLISH ONLY, and that is measured too: zh-Hant and zh-Hans need 33px
+   and never wrap, ja needs 55px and wraps only at 320 -- between characters,
+   which is how Japanese line-breaking works. Gating on html[lang] rather
+   than on the width alone is what keeps three labels that have no problem
+   from being shortened. */
+.tabbar .tl-abbr{display:none}
+@media (max-width:354px){
+  html[lang="en"] .tabbar .tb-mw .tl-full{display:none}
+  html[lang="en"] .tabbar .tb-mw .tl-abbr{display:block}
+}
 body[data-tab="mw"] .tb-mw, body[data-tab="conc"] .tb-conc, body[data-tab="tm"] .tb-tm, body[data-tab="ms"] .tb-ms, body[data-tab="cat"] .tb-cat, body[data-tab="lab"] .tb-lab{color:var(--accent)}
 /* R29: light-mode --accent (#c96a05) on the tabbar surface (#fbf7f0) is 3.54:1
    for 12px/600 text. The INACTIVE labels use --muted and measure 7.25:1, so the
@@ -7586,7 +7690,7 @@ if(/[?&]billing=/.test(window.__ocSearch)){
 
 <!-- bottom tab bar (mobile) -->
 <nav class="tabbar" aria-label="Sections" data-i18n-attr="aria-label:ak.0110">
-  <button class="tb-mw" onclick="setTab('mw')"><span class="ic" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4H6l5 6-5 6h8.5"/></svg></span><span class="tl" data-i18n="mk.0439">Calculator</span></button>
+  <button class="tb-mw" onclick="setTab('mw')" data-i18n-attr="aria-label:mk.0439" aria-label="Calculator"><span class="ic" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4H6l5 6-5 6h8.5"/></svg></span><span class="tl tl-full" data-i18n="mk.0439">Calculator</span><span class="tl tl-abbr" data-i18n="ui.nav.mwshort">Calc</span></button>
   <button class="tb-conc" onclick="setTab('conc')"><span class="ic" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5h5M8.2 2.5v5L4 15.2A1.3 1.3 0 0 0 5.2 17h9.6a1.3 1.3 0 0 0 1.2-1.8L11.8 7.5v-5"/><path d="M6.3 12.6h7.4"/></svg></span><span class="tl" data-i18n="mk.0440">Conc.</span></button>
   <button class="tb-tm" onclick="setTab('tm')"><span class="ic" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 11.8V4.2a1.8 1.8 0 0 1 3.6 0v7.6a3.4 3.4 0 1 1-3.6 0Z"/><path d="M10.3 8.6v5"/></svg></span><span class="tl">Tm</span></button>
   <button class="tb-ms" onclick="setTab('ms')"><span class="ic" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16.5h14" stroke-width="1.4"/><path d="M5.5 16.5V10.5M9 16.5V4.5M12.5 16.5V12.5M16 16.5V7.5" stroke-width="1.7"/></svg></span><span class="tl" data-i18n="mk.0441">Mass Spec</span></button>
@@ -9959,19 +10063,26 @@ function exportHistoryCSV(list){
   const a=document.createElement("a"); a.href=url; a.download=(list?"oligo-strands-selected.csv":"oligo-strands.csv"); document.body.appendChild(a); a.click();
   setTimeout(()=>{ a.remove(); URL.revokeObjectURL(url); },100);
 }
-function saveCurrent(){
+/* R82a/J1-A. THE ENTRY THE CALCULATOR WOULD SAVE, BUILT ONCE AND USED TWICE:
+   saveCurrent() unshifts it into the personal history, and the shared-editing
+   band PATCHes it onto a lab row somebody else may also be holding.
+   ⚠⚠ A SECOND COPY OF THIS BUILDER WOULD DRIFT the moment the chemistry gains
+   a field, and the two saves would then write different objects for the same
+   sequence. One writer, always. Returns null where the old body returned
+   false, so `saveCurrent()` keeps its own contract unchanged. */
+function ocEntryForSave(){
   const r=compute(S.seq,S.type,S.linkage);
-  if(!r.n) return false;
+  if(!r.n) return null;
   /* R51 (audit F-03): the whole input has to be valid, not merely "parsed to
      at least one token". Without this, ACGX saved as a 3 nt strand carrying the
      invalid text. The antisense test below was already close but missed a
      dangling linkage marker; it now runs through the same contract. */
   if(!validateStrandInput({seq:S.seq, type:S.type, duplexMode:S.duplexMode,
-                           antiSeq:S.antiSeq, antiType:S.antiType||S.type}).ok) return false;
+                           antiSeq:S.antiSeq, antiType:S.antiType||S.type}).ok) return null;
   if(S.duplexMode==='custom'){
     const antiRaw=(S.antiSeq||'').trim();
     const antiCheck=compute(S.antiSeq||'',S.antiType||S.type,S.antiLinkage||'PO',S.antiThree||'OH',0);
-    if(!antiRaw || !antiCheck.n) return false;
+    if(!antiRaw || !antiCheck.n) return null;
   }
   const mods=[...new Set(r.tokens.map(t=>t.sugar))].filter(s=>s!=='d'&&s!=='r').map(s=>SUGAR_LABEL[s]);
   if(r.three!=='OH') mods.push(THREE_LABEL[r.three]);
@@ -9992,6 +10103,19 @@ function saveCurrent(){
   const entry={ seq:S.seq, type:S.type, linkage:S.linkage, five:r.five, fiveThio:r.fiveThio, advanced:S.advanced,
     three:S.three, modPreset:S.modPreset, modName:S.modName, modMass:S.modMass, duplex:dx, mwSource:S.mwSource||'sense',
     name:"", n:r.n, nPO:r.nPO, nPS:r.nPS, comp, mods, mw:r.mw, mwStr:fmt(r.mw,r.n), t:Date.now() };
+  return entry;
+}
+function saveCurrent(){
+  /* R82a/J1-A. ⛔ NOT WHILE A SHARED LAB RECORD IS OPEN. The band above the
+     calculator owns that save and offers the two honest destinations. Letting
+     this run as well would drop a second, PERSONAL copy of a lab record into
+     the person's own library, silently, and nothing on screen would say which
+     of the two anybody else can see. 'shared' is a third return value beside
+     the shipped 'gated' so no caller reports "Already saved" about a save
+     that did not happen. */
+  if(S && S.__shared) return 'shared';
+  const entry=ocEntryForSave();
+  if(!entry) return false;
   const last=history[0];
   const sig=x=>JSON.stringify([x.seq,x.type,x.linkage,x.five,x.fiveThio,x.three,x.mwSource,x.duplex?[x.duplex.mode,x.duplex.antiSeq,x.duplex.antiType,x.duplex.antiFive,x.duplex.antiThree,x.duplex.antiLinkage]:0]);
   if(last && sig(last)===sig(entry)) return false;
@@ -10002,6 +10126,15 @@ function saveCurrent(){
   try{ if(window.ocPlan&&window.ocPlan.gateSave&&!window.ocPlan.gateSave(1,{retry:function(){ try{ saveCurrent(); if(typeof applyAll==='function') applyAll(); }catch(_e){ ocFail('saveCurrent#1',_e); } }})) return 'gated'; }catch(_e){ ocFail('saveCurrent#2',_e); }
   history.unshift(entry); trimHist(); saveHist();
   return true;
+}
+/* R82a/J1-J. The Save button refused because a shared lab record is open.
+   ⚠ A press with no visible answer is a defect of its own, so it moves the
+   reader to the control that WILL work -- which is on screen, directly above
+   the calculator, and carries both honest destinations. */
+function ocFocusBand(){
+  try{ var b=document.querySelector('[data-labed] [data-ed-save]');
+       if(b){ b.focus(); return true; } }catch(_e){ ocFail('ocFocusBand#1',_e); }
+  return false;
 }
 function loadSavedState(h){
   if(!h) return false;
@@ -10019,6 +10152,18 @@ function loadSavedState(h){
   });
   S.seq=enforceThree(S.seq,S.three);
   if(dx && S.duplexMode==='custom') S.antiSeq=enforceThree(S.antiSeq,S.antiThree);
+  /* R82a/J1-B. WHICH RECORD IS THIS, AND WHICH VERSION OF IT.
+     ⚠⚠ THE null BRANCH IS LOAD-BEARING. This is the one entry point for every
+     restore, personal and lab alike; without the explicit clear, opening a
+     personal record after a shared one would leave the editing band pointing
+     at the previous lab row and the next save would write to it.
+     ⚠ `back` is attached by whoever opened the record, so Cancel can put the
+     calculator back where it was. It is not read here. */
+  S.__shared = (h.__rowId && h.__labId)
+    ? { rowId:h.__rowId, labId:h.__labId, ver:h.__ver||'', vn:(h.__vn==null?'':h.__vn),
+        led:h.__led||'', name:h.name||'', author:h.__author||'', back:null }
+    : null;
+  try{ window.dispatchEvent(new CustomEvent('oligo:shared')); }catch(_e){ ocFail('loadSavedState#1',_e); }
   return true;
 }
 
@@ -10112,6 +10257,7 @@ document.body.addEventListener("click", e=>{
     if(ok===true){ savedSig=currentSig(); applyAll(); }
     /* BUG-6: this was an unkeyed 900 ms re-render. Clicking Save twice queued two,
        and the older one repainted over whatever the user did in between. */
+    else if(ok==='shared'){ ocFocusBand(); }
     else if(ok!=='gated'){ const b=e.target.closest("[data-save]"); b.textContent="Already saved"; ocDefer('saveFeedback', applyAll, 900); }
     return;
   }
@@ -11019,6 +11165,8 @@ function closeCatGate(){ calcs.forEach(c=>{ const g=c.querySelector("[data-catga
   msSummaryText: [function(){ return msSummaryText; }, function(v){ msSummaryText = v; }],
   mzLadder: [function(){ return mzLadder; }, function(v){ mzLadder = v; }],
   nfmt: [function(){ return nfmt; }, function(v){ nfmt = v; }],
+  ocEntryForSave: [function(){ return ocEntryForSave; }, function(v){ ocEntryForSave = v; }],
+  ocFocusBand: [function(){ return ocFocusBand; }, function(v){ ocFocusBand = v; }],
   ocModalClose: [function(){ return ocModalClose; }, function(v){ ocModalClose = v; }],
   ocModalOpen: [function(){ return ocModalOpen; }, function(v){ ocModalOpen = v; }],
   ocModalRelabel: [function(){ return ocModalRelabel; }, function(v){ ocModalRelabel = v; }],
@@ -13227,7 +13375,49 @@ function ocSignOutEverywhere(){
      one funnel every sign-out path reaches, so it is where the reset lives.
      ⚠ It runs BEFORE the repaint below, or the repaint draws the old state. */
   try{ if(window.oligoLabLib&&oligoLabLib.resetLabSession) oligoLabLib.resetLabSession(); }catch(_e){ ocFail('ocSignOutEverywhere#9',_e); }
+  /* R83a/J2-P1 (R82c row 14). ⚠⚠ THE ONE FUNCTION THAT TAKES THE LAB
+     SURFACE DOWN, and the funnel never called it. `renderHistShell()`
+     below paints `.view-hist table.htable tbody` -- the FLAT PERSONAL
+     TABLE -- and the lab library is a SIBLING, `div[data-lab-lib]`. So
+     the funnel's only repaint repainted the element that was already
+     hidden and left the one that was showing. Measured: 85 samples over
+     30 s, 0 clean, on both sign-out paths.
+     ⚠ It runs AFTER resetLabSession(), or it repaints the old scope.
+     ⚠ ensureScope() is async and is deliberately NOT awaited: the funnel
+     is synchronous and its callers do not expect a promise, and the
+     `!pro` branch it takes here completes before its first await. */
+  try{ if(window.oligoLabLib&&oligoLabLib.ensureScope) oligoLabLib.ensureScope(); }catch(_e){ ocFail('ocSignOutEverywhere#10',_e); }
+  /* R83a/J2-P2. The Lab tab keeps `_st` from the signed-in session and
+     paints from it. ⚠ `onOverlay()` looks like it covers this and does
+     not: its first line returns unless the account overlay is OPEN, so
+     the overlay CLOSING after a sign-out returns immediately. Measured:
+     the Lab tab still read "This lab / Chen Lab / You are a member" on
+     BOTH sign-out paths. `render()` with no argument re-reads signedIn()
+     and repaints. */
+  try{ if(window.oligoLab&&oligoLab.render) oligoLab.render(); }catch(_e){ ocFail('ocSignOutEverywhere#11',_e); }
+  /* R83a/J2-P3. `renderCatGate()` is called only by `renderCatShell()`,
+     which the funnel never calls, so both the desktop and the mobile bar
+     kept data-state="pro" on a signed-out page. ⚠ renderCatGate() and
+     NOT renderCatShell(): the shell rebuilds every catalogue row, which
+     is thousands of nodes for a repaint of one bar. */
+  try{ if(typeof renderCatGate==='function') renderCatGate(); }catch(_e){ ocFail('ocSignOutEverywhere#12',_e); }
   try{ if(typeof renderHistShell==='function') renderHistShell(); }catch(_e){ ocFail('ocSignOutEverywhere#8',_e); }
+  /* R83a/J2-P5. Albert: "Once a person logs out they should be
+     redirected to the sign in page or the Home page of the calculator."
+     ⭐ THE CALCULATOR HOME, delegated by him and argued by Lane C from
+     four measurements (ROUND82c-MEASUREMENT.md §5): signed out the Plans
+     tab is a PRICE LIST, and somebody who has just chosen to leave should
+     not be answered with three things to buy; `mw` is already this
+     build's own answer to "no particular destination" (closeAuxView's
+     fallback); the sequence the person typed is measured still in the box
+     there; and the calculator is free and works signed out.
+     ⚠⚠ AND IT IS NOT THE CORRECTNESS FIX. Parts 1 to 4 leave every
+     surface in a correct signed-out state on their own. This part exists
+     so the person SEES that their press did something. ⛔ It is LAST
+     because a tab change re-enters the painters above; putting it first
+     would let the redirect hide whether they work. Reversible in one
+     line. */
+  try{ if(typeof setTab==='function') setTab('mw'); }catch(_e){ ocFail('ocSignOutEverywhere#13',_e); }
 }
 window.ocSignOutEverywhere=ocSignOutEverywhere;
 function overlayBox(o){ return o==='account'?'.menu-account':o==='library'?'.menu-library':o==='help'?'.help-sheet':null; }
@@ -13986,7 +14176,7 @@ document.body.addEventListener('click', function(e){
         if(window._antiInvalid){ _flashBtn(pa, window.t('ui.flash.antisense')); return; }
         var rr=compute(S.seq,S.type,S.linkage);
         if(!rr.n){ _flashBtn(pa, window.t('ui.flash.invalid')); return; }
-        if(typeof saveCurrent==='function'){ var ok=saveCurrent(); if(ok===true){ try{ savedSig=currentSig(); }catch(_e){ ocFail('_flashBtn#1',_e); } if(typeof renderHistShell==='function') renderHistShell(); applyAll(); _flashBtn(pa, window.t('ui.flash.saved'), 'ok'); } else if(ok!=='gated'){ _flashBtn(pa, window.t('ui.flash.dupe')); } }
+        if(typeof saveCurrent==='function'){ var ok=saveCurrent(); if(ok===true){ try{ savedSig=currentSig(); }catch(_e){ ocFail('_flashBtn#1',_e); } if(typeof renderHistShell==='function') renderHistShell(); applyAll(); _flashBtn(pa, window.t('ui.flash.saved'), 'ok'); } else if(ok==='shared'){ ocFocusBand(); } else if(ok!=='gated'){ _flashBtn(pa, window.t('ui.flash.dupe')); } }
       }
       return;
     }
@@ -14862,6 +15052,21 @@ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded'
 .lab-x2{font-family:var(--font-head);font-weight:600;font-size:11.5px;min-height:32px;padding:5px 11px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface-2);color:var(--text);cursor:pointer}
 .lab-x2[disabled]{opacity:.5;cursor:default}
 .lc-ro{font-size:11px;color:var(--muted)}
+/* R82a/J1: the capability label every seat now gets, the primary action, and
+   the editing band. ⚠ Source order is not load-bearing here: every selector
+   below is new, so none of them is in an equal-specificity tie with a shipped
+   rule. `.lab-x2.lab-pri` is (0,2,0) against `.lab-x2` (0,1,0) and wins on
+   specificity rather than on where it sits. */
+.lc-cap{font-size:11px;color:var(--muted)}
+.lc-cap.can{font-weight:600;color:var(--accent-2)}
+.lab-x2.lab-pri{background:var(--accent);color:var(--accent-ink);border-color:transparent}
+.labed{border:1px solid var(--line-2);border-left:3px solid var(--accent);border-radius:12px;background:var(--surface);padding:10px 12px;margin:0 0 14px}
+.labed[hidden]{display:none}
+.labed .labed-t{font-family:var(--font-head);font-weight:600;font-size:13px}
+.labed .labed-m{font-size:11.5px;color:var(--muted);line-height:1.5;margin-top:2px}
+.labed-a{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;align-items:center}
+.lab-accsum{font-size:11.5px;color:var(--muted);line-height:1.5;margin:0 0 8px}
+.lab-accnote{font-size:11.5px;color:var(--muted);line-height:1.5;margin-top:10px;padding-top:8px;border-top:1px solid var(--line)}
 .lab-pick{display:flex;align-items:center;gap:8px;border:1px solid var(--line-2);border-radius:10px;padding:8px 10px}
 .lab-pick .lc-n{flex:0 0 auto;font-weight:600;font-size:12px}
 .lab-pick .lc-seq{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:var(--font-mono,ui-monospace,monospace);font-size:11px;color:var(--muted)}
@@ -16503,7 +16708,10 @@ try{
     added.forEach(function(cb){ try{ if(window.oligoSync&&oligoSync.pushCustomBase) oligoSync.pushCustomBase(cb); }catch(_e){ ocFail('addDefs#sync',_e); } });
     return added;
   }
-  var WORK=['seq','type','linkage','five','fiveThio','three','advanced','duplexMode','antiSeq','antiType','antiFive','antiThree','antiLinkage','mwSource','modPreset','modName','modMass'];
+  /* R82a/J1-I: `__shared` restores with the rest. This function loads a share
+     link into S, saves it, and puts the calculator back; without it here the
+     chemistry returned and the editing band did not. */
+  var WORK=['seq','type','linkage','five','fiveThio','three','advanced','duplexMode','antiSeq','antiType','antiFive','antiThree','antiLinkage','mwSource','modPreset','modName','modMass','__shared'];
   function saveShared(s,allDefs){
     if(!validShared(s).ok) return false;      /* R51 F-03: nothing is imported from an invalid payload */
     var snap={}; WORK.forEach(function(k){ snap[k]=S[k]; });
@@ -17453,6 +17661,14 @@ try{
   async function rpc(fn,args){ return await rest('POST','rpc/'+fn,args||{}); }
 
   var _labs=null;
+  /* R83a/J2-P4a (R82c row 14). ⚠⚠ WHY A COUNTER AND NOT A FLAG. There is
+     no "signed out" moment to test against: a person can sign out and
+     back in while one render is still in flight, and a boolean would let
+     that render finish against the NEW session. A monotonic epoch answers
+     the only question that matters -- is this still the session that
+     started me? ⚠ Read by resetLabSession, renderFolderBrowser and the
+     three async helpers that write module state after an await. */
+  var _epoch=0;
   var _sel=new Set(), _lastList=[];
   /* R76m/M0. ⚠⚠ WHAT IS ACTUALLY ON SCREEN, which is NOT `_lastList`.
      `_lastList` is every record in the lab; the browser renders one
@@ -17479,7 +17695,13 @@ try{
   async function labs(){
     if(_labs && (Date.now()-_labsAt < 30000)) return _labs;
     if(!isPro()||!signedIn()){ _labs=[]; _labsOk=true; _labsAt=Date.now(); return _labs; }
-    try{ _labs=(await rpc('my_labs',{}))||[]; _labsOk=true; }catch(_){ _labs=[]; _labsOk=false; }
+    /* R83a/J2-P4d. ⚠ Into locals first. The three writes below are one
+       decision -- the list, whether the ask succeeded, and the clock the
+       30-second cache reads -- and a stale render must make none of them. */
+    var _e=_epoch, got=[], okd=true;
+    try{ got=(await rpc('my_labs',{}))||[]; }catch(_){ got=[]; okd=false; }
+    if(_e!==_epoch) return got;
+    _labs=got; _labsOk=okd;
     _labsAt=Date.now(); return _labs;
   }
   /* R76k/B-3: ⚠⚠ A SCOPE CHANGE CLEARS THE SELECTION, and it does it HERE so
@@ -17522,6 +17744,19 @@ try{
      the selection, the last rendered list, and the shared monomer
      definitions that rebuildCustom re-merges after every personal rebuild. */
   function resetLabSession(){
+    /* R83a/J2-P4a. ⛔⛔ FIRST, BEFORE ANYTHING IS CLEARED. Everything in
+       flight is stale from this line on, so a response that resolves
+       during the rest of this function cannot write into the session it
+       is being removed from. R82c's closing note: a cleanup with no fence
+       around it is a cleanup with a race in it. */
+    _epoch++;
+    /* R83a/J2-P4a. ⚠ THE FOUR THIS FUNCTION LEFT BEHIND. It cleared
+       _labs, _sel, _lastList and _labMon; renderFolderBrowser also writes
+       these four, openMoveTo reads _folders, and the record search reads
+       _rq. ⚠ _memByUid/_memMapLab hold the previous account's labmate
+       e-mail addresses and are cleared for the same reason _labs is. */
+    _folders=[]; _lastFolders=[]; _shown=[]; _rq='';
+    _memByUid=null; _memMapLab=null;
     _labs=null; _labsAt=0; _labsOk=false;
     try{ _sel.clear(); }catch(_){ /* nothing was selected */ }
     _lastList=[]; _labMon=[];
@@ -17573,7 +17808,7 @@ try{
     return true;
   }
 
-  function rowToEntry(row){ var d=Object.assign({}, row.data||{}); d.id=row.client_id||d.id; if(row.name!=null)d.name=row.name; if(row.folder!=null)d.folder=row.folder; if(Array.isArray(row.tags))d.tags=row.tags; d.__rowId=row.id; d.__uid=row.user_id; d.__author=(row.data&&row.data.authorEmail)||''; d.__folderId=row.folder_id||''; d.__labId=row.lab_id||''; return d; }
+  function rowToEntry(row){ var d=Object.assign({}, row.data||{}); d.id=row.client_id||d.id; if(row.name!=null)d.name=row.name; if(row.folder!=null)d.folder=row.folder; if(Array.isArray(row.tags))d.tags=row.tags; d.__rowId=row.id; d.__uid=row.user_id; d.__author=(row.data&&row.data.authorEmail)||''; d.__folderId=row.folder_id||''; d.__labId=row.lab_id||''; d.__ver=row.updated_at||''; d.__vn=(row.version==null?'':row.version); d.__led=row.last_editor_email||''; return d; }
   async function fetchLabStrands(labId){ var rows=await rest('GET','strands?lab_id=eq.'+encodeURIComponent(labId)+'&select=*&order=updated_at.desc'); return (rows||[]).map(rowToEntry); }
   async function addToLab(entry,labId){ if(!entry.id){ entry.id=(window.oligoSync&&oligoSync.uuid)?oligoSync.uuid():('id-'+(''+Math.random()).slice(2)); try{ saveHist(); }catch(_e){ ocFail('addToLab#1',_e); } } var uid=await myUid(); if(!uid) throw new Error(_t('lab.err.signin')); var data=Object.assign({}, entry, {authorEmail:myEmail()});
     /* R76k/B-6a (LAB-P1-02): ⚠⚠ EVERY client-internal key, not three of them.
@@ -17872,7 +18107,19 @@ try{
       window.rebuildCustom=function(){ var r=_origRebuild.apply(this,arguments); _remergeLabMon(); return r; };
     }
   }catch(_e){ ocFail('_remergeLabMon#2',_e); }
-  async function mergeLabMonomers(labId){ try{ _labMon=await fetchLabMonomers(labId); mergeMonInto(_labMon); }catch(_){ _labMon=[]; } }
+  /* R83a/J2-P4c (R82c row 14). ⚠⚠ THE GUARD IS BETWEEN THE AWAIT AND THE
+     WRITE, and it has to be. mergeMonInto() writes lab codes straight
+     into the global CUSTOM and only a full rebuildCustom() takes them out
+     again, so a caller that checks staleness AFTER this returns is
+     checking after the damage. ⚠ The `epoch===undefined` fall-through
+     keeps any future caller that does not track the session working
+     unchanged; today there is exactly one caller and it passes one. */
+  async function mergeLabMonomers(labId, epoch){
+    try{ var got=await fetchLabMonomers(labId);
+         if(epoch!==undefined && epoch!==_epoch) return;
+         _labMon=got; mergeMonInto(_labMon); }
+    catch(_){ _labMon=[]; }
+  }
   /* R77d piece 3. Albert, 2026-08-20: "this shouldn't happen in the first
      place." The lab's shared codes are read back immediately before the
      write, and a code another member already holds is refused by name.
@@ -17970,7 +18217,31 @@ try{
 
   // ---- FOLDERS (RPC-gated; shared in lab scope). Move requires edit rights (RLS enforces). ----
   var _folders=[];
-  async function fetchFolders(labId){ try{ var q=labId?('folders?lab_id=eq.'+encodeURIComponent(labId)+'&select=*&order=sort'):('folders?lab_id=is.null&select=*&order=sort'); _folders=(await rest('GET',q))||[]; }catch(_){ _folders=[]; } return _folders; }
+  /* R82a/J1-E. THE LAB'S PER-RECORD EDIT GRANTS, FETCHED ONCE PER RENDER.
+     ⚠ The card render cannot call one RPC per row, and `list_strand_editors`
+     appeared exactly once in this whole file before this round -- inside the
+     access dialog. Nothing else had ever asked who may edit. */
+  var _lastEditors=Object.create(null);
+  async function fetchEditors(labId){
+    var o=Object.create(null); if(!labId) return o;
+    try{
+      var rows=(await rest('GET','strand_editors?select=strand_id,email'))||[];
+      rows.forEach(function(r){ if(!r||!r.strand_id) return; var k=String(r.strand_id);
+        if(!o[k]) o[k]=[]; o[k].push(String(r.email||'').toLowerCase()); });
+    }catch(_e){ ocFail('labed#editors',_e); }
+    return o;
+  }
+  /* ⚠⚠ email, LOWER-CASED. `grant_strand_edit` leaves user_id NULL on every
+     grant it writes, so a user_id match would answer false for all of them. */
+  function _editors(rowId){
+    if(!rowId) return false;
+    var l=_lastEditors[String(rowId)]; if(!l||!l.length) return false;
+    var me=myEmail(); if(!me) return false;
+    return l.indexOf(me)>=0;
+  }
+  /* R83a/J2-P4d. ⚠ The rows are returned either way; what the epoch
+     guards is the WRITE into `_folders`, which outlives this call. */
+  async function fetchFolders(labId, epoch){ var got=[]; try{ var q=labId?('folders?lab_id=eq.'+encodeURIComponent(labId)+'&select=*&order=sort'):('folders?lab_id=is.null&select=*&order=sort'); got=(await rest('GET',q))||[]; }catch(_){ got=[]; } if(epoch!==undefined && epoch!==_epoch) return got; _folders=got; return _folders; }
   /* THE ARGUMENT OBJECTS STAY LITERAL AT THE CALL SITE, and that is not
      style. tools/round70/rpc-contract.mjs reads the client's RPC calls
      and checks each against a checked-in signature. A first draft built
@@ -18140,7 +18411,7 @@ try{
      never been read back from production. In all three the tile reads the
      member label alone. */
   var _memByUid=null, _memMapLab=null;
-  async function ensureMemberMap(labId){
+  async function ensureMemberMap(labId, epoch){
     if(_memMapLab===labId && _memByUid) return _memByUid;
     var map=Object.create(null);
     if(labId){
@@ -18149,6 +18420,11 @@ try{
         (rows||[]).forEach(function(r){ if(r && r.user_id && r.email) map[r.user_id]=r.email; });
       }catch(_e){ ocFail('lab#memmap',_e); }
     }
+    /* R83a/J2-P4d. Same shape as fetchFolders: the map is returned either
+       way, and what the epoch guards is the cache that outlives the call.
+       ⚠ These two hold labmate e-mail addresses, so a stale write puts
+       the previous account's roster in front of the next one. */
+    if(epoch!==undefined && epoch!==_epoch) return map;
     _memByUid=map; _memMapLab=labId; return map;
   }
   function fWho(f){
@@ -18275,7 +18551,11 @@ try{
   async function fetchStrandsScope(labId){ return labId ? await fetchLabStrands(labId) : await fetchPersonalStrands(); }
   function fileCard(e, mine, uid, labId){
     var isAuthor = labId ? ((uid&&e.__uid===uid)||(!!e.__author&&e.__author===mine)) : true;
-    var acts='<button type="button" class="lab-x2" data-lab-load="'+esc(e.id)+'">'+esc(_t(labId?'lab.card.opencopy':'lab.card.open'))+'</button>';
+    /* R82a/J1-D. ⚠⚠ BESIDE isAuthor, NEVER INSTEAD OF IT. See the note above
+       this function: isAuthor gates four author-only server operations. */
+    var canEdit  = labId ? (isAuthor || _isMgr(labId) || _editors(e.__rowId)) : true;
+    var acts=((labId&&canEdit&&e.__rowId)?('<button type="button" class="lab-x2 lab-pri" data-lab-edit="'+esc(e.__rowId)+'">'+esc(_t('lab.card.editlab'))+'</button>'):'')
+      +'<button type="button" class="lab-x2" data-lab-load="'+esc(e.id)+'">'+esc(_t(labId?'lab.card.opencopy':'lab.card.open'))+'</button>';
     var shared = !labId && !!e.__labId;
     if((isAuthor||_isMgr(labId)) && !shared) acts+='<button type="button" class="lab-x2" data-lab-move="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'">'+esc(_t('lab.fold.go'))+'</button>';
     if(labId){ acts+='<button type="button" class="lab-x2" data-lab-comments="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'">'+esc(_t('lab.cmt.h'))+'</button>';
@@ -18295,7 +18575,13 @@ try{
          in a hundred, and chkjs.py rejects one wherever it appears -- comments
          included.  A first draft of this comment quoted the two verbs and the
          gate refused the build, correctly. */
-      acts+= isAuthor ? ('<button type="button" class="lab-x2" data-lab-access="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'">'+esc(_t('lab.acc.h'))+'</button><button type="button" class="lab-x2" data-lab-rmlab="'+esc(e.id)+'">'+esc(_t('lab.card.rmlab'))+'</button>') : (_isMgr(labId) ? ('<button type="button" class="lab-x2 lab-mgrdel" data-lab-mgrdel="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'" aria-label="'+esc(_t('lab.card.mgrdel',{name:e.name||_t('lab.card.untitled')}))+'" title="'+esc(_t('lab.card.mgrdelT'))+'">'+esc(_t('lab.card.del'))+'</button>') : ('<span class="lc-ro">'+esc(_roLabel())+'</span>'));
+      acts+= isAuthor ? ('<button type="button" class="lab-x2" data-lab-access="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'" data-lab-au="'+esc(e.__author||'')+'" data-lab-fid="'+esc(e.__folderId||'')+'">'+esc(_t('lab.acc.h'))+'</button><button type="button" class="lab-x2" data-lab-rmlab="'+esc(e.id)+'">'+esc(_t('lab.card.rmlab'))+'</button>') : (_isMgr(labId) ? ('<button type="button" class="lab-x2 lab-mgrdel" data-lab-mgrdel="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'" aria-label="'+esc(_t('lab.card.mgrdel',{name:e.name||_t('lab.card.untitled')}))+'" title="'+esc(_t('lab.card.mgrdelT'))+'">'+esc(_t('lab.card.del'))+'</button>') : '');
+      /* R82a/J1-D. ⭐ EVERY SEAT, NOT JUST THE ONE THAT MAY NOT WRITE. The
+         shipped card said nothing at all to a manager and "Read only" to a
+         granted editor who could in fact write -- byte-identical to an
+         ungranted stranger's card, which is LAB-P1-01 itself. The two keys
+         are shipped and already mean Can edit / View only. */
+      acts+= '<span class="lc-cap'+(canEdit?' can':'')+'">'+esc(_t(canEdit?'lab.acc.can':'lab.acc.view'))+'</span>';
     } else if(!shared) { acts+='<button type="button" class="lab-x2" data-pdel="'+esc(e.id)+'">'+esc(_t('lab.card.del'))+'</button>'; }
     return '<div class="lab-card"'+(isAuthor?' draggable="true"':'')+' data-rowid="'+esc(e.__rowId||'')+'"><div class="lab-card-h"><label class="lab-pick"><input type="checkbox" class="lab-pick-cb" data-labpick="'+esc(e.id)+'" aria-label="'+esc(_t('lab.card.sel',{name:e.name||_t('lab.dlg.aseq')}))+'"'+(_sel.has(e.id)?' checked':'')+'></label><span class="lc-n">'+esc(e.name||_t('lab.card.untitled'))+'</span><span class="lc-mw">'+esc(labMW(e))+' g/mol</span></div>'+
       '<div class="lc-seq">'+esc((typeof spaceSeq==='function')?spaceSeq(e.seq,e.type,e.linkage):e.seq||'')+'</div>'+
@@ -18321,17 +18607,28 @@ try{
   }
   async function renderFolderBrowser(){
     var ll=ensureLabLib(); if(!ll) return; var m=meta(); var labId=scopeLabId(); var openF=m.openFolder||'';
+    /* R83a/J2-P4b (R82c row 14). ⚠⚠ THE SESSION THIS RENDER BELONGS TO,
+       captured before the first await. Six awaits stand between here and
+       the paint and not one of them re-read the session, so a sign-out
+       part way through finished against a lab the person had left. */
+    var _e=_epoch, _stale=function(){ return _e!==_epoch; };
     ll.innerHTML='<div class="lab-hint" style="padding:8px 2px">'+esc(_t('lab.dlg.loading'))+'</div>';
-    var mine=myEmail(), uid=await myUid();
+    var mine=myEmail(), uid=await myUid();            if(_stale()) return;
     /* R81a/P1-S1. ⚠ BEFORE THE FIRST fName CALL, which is in the
        breadcrumb three lines down. */
-    _myUidSync=uid; await ensureMemberMap(labId);
+    _myUidSync=uid; await ensureMemberMap(labId,_e);  if(_stale()) return;
     try{
-      if(labId) await mergeLabMonomers(labId);
-      var folders=await fetchFolders(labId);
+      if(labId) await mergeLabMonomers(labId,_e);     if(_stale()) return;
+      var folders=await fetchFolders(labId,_e);       if(_stale()) return;
       _lastFolders=folders;   /* R76m/M7: the summary names the folder */
-      var list=await fetchStrandsScope(labId);
+      var list=await fetchStrandsScope(labId);        if(_stale()) return;
       _lastList=list;
+      /* R82a/J1-E. Alongside the folders and the strands, in the same pass.
+         ⛔ R83a: INTO A LOCAL FIRST. `_lastEditors = await ...` writes the
+         moment the response lands, which leaves no line to guard. */
+      var _eds = labId ? (await fetchEditors(labId)) : Object.create(null);
+      if(_stale()) return;
+      _lastEditors = _eds;
       var here=openF?folders.filter(function(f){return f.id===openF;})[0]:null; if(openF&&!here){ openF=''; setOpenFolder(''); }
       var hereSp=fIsSpace(here);
       var _v=_view(), _crumbs=fPath(folders, openF);
@@ -18573,30 +18870,371 @@ try{
     mo.box.addEventListener('click',function(e){ var b=e.target.closest('[data-pickadd]'); if(!b) return; var h=hist[+b.getAttribute('data-pickadd')]; if(!h) return; b.disabled=true; addToLab(h,labId).then(function(){ toast(_t('lab.mv.done')); mo.close(); renderLabList(); }).catch(function(err){ toast(err.message||_t('lab.err.add')); b.disabled=false; }); });
     _setDlgPaint(shell); shell();
   }
-  async function openAccess(rowId,name){ if(!rowId){ toast(_t('lab.acc.nosync')); return; } var labId=meta().labId; var _nm=name||_t('lab.dlg.aseq'); var mo=modal(_t('lab.acc.to',{name:_nm}),'none');
+  async function openAccess(rowId,name,author,folderId){ if(!rowId){ toast(_t('lab.acc.nosync')); return; } var labId=meta().labId; var _nm=name||_t('lab.dlg.aseq'); var mo=modal(_t('lab.acc.to',{name:_nm}),'none');
     /* ⚠ The English ran the record's name straight into the next sentence with
        only a space between them ("Untitled Everyone in the lab can view this"),
        which reads as one run-on line and cannot be reordered by a target
        grammar. The name and the sentence are two nodes now. */
+    /* R82a/J1-H. ⛔⛔ `author` IS THE RECORD'S AUTHOR. It is NOT "is this row
+       me", which is what the shipped code called it. Measured on the live build
+       from a manager's seat on a colleague's record: the MANAGER was badged
+       author with Can edit, and the person who actually wrote it read View only
+       with a Give edit access button beside her name -- a button that raises
+       "only the strand author can change access" the moment it is pressed. */
+    var _auth=String(author||'').toLowerCase();
+    /* ⚠ WHICH PRIVATE SPACE. Measured: the LAB one, the `My space` tile, because
+       this branches on `fIsSpace()`, which is the FOLDER flag -- so it is a lab
+       folder by definition, and the sentence it reuses names a lab manager, who
+       only exists inside a lab. */
+    var _f=(_lastFolders||[]).filter(function(x){ return x && x.id===folderId; })[0];
+    var _inSpace=fIsSpace(_f);
     function shell(){
-      mo.box.innerHTML='<button type="button" class="oshare-btn oshare-x" aria-label="'+esc(_t('lab.dlg.close'))+'">✕</button><h3>'+esc(_t('lab.acc.h'))+'</h3><p class="oshare-sub"><b>'+esc(name||_t('lab.dlg.seq'))+'</b> '+esc(_t('lab.acc.sub'))+'</p><div data-access-body><div class="lab-hint">'+esc(_t('lab.dlg.loading'))+'</div></div>';
+      /* ⭐ AND THE PANEL CARRIES THE ROAD, NOT JUST THE SIGNPOST. Readers called
+         the sentence-only version "a signpost with no road" and "a dead end".
+         The button reuses the shipped `lab.mv.go`; no key is coined for it. */
+      mo.box.innerHTML='<button type="button" class="oshare-btn oshare-x" aria-label="'+esc(_t('lab.dlg.close'))+'">✕</button><h3>'+esc(_t('lab.acc.h'))+'</h3><p class="oshare-sub"><b>'+esc(name||_t('lab.dlg.seq'))+'</b> '+esc(_inSpace?(_t('lab.priv.who!')+' '+_t('lab.acc.subspace',{lab:labName(labId)})):_t('lab.acc.sub'))+'</p>'
+        /* R83a/J3b (R82c row 5). ⛔ THE CONSEQUENCE, AND IT IS RENDERED
+           BEFORE THE CONTROL. Pressing this makes a record that only the
+           person and a lab manager can see readable by the whole lab, and
+           the panel said nothing about it. */
+        +(_inSpace?('<div class="lab-hint">'+esc(_t('lab.acc.movewarn!',{lab:labName(labId)}))+'</div>'
+          +'<div class="labed-a"><button type="button" class="lab-x2 lab-pri" data-acc-move>'+esc(_t('lab.mv.go'))+'</button></div>'):'')
+        +'<div data-access-body><div class="lab-hint">'+esc(_t('lab.dlg.loading'))+'</div></div>';
       paint(); }
-    mo.box.addEventListener('click',function(e){ var g=e.target.closest('[data-acc-grant]'); if(g){ g.disabled=true; rpc('grant_strand_edit',{p_strand:rowId,p_email:g.getAttribute('data-acc-grant')}).then(paint).catch(function(err){ toast(err.message||_t('lab.err.grant')); g.disabled=false; }); return; } var rv=e.target.closest('[data-acc-revoke]'); if(rv){ rv.disabled=true; rpc('revoke_strand_edit',{p_strand:rowId,p_email:rv.getAttribute('data-acc-revoke')}).then(paint).catch(function(err){ toast(err.message||_t('lab.err.revoke')); rv.disabled=false; }); } });
+    mo.box.addEventListener('click',function(e){ var g=e.target.closest('[data-acc-grant]'); if(g){ g.disabled=true; rpc('grant_strand_edit',{p_strand:rowId,p_email:g.getAttribute('data-acc-grant')}).then(paint).catch(function(err){ toast(err.message||_t('lab.err.grant')); g.disabled=false; }); return; } var rv=e.target.closest('[data-acc-revoke]'); if(rv){ rv.disabled=true; rpc('revoke_strand_edit',{p_strand:rowId,p_email:rv.getAttribute('data-acc-revoke')}).then(paint).catch(function(err){ toast(err.message||_t('lab.err.revoke')); rv.disabled=false; }); return; }
+      var mv=e.target.closest('[data-acc-move]'); if(mv){ mv.disabled=true; Promise.resolve(strandMove(rowId,null)).then(function(){ toast(_t('lab.mv.done')); _inSpace=false; _f=null; shell(); try{ renderLabList(); }catch(_e){ ocFail('labacc#relist',_e); } }).catch(function(err){ toast((err&&err.message)||_t('lab.err.move')); mv.disabled=false; }); } });
     async function paint(){ var body=mo.box.querySelector('[data-access-body]'); if(!body) return; try{ var members=(await rpc('list_lab_members',{p_lab:labId}))||[]; var editors=(await rpc('list_strand_editors',{p_strand:rowId}))||[]; var eset={}; editors.forEach(function(x){ eset[String(x.email).toLowerCase()]=1; }); var mine=myEmail();
-      body.innerHTML=members.map(function(mm){ var em=String(mm.email).toLowerCase(); var author=(em===mine); var canEdit=author||!!eset[em];
+      /* ⚠ A SEAT THAT CANNOT GRANT IS SHOWN WHO HAS ACCESS AND NO BUTTONS. Both
+         RPCs raise for anyone but the author, including a manager, so a button
+         that is drawn for them is a button that raises. */
+      var _mayGrant=(!!_auth && _auth===mine);
+      var _nEd=0;
+      /* R83a/J3a (R82c row 2). ⛔ THE ROSTER GOES THE SAME WAY THE
+         SUMMARY WENT. In a member's own private space every row of it is
+         false: nobody in that list can see what is in here except the
+         person whose space it is and a lab manager, and the permission
+         column says otherwise in every row. */
+      body.innerHTML=_inSpace ? '' : (members.map(function(mm){ var em=String(mm.email).toLowerCase(); var author=(!!_auth&&em===_auth); var isMe=(em===mine);
+        /* ⚠ A MANAGER'S ACCESS COMES FROM THEIR ROLE, not from a grant, and it is
+           real: `strands_update` carries `is_lab_manager(lab_id)`. ⛔ Albert ruled
+           (b) and NOT (c): the row keeps the same shipped label even though a
+           manager's Can edit means more. No second label is invented here. */
+        var canEdit=author||!!eset[em]||(mm.role==='manager'||mm.role==='owner');
+        if(canEdit) _nEd++;
         var _perm=_t(canEdit?'lab.acc.can':'lab.acc.view');
-        var _act=author?'':(canEdit
+        var _act=(author||!_mayGrant)?'':(canEdit
           ? '<button type="button" class="lab-btn" data-acc-revoke="'+esc(mm.email)+'"'
+            +(_inSpace?' disabled':'')
             +' aria-label="'+esc(_t('lab.acc.dorevoke'))+' '+esc(mm.email)+'">'
             +esc(_t('lab.acc.dorevoke'))+'</button>'
           : '<button type="button" class="lab-btn" data-acc-grant="'+esc(mm.email)+'"'
+            +(_inSpace?' disabled':'')
             +' aria-label="'+esc(_t('lab.acc.dogrant'))+' '+esc(mm.email)+'">'
             +esc(_t('lab.acc.dogrant'))+'</button>');
-        return '<div class="lab-mem"><span class="lm-e">'+esc(mm.email)+(author?' <span class="lm-p">'+esc(_t('lab.acc.author'))+'</span>':'')+'</span>'+'<span class="lm-r">'+esc(_perm)+'</span>'+(_act?('<span class="lm-a">'+_act+'</span>'):'')+'</div>';
-      }).join('')||'<div class="lab-hint">'+esc(_t('lab.acc.nomembers'))+'</div>';
+        var _tag=author?(' <span class="lm-p">'+esc(_t('lab.acc.author'))+'</span>')
+                       :(isMe?(' <span class="lm-p">'+esc(_t('lab.card.you'))+'</span>'):'');
+        return '<div class="lab-mem"><span class="lm-e">'+esc(mm.email)+_tag+'</span>'+'<span class="lm-r">'+esc(_perm)+'</span>'+(_act?('<span class="lm-a">'+_act+'</span>'):'')+'</div>';
+      }).join('')||'<div class="lab-hint">'+esc(_t('lab.acc.nomembers'))+'</div>');
+      /* ⛔⛔ IN A PRIVATE SPACE THE SUMMARY LINE DISAPPEARS. Twelve of twelve
+         readers, four locales, all three arms: the panel said "Only you and your
+         lab manager can see what is in here" and then, on the next line, "All 6
+         lab members can view". The second is FALSE, and it is the worst thing on
+         this panel to be wrong about. Albert ruled (a): the line goes. ⛔ There is
+         no ninth key that says it differently -- a corrected line would still be
+         redundant with the sentence directly above it, and (a) cannot be got
+         wrong later. */
+      if(!_inSpace) body.innerHTML=('<div class="lab-accsum">'+esc(_t('lab.acc.sum',{n:_n(members.length), m:_n(_nEd), author:(_auth||_t('lab.cmt.someone'))}))+'</div>')+body.innerHTML;
+      /* ⭐ AND WHAT A GRANT DOES NOT GIVE. Albert ruled a granted editor MAY NOT
+         DELETE, and twelve of twelve readers put deletion in the "cannot
+         determine" column -- they were never shown the word. */
+      body.innerHTML+='<div class="lab-accnote">'+esc(_t('lab.acc.nodel!'))+'</div>';
     }catch(err){ body.innerHTML='<div class="lab-hint">'+esc(_t('lab.acc.failload'))+' '+esc(err.message||'')+'</div>'; } }
     _setDlgPaint(shell); shell();
   }
+  /* =====================================================================
+     R82a/J1-F.  SHARED EDITING.  LAB-P1-01, and it needs no SQL.
+
+     ⭐ THE SERVER ALREADY HONOURS A GRANT COMPLETELY.  R81c measured it: a
+     granted editor's UPDATE goes from NO-OP to ALLOW the moment
+     `grant_strand_edit` runs.  ⛔ THE CLIENT HAD NO CODE PATH THAT WROTE TO A
+     ROW IT DID NOT OWN, and a granted editor's card was byte-identical to an
+     ungranted stranger's, down to the words "Read only".  That was the defect.
+
+     ⚠⚠ THE ONE FACT THE WHOLE BLOCK IS SHAPED BY: an UPDATE blocked by an RLS
+     USING clause matches ZERO ROWS SILENTLY and never raises 42501.  So "you
+     lost the race", "your access was revoked" and "you were never allowed" are
+     THE SAME OBSERVATION at the wire -- zero rows, 204, no exception.  Every
+     recovery below re-reads the row instead of branching on a status code.
+     ===================================================================== */
+  function _edLang(){ try{ return (window.ocI18n&&ocI18n.get)?ocI18n.get():'en'; }catch(_){ return 'en'; } }
+  /* ⚠ THE UI LOCALE, NOT THE BROWSER'S. An unlocalised formatter would ship
+     English dates into three locales, which is exactly what R81d flagged.
+     The whole call is wrapped: Intl is the sort of thing a locked-down browser
+     removes, and a band that cannot render its date is worse than one whose
+     date is unformatted. This mirrors the shipped `fmtDate` in block #13. */
+  function _edWhen(x){
+    if(!x) return '';
+    try{ return new Date(x).toLocaleString(_edLang(),
+      {year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}); }
+    catch(_){ try{ return new Date(x).toLocaleString(); }catch(_e){ return String(x); } }
+  }
+  /* ⚠ The client's own keys never travel into the blob. Enumerating the prefix
+     beats listing names -- the three-name list this file used to carry went
+     stale twice. */
+  function _edStrip(o){ var d=Object.assign({}, o||{});
+    Object.keys(d).forEach(function(k){ if(k.indexOf('__')===0) delete d[k]; }); return d; }
+  /* ⭐ THE RESCUE'S DESTINATION, WITH NO SERVER ROUND. Albert ruled the copy
+     lands in the member's OWN SPACE INSIDE THE LAB, not in their personal
+     library: the record is a lab record, and the personal library takes it out
+     of the lab entirely. `_lastFolders` already holds the row, `fIsSpace` and
+     `fMine` are shipped, and `ensure_member_space()` is not callable by the
+     client (its acl is postgres + service_role), so this is a lookup and not a
+     request. */
+  function _mySpace(labId){
+    var fs=(_lastFolders||[]);
+    for(var i=0;i<fs.length;i++){ var f=fs[i];
+      if(f && fIsSpace(f) && fMine(f) && (!labId || f.lab_id===labId)) return f; }
+    return null;
+  }
+  /* ⚠ THE BUTTON SAYS WHERE IT WILL GO BEFORE IT IS PRESSED. Sixteen of sixteen
+     readers asked for that and it was the round's only unanimous complaint.
+     Both names are shipped and already translated four ways. */
+  function _edWhere(labId){ var f=_mySpace(labId); return f?fName(f):_t('lab.lib.mine'); }
+  function _edShared(){ try{ return (window.S&&S.__shared)||null; }catch(_){ return null; } }
+
+  function edHost(make){
+    var p=document.getElementById('panel-mw'); if(!p) return null;
+    var b=p.querySelector('[data-labed]');
+    if(!b && make){ b=document.createElement('div'); b.className='labed';
+      b.setAttribute('data-labed',''); b.setAttribute('role','status');
+      p.insertBefore(b, p.firstChild); }
+    return b||null;
+  }
+  /* ⚠ role="status", NOT a toast. LAB-P2-15: a toast vanishes before it can be
+     acted on, and this one carries the only two controls that save the work. */
+  function edPaint(){
+    var sh=_edShared(); var b=edHost(!!sh); if(!b) return;
+    if(!sh){ b.hidden=true; b.innerHTML=''; return; }
+    /* ⛔ THE META LINE SAYS ONLY WHAT THE SERVER HAS TOLD IT. `version` and
+       `last_editor_email` arrive with Lane B's R82b paste; until then the band
+       states the time and stops. It never falls back to `data.authorEmail`,
+       which is written by whoever saved last and is therefore not attribution. */
+    var m=(sh.vn!=='' && sh.vn!=null && sh.led)
+      ? _t('lab.ed.meta',{v:sh.vn, who:sh.led, when:_edWhen(sh.ver)})
+      : _t('lab.ed.metat',{when:_edWhen(sh.ver)});
+    b.hidden=false;
+    b.innerHTML='<div class="labed-t">'+esc(_t('lab.ed.band',{name:sh.name||_t('lab.card.untitled'), lab:labName(sh.labId)}))+'</div>'
+      +'<div class="labed-m">'+esc(m)+' · '+esc(_t('lab.ed.all!'))+'</div>'
+      +'<div class="labed-a">'
+      +'<button type="button" class="lab-x2 lab-pri" data-ed-save>'+esc(_t('lab.ed.save'))+'</button>'
+      +'<button type="button" class="lab-x2" data-ed-copy>'+esc(_t('lab.ed.copy',{where:_edWhere(sh.labId)}))+'</button>'
+      +'<button type="button" class="lab-x2" data-ed-cancel>'+esc(_t('lab.cancel'))+'</button>'
+      +'</div>';
+  }
+  /* ⚠ THREE THINGS, NOT TWO. The spec's Cancel is "clear S.__shared, restore the
+     previous calculator state, return to the library", and the third is the one
+     easiest to leave out: without it the person cancels and is left staring at
+     the record they just decided not to edit, on a screen with no way back to
+     where they pressed the button.
+     ⚠ `back` is the entry the calculator held BEFORE the shared record was
+     opened, snapshotted by the handler that opened it. `loadSavedState(back)`
+     carries no __rowId, so it clears S.__shared a second time and fires the
+     event -- which is why the explicit clear above it is not redundant: `back`
+     can be null when the calculator held nothing worth saving. */
+  function edLeave(toLib){
+    var sh=_edShared(); var back=sh&&sh.back;
+    try{ S.__shared=null; }catch(_e){ ocFail('labed#clear',_e); }
+    if(back && typeof loadSavedState==='function'){ try{ loadSavedState(back); }catch(_e){ ocFail('labed#back',_e); } }
+    try{ if(typeof applyAll==='function') applyAll(); }catch(_e){ ocFail('labed#apply1',_e); }
+    edPaint();
+    if(toLib && typeof setTab==='function'){ try{ setTab('hist'); }catch(_e){ ocFail('labed#tab',_e); } }
+  }
+
+  async function edSave(btn){
+    var sh=_edShared(); if(!sh) return null;
+    var entry=(typeof ocEntryForSave==='function')?ocEntryForSave():null;
+    if(!entry){ toast(_t('lab.err.generic!')); return null; }
+    if(btn) btn.disabled=true;
+    try{
+      var d=_edStrip(entry);
+      d.name=sh.name||'';
+      /* ⚠⚠ THE AUTHOR IS CARRIED FORWARD, NOT RE-CLAIMED. `fileCard` falls back
+         to `data.authorEmail` when the uid check misses, so a granted editor
+         whose PATCH dropped it would erase the real author's own Manage access
+         and Remove buttons. ⛔ And that is precisely why the LAST editor must
+         come from a trigger instead: a field the writer controls is not
+         attribution. */
+      d.authorEmail=sh.author||d.authorEmail||'';
+      var qs='strands?id=eq.'+encodeURIComponent(sh.rowId)
+           + '&updated_at=eq.'+encodeURIComponent(sh.ver);
+      /* ⚠⚠ return=representation, NOT return=minimal. Every other write in this
+         file uses minimal; this one cannot. A minimal response is a bare 204
+         whether the write landed on one row or none, and telling those apart is
+         the whole point. */
+      var rows=await rest('PATCH',qs,{seq:entry.seq||'',data:d},{Prefer:'return=representation'});
+      if(rows && rows.length){
+        var r0=rows[0];
+        sh.ver=r0.updated_at||sh.ver;
+        sh.vn=(r0.version==null?'':r0.version);
+        sh.led=r0.last_editor_email||sh.led;
+        edPaint(); toast(_t('lab.ed.ok'));
+        try{ renderLabList(); }catch(_e){ ocFail('labed#relist',_e); }
+        return 'ok';
+      }
+      return await edOutcome(sh);
+    }catch(err){ toast((err&&err.message)||_t('lab.err.generic!')); return 'error'; }
+    finally{ if(btn) btn.disabled=false; }
+  }
+
+  /* ⚠⚠ THE DIAGNOSIS IS THE PART THAT CANNOT BE SKIPPED. Zero rows came back
+     and the reason is not on the wire, so the row is re-read and the three
+     situations are told apart by what is actually there. */
+  async function edOutcome(sh){
+    var rows=null;
+    /* ⚠ No `select=` term: PostgREST returns every column by default, and the
+       literal is then the SAME one the save above builds. Rule 7's baseline is
+       measured debt, and this round adds two entries to it rather than four. */
+    try{ rows=await rest('GET','strands?id=eq.'+encodeURIComponent(sh.rowId)); }
+    catch(_e){ ocFail('labed#diag',_e); }
+    if(!rows || !rows.length){ edBox('gone', sh, null); return 'gone'; }
+    if(String(rows[0].updated_at||'')!==String(sh.ver||'')){
+      edBox('conflict', sh, rowToEntry(rows[0])); return 'conflict'; }
+    edBox('norights', sh, null); return 'norights';
+  }
+
+  /* ⚠ NEVER A TOAST FOR ANY OF THE THREE. Each one is "your work is not saved
+     and here is how to keep it", and LAB-P2-15 already says a toast vanishes
+     before it can be acted on. */
+  function edBox(why, sh, latest){
+    var mo=modal(_t('lab.acc.to',{name:sh.name||_t('lab.dlg.aseq')}),'none');
+    /* ⚠ EVERYTHING IS RECOMPUTED INSIDE shell(). It is registered as the dialog
+       painter, so it re-runs on a language change; a headline captured once
+       outside would repaint in the boot language for ever. */
+    function shell(){
+      /* ⛔⛔ `__led` OR `someone`, AND NEVER `__author`. A first draft of this
+         line fell back to `data.authorEmail` and this round's own probe caught
+         it. Two reasons, and either one is enough:
+         (a) the author is not necessarily the person who just saved -- that is
+             the whole point of shared editing;
+         (b) anyone who can UPDATE can write any value into the blob, so an
+             attribution taken from it is not attribution. It is the same rule
+             the band obeys three functions up, and the reason Lane B's R82b
+             sets `last_editor_email` from a TRIGGER.
+         ⚠ `lab.cmt.someone` is shipped and already translated four ways. */
+      var who = latest ? (latest.__led || _t('lab.cmt.someone')) : '';
+      var head = (why==='conflict') ? _t('lab.ed.clash!',{who:who})
+               : (why==='gone') ? _t('lab.ed.gone!') : _t('lab.ed.norights!');
+      /* ⭐ THE BODY IS THE PARTITION, NOT A DECORATION. Twelve of twelve readers
+         could not tell `gone` from `norights` AS SITUATIONS, and in Japanese the
+         two carried different outcome letters, so it was never the labels. The
+         one fact that differs is whether the record is still there to open, and
+         that is what these two sentences say. */
+      var body = (why==='gone') ? _t('lab.ed.goneb!')
+               : (why==='norights') ? _t('lab.ed.norightsb!') : '';
+      /* ⛔ NO ✕ ON THIS DIALOG, AND THAT IS DELIBERATE TWICE OVER.
+         (a) `tools/round70/glyph-baseline.json` is a SHRINK-ONLY ratchet and ✕
+             stands at 25 sites; a 26th would break it, and it broke when this
+             box was first drawn with one.
+         (b) It is the better design here anyway. This box says "your work is
+             not saved"; a bare symbol is an exit whose consequence a reader has
+             to guess at, which is the finding this whole box exists to close.
+             Every branch below carries at least one WORDED control that closes
+             it, and `ocModalOpen` still closes on Escape and on the scrim. */
+      mo.box.innerHTML='<h3>'+esc(head)+'</h3>'
+        +(body?('<p class="oshare-sub">'+esc(body)+'</p>'):'')
+        +'<div class="labed-a">'
+        +'<button type="button" class="lab-x2 lab-pri" data-ed-copy>'+esc(_t('lab.ed.copy',{where:_edWhere(sh.labId)}))+'</button>'
+        /* ⛔ THE OTHER TWO BUTTONS DO NOT MOVE, and Albert asked. What moved is
+           the middle one: `Start again from v5` named the version the person
+           ALREADY HELD, so pressing it silently discarded a colleague's work.
+           The newer row is in hand here, so the button names the OUTCOME. */
+        +(why==='conflict'
+          ? ('<button type="button" class="lab-x2" data-ed-latest>'+esc(_t('lab.ed.discard'))+'</button>'
+            +'<button type="button" class="lab-x2" data-ed-keep>'+esc(_t('lab.ed.keep'))+'</button>')
+        /* ⭐ AN EXIT THAT CREATES NO RECORD. `gone` had one button, so the only
+           way out of it was to save something. Twelve of twelve readers said so. */
+          : ('<button type="button" class="lab-x2" data-ed-leave>'+esc(_t('lab.ed.leave'))+'</button>'))
+        +'</div>';
+    }
+    mo.box.addEventListener('click', function(ev){
+      var b;
+      if((b=ev.target.closest('[data-ed-keep]'))){ mo.close(); return; }
+      if((b=ev.target.closest('[data-ed-leave]'))){ mo.close(); edLeave(false); return; }
+      if((b=ev.target.closest('[data-ed-latest]'))){
+        mo.close();
+        if(latest && typeof loadSavedState==='function'){
+          try{ loadSavedState(latest); }catch(_e){ ocFail('labed#latest',_e); }
+          try{ if(typeof applyAll==='function') applyAll(); }catch(_e){ ocFail('labed#apply2',_e); }
+          edPaint();
+        }
+        return; }
+      if((b=ev.target.closest('[data-ed-copy]'))){ edCopy(b, function(){ mo.close(); }); return; }
+    });
+    _setDlgPaint(shell); shell();
+  }
+
+  /* ⛔⛔ THE RESCUE MUST NOT BE ABLE TO FAIL. Measured: the insert needs
+     `strands_insert`'s lab branch, `in_lab(lab_id) AND lab_is_paid(lab_id)`,
+     and landing it in a folder goes through `strand_move`, which checks
+     `is_pro()` FIRST. A lab whose subscription has lapsed refuses BOTH -- at
+     the exact moment somebody is trying not to lose work. So every outcome
+     below keeps the work somewhere and SAYS WHERE, and the personal library is
+     the floor under all of them. */
+  async function edCopy(btn, done){
+    var sh=_edShared(); if(!sh) return;
+    var entry=(typeof ocEntryForSave==='function')?ocEntryForSave():null;
+    if(!entry){ toast(_t('lab.err.generic!')); return; }
+    if(btn) btn.disabled=true;
+    var lab=labName(sh.labId), sp=_mySpace(sh.labId), landed='';
+    try{
+      if(sp){
+        var cid=(window.oligoSync&&oligoSync.uuid)?oligoSync.uuid():('id-'+(''+Math.random()).slice(2));
+        var e2=Object.assign({}, _edStrip(entry), {id:cid, name:sh.name||''});
+        await addToLab(e2, sh.labId);
+        landed=lab;
+        /* ⚠ The insert answers `return=minimal`, so the new row's id is read
+           back by its client_id -- the same shape the sync path already uses,
+           and the same LITERAL, which is already in rule 7's baseline. The id
+           was minted here a moment ago and the upsert key is (user_id,
+           client_id), so it matches one row and no further term is needed. */
+        var got=await rest('GET','strands?client_id=eq.'+encodeURIComponent(cid));
+        if(got && got.length){ await strandMove(got[0].id, sp.id); landed=fName(sp); }
+      }
+    }catch(_e){ ocFail('labed#copy',_e); }
+    if(landed){
+      /* ⚠ landed is the LAB when the insert worked and the filing did not. The
+         copy is saved either way; the sentence names where it actually is. */
+      toast(_t('lab.ed.copied',{where:landed}));
+    }else{
+      try{ S.__shared=null; }catch(_e){ ocFail('labed#clear2',_e); }
+      var n0=(typeof history!=='undefined'&&history)?history.length:0;
+      var rc=(typeof saveCurrent==='function')?saveCurrent():false;
+      var n1=(typeof history!=='undefined'&&history)?history.length:0;
+      /* ⚠ `false` here means the top of the history already carries this exact
+         chemistry, so the work IS in the personal library. 'gated' is the free
+         plan's own wall, which puts its own words on screen. */
+      if(rc!=='gated' && (rc===true || n1>n0 || rc===false)) toast(_t('lab.ed.fell!',{lab:lab}));
+    }
+    try{ S.__shared=null; }catch(_e){ ocFail('labed#clear3',_e); }
+    try{ if(typeof applyAll==='function') applyAll(); }catch(_e){ ocFail('labed#apply3',_e); }
+    edPaint();
+    try{ renderLabList(); }catch(_e){ ocFail('labed#relist2',_e); }
+    if(btn) btn.disabled=false;
+    if(typeof done==='function') done();
+  }
+
+  window.addEventListener('oligo:shared', function(){ try{ edPaint(); }catch(_e){ ocFail('labed#lang',_e); } });
+  document.addEventListener('click', function(ev){
+    var b;
+    if((b=ev.target.closest('[data-ed-save]'))){ edSave(b); return; }
+    if((b=ev.target.closest('[data-ed-copy]')) && !ev.target.closest('.oshare-box')){ edCopy(b, null); return; }
+    /* ⚠ THE BAND's Cancel returns to the library, because that is where the
+       reader pressed the button. The DIALOG's discard does not: the dialog is
+       a modal over the calculator and moving the tab under it would leave a
+       box floating over a screen the reader did not choose. */
+    if((b=ev.target.closest('[data-ed-cancel]'))){ edLeave(true); return; }
+  });
+
   async function loadLabStrand(cid){ try{ var list=await fetchLabStrands(meta().labId); var e=list.filter(function(x){return x.id===cid;})[0]; if(e&&typeof loadSavedState==='function'){ loadSavedState(e); if(typeof setTab==='function') setTab('mw'); toast(_t('lab.lib.opened!')); } }catch(_){ toast(_t('lab.lib.failopen')); } }
 
   document.addEventListener('click', function(e){
@@ -18639,7 +19277,21 @@ try{
     if((b=e.target.closest('[data-fsort]'))){ var v=_view(); v.by=b.getAttribute('data-fsort')||'name'; _setView(v); renderLabList(); return; }
     if((b=e.target.closest('[data-lablib-add]'))){ openPicker(); return; }
     if((b=e.target.closest('[data-lab-load]'))){ loadLabStrand(b.getAttribute('data-lab-load')); return; }
-    if((b=e.target.closest('[data-lab-access]'))){ openAccess(b.getAttribute('data-lab-access'), b.getAttribute('data-lab-nm')); return; }
+    if((b=e.target.closest('[data-lab-access]'))){ openAccess(b.getAttribute('data-lab-access'), b.getAttribute('data-lab-nm'), b.getAttribute('data-lab-au'), b.getAttribute('data-lab-fid')); return; }
+    /* R82a/J1-G. ⭐ THE ACTION THE PRODUCT HAS NEVER HAD. The author's email
+       and the folder id ride on the button beside the name, the way the name
+       already does, so neither can go stale in a cache between render and
+       click. */
+    if((b=e.target.closest('[data-lab-edit]'))){
+      var _rid=b.getAttribute('data-lab-edit');
+      var _en=(_lastList||[]).filter(function(x){ return x && x.__rowId===_rid; })[0];
+      if(!_en){ toast(_t('lab.lib.failopen')); return; }
+      var _back=null; try{ _back=(typeof ocEntryForSave==='function')?ocEntryForSave():null; }catch(_e){ ocFail('labed#snap',_e); }
+      if(typeof loadSavedState==='function') loadSavedState(_en);
+      try{ if(window.S&&S.__shared) S.__shared.back=_back; }catch(_e){ ocFail('labed#setback',_e); }
+      try{ if(typeof applyAll==='function') applyAll(); }catch(_e){ ocFail('labed#apply4',_e); }
+      if(typeof setTab==='function') setTab('mw');
+      edPaint(); return; }
     if((b=e.target.closest('[data-lab-rmlab]'))){ var cid=b.getAttribute('data-lab-rmlab'); var _rnm=b.getAttribute('data-lab-nm')||''; _rowBusy(b,true,_rnm); removeFromLab(cid).then(function(){ toast(_t('lab.card.rmdone')); renderLabList(); }).catch(function(err){ toast(err.message||_t('lab.err.remove')); _rowBusy(b,false,_rnm); }); return; }
     if((b=e.target.closest('[data-lab-mgrdel]'))){
       /* R79a/item1. ⚠⚠ THIS IS A DELETE AND NOT AN UN-SHARE, and the difference is
@@ -18809,6 +19461,7 @@ try{
   try{
     window.addEventListener('oligo:lang', function(){
       try{ if(_dlgPaint) _dlgPaint(); }catch(_e){ ocFail('lab#lang1',_e); }
+      try{ edPaint(); }catch(_e){ ocFail('lab#lang4',_e); }
       try{
         var v=view(); if(!v) return;
         if(_q('.view-hist .hn-input')) return;      /* an inline rename is open */
@@ -18817,7 +19470,8 @@ try{
     });
   }catch(_e){ ocFail('lab#lang3',_e); }
 
-  function maybe(){ if((document.body.dataset.tab||'')==='hist') ensureScope(); }
+  function maybe(){ try{ edPaint(); }catch(_e){ ocFail('lab#maybe1',_e); }
+    if((document.body.dataset.tab||'')==='hist') ensureScope(); }
   try{ new MutationObserver(maybe).observe(document.body,{attributes:true,attributeFilter:['data-tab']}); }catch(_e){ ocFail('maybe#1',_e); }
   setTimeout(maybe, 400);
   /* R76j/W1: the ONE scope entry point another block may call. Block #13
