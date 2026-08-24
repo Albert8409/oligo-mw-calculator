@@ -344,7 +344,7 @@ var I18N = {
   "lab.acc.failload":"Could not load access.",
   "lab.acc.h":"Manage access",
   "lab.acc.movewarn!":"Everyone in {lab} will be able to see it.",
-  "lab.acc.nodel!":"People you give edit access to can change this record. They cannot delete it or remove it from the lab.",
+  "lab.acc.nodel!":"People you give edit access to can change this record. They cannot delete it.",
   "lab.acc.nomembers":"No members.",
   "lab.acc.nosync":"This sequence needs to sync before you can manage access.",
   "lab.acc.sub":"Everyone in the lab can view this. Choose who can also edit.",
@@ -456,6 +456,8 @@ var I18N = {
   "lab.ed.metat":"Last saved {when}",
   "lab.ed.norights!":"Your edit access to this record was removed.",
   "lab.ed.norightsb!":"The record is still in the lab and you can still open it. You just cannot save changes to it any more.",
+  "lab.ed.nosave!":"Nothing was saved. Your work is still on this screen.",
+  "lab.ed.openit":"Open it",
   "lab.ed.ok":"Saved to the lab.",
   "lab.ed.save":"Save to the lab",
   "lab.err.add":"Could not add",
@@ -1344,7 +1346,7 @@ var I18N = {
   "ui.lib.mwgoneT":"This record uses {codes}, which this calculator cannot resolve now, so no molecular weight is shown. The molecular weight saved with it was {was}.",
   "ui.lib.readonly":"Read only",
   "ui.lib.rolab!":"This belongs to a lab you are no longer in. You can still open and copy it, but you cannot edit or delete it.",
-  "ui.nav.mwshort":"Calc",
+  "ui.nav.mwshort":"Calc.",
   "ui.seatbig.back!":"Go back and change it",
   "ui.seatbig.body!":"{n} seats is {usd} {per}, billed to this account. Most labs buy between 3 and 30. If that is what you meant, carry on.",
   "ui.seatbig.eyebrow!":"Check this",
@@ -1549,7 +1551,7 @@ var I18N = {
   "lab.acc.failload":"\u7121\u6cd5\u8f09\u5165\u5b58\u53d6\u6b0a\u3002",
   "lab.acc.h":"\u7ba1\u7406\u5b58\u53d6\u6b0a",
   "lab.acc.movewarn!":"{lab} \u88e1\u7684\u6240\u6709\u4eba\u90fd\u5c07\u53ef\u4ee5\u6aa2\u8996\u5b83\u3002",
-  "lab.acc.nodel!":"\u4f60\u6388\u4e88\u7de8\u8f2f\u6b0a\u9650\u7684\u4eba\u53ef\u4ee5\u66f4\u6539\u9019\u4e00\u7b46\uff0c\u4f46\u4e0d\u80fd\u522a\u9664\u5b83\uff0c\u4e5f\u4e0d\u80fd\u628a\u5b83\u79fb\u51fa\u5be6\u9a57\u5ba4\u3002",
+  "lab.acc.nodel!":"\u4f60\u6388\u4e88\u7de8\u8f2f\u6b0a\u9650\u7684\u4eba\u53ef\u4ee5\u66f4\u6539\u9019\u4e00\u7b46\uff0c\u4f46\u4e0d\u80fd\u522a\u9664\u5b83\u3002",
   "lab.acc.nomembers":"\u6c92\u6709\u6210\u54e1\u3002",
   "lab.acc.nosync":"\u9019\u7b46\u5e8f\u5217\u8981\u5148\u540c\u6b65\uff0c\u624d\u80fd\u7ba1\u7406\u5b58\u53d6\u6b0a\u3002",
   "lab.acc.sub":"\u5be6\u9a57\u5ba4\u88e1\u7684\u6bcf\u500b\u4eba\u90fd\u53ef\u4ee5\u6aa2\u8996\u9019\u4e00\u7b46\u3002\u8acb\u9078\u64c7\u9084\u6709\u8ab0\u53ef\u4ee5\u7de8\u8f2f\u3002",
@@ -1584,7 +1586,7 @@ var I18N = {
   "lab.bulk.move":"\u653e\u5165\u8cc7\u6599\u593e",
   "lab.bulk.moveh":"\u653e\u5165\u8cc7\u6599\u593e",
   "lab.bulk.moveok":"\u5df2\u653e\u5165 {ok} \u9805\u3002",
-  "lab.bulk.movepart":"\u5df2\u653e\u5165 {ok} \u7b46\u3002{bad} \u7b46\u7559\u5728\u539f\u4f4d\uff1a\u4f60\u53ea\u80fd\u5c07\u81ea\u5df1\u5efa\u7acb\u7684\u8a18\u9304\u653e\u5165\u8cc7\u6599\u593e\uff0c\u9664\u975e\u4f60\u662f\u5be6\u9a57\u5ba4\u7ba1\u7406\u8005\u3002",
+  "lab.bulk.movepart":"\u5df2\u653e\u5165 {ok} \u7b46\u3002{bad} \u7b46\u7559\u5728\u539f\u4f4d\uff1a\u4f60\u53ea\u80fd\u5c07\u81ea\u5df1\u5efa\u7acb\u7684\u8a18\u9304\u653e\u5165\u8cc7\u6599\u593e\uff0c\u9664\u975e\u4f60\u662f\u5be6\u9a57\u5ba4\u8ca0\u8cac\u4eba\u3002",
   "lab.bulk.movepro":"\u6c92\u6709\u4efb\u4f55\u4e00\u7b46\u88ab\u653e\u5165\u8cc7\u6599\u593e\u3002\u653e\u5165\u8cc7\u6599\u593e\u9700\u8981\u6709\u6548\u7684\u8a02\u95b1\u65b9\u6848\uff0c\u6240\u4ee5 {bad} \u7b46\u5168\u90e8\u7559\u5728\u539f\u4f4d\u3002",
   "lab.bulk.movesub":"\u9078\u64c7\u9019 {n} \u9805\u8981\u653e\u5230\u54ea\u88e1\u3002\u5b83\u5011\u4ecd\u7136\u7559\u5728\u5171\u7528\u8cc7\u6599\u5eab\u88e1\u3002",
   "lab.bulk.moving":"\u6b63\u5728\u653e\u5165\u7b2c {n} / {total} \u9805…",
@@ -1661,6 +1663,8 @@ var I18N = {
   "lab.ed.metat":"\u4e0a\u6b21\u5132\u5b58\u65bc {when}",
   "lab.ed.norights!":"\u4f60\u5c0d\u9019\u4e00\u7b46\u7684\u7de8\u8f2f\u6b0a\u9650\u5df2\u88ab\u79fb\u9664\u3002",
   "lab.ed.norightsb!":"\u9019\u4e00\u7b46\u9084\u5728\u5be6\u9a57\u5ba4\u88e1\uff0c\u4f60\u4ecd\u7136\u53ef\u4ee5\u958b\u555f\u5b83\uff0c\u53ea\u662f\u4e0d\u80fd\u518d\u628a\u8b8a\u66f4\u5132\u5b58\u56de\u53bb\u3002",
+  "lab.ed.nosave!":"\u6c92\u6709\u5132\u5b58\u4efb\u4f55\u6771\u897f\u3002\u4f60\u7684\u5167\u5bb9\u4ecd\u7136\u7559\u5728\u9019\u500b\u756b\u9762\u4e0a\u3002",
+  "lab.ed.openit":"\u958b\u555f\u5b83",
   "lab.ed.ok":"\u5df2\u5132\u5b58\u5230\u5be6\u9a57\u5ba4\u3002",
   "lab.ed.save":"\u5132\u5b58\u5230\u5be6\u9a57\u5ba4",
   "lab.err.add":"\u7121\u6cd5\u65b0\u589e",
@@ -1759,7 +1763,7 @@ var I18N = {
   "lab.imp.sheeth":"\u9019\u500b\u6a94\u6848\u6709\u591a\u5f35\u5de5\u4f5c\u8868\u3002\u5e8f\u5217\u5728\u54ea\u4e00\u5f35\uff1f",
   "lab.imp.skip":"\u4e0d\u8981\u532f\u5165",
   "lab.imp.sub!":"\u652f\u63f4 CSV \u8207 Excel\u3002\u6a94\u6848\u5728\u9019\u500b\u700f\u89bd\u5668\u88e1\u8b80\u53d6\uff0c\u4e0d\u6703\u4e0a\u50b3\uff0c\u4e5f\u4e0d\u6703\u7559\u4e0b\u3002",
-  "lab.leave.blocked!":"\u4f60\u662f\u552f\u4e00\u7684\u7ba1\u7406\u8005\u3002\u8acb\u5148\u5c07\u53e6\u4e00\u4eba\u8a2d\u70ba\u7ba1\u7406\u8005\uff0c\u6216\u76f4\u63a5\u522a\u9664\u9019\u500b\u5be6\u9a57\u5ba4\u3002",
+  "lab.leave.blocked!":"\u4f60\u662f\u552f\u4e00\u7684\u8ca0\u8cac\u4eba\u3002\u8acb\u5148\u5c07\u53e6\u4e00\u4eba\u8a2d\u70ba\u8ca0\u8cac\u4eba\uff0c\u6216\u76f4\u63a5\u522a\u9664\u9019\u500b\u5be6\u9a57\u5ba4\u3002",
   "lab.leave.do":"\u96e2\u958b\u5be6\u9a57\u5ba4",
   "lab.leave.done":"\u4f60\u5df2\u96e2\u958b\u8a72\u5be6\u9a57\u5ba4\u3002",
   "lab.leave.go":"\u96e2\u958b\u9019\u500b\u5be6\u9a57\u5ba4",
@@ -1823,7 +1827,7 @@ var I18N = {
   "lab.mon.pickadd":"\u65b0\u589e",
   "lab.mon.pickempty":"\u4f60\u9084\u6c92\u6709\u81ea\u8a02\u55ae\u9ad4\u3002",
   "lab.mon.pickh":"\u65b0\u589e\u5230\u5be6\u9a57\u5ba4\u7684\u81ea\u8a02\u9e7c\u57fa\u8207\u55ae\u9ad4",
-  "lab.mon.picksub":"\u9078\u4e00\u500b\u4f60\u7684\u81ea\u8a02\u9e7c\u57fa\u6216\u55ae\u9ad4\u8207\u5be6\u9a57\u5ba4\u5206\u4eab\u3002\u4e4b\u5f8c\u5be6\u9a57\u5ba4\u88e1\u7684\u6bcf\u500b\u4eba\u90fd\u53ef\u4ee5\u4f7f\u7528\u5b83\u7684\u4ee3\u78bc\u3002\u4f60\u53ef\u4ee5\u518d\u628a\u5b83\u79fb\u51fa\uff0c\u5be6\u9a57\u5ba4\u7ba1\u7406\u8005\u4e5f\u53ef\u4ee5\u3002\u8acb\u9078\u4e00\u500b\u5be6\u9a57\u5ba4\u9084\u6c92\u6709\u7684\u4ee3\u78bc\u3002",
+  "lab.mon.picksub":"\u9078\u4e00\u500b\u4f60\u7684\u81ea\u8a02\u9e7c\u57fa\u6216\u55ae\u9ad4\u8207\u5be6\u9a57\u5ba4\u5206\u4eab\u3002\u4e4b\u5f8c\u5be6\u9a57\u5ba4\u88e1\u7684\u6bcf\u500b\u4eba\u90fd\u53ef\u4ee5\u4f7f\u7528\u5b83\u7684\u4ee3\u78bc\u3002\u4f60\u53ef\u4ee5\u518d\u628a\u5b83\u79fb\u51fa\uff0c\u5be6\u9a57\u5ba4\u8ca0\u8cac\u4eba\u4e5f\u53ef\u4ee5\u3002\u8acb\u9078\u4e00\u500b\u5be6\u9a57\u5ba4\u9084\u6c92\u6709\u7684\u4ee3\u78bc\u3002",
   "lab.mon.rm":"\u5c07 {code} \u79fb\u51fa\u5be6\u9a57\u5ba4",
   "lab.mon.rmT":"\u79fb\u51fa\u5be6\u9a57\u5ba4",
   "lab.mon.shared":"\u55ae\u9ad4\u5df2\u5206\u4eab\u5230\u5be6\u9a57\u5ba4",
@@ -1831,15 +1835,15 @@ var I18N = {
   "lab.mon.skipN":"\u6709 {n} \u500b\u5be6\u9a57\u5ba4\u55ae\u9ad4\u6c92\u6709\u6709\u6548\u8cea\u91cf\uff0c\u7121\u6cd5\u8b80\u53d6\uff0c\u5df2\u7565\u904e\u3002",
   "lab.mon.unshared":"\u5df2\u79fb\u51fa\u5be6\u9a57\u5ba4\u3002\u5b83\u4ecd\u7136\u7559\u5728\u4f60\u81ea\u5df1\u7684\u9e7c\u57fa\u88e1\u3002",
   "lab.card.mgrdel":"\u5c07 {name} \u5f9e\u5be6\u9a57\u5ba4\u522a\u9664",
-  "lab.card.mgrdelT":"\u4f60\u662f\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u7ba1\u7406\u8005\u3002\u9019\u6703\u70ba\u6240\u6709\u4eba\u522a\u9664\u9019\u7b46\u8a18\u9304\uff0c\u5305\u542b\u5132\u5b58\u5b83\u7684\u4eba\u3002",
+  "lab.card.mgrdelT":"\u4f60\u662f\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u8ca0\u8cac\u4eba\u3002\u9019\u6703\u70ba\u6240\u6709\u4eba\u522a\u9664\u9019\u7b46\u8a18\u9304\uff0c\u5305\u542b\u5132\u5b58\u5b83\u7684\u4eba\u3002",
   "lab.mon.mgrrm":"\u5c07 {code} \u5f9e\u5be6\u9a57\u5ba4\u522a\u9664",
-  "lab.mon.mgrrmT":"\u4f60\u662f\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u7ba1\u7406\u8005\u3002\u9019\u6703\u70ba\u6240\u6709\u4eba\u522a\u9664\u9019\u500b\u55ae\u9ad4\uff0c\u5305\u542b\u5206\u4eab\u5b83\u7684\u4eba\u3002",
+  "lab.mon.mgrrmT":"\u4f60\u662f\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u8ca0\u8cac\u4eba\u3002\u9019\u6703\u70ba\u6240\u6709\u4eba\u522a\u9664\u9019\u500b\u55ae\u9ad4\uff0c\u5305\u542b\u5206\u4eab\u5b83\u7684\u4eba\u3002",
   "lab.mon.mgrdone":"\u5df2\u5f9e\u5be6\u9a57\u5ba4\u522a\u9664\u3002",
   "lab.row.busy":"\u6b63\u5728\u8655\u7406 {name}",
   "ui.sync.baserefused!":"\u9019\u500b\u55ae\u9ad4\u672a\u5132\u5b58\u3002\u4f60\u7684\u5e33\u6236\u4e0d\u88ab\u5141\u8a31\u5132\u5b58\u5b83\uff0c\u56e0\u6b64\u5b83\u7559\u5728\u9019\u53f0\u88dd\u7f6e\u4e0a\u3002",
   "lab.mon.unused":"\u672a\u4f7f\u7528",
   "lab.mon.unusedT":"\u9019\u4e0d\u662f\u9019\u500b\u8a08\u7b97\u6a5f\u76ee\u524d\u5c0d\u90a3\u500b\u4ee3\u78bc\u6240\u7528\u7684\u5b9a\u7fa9\u3002",
-  "lab.mon.who":"\u5be6\u9a57\u5ba4\u88e1\u7684\u6bcf\u500b\u4eba\u90fd\u53ef\u4ee5\u4f7f\u7528\u9019\u4e9b\u4ee3\u78bc\u3002\u55ae\u9ad4\u53ef\u4ee5\u7531\u5206\u4eab\u5b83\u7684\u6210\u54e1\u6216\u5be6\u9a57\u5ba4\u7ba1\u7406\u8005\u79fb\u51fa\u3002",
+  "lab.mon.who":"\u5be6\u9a57\u5ba4\u88e1\u7684\u6bcf\u500b\u4eba\u90fd\u53ef\u4ee5\u4f7f\u7528\u9019\u4e9b\u4ee3\u78bc\u3002\u55ae\u9ad4\u53ef\u4ee5\u7531\u5206\u4eab\u5b83\u7684\u6210\u54e1\u6216\u5be6\u9a57\u5ba4\u8ca0\u8cac\u4eba\u79fb\u51fa\u3002",
   "lab.mon.yours":"\u4f60\u5206\u4eab\u7684",
   "lab.mv.done":"\u5df2\u79fb\u5230\u5be6\u9a57\u5ba4\u7684\u5171\u7528\u8cc7\u6599\u5eab",
   "lab.mv.dupe1":"\u5df2\u7d93\u5728 {labname} \u7684\u5171\u7528\u8cc7\u6599\u5eab\u88e1\u4e86\u3002",
@@ -1877,16 +1881,16 @@ var I18N = {
   "lab.people.h":"\u6210\u54e1",
   "lab.people.loading":"\u6b63\u5728\u8f09\u5165\u6210\u54e1\u540d\u55ae…",
   "lab.people.none":"\u9084\u6c92\u6709\u52a0\u5165\u4efb\u4f55\u4eba\u3002",
-  "lab.priv.empty!":"\u9019\u88e1\u9084\u6c92\u6709\u6771\u897f\u3002\u4f60\u53ef\u4ee5\u5148\u628a\u5e8f\u5217\u653e\u5165\u9019\u500b\u7a7a\u9593\u8655\u7406\uff0c\u4e4b\u5f8c\u518d\u653e\u9032\u5be6\u9a57\u5ba4\u7684\u5171\u7528\u8cc7\u6599\u5eab\u3002\u9019\u500b\u7a7a\u9593\u88e1\u7684\u5167\u5bb9\uff0c\u53ea\u6709\u4f60\u548c\u5be6\u9a57\u5ba4\u7ba1\u7406\u8005\u770b\u5f97\u5230\u3002",
+  "lab.priv.empty!":"\u9019\u88e1\u9084\u6c92\u6709\u6771\u897f\u3002\u4f60\u53ef\u4ee5\u5148\u628a\u5e8f\u5217\u653e\u5165\u9019\u500b\u7a7a\u9593\u8655\u7406\uff0c\u4e4b\u5f8c\u518d\u653e\u9032\u5be6\u9a57\u5ba4\u7684\u5171\u7528\u8cc7\u6599\u5eab\u3002\u9019\u500b\u7a7a\u9593\u88e1\u7684\u5167\u5bb9\uff0c\u53ea\u6709\u4f60\u548c\u5be6\u9a57\u5ba4\u8ca0\u8cac\u4eba\u770b\u5f97\u5230\u3002",
   "lab.priv.name":"\u6211\u7684\u7a7a\u9593",
   "lab.priv.other":"\u6210\u54e1\u7684\u7a7a\u9593",
   "lab.priv.othwho!":"\u9019\u662f\u6210\u54e1\u81ea\u5df1\u7684\u79c1\u4eba\u7a7a\u9593\u3002\u4f60\u770b\u5f97\u5230\u88e1\u9762\u7684\u5167\u5bb9\uff0c\u662f\u56e0\u70ba\u4f60\u7ba1\u7406\u9019\u500b\u5be6\u9a57\u5ba4\u3002",
   "lab.priv.perm":"\u9019\u500b\u7a7a\u9593\u8207\u4f60\u5728\u5be6\u9a57\u5ba4\u7684\u5e2d\u4f4d\u7d81\u5b9a\uff0c\u7121\u6cd5\u6539\u540d\u6216\u522a\u9664\u3002",
-  "lab.priv.who!":"\u53ea\u6709\u4f60\u548c\u5be6\u9a57\u5ba4\u7ba1\u7406\u54e1\u770b\u5f97\u5230\u9019\u88e1\u9762\u7684\u5167\u5bb9\u3002",
+  "lab.priv.who!":"\u53ea\u6709\u4f60\u548c\u5be6\u9a57\u5ba4\u8ca0\u8cac\u4eba\u770b\u5f97\u5230\u9019\u88e1\u9762\u7684\u5167\u5bb9\u3002",
   "lab.promote.confirm!":"{email} \u5c07\u53ef\u4ee5\u65b0\u589e\u6216\u79fb\u9664\u6210\u54e1\u3001\u8b8a\u66f4\u89d2\u8272\uff0c\u4e26\u8cfc\u8cb7\u5e2d\u4f4d\u3002",
-  "lab.promote.do":"\u8a2d\u70ba\u7ba1\u7406\u8005",
-  "lab.promote.done":"{email} \u73fe\u5728\u662f\u7ba1\u7406\u8005\u4e86\u3002",
-  "lab.promote.go":"\u8a2d\u70ba\u7ba1\u7406\u8005",
+  "lab.promote.do":"\u8a2d\u70ba\u8ca0\u8cac\u4eba",
+  "lab.promote.done":"{email} \u73fe\u5728\u662f\u8ca0\u8cac\u4eba\u4e86\u3002",
+  "lab.promote.go":"\u8a2d\u70ba\u8ca0\u8cac\u4eba",
   "lab.renews":"{date} \u7e8c\u8a02",
   "lab.retry":"\u518d\u8a66\u4e00\u6b21",
   "lab.rm.confirm!":"{email} \u5c07\u5931\u53bb\u5171\u7528\u8cc7\u6599\u5eab\u7684\u5b58\u53d6\u6b0a\u3002\u5c0d\u65b9\u65b0\u589e\u7684\u5167\u5bb9\u6703\u7559\u5728\u5be6\u9a57\u5ba4\uff0c\u4e26\u56de\u5230\u5c0d\u65b9\u81ea\u5df1\u7684\u8cc7\u6599\u5eab\u3002\u9019\u4e9b\u5167\u5bb9\u5c0d\u65b9\u53ef\u4ee5\u958b\u555f\u548c\u8907\u88fd\uff0c\u4f46\u5c0d\u65b9\u7121\u6cd5\u8b8a\u66f4\u3002",
@@ -1895,17 +1899,17 @@ var I18N = {
   "lab.rm.go":"\u79fb\u9664",
   "lab.rm.nomail":"\u5df2\u5c07 {email} \u79fb\u51fa\u5be6\u9a57\u5ba4\uff0c\u4f46\u901a\u77e5\u4fe1\u5bc4\u9001\u5931\u6557\u3002\u8acb\u76f4\u63a5\u901a\u77e5\u5c0d\u65b9\u3002",
   "lab.rm.notmember":"{email} \u4e0d\u662f\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u6210\u54e1\uff0c\u6240\u4ee5\u6c92\u6709\u4efb\u4f55\u8b8a\u66f4\u3002",
-  "lab.role.manager":"\u4f60\u662f\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u7ba1\u7406\u8005",
+  "lab.role.manager":"\u4f60\u662f\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u8ca0\u8cac\u4eba",
   "lab.role.member":"\u4f60\u662f\u6210\u54e1",
   "lab.rules.edit!":"\u7de8\u8f2f\u6b0a\u8ddf\u8457\u4f5c\u8005\u8d70\u3002\u4f60\u6c38\u9060\u53ef\u4ee5\u7de8\u8f2f\u81ea\u5df1\u5beb\u7684\u5167\u5bb9\uff0c\u800c\u4f60\u5c0d\u67d0\u4e00\u7b46\u5e8f\u5217\u6388\u4e88\u7de8\u8f2f\u6b0a\u7684\u4eba\u4e5f\u53ef\u4ee5\u7de8\u8f2f\u90a3\u7b46\u5e8f\u5217\u3002",
   "lab.rules.h":"\u6b0a\u9650\u5982\u4f55\u5283\u5206",
-  "lab.rules.mgr":"\u7ba1\u7406\u8005\u53ef\u4ee5\u65b0\u589e\u6216\u79fb\u9664\u6210\u54e1\u3001\u8b8a\u66f4\u89d2\u8272\uff0c\u4e26\u8cfc\u8cb7\u5e2d\u4f4d\u3002\u7ba1\u7406\u8005\u4e5f\u53ef\u4ee5\u7de8\u8f2f\u3001\u522a\u9664\u3001\u8907\u88fd\u5be6\u9a57\u5ba4\u88e1\u7684\u4efb\u4f55\u5167\u5bb9\uff0c\u6216\u5c07\u5b83\u5011\u653e\u5165\u8cc7\u6599\u593e\u3002",
-  "lab.rules.see":"\u5be6\u9a57\u5ba4\u88e1\u7684\u6bcf\u500b\u4eba\u90fd\u770b\u5f97\u5230\u5171\u7528\u8cc7\u6599\u5eab\uff0c\u4e5f\u53ef\u4ee5\u958b\u555f\u88e1\u9762\u7684\u4efb\u4f55\u5167\u5bb9\u4e26\u5132\u5b58\u6210\u81ea\u5df1\u7684\u526f\u672c\u3002\u6210\u54e1\u81ea\u5df1\u7684\u7a7a\u9593\u53ea\u6709\u672c\u4eba\u548c\u5be6\u9a57\u5ba4\u7ba1\u7406\u8005\u770b\u5f97\u5230\u3002",
+  "lab.rules.mgr":"\u8ca0\u8cac\u4eba\u53ef\u4ee5\u65b0\u589e\u6216\u79fb\u9664\u6210\u54e1\u3001\u8b8a\u66f4\u89d2\u8272\uff0c\u4e26\u8cfc\u8cb7\u5e2d\u4f4d\u3002\u8ca0\u8cac\u4eba\u4e5f\u53ef\u4ee5\u7de8\u8f2f\u3001\u522a\u9664\u3001\u8907\u88fd\u5be6\u9a57\u5ba4\u88e1\u7684\u4efb\u4f55\u5167\u5bb9\uff0c\u6216\u5c07\u5b83\u5011\u653e\u5165\u8cc7\u6599\u593e\u3002",
+  "lab.rules.see":"\u5be6\u9a57\u5ba4\u88e1\u7684\u6bcf\u500b\u4eba\u90fd\u770b\u5f97\u5230\u5171\u7528\u8cc7\u6599\u5eab\uff0c\u4e5f\u53ef\u4ee5\u958b\u555f\u88e1\u9762\u7684\u4efb\u4f55\u5167\u5bb9\u4e26\u5132\u5b58\u6210\u81ea\u5df1\u7684\u526f\u672c\u3002\u6210\u54e1\u81ea\u5df1\u7684\u7a7a\u9593\u53ea\u6709\u672c\u4eba\u548c\u5be6\u9a57\u5ba4\u8ca0\u8cac\u4eba\u770b\u5f97\u5230\u3002",
   "lab.sel.none":"\u8acb\u5148\u9078\u53d6\u8981\u532f\u51fa\u7684\u5e8f\u5217\u3002",
   "lab.sub!":"\u5be6\u9a57\u5ba4\u5c31\u662f\u4e00\u500b\u5171\u7528\u7684\u8cc7\u6599\u5eab\u3002\u5be6\u9a57\u5ba4\u6210\u54e1\u90fd\u770b\u5f97\u5230\u540c\u4e00\u6279\u5e8f\u5217\u8207\u55ae\u9ad4\uff0c\u800c\u82e5\u5be6\u9a57\u5ba4\u65e5\u5f8c\u7d50\u675f\uff0c\u6bcf\u500b\u4eba\u4ecd\u4fdd\u7559\u81ea\u5df1\u7684\u6210\u679c\u3002",
   "lab.tab":"\u5be6\u9a57\u5ba4",
   "lab.tag.leaving":"{date} \u96e2\u958b",
-  "lab.tag.manager":"\u7ba1\u7406\u8005",
+  "lab.tag.manager":"\u8ca0\u8cac\u4eba",
   "lab.tag.member":"\u6210\u54e1",
   "lab.tag.pending":"\u5c1a\u672a\u767b\u5165",
   "lab.tag.you":"\u4f60",
@@ -2234,10 +2238,10 @@ var I18N = {
   "mk.0323":"\u5b78\u8853\u5be6\u9a57\u5ba4\u4eab\u516d\u6298\u512a\u60e0\u3002",
   "mk.0324":"\u4f86\u4fe1\u7d22\u53d6\u4ee3\u78bc\u3002\u4e0a\u9762\u90a3\u500b\u6b04\u4f4d\u5c31\u662f\u70ba\u6b64\u800c\u8a2d\u3002",
   "mk.0325":"Lab \u65b9\u6848\u600e\u9ebc\u904b\u4f5c",
-  "mk.0327":"\u53ea\u8981\u5be6\u9a57\u5ba4\u4e3b\u6301\u4eba\u8f38\u5165\u4e86\u4f60\u7684\u96fb\u5b50\u90f5\u4ef6\u5730\u5740\uff0c\u4f60\u5c31\u53d6\u5f97\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u5b58\u53d6\u6b0a\u3002",
+  "mk.0327":"\u53ea\u8981\u5be6\u9a57\u5ba4\u8ca0\u8cac\u4eba\u8f38\u5165\u4e86\u4f60\u7684\u96fb\u5b50\u90f5\u4ef6\u5730\u5740\uff0c\u4f60\u5c31\u53d6\u5f97\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u5b58\u53d6\u6b0a\u3002",
   "mk.0328":"\u4ed6\u5011\u6703\u628a\u5b8c\u6574\u7684\u5730\u5740\u52a0\u9032\u5be6\u9a57\u5ba4\u540d\u55ae\u3002\u9019\u88e1\u4e0d\u80fd\u7528\u5b78\u6821\u7db2\u57df\u52a0\u5165\uff0c\u56e0\u70ba\u4e00\u500b\u5b78\u6821\u7db2\u57df\u6db5\u84cb\u7684\u662f\u5e7e\u842c\u4eba\uff0c\u4e0d\u662f\u4f60\u7684\u5be6\u9a57\u5ba4\u3002\u6307\u540d\u4e00\u500b\u5730\u5740\u662f\u523b\u610f\u7684\u52d5\u4f5c\uff0c\u9019\u6b63\u662f\u91cd\u9ede\u3002",
   "mk.0329":"\u4f60\u6253\u958b Oligo Calculator\uff0c\u7528\u90a3\u500b\u5730\u5740\u767b\u5165\u3002",
-  "mk.0330":"\u4e00\u6a23\u7684\u96fb\u5b50\u90f5\u4ef6\u5730\u5740\u3001\u4e00\u6a23\u662f 6 \u4f4d\u6578\u9a57\u8b49\u78bc\u3001\u4e00\u6a23\u7684\u6b04\u4f4d\u3002\u7b2c\u4e00\u6b21\u767b\u5165\u6642\uff0c\u4f60\u5c31\u6703\u81ea\u52d5\u53d6\u5f97\u5be6\u9a57\u5ba4\u5e2d\u4f4d\u3002\u5be6\u9a57\u5ba4\u4e3b\u6301\u4eba\u628a\u4f60\u52a0\u9032\u4f86\u6642\uff0c\u6211\u5011\u6703\u5bc4\u96fb\u5b50\u90f5\u4ef6\u901a\u77e5\u4f60\uff0c\u4f46\u5e2d\u4f4d\u4e0d\u9700\u8981\u90a3\u5c01\u90f5\u4ef6\u4e5f\u80fd\u7528\uff0c\u6240\u4ee5\u6c92\u6709\u6771\u897f\u8981\u7b49\uff0c\u5c31\u7b97\u90a3\u5c01\u90f5\u4ef6\u9032\u4e86\u5783\u573e\u90f5\u4ef6\u5323\u4e5f\u4e0d\u5f71\u97ff\u3002\u6c92\u6709\u53e6\u5916\u7684\u5be6\u9a57\u5ba4\u767b\u5165\u9801\uff0c\u4e5f\u6c92\u6709\u5be6\u9a57\u5ba4\u7db2\u5740\u8981\u8a18\u3002",
+  "mk.0330":"\u4e00\u6a23\u7684\u96fb\u5b50\u90f5\u4ef6\u5730\u5740\u3001\u4e00\u6a23\u662f 6 \u4f4d\u6578\u9a57\u8b49\u78bc\u3001\u4e00\u6a23\u7684\u6b04\u4f4d\u3002\u7b2c\u4e00\u6b21\u767b\u5165\u6642\uff0c\u4f60\u5c31\u6703\u81ea\u52d5\u53d6\u5f97\u5be6\u9a57\u5ba4\u5e2d\u4f4d\u3002\u5be6\u9a57\u5ba4\u8ca0\u8cac\u4eba\u628a\u4f60\u52a0\u9032\u4f86\u6642\uff0c\u6211\u5011\u6703\u5bc4\u96fb\u5b50\u90f5\u4ef6\u901a\u77e5\u4f60\uff0c\u4f46\u5e2d\u4f4d\u4e0d\u9700\u8981\u90a3\u5c01\u90f5\u4ef6\u4e5f\u80fd\u7528\uff0c\u6240\u4ee5\u6c92\u6709\u6771\u897f\u8981\u7b49\uff0c\u5c31\u7b97\u90a3\u5c01\u90f5\u4ef6\u9032\u4e86\u5783\u573e\u90f5\u4ef6\u5323\u4e5f\u4e0d\u5f71\u97ff\u3002\u6c92\u6709\u53e6\u5916\u7684\u5be6\u9a57\u5ba4\u767b\u5165\u9801\uff0c\u4e5f\u6c92\u6709\u5be6\u9a57\u5ba4\u7db2\u5740\u8981\u8a18\u3002",
   "mk.0333":"\u4ed8\u8cbb\u7684\u662f\u5be6\u9a57\u5ba4\uff0c\u4e0d\u662f\u4f60\u3002",
   "mk.0334":"\u5982\u679c\u5be6\u9a57\u5ba4\u5df2\u7d93\u6db5\u84cb\u4f60\uff0c\u6211\u5011\u6703\u76f4\u63a5\u8aaa\u660e\uff0c\u4e26\u628a Pro \u6309\u9215\u8b8a\u6210\u7070\u8272\uff0c\u800c\u4e0d\u662f\u9ed8\u9ed8\u518d\u6536\u4e00\u6b21\u9322\u3002",
   "mk.0335":"\u4f60\u6703\u5f97\u5230\u4ec0\u9ebc",
@@ -2353,7 +2357,7 @@ var I18N = {
   "rk.0012":"\u5168\u90e8 <b>267</b> \u7a2e\u5df2\u9a57\u8b49\u4e9e\u78f7\u91af\u80fa · 351 \u7b46\u5ee0\u5546\u54c1\u9805",
   "rk.0013":"\u4e00\u500b<b>\u5171\u7528\u7684\u5be6\u9a57\u5ba4\u8cc7\u6599\u5eab</b>\uff0c\u5b58\u653e\u5e8f\u5217\u8207\u81ea\u8a02\u55ae\u9ad4",
   "rk.0014":"<b>\u964d\u7d1a\u4e0d\u6703\u8b93\u4f60\u5931\u53bb\u4efb\u4f55\u4e00\u689d\u5e8f\u5217\u3002</b>\u984d\u5ea6\u53ea\u6703\u64cb\u4f4f<i>\u65b0\u7684</i>\u5132\u5b58\u3002\u5df2\u7d93\u5728\u8cc7\u6599\u5eab\u88e1\u7684\u6771\u897f\uff0c\u5728\u4efb\u4f55\u65b9\u6848\u4e0b\u90fd\u6c38\u9060\u53ef\u4ee5\u8b80\u53d6\u3001\u532f\u51fa\u8207\u7de8\u8f2f\u3002",
-  "rk.0015":"\u5927\u5bb6\u6700\u5148\u554f\u7684\u554f\u984c\uff1a\u5982\u679c\u5be6\u9a57\u5ba4\u4e3b\u6301\u4eba\u8cb7\u4e86\u5be6\u9a57\u5ba4\u65b9\u6848\uff0c<i>\u6211\u81ea\u5df1\u7684</i>\u5e33\u6236\u6703\u600e\u9ebc\u6a23\uff1f",
+  "rk.0015":"\u5927\u5bb6\u6700\u5148\u554f\u7684\u554f\u984c\uff1a\u5982\u679c\u5be6\u9a57\u5ba4\u8ca0\u8cac\u4eba\u8cb7\u4e86\u5be6\u9a57\u5ba4\u65b9\u6848\uff0c<i>\u6211\u81ea\u5df1\u7684</i>\u5e33\u6236\u6703\u600e\u9ebc\u6a23\uff1f",
   "rk.0016":"<span class=\"n\">3</span><b>\u4f60\u81ea\u5df1\u7684\u5e33\u6236\u9084\u662f\u4f60\u7684\u3002</b>\u52a0\u5165\u5be6\u9a57\u5ba4\u662f<i>\u591a</i>\u4e86\u4e00\u500b\u5171\u7528\u8cc7\u6599\u5eab\uff0c\u4e0d\u6703\u63a5\u7ba1\u4f60\u500b\u4eba\u7684\u90a3\u4e00\u500b\u3002\u4f60\u81ea\u5df1\u7684\u5e8f\u5217\u4ecd\u7136\u5c6c\u65bc\u4f60\uff0c\u5c31\u7b97\u96e2\u958b\u5be6\u9a57\u5ba4\u4e5f\u4e00\u6a23\u3002",
   "rk.0017":"\u4f60\u7684\u8cc7\u6599\u5eab\u8207\u5b8c\u6574\u578b\u9304\u90fd<b>\u653e\u5728 Supabase\uff0c\u4e26\u53d7\u5e33\u6236\u9a57\u8b49\u4fdd\u8b77</b>\uff0c\u6240\u4ee5\u5e33\u6236\u662f\u771f\u7684\u89e3\u9396\u4e86\u5b83\u5011\u3002\u9019\u88e1\u6c92\u6709\u4efb\u4f55\u4e00\u9805\u662f\u6211\u5011\u5728\u700f\u89bd\u5668\u88e1\u8a2d\u7684\u65d7\u6a19\u3002<b>\u4ed8\u8cbb\u529f\u80fd\u5c1a\u672a\u958b\u653e\u3002</b>\u5728\u958b\u653e\u4e4b\u524d\uff0cPro \u7531\u5b58\u53d6\u78bc\u6388\u4e88\uff1b\u4f60\u5e33\u6236\u88e1\u7684\u90a3\u500b\u6b04\u4f4d\u5c31\u662f\u8f38\u5165\u7684\u5730\u65b9\u3002",
   "rk.0018":"\u7531 Yu-Sheng Chen \u81ea\u8cbb\u6253\u9020\u4e26\u7dad\u904b\uff0c\u4ed6\u662f\u7d10\u7d04\u7684 RNA \u5316\u5b78\u535a\u58eb\u5019\u9078\u4eba\u3002<b>\u672c\u7ad9\u7368\u7acb\u904b\u4f5c\uff1a\u8207\u4efb\u4f55\u5927\u5b78\u5747\u7121\u96b8\u5c6c\u95dc\u4fc2\uff0c\u672a\u53d7\u5176\u8cc7\u52a9\uff0c\u4e5f\u672a\u7d93\u5176\u80cc\u66f8\u3002</b>\u6c92\u6709\u5206\u6790\u5de5\u5177\u3001\u6c92\u6709\u8ffd\u8e64\u5668\u3002\u4e0b\u55ae\u4e4b\u524d\uff0c\u8acb\u81ea\u884c\u78ba\u8a8d\u6bcf\u4e00\u500b\u8cea\u91cf\u6578\u3002",
@@ -2748,7 +2752,7 @@ var I18N = {
   "lab.acc.failload":"\u65e0\u6cd5\u52a0\u8f7d\u8bbf\u95ee\u6743\u9650\u3002",
   "lab.acc.h":"\u7ba1\u7406\u8bbf\u95ee\u6743\u9650",
   "lab.acc.movewarn!":"{lab} \u91cc\u7684\u6240\u6709\u4eba\u90fd\u5c06\u53ef\u4ee5\u67e5\u770b\u5b83\u3002",
-  "lab.acc.nodel!":"\u4f60\u6388\u4e88\u7f16\u8f91\u6743\u9650\u7684\u4eba\u53ef\u4ee5\u66f4\u6539\u8fd9\u4e00\u6761\uff0c\u4f46\u4e0d\u80fd\u5220\u9664\u5b83\uff0c\u4e5f\u4e0d\u80fd\u628a\u5b83\u79fb\u51fa\u5b9e\u9a8c\u5ba4\u3002",
+  "lab.acc.nodel!":"\u4f60\u6388\u4e88\u7f16\u8f91\u6743\u9650\u7684\u4eba\u53ef\u4ee5\u66f4\u6539\u8fd9\u4e00\u6761\uff0c\u4f46\u4e0d\u80fd\u5220\u9664\u5b83\u3002",
   "lab.acc.nomembers":"\u6ca1\u6709\u6210\u5458\u3002",
   "lab.acc.nosync":"\u8fd9\u6761\u5e8f\u5217\u8981\u5148\u540c\u6b65\uff0c\u624d\u80fd\u7ba1\u7406\u8bbf\u95ee\u6743\u9650\u3002",
   "lab.acc.sub":"\u5b9e\u9a8c\u5ba4\u91cc\u7684\u6bcf\u4e2a\u4eba\u90fd\u53ef\u4ee5\u67e5\u770b\u8fd9\u4e00\u6761\u3002\u8bf7\u9009\u62e9\u53ef\u4ee5\u7f16\u8f91\u7684\u6210\u5458\u3002",
@@ -2783,7 +2787,7 @@ var I18N = {
   "lab.bulk.move":"\u653e\u5165\u6587\u4ef6\u5939",
   "lab.bulk.moveh":"\u653e\u5165\u6587\u4ef6\u5939",
   "lab.bulk.moveok":"\u5df2\u653e\u5165 {ok} \u9879\u3002",
-  "lab.bulk.movepart":"\u5df2\u653e\u5165 {ok} \u6761\u3002{bad} \u6761\u7559\u5728\u539f\u4f4d\uff1a\u4f60\u53ea\u80fd\u5c06\u81ea\u5df1\u521b\u5efa\u7684\u8bb0\u5f55\u653e\u5165\u6587\u4ef6\u5939\uff0c\u9664\u975e\u4f60\u662f\u5b9e\u9a8c\u5ba4\u7ba1\u7406\u8005\u3002",
+  "lab.bulk.movepart":"\u5df2\u653e\u5165 {ok} \u6761\u3002{bad} \u6761\u7559\u5728\u539f\u4f4d\uff1a\u4f60\u53ea\u80fd\u5c06\u81ea\u5df1\u521b\u5efa\u7684\u8bb0\u5f55\u653e\u5165\u6587\u4ef6\u5939\uff0c\u9664\u975e\u4f60\u662f\u5b9e\u9a8c\u5ba4\u8d1f\u8d23\u4eba\u3002",
   "lab.bulk.movepro":"\u6ca1\u6709\u4efb\u4f55\u4e00\u6761\u88ab\u653e\u5165\u6587\u4ef6\u5939\u3002\u653e\u5165\u6587\u4ef6\u5939\u9700\u8981\u6709\u6548\u7684\u8ba2\u9605\u65b9\u6848\uff0c\u6240\u4ee5 {bad} \u6761\u5168\u90e8\u7559\u5728\u539f\u4f4d\u3002",
   "lab.bulk.movesub":"\u9009\u62e9\u8fd9 {n} \u9879\u8981\u653e\u5230\u54ea\u91cc\u3002\u5b83\u4eec\u4ecd\u7136\u7559\u5728\u5171\u7528\u8d44\u6e90\u5e93\u91cc\u3002",
   "lab.bulk.moving":"\u6b63\u5728\u653e\u5165\u7b2c {n} / {total} \u9879…",
@@ -2860,6 +2864,8 @@ var I18N = {
   "lab.ed.metat":"\u4e0a\u6b21\u4fdd\u5b58\u4e8e {when}",
   "lab.ed.norights!":"\u4f60\u5bf9\u8fd9\u4e00\u6761\u7684\u7f16\u8f91\u6743\u9650\u5df2\u88ab\u79fb\u9664\u3002",
   "lab.ed.norightsb!":"\u8fd9\u4e00\u6761\u8fd8\u5728\u5b9e\u9a8c\u5ba4\u91cc\uff0c\u4f60\u4ecd\u7136\u53ef\u4ee5\u6253\u5f00\u5b83\uff0c\u53ea\u662f\u4e0d\u80fd\u518d\u628a\u66f4\u6539\u4fdd\u5b58\u56de\u53bb\u3002",
+  "lab.ed.nosave!":"\u6ca1\u6709\u4fdd\u5b58\u4efb\u4f55\u4e1c\u897f\u3002\u4f60\u7684\u5185\u5bb9\u4ecd\u7136\u7559\u5728\u8fd9\u4e2a\u753b\u9762\u4e0a\u3002",
+  "lab.ed.openit":"\u6253\u5f00\u5b83",
   "lab.ed.ok":"\u5df2\u4fdd\u5b58\u5230\u5b9e\u9a8c\u5ba4\u3002",
   "lab.ed.save":"\u4fdd\u5b58\u5230\u5b9e\u9a8c\u5ba4",
   "lab.err.add":"\u65e0\u6cd5\u6dfb\u52a0",
@@ -2958,7 +2964,7 @@ var I18N = {
   "lab.imp.sheeth":"\u8fd9\u4e2a\u6587\u4ef6\u6709\u591a\u5f20\u5de5\u4f5c\u8868\u3002\u5e8f\u5217\u5728\u54ea\u4e00\u5f20\uff1f",
   "lab.imp.skip":"\u4e0d\u8981\u5bfc\u5165",
   "lab.imp.sub!":"\u652f\u6301 CSV \u4e0e Excel\u3002\u6587\u4ef6\u5728\u8fd9\u4e2a\u6d4f\u89c8\u5668\u91cc\u8bfb\u53d6\uff0c\u4e0d\u4f1a\u4e0a\u4f20\uff0c\u4e5f\u4e0d\u4f1a\u7559\u4e0b\u3002",
-  "lab.leave.blocked!":"\u4f60\u662f\u552f\u4e00\u7684\u7ba1\u7406\u8005\u3002\u8bf7\u5148\u5c06\u53e6\u4e00\u4eba\u8bbe\u4e3a\u7ba1\u7406\u8005\uff0c\u6216\u76f4\u63a5\u5220\u9664\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u3002",
+  "lab.leave.blocked!":"\u4f60\u662f\u552f\u4e00\u7684\u8d1f\u8d23\u4eba\u3002\u8bf7\u5148\u5c06\u53e6\u4e00\u4eba\u8bbe\u4e3a\u8d1f\u8d23\u4eba\uff0c\u6216\u76f4\u63a5\u5220\u9664\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u3002",
   "lab.leave.do":"\u79bb\u5f00\u5b9e\u9a8c\u5ba4",
   "lab.leave.done":"\u4f60\u5df2\u79bb\u5f00\u8be5\u5b9e\u9a8c\u5ba4\u3002",
   "lab.leave.go":"\u79bb\u5f00\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4",
@@ -3022,7 +3028,7 @@ var I18N = {
   "lab.mon.pickadd":"\u6dfb\u52a0",
   "lab.mon.pickempty":"\u4f60\u8fd8\u6ca1\u6709\u81ea\u5b9a\u4e49\u5355\u4f53\u3002",
   "lab.mon.pickh":"\u6dfb\u52a0\u5230\u5b9e\u9a8c\u5ba4\u7684\u81ea\u5b9a\u4e49\u78b1\u57fa\u4e0e\u5355\u4f53",
-  "lab.mon.picksub":"\u9009\u4e00\u4e2a\u4f60\u7684\u81ea\u5b9a\u4e49\u78b1\u57fa\u6216\u5355\u4f53\u4e0e\u5b9e\u9a8c\u5ba4\u5206\u4eab\u3002\u4e4b\u540e\u5b9e\u9a8c\u5ba4\u91cc\u7684\u6bcf\u4e2a\u4eba\u90fd\u53ef\u4ee5\u4f7f\u7528\u5b83\u7684\u4ee3\u7801\u3002\u4f60\u53ef\u4ee5\u518d\u628a\u5b83\u79fb\u51fa\uff0c\u5b9e\u9a8c\u5ba4\u7ba1\u7406\u5458\u4e5f\u53ef\u4ee5\u3002\u8bf7\u9009\u4e00\u4e2a\u5b9e\u9a8c\u5ba4\u8fd8\u6ca1\u6709\u7684\u4ee3\u7801\u3002",
+  "lab.mon.picksub":"\u9009\u4e00\u4e2a\u4f60\u7684\u81ea\u5b9a\u4e49\u78b1\u57fa\u6216\u5355\u4f53\u4e0e\u5b9e\u9a8c\u5ba4\u5206\u4eab\u3002\u4e4b\u540e\u5b9e\u9a8c\u5ba4\u91cc\u7684\u6bcf\u4e2a\u4eba\u90fd\u53ef\u4ee5\u4f7f\u7528\u5b83\u7684\u4ee3\u7801\u3002\u4f60\u53ef\u4ee5\u518d\u628a\u5b83\u79fb\u51fa\uff0c\u5b9e\u9a8c\u5ba4\u8d1f\u8d23\u4eba\u4e5f\u53ef\u4ee5\u3002\u8bf7\u9009\u4e00\u4e2a\u5b9e\u9a8c\u5ba4\u8fd8\u6ca1\u6709\u7684\u4ee3\u7801\u3002",
   "lab.mon.rm":"\u5c06 {code} \u79fb\u51fa\u5b9e\u9a8c\u5ba4",
   "lab.mon.rmT":"\u79fb\u51fa\u5b9e\u9a8c\u5ba4",
   "lab.mon.shared":"\u5355\u4f53\u5df2\u5206\u4eab\u5230\u5b9e\u9a8c\u5ba4",
@@ -3030,15 +3036,15 @@ var I18N = {
   "lab.mon.skipN":"\u6709 {n} \u4e2a\u5b9e\u9a8c\u5ba4\u5355\u4f53\u6ca1\u6709\u6709\u6548\u8d28\u91cf\uff0c\u65e0\u6cd5\u8bfb\u53d6\uff0c\u5df2\u8df3\u8fc7\u3002",
   "lab.mon.unshared":"\u5df2\u79fb\u51fa\u5b9e\u9a8c\u5ba4\u3002\u5b83\u4ecd\u7136\u7559\u5728\u4f60\u81ea\u5df1\u7684\u78b1\u57fa\u91cc\u3002",
   "lab.card.mgrdel":"\u5c06 {name} \u4ece\u5b9e\u9a8c\u5ba4\u5220\u9664",
-  "lab.card.mgrdelT":"\u4f60\u662f\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u7ba1\u7406\u8005\u3002\u8fd9\u4f1a\u4e3a\u6240\u6709\u4eba\u5220\u9664\u8fd9\u6761\u8bb0\u5f55\uff0c\u5305\u542b\u4fdd\u5b58\u5b83\u7684\u4eba\u3002",
+  "lab.card.mgrdelT":"\u4f60\u662f\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u8d1f\u8d23\u4eba\u3002\u8fd9\u4f1a\u4e3a\u6240\u6709\u4eba\u5220\u9664\u8fd9\u6761\u8bb0\u5f55\uff0c\u5305\u542b\u4fdd\u5b58\u5b83\u7684\u4eba\u3002",
   "lab.mon.mgrrm":"\u5c06 {code} \u4ece\u5b9e\u9a8c\u5ba4\u5220\u9664",
-  "lab.mon.mgrrmT":"\u4f60\u662f\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u7ba1\u7406\u8005\u3002\u8fd9\u4f1a\u4e3a\u6240\u6709\u4eba\u5220\u9664\u8fd9\u4e2a\u5355\u4f53\uff0c\u5305\u542b\u5206\u4eab\u5b83\u7684\u4eba\u3002",
+  "lab.mon.mgrrmT":"\u4f60\u662f\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u8d1f\u8d23\u4eba\u3002\u8fd9\u4f1a\u4e3a\u6240\u6709\u4eba\u5220\u9664\u8fd9\u4e2a\u5355\u4f53\uff0c\u5305\u542b\u5206\u4eab\u5b83\u7684\u4eba\u3002",
   "lab.mon.mgrdone":"\u5df2\u4ece\u5b9e\u9a8c\u5ba4\u5220\u9664\u3002",
   "lab.row.busy":"\u6b63\u5728\u5904\u7406 {name}",
   "ui.sync.baserefused!":"\u8fd9\u4e2a\u5355\u4f53\u672a\u4fdd\u5b58\u3002\u4f60\u7684\u8d26\u6237\u4e0d\u88ab\u5141\u8bb8\u4fdd\u5b58\u5b83\uff0c\u56e0\u6b64\u5b83\u7559\u5728\u8fd9\u53f0\u8bbe\u5907\u4e0a\u3002",
   "lab.mon.unused":"\u672a\u4f7f\u7528",
   "lab.mon.unusedT":"\u8fd9\u4e0d\u662f\u8fd9\u4e2a\u8ba1\u7b97\u5668\u76ee\u524d\u5bf9\u90a3\u4e2a\u4ee3\u7801\u6240\u7528\u7684\u5b9a\u4e49\u3002",
-  "lab.mon.who":"\u5b9e\u9a8c\u5ba4\u91cc\u7684\u6bcf\u4e2a\u4eba\u90fd\u53ef\u4ee5\u4f7f\u7528\u8fd9\u4e9b\u4ee3\u7801\u3002\u5355\u4f53\u53ef\u4ee5\u7531\u5206\u4eab\u5b83\u7684\u6210\u5458\u6216\u5b9e\u9a8c\u5ba4\u7ba1\u7406\u8005\u79fb\u51fa\u3002",
+  "lab.mon.who":"\u5b9e\u9a8c\u5ba4\u91cc\u7684\u6bcf\u4e2a\u4eba\u90fd\u53ef\u4ee5\u4f7f\u7528\u8fd9\u4e9b\u4ee3\u7801\u3002\u5355\u4f53\u53ef\u4ee5\u7531\u5206\u4eab\u5b83\u7684\u6210\u5458\u6216\u5b9e\u9a8c\u5ba4\u8d1f\u8d23\u4eba\u79fb\u51fa\u3002",
   "lab.mon.yours":"\u4f60\u5206\u4eab\u7684",
   "lab.mv.done":"\u5df2\u79fb\u5230\u5b9e\u9a8c\u5ba4\u7684\u5171\u7528\u8d44\u6e90\u5e93",
   "lab.mv.dupe1":"\u5df2\u7ecf\u5728 {labname} \u7684\u5171\u7528\u8d44\u6e90\u5e93\u91cc\u4e86\u3002",
@@ -3076,16 +3082,16 @@ var I18N = {
   "lab.people.h":"\u6210\u5458",
   "lab.people.loading":"\u6b63\u5728\u52a0\u8f7d\u6210\u5458\u540d\u5355…",
   "lab.people.none":"\u8fd8\u6ca1\u6709\u52a0\u5165\u4efb\u4f55\u4eba\u3002",
-  "lab.priv.empty!":"\u8fd9\u91cc\u8fd8\u6ca1\u6709\u4e1c\u897f\u3002\u4f60\u53ef\u4ee5\u5148\u628a\u5e8f\u5217\u653e\u5165\u8fd9\u4e2a\u7a7a\u95f4\u5904\u7406\uff0c\u4e4b\u540e\u518d\u653e\u8fdb\u5b9e\u9a8c\u5ba4\u7684\u5171\u7528\u8d44\u6e90\u5e93\u3002\u8fd9\u4e2a\u7a7a\u95f4\u91cc\u7684\u5185\u5bb9\uff0c\u53ea\u6709\u4f60\u548c\u5b9e\u9a8c\u5ba4\u7ba1\u7406\u8005\u770b\u5f97\u5230\u3002",
+  "lab.priv.empty!":"\u8fd9\u91cc\u8fd8\u6ca1\u6709\u4e1c\u897f\u3002\u4f60\u53ef\u4ee5\u5148\u628a\u5e8f\u5217\u653e\u5165\u8fd9\u4e2a\u7a7a\u95f4\u5904\u7406\uff0c\u4e4b\u540e\u518d\u653e\u8fdb\u5b9e\u9a8c\u5ba4\u7684\u5171\u7528\u8d44\u6e90\u5e93\u3002\u8fd9\u4e2a\u7a7a\u95f4\u91cc\u7684\u5185\u5bb9\uff0c\u53ea\u6709\u4f60\u548c\u5b9e\u9a8c\u5ba4\u8d1f\u8d23\u4eba\u770b\u5f97\u5230\u3002",
   "lab.priv.name":"\u6211\u7684\u7a7a\u95f4",
   "lab.priv.other":"\u6210\u5458\u7684\u7a7a\u95f4",
   "lab.priv.othwho!":"\u8fd9\u662f\u6210\u5458\u81ea\u5df1\u7684\u79c1\u4eba\u7a7a\u95f4\u3002\u4f60\u770b\u5f97\u5230\u91cc\u9762\u7684\u5185\u5bb9\uff0c\u662f\u56e0\u4e3a\u4f60\u7ba1\u7406\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u3002",
   "lab.priv.perm":"\u8fd9\u4e2a\u7a7a\u95f4\u4e0e\u4f60\u5728\u5b9e\u9a8c\u5ba4\u7684\u5e2d\u4f4d\u7ed1\u5b9a\uff0c\u65e0\u6cd5\u6539\u540d\u6216\u5220\u9664\u3002",
-  "lab.priv.who!":"\u53ea\u6709\u4f60\u548c\u5b9e\u9a8c\u5ba4\u7ba1\u7406\u5458\u770b\u5f97\u5230\u8fd9\u91cc\u9762\u7684\u5185\u5bb9\u3002",
+  "lab.priv.who!":"\u53ea\u6709\u4f60\u548c\u5b9e\u9a8c\u5ba4\u8d1f\u8d23\u4eba\u770b\u5f97\u5230\u8fd9\u91cc\u9762\u7684\u5185\u5bb9\u3002",
   "lab.promote.confirm!":"{email} \u5c06\u53ef\u4ee5\u6dfb\u52a0\u6216\u79fb\u9664\u6210\u5458\u3001\u53d8\u66f4\u89d2\u8272\uff0c\u5e76\u8d2d\u4e70\u5e2d\u4f4d\u3002",
-  "lab.promote.do":"\u8bbe\u4e3a\u7ba1\u7406\u8005",
-  "lab.promote.done":"{email} \u73b0\u5728\u662f\u7ba1\u7406\u8005\u4e86\u3002",
-  "lab.promote.go":"\u8bbe\u4e3a\u7ba1\u7406\u8005",
+  "lab.promote.do":"\u8bbe\u4e3a\u8d1f\u8d23\u4eba",
+  "lab.promote.done":"{email} \u73b0\u5728\u662f\u8d1f\u8d23\u4eba\u4e86\u3002",
+  "lab.promote.go":"\u8bbe\u4e3a\u8d1f\u8d23\u4eba",
   "lab.renews":"{date} \u7eed\u8ba2",
   "lab.retry":"\u518d\u8bd5\u4e00\u6b21",
   "lab.rm.confirm!":"{email} \u5c06\u5931\u53bb\u5171\u7528\u8d44\u6e90\u5e93\u7684\u8bbf\u95ee\u6743\u9650\u3002\u5bf9\u65b9\u6dfb\u52a0\u7684\u5185\u5bb9\u4f1a\u7559\u5728\u5b9e\u9a8c\u5ba4\uff0c\u5e76\u56de\u5230\u5bf9\u65b9\u81ea\u5df1\u7684\u8d44\u6e90\u5e93\u3002\u8fd9\u4e9b\u5185\u5bb9\u5bf9\u65b9\u53ef\u4ee5\u6253\u5f00\u548c\u590d\u5236\uff0c\u4f46\u5bf9\u65b9\u65e0\u6cd5\u53d8\u66f4\u3002",
@@ -3094,17 +3100,17 @@ var I18N = {
   "lab.rm.go":"\u79fb\u9664",
   "lab.rm.nomail":"\u5df2\u5c06 {email} \u79fb\u51fa\u5b9e\u9a8c\u5ba4\uff0c\u4f46\u901a\u77e5\u90ae\u4ef6\u53d1\u9001\u5931\u8d25\u3002\u8bf7\u76f4\u63a5\u901a\u77e5\u5bf9\u65b9\u3002",
   "lab.rm.notmember":"{email} \u4e0d\u662f\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u6210\u5458\uff0c\u6240\u4ee5\u6ca1\u6709\u4efb\u4f55\u53d8\u66f4\u3002",
-  "lab.role.manager":"\u4f60\u662f\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u7ba1\u7406\u8005",
+  "lab.role.manager":"\u4f60\u662f\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u8d1f\u8d23\u4eba",
   "lab.role.member":"\u4f60\u662f\u6210\u5458",
   "lab.rules.edit!":"\u7f16\u8f91\u6743\u8ddf\u7740\u4f5c\u8005\u8d70\u3002\u4f60\u6c38\u8fdc\u53ef\u4ee5\u7f16\u8f91\u81ea\u5df1\u5199\u7684\u5185\u5bb9\uff0c\u800c\u4f60\u5bf9\u67d0\u6761\u5e8f\u5217\u6388\u4e88\u7f16\u8f91\u6743\u7684\u4eba\u4e5f\u53ef\u4ee5\u7f16\u8f91\u90a3\u6761\u5e8f\u5217\u3002",
   "lab.rules.h":"\u6743\u9650\u5982\u4f55\u5212\u5206",
-  "lab.rules.mgr":"\u7ba1\u7406\u8005\u53ef\u4ee5\u6dfb\u52a0\u6216\u79fb\u9664\u6210\u5458\u3001\u53d8\u66f4\u89d2\u8272\uff0c\u5e76\u8d2d\u4e70\u5e2d\u4f4d\u3002\u7ba1\u7406\u8005\u4e5f\u53ef\u4ee5\u7f16\u8f91\u3001\u5220\u9664\u3001\u590d\u5236\u5b9e\u9a8c\u5ba4\u91cc\u7684\u4efb\u4f55\u5185\u5bb9\uff0c\u6216\u5c06\u5b83\u4eec\u653e\u5165\u6587\u4ef6\u5939\u3002",
-  "lab.rules.see":"\u5b9e\u9a8c\u5ba4\u91cc\u7684\u6bcf\u4e2a\u4eba\u90fd\u770b\u5f97\u5230\u5171\u7528\u8d44\u6e90\u5e93\uff0c\u4e5f\u53ef\u4ee5\u6253\u5f00\u91cc\u9762\u7684\u4efb\u4f55\u5185\u5bb9\u5e76\u4fdd\u5b58\u4e3a\u81ea\u5df1\u7684\u526f\u672c\u3002\u6210\u5458\u81ea\u5df1\u7684\u7a7a\u95f4\u53ea\u6709\u672c\u4eba\u548c\u5b9e\u9a8c\u5ba4\u7ba1\u7406\u8005\u770b\u5f97\u5230\u3002",
+  "lab.rules.mgr":"\u8d1f\u8d23\u4eba\u53ef\u4ee5\u6dfb\u52a0\u6216\u79fb\u9664\u6210\u5458\u3001\u53d8\u66f4\u89d2\u8272\uff0c\u5e76\u8d2d\u4e70\u5e2d\u4f4d\u3002\u8d1f\u8d23\u4eba\u4e5f\u53ef\u4ee5\u7f16\u8f91\u3001\u5220\u9664\u3001\u590d\u5236\u5b9e\u9a8c\u5ba4\u91cc\u7684\u4efb\u4f55\u5185\u5bb9\uff0c\u6216\u5c06\u5b83\u4eec\u653e\u5165\u6587\u4ef6\u5939\u3002",
+  "lab.rules.see":"\u5b9e\u9a8c\u5ba4\u91cc\u7684\u6bcf\u4e2a\u4eba\u90fd\u770b\u5f97\u5230\u5171\u7528\u8d44\u6e90\u5e93\uff0c\u4e5f\u53ef\u4ee5\u6253\u5f00\u91cc\u9762\u7684\u4efb\u4f55\u5185\u5bb9\u5e76\u4fdd\u5b58\u4e3a\u81ea\u5df1\u7684\u526f\u672c\u3002\u6210\u5458\u81ea\u5df1\u7684\u7a7a\u95f4\u53ea\u6709\u672c\u4eba\u548c\u5b9e\u9a8c\u5ba4\u8d1f\u8d23\u4eba\u770b\u5f97\u5230\u3002",
   "lab.sel.none":"\u8bf7\u5148\u9009\u53d6\u8981\u5bfc\u51fa\u7684\u5e8f\u5217\u3002",
   "lab.sub!":"\u5b9e\u9a8c\u5ba4\u5c31\u662f\u4e00\u4e2a\u5171\u7528\u7684\u8d44\u6e90\u5e93\u3002\u5b9e\u9a8c\u5ba4\u6210\u5458\u90fd\u770b\u5f97\u5230\u540c\u4e00\u6279\u5e8f\u5217\u4e0e\u5355\u4f53\uff0c\u800c\u82e5\u5b9e\u9a8c\u5ba4\u65e5\u540e\u7ed3\u675f\uff0c\u6bcf\u4e2a\u4eba\u4ecd\u4fdd\u7559\u81ea\u5df1\u7684\u6210\u679c\u3002",
   "lab.tab":"\u5b9e\u9a8c\u5ba4",
   "lab.tag.leaving":"{date} \u79bb\u5f00",
-  "lab.tag.manager":"\u7ba1\u7406\u8005",
+  "lab.tag.manager":"\u8d1f\u8d23\u4eba",
   "lab.tag.member":"\u6210\u5458",
   "lab.tag.pending":"\u5c1a\u672a\u767b\u5f55",
   "lab.tag.you":"\u4f60",
@@ -3947,7 +3953,7 @@ var I18N = {
   "lab.acc.failload":"\u30a2\u30af\u30bb\u30b9\u6a29\u3092\u8aad\u307f\u8fbc\u3081\u307e\u305b\u3093\u3067\u3057\u305f\u3002",
   "lab.acc.h":"\u30a2\u30af\u30bb\u30b9\u6a29\u3092\u7ba1\u7406",
   "lab.acc.movewarn!":"{lab} \u306e\u30e1\u30f3\u30d0\u30fc\u5168\u54e1\u304c\u95b2\u89a7\u3067\u304d\u308b\u3088\u3046\u306b\u306a\u308a\u307e\u3059\u3002",
-  "lab.acc.nodel!":"\u7de8\u96c6\u6a29\u9650\u3092\u4e0e\u3048\u305f\u76f8\u624b\u306f\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u3092\u5909\u66f4\u3067\u304d\u307e\u3059\u304c\u3001\u524a\u9664\u3059\u308b\u3053\u3068\u3082\u3001\u30e9\u30dc\u306e\u5916\u306b\u79fb\u3059\u3053\u3068\u3082\u3067\u304d\u307e\u305b\u3093\u3002",
+  "lab.acc.nodel!":"\u7de8\u96c6\u6a29\u9650\u3092\u4e0e\u3048\u305f\u76f8\u624b\u306f\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u3092\u5909\u66f4\u3067\u304d\u307e\u3059\u304c\u3001\u524a\u9664\u306f\u3067\u304d\u307e\u305b\u3093\u3002",
   "lab.acc.nomembers":"\u30e1\u30f3\u30d0\u30fc\u304c\u3044\u307e\u305b\u3093\u3002",
   "lab.acc.nosync":"\u3053\u306e\u914d\u5217\u306e\u30a2\u30af\u30bb\u30b9\u6a29\u3092\u7ba1\u7406\u3059\u308b\u306b\u306f\u3001\u5148\u306b\u540c\u671f\u304c\u5fc5\u8981\u3067\u3059\u3002",
   "lab.acc.sub":"\u30e9\u30dc\u306e\u5168\u54e1\u304c\u3053\u308c\u3092\u95b2\u89a7\u3067\u304d\u307e\u3059\u3002\u7de8\u96c6\u3082\u3067\u304d\u308b\u4eba\u3092\u9078\u3093\u3067\u304f\u3060\u3055\u3044\u3002",
@@ -4059,6 +4065,8 @@ var I18N = {
   "lab.ed.metat":"\u6700\u7d42\u4fdd\u5b58 {when}",
   "lab.ed.norights!":"\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u306e\u7de8\u96c6\u6a29\u9650\u304c\u53d6\u308a\u6d88\u3055\u308c\u307e\u3057\u305f\u3002",
   "lab.ed.norightsb!":"\u30ec\u30b3\u30fc\u30c9\u306f\u30e9\u30dc\u306b\u6b8b\u3063\u3066\u3044\u3066\u3001\u958b\u304f\u3053\u3068\u306f\u3067\u304d\u307e\u3059\u3002\u305f\u3060\u3001\u5909\u66f4\u3092\u4fdd\u5b58\u3059\u308b\u3053\u3068\u304c\u3082\u3046\u3067\u304d\u307e\u305b\u3093\u3002",
+  "lab.ed.nosave!":"\u4f55\u3082\u4fdd\u5b58\u3055\u308c\u307e\u305b\u3093\u3067\u3057\u305f\u3002\u4f5c\u696d\u5185\u5bb9\u306f\u3053\u306e\u753b\u9762\u306b\u6b8b\u3063\u3066\u3044\u307e\u3059\u3002",
+  "lab.ed.openit":"\u958b\u304f",
   "lab.ed.ok":"\u30e9\u30dc\u306b\u4fdd\u5b58\u3057\u307e\u3057\u305f\u3002",
   "lab.ed.save":"\u30e9\u30dc\u306b\u4fdd\u5b58",
   "lab.err.add":"\u8ffd\u52a0\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f",
@@ -6306,15 +6314,22 @@ body[data-tab="hist"] .result{display:none}
 /* R83a JOB 4 (Albert, 2026-08-23). `Calculator` needs 59.11px on one line
    and the six columns are the viewport / 6 below 768, so it fits from
    354.66px up. MEASURED on the shipped build by tools/round83a/tabgeom83a.mjs:
-   it breaks inside the word at 354 and is on one line at 355. Below the
-   threshold the English label is the abbreviation and nothing else changes.
+   it breaks inside the word at 354 and is on one line at 355.
+   ⛔ R83d MOVED THE SWITCH TO 360 AND THE REASON IS NOT A MEASUREMENT ERROR.
+   355 is where the word fits BY 0.05px, which is a coincidence and not a
+   threshold. 360 is a real device width where R82a recorded the bar at 56px
+   with nothing wrapping, so the full word has headroom rather than luck.
+   ⚠ THE RETIRED NUMBER STAYS ABOVE: 354/355 is what the sweep measured and
+   it is what proves 360 is a margin rather than a guess.
+   ⚠⚠ AND IT DOES NOT MAKE THE 320px BAR SINGLE-LINE. `Mass Spec` wraps at
+   its space up to 357 whatever the first label says.
    ⛔ ENGLISH ONLY, and that is measured too: zh-Hant and zh-Hans need 33px
    and never wrap, ja needs 55px and wraps only at 320 -- between characters,
    which is how Japanese line-breaking works. Gating on html[lang] rather
    than on the width alone is what keeps three labels that have no problem
    from being shortened. */
 .tabbar .tl-abbr{display:none}
-@media (max-width:354px){
+@media (max-width:359px){
   html[lang="en"] .tabbar .tb-mw .tl-full{display:none}
   html[lang="en"] .tabbar .tb-mw .tl-abbr{display:block}
 }
@@ -7690,7 +7705,7 @@ if(/[?&]billing=/.test(window.__ocSearch)){
 
 <!-- bottom tab bar (mobile) -->
 <nav class="tabbar" aria-label="Sections" data-i18n-attr="aria-label:ak.0110">
-  <button class="tb-mw" onclick="setTab('mw')" data-i18n-attr="aria-label:mk.0439" aria-label="Calculator"><span class="ic" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4H6l5 6-5 6h8.5"/></svg></span><span class="tl tl-full" data-i18n="mk.0439">Calculator</span><span class="tl tl-abbr" data-i18n="ui.nav.mwshort">Calc</span></button>
+  <button class="tb-mw" onclick="setTab('mw')" data-i18n-attr="aria-label:mk.0439" aria-label="Calculator"><span class="ic" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4H6l5 6-5 6h8.5"/></svg></span><span class="tl tl-full" data-i18n="mk.0439">Calculator</span><span class="tl tl-abbr" data-i18n="ui.nav.mwshort">Calc.</span></button>
   <button class="tb-conc" onclick="setTab('conc')"><span class="ic" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 2.5h5M8.2 2.5v5L4 15.2A1.3 1.3 0 0 0 5.2 17h9.6a1.3 1.3 0 0 0 1.2-1.8L11.8 7.5v-5"/><path d="M6.3 12.6h7.4"/></svg></span><span class="tl" data-i18n="mk.0440">Conc.</span></button>
   <button class="tb-tm" onclick="setTab('tm')"><span class="ic" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 11.8V4.2a1.8 1.8 0 0 1 3.6 0v7.6a3.4 3.4 0 1 1-3.6 0Z"/><path d="M10.3 8.6v5"/></svg></span><span class="tl">Tm</span></button>
   <button class="tb-ms" onclick="setTab('ms')"><span class="ic" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16.5h14" stroke-width="1.4"/><path d="M5.5 16.5V10.5M9 16.5V4.5M12.5 16.5V12.5M16 16.5V7.5" stroke-width="1.7"/></svg></span><span class="tl" data-i18n="mk.0441">Mass Spec</span></button>
@@ -15637,6 +15652,24 @@ body[data-mode="dark"] .oc-wall-eyebrow{color:var(--accent)}
   .lab-card-h .lab-pick{min-width:44px; min-height:44px}
   .fchip, .fnew, .fcrumb, .fopen{min-height:44px}
   .fmenu{min-width:44px; min-height:44px}
+  /* R83g/A -- LAB-P2-02's LAST TWO.  Measured on the OPEN invite dialog with a
+     dup, a bad and an over chip driven: the chip's remove was 32 square at and
+     below 767 and 22 square from 768 to 1099, so it reached the minimum at NO
+     width, and the wall's own close sat at 40 square everywhere below 1100.
+     ⛔ THE BOX GROWS, THE GLYPH DOES NOT.  Both controls already centre their
+     glyph (grid/place-items and flex/align-items), so the 14px and 15px marks
+     stay exactly the size they were and only the hit region changes.
+     ⛔ NO ::after OVERLAY, deliberately.  An invisible region that overlaps a
+     neighbour is what the audit forbids, and the chip's remove sits beside an
+     ellipsised address in a 40x30 chip -- an overlay there would cover the text
+     it belongs to.  The chip grows instead, which is visible and honest.
+     ⚠ SOURCE ORDER, not specificity, decides both: each is (0,1,0), equal to
+     its own base rule and to the 767px bump earlier in this same stylesheet,
+     and this block is later in #oc-css-body.
+     ⚠ The wall's close sets width/height rather than min-*, so it is
+     overridden in kind; a min-* here would lose to the shorthand above. */
+  .oci-x{min-width:44px; min-height:44px}
+  .oc-wall-x{width:44px; height:44px}
   .cbmgr-x, .cb-kindbtn, .cb-editbtn, .cb-del, .hp-sel, .hp-btn{min-height:44px}
   .catcard .btn-ins, .catcard .btn-lib{min-height:44px}
   .ac-btn, .adv-card .ac-btn{min-height:44px}
@@ -17641,6 +17674,22 @@ try{
   function esc(s){ return ocEsc(s); }   /* BUG-5: delegates to the one implementation */
   function toast(t){ try{ if(window.oligoAnnounce) window.oligoAnnounce(t);   /* R78d/P4 */
     showNotice('oligoLabToast',{text:t,dismissible:true,announced:true}); setTimeout(function(){ try{ removeNotice('oligoLabToast'); }catch(_){ /* teardown of something that may already be gone -- the goal state is reached either way */ } },3600); }catch(_){ /* teardown of something that may already be gone -- the goal state is reached either way */ } }
+  /* R83d/J5c. ⭐ R82c ROW 1's OTHER HALF: "(b), and add a control that opens
+     the copy". The message shipped in R82a and the control did not, and every
+     reader in that pass asked for a way to reach the file.
+     ⚠ THIS IS A CALL SITE, NOT A MECHANISM. `showNotice()` has taken
+     `action`/`onAction` since R52 and draws the button itself; the toast
+     helper above simply never passed one.
+     ⚠ IT LIVES LONGER THAN A TOAST -- 8 s against 3.6 s -- because a control
+     nobody can reach before it vanishes is the LAB-P2-15 finding again. */
+  function toastAct(t, label, fn){
+    try{ if(window.oligoAnnounce) window.oligoAnnounce(t);
+      showNotice('oligoLabToast',{text:t,dismissible:true,announced:true,action:label,
+        onAction:function(){ try{ removeNotice('oligoLabToast'); }catch(_){ }
+                             try{ fn(); }catch(_e){ ocFail('labed#openit',_e); } }});
+      setTimeout(function(){ try{ removeNotice('oligoLabToast'); }catch(_){ } },8000);
+    }catch(_){ try{ toast(t); }catch(_e){ ocFail('labed#toastact',_e); } }
+  }
   function meta(){ try{ return JSON.parse(localStorage.getItem(LAB_KEY)||'{}'); }catch(_){ return {}; } }
   function setMeta(m){ try{ localStorage.setItem(LAB_KEY, JSON.stringify(m)); }catch(_){ /* storage unavailable (private browsing) -- nothing was written and nothing on screen claims it was */ } }
   function isPro(){ try{ return (typeof proIsPro!=='undefined') && !!proIsPro; }catch(_){ return false; } }
@@ -17808,9 +17857,14 @@ try{
     return true;
   }
 
-  function rowToEntry(row){ var d=Object.assign({}, row.data||{}); d.id=row.client_id||d.id; if(row.name!=null)d.name=row.name; if(row.folder!=null)d.folder=row.folder; if(Array.isArray(row.tags))d.tags=row.tags; d.__rowId=row.id; d.__uid=row.user_id; d.__author=(row.data&&row.data.authorEmail)||''; d.__folderId=row.folder_id||''; d.__labId=row.lab_id||''; d.__ver=row.updated_at||''; d.__vn=(row.version==null?'':row.version); d.__led=row.last_editor_email||''; return d; }
+  function rowToEntry(row){ var d=Object.assign({}, row.data||{}); d.id=row.client_id||d.id; if(row.name!=null)d.name=row.name; if(row.folder!=null)d.folder=row.folder; if(Array.isArray(row.tags))d.tags=row.tags; d.__rowId=row.id; d.__uid=row.user_id; d.__author=(_memByUid&&row.user_id&&_memByUid[row.user_id])||(row.data&&row.data.authorEmail)||''; d.__folderId=row.folder_id||''; d.__labId=row.lab_id||''; d.__ver=row.updated_at||''; d.__vn=(row.version==null?'':row.version); d.__led=row.last_editor_email||''; return d; }
   async function fetchLabStrands(labId){ var rows=await rest('GET','strands?lab_id=eq.'+encodeURIComponent(labId)+'&select=*&order=updated_at.desc'); return (rows||[]).map(rowToEntry); }
-  async function addToLab(entry,labId){ if(!entry.id){ entry.id=(window.oligoSync&&oligoSync.uuid)?oligoSync.uuid():('id-'+(''+Math.random()).slice(2)); try{ saveHist(); }catch(_e){ ocFail('addToLab#1',_e); } } var uid=await myUid(); if(!uid) throw new Error(_t('lab.err.signin')); var data=Object.assign({}, entry, {authorEmail:myEmail()});
+  async function addToLab(entry,labId){ if(!entry.id){ entry.id=(window.oligoSync&&oligoSync.uuid)?oligoSync.uuid():('id-'+(''+Math.random()).slice(2)); try{ saveHist(); }catch(_e){ ocFail('addToLab#1',_e); } } var uid=await myUid(); if(!uid) throw new Error(_t('lab.err.signin')); /* R83d/J1. ⛔ THE BLOB NO LONGER CARRIES AN AUTHOR. It is a field the
+       WRITER controls, so it was never attribution; `strands.user_id` is,
+       and `rowToEntry` now reads that instead. Lane B's PASTE 2 strips the
+       key from every existing row and is held until this build is LIVE --
+       one save from a client that still writes it puts it straight back. */
+    var data=Object.assign({}, entry);
     /* R76k/B-6a (LAB-P1-02): ⚠⚠ EVERY client-internal key, not three of them.
        __folderId and __labId were left in the stored blob, so a row moved out
        of a Lab A folder carried Lab A's folder UUID into Lab B, matched
@@ -18575,7 +18629,11 @@ try{
          in a hundred, and chkjs.py rejects one wherever it appears -- comments
          included.  A first draft of this comment quoted the two verbs and the
          gate refused the build, correctly. */
-      acts+= isAuthor ? ('<button type="button" class="lab-x2" data-lab-access="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'" data-lab-au="'+esc(e.__author||'')+'" data-lab-fid="'+esc(e.__folderId||'')+'">'+esc(_t('lab.acc.h'))+'</button><button type="button" class="lab-x2" data-lab-rmlab="'+esc(e.id)+'">'+esc(_t('lab.card.rmlab'))+'</button>') : (_isMgr(labId) ? ('<button type="button" class="lab-x2 lab-mgrdel" data-lab-mgrdel="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'" aria-label="'+esc(_t('lab.card.mgrdel',{name:e.name||_t('lab.card.untitled')}))+'" title="'+esc(_t('lab.card.mgrdelT'))+'">'+esc(_t('lab.card.del'))+'</button>') : '');
+      /* R83d/J1. ⚠ THE UID TRAVELS BESIDE THE E-MAIL. `data-lab-au` came from
+         `data.authorEmail` and is now resolved through the member map, which
+         is empty for a member who has not claimed their roster row. The uid
+         is on the row itself and is never empty. */
+      acts+= isAuthor ? ('<button type="button" class="lab-x2" data-lab-access="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'" data-lab-au="'+esc(e.__author||'')+'" data-lab-uid="'+esc(e.__uid||'')+'" data-lab-fid="'+esc(e.__folderId||'')+'">'+esc(_t('lab.acc.h'))+'</button><button type="button" class="lab-x2" data-lab-rmlab="'+esc(e.id)+'">'+esc(_t('lab.card.rmlab'))+'</button>') : (_isMgr(labId) ? ('<button type="button" class="lab-x2 lab-mgrdel" data-lab-mgrdel="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'" aria-label="'+esc(_t('lab.card.mgrdel',{name:e.name||_t('lab.card.untitled')}))+'" title="'+esc(_t('lab.card.mgrdelT'))+'">'+esc(_t('lab.card.del'))+'</button>') : '');
       /* R82a/J1-D. ⭐ EVERY SEAT, NOT JUST THE ONE THAT MAY NOT WRITE. The
          shipped card said nothing at all to a manager and "Read only" to a
          granted editor who could in fact write -- byte-identical to an
@@ -18803,12 +18861,34 @@ try{
     var host=_q('[data-lab-scope]',v);
     var flat=[_q('.histbar',v), _q('[data-histpro]',v), _q('.hist-th-wrap',v)];
     if(!pro){ if(host) host.remove(); var ll0=_q('[data-lab-lib]',v); if(ll0) ll0.hidden=true; flat.forEach(function(el){ if(el) el.hidden=false; }); return; }
-    /* R55 #4: the toolbar is NEVER hidden. It used to be hidden along with the
-       flat list, so signing in REMOVED search, Export selected, Share selected,
-       Move to lab and row multi-select -- a signed-in user had strictly fewer
-       features than a guest, on the one surface Pro is sold on. What swaps now is
-       only the LIST: personal scope keeps the same table a guest sees, so both
-       tiers get the same layout, and a lab scope brings up the folder browser. */
+    /* R55 #4, AS RULED BY R83g/B.  ⛔ THE RETIRED SENTENCE FIRST, because it is
+       still quoted: R55 wrote "the toolbar is NEVER hidden", and the external
+       audit (LAB-P1-03) correctly reported that _hideFlat() below contradicts
+       it. ⚠⚠ THE COMMENT IS THE WRONG ONE, NOT THE CODE -- and it was true when
+       it was written. R76m/M1 gave the lab scope its own bar, and the absolute
+       stopped being true that round without anybody editing this sentence.
+
+       WHAT IS TRUE NOW, measured rather than reasoned
+       (tools/round83g/hideflat83g.mjs, on this build):
+
+           personal scope   the flat toolbar is VISIBLE -- the guest's table,
+                            unchanged, which is the whole of R55's promise
+           lab scope        the flat toolbar is HIDDEN, and REPLACED by twelve
+                            acting controls: six on the bulk bar and six on the
+                            library bar. Two checkboxes, twelve things to spend
+                            them on, so no selection is orphaned
+
+       ⭐ R55's PURPOSE HOLDS: no scope leaves the reader with fewer ways to act
+       than a guest. What R55 forbade was hiding the toolbar and putting NOTHING
+       in its place, which is what signing in used to do -- it removed search,
+       Export selected, Share selected, Move to lab and row multi-select from the
+       one surface Pro is sold on. That is still forbidden.
+       ⛔ SO DO NOT "RESTORE" .histbar IN LAB SCOPE ON THE STRENGTH OF THE OLD
+       SENTENCE. It would put the personal toolbar's scope-inappropriate actions
+       back beside the lab's own bar, which is the other half of what LAB-P1-03
+       reported. The rule is: every scope owns a bar, and _hideFlat() swaps them.
+       ⚠ A scope that hides the flat bar and renders no replacement IS a defect;
+       that is the assertion to write, not "never hidden". */
     var bar=_q('.histbar',v);
     if(!host){ host=document.createElement('div'); host.setAttribute('data-lab-scope',''); host.className='lab-scope'; if(bar&&bar.parentNode) bar.parentNode.insertBefore(host,bar); else v.insertBefore(host, v.firstChild); }
     var m=meta(); var scope=m.scope||'my';
@@ -18870,7 +18950,7 @@ try{
     mo.box.addEventListener('click',function(e){ var b=e.target.closest('[data-pickadd]'); if(!b) return; var h=hist[+b.getAttribute('data-pickadd')]; if(!h) return; b.disabled=true; addToLab(h,labId).then(function(){ toast(_t('lab.mv.done')); mo.close(); renderLabList(); }).catch(function(err){ toast(err.message||_t('lab.err.add')); b.disabled=false; }); });
     _setDlgPaint(shell); shell();
   }
-  async function openAccess(rowId,name,author,folderId){ if(!rowId){ toast(_t('lab.acc.nosync')); return; } var labId=meta().labId; var _nm=name||_t('lab.dlg.aseq'); var mo=modal(_t('lab.acc.to',{name:_nm}),'none');
+  async function openAccess(rowId,name,author,folderId,authorUid){ if(!rowId){ toast(_t('lab.acc.nosync')); return; } var labId=meta().labId; var _nm=name||_t('lab.dlg.aseq'); var mo=modal(_t('lab.acc.to',{name:_nm}),'none');
     /* ⚠ The English ran the record's name straight into the next sentence with
        only a space between them ("Untitled Everyone in the lab can view this"),
        which reads as one run-on line and cannot be reordered by a target
@@ -18882,6 +18962,7 @@ try{
        with a Give edit access button beside her name -- a button that raises
        "only the strand author can change access" the moment it is pressed. */
     var _auth=String(author||'').toLowerCase();
+    var _authUid=String(authorUid||'');
     /* ⚠ WHICH PRIVATE SPACE. Measured: the LAB one, the `My space` tile, because
        this branches on `fIsSpace()`, which is the FOLDER flag -- so it is a lab
        folder by definition, and the sentence it reuses names a lab manager, who
@@ -18907,7 +18988,22 @@ try{
       /* ⚠ A SEAT THAT CANNOT GRANT IS SHOWN WHO HAS ACCESS AND NO BUTTONS. Both
          RPCs raise for anyone but the author, including a manager, so a button
          that is drawn for them is a button that raises. */
-      var _mayGrant=(!!_auth && _auth===mine);
+      /* R83d/J1. ⛔ THE UID IS THE DECISIVE TERM AND THE E-MAIL IS THE
+         FALLBACK, not the other way round. `strands_update` honours
+         `user_id = auth.uid()` unconditionally, so a uid match IS the
+         server's own answer; the e-mail is a client-side lookup that can
+         be empty for a member who has not claimed their roster row. */
+      var _mayGrant=(!!_authUid && _authUid===String(_myUidSync||''))
+                  ||(!!_auth && _auth===mine);
+      /* ⭐ AND THE AUTHOR'S E-MAIL, RESOLVED FROM THE ROSTER THIS PANEL HAS
+         ALREADY FETCHED. R82b's CHANGE 4 made `list_lab_members` return
+         `user_id` (VERIFY 4) for exactly this kind of join. It costs no
+         request, and without it nobody is badged AUTHOR on a row whose
+         `data.authorEmail` has been stripped. */
+      if(!_auth && _authUid){
+        var _m0=members.filter(function(m){ return m && m.user_id===_authUid; })[0];
+        if(_m0 && _m0.email) _auth=String(_m0.email).toLowerCase();
+      }
       var _nEd=0;
       /* R83a/J3a (R82c row 2). ⛔ THE ROSTER GOES THE SAME WAY THE
          SUMMARY WENT. In a member's own private space every row of it is
@@ -19058,13 +19154,15 @@ try{
     try{
       var d=_edStrip(entry);
       d.name=sh.name||'';
-      /* ⚠⚠ THE AUTHOR IS CARRIED FORWARD, NOT RE-CLAIMED. `fileCard` falls back
-         to `data.authorEmail` when the uid check misses, so a granted editor
-         whose PATCH dropped it would erase the real author's own Manage access
-         and Remove buttons. ⛔ And that is precisely why the LAST editor must
-         come from a trigger instead: a field the writer controls is not
-         attribution. */
-      d.authorEmail=sh.author||d.authorEmail||'';
+      /* R83d/J1. ⛔⛔ THE CARRY-FORWARD IS GONE, AND SO IS THE REASON FOR IT.
+         R82a wrote the author back on every save because `fileCard` fell back
+         to `data.authorEmail` when the uid check missed -- a granted editor
+         whose PATCH dropped it would have erased the real author's own Manage
+         access and Remove buttons. ⭐ `rowToEntry` no longer falls back to the
+         blob FIRST: it reads `strands.user_id` through the member map, which
+         is the server's own answer and cannot be written by an editor.
+         ⚠ THIS LINE IS THE ONE LANE B'S PASTE 2 IS HELD ON. A granted editor's
+         save was the last writer of this key on the strands table. */
       var qs='strands?id=eq.'+encodeURIComponent(sh.rowId)
            + '&updated_at=eq.'+encodeURIComponent(sh.ver);
       /* ⚠⚠ return=representation, NOT return=minimal. Every other write in this
@@ -19089,6 +19187,32 @@ try{
   /* ⚠⚠ THE DIAGNOSIS IS THE PART THAT CANNOT BE SKIPPED. Zero rows came back
      and the reason is not on the wire, so the row is re-read and the three
      situations are told apart by what is actually there. */
+  /* R83d/J4. Do I still have the rights to save this row? Three answers,
+     cheapest first, and every one of them is the SERVER's rather than a
+     cached client guess -- the whole point of this branch is that the
+     client's cached grant list is exactly what has just gone stale. */
+  async function _edStillMay(row){
+    /* the author, from the server's own column. `strands_update` honours
+       `user_id = auth.uid()` unconditionally, so this one is decisive. */
+    try{ var uid=await myUid(); if(uid && row.user_id===uid) return true; }
+    catch(_e){ ocFail('labed#may1',_e); }
+    /* a manager's edit rights come from the role, not from a grant */
+    try{ if(row.lab_id && _isMgr(row.lab_id)) return true; }
+    catch(_e){ ocFail('labed#may2',_e); }
+    /* ⛔⛔ THE TABLE, NOT `list_strand_editors()`. The RPC is AUTHOR-ONLY and
+       raises for exactly the person this branch exists for. The table's own
+       SELECT policy keys on lab membership, so a revoked editor can still
+       read the list and find themselves absent from it. */
+    try{
+      var eds=await rest('GET','strand_editors?strand_id=eq.'+encodeURIComponent(row.id)+'&select=email');
+      var me=myEmail();
+      return (eds||[]).some(function(x){ return String(x.email||'').toLowerCase()===me; });
+    }catch(_e){ ocFail('labed#may3',_e);
+      /* ⚠ THE DIRECTION IS CHOSEN. A read that failed is not a refusal, and
+         telling somebody who still has rights that they do not is the worse
+         error. Same asymmetry as isForeignLab's, and the same reason. */
+      return true; }
+  }
   async function edOutcome(sh){
     var rows=null;
     /* ⚠ No `select=` term: PostgREST returns every column by default, and the
@@ -19097,7 +19221,19 @@ try{
     try{ rows=await rest('GET','strands?id=eq.'+encodeURIComponent(sh.rowId)); }
     catch(_e){ ocFail('labed#diag',_e); }
     if(!rows || !rows.length){ edBox('gone', sh, null); return 'gone'; }
+    /* R83d/J4. ⛔ THE TENTH CASE. `updated_at` moving proves the row was
+       written; it does NOT prove the write is the only thing that refused
+       us. When BOTH happened, the story the person needs is the rights. */
     if(String(rows[0].updated_at||'')!==String(sh.ver||'')){
+      /* R83g/D. ⛔ THE ROW IS IN HAND AND IT USED TO BE THROWN AWAY.
+         Passing null left the ONE situation this branch exists for -- access
+         revoked AND somebody else saved -- with no way to reach the version
+         that exists, while `conflict`, where the person CAN still save, offered
+         it. Lane C: "the controls are exactly backwards".
+         ⚠⚠ THE HEADLINE DOES NOT CHANGE. `lab.ed.norights!` takes no `who`, so
+         this still refuses to say "somebody saved this while you were editing",
+         which is exactly what R83d/J4 fixed. Only the way OUT changes. */
+      if(!(await _edStillMay(rows[0]))){ edBox('norights', sh, rowToEntry(rows[0])); return 'norights'; }
       edBox('conflict', sh, rowToEntry(rows[0])); return 'conflict'; }
     edBox('norights', sh, null); return 'norights';
   }
@@ -19153,7 +19289,17 @@ try{
             +'<button type="button" class="lab-x2" data-ed-keep>'+esc(_t('lab.ed.keep'))+'</button>')
         /* ⭐ AN EXIT THAT CREATES NO RECORD. `gone` had one button, so the only
            way out of it was to save something. Twelve of twelve readers said so. */
-          : ('<button type="button" class="lab-x2" data-ed-leave>'+esc(_t('lab.ed.leave'))+'</button>'))
+          /* R83g/D. ⭐ DRAWN ONLY WHEN A NEWER ROW IS ACTUALLY IN HAND.
+             `gone` has none -- the record is not there to open -- and a
+             `norights` whose `updated_at` never moved has nothing newer than
+             what the reader already holds. So this appears in exactly the
+             tenth case, which is the one that had nothing.
+             ⚠ NO NEW KEY: `lab.ed.discard` already reads "Discard my changes
+             and open the latest version" in four locales, and it sits beside
+             `lab.ed.leave`, "Discard my changes and close", so the pair reads
+             as one choice with two endings. */
+          : ((latest?('<button type="button" class="lab-x2" data-ed-latest>'+esc(_t('lab.ed.discard'))+'</button>'):'')
+            +'<button type="button" class="lab-x2" data-ed-leave>'+esc(_t('lab.ed.leave'))+'</button>'))
         +'</div>';
     }
     mo.box.addEventListener('click', function(ev){
@@ -19185,9 +19331,14 @@ try{
     var entry=(typeof ocEntryForSave==='function')?ocEntryForSave():null;
     if(!entry){ toast(_t('lab.err.generic!')); return; }
     if(btn) btn.disabled=true;
-    var lab=labName(sh.labId), sp=_mySpace(sh.labId), landed='';
+    /* R83d/J5a. ⛔ `asked` IS NOT `sp`, EVEN THOUGH IT LOOKS LIKE IT.
+       `sp` is "is there a space to file into"; `asked` is "was the lab given
+       the chance to refuse". The shipped code conflated them and blamed the
+       lab for a request nobody made. */
+    var lab=labName(sh.labId), sp=_mySpace(sh.labId), landed='', asked=false, _open=null;
     try{
       if(sp){
+        asked=true;
         var cid=(window.oligoSync&&oligoSync.uuid)?oligoSync.uuid():('id-'+(''+Math.random()).slice(2));
         var e2=Object.assign({}, _edStrip(entry), {id:cid, name:sh.name||''});
         await addToLab(e2, sh.labId);
@@ -19198,24 +19349,43 @@ try{
            was minted here a moment ago and the upsert key is (user_id,
            client_id), so it matches one row and no further term is needed. */
         var got=await rest('GET','strands?client_id=eq.'+encodeURIComponent(cid));
-        if(got && got.length){ await strandMove(got[0].id, sp.id); landed=fName(sp); }
+        if(got && got.length){ await strandMove(got[0].id, sp.id); landed=fName(sp); _open=sp.id; }
       }
     }catch(_e){ ocFail('labed#copy',_e); }
+    var _gated=false;
     if(landed){
       /* ⚠ landed is the LAB when the insert worked and the filing did not. The
          copy is saved either way; the sentence names where it actually is. */
-      toast(_t('lab.ed.copied',{where:landed}));
+      toastAct(_t('lab.ed.copied',{where:landed}), _t('lab.ed.openit'), function(){
+        try{ if(_open) setOpenFolder(_open); }catch(_e){ ocFail('labed#open1',_e); }
+        try{ renderLabList(); }catch(_e){ ocFail('labed#open2',_e); }
+        try{ if(typeof setTab==='function') setTab('hist'); }catch(_e){ ocFail('labed#open3',_e); } });
     }else{
       try{ S.__shared=null; }catch(_e){ ocFail('labed#clear2',_e); }
       var n0=(typeof history!=='undefined'&&history)?history.length:0;
       var rc=(typeof saveCurrent==='function')?saveCurrent():false;
       var n1=(typeof history!=='undefined'&&history)?history.length:0;
       /* ⚠ `false` here means the top of the history already carries this exact
-         chemistry, so the work IS in the personal library. 'gated' is the free
-         plan's own wall, which puts its own words on screen. */
-      if(rc!=='gated' && (rc===true || n1>n0 || rc===false)) toast(_t('lab.ed.fell!',{lab:lab}));
+         chemistry, so the work IS in the personal library. */
+      if(rc==='gated'){
+        /* R83d/J5b. ⛔⛔ THE PATH WHERE THE WORK IS GONE. The lab refused the
+           insert and the personal library refused the fallback, and the shipped
+           code then took the band down anyway. The plan's own wall says WHY;
+           nothing said the work was not saved. ✅ It stays in the editor. */
+        _gated=true;
+        try{ S.__shared=sh; }catch(_e){ ocFail('labed#regated',_e); }
+        toast(_t('lab.ed.nosave!'));
+      }else if(rc===true || n1>n0 || rc===false){
+        /* R83d/J5a. ⛔ ONLY THE LAB THAT WAS ASKED CAN BE BLAMED. With no space
+           to file into, the insert never ran -- so the honest sentence is the
+           one the button already promised: a copy, in the personal library. */
+        toastAct(asked ? _t('lab.ed.fell!',{lab:lab})
+                       : _t('lab.ed.copied',{where:_t('lab.lib.mine')}),
+                 _t('lab.ed.openit'), function(){
+          try{ if(typeof setTab==='function') setTab('hist'); }catch(_e){ ocFail('labed#open4',_e); } });
+      }
     }
-    try{ S.__shared=null; }catch(_e){ ocFail('labed#clear3',_e); }
+    if(!_gated){ try{ S.__shared=null; }catch(_e){ ocFail('labed#clear3',_e); } }
     try{ if(typeof applyAll==='function') applyAll(); }catch(_e){ ocFail('labed#apply3',_e); }
     edPaint();
     try{ renderLabList(); }catch(_e){ ocFail('labed#relist2',_e); }
@@ -19277,7 +19447,7 @@ try{
     if((b=e.target.closest('[data-fsort]'))){ var v=_view(); v.by=b.getAttribute('data-fsort')||'name'; _setView(v); renderLabList(); return; }
     if((b=e.target.closest('[data-lablib-add]'))){ openPicker(); return; }
     if((b=e.target.closest('[data-lab-load]'))){ loadLabStrand(b.getAttribute('data-lab-load')); return; }
-    if((b=e.target.closest('[data-lab-access]'))){ openAccess(b.getAttribute('data-lab-access'), b.getAttribute('data-lab-nm'), b.getAttribute('data-lab-au'), b.getAttribute('data-lab-fid')); return; }
+    if((b=e.target.closest('[data-lab-access]'))){ openAccess(b.getAttribute('data-lab-access'), b.getAttribute('data-lab-nm'), b.getAttribute('data-lab-au'), b.getAttribute('data-lab-fid'), b.getAttribute('data-lab-uid')); return; }
     /* R82a/J1-G. ⭐ THE ACTION THE PRODUCT HAS NEVER HAD. The author's email
        and the folder id ride on the button beside the name, the way the name
        already does, so neither can go stale in a cache between render and
