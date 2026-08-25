@@ -316,7 +316,7 @@ var I18N = {
   "faq.mw.07.q":"Advanced Modification: 2′-sugar modifications",
   "faq.mw.08.a":"They summarize the strand at a glance: total length (nt), the number of PO and PS bonds, the end groups, any custom monomers, and the count of each base (A/C/G/T/U).",
   "faq.mw.08.q":"What do the chips under the result mean?",
-  "faq.mw.09.a!":"Use <b>Share</b> on a saved sequence, or <b>Share selected</b> for several, to make a link. Whoever opens it sees the sequence in a read-only <b>Shared with you</b> view, and the recipient can save it to their own library. Neither of you needs an account. <b>Privacy:</b> the link contains the sequence data itself, so anyone with the link can view it; do not share sequences you consider confidential. Free sharing is limited to 10 sequences per link.",
+  "faq.mw.09.a!":"Use <b>Share</b> on a saved sequence, or <b>Share a Copy</b> for several, to make a link. Whoever opens it sees the sequence in a read-only <b>Shared with you</b> view, and the recipient can save it to their own library. Neither of you needs an account. <b>Privacy:</b> the link contains the sequence data itself, so anyone with the link can view it; do not share sequences you consider confidential. Free sharing is limited to 10 sequences per link.",
   "faq.mw.09.q":"Sharing sequences by link",
   "faq.mw.10.a":"For double-stranded oligos (siRNA, ASOs), choose <b>Duplex</b> in the Strand mode card directly below the Sequence heading. Then choose <b>Automatic complement</b> to generate a matching reverse-complement antisense strand (A pairs with T/U and G with C), or <b>Enter manually</b> for a modified, mismatched, or overhanging antisense strand. Editing the sense strand updates an automatic complement immediately. A manually entered antisense has its own Strand Configuration controls and Quick Insert moremon. <b>Example (Automatic complement):</b> sense <code>ATCGATCG</code> → antisense <code>CGATCGAT</code>; duplex MW = sense + antisense. <b>Tip:</b> when Duplex is active, the Concentration tab lets you base its math on the sense, antisense, or whole duplex.",
   "faq.mw.10.q":"Duplex mode (antisense + duplex MW)",
@@ -380,7 +380,7 @@ var I18N = {
   "lab.bulk.moveh":"File in a folder",
   "lab.bulk.moveok":"Filed {ok}.",
   "lab.bulk.movepart":"Filed {ok}. {bad} stayed where they were: you can only file records you wrote, unless you manage the lab.",
-  "lab.bulk.movepro":"Nothing was filed. {lab} cannot take new records until its payment goes through, so all {bad} stayed where they were.",
+  "lab.bulk.movepro":"Nothing was filed. {lab} cannot take new records until its payment goes through, so all {bad} stayed where they were. Everything already in {lab} still opens and can still be edited.",
   "lab.bulk.movesub":"Choose where these {n} go. They stay in the shared library.",
   "lab.bulk.moving":"Filing {n} of {total}...",
   "lab.bulk.n1":"1 entry selected",
@@ -442,6 +442,7 @@ var I18N = {
   "lab.dlg.loading":"Loading…",
   "lab.dlg.seq":"Sequence",
   "lab.ed.all!":"Everyone in the lab sees your changes.",
+  "lab.ed.again!":"Nothing was saved: this record was being filed somewhere else at that moment. Your work is still on this screen, so press Save again.",
   "lab.ed.band":"Editing {name} in {lab}",
   "lab.ed.clash!":"{who} saved this record while you were editing it.",
   "lab.ed.closed!":"{lab} has closed, and your changes were not saved to it.",
@@ -503,6 +504,8 @@ var I18N = {
   "lab.exp.why!":"A full record holds every value needed to rebuild each sequence, so importing it back reproduces this list exactly. The Export selected button writes a plainer CSV for reading, not for importing.",
   "lab.find.none":"Nothing here matches \"{q}\".",
   "lab.find.rec":"Search this library",
+  "lab.find.scope!":"Search covers everything below this point, not only what is on screen.",
+  "lab.find.where":"In {path}",
   "lab.fold.all":"All",
   "lab.fold.aria1":"{name}, {n} sequence",
   "lab.fold.ariaN":"{name}, {n} sequences",
@@ -511,7 +514,8 @@ var I18N = {
   "lab.fold.created":"Folder created",
   "lab.fold.del":"Delete folder",
   "lab.fold.deleted":"Folder deleted",
-  "lab.fold.delwhy!":"Deleting a folder makes its sequences Unfiled. Nothing is lost.",
+  "lab.fold.delwhy!":"Deleting a folder makes its sequences Unfiled. Any folders inside it move up to where this folder is now. Nothing is lost.",
+  "lab.fold.fmoved":"Folder moved",
   "lab.fold.empty":"This folder is empty. Drag a sequence onto it, or use a sequence’s File button.",
   "lab.fold.menu":"Rename or delete folder {name}",
   "lab.fold.menuT":"Rename or delete",
@@ -519,15 +523,19 @@ var I18N = {
   "lab.copy.lab":"Copy to the lab library",
   "lab.copy.other":"Copy to another lab",
   "lab.fold.go":"File",
+  "lab.fold.moveh2":"Move this folder",
+  "lab.fold.movego":"Move here",
   "lab.fold.moved":"Filed in {folder}",
   "lab.fold.moveh":"File in…",
   "lab.fold.nameph":"Folder name",
   "lab.fold.needname":"Enter a folder name.",
   "lab.fold.needname2":"Enter a name.",
   "lab.fold.new":"+ New folder",
+  "lab.fold.nodest":"There is nowhere else to put this folder. Folders go three levels deep, and a folder cannot move inside itself.",
   "lab.fold.newh":"New folder",
   "lab.fold.open":"Open folder {name}",
   "lab.fold.rename":"Rename",
+  "lab.fold.top":"Top level",
   "lab.fold.renamed":"Renamed",
   "lab.fold.unfiled":"Unfiled",
   "lab.h":"Lab",
@@ -716,8 +724,8 @@ var I18N = {
   "lab.tag.member":"Member",
   "lab.tag.pending":"Has not signed in yet",
   "lab.tag.you":"You",
-  "lab.tree.back":"Back",
   "lab.tree.bydate":"Date modified",
+  "lab.tree.up":"Up one level",
   "lab.tree.byname":"Name",
   "lab.tree.cycle":"A folder cannot be moved inside itself or inside one of its own subfolders.",
   "lab.tree.deep":"Folders go three levels deep, and this one is already at the limit. Make the new folder one level up, or use this folder as it is.",
@@ -744,7 +752,6 @@ var I18N = {
   "lab.ver.none!":"No earlier versions yet. This record has been saved once, so there is nothing to go back to. From now on, every time somebody saves it, the version they replaced is kept here.",
   "lab.ver.on":"Version history for {name}",
   "lab.ver.restore":"Restore this version",
-  "lab.ver.same":"Same sequence as version {v}",
   "lab.ver.vn":"Version {v}",
   "lab.ver.warn!":"Restoring writes a new version. Nothing is deleted: version {v} and everything saved after it stay in this list. Everyone in the lab sees the record change.",
   "mk.0001":"Oligo Calculator | molecular weight, Tm, ε260 and concentration",
@@ -955,7 +962,7 @@ var I18N = {
   "mk.0213":"Reopen, copy, or export a sequence you saved. Signed in, your account holds the copy that travels between devices and this browser keeps an offline mirror; signed out, sequences live in this browser only.",
   "mk.0214":"Scan",
   "mk.0215":"Export selected · CSV",
-  "mk.0216":"Share selected",
+  "mk.0216":"Share a Copy",
   "mk.0217":"Move to the lab library",
   "mk.0218":"Clear all…",
   "mk.0219":"Select",
@@ -1339,6 +1346,7 @@ var I18N = {
   "ui.lab.inv.go":"Add them",
   "ui.lab.inv.hint":"Adding an address is what gives that person access to the lab. <b>We email each person to say so</b>, and tell you here if any of those emails could not be sent.",
   "ui.lab.inv.later":"I’ll do this later",
+  "ui.lab.inv.noros!":"We could not check who is already in <b>{name}</b>, so this does not show how many seats are open. You can still add addresses, and we will tell you here if there is no seat for one of them.",
   "ui.lab.inv.miss":"<b>We could not email {list}.</b> Please tell them yourself. They get into the lab by signing in with the address you added.",
   "ui.lab.inv.n.add":"{n} to add",
   "ui.lab.inv.n.bad":"{n} not an address",
@@ -1374,7 +1382,17 @@ var I18N = {
   "ui.lib.mwgone":"no result",
   "ui.lib.mwgoneT":"This record uses {codes}, which this calculator cannot resolve now, so no molecular weight is shown. The molecular weight saved with it was {was}.",
   "ui.lib.readonly":"Read only",
+  "ui.lib.fromshare":"Saved from a shared link · {when}",
   "ui.lib.rolab!":"This belongs to a lab you are no longer in. You can still open and copy it, but you cannot edit or delete it.",
+  "ui.sh.title":"Share link",
+  "ui.sh.copy":"Copy link",
+  "ui.sh.email":"Email",
+  "ui.sh.native":"More ways to share",
+  "ui.sh.err.many":"You can share up to 10 sequences per link.",
+  "ui.sh.err.none":"Select at least one sequence to share.",
+  "ui.sh.err.big":"This selection is too large to share as a link.",
+  "ui.sh.err.lab!":"Sequences in a lab's shared library cannot be turned into a public link. Your labmates can already open them in the lab.",
+  "ui.sh.priv!":"A share link carries the sequence data, and the name of any custom monomer it uses. Anyone with the link can read all of it. Do not share sequences you consider confidential.",
   "ui.nav.mwshort":"Calc.",
   "ui.seatbig.back!":"Go back and change it",
   "ui.seatbig.body!":"{n} seats is {usd} {per}, billed to this account. Most labs buy between 3 and 30. If that is what you meant, carry on.",
@@ -1552,7 +1570,7 @@ var I18N = {
   "faq.mw.07.q":"\u9032\u968e\u4fee\u98fe\uff1a2′ \u91a3\u57fa\u4fee\u98fe",
   "faq.mw.08.a":"\u5b83\u5011\u4e00\u773c\u6458\u8981\u6574\u80a1\uff1a\u7e3d\u9577\u5ea6\uff08nt\uff09\u3001PO \u8207 PS \u9375\u5404\u6709\u5e7e\u500b\u3001\u7aef\u57fa\u3001\u6709\u6c92\u6709\u81ea\u8a02\u55ae\u9ad4\uff0c\u4ee5\u53ca\u6bcf\u7a2e\u9e7c\u57fa\uff08A/C/G/T/U\uff09\u5404\u6709\u5e7e\u500b\u3002",
   "faq.mw.08.q":"\u7d50\u679c\u4e0b\u65b9\u90a3\u4e9b\u6a19\u7c64\u662f\u4ec0\u9ebc\u610f\u601d\uff1f",
-  "faq.mw.09.a!":"\u5728\u4e00\u7b46\u5df2\u5132\u5b58\u5e8f\u5217\u4e0a\u6309 <b>Share</b>\uff0c\u6216\u9078\u597d\u5e7e\u7b46\u4e4b\u5f8c\u6309<b>\u5206\u4eab\u9078\u53d6\u9805\u76ee</b>\uff0c\u5c31\u6703\u7522\u751f\u4e00\u500b\u9023\u7d50\u3002\u6253\u958b\u9023\u7d50\u7684\u4eba\u6703\u5728\u552f\u8b80\u7684 <b>Shared with you</b> \u6aa2\u8996\u88e1\u770b\u5230\u5167\u5bb9\uff0c\u800c\u4e14\u53ef\u4ee5\u628a\u5b83\u5b58\u9032\u81ea\u5df1\u7684\u8cc7\u6599\u5eab\u3002\u96d9\u65b9\u90fd\u4e0d\u9700\u8981\u5e33\u6236\u3002<b>\u96b1\u79c1\uff1a</b>\u9023\u7d50\u672c\u8eab\u5c31\u5e36\u8457\u5e8f\u5217\u8cc7\u6599\uff0c\u6240\u4ee5\u4efb\u4f55\u62ff\u5230\u9023\u7d50\u7684\u4eba\u90fd\u770b\u5f97\u5230\uff1b\u4f60\u8a8d\u70ba\u6a5f\u5bc6\u7684\u5e8f\u5217\u8acb\u4e0d\u8981\u5206\u4eab\u3002\u514d\u8cbb\u5206\u4eab\u6bcf\u500b\u9023\u7d50\u6700\u591a 10 \u7b46\u3002",
+  "faq.mw.09.a!":"\u5728\u4e00\u7b46\u5df2\u5132\u5b58\u5e8f\u5217\u4e0a\u6309 <b>Share</b>\uff0c\u6216\u9078\u597d\u5e7e\u7b46\u4e4b\u5f8c\u6309<b>\u5206\u4eab\u526f\u672c</b>\uff0c\u5c31\u6703\u7522\u751f\u4e00\u500b\u9023\u7d50\u3002\u6253\u958b\u9023\u7d50\u7684\u4eba\u6703\u5728\u552f\u8b80\u7684 <b>Shared with you</b> \u6aa2\u8996\u88e1\u770b\u5230\u5167\u5bb9\uff0c\u800c\u4e14\u53ef\u4ee5\u628a\u5b83\u5b58\u9032\u81ea\u5df1\u7684\u8cc7\u6599\u5eab\u3002\u96d9\u65b9\u90fd\u4e0d\u9700\u8981\u5e33\u6236\u3002<b>\u96b1\u79c1\uff1a</b>\u9023\u7d50\u672c\u8eab\u5c31\u5e36\u8457\u5e8f\u5217\u8cc7\u6599\uff0c\u6240\u4ee5\u4efb\u4f55\u62ff\u5230\u9023\u7d50\u7684\u4eba\u90fd\u770b\u5f97\u5230\uff1b\u4f60\u8a8d\u70ba\u6a5f\u5bc6\u7684\u5e8f\u5217\u8acb\u4e0d\u8981\u5206\u4eab\u3002\u514d\u8cbb\u5206\u4eab\u6bcf\u500b\u9023\u7d50\u6700\u591a 10 \u7b46\u3002",
   "faq.mw.09.q":"\u7528\u9023\u7d50\u5206\u4eab\u5e8f\u5217",
   "faq.mw.10.a":"\u8981\u8655\u7406\u96d9\u80a1\u5be1\u6838\u82f7\u9178\uff08siRNA\u3001ASO\uff09\uff0c\u8acb\u5728\u5e8f\u5217\u6a19\u984c\u6b63\u4e0b\u65b9\u7684\u6838\u9178\u80a1\u6a21\u5f0f\u5361\u7247\u88e1\u9078<b>\u96d9\u80a1</b>\u3002\u63a5\u8457\u9078<b>\u81ea\u52d5\u4e92\u88dc</b>\uff0c\u7522\u751f\u4e00\u689d\u4e92\u76f8\u914d\u5c0d\u7684\u53cd\u5411\u4e92\u88dc\u53cd\u7fa9\u80a1\uff08A \u5c0d T/U\uff0cG \u5c0d C\uff09\uff0c\u6216\u662f\u9078<b>\u624b\u52d5\u8f38\u5165</b>\uff0c\u81ea\u5df1\u7d66\u4e00\u689d\u6709\u4fee\u98fe\u3001\u6709\u932f\u914d\u6216\u6709\u7a81\u51fa\u672b\u7aef\u7684\u53cd\u7fa9\u80a1\u3002\u7de8\u8f2f\u6b63\u7fa9\u80a1\u6642\uff0c\u81ea\u52d5\u4e92\u88dc\u7684\u90a3\u4e00\u689d\u6703\u7acb\u523b\u8ddf\u8457\u66f4\u65b0\u3002\u624b\u52d5\u8f38\u5165\u7684\u53cd\u7fa9\u80a1\u6709\u81ea\u5df1\u7684\u6838\u9178\u80a1\u8a2d\u5b9a\u8207\u5feb\u901f\u63d2\u5165\u9762\u677f\u3002<b>\u7bc4\u4f8b\uff08\u81ea\u52d5\u4e92\u88dc\uff09\uff1a</b>\u6b63\u7fa9\u80a1 <code>ATCGATCG</code> → \u53cd\u7fa9\u80a1 <code>CGATCGAT</code>\uff1b\u96d9\u80a1\u5206\u5b50\u91cf = \u6b63\u7fa9\u80a1 + \u53cd\u7fa9\u80a1\u3002<b>\u63d0\u793a\uff1a</b>\u96d9\u80a1\u958b\u8457\u7684\u6642\u5019\uff0c\u6fc3\u5ea6\u5206\u9801\u53ef\u4ee5\u9078\u64c7\u8981\u7528\u6b63\u7fa9\u80a1\u3001\u53cd\u7fa9\u80a1\u9084\u662f\u6574\u500b\u96d9\u80a1\u4f86\u8a08\u7b97\u3002",
   "faq.mw.10.q":"\u96d9\u80a1\u6a21\u5f0f\uff08\u53cd\u7fa9 + \u96d9\u80a1\u5206\u5b50\u91cf\uff09",
@@ -1616,7 +1634,7 @@ var I18N = {
   "lab.bulk.moveh":"\u653e\u5165\u8cc7\u6599\u593e",
   "lab.bulk.moveok":"\u5df2\u653e\u5165 {ok} \u9805\u3002",
   "lab.bulk.movepart":"\u5df2\u653e\u5165 {ok} \u7b46\u3002{bad} \u7b46\u7559\u5728\u539f\u4f4d\uff1a\u4f60\u53ea\u80fd\u5c07\u81ea\u5df1\u5efa\u7acb\u7684\u8a18\u9304\u653e\u5165\u8cc7\u6599\u593e\uff0c\u9664\u975e\u4f60\u662f\u5be6\u9a57\u5ba4\u8ca0\u8cac\u4eba\u3002",
-  "lab.bulk.movepro":"\u6c92\u6709\u4efb\u4f55\u4e00\u7b46\u88ab\u653e\u5165\u8cc7\u6599\u593e\u3002\u5728\u4ed8\u6b3e\u5b8c\u6210\u4e4b\u524d\uff0c{lab} \u7121\u6cd5\u63a5\u6536\u65b0\u7684\u8a18\u9304\uff0c\u6240\u4ee5 {bad} \u7b46\u5168\u90e8\u7559\u5728\u539f\u4f4d\u3002",
+  "lab.bulk.movepro":"\u6c92\u6709\u4efb\u4f55\u4e00\u7b46\u88ab\u653e\u5165\u8cc7\u6599\u593e\u3002\u5728\u4ed8\u6b3e\u5b8c\u6210\u4e4b\u524d\uff0c{lab} \u7121\u6cd5\u63a5\u6536\u65b0\u7684\u8a18\u9304\uff0c\u6240\u4ee5 {bad} \u7b46\u5168\u90e8\u7559\u5728\u539f\u4f4d\u3002\u5df2\u7d93\u5728 {lab} \u88e1\u7684\u5167\u5bb9\u4ecd\u7136\u53ef\u4ee5\u958b\u555f\u548c\u7de8\u8f2f\u3002",
   "lab.bulk.movesub":"\u9078\u64c7\u9019 {n} \u9805\u8981\u653e\u5230\u54ea\u88e1\u3002\u5b83\u5011\u4ecd\u7136\u7559\u5728\u5171\u7528\u8cc7\u6599\u5eab\u88e1\u3002",
   "lab.bulk.moving":"\u6b63\u5728\u653e\u5165\u7b2c {n} / {total} \u9805…",
   "lab.bulk.n1":"\u5df2\u9078 1 \u7b46\u8a18\u9304",
@@ -1678,6 +1696,7 @@ var I18N = {
   "lab.dlg.loading":"\u8f09\u5165\u4e2d…",
   "lab.dlg.seq":"\u5e8f\u5217",
   "lab.ed.all!":"\u5be6\u9a57\u5ba4\u4e2d\u7684\u6bcf\u500b\u4eba\u90fd\u6703\u770b\u5230\u4f60\u7684\u8b8a\u66f4\u3002",
+  "lab.ed.again!":"\u6c92\u6709\u5132\u5b58\u4efb\u4f55\u6771\u897f\uff1a\u90a3\u500b\u7576\u4e0b\uff0c\u9019\u4e00\u7b46\u6b63\u5728\u88ab\u653e\u9032\u5225\u7684\u8cc7\u6599\u593e\u3002\u4f60\u7684\u5167\u5bb9\u9084\u5728\u9019\u500b\u756b\u9762\u4e0a\uff0c\u8acb\u518d\u6309\u4e00\u6b21\u5132\u5b58\u3002",
   "lab.ed.band":"\u6b63\u5728\u7de8\u8f2f {lab} \u4e2d\u7684 {name}",
   "lab.ed.clash!":"\u5728\u4f60\u7de8\u8f2f\u671f\u9593\uff0c{who} \u5132\u5b58\u4e86\u9019\u4e00\u7b46\u3002",
   "lab.ed.closed!":"{lab} \u5df2\u7d93\u95dc\u9589\uff0c\u4f60\u7684\u8b8a\u66f4\u6c92\u6709\u5132\u5b58\u5230\u90a3\u88e1\u3002",
@@ -1739,6 +1758,8 @@ var I18N = {
   "lab.exp.why!":"\u5b8c\u6574\u7d00\u9304\u6703\u5b58\u4e0b\u91cd\u5efa\u6bcf\u4e00\u7b46\u5e8f\u5217\u6240\u9700\u8981\u7684\u5168\u90e8\u6578\u503c\uff0c\u6240\u4ee5\u518d\u532f\u5165\u56de\u4f86\u5c31\u6703\u4e00\u6a21\u4e00\u6a23\u3002\u300c\u532f\u51fa\u9078\u53d6\u9805\u76ee\u300d\u5beb\u51fa\u7684\u662f\u6bd4\u8f03\u7c21\u55ae\u7684 CSV\uff0c\u7d66\u4eba\u770b\u7684\uff0c\u4e0d\u662f\u62ff\u4f86\u532f\u5165\u7684\u3002",
   "lab.find.none":"\u9019\u88e1\u6c92\u6709\u7b26\u5408\u300c{q}\u300d\u7684\u9805\u76ee\u3002",
   "lab.find.rec":"\u641c\u5c0b\u9019\u500b\u8cc7\u6599\u5eab",
+  "lab.find.scope!":"\u641c\u5c0b\u6db5\u84cb\u9019\u4e00\u5c64\u4ee5\u4e0b\u7684\u6240\u6709\u5167\u5bb9\uff0c\u4e0d\u53ea\u662f\u756b\u9762\u4e0a\u770b\u5230\u7684\u3002",
+  "lab.find.where":"\u4f4d\u65bc {path}",
   "lab.fold.all":"\u5168\u90e8",
   "lab.fold.aria1":"{name}\uff0c{n} \u7b46\u5e8f\u5217",
   "lab.fold.ariaN":"{name}\uff0c{n} \u7b46\u5e8f\u5217",
@@ -1747,7 +1768,8 @@ var I18N = {
   "lab.fold.created":"\u5df2\u5efa\u7acb\u8cc7\u6599\u593e",
   "lab.fold.del":"\u522a\u9664\u8cc7\u6599\u593e",
   "lab.fold.deleted":"\u5df2\u522a\u9664\u8cc7\u6599\u593e",
-  "lab.fold.delwhy!":"\u522a\u9664\u8cc7\u6599\u593e\u6703\u8b93\u88e1\u9762\u7684\u5e8f\u5217\u8b8a\u6210\u300c\u672a\u5206\u985e\u300d\uff0c\u4e0d\u6703\u907a\u5931\u4efb\u4f55\u6771\u897f\u3002",
+  "lab.fold.delwhy!":"\u522a\u9664\u8cc7\u6599\u593e\u6703\u8b93\u88e1\u9762\u7684\u5e8f\u5217\u8b8a\u6210\u300c\u672a\u5206\u985e\u300d\uff0c\u800c\u5b83\u5e95\u4e0b\u7684\u5b50\u8cc7\u6599\u593e\u6703\u5f80\u4e0a\u79fb\u5230\u9019\u500b\u8cc7\u6599\u593e\u73fe\u5728\u7684\u4f4d\u7f6e\u3002\u4e0d\u6703\u907a\u5931\u4efb\u4f55\u6771\u897f\u3002",
+  "lab.fold.fmoved":"\u5df2\u79fb\u52d5\u8cc7\u6599\u593e",
   "lab.fold.empty":"\u9019\u500b\u8cc7\u6599\u593e\u662f\u7a7a\u7684\u3002\u4f60\u53ef\u4ee5\u628a\u5e8f\u5217\u62d6\u5230\u9019\u88e1\uff0c\u6216\u4f7f\u7528\u5e8f\u5217\u4e0a\u7684\u300c\u653e\u5165\u8cc7\u6599\u593e\u300d\u3002",
   "lab.fold.menu":"\u91cd\u65b0\u547d\u540d\u6216\u522a\u9664\u8cc7\u6599\u593e {name}",
   "lab.fold.menuT":"\u91cd\u65b0\u547d\u540d\u6216\u522a\u9664",
@@ -1755,15 +1777,19 @@ var I18N = {
   "lab.copy.lab":"\u8907\u88fd\u5230\u5be6\u9a57\u5ba4\u7684\u5171\u7528\u8cc7\u6599\u5eab",
   "lab.copy.other":"\u8907\u88fd\u5230\u5176\u4ed6\u5be6\u9a57\u5ba4",
   "lab.fold.go":"\u653e\u5165\u8cc7\u6599\u593e",
+  "lab.fold.moveh2":"\u79fb\u52d5\u9019\u500b\u8cc7\u6599\u593e",
+  "lab.fold.movego":"\u79fb\u5230\u9019\u88e1",
   "lab.fold.moved":"\u5df2\u653e\u5165\u8cc7\u6599\u593e\u300c{folder}\u300d",
   "lab.fold.moveh":"\u653e\u5165…",
   "lab.fold.nameph":"\u8cc7\u6599\u593e\u540d\u7a31",
   "lab.fold.needname":"\u8acb\u8f38\u5165\u8cc7\u6599\u593e\u540d\u7a31\u3002",
   "lab.fold.needname2":"\u8acb\u8f38\u5165\u540d\u7a31\u3002",
   "lab.fold.new":"+ \u65b0\u589e\u8cc7\u6599\u593e",
+  "lab.fold.nodest":"\u6c92\u6709\u5176\u4ed6\u5730\u65b9\u53ef\u4ee5\u653e\u9019\u500b\u8cc7\u6599\u593e\u3002\u8cc7\u6599\u593e\u6700\u591a\u4e09\u5c64\uff0c\u800c\u4e14\u4e0d\u80fd\u79fb\u5230\u81ea\u5df1\u88e1\u9762\u3002",
   "lab.fold.newh":"\u65b0\u589e\u8cc7\u6599\u593e",
   "lab.fold.open":"\u958b\u555f\u8cc7\u6599\u593e {name}",
   "lab.fold.rename":"\u91cd\u65b0\u547d\u540d",
+  "lab.fold.top":"\u6700\u4e0a\u5c64",
   "lab.fold.renamed":"\u5df2\u91cd\u65b0\u547d\u540d",
   "lab.fold.unfiled":"\u672a\u5206\u985e",
   "lab.h":"\u5be6\u9a57\u5ba4",
@@ -1952,8 +1978,8 @@ var I18N = {
   "lab.tag.member":"\u6210\u54e1",
   "lab.tag.pending":"\u5c1a\u672a\u767b\u5165",
   "lab.tag.you":"\u4f60",
-  "lab.tree.back":"\u8fd4\u56de",
   "lab.tree.bydate":"\u4fee\u6539\u65e5\u671f",
+  "lab.tree.up":"\u4e0a\u4e00\u5c64",
   "lab.tree.byname":"\u540d\u7a31",
   "lab.tree.cycle":"\u8cc7\u6599\u593e\u4e0d\u80fd\u79fb\u5230\u81ea\u5df1\u88e1\u9762\uff0c\u4e5f\u4e0d\u80fd\u79fb\u5230\u81ea\u5df1\u7684\u5b50\u8cc7\u6599\u593e\u88e1\u9762\u3002",
   "lab.tree.deep":"\u8cc7\u6599\u593e\u6700\u591a\u4e09\u5c64\uff0c\u9019\u4e00\u5c64\u5df2\u7d93\u5230\u4e0a\u9650\u3002\u8acb\u628a\u65b0\u8cc7\u6599\u593e\u5efa\u5728\u4e0a\u4e00\u5c64\uff0c\u6216\u76f4\u63a5\u4f7f\u7528\u76ee\u524d\u9019\u500b\u8cc7\u6599\u593e\u3002",
@@ -1980,7 +2006,6 @@ var I18N = {
   "lab.ver.none!":"\u9084\u6c92\u6709\u66f4\u65e9\u7684\u7248\u672c\u3002\u9019\u4e00\u7b46\u53ea\u5132\u5b58\u904e\u4e00\u6b21\uff0c\u6240\u4ee5\u6c92\u6709\u53ef\u4ee5\u56de\u53bb\u7684\u7248\u672c\u3002\u5f9e\u73fe\u5728\u8d77\uff0c\u6bcf\u6b21\u6709\u4eba\u5132\u5b58\u5b83\uff0c\u88ab\u53d6\u4ee3\u7684\u90a3\u500b\u7248\u672c\u90fd\u6703\u7559\u5728\u9019\u88e1\u3002",
   "lab.ver.on":"{name} \u7684\u7248\u672c\u7d00\u9304",
   "lab.ver.restore":"\u9084\u539f\u5230\u9019\u500b\u7248\u672c",
-  "lab.ver.same":"\u5e8f\u5217\u8207\u7248\u672c {v} \u76f8\u540c",
   "lab.ver.vn":"\u7248\u672c {v}",
   "lab.ver.warn!":"\u9084\u539f\u6703\u5beb\u5165\u4e00\u500b\u65b0\u7684\u7248\u672c\u3002\u4e0d\u6703\u522a\u9664\u4efb\u4f55\u6771\u897f\uff1a\u7248\u672c {v} \u548c\u5b83\u4e4b\u5f8c\u5132\u5b58\u7684\u6bcf\u4e00\u500b\u7248\u672c\u90fd\u6703\u7559\u5728\u9019\u500b\u6e05\u55ae\u88e1\u3002\u5be6\u9a57\u5ba4\u4e2d\u7684\u6bcf\u500b\u4eba\u90fd\u6703\u770b\u5230\u9019\u4e00\u7b46\u6539\u8b8a\u3002",
   "mk.0001":"Oligo Calculator\uff1a\u5be1\u6838\u82f7\u9178\u7684\u5206\u5b50\u91cf\u3001Tm\u3001ε260 \u8207\u6fc3\u5ea6",
@@ -2191,7 +2216,7 @@ var I18N = {
   "mk.0213":"\u91cd\u65b0\u958b\u555f\u3001\u8907\u88fd\u6216\u532f\u51fa\u4f60\u5b58\u904e\u7684\u5e8f\u5217\u3002\u767b\u5165\u4e4b\u5f8c\uff0c\u53ef\u8de8\u88dd\u7f6e\u4f7f\u7528\u7684\u90a3\u4efd\u5b58\u5728\u4f60\u7684\u5e33\u6236\u88e1\uff0c\u9019\u500b\u700f\u89bd\u5668\u53e6\u5916\u4fdd\u7559\u4e00\u4efd\u96e2\u7dda\u526f\u672c\uff1b\u672a\u767b\u5165\u6642\uff0c\u5e8f\u5217\u53ea\u5b58\u5728\u9019\u500b\u700f\u89bd\u5668\u88e1\u3002",
   "mk.0214":"\u6383\u63cf",
   "mk.0215":"\u532f\u51fa\u9078\u53d6\u9805\u76ee · CSV",
-  "mk.0216":"\u5206\u4eab\u9078\u53d6\u9805\u76ee",
+  "mk.0216":"\u5206\u4eab\u526f\u672c",
   "mk.0217":"\u79fb\u5230\u5be6\u9a57\u5ba4\u7684\u5171\u7528\u8cc7\u6599\u5eab",
   "mk.0218":"\u5168\u90e8\u6e05\u9664…",
   "mk.0219":"\u9078\u53d6",
@@ -2570,6 +2595,7 @@ var I18N = {
   "ui.lab.inv.go":"\u65b0\u589e\u9019\u4e9b\u4eba",
   "ui.lab.inv.hint":"\u65b0\u589e\u5730\u5740\uff0c\u5c31\u662f\u628a\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u5b58\u53d6\u6b0a\u7d66\u5c0d\u65b9\u3002<b>\u6211\u5011\u6703\u5206\u5225\u5bc4\u96fb\u5b50\u90f5\u4ef6\u901a\u77e5\u6bcf\u500b\u4eba</b>\uff0c\u82e5\u6709\u5bc4\u9001\u5931\u6557\u4e5f\u6703\u5728\u9019\u88e1\u544a\u8a34\u4f60\u3002",
   "ui.lab.inv.later":"\u7a0d\u5f8c\u518d\u8aaa",
+  "ui.lab.inv.noros!":"\u6211\u5011\u7121\u6cd5\u6aa2\u67e5\u8ab0\u5df2\u7d93\u5728<b>{name}</b>\u88e1\uff0c\u6240\u4ee5\u9019\u88e1\u4e0d\u6703\u986f\u793a\u9084\u6709\u5e7e\u5e2d\u3002\u4f60\u4ecd\u7136\u53ef\u4ee5\u65b0\u589e\u5730\u5740\uff0c\u5982\u679c\u5176\u4e2d\u6709\u4eba\u6c92\u6709\u5e2d\u4f4d\uff0c\u6211\u5011\u6703\u5728\u9019\u88e1\u544a\u8a34\u4f60\u3002",
   "ui.lab.inv.miss":"<b>\u6211\u5011\u7121\u6cd5\u5bc4\u9001\u96fb\u5b50\u90f5\u4ef6\u7d66 {list}\u3002</b>\u8acb\u81ea\u884c\u901a\u77e5\u4ed6\u5011\uff0c\u7528\u5404\u81ea\u7684\u96fb\u5b50\u90f5\u4ef6\u5730\u5740\u767b\u5165\u5c31\u80fd\u9032\u5165\u5be6\u9a57\u5ba4\u3002",
   "ui.lab.inv.n.add":"{n} \u500b\u8981\u65b0\u589e",
   "ui.lab.inv.n.bad":"{n} \u500b\u4e0d\u662f\u5730\u5740",
@@ -2605,7 +2631,17 @@ var I18N = {
   "ui.lib.mwgone":"\u7121\u7d50\u679c",
   "ui.lib.mwgoneT":"\u9019\u7b46\u7d00\u9304\u7528\u5230 {codes}\uff0c\u9019\u500b\u8a08\u7b97\u6a5f\u73fe\u5728\u7121\u6cd5\u89e3\u6790\u5b83\uff0c\u56e0\u6b64\u4e0d\u986f\u793a\u5206\u5b50\u91cf\u3002\u5132\u5b58\u6642\u8a18\u4e0b\u7684\u5206\u5b50\u91cf\u662f {was}\u3002",
   "ui.lib.readonly":"\u552f\u8b80",
+  "ui.lib.fromshare":"\u5f9e\u5206\u4eab\u9023\u7d50\u5b58\u4e0b · {when}",
   "ui.lib.rolab!":"\u4f60\u5df2\u4e0d\u5728\u9019\u7b46\u8cc7\u6599\u6240\u5c6c\u7684\u5be6\u9a57\u5ba4\u3002\u4f60\u4ecd\u7136\u53ef\u4ee5\u958b\u555f\u548c\u8907\u88fd\uff0c\u4f46\u7121\u6cd5\u7de8\u8f2f\u6216\u522a\u9664\u3002",
+  "ui.sh.title":"\u5206\u4eab\u9023\u7d50",
+  "ui.sh.copy":"\u8907\u88fd\u9023\u7d50",
+  "ui.sh.email":"\u96fb\u5b50\u90f5\u4ef6",
+  "ui.sh.native":"\u5176\u4ed6\u5206\u4eab\u65b9\u5f0f",
+  "ui.sh.err.many":"\u6bcf\u500b\u9023\u7d50\u6700\u591a\u53ef\u4ee5\u5206\u4eab 10 \u7b46\u5e8f\u5217\u3002",
+  "ui.sh.err.none":"\u8acb\u81f3\u5c11\u9078\u53d6\u4e00\u7b46\u5e8f\u5217\u518d\u5206\u4eab\u3002",
+  "ui.sh.err.big":"\u9019\u6b21\u9078\u53d6\u7684\u5167\u5bb9\u592a\u5927\uff0c\u7121\u6cd5\u505a\u6210\u9023\u7d50\u5206\u4eab\u3002",
+  "ui.sh.err.lab!":"\u5be6\u9a57\u5ba4\u5171\u7528\u8cc7\u6599\u5eab\u88e1\u7684\u5e8f\u5217\u7121\u6cd5\u505a\u6210\u516c\u958b\u9023\u7d50\u3002\u4f60\u5be6\u9a57\u5ba4\u88e1\u7684\u6210\u54e1\u672c\u4f86\u5c31\u53ef\u4ee5\u5728\u5be6\u9a57\u5ba4\u88e1\u6253\u958b\u9019\u4e9b\u5e8f\u5217\u3002",
+  "ui.sh.priv!":"\u5206\u4eab\u9023\u7d50\u672c\u8eab\u5c31\u5e36\u8457\u5e8f\u5217\u8cc7\u6599\uff0c\u9084\u6709\u5b83\u7528\u5230\u7684\u4efb\u4f55\u81ea\u8a02\u55ae\u9ad4\u540d\u7a31\u3002\u4efb\u4f55\u62ff\u5230\u9023\u7d50\u7684\u4eba\u90fd\u80fd\u8b80\u5230\u5168\u90e8\u5167\u5bb9\u3002\u4f60\u8a8d\u70ba\u6a5f\u5bc6\u7684\u5e8f\u5217\u8acb\u4e0d\u8981\u5206\u4eab\u3002",
   "ui.seatbig.back!":"\u8fd4\u56de\u4fee\u6539",
   "ui.seatbig.body!":"{n} \u5e2d{per}\u662f {usd}\uff0c\u5c07\u5411\u9019\u500b\u5e33\u865f\u6536\u8cbb\u3002\u591a\u6578\u5be6\u9a57\u5ba4\u8cb7 3 \u5230 30 \u5e2d\u3002\u5982\u679c\u9019\u5c31\u662f\u4f60\u8981\u7684\uff0c\u8acb\u7e7c\u7e8c\u3002",
   "ui.seatbig.eyebrow!":"\u8acb\u78ba\u8a8d",
@@ -2782,7 +2818,7 @@ var I18N = {
   "faq.mw.07.q":"\u9ad8\u7ea7\u4fee\u9970\uff1a2′ \u7cd6\u57fa\u4fee\u9970",
   "faq.mw.08.a":"\u5b83\u4eec\u4e00\u773c\u6458\u8981\u6574\u6761\u94fe\uff1a\u603b\u957f\u5ea6\uff08nt\uff09\u3001PO \u4e0e PS \u952e\u5404\u6709\u51e0\u4e2a\u3001\u7aef\u57fa\u3001\u6709\u6ca1\u6709\u81ea\u5b9a\u4e49\u5355\u4f53\uff0c\u4ee5\u53ca\u6bcf\u79cd\u78b1\u57fa\uff08A/C/G/T/U\uff09\u5404\u6709\u51e0\u4e2a\u3002",
   "faq.mw.08.q":"\u7ed3\u679c\u4e0b\u65b9\u90a3\u4e9b\u6807\u7b7e\u662f\u4ec0\u4e48\u610f\u601d\uff1f",
-  "faq.mw.09.a!":"\u5728\u4e00\u6761\u5df2\u4fdd\u5b58\u5e8f\u5217\u4e0a\u6309 <b>Share</b>\uff0c\u6216\u9009\u597d\u51e0\u6761\u4e4b\u540e\u6309<b>\u5206\u4eab\u6240\u9009\u9879\u76ee</b>\uff0c\u5c31\u4f1a\u751f\u6210\u4e00\u4e2a\u94fe\u63a5\u3002\u6253\u5f00\u94fe\u63a5\u7684\u4eba\u4f1a\u5728\u53ea\u8bfb\u7684 <b>Shared with you</b> \u89c6\u56fe\u91cc\u770b\u5230\u5185\u5bb9\uff0c\u800c\u4e14\u53ef\u4ee5\u628a\u5b83\u5b58\u8fdb\u81ea\u5df1\u7684\u8d44\u6e90\u5e93\u3002\u53cc\u65b9\u90fd\u4e0d\u9700\u8981\u8d26\u6237\u3002<b>\u9690\u79c1\uff1a</b>\u94fe\u63a5\u672c\u8eab\u5c31\u5e26\u7740\u5e8f\u5217\u6570\u636e\uff0c\u6240\u4ee5\u4efb\u4f55\u62ff\u5230\u94fe\u63a5\u7684\u4eba\u90fd\u770b\u5f97\u5230\uff1b\u4f60\u8ba4\u4e3a\u673a\u5bc6\u7684\u5e8f\u5217\u8bf7\u4e0d\u8981\u5206\u4eab\u3002\u514d\u8d39\u5206\u4eab\u6bcf\u4e2a\u94fe\u63a5\u6700\u591a 10 \u6761\u3002",
+  "faq.mw.09.a!":"\u5728\u4e00\u6761\u5df2\u4fdd\u5b58\u5e8f\u5217\u4e0a\u6309 <b>Share</b>\uff0c\u6216\u9009\u597d\u51e0\u6761\u4e4b\u540e\u6309<b>\u5206\u4eab\u526f\u672c</b>\uff0c\u5c31\u4f1a\u751f\u6210\u4e00\u4e2a\u94fe\u63a5\u3002\u6253\u5f00\u94fe\u63a5\u7684\u4eba\u4f1a\u5728\u53ea\u8bfb\u7684 <b>Shared with you</b> \u89c6\u56fe\u91cc\u770b\u5230\u5185\u5bb9\uff0c\u800c\u4e14\u53ef\u4ee5\u628a\u5b83\u5b58\u8fdb\u81ea\u5df1\u7684\u8d44\u6e90\u5e93\u3002\u53cc\u65b9\u90fd\u4e0d\u9700\u8981\u8d26\u6237\u3002<b>\u9690\u79c1\uff1a</b>\u94fe\u63a5\u672c\u8eab\u5c31\u5e26\u7740\u5e8f\u5217\u6570\u636e\uff0c\u6240\u4ee5\u4efb\u4f55\u62ff\u5230\u94fe\u63a5\u7684\u4eba\u90fd\u770b\u5f97\u5230\uff1b\u4f60\u8ba4\u4e3a\u673a\u5bc6\u7684\u5e8f\u5217\u8bf7\u4e0d\u8981\u5206\u4eab\u3002\u514d\u8d39\u5206\u4eab\u6bcf\u4e2a\u94fe\u63a5\u6700\u591a 10 \u6761\u3002",
   "faq.mw.09.q":"\u7528\u94fe\u63a5\u5206\u4eab\u5e8f\u5217",
   "faq.mw.10.a":"\u8981\u5904\u7406\u53cc\u94fe\u5be1\u6838\u82f7\u9178\uff08siRNA\u3001ASO\uff09\uff0c\u8bf7\u5728\u5e8f\u5217\u6807\u9898\u6b63\u4e0b\u65b9\u7684\u94fe\u6a21\u5f0f\u5361\u7247\u91cc\u9009<b>\u53cc\u94fe</b>\u3002\u63a5\u7740\u9009<b>\u81ea\u52a8\u4e92\u8865</b>\uff0c\u751f\u6210\u4e00\u6761\u4e92\u76f8\u914d\u5bf9\u7684\u53cd\u5411\u4e92\u8865\u53cd\u4e49\u94fe\uff08A \u5bf9 T/U\uff0cG \u5bf9 C\uff09\uff0c\u6216\u662f\u9009<b>\u624b\u52a8\u8f93\u5165</b>\uff0c\u81ea\u5df1\u7ed9\u4e00\u6761\u6709\u4fee\u9970\u3001\u6709\u9519\u914d\u6216\u6709\u7a81\u51fa\u672b\u7aef\u7684\u53cd\u4e49\u94fe\u3002\u7f16\u8f91\u6b63\u4e49\u94fe\u65f6\uff0c\u81ea\u52a8\u4e92\u8865\u7684\u90a3\u4e00\u6761\u4f1a\u7acb\u523b\u8ddf\u7740\u66f4\u65b0\u3002\u624b\u52a8\u8f93\u5165\u7684\u53cd\u4e49\u94fe\u6709\u81ea\u5df1\u7684\u94fe\u8bbe\u7f6e\u4e0e\u5feb\u901f\u63d2\u5165\u9762\u677f\u3002<b>\u8303\u4f8b\uff08\u81ea\u52a8\u4e92\u8865\uff09\uff1a</b>\u6b63\u4e49\u94fe <code>ATCGATCG</code> → \u53cd\u4e49\u94fe <code>CGATCGAT</code>\uff1b\u53cc\u94fe\u5206\u5b50\u91cf = \u6b63\u4e49\u94fe + \u53cd\u4e49\u94fe\u3002<b>\u63d0\u793a\uff1a</b>\u53cc\u94fe\u5f00\u7740\u7684\u65f6\u5019\uff0c\u6d53\u5ea6\u9009\u9879\u5361\u53ef\u4ee5\u9009\u62e9\u8981\u7528\u6b63\u4e49\u94fe\u3001\u53cd\u4e49\u94fe\u8fd8\u662f\u6574\u4e2a\u53cc\u94fe\u6765\u8ba1\u7b97\u3002",
   "faq.mw.10.q":"\u53cc\u94fe\u6a21\u5f0f\uff08\u53cd\u4e49 + \u53cc\u94fe\u5206\u5b50\u91cf\uff09",
@@ -2846,7 +2882,7 @@ var I18N = {
   "lab.bulk.moveh":"\u653e\u5165\u6587\u4ef6\u5939",
   "lab.bulk.moveok":"\u5df2\u653e\u5165 {ok} \u9879\u3002",
   "lab.bulk.movepart":"\u5df2\u653e\u5165 {ok} \u6761\u3002{bad} \u6761\u7559\u5728\u539f\u4f4d\uff1a\u4f60\u53ea\u80fd\u5c06\u81ea\u5df1\u521b\u5efa\u7684\u8bb0\u5f55\u653e\u5165\u6587\u4ef6\u5939\uff0c\u9664\u975e\u4f60\u662f\u5b9e\u9a8c\u5ba4\u8d1f\u8d23\u4eba\u3002",
-  "lab.bulk.movepro":"\u6ca1\u6709\u4efb\u4f55\u4e00\u6761\u88ab\u653e\u5165\u6587\u4ef6\u5939\u3002\u5728\u4ed8\u6b3e\u5b8c\u6210\u4e4b\u524d\uff0c{lab} \u65e0\u6cd5\u63a5\u6536\u65b0\u7684\u8bb0\u5f55\uff0c\u6240\u4ee5 {bad} \u6761\u5168\u90e8\u7559\u5728\u539f\u4f4d\u3002",
+  "lab.bulk.movepro":"\u6ca1\u6709\u4efb\u4f55\u4e00\u6761\u88ab\u653e\u5165\u6587\u4ef6\u5939\u3002\u5728\u4ed8\u6b3e\u5b8c\u6210\u4e4b\u524d\uff0c{lab} \u65e0\u6cd5\u63a5\u6536\u65b0\u7684\u8bb0\u5f55\uff0c\u6240\u4ee5 {bad} \u6761\u5168\u90e8\u7559\u5728\u539f\u4f4d\u3002\u5df2\u7ecf\u5728 {lab} \u91cc\u7684\u5185\u5bb9\u4ecd\u7136\u53ef\u4ee5\u6253\u5f00\u548c\u7f16\u8f91\u3002",
   "lab.bulk.movesub":"\u9009\u62e9\u8fd9 {n} \u9879\u8981\u653e\u5230\u54ea\u91cc\u3002\u5b83\u4eec\u4ecd\u7136\u7559\u5728\u5171\u7528\u8d44\u6e90\u5e93\u91cc\u3002",
   "lab.bulk.moving":"\u6b63\u5728\u653e\u5165\u7b2c {n} / {total} \u9879…",
   "lab.bulk.n1":"\u5df2\u9009 1 \u6761\u8bb0\u5f55",
@@ -2908,6 +2944,7 @@ var I18N = {
   "lab.dlg.loading":"\u52a0\u8f7d\u4e2d…",
   "lab.dlg.seq":"\u5e8f\u5217",
   "lab.ed.all!":"\u5b9e\u9a8c\u5ba4\u4e2d\u7684\u6bcf\u4e2a\u4eba\u90fd\u4f1a\u770b\u5230\u4f60\u7684\u66f4\u6539\u3002",
+  "lab.ed.again!":"\u6ca1\u6709\u4fdd\u5b58\u4efb\u4f55\u4e1c\u897f\uff1a\u90a3\u4e2a\u5f53\u4e0b\uff0c\u8fd9\u4e00\u6761\u6b63\u5728\u88ab\u653e\u8fdb\u522b\u7684\u6587\u4ef6\u5939\u3002\u4f60\u7684\u5185\u5bb9\u8fd8\u5728\u8fd9\u4e2a\u753b\u9762\u4e0a\uff0c\u8bf7\u518d\u6309\u4e00\u6b21\u4fdd\u5b58\u3002",
   "lab.ed.band":"\u6b63\u5728\u7f16\u8f91 {lab} \u4e2d\u7684 {name}",
   "lab.ed.clash!":"\u5728\u4f60\u7f16\u8f91\u671f\u95f4\uff0c{who} \u4fdd\u5b58\u4e86\u8fd9\u4e00\u6761\u3002",
   "lab.ed.closed!":"{lab} \u5df2\u7ecf\u5173\u95ed\uff0c\u4f60\u7684\u66f4\u6539\u6ca1\u6709\u4fdd\u5b58\u5230\u90a3\u91cc\u3002",
@@ -2969,6 +3006,8 @@ var I18N = {
   "lab.exp.why!":"\u5b8c\u6574\u8bb0\u5f55\u4f1a\u5b58\u4e0b\u91cd\u5efa\u6bcf\u4e00\u6761\u5e8f\u5217\u6240\u9700\u8981\u7684\u5168\u90e8\u6570\u503c\uff0c\u6240\u4ee5\u518d\u5bfc\u5165\u56de\u6765\u5c31\u4f1a\u4e00\u6a21\u4e00\u6837\u3002\u300c\u5bfc\u51fa\u6240\u9009\u9879\u76ee\u300d\u5199\u51fa\u7684\u662f\u6bd4\u8f83\u7b80\u5355\u7684 CSV\uff0c\u7ed9\u4eba\u770b\u7684\uff0c\u4e0d\u662f\u62ff\u6765\u5bfc\u5165\u7684\u3002",
   "lab.find.none":"\u8fd9\u91cc\u6ca1\u6709\u7b26\u5408“{q}”\u7684\u9879\u76ee\u3002",
   "lab.find.rec":"\u641c\u7d22\u8fd9\u4e2a\u8d44\u6e90\u5e93",
+  "lab.find.scope!":"\u641c\u7d22\u6db5\u76d6\u8fd9\u4e00\u5c42\u4ee5\u4e0b\u7684\u6240\u6709\u5185\u5bb9\uff0c\u4e0d\u53ea\u662f\u753b\u9762\u4e0a\u770b\u5230\u7684\u3002",
+  "lab.find.where":"\u4f4d\u4e8e {path}",
   "lab.fold.all":"\u5168\u90e8",
   "lab.fold.aria1":"{name}\uff0c{n} \u6761\u5e8f\u5217",
   "lab.fold.ariaN":"{name}\uff0c{n} \u6761\u5e8f\u5217",
@@ -2977,7 +3016,8 @@ var I18N = {
   "lab.fold.created":"\u5df2\u521b\u5efa\u6587\u4ef6\u5939",
   "lab.fold.del":"\u5220\u9664\u6587\u4ef6\u5939",
   "lab.fold.deleted":"\u5df2\u5220\u9664\u6587\u4ef6\u5939",
-  "lab.fold.delwhy!":"\u5220\u9664\u6587\u4ef6\u5939\u4f1a\u8ba9\u91cc\u9762\u7684\u5e8f\u5217\u53d8\u6210\u300c\u672a\u5206\u7c7b\u300d\uff0c\u4e0d\u4f1a\u4e22\u5931\u4efb\u4f55\u4e1c\u897f\u3002",
+  "lab.fold.delwhy!":"\u5220\u9664\u6587\u4ef6\u5939\u4f1a\u8ba9\u91cc\u9762\u7684\u5e8f\u5217\u53d8\u6210\u300c\u672a\u5206\u7c7b\u300d\uff0c\u800c\u5b83\u4e0b\u9762\u7684\u5b50\u6587\u4ef6\u5939\u4f1a\u5f80\u4e0a\u79fb\u5230\u8fd9\u4e2a\u6587\u4ef6\u5939\u73b0\u5728\u7684\u4f4d\u7f6e\u3002\u4e0d\u4f1a\u4e22\u5931\u4efb\u4f55\u4e1c\u897f\u3002",
+  "lab.fold.fmoved":"\u5df2\u79fb\u52a8\u6587\u4ef6\u5939",
   "lab.fold.empty":"\u8fd9\u4e2a\u6587\u4ef6\u5939\u662f\u7a7a\u7684\u3002\u4f60\u53ef\u4ee5\u628a\u5e8f\u5217\u62d6\u5230\u8fd9\u91cc\uff0c\u6216\u4f7f\u7528\u5e8f\u5217\u4e0a\u7684\u300c\u653e\u5165\u6587\u4ef6\u5939\u300d\u3002",
   "lab.fold.menu":"\u91cd\u547d\u540d\u6216\u5220\u9664\u6587\u4ef6\u5939 {name}",
   "lab.fold.menuT":"\u91cd\u547d\u540d\u6216\u5220\u9664",
@@ -2985,15 +3025,19 @@ var I18N = {
   "lab.copy.lab":"\u590d\u5236\u5230\u5b9e\u9a8c\u5ba4\u7684\u5171\u7528\u8d44\u6e90\u5e93",
   "lab.copy.other":"\u590d\u5236\u5230\u5176\u4ed6\u5b9e\u9a8c\u5ba4",
   "lab.fold.go":"\u653e\u5165\u6587\u4ef6\u5939",
+  "lab.fold.moveh2":"\u79fb\u52a8\u8fd9\u4e2a\u6587\u4ef6\u5939",
+  "lab.fold.movego":"\u79fb\u5230\u8fd9\u91cc",
   "lab.fold.moved":"\u5df2\u653e\u5165\u6587\u4ef6\u5939\u300c{folder}\u300d",
   "lab.fold.moveh":"\u653e\u5165…",
   "lab.fold.nameph":"\u6587\u4ef6\u5939\u540d\u79f0",
   "lab.fold.needname":"\u8bf7\u8f93\u5165\u6587\u4ef6\u5939\u540d\u79f0\u3002",
   "lab.fold.needname2":"\u8bf7\u8f93\u5165\u540d\u79f0\u3002",
   "lab.fold.new":"+ \u65b0\u5efa\u6587\u4ef6\u5939",
+  "lab.fold.nodest":"\u6ca1\u6709\u5176\u4ed6\u5730\u65b9\u53ef\u4ee5\u653e\u8fd9\u4e2a\u6587\u4ef6\u5939\u3002\u6587\u4ef6\u5939\u6700\u591a\u4e09\u5c42\uff0c\u800c\u4e14\u4e0d\u80fd\u79fb\u5230\u81ea\u5df1\u91cc\u9762\u3002",
   "lab.fold.newh":"\u65b0\u5efa\u6587\u4ef6\u5939",
   "lab.fold.open":"\u6253\u5f00\u6587\u4ef6\u5939 {name}",
   "lab.fold.rename":"\u91cd\u547d\u540d",
+  "lab.fold.top":"\u6700\u4e0a\u5c42",
   "lab.fold.renamed":"\u5df2\u91cd\u547d\u540d",
   "lab.fold.unfiled":"\u672a\u5206\u7c7b",
   "lab.h":"\u5b9e\u9a8c\u5ba4",
@@ -3182,8 +3226,8 @@ var I18N = {
   "lab.tag.member":"\u6210\u5458",
   "lab.tag.pending":"\u5c1a\u672a\u767b\u5f55",
   "lab.tag.you":"\u4f60",
-  "lab.tree.back":"\u8fd4\u56de",
   "lab.tree.bydate":"\u4fee\u6539\u65e5\u671f",
+  "lab.tree.up":"\u4e0a\u4e00\u5c42",
   "lab.tree.byname":"\u540d\u79f0",
   "lab.tree.cycle":"\u6587\u4ef6\u5939\u4e0d\u80fd\u79fb\u5230\u81ea\u5df1\u91cc\u9762\uff0c\u4e5f\u4e0d\u80fd\u79fb\u5230\u81ea\u5df1\u7684\u5b50\u6587\u4ef6\u5939\u91cc\u9762\u3002",
   "lab.tree.deep":"\u6587\u4ef6\u5939\u6700\u591a\u4e09\u5c42\uff0c\u8fd9\u4e00\u5c42\u5df2\u7ecf\u5230\u4e0a\u9650\u3002\u8bf7\u628a\u65b0\u6587\u4ef6\u5939\u5efa\u5728\u4e0a\u4e00\u5c42\uff0c\u6216\u76f4\u63a5\u4f7f\u7528\u5f53\u524d\u8fd9\u4e2a\u6587\u4ef6\u5939\u3002",
@@ -3210,7 +3254,6 @@ var I18N = {
   "lab.ver.none!":"\u8fd8\u6ca1\u6709\u66f4\u65e9\u7684\u7248\u672c\u3002\u8fd9\u4e00\u6761\u53ea\u4fdd\u5b58\u8fc7\u4e00\u6b21\uff0c\u6240\u4ee5\u6ca1\u6709\u53ef\u4ee5\u56de\u53bb\u7684\u7248\u672c\u3002\u4ece\u73b0\u5728\u8d77\uff0c\u6bcf\u6b21\u6709\u4eba\u4fdd\u5b58\u5b83\uff0c\u88ab\u53d6\u4ee3\u7684\u90a3\u4e2a\u7248\u672c\u90fd\u4f1a\u7559\u5728\u8fd9\u91cc\u3002",
   "lab.ver.on":"{name} \u7684\u7248\u672c\u8bb0\u5f55",
   "lab.ver.restore":"\u8fd8\u539f\u5230\u8fd9\u4e2a\u7248\u672c",
-  "lab.ver.same":"\u5e8f\u5217\u4e0e\u7248\u672c {v} \u76f8\u540c",
   "lab.ver.vn":"\u7248\u672c {v}",
   "lab.ver.warn!":"\u8fd8\u539f\u4f1a\u5199\u5165\u4e00\u4e2a\u65b0\u7684\u7248\u672c\u3002\u4e0d\u4f1a\u5220\u9664\u4efb\u4f55\u4e1c\u897f\uff1a\u7248\u672c {v} \u548c\u5b83\u4e4b\u540e\u4fdd\u5b58\u7684\u6bcf\u4e00\u4e2a\u7248\u672c\u90fd\u4f1a\u7559\u5728\u8fd9\u4e2a\u6e05\u5355\u91cc\u3002\u5b9e\u9a8c\u5ba4\u4e2d\u7684\u6bcf\u4e2a\u4eba\u90fd\u4f1a\u770b\u5230\u8fd9\u4e00\u6761\u6539\u53d8\u3002",
   "mk.0001":"Oligo Calculator\uff1a\u5be1\u6838\u82f7\u9178\u7684\u5206\u5b50\u91cf\u3001Tm\u3001ε260 \u4e0e\u6d53\u5ea6",
@@ -3421,7 +3464,7 @@ var I18N = {
   "mk.0213":"\u91cd\u65b0\u6253\u5f00\u3001\u590d\u5236\u6216\u5bfc\u51fa\u4f60\u5b58\u8fc7\u7684\u5e8f\u5217\u3002\u767b\u5f55\u4e4b\u540e\uff0c\u53ef\u8de8\u8bbe\u5907\u4f7f\u7528\u7684\u90a3\u4efd\u5b58\u5728\u4f60\u7684\u8d26\u6237\u91cc\uff0c\u8fd9\u4e2a\u6d4f\u89c8\u5668\u53e6\u5916\u4fdd\u7559\u4e00\u4efd\u79bb\u7ebf\u526f\u672c\uff1b\u672a\u767b\u5f55\u65f6\uff0c\u5e8f\u5217\u53ea\u5b58\u5728\u8fd9\u4e2a\u6d4f\u89c8\u5668\u91cc\u3002",
   "mk.0214":"\u626b\u63cf",
   "mk.0215":"\u5bfc\u51fa\u6240\u9009\u9879\u76ee · CSV",
-  "mk.0216":"\u5206\u4eab\u6240\u9009\u9879\u76ee",
+  "mk.0216":"\u5206\u4eab\u526f\u672c",
   "mk.0217":"\u79fb\u5230\u5b9e\u9a8c\u5ba4\u7684\u5171\u7528\u8d44\u6e90\u5e93",
   "mk.0218":"\u5168\u90e8\u6e05\u9664…",
   "mk.0219":"\u9009\u53d6",
@@ -3800,6 +3843,7 @@ var I18N = {
   "ui.lab.inv.go":"\u6dfb\u52a0\u4ed6\u4eec",
   "ui.lab.inv.hint":"\u6dfb\u52a0\u5730\u5740\uff0c\u5c31\u662f\u628a\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u8bbf\u95ee\u6743\u9650\u7ed9\u5bf9\u65b9\u3002<b>\u6211\u4eec\u4f1a\u5206\u522b\u53d1\u7535\u5b50\u90ae\u4ef6\u901a\u77e5\u6bcf\u4e2a\u4eba</b>\uff0c\u82e5\u6709\u53d1\u9001\u5931\u8d25\u4e5f\u4f1a\u5728\u8fd9\u91cc\u544a\u8bc9\u4f60\u3002",
   "ui.lab.inv.later":"\u4ee5\u540e\u518d\u8bf4",
+  "ui.lab.inv.noros!":"\u6211\u4eec\u65e0\u6cd5\u68c0\u67e5\u8c01\u5df2\u7ecf\u5728<b>{name}</b>\u91cc\uff0c\u6240\u4ee5\u8fd9\u91cc\u4e0d\u4f1a\u663e\u793a\u8fd8\u6709\u51e0\u5e2d\u3002\u4f60\u4ecd\u7136\u53ef\u4ee5\u6dfb\u52a0\u5730\u5740\uff0c\u5982\u679c\u5176\u4e2d\u6709\u4eba\u6ca1\u6709\u5e2d\u4f4d\uff0c\u6211\u4eec\u4f1a\u5728\u8fd9\u91cc\u544a\u8bc9\u4f60\u3002",
   "ui.lab.inv.miss":"<b>\u6211\u4eec\u65e0\u6cd5\u5411 {list} \u53d1\u9001\u7535\u5b50\u90ae\u4ef6\u3002</b>\u8bf7\u81ea\u884c\u901a\u77e5\u4ed6\u4eec\uff0c\u7528\u5404\u81ea\u7684\u90ae\u7bb1\u5730\u5740\u767b\u5f55\u5c31\u80fd\u8fdb\u5165\u5b9e\u9a8c\u5ba4\u3002",
   "ui.lab.inv.n.add":"{n} \u4e2a\u8981\u6dfb\u52a0",
   "ui.lab.inv.n.bad":"{n} \u4e2a\u4e0d\u662f\u5730\u5740",
@@ -3835,7 +3879,17 @@ var I18N = {
   "ui.lib.mwgone":"\u65e0\u7ed3\u679c",
   "ui.lib.mwgoneT":"\u8fd9\u6761\u8bb0\u5f55\u7528\u5230 {codes}\uff0c\u8fd9\u4e2a\u8ba1\u7b97\u5668\u73b0\u5728\u65e0\u6cd5\u89e3\u6790\u5b83\uff0c\u56e0\u6b64\u4e0d\u663e\u793a\u5206\u5b50\u91cf\u3002\u4fdd\u5b58\u65f6\u8bb0\u4e0b\u7684\u5206\u5b50\u91cf\u662f {was}\u3002",
   "ui.lib.readonly":"\u53ea\u8bfb",
+  "ui.lib.fromshare":"\u4ece\u5206\u4eab\u94fe\u63a5\u5b58\u4e0b · {when}",
   "ui.lib.rolab!":"\u4f60\u5df2\u4e0d\u5728\u8fd9\u4efd\u8d44\u6599\u6240\u5c5e\u7684\u5b9e\u9a8c\u5ba4\u3002\u4f60\u4ecd\u7136\u53ef\u4ee5\u6253\u5f00\u548c\u590d\u5236\uff0c\u4f46\u65e0\u6cd5\u7f16\u8f91\u6216\u5220\u9664\u3002",
+  "ui.sh.title":"\u5206\u4eab\u94fe\u63a5",
+  "ui.sh.copy":"\u590d\u5236\u94fe\u63a5",
+  "ui.sh.email":"\u7535\u5b50\u90ae\u4ef6",
+  "ui.sh.native":"\u5176\u4ed6\u5206\u4eab\u65b9\u5f0f",
+  "ui.sh.err.many":"\u6bcf\u4e2a\u94fe\u63a5\u6700\u591a\u53ef\u4ee5\u5206\u4eab 10 \u6761\u5e8f\u5217\u3002",
+  "ui.sh.err.none":"\u8bf7\u81f3\u5c11\u9009\u53d6\u4e00\u6761\u5e8f\u5217\u518d\u5206\u4eab\u3002",
+  "ui.sh.err.big":"\u8fd9\u6b21\u9009\u53d6\u7684\u5185\u5bb9\u592a\u5927\uff0c\u65e0\u6cd5\u505a\u6210\u94fe\u63a5\u5206\u4eab\u3002",
+  "ui.sh.err.lab!":"\u5b9e\u9a8c\u5ba4\u5171\u7528\u8d44\u6e90\u5e93\u91cc\u7684\u5e8f\u5217\u65e0\u6cd5\u505a\u6210\u516c\u5f00\u94fe\u63a5\u3002\u4f60\u5b9e\u9a8c\u5ba4\u91cc\u7684\u6210\u5458\u672c\u6765\u5c31\u53ef\u4ee5\u5728\u5b9e\u9a8c\u5ba4\u91cc\u6253\u5f00\u8fd9\u4e9b\u5e8f\u5217\u3002",
+  "ui.sh.priv!":"\u5206\u4eab\u94fe\u63a5\u672c\u8eab\u5c31\u5e26\u7740\u5e8f\u5217\u6570\u636e\uff0c\u8fd8\u6709\u5b83\u7528\u5230\u7684\u4efb\u4f55\u81ea\u5b9a\u4e49\u5355\u4f53\u540d\u79f0\u3002\u4efb\u4f55\u62ff\u5230\u94fe\u63a5\u7684\u4eba\u90fd\u80fd\u8bfb\u5230\u5168\u90e8\u5185\u5bb9\u3002\u4f60\u8ba4\u4e3a\u673a\u5bc6\u7684\u5e8f\u5217\u8bf7\u4e0d\u8981\u5206\u4eab\u3002",
   "ui.seatbig.back!":"\u8fd4\u56de\u4fee\u6539",
   "ui.seatbig.body!":"{n} \u5e2d{per}\u662f {usd}\uff0c\u5c06\u5411\u8fd9\u4e2a\u8d26\u53f7\u6536\u8d39\u3002\u591a\u6570\u5b9e\u9a8c\u5ba4\u4e70 3 \u5230 30 \u5e2d\u3002\u5982\u679c\u8fd9\u5c31\u662f\u4f60\u8981\u7684\uff0c\u8bf7\u7ee7\u7eed\u3002",
   "ui.seatbig.eyebrow!":"\u8bf7\u786e\u8ba4",
@@ -4012,7 +4066,7 @@ var I18N = {
   "faq.mw.07.q":"\u9ad8\u5ea6\u306a\u4fee\u98fe: 2′ \u7cd6\u4fee\u98fe",
   "faq.mw.08.a":"\u9396\u3092\u3072\u3068\u76ee\u3067\u307e\u3068\u3081\u305f\u3082\u306e\u3067\u3059\u3002\u5168\u9577 (nt)\u3001PO \u3068 PS \u306e\u7d50\u5408\u6570\u3001\u672b\u7aef\u57fa\u3001\u30ab\u30b9\u30bf\u30e0\u30e2\u30ce\u30de\u30fc\u3001\u5404\u5869\u57fa (A/C/G/T/U) \u306e\u500b\u6570\u3092\u8868\u793a\u3057\u307e\u3059\u3002",
   "faq.mw.08.q":"\u7d50\u679c\u306e\u4e0b\u306e\u30c1\u30c3\u30d7\u306f\u4f55\u3092\u8868\u3057\u3066\u3044\u307e\u3059\u304b?",
-  "faq.mw.09.a!":"\u4fdd\u5b58\u3057\u305f\u914d\u5217\u3067 <b>Share</b>\u3001\u8907\u6570\u306e\u5834\u5408\u306f <b>\u9078\u629e\u9805\u76ee\u3092\u5171\u6709</b> \u3092\u4f7f\u3046\u3068\u30ea\u30f3\u30af\u3092\u4f5c\u308c\u307e\u3059\u3002\u958b\u3044\u305f\u4eba\u306f\u8aad\u307f\u53d6\u308a\u5c02\u7528\u306e <b>Shared with you</b> \u753b\u9762\u3067\u305d\u306e\u914d\u5217\u3092\u898b\u3089\u308c\u3001\u81ea\u5206\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u4fdd\u5b58\u3067\u304d\u307e\u3059\u3002\u3069\u3061\u3089\u3082\u30a2\u30ab\u30a6\u30f3\u30c8\u306f\u4e0d\u8981\u3067\u3059\u3002<b>\u30d7\u30e9\u30a4\u30d0\u30b7\u30fc:</b> \u30ea\u30f3\u30af\u306b\u306f\u914d\u5217\u30c7\u30fc\u30bf\u305d\u306e\u3082\u306e\u304c\u542b\u307e\u308c\u308b\u305f\u3081\u3001\u30ea\u30f3\u30af\u3092\u77e5\u3063\u3066\u3044\u308b\u4eba\u306f\u8ab0\u3067\u3082\u898b\u3089\u308c\u307e\u3059\u3002\u6a5f\u5bc6\u3068\u8003\u3048\u308b\u914d\u5217\u306f\u5171\u6709\u3057\u306a\u3044\u3067\u304f\u3060\u3055\u3044\u3002\u7121\u6599\u306e\u5171\u6709\u306f 1 \u30ea\u30f3\u30af\u3042\u305f\u308a 10 \u4ef6\u307e\u3067\u3067\u3059\u3002",
+  "faq.mw.09.a!":"\u4fdd\u5b58\u3057\u305f\u914d\u5217\u3067 <b>Share</b>\u3001\u8907\u6570\u306e\u5834\u5408\u306f <b>\u30b3\u30d4\u30fc\u3092\u5171\u6709</b> \u3092\u4f7f\u3046\u3068\u30ea\u30f3\u30af\u3092\u4f5c\u308c\u307e\u3059\u3002\u958b\u3044\u305f\u4eba\u306f\u8aad\u307f\u53d6\u308a\u5c02\u7528\u306e <b>Shared with you</b> \u753b\u9762\u3067\u305d\u306e\u914d\u5217\u3092\u898b\u3089\u308c\u3001\u81ea\u5206\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u4fdd\u5b58\u3067\u304d\u307e\u3059\u3002\u3069\u3061\u3089\u3082\u30a2\u30ab\u30a6\u30f3\u30c8\u306f\u4e0d\u8981\u3067\u3059\u3002<b>\u30d7\u30e9\u30a4\u30d0\u30b7\u30fc:</b> \u30ea\u30f3\u30af\u306b\u306f\u914d\u5217\u30c7\u30fc\u30bf\u305d\u306e\u3082\u306e\u304c\u542b\u307e\u308c\u308b\u305f\u3081\u3001\u30ea\u30f3\u30af\u3092\u77e5\u3063\u3066\u3044\u308b\u4eba\u306f\u8ab0\u3067\u3082\u898b\u3089\u308c\u307e\u3059\u3002\u6a5f\u5bc6\u3068\u8003\u3048\u308b\u914d\u5217\u306f\u5171\u6709\u3057\u306a\u3044\u3067\u304f\u3060\u3055\u3044\u3002\u7121\u6599\u306e\u5171\u6709\u306f 1 \u30ea\u30f3\u30af\u3042\u305f\u308a 10 \u4ef6\u307e\u3067\u3067\u3059\u3002",
   "faq.mw.09.q":"\u30ea\u30f3\u30af\u3067\u914d\u5217\u3092\u5171\u6709\u3059\u308b",
   "faq.mw.10.a":"\u4e8c\u672c\u9396\u30aa\u30ea\u30b4 (siRNA\u3001ASO) \u306e\u5834\u5408\u306f\u3001\u914d\u5217\u306e\u898b\u51fa\u3057\u306e\u3059\u3050\u4e0b\u306b\u3042\u308b\u9396\u30e2\u30fc\u30c9\u306e\u30ab\u30fc\u30c9\u3067<b>\u4e8c\u672c\u9396</b>\u3092\u9078\u3093\u3067\u304f\u3060\u3055\u3044\u3002\u6b21\u306b<b>\u81ea\u52d5\u76f8\u88dc</b>\u3092\u9078\u3076\u3068\u3001\u5bfe\u5fdc\u3059\u308b\u9006\u76f8\u88dc\u306e\u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u9396\u304c\u751f\u6210\u3055\u308c\u307e\u3059 (A \u306f T/U \u3068\u3001G \u306f C \u3068\u5bfe\u306b\u306a\u308a\u307e\u3059)\u3002\u4fee\u98fe\u3055\u308c\u305f\u9396\u3001\u30df\u30b9\u30de\u30c3\u30c1\u306e\u3042\u308b\u9396\u3001\u7a81\u51fa\u306e\u3042\u308b\u9396\u306b\u3057\u305f\u3044\u5834\u5408\u306f<b>\u624b\u5165\u529b</b>\u3092\u9078\u3093\u3067\u304f\u3060\u3055\u3044\u3002\u30bb\u30f3\u30b9\u9396\u3092\u7de8\u96c6\u3059\u308b\u3068\u3001\u81ea\u52d5\u751f\u6210\u3055\u308c\u305f\u76f8\u88dc\u9396\u306f\u3059\u3050\u306b\u66f4\u65b0\u3055\u308c\u307e\u3059\u3002\u624b\u5165\u529b\u3057\u305f\u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u9396\u306b\u306f\u72ec\u81ea\u306e\u9396\u306e\u8a2d\u5b9a\u30b3\u30f3\u30c8\u30ed\u30fc\u30eb\u3068\u30af\u30a4\u30c3\u30af\u633f\u5165\u306e moremon \u304c\u4ed8\u304d\u307e\u3059\u3002<b>\u4f8b (\u81ea\u52d5\u76f8\u88dc):</b> \u30bb\u30f3\u30b9 <code>ATCGATCG</code> → \u30a2\u30f3\u30c1\u30bb\u30f3\u30b9 <code>CGATCGAT</code>\u3002\u4e8c\u672c\u9396\u306e\u5206\u5b50\u91cf = \u30bb\u30f3\u30b9 + \u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u3002<b>\u30d2\u30f3\u30c8:</b> \u4e8c\u672c\u9396\u304c\u6709\u52b9\u306a\u3068\u304d\u306f\u3001\u6fc3\u5ea6\u30bf\u30d6\u3067\u30bb\u30f3\u30b9\u9396\u3001\u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u9396\u3001\u4e8c\u672c\u9396\u5168\u4f53\u306e\u3069\u308c\u3092\u57fa\u6e96\u306b\u8a08\u7b97\u3059\u308b\u304b\u3092\u9078\u3079\u307e\u3059\u3002",
   "faq.mw.10.q":"\u4e8c\u672c\u9396\u30e2\u30fc\u30c9 (\u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u3068\u4e8c\u672c\u9396\u306e\u5206\u5b50\u91cf)",
@@ -4076,7 +4130,7 @@ var I18N = {
   "lab.bulk.moveh":"\u30d5\u30a9\u30eb\u30c0\u30fc\u306b\u5165\u308c\u308b",
   "lab.bulk.moveok":"{ok} \u4ef6\u5165\u308c\u307e\u3057\u305f\u3002",
   "lab.bulk.movepart":"{ok} \u4ef6\u3092\u30d5\u30a9\u30eb\u30c0\u30fc\u306b\u5165\u308c\u307e\u3057\u305f\u3002{bad} \u4ef6\u306f\u5143\u306e\u5834\u6240\u306b\u6b8b\u308a\u307e\u3057\u305f\u3002\u30ec\u30b3\u30fc\u30c9\u3092\u30d5\u30a9\u30eb\u30c0\u30fc\u306b\u5165\u308c\u3089\u308c\u308b\u306e\u306f\u3001\u305d\u308c\u3092\u4f5c\u6210\u3057\u305f\u672c\u4eba\u307e\u305f\u306f\u30e9\u30dc\u7ba1\u7406\u8005\u3067\u3059\u3002",
-  "lab.bulk.movepro":"\u30d5\u30a9\u30eb\u30c0\u30fc\u306b\u306f 1 \u4ef6\u3082\u5165\u308a\u307e\u305b\u3093\u3067\u3057\u305f\u3002\u652f\u6255\u3044\u304c\u5b8c\u4e86\u3059\u308b\u307e\u3067\u3001{lab} \u306f\u65b0\u3057\u3044\u30ec\u30b3\u30fc\u30c9\u3092\u53d7\u3051\u53d6\u308c\u306a\u3044\u305f\u3081\u3001{bad} \u4ef6\u306f\u3059\u3079\u3066\u5143\u306e\u5834\u6240\u306b\u6b8b\u308a\u307e\u3057\u305f\u3002",
+  "lab.bulk.movepro":"\u30d5\u30a9\u30eb\u30c0\u30fc\u306b\u306f 1 \u4ef6\u3082\u5165\u308a\u307e\u305b\u3093\u3067\u3057\u305f\u3002\u652f\u6255\u3044\u304c\u5b8c\u4e86\u3059\u308b\u307e\u3067\u3001{lab} \u306f\u65b0\u3057\u3044\u30ec\u30b3\u30fc\u30c9\u3092\u53d7\u3051\u53d6\u308c\u306a\u3044\u305f\u3081\u3001{bad} \u4ef6\u306f\u3059\u3079\u3066\u5143\u306e\u5834\u6240\u306b\u6b8b\u308a\u307e\u3057\u305f\u3002\u3059\u3067\u306b {lab} \u306b\u3042\u308b\u3082\u306e\u306f\u4eca\u307e\u3067\u3069\u304a\u308a\u958b\u3044\u3066\u7de8\u96c6\u3067\u304d\u307e\u3059\u3002",
   "lab.bulk.movesub":"\u3053\u306e {n} \u4ef6\u306e\u79fb\u52d5\u5148\u3092\u9078\u3093\u3067\u304f\u3060\u3055\u3044\u3002\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u5185\u306b\u6b8b\u308a\u307e\u3059\u3002",
   "lab.bulk.moving":"{total} \u4ef6\u4e2d {n} \u4ef6\u3092\u30d5\u30a9\u30eb\u30c0\u30fc\u306b\u5165\u308c\u3066\u3044\u307e\u3059…",
   "lab.bulk.n1":"\u30ec\u30b3\u30fc\u30c9 1 \u4ef6\u3092\u9078\u629e\u4e2d",
@@ -4138,6 +4192,7 @@ var I18N = {
   "lab.dlg.loading":"\u8aad\u307f\u8fbc\u307f\u4e2d…",
   "lab.dlg.seq":"\u914d\u5217",
   "lab.ed.all!":"\u30e9\u30dc\u306e\u5168\u54e1\u306b\u3042\u306a\u305f\u306e\u5909\u66f4\u304c\u898b\u3048\u307e\u3059\u3002",
+  "lab.ed.again!":"\u4f55\u3082\u4fdd\u5b58\u3055\u308c\u3066\u3044\u307e\u305b\u3093\u3002\u3061\u3087\u3046\u3069\u305d\u306e\u3068\u304d\u3001\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u306f\u5225\u306e\u5834\u6240\u306b\u79fb\u52d5\u3055\u308c\u3066\u3044\u307e\u3057\u305f\u3002\u4f5c\u696d\u5185\u5bb9\u306f\u3053\u306e\u753b\u9762\u306b\u6b8b\u3063\u3066\u3044\u307e\u3059\u306e\u3067\u3001\u3082\u3046\u4e00\u5ea6\u4fdd\u5b58\u3092\u62bc\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
   "lab.ed.band":"{lab} \u306e {name} \u3092\u7de8\u96c6\u4e2d",
   "lab.ed.clash!":"\u3042\u306a\u305f\u304c\u7de8\u96c6\u3057\u3066\u3044\u308b\u9593\u306b {who} \u304c\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u3092\u4fdd\u5b58\u3057\u307e\u3057\u305f\u3002",
   "lab.ed.closed!":"{lab} \u306f\u7d42\u4e86\u3057\u3001\u3042\u306a\u305f\u306e\u5909\u66f4\u306f\u305d\u3053\u306b\u306f\u4fdd\u5b58\u3055\u308c\u307e\u305b\u3093\u3067\u3057\u305f\u3002",
@@ -4199,6 +4254,8 @@ var I18N = {
   "lab.exp.why!":"\u5b8c\u5168\u30ec\u30b3\u30fc\u30c9\u306b\u306f\u5404\u914d\u5217\u3092\u5fa9\u5143\u3059\u308b\u305f\u3081\u306b\u5fc5\u8981\u306a\u5024\u304c\u3059\u3079\u3066\u5165\u3063\u3066\u3044\u308b\u306e\u3067\u3001\u8aad\u307f\u8fbc\u307f\u76f4\u305b\u3070\u3053\u306e\u4e00\u89a7\u3092\u305d\u306e\u307e\u307e\u518d\u73fe\u3067\u304d\u307e\u3059\u3002\u300c\u9078\u629e\u9805\u76ee\u3092\u66f8\u304d\u51fa\u3059\u300d\u304c\u66f8\u304d\u51fa\u3059\u306e\u306f\u3088\u308a\u7c21\u7d20\u306a CSV \u3067\u3001\u8aad\u3080\u305f\u3081\u306e\u3082\u306e\u3067\u3059\u3002\u8aad\u307f\u8fbc\u307f\u7528\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002",
   "lab.find.none":"\u300c{q}\u300d\u306b\u4e00\u81f4\u3059\u308b\u3082\u306e\u306f\u3053\u3053\u306b\u3042\u308a\u307e\u305b\u3093\u3002",
   "lab.find.rec":"\u3053\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u3092\u691c\u7d22",
+  "lab.find.scope!":"\u691c\u7d22\u306f\u3053\u306e\u968e\u5c64\u3088\u308a\u4e0b\u306e\u3059\u3079\u3066\u3092\u5bfe\u8c61\u3068\u3057\u3001\u753b\u9762\u306b\u898b\u3048\u3066\u3044\u308b\u3082\u306e\u3060\u3051\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002",
+  "lab.find.where":"\u5834\u6240\uff1a{path}",
   "lab.fold.all":"\u3059\u3079\u3066",
   "lab.fold.aria1":"{name}\u3001{n} \u4ef6\u306e\u914d\u5217",
   "lab.fold.ariaN":"{name}\u3001{n} \u4ef6\u306e\u914d\u5217",
@@ -4207,7 +4264,8 @@ var I18N = {
   "lab.fold.created":"\u30d5\u30a9\u30eb\u30c0\u30fc\u3092\u4f5c\u6210\u3057\u307e\u3057\u305f",
   "lab.fold.del":"\u30d5\u30a9\u30eb\u30c0\u30fc\u3092\u524a\u9664",
   "lab.fold.deleted":"\u30d5\u30a9\u30eb\u30c0\u30fc\u3092\u524a\u9664\u3057\u307e\u3057\u305f",
-  "lab.fold.delwhy!":"\u30d5\u30a9\u30eb\u30c0\u30fc\u3092\u524a\u9664\u3059\u308b\u3068\u3001\u4e2d\u306e\u914d\u5217\u306f\u300c\u672a\u5206\u985e\u300d\u306b\u306a\u308a\u307e\u3059\u3002\u5931\u308f\u308c\u308b\u3082\u306e\u306f\u3042\u308a\u307e\u305b\u3093\u3002",
+  "lab.fold.delwhy!":"\u30d5\u30a9\u30eb\u30c0\u30fc\u3092\u524a\u9664\u3059\u308b\u3068\u3001\u4e2d\u306e\u914d\u5217\u306f\u300c\u672a\u5206\u985e\u300d\u306b\u306a\u308a\u307e\u3059\u3002\u305d\u306e\u4e2d\u306b\u3042\u308b\u30d5\u30a9\u30eb\u30c0\u30fc\u306f\u3001\u3053\u306e\u30d5\u30a9\u30eb\u30c0\u30fc\u304c\u3044\u307e\u3042\u308b\u5834\u6240\u306b\u7e70\u308a\u4e0a\u304c\u308a\u307e\u3059\u3002\u5931\u308f\u308c\u308b\u3082\u306e\u306f\u3042\u308a\u307e\u305b\u3093\u3002",
+  "lab.fold.fmoved":"\u30d5\u30a9\u30eb\u30c0\u30fc\u3092\u79fb\u52d5\u3057\u307e\u3057\u305f",
   "lab.fold.empty":"\u3053\u306e\u30d5\u30a9\u30eb\u30c0\u30fc\u306f\u7a7a\u3067\u3059\u3002\u914d\u5217\u3092\u3053\u3053\u306b\u30c9\u30e9\u30c3\u30b0\u3059\u308b\u304b\u3001\u914d\u5217\u306e\u300c\u5165\u308c\u308b\u300d\u3092\u4f7f\u3063\u3066\u304f\u3060\u3055\u3044\u3002",
   "lab.fold.menu":"\u30d5\u30a9\u30eb\u30c0\u30fc {name} \u306e\u540d\u524d\u5909\u66f4\u307e\u305f\u306f\u524a\u9664",
   "lab.fold.menuT":"\u540d\u524d\u5909\u66f4\u307e\u305f\u306f\u524a\u9664",
@@ -4215,15 +4273,19 @@ var I18N = {
   "lab.copy.lab":"\u30e9\u30dc\u306e\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u30b3\u30d4\u30fc",
   "lab.copy.other":"\u5225\u306e\u30e9\u30dc\u306b\u30b3\u30d4\u30fc",
   "lab.fold.go":"\u5165\u308c\u308b",
+  "lab.fold.moveh2":"\u3053\u306e\u30d5\u30a9\u30eb\u30c0\u30fc\u3092\u79fb\u52d5",
+  "lab.fold.movego":"\u3053\u3053\u306b\u79fb\u52d5",
   "lab.fold.moved":"{folder} \u306b\u5165\u308c\u307e\u3057\u305f",
   "lab.fold.moveh":"\u30d5\u30a9\u30eb\u30c0\u30fc\u3092\u9078\u629e…",
   "lab.fold.nameph":"\u30d5\u30a9\u30eb\u30c0\u30fc\u540d",
   "lab.fold.needname":"\u30d5\u30a9\u30eb\u30c0\u30fc\u540d\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
   "lab.fold.needname2":"\u540d\u524d\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
   "lab.fold.new":"+ \u65b0\u3057\u3044\u30d5\u30a9\u30eb\u30c0\u30fc",
+  "lab.fold.nodest":"\u3053\u306e\u30d5\u30a9\u30eb\u30c0\u30fc\u3092\u7f6e\u3051\u308b\u5834\u6240\u306f\u307b\u304b\u306b\u3042\u308a\u307e\u305b\u3093\u3002\u30d5\u30a9\u30eb\u30c0\u30fc\u306f 3 \u968e\u5c64\u307e\u3067\u3067\u3001\u81ea\u5206\u81ea\u8eab\u306e\u4e2d\u306b\u306f\u79fb\u52d5\u3067\u304d\u307e\u305b\u3093\u3002",
   "lab.fold.newh":"\u65b0\u3057\u3044\u30d5\u30a9\u30eb\u30c0\u30fc",
   "lab.fold.open":"\u30d5\u30a9\u30eb\u30c0\u30fc {name} \u3092\u958b\u304f",
   "lab.fold.rename":"\u540d\u524d\u3092\u5909\u66f4",
+  "lab.fold.top":"\u6700\u4e0a\u4f4d",
   "lab.fold.renamed":"\u540d\u524d\u3092\u5909\u66f4\u3057\u307e\u3057\u305f",
   "lab.fold.unfiled":"\u672a\u5206\u985e",
   "lab.h":"\u30e9\u30dc",
@@ -4412,8 +4474,8 @@ var I18N = {
   "lab.tag.member":"\u30e1\u30f3\u30d0\u30fc",
   "lab.tag.pending":"\u307e\u3060\u30b5\u30a4\u30f3\u30a4\u30f3\u3057\u3066\u3044\u307e\u305b\u3093",
   "lab.tag.you":"\u3042\u306a\u305f",
-  "lab.tree.back":"\u623b\u308b",
   "lab.tree.bydate":"\u66f4\u65b0\u65e5",
+  "lab.tree.up":"\u4e00\u3064\u4e0a\u306e\u968e\u5c64",
   "lab.tree.byname":"\u540d\u524d",
   "lab.tree.cycle":"\u30d5\u30a9\u30eb\u30c0\u30fc\u3092\u3001\u305d\u306e\u30d5\u30a9\u30eb\u30c0\u30fc\u81ea\u8eab\u306e\u4e2d\u3084\u914d\u4e0b\u306e\u30b5\u30d6\u30d5\u30a9\u30eb\u30c0\u30fc\u306e\u4e2d\u306b\u79fb\u52d5\u3059\u308b\u3053\u3068\u306f\u3067\u304d\u307e\u305b\u3093\u3002",
   "lab.tree.deep":"\u30d5\u30a9\u30eb\u30c0\u30fc\u306f 3 \u968e\u5c64\u307e\u3067\u3067\u3001\u3053\u306e\u968e\u5c64\u304c\u4e0a\u9650\u3067\u3059\u3002\u65b0\u3057\u3044\u30d5\u30a9\u30eb\u30c0\u30fc\u306f1 \u3064\u4e0a\u306e\u968e\u5c64\u306b\u4f5c\u308b\u304b\u3001\u4eca\u306e\u30d5\u30a9\u30eb\u30c0\u30fc\u3092\u305d\u306e\u307e\u307e\u304a\u4f7f\u3044\u304f\u3060\u3055\u3044\u3002",
@@ -4440,7 +4502,6 @@ var I18N = {
   "lab.ver.none!":"\u307e\u3060\u4ee5\u524d\u306e\u30d0\u30fc\u30b8\u30e7\u30f3\u306f\u3042\u308a\u307e\u305b\u3093\u3002\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u306f\u4e00\u5ea6\u3057\u304b\u4fdd\u5b58\u3055\u308c\u3066\u3044\u306a\u3044\u305f\u3081\u3001\u623b\u308c\u308b\u5148\u304c\u3042\u308a\u307e\u305b\u3093\u3002\u3053\u308c\u4ee5\u964d\u306f\u8ab0\u304b\u304c\u4fdd\u5b58\u3059\u308b\u305f\u3073\u306b\u3001\u7f6e\u304d\u63db\u3048\u3089\u308c\u305f\u30d0\u30fc\u30b8\u30e7\u30f3\u304c\u3053\u3053\u306b\u6b8b\u308a\u307e\u3059\u3002",
   "lab.ver.on":"{name} \u306e\u30d0\u30fc\u30b8\u30e7\u30f3\u5c65\u6b74",
   "lab.ver.restore":"\u3053\u306e\u30d0\u30fc\u30b8\u30e7\u30f3\u306b\u623b\u3059",
-  "lab.ver.same":"\u30d0\u30fc\u30b8\u30e7\u30f3 {v} \u3068\u540c\u3058\u914d\u5217",
   "lab.ver.vn":"\u30d0\u30fc\u30b8\u30e7\u30f3 {v}",
   "lab.ver.warn!":"\u5143\u306b\u623b\u3059\u3068\u3001\u65b0\u3057\u3044\u30d0\u30fc\u30b8\u30e7\u30f3\u304c\u4f5c\u3089\u308c\u307e\u3059\u3002\u4f55\u3082\u524a\u9664\u3055\u308c\u307e\u305b\u3093\u3002\u30d0\u30fc\u30b8\u30e7\u30f3 {v} \u3082\u3001\u305d\u306e\u3042\u3068\u306b\u4fdd\u5b58\u3055\u308c\u305f\u3082\u306e\u3082\u3001\u3059\u3079\u3066\u3053\u306e\u4e00\u89a7\u306b\u6b8b\u308a\u307e\u3059\u3002\u30e9\u30dc\u306e\u5168\u54e1\u306b\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u306e\u5909\u66f4\u304c\u898b\u3048\u307e\u3059\u3002",
   "mk.0001":"Oligo Calculator: \u30aa\u30ea\u30b4\u30cc\u30af\u30ec\u30aa\u30c1\u30c9\u306e\u5206\u5b50\u91cf\u3001Tm\u3001ε260\u3001\u6fc3\u5ea6",
@@ -4651,7 +4712,7 @@ var I18N = {
   "mk.0213":"\u4fdd\u5b58\u3057\u305f\u914d\u5217\u3092\u958b\u304d\u76f4\u3059\u3001\u30b3\u30d4\u30fc\u3059\u308b\u3001\u66f8\u304d\u51fa\u3059\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002\u30b5\u30a4\u30f3\u30a4\u30f3\u3057\u3066\u3044\u308c\u3070\u3001\u7aef\u672b\u9593\u3092\u79fb\u52d5\u3059\u308b\u30b3\u30d4\u30fc\u306f\u30a2\u30ab\u30a6\u30f3\u30c8\u304c\u4fdd\u6301\u3057\u3001\u3053\u306e\u30d6\u30e9\u30a6\u30b6\u306f\u30aa\u30d5\u30e9\u30a4\u30f3\u306e\u8907\u88fd\u3092\u4fdd\u3061\u307e\u3059\u3002\u30b5\u30a4\u30f3\u30a2\u30a6\u30c8\u3057\u3066\u3044\u308b\u5834\u5408\u3001\u914d\u5217\u306f\u3053\u306e\u30d6\u30e9\u30a6\u30b6\u306e\u4e2d\u3060\u3051\u306b\u3042\u308a\u307e\u3059\u3002",
   "mk.0214":"\u30b9\u30ad\u30e3\u30f3",
   "mk.0215":"\u9078\u629e\u9805\u76ee\u3092\u66f8\u304d\u51fa\u3059 · CSV",
-  "mk.0216":"\u9078\u629e\u9805\u76ee\u3092\u5171\u6709",
+  "mk.0216":"\u30b3\u30d4\u30fc\u3092\u5171\u6709",
   "mk.0217":"\u30e9\u30dc\u306e\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u3078\u79fb\u3059",
   "mk.0218":"\u3059\u3079\u3066\u6d88\u53bb…",
   "mk.0219":"\u9078\u629e",
@@ -5030,6 +5091,7 @@ var I18N = {
   "ui.lab.inv.go":"\u8ffd\u52a0",
   "ui.lab.inv.hint":"\u30a2\u30c9\u30ec\u30b9\u3092\u8ffd\u52a0\u3059\u308b\u3068\u3001\u8ffd\u52a0\u3055\u308c\u305f\u65b9\u306b\u30e9\u30dc\u3078\u306e\u30a2\u30af\u30bb\u30b9\u6a29\u304c\u4ed8\u4e0e\u3055\u308c\u307e\u3059\u3002<b>\u8ffd\u52a0\u3055\u308c\u305f\u65b9\u304a\u4e00\u4eba\u305a\u3064\u306b\u30e1\u30fc\u30eb\u3067\u304a\u77e5\u3089\u305b\u3057\u307e\u3059</b>\u3002\u9001\u4fe1\u306b\u5931\u6557\u3057\u305f\u5834\u5408\u306f\u3053\u3053\u3067\u304a\u4f1d\u3048\u3057\u307e\u3059\u3002",
   "ui.lab.inv.later":"\u3042\u3068\u3067",
+  "ui.lab.inv.noros!":"<b>{name}</b> \u306b\u3059\u3067\u306b\u3044\u308b\u65b9\u3092\u78ba\u8a8d\u3067\u304d\u306a\u304b\u3063\u305f\u305f\u3081\u3001\u3053\u3053\u306b\u306f\u7a7a\u304d\u30e9\u30a4\u30bb\u30f3\u30b9\u6570\u3092\u8868\u793a\u3057\u3066\u3044\u307e\u305b\u3093\u3002\u30a2\u30c9\u30ec\u30b9\u306e\u8ffd\u52a0\u306f\u3067\u304d\u307e\u3059\u3002\u30e9\u30a4\u30bb\u30f3\u30b9\u304c\u8db3\u308a\u306a\u3044\u5834\u5408\u306f\u3053\u3053\u3067\u304a\u4f1d\u3048\u3057\u307e\u3059\u3002",
   "ui.lab.inv.miss":"<b>{list} \u3078\u306e\u30e1\u30fc\u30eb\u9001\u4fe1\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002</b>\u304a\u624b\u6570\u3067\u3059\u304c\u3001\u76f4\u63a5\u304a\u4f1d\u3048\u304f\u3060\u3055\u3044\u3002\u8ffd\u52a0\u3055\u308c\u305f\u65b9\u306f\u3001\u305d\u306e\u30a2\u30c9\u30ec\u30b9\u3067\u30b5\u30a4\u30f3\u30a4\u30f3\u3059\u308b\u3068\u30e9\u30dc\u306b\u53c2\u52a0\u3067\u304d\u307e\u3059\u3002",
   "ui.lab.inv.n.add":"\u8ffd\u52a0\u5bfe\u8c61 {n} \u4ef6",
   "ui.lab.inv.n.bad":"\u30a2\u30c9\u30ec\u30b9\u3067\u306a\u3044\u3082\u306e {n} \u4ef6",
@@ -5065,7 +5127,17 @@ var I18N = {
   "ui.lib.mwgone":"\u7d50\u679c\u306a\u3057",
   "ui.lib.mwgoneT":"\u3053\u306e\u8a18\u9332\u306f {codes} \u3092\u4f7f\u3063\u3066\u3044\u307e\u3059\u304c\u3001\u3053\u306e\u8a08\u7b97\u30c4\u30fc\u30eb\u306f\u73fe\u5728\u305d\u308c\u3092\u8a8d\u8b58\u3067\u304d\u306a\u3044\u305f\u3081\u3001\u5206\u5b50\u91cf\u3092\u8868\u793a\u3057\u307e\u305b\u3093\u3002\u4fdd\u5b58\u6642\u306e\u5206\u5b50\u91cf\u306f {was} \u3067\u3057\u305f\u3002",
   "ui.lib.readonly":"\u8aad\u307f\u53d6\u308a\u5c02\u7528",
+  "ui.lib.fromshare":"\u5171\u6709\u30ea\u30f3\u30af\u304b\u3089\u4fdd\u5b58 · {when}",
   "ui.lib.rolab!":"\u3053\u306e\u9805\u76ee\u304c\u5c5e\u3059\u308b\u30e9\u30dc\u306e\u30e1\u30f3\u30d0\u30fc\u3067\u306f\u306a\u304f\u306a\u308a\u307e\u3057\u305f\u3002\u958b\u3044\u305f\u308a\u30b3\u30d4\u30fc\u3057\u305f\u308a\u3059\u308b\u3053\u3068\u306f\u3067\u304d\u307e\u3059\u304c\u3001\u7de8\u96c6\u3084\u524a\u9664\u306f\u3067\u304d\u307e\u305b\u3093\u3002",
+  "ui.sh.title":"\u5171\u6709\u30ea\u30f3\u30af",
+  "ui.sh.copy":"\u30ea\u30f3\u30af\u3092\u30b3\u30d4\u30fc",
+  "ui.sh.email":"\u30e1\u30fc\u30eb",
+  "ui.sh.native":"\u307b\u304b\u306e\u65b9\u6cd5\u3067\u5171\u6709",
+  "ui.sh.err.many":"1 \u3064\u306e\u30ea\u30f3\u30af\u3067\u5171\u6709\u3067\u304d\u308b\u914d\u5217\u306f 10 \u4ef6\u307e\u3067\u3067\u3059\u3002",
+  "ui.sh.err.none":"\u5171\u6709\u3059\u308b\u914d\u5217\u3092 1 \u4ef6\u4ee5\u4e0a\u9078\u3093\u3067\u304f\u3060\u3055\u3044\u3002",
+  "ui.sh.err.big":"\u9078\u629e\u3057\u305f\u5185\u5bb9\u304c\u5927\u304d\u3059\u304e\u308b\u305f\u3081\u3001\u30ea\u30f3\u30af\u306b\u3057\u3066\u5171\u6709\u3067\u304d\u307e\u305b\u3093\u3002",
+  "ui.sh.err.lab!":"\u30e9\u30dc\u306e\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u3042\u308b\u914d\u5217\u306f\u3001\u516c\u958b\u30ea\u30f3\u30af\u306b\u3067\u304d\u307e\u305b\u3093\u3002\u30e9\u30dc\u306e\u30e1\u30f3\u30d0\u30fc\u306f\u30e9\u30dc\u5185\u3067\u305d\u306e\u307e\u307e\u958b\u3051\u307e\u3059\u3002",
+  "ui.sh.priv!":"\u5171\u6709\u30ea\u30f3\u30af\u306b\u306f\u914d\u5217\u30c7\u30fc\u30bf\u305d\u306e\u3082\u306e\u3068\u3001\u4f7f\u7528\u3057\u3066\u3044\u308b\u30ab\u30b9\u30bf\u30e0\u30e2\u30ce\u30de\u30fc\u306e\u540d\u524d\u304c\u542b\u307e\u308c\u307e\u3059\u3002\u30ea\u30f3\u30af\u3092\u77e5\u3063\u3066\u3044\u308b\u4eba\u306f\u8ab0\u3067\u3082\u305d\u306e\u3059\u3079\u3066\u3092\u8aad\u3081\u307e\u3059\u3002\u6a5f\u5bc6\u3068\u8003\u3048\u308b\u914d\u5217\u306f\u5171\u6709\u3057\u306a\u3044\u3067\u304f\u3060\u3055\u3044\u3002",
   "ui.seatbig.back!":"\u623b\u3063\u3066\u5909\u66f4\u3059\u308b",
   "ui.seatbig.body!":"{n} \u30e9\u30a4\u30bb\u30f3\u30b9\u3067 {per} {usd}\u3001\u3053\u306e\u30a2\u30ab\u30a6\u30f3\u30c8\u306b\u8acb\u6c42\u3055\u308c\u307e\u3059\u3002\u591a\u304f\u306e\u30e9\u30dc\u306f 3\u301c30 \u30e9\u30a4\u30bb\u30f3\u30b9\u3092\u8cfc\u5165\u3057\u3066\u3044\u307e\u3059\u3002\u305d\u308c\u3067\u3088\u3051\u308c\u3070\u305d\u306e\u307e\u307e\u9032\u3093\u3067\u304f\u3060\u3055\u3044\u3002",
   "ui.seatbig.eyebrow!":"\u3054\u78ba\u8a8d\u304f\u3060\u3055\u3044",
@@ -6042,7 +6114,7 @@ body[data-mode="dark"] .catcard .btn-ins{color:var(--accent)}
    classes probed are correctly guarded, which is exactly why these two were
    easy to miss. Without the guard, a Pro user's Library replaced the table with
    the folder browser and left the old toolbar floating above nothing: search,
-   Export selected, Share selected, and a red "Clear all…" that wipes the entire
+   Export selected, the [data-hsharesel] control, and a red "Clear all…" that wipes the entire
    personal library. el.hidden === true throughout, so any test reading .hidden
    reported success.
 
@@ -7443,7 +7515,7 @@ if(/[?&]billing=/.test(window.__ocSearch)){
              desktop/touch split all come along unchanged. -->
         <button class="hb hb-scan" data-scan="sense" aria-label="Scan a label photo and add sequences to your library" data-i18n="mk.0214" data-i18n-attr="aria-label:ak.0087"><span aria-hidden="true"><svg class="i16"><use href="#i-camera"/></svg></span> Scan</button>
         <button class="hb" data-hexport data-i18n="mk.0215">Export selected · CSV</button>
-          <button class="hb" data-hsharesel data-i18n="mk.0216">Share selected</button>
+          <button class="hb" data-hsharesel data-i18n="mk.0216">Share a Copy</button>
           <button class="hb" data-hcopylab hidden data-i18n="mk.0217">Move to the lab library</button>
           <!-- R52 (audit LOW): this is unhidden by renderHistShell when the
                signed-in user actually manages a lab. It was verified live as
@@ -9903,7 +9975,7 @@ let histSearch = "";
    path -- saveCurrent, Duplicate, Save-as-version, scan save-all -- does
    history.unshift() without touching it. Tick "Seed strand number 1", save one
    new strand, re-render: the checkmark has moved to the new top row. Export
-   CSV, Share selected and Move to lab then all act on a strand the user never
+   CSV, [data-hsharesel] and Move to lab then all act on a strand the user never
    selected, and the last publishes it to a shared lab library.
 
    Keyed on the entry's stable `id` now, which migrateIds() already guarantees.
@@ -13894,6 +13966,20 @@ function renderHistShell(){
     if(w.gone) return '<span class="h-chip" title="'+cbEsc(T('ui.lib.mwgoneT',{codes:w.codes,was:w.was}))+'">'+cbEsc(T('ui.lib.mwgone'))+'</span>';
     return base+' <span class="h-chip" title="'+cbEsc(T('ui.lib.mwdiffT',{was:w.was,now:w.now}))+'">'+cbEsc(T('ui.lib.mwdiff'))+'</span>';
   }
+  /* R86a/J5.  The date is LOCALE-FORMATTED through Intl, never an English
+     string: docs/NORTH-STAR.md's rule for every displayed number, and a date
+     is one.  ⚠ `lang()` is block #14's; this block reads ocI18n the same way
+     block #14's own `_n` does. */
+  function _histFromShare(h){
+    if(!h||!h.fromShare) return '';
+    var T2=function(k,v){ try{ return (typeof window.t==='function')?window.t(k,v):''; }catch(_){ return ''; } };
+    var when='';
+    try{ var lg=(window.ocI18n&&window.ocI18n.get)?window.ocI18n.get():'en';
+      when=new Date(h.fromShare).toLocaleDateString(lg,{day:'numeric',month:'short',year:'numeric'}); }
+    catch(_e){ try{ when=new Date(h.fromShare).toLocaleDateString(); }catch(_e2){ return ''; } }
+    var s=T2('ui.lib.fromshare',{when:when}); if(!s) return '';
+    return '<span class="h-chip">'+cbEsc(s)+'</span>';
+  }
   var _g=_custGen();
   if(_g===null){ _mwCache=null; }
   else if(_mwGen!==_g){ _mwCache={}; _mwGen=_g; }
@@ -13912,7 +13998,7 @@ function renderHistShell(){
       '<td data-th="Name">'+(ro
         ? '<span class="hn-ro" title="'+cbEsc(_roW)+'">'+cbEsc(h.name||'Untitled strand')+'</span>'
         : '<button type="button" class="hn-edit" data-hrename="'+i+'" aria-label="Rename '+cbEsc(h.name||'strand')+'">'+cbEsc(h.name||'Untitled strand')+'</button>')+
-        (h.folder?'<span class="h-chip">'+cbEsc(h.folder)+'</span>':'')+((h.tags&&h.tags.length)?h.tags.map(function(t){return '<span class="h-chip tag">'+cbEsc(t)+'</span>';}).join(''):'')+'</td>'+
+        (h.folder?'<span class="h-chip">'+cbEsc(h.folder)+'</span>':'')+((h.tags&&h.tags.length)?h.tags.map(function(t){return '<span class="h-chip tag">'+cbEsc(t)+'</span>';}).join(''):'')+_histFromShare(h)+'</td>'+
       '<td data-th="Sequence"><span class="hseq">'+cbEsc(h.duplex?((h.seq||'').replace(/\s+/g,'')+' / '+(h.duplex.antiSeq||'').replace(/\s+/g,'')):((h.seq||'').replace(/\s+/g,'')))+'</span></td>'+
       '<td data-th="Type"><span class="badge'+(h.type==='DNA'?' dna':'')+'">'+cbEsc(h.type||'')+(h.duplex?' '+t('mk.0044'):'')+' · '+(h.n||0)+' nt</span></td>'+
       '<td data-th="MW" class="hmw">'+_histMwCell(h)+'</td>'+
@@ -16675,6 +16761,11 @@ try{
   function toast(t){ try{ if(window.oligoAnnounce) window.oligoAnnounce(t);   /* R78d/P4 */
     showNotice('oligoShareToast',{text:t,dismissible:true,announced:true}); setTimeout(function(){ try{ removeNotice('oligoShareToast'); }catch(_){ /* teardown of something that may already be gone -- the goal state is reached either way */ } },3400); }catch(_){ /* teardown of something that may already be gone -- the goal state is reached either way */ } }
 
+  /* R86a.  ⚠⚠ `window.t`, never bare `t()` -- `t` is shadowed far wider
+     than "three click delegates" and block #14 alone has eight (R76d). Same
+     shape as block #14's own `_t`, deliberately, so the two cannot drift. */
+  function _t(k,v){ try{ if(typeof window.t==='function') return window.t(k,v); }catch(_){ } return ''; }
+
   function toShare(h){
     var o={ name:(typeof h.name==='string'?h.name:''), seq:h.seq||'', type:h.type||'DNA', linkage:h.linkage||'PO', five:h.five||'OH', fiveThio:!!h.fiveThio, three:h.three||'OH' };
     if(h.advanced) o.advanced=1;
@@ -16696,6 +16787,25 @@ try{
   function buildUrl(strands){
     if(!strands||!strands.length) throw new Error('EMPTY');
     if(strands.length>MAXN) throw new Error('TOO_MANY');
+    /* R86a/J4 (Albert's ruling 3e, 2026-08-25).  ⛔⛔ A LAB RECORD MAY NOT
+       BECOME A PUBLIC LINK, AND THE TEST IS HERE RATHER THAN AT THE BUTTON.
+       R85c measured the boundary that existed before this line and it was a
+       COINCIDENCE, not a policy: Share is hidden in the shared scope by
+       `.view-hist[data-hist-empty="all"]` -- the "your saved list is empty"
+       rule -- while the ONE selection provider already hands over a
+       colleague's record (arm C1) and this function already built a valid
+       312-character link out of it (arm D1).  A door locked because a filing
+       cabinet stands in front of it.  ⚠ Any round that makes the shared scope
+       report "none" would have turned Share live on lab records with no other
+       change and no warning.
+       ⚠ Inside buildUrl and not at its call site, so the EXPORTED `_buildUrl`
+       seam is covered too: there is no way to hold a lab record and obtain a
+       link for it.  `toShare()` strips `__labId`, so this must run first.
+       ⚠ AND ONE HONEST LIMIT, STATED RATHER THAN DISCOVERED LATER: a labmate
+       can still "Open a copy" into their own library and share THAT. This
+       stops the one-click path, not a determined person -- a sign, not a
+       wall, and Albert has been told so. */
+    for(var _li=0;_li<strands.length;_li++){ if(strands[_li]&&strands[_li].__labId) throw new Error('LAB'); }
     var url=location.origin+location.pathname+'#share='+encJson({ v:VER, strands:strands.map(toShare), customBases:collectDefs(strands) });
     if(url.length>MAXURL) throw new Error('TOO_LARGE');
     return url;
@@ -16703,9 +16813,21 @@ try{
   function shareStrands(strands){
     var url;
     try{ url=buildUrl(strands); }
-    catch(e){ toast(e.message==='TOO_MANY'?'You can share up to 10 strands per link.':e.message==='EMPTY'?'Select at least one strand to share.':'This selection is too large to share as a link.'); return; }
+    catch(e){ toast(_t(e.message==='TOO_MANY'?'ui.sh.err.many':e.message==='EMPTY'?'ui.sh.err.none':e.message==='LAB'?'ui.sh.err.lab!':'ui.sh.err.big')); return; }
     var text= strands.length===1 ? ('Oligo: '+(strands[0].name||strands[0].seq||'strand')) : (strands.length+' oligos from the Oligo Calculator');
-    if(navigator.share && window.isSecureContext){ navigator.share({title:'Oligo Calculator',text:text,url:url}).catch(function(err){ if(err&&err.name==='AbortError') return; openModal(url,text); }); return; }
+    /* R86a/J2 (Albert's ruling 3c, 2026-08-25).  ⛔⛔ THE DISCLOSURE WAS
+       SKIPPED ON DESKTOP, NOT JUST ON A PHONE.  The branch that stood here
+       was `if(navigator.share && window.isSecureContext){ ... return; }`, and
+       R85c arm N0 measured `navigator.share` as a FUNCTION on ordinary
+       Windows Chrome and Edge -- `productWouldTakeNativePath: true` -- so it
+       returned before openModal was ever reached.  Arm H0: `modalAppeared
+       false, warningOnScreen false`.  The one sentence in this product that
+       tells a person a link is public and permanent was showing on the path
+       FEWER people take.
+       ⚠ THE NATIVE SHEET IS KEPT.  It is genuinely better on a phone, and
+       the change is the ORDER, not the mechanism: openModal now renders the
+       warning and offers the sheet as a button inside it, so the call still
+       happens inside a real click and keeps its transient user activation. */
     openModal(url,text);
   }
 
@@ -16753,18 +16875,31 @@ try{
   function openModal(url,text){
     /* the link input is the one thing the user came for, so it takes focus and
        is pre-selected -- a deliberate choice, not the default first-focusable */
-    var sc=openScrim(null,{label:'Share link', initialFocus:'input', select:true});
+    var sc=openScrim(null,{label:_t('ui.sh.title'), initialFocus:'input', select:true});
     var box=el('div','oshare-box');
-    var x=el('button','oshare-btn oshare-x','✕'); x.type='button'; x.setAttribute('aria-label','Close'); x.addEventListener('click',function(){ sc._close(); }); box.appendChild(x);
-    box.appendChild(el('h3',null,'Share link')); box.appendChild(el('p','oshare-sub',text));
-    var row=el('div','oshare-row'); var inp=el('input'); inp.readOnly=true; inp.value=url; inp.setAttribute('aria-label','Share link'); row.appendChild(inp);
-    var copy=el('button','oshare-btn primary','Copy link'); copy.type='button'; copy.addEventListener('click',function(){ if(typeof copyText==='function') copyText(url,copy); else { try{ inp.select(); document.execCommand('copy'); copy.textContent='Copied ✓'; }catch(_){ /* focus / caret / scroll restoration on a node that may already be gone -- cosmetic, no value is shown or hidden by it */ } } }); row.appendChild(copy); box.appendChild(row);
-    var em=el('button','oshare-btn','Email'); em.type='button'; em.addEventListener('click',function(){ location.href='mailto:?subject='+encodeURIComponent('Oligo Calculator')+'&body='+encodeURIComponent(text+'\n\n'+url); }); box.appendChild(em);
+    var x=el('button','oshare-btn oshare-x','✕'); x.type='button'; x.setAttribute('aria-label',_t('lab.dlg.close')); x.addEventListener('click',function(){ sc._close(); }); box.appendChild(x);
+    box.appendChild(el('h3',null,_t('ui.sh.title'))); box.appendChild(el('p','oshare-sub',text));
+    var row=el('div','oshare-row'); var inp=el('input'); inp.readOnly=true; inp.value=url; inp.setAttribute('aria-label',_t('ui.sh.title')); row.appendChild(inp);
+    var copy=el('button','oshare-btn primary',_t('ui.sh.copy')); copy.type='button'; copy.addEventListener('click',function(){ if(typeof copyText==='function') copyText(url,copy); else { try{ inp.select(); document.execCommand('copy'); copy.textContent='Copied ✓'; }catch(_){ /* focus / caret / scroll restoration on a node that may already be gone -- cosmetic, no value is shown or hidden by it */ } } }); row.appendChild(copy); box.appendChild(row);
+    var em=el('button','oshare-btn',_t('ui.sh.email')); em.type='button'; em.addEventListener('click',function(){ location.href='mailto:?subject='+encodeURIComponent('Oligo Calculator')+'&body='+encodeURIComponent(text+'\n\n'+url); }); box.appendChild(em);
+    /* R86a/J2.  THE NATIVE SHEET, REACHED FROM INSIDE THE DISCLOSURE.
+       ⚠ It is offered only where it exists, so a desktop without the Web
+       Share API is not shown a control that would throw -- and the two paths
+       now see the SAME warning, which is the whole of the ruling.
+       ⚠ `.share()` needs transient user activation; this is a click handler,
+       so the activation is live.  A rejection is swallowed the way the old
+       call site swallowed it: AbortError is the user closing the sheet, and
+       everything else leaves the reader on this dialog, which already offers
+       Copy link and Email. */
+    if(navigator.share && window.isSecureContext){
+      var nat=el('button','oshare-btn',_t('ui.sh.native')); nat.type='button';
+      nat.addEventListener('click',function(){ try{ navigator.share({title:'Oligo Calculator',text:text,url:url}).catch(function(){ /* AbortError is the reader closing the sheet; anything else leaves them on this dialog, which still offers Copy link and Email */ }); }catch(_e){ ocFail('openModal#native',_e); } });
+      box.appendChild(nat); }
     /* R52 (audit, Verified-clean note): the outbound whitelist leaks nothing --
        no token, uid, email, note, tag or folder -- but a custom monomer's NAME
        does travel verbatim, so an internal codename leaves with the link. Worth
        one line of copy. */
-    box.appendChild(el('p','oshare-priv','A share link carries the strand data, and the name of any custom monomer it uses. Anyone with the link can read all of it. Do not share sequences you consider confidential.'));
+    box.appendChild(el('p','oshare-priv',_t('ui.sh.priv!')));
     sc.appendChild(box);
   }
 
@@ -16849,7 +16984,13 @@ try{
        up to the caller now. */
     try{
       loadSavedState(pe); ok=saveCurrent();
-      if(ok===true&&history[0]){ saved=history[0]; saved.name=s.name||saved.name||''; if(!saved.id&&typeof crypto!=='undefined'&&crypto.randomUUID){ try{ saved.id=crypto.randomUUID(); }catch(_){ /* feature probe -- the absence IS the answer */ } } saveHist(); }
+      if(ok===true&&history[0]){ saved=history[0]; saved.name=s.name||saved.name||''; if(!saved.id&&typeof crypto!=='undefined'&&crypto.randomUUID){ try{ saved.id=crypto.randomUUID(); }catch(_){ /* feature probe -- the absence IS the answer */ } }
+        /* R86a/J5.  ⭐ THE GAP ALBERT NAMED: a recipient's copy carried
+           NOTHING about where it came from, so it looked like a sequence they
+           had typed themselves.  Stamped HERE because this is the one place a
+           record is created from a link -- both the per-card Save and Save
+           all reach it. */
+        saved.fromShare=Date.now(); saveHist(); }
     }catch(_e){ ocFail('saveShared#1',_e); ok=false; }
     finally{ WORK.forEach(function(k){ S[k]=snap[k]; }); try{ save(); }catch(_e){ ocFail('saveShared#3',_e); } }
     if(ok!=='gated'&&ok!==true) return false;
@@ -18184,15 +18325,6 @@ try{
      version, so the answer is free and local.
      ⛔ IT COMPARES THE SEQUENCE AND THE LABEL SAYS SEQUENCE.  A label claiming
      more than the test behind it would be this round's own defect. */
-  function verSame(list){
-    for(var i=0;i<list.length;i++){
-      list[i].same='';
-      for(var j=list.length-1;j>i;j--){          /* the OLDEST match, ascending */
-        if(list[j].v!==''&&list[j].seq===list[i].seq){ list[i].same=list[j].v; break; }
-      }
-    }
-    return list;
-  }
   function verCount(n){ return _t(n===1?'lab.ver.chars1':'lab.ver.charsN',{n:_n(n)}); }
   function openVersions(rowId, name){
     if(!rowId){ toast(_t('lab.cmt.nosync')); return; }
@@ -18223,7 +18355,6 @@ try{
         +(r.cur?('<span class="lab-ver-cur">'+esc(_t('lab.ver.cur'))+'</span>'):'')
         +'</div>'
         +'<div class="lab-ver-m">'+esc(meta)+' · '+esc(verCount(r.seq.length))+'</div>';
-      if(r.same!=='') h+='<div class="lab-ver-m">'+esc(_t('lab.ver.same',{v:r.same}))+'</div>';
       if(isOpen) h+= r.seq
         ? ('<div class="lab-ver-seq">'+esc((typeof spaceSeq==='function')
               ?spaceSeq(r.seq,(r.data||{}).type,(r.data||{}).linkage):r.seq)+'</div>')
@@ -18266,7 +18397,15 @@ try{
         var got=await verFetch(rowId);
         if(!got){ _err=true; draw(); return; }
         var list=[verRow(got.live,true)].concat((got.past||[]).map(function(p){ return verRow(p,false); }));
-        _rows=verSame(list); _err=false;
+        /* R85a/J2.  ⛔ `verSame` IS GONE, NOT MERELY UNCALLED.  It
+           existed to label a version whose sequence matched an earlier one,
+           which after R85b's paste is a version the server does not create:
+           a re-filing writes none, and a save that changes nothing writes none.
+           ⚠ A RESTORE still produces identical contents, and that case
+           keeps its own sentence -- `lab.ver.warn!` says so BEFORE the button,
+           which is the place it is useful.  A label after the fact was the
+           weaker half of the pair. */
+        _rows=list; _err=false;
       }catch(_e){ ocFail('ver#load',_e); _err=true; }
       draw();
     }
@@ -18611,6 +18750,14 @@ try{
           : (parent ? {p_name:name,p_parent:parent} : {p_name:name})); }
   async function folderRename(id,name){ return await rpc('folder_rename',{p_id:id,p_name:name}); }
   async function folderDelete(id){ return await rpc('folder_delete',{p_id:id}); }
+  /* R85a/J1e (audit LAB-P2-08).  ⛔⛔ THE SERVER HAS HAD THIS SINCE
+     R76e AND NOTHING HAS EVER CALLED IT.  Measured on the pinned input build:
+     the string `folder_move` occurred ZERO times in build/index.html, comments
+     included, while the function stands on production with `authenticated=X`.
+     A shipped capability with no way in.
+     ⚠ Its authority test is the one fMayOrganise mirrors, so the client
+     offering the control is a courtesy and the server is still the boundary. */
+  async function folderMove(id,parent){ return await rpc('folder_move',{p_id:id,p_parent:parent||null}); }
   async function strandMove(rowId,folderId){ return await rpc('strand_move',{p_strand:rowId,p_folder:folderId||null}); }
   /* R76d.  A member's own space inside a lab. ⚠ THE STORED NAME IS NOT
      THE DISPLAYED NAME: the paste creates this folder server-side, where
@@ -18641,6 +18788,54 @@ try{
   function fPath(folders, id){ var out=[], by={}, n=0;
     (folders||[]).forEach(function(f){ by[f.id]=f; });
     var cur=by[id]; while(cur && n<4){ out.unshift(cur); cur=by[cur.parent_id]; n++; }
+    return out; }
+  /* R85a/J1 (audit LAB-P2-08).  ⚠⚠ ONE SUBTREE WALK, FOUR JOBS.  A
+     recursive search, a path label, a legal move destination and the delete
+     explanation all ask the same question -- what is underneath this folder --
+     and before this round every one of them answered it with `fKids`, which is
+     exactly one level deep.
+     ⚠ Bounded the way fPath is bounded: the server caps depth at 3 and a
+     bounded walk cannot hang on a corrupt chain.  `n` counts LEVELS. */
+  function fDesc(folders, id, n){
+    var out=[], kids=fKids(folders, id||null), i;
+    if((n||0)>4) return out;
+    for(i=0;i<kids.length;i++){
+      out.push(kids[i]);
+      out=out.concat(fDesc(folders, kids[i].id, (n||0)+1)); }
+    return out; }
+  /* the ancestors of `f`, nearest last, as one label.  '' when f is top level.
+     ⚠ fName and never f.name: a private space renders a TRANSLATED name
+     while the column holds the server's English one, so spelling f.name into a
+     path would leak a string no reader is ever shown. */
+  function fWhere(folders, f){
+    var p=fPath(folders, f&&f.parent_id), out=[], i;
+    for(i=0;i<p.length;i++) out.push(fName(p[i]));
+    return out.join(' \u203a '); }
+  /* R85a/J1g.  ⚠⚠ THE CAPABILITY, NOT THE SCREEN.  folder_rename,
+     folder_delete and folder_move share ONE authority test on the server, read
+     back from production on 2026-08-20:
+         (user_id = auth.uid() and is_pro())
+       or (lab_id is not null and (is_lab_manager(lab_id) or created_by = auth.uid()))
+     The personal scope has no lab_id and this browser is Pro-only, so the first
+     arm is always true there.  In a lab it is manager-or-creator, and the menu
+     was being offered to every seat.
+     ⚠ A null uid reads as NOT MINE, which hides a control rather than
+     offering one whose only outcome is an error -- the direction R76d/D4 chose
+     for a private space, and the same reason. */
+  function fMayOrganise(f, labId){
+    if(!labId) return true;
+    return _isMgr(labId) || fMine(f); }
+  /* R85a/J1d.  ⚠ ONE LABELLER FOR BOTH PICKERS, so they cannot drift
+     apart again: they had the same defect and were two lines. */
+  function _pickRows(fs){
+    var src=(fs||[]), out=[], i, w;
+    for(i=0;i<src.length;i++){
+      w=fWhere(src, src[i]);
+      out.push({ id:src[i].id, __lbl:(w?(w+' \u203a '):'')+fName(src[i]) }); }
+    var lang=(window.ocI18n&&window.ocI18n.get)?window.ocI18n.get():'en', c=null;
+    try{ c=new Intl.Collator(lang,{numeric:true,sensitivity:'base'}); }catch(_){ c=null; }
+    out.sort(function(a,b){ return c?c.compare(a.__lbl,b.__lbl)
+                                    :(a.__lbl<b.__lbl?-1:a.__lbl>b.__lbl?1:0); });
     return out; }
   /* ⚠ Intl.Collator, not `<`. docs/NORTH-STAR.md: a locale sorts its own
      alphabet, and CJK by stroke or reading rather than by code point. */
@@ -18843,7 +19038,15 @@ try{
     function shell(){
       mo.box.innerHTML='<button type="button" class="oshare-btn oshare-x" aria-label="'+esc(_t('lab.dlg.close'))+'">✕</button><h3>'+esc(_t('lab.fold.moveh'))+'</h3><p class="oshare-sub">'+esc(name||_t('lab.dlg.seq'))+'</p><div class="oshare-list">'+
         '<div class="lab-pick"><span class="lc-n">'+esc(_t('lab.fold.unfiled'))+'</span><button type="button" class="lab-btn" data-moveto="">'+esc(_t('lab.fold.go'))+'</button></div>'+
-        (_folders||[]).map(function(f){ return '<div class="lab-pick"><span class="lc-n">'+esc(fName(f))+'</span><button type="button" class="lab-btn" data-moveto="'+esc(f.id)+'">'+esc(_t('lab.fold.go'))+'</button></div>'; }).join('')+'</div>'; }
+        /* R85a/J1d (audit LAB-P2-08).  ⛔⛔ THE HIGHEST HARM IN
+           THE JOB, and it was silent: the picker printed a bare folder NAME, so
+           two folders called "Primers" under different parents were one row
+           printed twice.  A record went into whichever the reader guessed, and
+           nothing on any screen afterwards says which one it went into.
+           ⚠ SORTED BY PATH rather than by name, so one parent's children
+           stand together and an ambiguous pair is adjacent instead of
+           scattered down the list. */
+        _pickRows(_folders).map(function(f){ return '<div class="lab-pick"><span class="lc-n">'+esc(f.__lbl)+'</span><button type="button" class="lab-btn" data-moveto="'+esc(f.id)+'">'+esc(_t('lab.fold.go'))+'</button></div>'; }).join('')+'</div>'; }
     mo.box.addEventListener('click',function(e){ var b=e.target.closest('[data-moveto]'); if(!b) return; b.disabled=true; strandMove(rowId, b.getAttribute('data-moveto')||null).then(function(){ toast(_t('lab.fold.moved',{folder:_foldName(b.getAttribute('data-moveto')||'')})); mo.close(); renderLabList(); }).catch(function(err){ toast(err.message||_t('lab.err.move')); b.disabled=false; }); });
     _setDlgPaint(shell); shell();
   }
@@ -18854,6 +19057,42 @@ try{
     mo.box.addEventListener('click',function(e){ var b=e.target.closest('[data-fcreate]'); if(!b) return; var inp=mo.box.querySelector('[data-fname-input]'); var nm=((inp&&inp.value)||'').trim(); if(!nm){ toast(_t('lab.fold.needname')); return; } b.disabled=true; folderCreate(nm,labId,meta().openFolder||null).then(function(){ toast(_t('lab.fold.created')); mo.close(); renderLabList(); }).catch(function(err){ toast(_rpcMsg(err)||_t('lab.err.create')); b.disabled=false; }); });
     _setDlgPaint(shell); shell();
   }
+  /* R85a/J1e (audit LAB-P2-08).  ⛔⛔ KEYBOARD FIRST, and the audit
+     says why in one line: "Do not make drag/drop the only operation."  Before
+     this round a folder could not be re-organised AT ALL -- not by mouse
+     either.  A RECORD could be dragged onto a folder; a FOLDER had nothing.
+     ⭐ These are ordinary buttons inside the dialog that already renames and
+     deletes the folder, so they are reachable by Tab and Enter with nothing
+     added and no new focus trap to get wrong.
+     ⚠ THE LIST IS THE LEGAL DESTINATIONS ONLY.  The three exclusions are
+     the server's own, mirrored here so that no control exists whose only
+     outcome is an error (R76d/D4's principle, and its reason):
+       * the folder itself and everything under it   -> `would_cycle`
+       * a parent that would push it past three deep -> `too_deep`, counting the
+         subtree that travels with it, exactly as folder_move counts it
+       * a private space, which is a PLACE and never a parent
+     ⚠⚠ THE SERVER STILL REFUSES ALL THREE.  This only stops us
+     offering them, and `_rpcMsg` already renders `too_deep` and `would_cycle`
+     if one arrives anyway. */
+  function _fmoveHTML(id){
+    var fs=(_lastFolders||[]), me=fs.filter(function(x){ return x&&x.id===id; })[0];
+    if(!me || fIsSpace(me)) return '';
+    var labId=scopeLabId();
+    if(!fMayOrganise(me, labId)) return '';
+    var bad={}, sub=fDesc(fs, id, 1), i;
+    bad[id]=1; for(i=0;i<sub.length;i++) bad[sub[i].id]=1;
+    var kids=0;
+    for(i=0;i<sub.length;i++) if(String(sub[i].parent_id||'')===String(id)) kids++;
+    var need=kids?2:1;
+    var rows=_pickRows(fs.filter(function(f){
+      return f && !bad[f.id] && !fIsSpace(f)
+          && String(f.id)!==String(me.parent_id||'')
+          && (fPath(fs,f.id).length + need) <= 3; }));
+    var top=me.parent_id ? ('<div class="lab-pick"><span class="lc-n">'+esc(_t('lab.fold.top'))+'</span><button type="button" class="lab-btn" data-fmoveto="" data-fmoveid="'+esc(id)+'">'+esc(_t('lab.fold.movego'))+'</button></div>') : '';
+    if(!top && !rows.length)
+      return '<p class="oshare-sub">'+esc(_t('lab.fold.moveh2'))+'</p><p class="oshare-priv">'+esc(_t('lab.fold.nodest'))+'</p>';
+    return '<p class="oshare-sub">'+esc(_t('lab.fold.moveh2'))+'</p><div class="oshare-list">'+top+
+      rows.map(function(f){ return '<div class="lab-pick"><span class="lc-n">'+esc(f.__lbl)+'</span><button type="button" class="lab-btn" data-fmoveto="'+esc(f.id)+'" data-fmoveid="'+esc(id)+'">'+esc(_t('lab.fold.movego'))+'</button></div>'; }).join('')+'</div>'; }
   function openFolderMenu(id,name){ var mo=modal(_t('lab.fold.menu',{name:name||''}),'[data-frename-input]');
     /* ⚠ The armed Delete button is re-armed by textContent, so its label has to
        come from the same key on the repaint. A dialog left armed when the
@@ -18861,9 +19100,16 @@ try{
        direction: the reader has to press again, rather than a stray second
        click landing on a control whose word has just changed under them. */
     function shell(){ var keep=_keepVal(mo.box,'[data-frename-input]');
-      mo.box.innerHTML='<button type="button" class="oshare-btn oshare-x" aria-label="'+esc(_t('lab.dlg.close'))+'">✕</button><h3>'+esc(_t('lab.md.folder'))+'</h3><div class="oshare-row"><input data-frename-input maxlength="60" value="'+esc(name||'')+'" aria-label="'+esc(_t('lab.fold.nameph'))+'"><button type="button" class="oshare-btn primary" data-frename>'+esc(_t('lab.fold.rename'))+'</button></div><div class="oshare-actions"><button type="button" class="oshare-btn" data-fdelete>'+esc(_t('lab.fold.del'))+'</button></div><p class="oshare-priv">'+esc(_t('lab.fold.delwhy!'))+'</p>';
+      mo.box.innerHTML='<button type="button" class="oshare-btn oshare-x" aria-label="'+esc(_t('lab.dlg.close'))+'">✕</button><h3>'+esc(_t('lab.md.folder'))+'</h3><div class="oshare-row"><input data-frename-input maxlength="60" value="'+esc(name||'')+'" aria-label="'+esc(_t('lab.fold.nameph'))+'"><button type="button" class="oshare-btn primary" data-frename>'+esc(_t('lab.fold.rename'))+'</button></div>'+_fmoveHTML(id)+'<div class="oshare-actions"><button type="button" class="oshare-btn" data-fdelete>'+esc(_t('lab.fold.del'))+'</button></div><p class="oshare-priv">'+esc(_t('lab.fold.delwhy!'))+'</p>';
       if(keep) _putVal(mo.box,'[data-frename-input]',keep); }
-    mo.box.addEventListener('click',function(e){ if(e.target.closest('[data-frename]')){ var inp=mo.box.querySelector('[data-frename-input]'); var nm=((inp&&inp.value)||'').trim(); if(!nm){ toast(_t('lab.fold.needname2')); return; } folderRename(id,nm).then(function(){ toast(_t('lab.fold.renamed')); mo.close(); renderLabList(); }).catch(function(err){ toast(err.message||_t('lab.err.rename')); }); return; } var d=e.target.closest('[data-fdelete]'); if(d){ if(d.dataset.armed!=='1'){ d.dataset.armed='1'; d.textContent=_t('lab.fold.confirm'); setTimeout(function(){ if(d){ d.dataset.armed='0'; d.textContent=_t('lab.fold.del'); } },3000); return; } folderDelete(id).then(function(){ toast(_t('lab.fold.deleted')); if(curFolder()===id) setFolder(''); mo.close(); renderLabList(); }).catch(function(err){ toast(err.message||_t('lab.err.del')); }); } });
+    mo.box.addEventListener('click',function(e){
+      /* R85a/J1e.  ⚠ BEFORE the delete branch and after the rename one, so
+         a mis-aimed click cannot reach the armed destructive control. */
+      var mv=e.target.closest('[data-fmoveto]');
+      if(mv){ var _dest=mv.getAttribute('data-fmoveto')||''; mv.disabled=true;
+        folderMove(id,_dest).then(function(){ toast(_t('lab.fold.fmoved')); mo.close(); renderLabList(); })
+        .catch(function(err){ toast(_rpcMsg(err)||(err&&err.message)||_t('lab.err.move')); mv.disabled=false; }); return; }
+      if(e.target.closest('[data-frename]')){ var inp=mo.box.querySelector('[data-frename-input]'); var nm=((inp&&inp.value)||'').trim(); if(!nm){ toast(_t('lab.fold.needname2')); return; } folderRename(id,nm).then(function(){ toast(_t('lab.fold.renamed')); mo.close(); renderLabList(); }).catch(function(err){ toast(err.message||_t('lab.err.rename')); }); return; } var d=e.target.closest('[data-fdelete]'); if(d){ if(d.dataset.armed!=='1'){ d.dataset.armed='1'; d.textContent=_t('lab.fold.confirm'); setTimeout(function(){ if(d){ d.dataset.armed='0'; d.textContent=_t('lab.fold.del'); } },3000); return; } folderDelete(id).then(function(){ toast(_t('lab.fold.deleted')); if(curFolder()===id) setFolder(''); mo.close(); renderLabList(); }).catch(function(err){ toast(err.message||_t('lab.err.del')); }); } });
     _setDlgPaint(shell); shell();
   }
   function wireDnD(host){ try{
@@ -18914,7 +19160,7 @@ try{
     return (rows||[]).filter(function(r){ return !r.lab_id || !cur[r.lab_id]; }).map(rowToEntry);
   }
   async function fetchStrandsScope(labId){ return labId ? await fetchLabStrands(labId) : await fetchPersonalStrands(); }
-  function fileCard(e, mine, uid, labId){
+  function fileCard(e, mine, uid, labId, where){
     var isAuthor = labId ? ((uid&&e.__uid===uid)||(!!e.__author&&e.__author===mine)) : true;
     /* R82a/J1-D. ⚠⚠ BESIDE isAuthor, NEVER INSTEAD OF IT. See the note above
        this function: isAuthor gates four author-only server operations. */
@@ -18964,6 +19210,11 @@ try{
     return '<div class="lab-card"'+(isAuthor?' draggable="true"':'')+' data-rowid="'+esc(e.__rowId||'')+'"><div class="lab-card-h"><label class="lab-pick"><input type="checkbox" class="lab-pick-cb" data-labpick="'+esc(e.id)+'" aria-label="'+esc(_t('lab.card.sel',{name:e.name||_t('lab.dlg.aseq')}))+'"'+(_sel.has(e.id)?' checked':'')+'></label><span class="lc-n">'+esc(e.name||_t('lab.card.untitled'))+'</span><span class="lc-mw">'+esc(labMW(e))+' g/mol</span></div>'+
       '<div class="lc-seq">'+esc((typeof spaceSeq==='function')?spaceSeq(e.seq,e.type,e.linkage):e.seq||'')+'</div>'+
       (labId?('<div class="lc-meta">'+(e.__author?esc(_t('lab.card.by',{email:e.__author})):esc(_t('lab.card.shared')))+(isAuthor?' · <b>'+esc(_t('lab.card.you'))+'</b>':'')+'</div>'):'')+
+      /* R85a/J1b.  ⚠ AFTER the byline and never before it.  The byline is
+         the FIRST `.lc-meta` on the card and a standing probe reads it by that
+         position; a location line inserted above it would have moved what that
+         assertion is looking at without the assertion going red. */
+      (where?('<div class="lc-meta">'+esc(_t('lab.find.where',{path:where}))+'</div>'):'')+
       '<div class="lc-acts">'+acts+'</div></div>';
   }
   /* R76j/C3. ⚠⚠ THE FIRST SCREEN A NEW LAB MEMBER SEES was one muted
@@ -19010,17 +19261,31 @@ try{
       var here=openF?folders.filter(function(f){return f.id===openF;})[0]:null; if(openF&&!here){ openF=''; setOpenFolder(''); }
       var hereSp=fIsSpace(here);
       var _v=_view(), _crumbs=fPath(folders, openF);
-      var crumb='<div class="fbread"><button type="button" class="fcrumb" data-fhome>'+(labId?esc(_t('lab.lib.sharedlab',{name:labName(labId)})):esc(_t('lab.lib.mine')))+'</button>'+_crumbs.map(function(cf,ci){ var last=(ci===_crumbs.length-1); return ' <span class="fsep">›</span> '+(last?('<span class="fhere">'+esc(fName(cf))+'</span> '):('<button type="button" class="fcrumb" data-fopen="'+esc(cf.id)+'">'+esc(fName(cf))+'</button>')); }).join('')+(here?(''+(hereSp?'':'<button type="button" class="fmenu fmenu-crumb" data-fmenu="'+esc(here.id)+'" data-fname="'+esc(here.name)+'" title="'+esc(_t('lab.fold.menuT'))+'" aria-label="'+esc(_t('lab.fold.menu',{name:here.name}))+'">⋯</button>')):'')+'</div>'
+      var crumb='<div class="fbread"><button type="button" class="fcrumb" data-fhome>'+(labId?esc(_t('lab.lib.sharedlab',{name:labName(labId)})):esc(_t('lab.lib.mine')))+'</button>'+_crumbs.map(function(cf,ci){ var last=(ci===_crumbs.length-1); return ' <span class="fsep">›</span> '+(last?('<span class="fhere">'+esc(fName(cf))+'</span> '):('<button type="button" class="fcrumb" data-fopen="'+esc(cf.id)+'">'+esc(fName(cf))+'</button>')); }).join('')+(here?(''+((hereSp||!fMayOrganise(here,labId))?'':'<button type="button" class="fmenu fmenu-crumb" data-fmenu="'+esc(here.id)+'" data-fname="'+esc(here.name)+'" title="'+esc(_t('lab.fold.menuT'))+'" aria-label="'+esc(_t('lab.fold.menu',{name:here.name}))+'">⋯</button>')):'')+'</div>'
         /* ⚠⚠ R76d/D3. THE SENTENCE THAT MAKES THIS HONEST. It names BOTH
            people who can see in, because the lab manager CAN read and
            edit what is here (D3, and R76a everywhere else in the lab).
            ⚠ Never "private", never "only you", never "nobody else". */
         +(hereSp?('<div class="lab-hint" style="padding:0 2px 8px">'+esc(_t(fMine(here)?'lab.priv.who!':'lab.priv.othwho!'))+(fMine(here)?(' '+esc(_t('lab.priv.perm'))):'')+'</div>'):'');
-      var html=crumb+'<div class="lab-libbar">'+(openF?('<button type="button" class="lab-btn" data-fhome>‹ '+esc(_t('lab.tree.back'))+'</button><button type="button" class="lab-btn" data-fnew>'+esc(_t('lab.tree.newsub'))+'</button>'):'<button type="button" class="lab-btn" data-fnew>'+esc(_t('lab.fold.new'))+'</button>')+(labId?'<button type="button" class="lab-btn" data-lablib-add>+ '+esc(_t('lab.mv.pick'))+'</button>':'')+'</div>';
+      var html=crumb+'<div class="lab-libbar">'+(openF?('<button type="button" class="lab-btn" data-fup="'+esc((here&&here.parent_id)||'')+'">‹ '+esc(_t('lab.tree.up'))+'</button><button type="button" class="lab-btn" data-fnew>'+esc(_t('lab.tree.newsub'))+'</button>'):'<button type="button" class="lab-btn" data-fnew>'+esc(_t('lab.fold.new'))+'</button>')+(labId?'<button type="button" class="lab-btn" data-lablib-add>+ '+esc(_t('lab.mv.pick'))+'</button>':'')+'</div>';
       /* R76e. ⚠ THE LOCAL VIEW BAR. Read from meta(), written back by the
          delegate. Nothing here touches folders.sort or folder_reorder. */
       var _sibs=fKids(folders, openF||null);
-      var _kids=fFind(fSort(_sibs, _v.by), _v.q);
+      /* R85a/J1b (audit LAB-P2-08).  ⛔⛔ THE SEARCH SAW ONE
+         LEVEL.  `fFind` ran over `_sibs`, the DIRECT children, so a folder
+         three deep could not be found by name unless the reader was already
+         standing in its parent -- and a box labelled "Find a folder" that
+         cannot find a folder is worse than no box at all.
+         ⚠⚠ IT ONLY WIDENS WHILE A QUERY IS TYPED.  With the box empty
+         the grid is the current level and nothing about the screen has moved;
+         the moment there is a query it is the whole subtree, the hits that came
+         from elsewhere carry their path, and the hint under the box SAYS SO
+         rather than leaving the reader to infer it from names appearing that
+         were not there a keystroke ago.
+         ⚠ fDesc INCLUDES the direct children, so `_sibs` is not
+         concatenated here: doing that listed every sibling twice. */
+      var _kids=_v.q ? fFind(fSort(fDesc(folders, openF||null, 1), _v.by), _v.q)
+                     : fSort(_sibs, _v.by);
       /* R76j/W6: no folders here means nothing to find or sort. ⚠ The test
          is the UNFILTERED sibling count -- hiding the box because the query
          matched nothing would leave no way to clear the query. */
@@ -19033,14 +19298,19 @@ try{
          all. The unfiltered test is deliberate -- hiding the box because the
          query matched nothing leaves no way to clear the query (R76j/W6). */
       var _searchable = _sibs.length || list.length;
-      html+= !_searchable ? '' : ('<div class="lab-libbar"><input class="lab-find" data-ffind value="'+esc(_v.q||'')+'" placeholder="'+esc(_t('lab.tree.find'))+'" aria-label="'+esc(_t('lab.tree.find'))+'">'+'<input class="lab-find" data-frecfind value="'+esc(_rq||'')+'" placeholder="'+esc(_t('lab.find.rec'))+'" aria-label="'+esc(_t('lab.find.rec'))+'">'+'<button type="button" class="lab-btn" data-fsort="name"'+(_v.by==='name'?' aria-pressed="true"':'')+'>'+esc(_t('lab.tree.byname'))+'</button>'+'<button type="button" class="lab-btn" data-fsort="date"'+(_v.by==='date'?' aria-pressed="true"':'')+'>'+esc(_t('lab.tree.bydate'))+'</button></div>'+'<div class="lab-hint" style="padding:0 2px 8px">'+esc(_t('lab.tree.local!'))+'</div>');
-      html+= _kids.length ? ('<div class="fgrid">'+_kids.map(function(f){ var cnt=fCountDeep(folders, list, f.id); var nm=fName(f), sp=fIsSpace(f); var _sm=sp&&fMine(f), _sub=(sp&&!_sm)?fWho(f):''; return '<div class="fitem"'+(sp?(' data-space="'+(_sm?'mine':'other')+'"'):'')+' data-drop="'+esc(f.id)+'">'+
+      html+= !_searchable ? '' : ('<div class="lab-libbar"><input class="lab-find" data-ffind value="'+esc(_v.q||'')+'" placeholder="'+esc(_t('lab.tree.find'))+'" aria-label="'+esc(_t('lab.tree.find'))+'">'+'<input class="lab-find" data-frecfind value="'+esc(_rq||'')+'" placeholder="'+esc(_t('lab.find.rec'))+'" aria-label="'+esc(_t('lab.find.rec'))+'">'+'<button type="button" class="lab-btn" data-fsort="name"'+(_v.by==='name'?' aria-pressed="true"':'')+'>'+esc(_t('lab.tree.byname'))+'</button>'+'<button type="button" class="lab-btn" data-fsort="date"'+(_v.by==='date'?' aria-pressed="true"':'')+'>'+esc(_t('lab.tree.bydate'))+'</button></div>'+'<div class="lab-hint" style="padding:0 2px 8px">'+esc(_t('lab.tree.local!'))+'</div>'+((_v.q||_rq)?('<div class="lab-hint" style="padding:0 2px 8px">'+esc(_t('lab.find.scope!'))+'</div>'):''));
+      html+= _kids.length ? ('<div class="fgrid">'+_kids.map(function(f){ var cnt=fCountDeep(folders, list, f.id); var nm=fName(f), sp=fIsSpace(f); var _sm=sp&&fMine(f), _sub=(sp&&!_sm)?fWho(f):''; var _wh=(_v.q && String(f.parent_id||'')!==String(openF||''))?fWhere(folders,f):''; if(_wh) _sub=_t('lab.find.where',{path:_wh}); return '<div class="fitem"'+(sp?(' data-space="'+(_sm?'mine':'other')+'"'):'')+' data-drop="'+esc(f.id)+'">'+
           '<button type="button" class="fopen" data-fopen="'+esc(f.id)+'" aria-label="'+esc(_t(cnt===1?'lab.fold.aria1':'lab.fold.ariaN',{name:nm,n:_n(cnt)}))+'"><span class="fic" aria-hidden="true">🗂</span><span class="fnmwrap"><span class="fnm">'+esc(nm)+'</span>'+(_sub?('<span class="fsub">'+esc(_sub)+'</span>'):'')+'</span><span class="fcount">'+_n(cnt)+'</span></button>'+
           /* R76d/D4: a space has no ⋯ menu. It cannot be renamed or
              deleted by anybody, so offering the control would be a
              button whose only outcome is an error. The RPC guard is
              still the boundary; this is the courtesy. */
-          (sp?'':'<button type="button" class="fmenu" data-fmenu="'+esc(f.id)+'" data-fname="'+esc(f.name)+'" title="'+esc(_t('lab.fold.menuT'))+'" aria-label="'+esc(_t('lab.fold.menu',{name:f.name}))+'">⋯</button>')+
+          /* R85a/J1g (audit LAB-P2-08).  ⛔ RENAME AND DELETE WERE
+             OFFERED TO EVERY SEAT.  The server refuses both for a member who
+             neither manages the lab nor created the folder, so the control was
+             a button whose only outcome is an error -- and the error arrives
+             after the reader has typed a new name. */
+          ((sp||!fMayOrganise(f,labId))?'':'<button type="button" class="fmenu" data-fmenu="'+esc(f.id)+'" data-fname="'+esc(f.name)+'" title="'+esc(_t('lab.fold.menuT'))+'" aria-label="'+esc(_t('lab.fold.menu',{name:f.name}))+'">⋯</button>')+
           '</div>'; }).join('')+'</div>') : '';
       /* R76m/M0 + M5. ⚠⚠ ONE PLACE DECIDES WHAT IS ON SCREEN, and it is the
          same value the provider hands the actions. Before R76m the two
@@ -19050,7 +19320,28 @@ try{
          narrows what the bulk bar can act on -- which is the point. */
       var _here = openF ? list.filter(function(e){return e.__folderId===openF;})
                         : list.filter(function(e){return !e.__folderId;});
-      _shown = _rq ? _here.filter(function(e){ return _recMatch(e,_rq); }) : _here.slice();
+      /* R85a/J1b (audit LAB-P2-08).  ⛔⛔ AND THE RECORD BOX LIED
+         IN ITS OWN LABEL.  `lab.find.rec` reads "Search this library" in all
+         four locales and the set it searched was `_here` -- the records filed
+         DIRECTLY in the open folder.  At the root of a lab whose forty records
+         all live in subfolders, typing a sequence into "Search this library"
+         found nothing whatsoever.
+         ⭐ R76m/M5 made this search deep in its FIELDS (name AND sequence).
+         This makes it deep in its SCOPE, which is the half the label was
+         already promising and the half that was missing.
+         ⚠ `_shown` is what the bulk bar acts on and what getVisible()
+         answers, so a search now WIDENS that set as well as narrowing it.  That
+         is the same contract and not a new one: it has always been "the records
+         on screen", and these are on screen. */
+      var _scope=_here;
+      if(_rq){
+        var _in={}, _dd=fDesc(folders, openF||null, 1), _di;
+        for(_di=0;_di<_dd.length;_di++) _in[_dd[_di].id]=1;
+        _scope=list.filter(function(e){
+          return openF ? (e.__folderId===openF || !!_in[e.__folderId])
+                       : (!e.__folderId || !!_in[e.__folderId]); });
+      }
+      _shown = _rq ? _scope.filter(function(e){ return _recMatch(e,_rq); }) : _here.slice();
       /* ⚠⚠ THE BAR IS RENDERED BEFORE THE CARDS AND FROM `_shown`, so its
          count and the list underneath it cannot disagree. B06's acceptance
          test is that every visible checkbox has a reachable visible bulk
@@ -19061,7 +19352,18 @@ try{
              : (openF ? ('<div class="lab-hint" style="padding:10px 2px">'+esc(_t((hereSp&&fMine(here))?'lab.priv.empty!':'lab.fold.empty'))+'</div>')
                       : labEmpty(labId, folders));
       } else {
-        html+= _shown.map(function(e){return fileCard(e,mine,uid,labId);}).join('');
+        html+= _shown.map(function(e){
+          /* R85a/J1b.  ⚠ THE LOCATION ONLY ON THE ROWS THAT CAME FROM
+             SOMEWHERE ELSE.  A path on every card during a search would repeat
+             the breadcrumb on every row and say nothing; a path on the rows
+             that are NOT at the level on screen is the fact the reader lacks. */
+          var _w='', _ff, _pw;
+          if(_rq && String(e.__folderId||'')!==String(openF||'')){
+            _ff=folders.filter(function(x){ return x && x.id===e.__folderId; })[0];
+            if(!_ff){ _w=_t('lab.fold.unfiled'); }
+            else { _pw=fWhere(folders,_ff); _w=_pw?(_pw+' \u203a '+fName(_ff)):fName(_ff); }
+          }
+          return fileCard(e,mine,uid,labId,_w); }).join('');
       }
       if(labId) html+=monSectionHTML(uid, mine);
       ll.innerHTML=html;
@@ -19145,7 +19447,9 @@ try{
         '<p class="oshare-sub">'+esc(_t('lab.bulk.movesub',{n:_n(ids.length)}))+'</p>'+
         '<div class="oshare-list">'+
         '<div class="lab-pick"><span class="lc-n">'+esc(_t('lab.fold.unfiled'))+'</span><button type="button" class="lab-btn" data-bmto="">'+esc(_t('lab.fold.go'))+'</button></div>'+
-        fs.map(function(f){ return '<div class="lab-pick"><span class="lc-n">'+esc(fName(f))+'</span><button type="button" class="lab-btn" data-bmto="'+esc(f.id)+'">'+esc(_t('lab.fold.go'))+'</button></div>'; }).join('')+
+        /* R85a/J1d.  ⚠ THE BULK PICKER HAD THE SAME DEFECT and it is
+           worse here by exactly the number of records selected. */
+        _pickRows(fs).map(function(f){ return '<div class="lab-pick"><span class="lc-n">'+esc(f.__lbl)+'</span><button type="button" class="lab-btn" data-bmto="'+esc(f.id)+'">'+esc(_t('lab.fold.go'))+'</button></div>'; }).join('')+
         '</div><div class="lab-hint" data-bmstat></div>';
     }
     mo.box.addEventListener('click', function(ev){
@@ -19201,7 +19505,7 @@ try{
        ⭐ R55's PURPOSE HOLDS: no scope leaves the reader with fewer ways to act
        than a guest. What R55 forbade was hiding the toolbar and putting NOTHING
        in its place, which is what signing in used to do -- it removed search,
-       Export selected, Share selected, Move to lab and row multi-select from the
+       Export selected, [data-hsharesel], Move to lab and row multi-select from the
        one surface Pro is sold on. That is still forbidden.
        ⛔ SO DO NOT "RESTORE" .histbar IN LAB SCOPE ON THE STRENGTH OF THE OLD
        SENTENCE. It would put the personal toolbar's scope-inappropriate actions
@@ -19527,7 +19831,32 @@ try{
          file uses minimal; this one cannot. A minimal response is a bare 204
          whether the write landed on one row or none, and telling those apart is
          the whole point. */
-      var rows=await rest('PATCH',qs,{seq:entry.seq||'',data:d},{Prefer:'return=representation'});
+      /* R85a/J3a.  ⛔⛔ ONE RETRY, AND THE RULING NEEDS IT.
+         Albert's ruling is that edOutcome compares `version`; the OUTCOME he
+         ruled for is that "a re-filing then retries cleanly instead of accusing
+         somebody".  Measured, the compare alone does not deliver that: with the
+         compare-and-swap still keyed on `updated_at`, a re-filing still returns
+         zero rows, and a version-compare then falls PAST the conflict branch to
+         the one that says the reader has lost their rights.  That is a worse
+         sentence than the one being fixed.  So the diagnosis answers `stale`
+         and the save is re-issued once against the updated_at it just read.
+         ⚠⚠ TWO ATTEMPTS, NEVER A LOOP.  A second stale answer means
+         the row is being re-filed repeatedly; it says so and stops, rather than
+         spinning against another client.
+         ⛔ AND `updated_at` IS NOT TOUCHED, on or off the wire.  It means
+         "when the row last changed", a re-filing IS a change to the row, and
+         the local-first sync orders on it.  Narrowing it would be a second,
+         unruled behaviour change. */
+      var rows=null, _att;
+      for(_att=0;_att<2;_att++){
+        qs='strands?id=eq.'+encodeURIComponent(sh.rowId)
+         + '&updated_at=eq.'+encodeURIComponent(sh.ver);
+        rows=await rest('PATCH',qs,{seq:entry.seq||'',data:d},{Prefer:'return=representation'});
+        if(rows && rows.length) break;
+        var _out=await edOutcome(sh);
+        if(_out!=='stale') return _out;
+      }
+      if(!(rows && rows.length)){ toast(_t('lab.ed.again!')); return 'stale'; }
       if(rows && rows.length){
         var r0=rows[0];
         sh.ver=r0.updated_at||sh.ver;
@@ -19537,7 +19866,6 @@ try{
         try{ renderLabList(); }catch(_e){ ocFail('labed#relist',_e); }
         return 'ok';
       }
-      return await edOutcome(sh);
     }catch(err){ toast((err&&err.message)||_t('lab.err.generic!')); return 'error'; }
     finally{ if(btn) btn.disabled=false; }
   }
@@ -19611,7 +19939,27 @@ try{
     /* R83d/J4. ⛔ THE TENTH CASE. `updated_at` moving proves the row was
        written; it does NOT prove the write is the only thing that refused
        us. When BOTH happened, the story the person needs is the rights. */
-    if(String(rows[0].updated_at||'')!==String(sh.ver||'')){
+    /* R85a/J3a.  ⛔⛔ THE QUESTION THIS BRANCH ASKS IS "DID THE
+       CONTENTS MOVE", and `updated_at` stopped being the answer to it the night
+       R85b's paste landed.  After that paste `version` bumps exactly when
+       seq/name/tags/data changed and a re-filing bumps nothing -- while
+       `trg_strands_touch` still moves `updated_at` on a re-filing, unchanged.
+       So the shipped branch read a colleague dragging the record into a
+       subfolder as "somebody saved this while you were editing", and then named
+       `last_editor_email`, which after the paste is the last person to EDIT:
+       possibly the reader themselves, possibly nobody at all.
+       ⚠ BOTH NUMBERS OR NEITHER.  `strands.version` is `integer not null`,
+       so a live row always has one, and this GET names no `select=` term so
+       PostgREST returns it.  If either side is nevertheless empty the compare
+       falls back to `updated_at` -- the shipped behaviour -- because the
+       failure direction that matters is never silently overwriting somebody
+       else's edit, and accusing wrongly is recoverable while overwriting is
+       not. */
+    var _vN=(rows[0].version==null?'':String(rows[0].version));
+    var _vH=(sh.vn==null?'':String(sh.vn));
+    var _tMoved=(String(rows[0].updated_at||'')!==String(sh.ver||''));
+    var _cMoved=(_vN!==''&&_vH!=='') ? (_vN!==_vH) : _tMoved;
+    if(_cMoved){
       /* R83g/D. ⛔ THE ROW IS IN HAND AND IT USED TO BE THROWN AWAY.
          Passing null left the ONE situation this branch exists for -- access
          revoked AND somebody else saved -- with no way to reach the version
@@ -19622,6 +19970,12 @@ try{
          which is exactly what R83d/J4 fixed. Only the way OUT changes. */
       if(!(await _edStillMay(rows[0]))){ edBox('norights', sh, rowToEntry(rows[0])); return 'norights'; }
       edBox('conflict', sh, rowToEntry(rows[0])); return 'conflict'; }
+    /* R85a/J3a.  ⭐ THE ROW WAS TOUCHED AND THE CONTENTS STOOD STILL: a
+       re-filing, a re-tagging that changed nothing, or an idempotent push.  The
+       compare-and-swap key is merely out of date, so the caller re-issues the
+       save against the one just read.  NOBODY IS NAMED, because nobody did
+       anything to this record's contents. */
+    if(_tMoved){ sh.ver=rows[0].updated_at||sh.ver; return 'stale'; }
     edBox('norights', sh, null); return 'norights';
   }
 
@@ -19872,6 +20226,19 @@ try{
     if((b=e.target.closest('[data-fmenu]'))){ openFolderMenu(b.getAttribute('data-fmenu'), b.getAttribute('data-fname')); return; }
     if((b=e.target.closest('[data-fnew]'))){ openNewFolder(); return; }
     if((b=e.target.closest('[data-fopen]'))){ _dropSel('folder'); setOpenFolder(b.getAttribute('data-fopen')); renderLabList(); return; }
+    /* R85a/J1a (audit LAB-P2-08).  ⛔ BACK WENT TO THE ROOT FROM ANY
+       DEPTH, because the control emitted `data-fhome` -- the breadcrumb's own
+       home attribute.  Three folders deep, one press threw away two levels and
+       the reader had to walk back down.
+       ⭐ AND WHAT IT DOES AT THE ROOT IS DECIDED, NOT LEFT OPEN: nothing,
+       because the control is not rendered there at all.  It exists only inside
+       a folder, which is the only place there is somewhere above to go.  The
+       breadcrumb's first crumb is the one-press way home from any depth and it
+       is always on screen, so the two controls do not overlap or compete --
+       this one moves ONE level, that one jumps all of them.
+       ⚠ An empty `data-fup` IS the root: a top-level folder's parent_id is
+       null, and setOpenFolder('') is what the home crumb does. */
+    if((b=e.target.closest('[data-fup]'))){ _dropSel('folder'); setOpenFolder(b.getAttribute('data-fup')||''); renderLabList(); return; }
     if((b=e.target.closest('[data-fhome]'))){ _dropSel('folder'); setOpenFolder(''); renderLabList(); return; }
     if((b=e.target.closest('[data-pdel]'))){ if(b.dataset.armed!=='1'){ b.dataset.armed='1'; var _o=b.textContent; b.textContent=_t('lab.card.armdel'); setTimeout(function(){ if(b){ b.dataset.armed='0'; b.textContent=_o||_t('lab.card.del'); } },2500); return; } var cid=b.getAttribute('data-pdel'); try{ var hi=(typeof history!=='undefined'&&history)?history:[]; for(var i=0;i<hi.length;i++){ if(hi[i]&&hi[i].id===cid){ hi.splice(i,1); break; } } if(typeof saveHist==='function') saveHist(); }catch(_e){ ocFail('loadLabStrand#1',_e); } try{ if(window.oligoSync&&oligoSync.deleteStrandCloud) oligoSync.deleteStrandCloud(cid); }catch(_e){ ocFail('loadLabStrand#2',_e); } try{ if(typeof applyAll==='function') applyAll(); }catch(_e){ ocFail('loadLabStrand#3',_e); } toast(_t('lab.card.deleted')); renderLabList(); return; }
     if((b=e.target.closest('[data-lab-move]'))){ openMoveTo(b.getAttribute('data-lab-move'), b.getAttribute('data-lab-nm')); return; }
@@ -25087,8 +25454,22 @@ try{
   }
 
   async function roster(labId){
-    try{ var r=await rpc('list_lab_members',{p_lab:labId}); return Array.isArray(r)?r:[]; }
-    catch(e){ fail('labinvite#roster',e); return []; }
+    /* R85a/J3b.  ⛔⛔ A FAILED READ MUST NOT BE SPELLED `[]`.  The
+       catch returned an empty array and every caller read that as "this lab has
+       no members": the wall then said every seat was open, said 0 of N were
+       taken, and let the duplicate check pass an address that IS already a
+       member.  A failed read became three wrong answers rather than no answer.
+       ⭐⭐ THE SHAPE IS R84b's, ONE LAYER DOWN.  lab-invite's
+       isLabManager returns true, false, or `null` for "the question could not
+       be asked", because a read failure wearing a permission message was a
+       total outage presenting as a polite message.  Three states here too.
+       ⚠ THE HARM IS BOUNDED AND LANE B MEASURED THE BOUND (arm I7): the
+       seat cap is enforced inside add_lab_member under the row lock, so a
+       miscounting client cannot over-seat a lab.  That is why this is a
+       correctness fix and not an emergency -- and why the wall stays USABLE in
+       the third state rather than refusing to open. */
+    try{ var r=await rpc('list_lab_members',{p_lab:labId}); return Array.isArray(r)?r:null; }
+    catch(e){ fail('labinvite#roster',e); return null; }
   }
 
   /* ---------------- the wall ---------------- */
@@ -25109,20 +25490,31 @@ try{
   async function open(o){
     o=o||{};
     if(!P() || !o.lab_id) return;
+    /* R85a/J3b.  ⚠ `_ros` IS THE THIRD STATE AND EVERY LINE BELOW
+       READS IT.  `have` stays an array so the field controller is unchanged,
+       but `free` goes to null -- "no ceiling known", a state this wall already
+       supports and already has a body for -- rather than to the seat count,
+       which is what an empty roster would have computed. */
     var rows=await roster(o.lab_id);
-    var have=rows.map(function(m){ return String(m.email||'').toLowerCase(); });
+    var _ros=(rows!==null);
+    var have=(rows||[]).map(function(m){ return String(m.email||'').toLowerCase(); });
     var seats=(o.seats==null)?null:Number(o.seats);
-    var free=(seats==null)?null:Math.max(0, seats-have.length);
+    var free=(!_ros||seats==null)?null:Math.max(0, seats-have.length);
     var name=String(o.name||_t('ui.lab.inv.yourlab'));
 
     P().wall({
       eyebrow:_t('ui.lab.inv.eyebrow'),
       title:_t('ui.lab.inv.title'),
-      body:(free===0
-        ? _t('ui.lab.inv.full',{name:esc(name), used:have.length, seats:seats})
-        : (free==null
-            ? _t('ui.lab.inv.body')
-            : _t(free===1?'ui.lab.inv.body1':'ui.lab.inv.bodyn',{n:free}))),
+      /* R85a/J3b.  ⭐ "We could not check the roster" IS A DIFFERENT
+         SENTENCE FROM "this lab has no members", and a person being able to
+         tell those apart is the whole of the ruling. */
+      body:(!_ros
+        ? _t('ui.lab.inv.noros!',{name:esc(name)})
+        : (free===0
+          ? _t('ui.lab.inv.full',{name:esc(name), used:have.length, seats:seats})
+          : (free==null
+              ? _t('ui.lab.inv.body')
+              : _t(free===1?'ui.lab.inv.body1':'ui.lab.inv.bodyn',{n:free})))),
       actions:[{label:_t('ui.lab.inv.go'), prim:true, run:function(){ /* replaced below */ }},
                {label:_t('ui.lab.inv.later'), run:function(){ P().closeWall(); }}],
       foot:_t('ui.lab.inv.hint')
