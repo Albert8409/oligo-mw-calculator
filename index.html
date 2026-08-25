@@ -449,7 +449,7 @@ var I18N = {
   "lab.ed.discard":"Discard my changes and open the latest version",
   "lab.ed.fell!":"{lab} could not accept the copy, so it is in your own library instead.",
   "lab.ed.gone!":"This record is not in the lab library any more.",
-  "lab.ed.goneb!":"It was deleted, taken out of the lab, or moved somewhere you cannot see. Opening it again will not bring it back.",
+  "lab.ed.goneb!":"Nothing was saved, and your work is still on this screen. You can keep a copy of it.",
   "lab.ed.keep":"Keep editing",
   "lab.ed.leave":"Discard my changes and close",
   "lab.ed.meta":"Version {v} · last saved by {who}, {when}",
@@ -528,6 +528,13 @@ var I18N = {
   "lab.fold.renamed":"Renamed",
   "lab.fold.unfiled":"Unfiled",
   "lab.h":"Lab",
+  "lab.hp.allfold":"All folders",
+  "lab.hp.alltag":"All tags",
+  "lab.hp.foldaria":"Filter by folder",
+  "lab.hp.lead":"Pro library",
+  "lab.hp.n1":"{n} sequence · folders · tags",
+  "lab.hp.nN":"{n} sequences · folders · tags",
+  "lab.hp.tagaria":"Filter by tag",
   "lab.imp.auto":"{n} of {total} columns matched by name.",
   "lab.imp.bad":"{n} cannot be imported",
   "lab.imp.bad!":"This file could not be read as a spreadsheet.",
@@ -718,6 +725,25 @@ var I18N = {
   "lab.undo.done":"{name} will stay open, and the subscription will renew as usual.",
   "lab.undo.go":"Keep this lab open",
   "lab.undo.why!":"This lab is scheduled to close on {date}. Nothing has been deleted yet, and the subscription will not renew.",
+  "lab.ver.at":"saved {when}",
+  "lab.ver.blank":"This version has no sequence in it.",
+  "lab.ver.byat":"saved by {who}, {when}",
+  "lab.ver.chars1":"{n} character",
+  "lab.ver.charsN":"{n} characters",
+  "lab.ver.clash!":"Somebody saved this record while this list was open, so nothing was restored. The list now shows what is there.",
+  "lab.ver.cur":"Current",
+  "lab.ver.done":"Restored. The record is now version {v}.",
+  "lab.ver.fail":"The version history could not be loaded.",
+  "lab.ver.go":"Restore it",
+  "lab.ver.h":"Version history",
+  "lab.ver.hide":"Hide",
+  "lab.ver.look":"Look at it",
+  "lab.ver.none!":"No earlier versions yet. This record has been saved once, so there is nothing to go back to. From now on, every time somebody saves it, the version they replaced is kept here.",
+  "lab.ver.on":"Version history for {name}",
+  "lab.ver.restore":"Restore this version",
+  "lab.ver.same":"Same sequence as version {v}",
+  "lab.ver.vn":"Version {v}",
+  "lab.ver.warn!":"Restoring writes a new version. Nothing is deleted: version {v} and everything saved after it stay in this list. Everyone in the lab sees the record change.",
   "mk.0001":"Oligo Calculator | molecular weight, Tm, ε260 and concentration",
   "mk.0002":"Skip to main content",
   "mk.0003":"Oligonucleotide molecular weight, Tm, ε260 and concentration",
@@ -1656,7 +1682,7 @@ var I18N = {
   "lab.ed.discard":"\u6368\u68c4\u6211\u7684\u8b8a\u66f4\uff0c\u958b\u555f\u6700\u65b0\u7248\u672c",
   "lab.ed.fell!":"{lab} \u7121\u6cd5\u63a5\u53d7\u9019\u4efd\u526f\u672c\uff0c\u56e0\u6b64\u5b83\u6539\u70ba\u5b58\u5728\u4f60\u81ea\u5df1\u7684\u8cc7\u6599\u5eab\u88e1\u3002",
   "lab.ed.gone!":"\u9019\u4e00\u7b46\u5df2\u7d93\u4e0d\u5728\u5be6\u9a57\u5ba4\u7684\u5171\u7528\u8cc7\u6599\u5eab\u88e1\u4e86\u3002",
-  "lab.ed.goneb!":"\u5b83\u53ef\u80fd\u88ab\u522a\u9664\u3001\u79fb\u51fa\u5be6\u9a57\u5ba4\uff0c\u6216\u79fb\u5230\u4f60\u770b\u4e0d\u5230\u7684\u5730\u65b9\u4e86\u3002\u518d\u958b\u555f\u4e00\u6b21\u4e5f\u4e0d\u6703\u628a\u5b83\u627e\u56de\u4f86\u3002",
+  "lab.ed.goneb!":"\u6c92\u6709\u5132\u5b58\u4efb\u4f55\u6771\u897f\uff0c\u4f60\u7684\u5167\u5bb9\u4ecd\u7136\u7559\u5728\u9019\u500b\u756b\u9762\u4e0a\u3002\u4f60\u53ef\u4ee5\u7559\u4e00\u4efd\u526f\u672c\u3002",
   "lab.ed.keep":"\u7e7c\u7e8c\u7de8\u8f2f",
   "lab.ed.leave":"\u6368\u68c4\u6211\u7684\u8b8a\u66f4\u4e26\u95dc\u9589",
   "lab.ed.meta":"\u7248\u672c {v} · \u4e0a\u6b21\u7531 {who} \u5132\u5b58\u65bc {when}",
@@ -1735,6 +1761,13 @@ var I18N = {
   "lab.fold.renamed":"\u5df2\u91cd\u65b0\u547d\u540d",
   "lab.fold.unfiled":"\u672a\u5206\u985e",
   "lab.h":"\u5be6\u9a57\u5ba4",
+  "lab.hp.allfold":"\u5168\u90e8\u8cc7\u6599\u593e",
+  "lab.hp.alltag":"\u5168\u90e8\u6a19\u7c64",
+  "lab.hp.foldaria":"\u4f9d\u8cc7\u6599\u593e\u7be9\u9078",
+  "lab.hp.lead":"Pro \u8cc7\u6599\u5eab",
+  "lab.hp.n1":"{n} \u7b46\u5e8f\u5217 · \u8cc7\u6599\u593e · \u6a19\u7c64",
+  "lab.hp.nN":"{n} \u7b46\u5e8f\u5217 · \u8cc7\u6599\u593e · \u6a19\u7c64",
+  "lab.hp.tagaria":"\u4f9d\u6a19\u7c64\u7be9\u9078",
   "lab.imp.auto":"\u5df2\u4f9d\u540d\u7a31\u81ea\u52d5\u5c0d\u61c9 {n} \u6b04\uff0c\u5171 {total} \u6b04\u3002",
   "lab.imp.bad":"{n} \u7b46\u7121\u6cd5\u532f\u5165",
   "lab.imp.bad!":"\u9019\u500b\u6a94\u6848\u7121\u6cd5\u7576\u6210\u8a66\u7b97\u8868\u8b80\u53d6\u3002",
@@ -1925,6 +1958,25 @@ var I18N = {
   "lab.undo.done":"{name} \u5c07\u7e7c\u7e8c\u4fdd\u7559\uff0c\u8a02\u95b1\u4e5f\u6703\u7167\u5e38\u7e8c\u8a02\u3002",
   "lab.undo.go":"\u7e7c\u7e8c\u4fdd\u7559\u9019\u500b\u5be6\u9a57\u5ba4",
   "lab.undo.why!":"\u9019\u500b\u5be6\u9a57\u5ba4\u5df2\u6392\u5b9a\u65bc {date} \u95dc\u9589\u3002\u76ee\u524d\u5c1a\u672a\u522a\u9664\u4efb\u4f55\u6771\u897f\uff0c\u8a02\u95b1\u4e5f\u4e0d\u6703\u7e8c\u8a02\u3002",
+  "lab.ver.at":"\u65bc {when} \u5132\u5b58",
+  "lab.ver.blank":"\u9019\u500b\u7248\u672c\u88e1\u6c92\u6709\u5e8f\u5217\u3002",
+  "lab.ver.byat":"\u7531 {who} \u65bc {when} \u5132\u5b58",
+  "lab.ver.chars1":"{n} \u500b\u5b57\u5143",
+  "lab.ver.charsN":"{n} \u500b\u5b57\u5143",
+  "lab.ver.clash!":"\u9019\u500b\u6e05\u55ae\u958b\u8457\u7684\u6642\u5019\u6709\u4eba\u5132\u5b58\u4e86\u9019\u4e00\u7b46\uff0c\u6240\u4ee5\u6c92\u6709\u9084\u539f\u4efb\u4f55\u6771\u897f\u3002\u6e05\u55ae\u73fe\u5728\u986f\u793a\u7684\u662f\u76ee\u524d\u7684\u72c0\u614b\u3002",
+  "lab.ver.cur":"\u76ee\u524d",
+  "lab.ver.done":"\u5df2\u9084\u539f\u3002\u9019\u4e00\u7b46\u73fe\u5728\u662f\u7248\u672c {v}\u3002",
+  "lab.ver.fail":"\u7121\u6cd5\u8f09\u5165\u7248\u672c\u7d00\u9304\u3002",
+  "lab.ver.go":"\u9084\u539f",
+  "lab.ver.h":"\u7248\u672c\u7d00\u9304",
+  "lab.ver.hide":"\u6536\u5408",
+  "lab.ver.look":"\u770b\u770b\u5167\u5bb9",
+  "lab.ver.none!":"\u9084\u6c92\u6709\u66f4\u65e9\u7684\u7248\u672c\u3002\u9019\u4e00\u7b46\u53ea\u5132\u5b58\u904e\u4e00\u6b21\uff0c\u6240\u4ee5\u6c92\u6709\u53ef\u4ee5\u56de\u53bb\u7684\u7248\u672c\u3002\u5f9e\u73fe\u5728\u8d77\uff0c\u6bcf\u6b21\u6709\u4eba\u5132\u5b58\u5b83\uff0c\u88ab\u53d6\u4ee3\u7684\u90a3\u500b\u7248\u672c\u90fd\u6703\u7559\u5728\u9019\u88e1\u3002",
+  "lab.ver.on":"{name} \u7684\u7248\u672c\u7d00\u9304",
+  "lab.ver.restore":"\u9084\u539f\u5230\u9019\u500b\u7248\u672c",
+  "lab.ver.same":"\u5e8f\u5217\u8207\u7248\u672c {v} \u76f8\u540c",
+  "lab.ver.vn":"\u7248\u672c {v}",
+  "lab.ver.warn!":"\u9084\u539f\u6703\u5beb\u5165\u4e00\u500b\u65b0\u7684\u7248\u672c\u3002\u4e0d\u6703\u522a\u9664\u4efb\u4f55\u6771\u897f\uff1a\u7248\u672c {v} \u548c\u5b83\u4e4b\u5f8c\u5132\u5b58\u7684\u6bcf\u4e00\u500b\u7248\u672c\u90fd\u6703\u7559\u5728\u9019\u500b\u6e05\u55ae\u88e1\u3002\u5be6\u9a57\u5ba4\u4e2d\u7684\u6bcf\u500b\u4eba\u90fd\u6703\u770b\u5230\u9019\u4e00\u7b46\u6539\u8b8a\u3002",
   "mk.0001":"Oligo Calculator\uff1a\u5be1\u6838\u82f7\u9178\u7684\u5206\u5b50\u91cf\u3001Tm\u3001ε260 \u8207\u6fc3\u5ea6",
   "mk.0002":"\u8df3\u81f3\u4e3b\u8981\u5167\u5bb9",
   "mk.0003":"\u5be1\u6838\u82f7\u9178\u5206\u5b50\u91cf\u3001Tm\u3001ε260 \u8207\u6fc3\u5ea6",
@@ -2857,7 +2909,7 @@ var I18N = {
   "lab.ed.discard":"\u820d\u5f03\u6211\u7684\u66f4\u6539\uff0c\u6253\u5f00\u6700\u65b0\u7248\u672c",
   "lab.ed.fell!":"{lab} \u65e0\u6cd5\u63a5\u53d7\u8fd9\u4efd\u526f\u672c\uff0c\u56e0\u6b64\u5b83\u6539\u4e3a\u5b58\u5728\u4f60\u81ea\u5df1\u7684\u8d44\u6e90\u5e93\u91cc\u3002",
   "lab.ed.gone!":"\u8fd9\u4e00\u6761\u5df2\u7ecf\u4e0d\u5728\u5b9e\u9a8c\u5ba4\u7684\u5171\u7528\u8d44\u6e90\u5e93\u91cc\u4e86\u3002",
-  "lab.ed.goneb!":"\u5b83\u53ef\u80fd\u88ab\u5220\u9664\u3001\u79fb\u51fa\u5b9e\u9a8c\u5ba4\uff0c\u6216\u79fb\u5230\u4f60\u770b\u4e0d\u5230\u7684\u5730\u65b9\u4e86\u3002\u518d\u6253\u5f00\u4e00\u6b21\u4e5f\u4e0d\u4f1a\u628a\u5b83\u627e\u56de\u6765\u3002",
+  "lab.ed.goneb!":"\u6ca1\u6709\u4fdd\u5b58\u4efb\u4f55\u4e1c\u897f\uff0c\u4f60\u7684\u5185\u5bb9\u4ecd\u7136\u7559\u5728\u8fd9\u4e2a\u753b\u9762\u4e0a\u3002\u4f60\u53ef\u4ee5\u7559\u4e00\u4efd\u526f\u672c\u3002",
   "lab.ed.keep":"\u7ee7\u7eed\u7f16\u8f91",
   "lab.ed.leave":"\u820d\u5f03\u6211\u7684\u66f4\u6539\u5e76\u5173\u95ed",
   "lab.ed.meta":"\u7248\u672c {v} · \u4e0a\u6b21\u7531 {who} \u4fdd\u5b58\u4e8e {when}",
@@ -2936,6 +2988,13 @@ var I18N = {
   "lab.fold.renamed":"\u5df2\u91cd\u547d\u540d",
   "lab.fold.unfiled":"\u672a\u5206\u7c7b",
   "lab.h":"\u5b9e\u9a8c\u5ba4",
+  "lab.hp.allfold":"\u5168\u90e8\u6587\u4ef6\u5939",
+  "lab.hp.alltag":"\u5168\u90e8\u6807\u7b7e",
+  "lab.hp.foldaria":"\u6309\u6587\u4ef6\u5939\u7b5b\u9009",
+  "lab.hp.lead":"Pro \u8d44\u6e90\u5e93",
+  "lab.hp.n1":"{n} \u6761\u5e8f\u5217 · \u6587\u4ef6\u5939 · \u6807\u7b7e",
+  "lab.hp.nN":"{n} \u6761\u5e8f\u5217 · \u6587\u4ef6\u5939 · \u6807\u7b7e",
+  "lab.hp.tagaria":"\u6309\u6807\u7b7e\u7b5b\u9009",
   "lab.imp.auto":"\u5df2\u6309\u540d\u79f0\u81ea\u52a8\u5bf9\u5e94 {n} \u5217\uff0c\u5171 {total} \u5217\u3002",
   "lab.imp.bad":"{n} \u6761\u65e0\u6cd5\u5bfc\u5165",
   "lab.imp.bad!":"\u8fd9\u4e2a\u6587\u4ef6\u65e0\u6cd5\u5f53\u6210\u7535\u5b50\u8868\u683c\u8bfb\u53d6\u3002",
@@ -3126,6 +3185,25 @@ var I18N = {
   "lab.undo.done":"{name} \u5c06\u7ee7\u7eed\u4fdd\u7559\uff0c\u8ba2\u9605\u4e5f\u4f1a\u7167\u5e38\u7eed\u8ba2\u3002",
   "lab.undo.go":"\u7ee7\u7eed\u4fdd\u7559\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4",
   "lab.undo.why!":"\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u5df2\u5b89\u6392\u4e8e {date} \u5173\u95ed\u3002\u76ee\u524d\u5c1a\u672a\u5220\u9664\u4efb\u4f55\u4e1c\u897f\uff0c\u8ba2\u9605\u4e5f\u4e0d\u4f1a\u7eed\u8ba2\u3002",
+  "lab.ver.at":"\u4e8e {when} \u4fdd\u5b58",
+  "lab.ver.blank":"\u8fd9\u4e2a\u7248\u672c\u91cc\u6ca1\u6709\u5e8f\u5217\u3002",
+  "lab.ver.byat":"\u7531 {who} \u4e8e {when} \u4fdd\u5b58",
+  "lab.ver.chars1":"{n} \u4e2a\u5b57\u7b26",
+  "lab.ver.charsN":"{n} \u4e2a\u5b57\u7b26",
+  "lab.ver.clash!":"\u8fd9\u4e2a\u6e05\u5355\u5f00\u7740\u7684\u65f6\u5019\u6709\u4eba\u4fdd\u5b58\u4e86\u8fd9\u4e00\u6761\uff0c\u6240\u4ee5\u6ca1\u6709\u8fd8\u539f\u4efb\u4f55\u4e1c\u897f\u3002\u6e05\u5355\u73b0\u5728\u663e\u793a\u7684\u662f\u5f53\u524d\u7684\u72b6\u6001\u3002",
+  "lab.ver.cur":"\u5f53\u524d",
+  "lab.ver.done":"\u5df2\u8fd8\u539f\u3002\u8fd9\u4e00\u6761\u73b0\u5728\u662f\u7248\u672c {v}\u3002",
+  "lab.ver.fail":"\u65e0\u6cd5\u8f7d\u5165\u7248\u672c\u8bb0\u5f55\u3002",
+  "lab.ver.go":"\u8fd8\u539f",
+  "lab.ver.h":"\u7248\u672c\u8bb0\u5f55",
+  "lab.ver.hide":"\u6536\u8d77",
+  "lab.ver.look":"\u770b\u770b\u5185\u5bb9",
+  "lab.ver.none!":"\u8fd8\u6ca1\u6709\u66f4\u65e9\u7684\u7248\u672c\u3002\u8fd9\u4e00\u6761\u53ea\u4fdd\u5b58\u8fc7\u4e00\u6b21\uff0c\u6240\u4ee5\u6ca1\u6709\u53ef\u4ee5\u56de\u53bb\u7684\u7248\u672c\u3002\u4ece\u73b0\u5728\u8d77\uff0c\u6bcf\u6b21\u6709\u4eba\u4fdd\u5b58\u5b83\uff0c\u88ab\u53d6\u4ee3\u7684\u90a3\u4e2a\u7248\u672c\u90fd\u4f1a\u7559\u5728\u8fd9\u91cc\u3002",
+  "lab.ver.on":"{name} \u7684\u7248\u672c\u8bb0\u5f55",
+  "lab.ver.restore":"\u8fd8\u539f\u5230\u8fd9\u4e2a\u7248\u672c",
+  "lab.ver.same":"\u5e8f\u5217\u4e0e\u7248\u672c {v} \u76f8\u540c",
+  "lab.ver.vn":"\u7248\u672c {v}",
+  "lab.ver.warn!":"\u8fd8\u539f\u4f1a\u5199\u5165\u4e00\u4e2a\u65b0\u7684\u7248\u672c\u3002\u4e0d\u4f1a\u5220\u9664\u4efb\u4f55\u4e1c\u897f\uff1a\u7248\u672c {v} \u548c\u5b83\u4e4b\u540e\u4fdd\u5b58\u7684\u6bcf\u4e00\u4e2a\u7248\u672c\u90fd\u4f1a\u7559\u5728\u8fd9\u4e2a\u6e05\u5355\u91cc\u3002\u5b9e\u9a8c\u5ba4\u4e2d\u7684\u6bcf\u4e2a\u4eba\u90fd\u4f1a\u770b\u5230\u8fd9\u4e00\u6761\u6539\u53d8\u3002",
   "mk.0001":"Oligo Calculator\uff1a\u5be1\u6838\u82f7\u9178\u7684\u5206\u5b50\u91cf\u3001Tm\u3001ε260 \u4e0e\u6d53\u5ea6",
   "mk.0002":"\u8df3\u81f3\u4e3b\u8981\u5185\u5bb9",
   "mk.0003":"\u5be1\u6838\u82f7\u9178\u5206\u5b50\u91cf\u3001Tm\u3001ε260 \u4e0e\u6d53\u5ea6",
@@ -4058,7 +4136,7 @@ var I18N = {
   "lab.ed.discard":"\u81ea\u5206\u306e\u5909\u66f4\u3092\u7834\u68c4\u3057\u3066\u6700\u65b0\u7248\u3092\u958b\u304f",
   "lab.ed.fell!":"{lab} \u304c\u3053\u306e\u30b3\u30d4\u30fc\u3092\u53d7\u3051\u53d6\u308c\u306a\u304b\u3063\u305f\u305f\u3081\u3001\u3042\u306a\u305f\u81ea\u8eab\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u4fdd\u5b58\u3057\u307e\u3057\u305f\u3002",
   "lab.ed.gone!":"\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u306f\u30e9\u30dc\u306e\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u3082\u3046\u3042\u308a\u307e\u305b\u3093\u3002",
-  "lab.ed.goneb!":"\u3053\u308c\u306f\u524a\u9664\u3055\u308c\u305f\u304b\u3001\u30e9\u30dc\u304b\u3089\u5916\u3055\u308c\u305f\u304b\u3001\u3042\u306a\u305f\u306b\u306f\u898b\u3048\u306a\u3044\u5834\u6240\u3078\u79fb\u3055\u308c\u307e\u3057\u305f\u3002\u3082\u3046\u4e00\u5ea6\u958b\u3044\u3066\u3082\u623b\u3063\u3066\u304d\u307e\u305b\u3093\u3002",
+  "lab.ed.goneb!":"\u4f55\u3082\u4fdd\u5b58\u3055\u308c\u3066\u3044\u307e\u305b\u3093\u3002\u4f5c\u696d\u5185\u5bb9\u306f\u3053\u306e\u753b\u9762\u306b\u6b8b\u3063\u3066\u3044\u307e\u3059\u3002\u30b3\u30d4\u30fc\u3092\u6b8b\u3059\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002",
   "lab.ed.keep":"\u7de8\u96c6\u3092\u7d9a\u3051\u308b",
   "lab.ed.leave":"\u81ea\u5206\u306e\u5909\u66f4\u3092\u7834\u68c4\u3057\u3066\u9589\u3058\u308b",
   "lab.ed.meta":"\u30d0\u30fc\u30b8\u30e7\u30f3 {v} · \u6700\u7d42\u4fdd\u5b58 {who}\u3001{when}",
@@ -4137,6 +4215,13 @@ var I18N = {
   "lab.fold.renamed":"\u540d\u524d\u3092\u5909\u66f4\u3057\u307e\u3057\u305f",
   "lab.fold.unfiled":"\u672a\u5206\u985e",
   "lab.h":"\u30e9\u30dc",
+  "lab.hp.allfold":"\u3059\u3079\u3066\u306e\u30d5\u30a9\u30eb\u30c0\u30fc",
+  "lab.hp.alltag":"\u3059\u3079\u3066\u306e\u30bf\u30b0",
+  "lab.hp.foldaria":"\u30d5\u30a9\u30eb\u30c0\u30fc\u3067\u7d5e\u308a\u8fbc\u3080",
+  "lab.hp.lead":"Pro \u30e9\u30a4\u30d6\u30e9\u30ea",
+  "lab.hp.n1":"{n} \u4ef6\u306e\u914d\u5217 · \u30d5\u30a9\u30eb\u30c0\u30fc · \u30bf\u30b0",
+  "lab.hp.nN":"{n} \u4ef6\u306e\u914d\u5217 · \u30d5\u30a9\u30eb\u30c0\u30fc · \u30bf\u30b0",
+  "lab.hp.tagaria":"\u30bf\u30b0\u3067\u7d5e\u308a\u8fbc\u3080",
   "lab.imp.auto":"{total} \u5217\u306e\u3046\u3061 {n} \u5217\u304c\u540d\u524d\u3067\u81ea\u52d5\u7684\u306b\u5bfe\u5fdc\u3057\u307e\u3057\u305f\u3002",
   "lab.imp.bad":"{n} \u4ef6\u306f\u8aad\u307f\u8fbc\u3081\u307e\u305b\u3093",
   "lab.imp.bad!":"\u3053\u306e\u30d5\u30a1\u30a4\u30eb\u306f\u8868\u8a08\u7b97\u30d5\u30a1\u30a4\u30eb\u3068\u3057\u3066\u8aad\u307f\u53d6\u308c\u307e\u305b\u3093\u3067\u3057\u305f\u3002",
@@ -4327,6 +4412,25 @@ var I18N = {
   "lab.undo.done":"{name} \u306f\u7d42\u4e86\u305b\u305a\u3001\u30b5\u30d6\u30b9\u30af\u30ea\u30d7\u30b7\u30e7\u30f3\u306f\u901a\u5e38\u3069\u304a\u308a\u66f4\u65b0\u3055\u308c\u307e\u3059\u3002",
   "lab.undo.go":"\u30e9\u30dc\u3092\u5b58\u7d9a\u3055\u305b\u308b",
   "lab.undo.why!":"\u3053\u306e\u30e9\u30dc\u306f {date} \u306b\u7d42\u4e86\u3059\u308b\u4e88\u5b9a\u3067\u3059\u3002\u307e\u3060\u4f55\u3082\u524a\u9664\u3055\u308c\u3066\u304a\u3089\u305a\u3001\u30b5\u30d6\u30b9\u30af\u30ea\u30d7\u30b7\u30e7\u30f3\u306f\u66f4\u65b0\u3055\u308c\u307e\u305b\u3093\u3002",
+  "lab.ver.at":"{when} \u306b\u4fdd\u5b58",
+  "lab.ver.blank":"\u3053\u306e\u30d0\u30fc\u30b8\u30e7\u30f3\u306b\u306f\u914d\u5217\u304c\u5165\u3063\u3066\u3044\u307e\u305b\u3093\u3002",
+  "lab.ver.byat":"{who} \u304c {when} \u306b\u4fdd\u5b58",
+  "lab.ver.chars1":"{n} \u6587\u5b57",
+  "lab.ver.charsN":"{n} \u6587\u5b57",
+  "lab.ver.clash!":"\u3053\u306e\u4e00\u89a7\u3092\u958b\u3044\u3066\u3044\u308b\u9593\u306b\u8ab0\u304b\u304c\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u3092\u4fdd\u5b58\u3057\u305f\u305f\u3081\u3001\u4f55\u3082\u623b\u3057\u3066\u3044\u307e\u305b\u3093\u3002\u4e00\u89a7\u306f\u3044\u307e\u306e\u72b6\u614b\u3092\u8868\u793a\u3057\u3066\u3044\u307e\u3059\u3002",
+  "lab.ver.cur":"\u73fe\u5728",
+  "lab.ver.done":"\u5143\u306b\u623b\u3057\u307e\u3057\u305f\u3002\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u306f\u30d0\u30fc\u30b8\u30e7\u30f3 {v} \u306b\u306a\u308a\u307e\u3057\u305f\u3002",
+  "lab.ver.fail":"\u30d0\u30fc\u30b8\u30e7\u30f3\u5c65\u6b74\u3092\u8aad\u307f\u8fbc\u3081\u307e\u305b\u3093\u3067\u3057\u305f\u3002",
+  "lab.ver.go":"\u5143\u306b\u623b\u3059",
+  "lab.ver.h":"\u30d0\u30fc\u30b8\u30e7\u30f3\u5c65\u6b74",
+  "lab.ver.hide":"\u96a0\u3059",
+  "lab.ver.look":"\u4e2d\u8eab\u3092\u898b\u308b",
+  "lab.ver.none!":"\u307e\u3060\u4ee5\u524d\u306e\u30d0\u30fc\u30b8\u30e7\u30f3\u306f\u3042\u308a\u307e\u305b\u3093\u3002\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u306f\u4e00\u5ea6\u3057\u304b\u4fdd\u5b58\u3055\u308c\u3066\u3044\u306a\u3044\u305f\u3081\u3001\u623b\u308c\u308b\u5148\u304c\u3042\u308a\u307e\u305b\u3093\u3002\u3053\u308c\u4ee5\u964d\u306f\u8ab0\u304b\u304c\u4fdd\u5b58\u3059\u308b\u305f\u3073\u306b\u3001\u7f6e\u304d\u63db\u3048\u3089\u308c\u305f\u30d0\u30fc\u30b8\u30e7\u30f3\u304c\u3053\u3053\u306b\u6b8b\u308a\u307e\u3059\u3002",
+  "lab.ver.on":"{name} \u306e\u30d0\u30fc\u30b8\u30e7\u30f3\u5c65\u6b74",
+  "lab.ver.restore":"\u3053\u306e\u30d0\u30fc\u30b8\u30e7\u30f3\u306b\u623b\u3059",
+  "lab.ver.same":"\u30d0\u30fc\u30b8\u30e7\u30f3 {v} \u3068\u540c\u3058\u914d\u5217",
+  "lab.ver.vn":"\u30d0\u30fc\u30b8\u30e7\u30f3 {v}",
+  "lab.ver.warn!":"\u5143\u306b\u623b\u3059\u3068\u3001\u65b0\u3057\u3044\u30d0\u30fc\u30b8\u30e7\u30f3\u304c\u4f5c\u3089\u308c\u307e\u3059\u3002\u4f55\u3082\u524a\u9664\u3055\u308c\u307e\u305b\u3093\u3002\u30d0\u30fc\u30b8\u30e7\u30f3 {v} \u3082\u3001\u305d\u306e\u3042\u3068\u306b\u4fdd\u5b58\u3055\u308c\u305f\u3082\u306e\u3082\u3001\u3059\u3079\u3066\u3053\u306e\u4e00\u89a7\u306b\u6b8b\u308a\u307e\u3059\u3002\u30e9\u30dc\u306e\u5168\u54e1\u306b\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u306e\u5909\u66f4\u304c\u898b\u3048\u307e\u3059\u3002",
   "mk.0001":"Oligo Calculator: \u30aa\u30ea\u30b4\u30cc\u30af\u30ec\u30aa\u30c1\u30c9\u306e\u5206\u5b50\u91cf\u3001Tm\u3001ε260\u3001\u6fc3\u5ea6",
   "mk.0002":"\u672c\u6587\u3078\u30b9\u30ad\u30c3\u30d7",
   "mk.0003":"\u30aa\u30ea\u30b4\u30cc\u30af\u30ec\u30aa\u30c1\u30c9\u306e\u5206\u5b50\u91cf\u3001Tm\u3001ε260\u3001\u6fc3\u5ea6",
@@ -13656,14 +13760,24 @@ function renderHistToolbar(){
   bar.hidden=false;
   var folders=(oligoSync.allFolders?oligoSync.allFolders():[]), tags=(oligoSync.allTags?oligoSync.allTags():[]);
   var lf=oligoSync.getFolder?oligoSync.getFolder():'', lt=oligoSync.getTag?oligoSync.getTag():'';
-  bar.innerHTML='<span class="hp-lead">★ Pro library</span>'+
-    '<select class="hp-sel" data-histfolder aria-label="Filter by folder"><option value="">All folders</option>'+folders.map(function(f){return '<option'+(lf===f?' selected':'')+'>'+cbEsc(f)+'</option>';}).join('')+'</select>'+
-    '<select class="hp-sel" data-histtag aria-label="Filter by tag"><option value="">All tags</option>'+tags.map(function(t){return '<option'+(lt===t?' selected':'')+'>'+cbEsc(t)+'</option>';}).join('')+'</select>'+
-    '<button type="button" class="hp-btn" data-libbatch>Batch entry</button>'+'<button type="button" class="hp-btn" data-sheetimp>'+cbEsc(window.t('lab.imp.btn'))+'</button>'+'<button type="button" class="hp-btn" data-sheetexp title="'+cbEsc(window.t('lab.exp.sub!'))+'">'+cbEsc(window.t('lab.exp.btn'))+'</button>'+
-    /* R76k/B-4: the same scoped set the table renders. ⚠ The COPY is left
-       exactly as it is -- R76j's B19 records it as spliced English with no
-       key, and re-keying it belongs to R77d. Only the NUMBER changes. */
-    '<span class="hp-meta">'+_ownHist().length+' sequence'+(_ownHist().length===1?'':'s')+' · folders · tags · notes · versions</span>';
+  bar.innerHTML='<span class="hp-lead">★ '+cbEsc(window.t('lab.hp.lead'))+'</span>'+
+    '<select class="hp-sel" data-histfolder aria-label="'+cbEsc(window.t('lab.hp.foldaria'))+'"><option value="">'+cbEsc(window.t('lab.hp.allfold'))+'</option>'+folders.map(function(f){return '<option'+(lf===f?' selected':'')+'>'+cbEsc(f)+'</option>';}).join('')+'</select>'+
+    '<select class="hp-sel" data-histtag aria-label="'+cbEsc(window.t('lab.hp.tagaria'))+'"><option value="">'+cbEsc(window.t('lab.hp.alltag'))+'</option>'+tags.map(function(t){return '<option'+(lt===t?' selected':'')+'>'+cbEsc(t)+'</option>';}).join('')+'</select>'+
+    '<button type="button" class="hp-btn" data-libbatch>'+cbEsc(window.t('lab.bulk.batch'))+'</button>'+'<button type="button" class="hp-btn" data-sheetimp>'+cbEsc(window.t('lab.imp.btn'))+'</button>'+'<button type="button" class="hp-btn" data-sheetexp title="'+cbEsc(window.t('lab.exp.sub!'))+'">'+cbEsc(window.t('lab.exp.btn'))+'</button>'+
+    /* R76k/B-4: the same scoped set the table renders. ⭐ R84a re-keyed the
+       copy, which R76j had recorded as spliced English with no key and which
+       the round named here never did.
+       ⛔⛔ TWO WORDS CAME OUT OF THIS LINE AND THAT IS A MEASUREMENT, NOT A
+       TRIM.  This strip renders over the scoped set above, which FILTERS OUT
+       every row belonging to the current lab -- it is the PERSONAL library.
+       The notes control is emitted only inside the lab branch of the card
+       builder, and R84a's version history is reached from the lab card and the
+       shared editor's band, both of which need a lab.  So the line advertised
+       two features that surface nowhere on it, and translating that claim into
+       three more languages is worse than leaving it in one.
+       ⚠ The two that stayed are TRUE here: their selects are the two controls
+       immediately to the left of this span. */
+    '<span class="hp-meta">'+cbEsc(window.t(_ownHist().length===1?'lab.hp.n1':'lab.hp.nN',{n:_ownHist().length}))+'</span>';
 }
 /* R52 (audit LOW): reveal Move to lab when there is a lab to move to.
    ⚠ R76d renamed the CONTROL (D1: the row moves, and the button said
@@ -15087,6 +15201,20 @@ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded'
 .lab-pick .lc-seq{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:var(--font-mono,ui-monospace,monospace);font-size:11px;color:var(--muted)}
 .lab-cmt{border-top:1px solid var(--line);padding:8px 0}
 .lab-cmt:first-child{border-top:0}
+/* R84a -- the version list.  Every container answers its own overflow: the
+   list scrolls itself, the sequence breaks inside a token because a sequence
+   carries no spaces to break at, and the action row wraps like the two shipped
+   rows it sits beside. */
+.lab-verlist{max-height:58vh;overflow-y:auto;overflow-x:hidden}
+.lab-ver{border-top:1px solid var(--line);padding:9px 0}
+.lab-ver:first-child{border-top:0}
+.lab-ver-h{display:flex;gap:7px;align-items:baseline;flex-wrap:wrap}
+.lab-ver-v{font-family:var(--font-head);font-weight:600;font-size:12.5px}
+.lab-ver-cur{font-size:10.5px;font-weight:600;color:var(--muted);border:1px solid var(--line-2);border-radius:999px;padding:1px 8px}
+.lab-ver-m{font-size:11.5px;color:var(--muted);line-height:1.5;margin-top:2px}
+.lab-ver-seq{font-family:var(--font-mono,ui-monospace,monospace);font-size:11.5px;line-height:1.5;margin-top:6px;max-height:11em;overflow-y:auto;overflow-x:hidden;overflow-wrap:anywhere;word-break:break-all}
+.lab-ver-a{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;align-items:center}
+.lab-ver-warn{font-size:11.5px;color:var(--muted);line-height:1.5;margin-top:8px}
 .lc-cmt-h{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .lc-cmt-a{font-size:11px;font-weight:600;color:var(--muted)}
 .lc-cmt-b{font-size:12px;line-height:1.45;margin-top:2px;white-space:pre-wrap;word-break:break-word}
@@ -18025,6 +18153,216 @@ try{
     async function paint(){ var body=mo.box.querySelector('[data-cmt-body]'); if(!body) return; try{ var rows=await fetchComments(rowId); body.innerHTML=(rows.length? rows.map(function(c){ var own=(String(c.author_email||'').toLowerCase()===mine); return '<div class="lab-cmt"><div class="lc-cmt-h"><span class="lc-cmt-a">'+esc(c.author_email||_t('lab.cmt.someone'))+'</span>'+(own?'<button type="button" class="lab-x" data-cmt-del="'+esc(c.id)+'" aria-label="'+esc(_t('lab.cmt.del'))+'">✕</button>':'')+'</div><div class="lc-cmt-b">'+esc(c.body||'')+'</div></div>'; }).join('') : '<div class="lab-hint">'+esc(_t('lab.cmt.none'))+'</div>'); }catch(err){ body.innerHTML='<div class="lab-hint">'+esc(_t('lab.cmt.failload'))+'</div>'; } }
     _setDlgPaint(shell); shell();
   }
+  // ---- version history (append-only; the trigger writes it and nobody else) ----
+  /* ⛔⛔ THE CURRENT VERSION IS NOT IN THE HISTORY TABLE, and the whole screen is
+     shaped by that one fact.  The trigger fires AFTER UPDATE and snapshots the
+     OLD row, so a record sitting at version 3 has history rows for 1 and 2 and
+     nothing else.  MEASURED THROUGH PostgREST WITH A REAL TOKEN AGAINST
+     PRODUCTION, 2026-08-24 (Lane B, R84b arms A1/B0/B1/B2/C/D1) -- not inferred
+     from the paste and not taken on trust from a fixture.
+     ⭐ SO A RECORD AT VERSION 1 HAS ZERO HISTORY ROWS AND IS PERFECTLY HEALTHY,
+     and production is entirely in that state today: every record at version 1
+     and the table empty.  The empty list is therefore the FIRST thing every
+     user sees, not an edge case, and it must not read as a failure.
+     ⚠ The list is [the live row] + [the history rows]: the live row is the only
+     place the current contents exist, and it also carries the token the restore
+     needs. */
+  /* ⚠⚠ THE TABLE AND ITS TERMS ARE JOINED HERE RATHER THAN SPELLED TOGETHER,
+     for exactly the reason the shipped filter helper one section over exists:
+     i18n-lint rule 7 classifies any literal ending in sentence punctuation as a
+     sentence, and a bare table prefix ends in a question mark.
+     ⛔ MEASURED, AND THIS ROUND EARNED IT: the first draft spelled the two
+     prefixes and rule 7 refused the build with three findings, correctly. The
+     helper leaves every literal a bare table name and touches no baseline. */
+  function verQ(tbl, terms){ return tbl+'?'+terms.join('&'); }
+  async function verFetch(rowId){
+    /* ⚠⚠ BRANCH ON THE STATUS, NEVER ON THE LENGTH.  Measured on production: a
+       signed-in caller who may not see the record gets 200 and an EMPTY ARRAY
+       rather than a refusal, while a signed-out one and all three write verbs
+       get 401/403.  `rest()` throws on any non-ok status, so an empty array
+       arrives here meaning "nothing to show" and a refusal arrives as an
+       exception -- which is exactly the split the two states below need, and it
+       is why neither of them tests a length to decide which it is. */
+    var live=await rest('GET',verQ('strands',[eqp('id',rowId)]));
+    if(!live || !live.length) return null;
+    /* ⚠ The filter is built by the shipped helper rather than spelled, for the
+       reason its own comment gives: a filter prefix ends in a full stop and
+       i18n-lint rule 7 reads any literal that does as a sentence. */
+    var past=await rest('GET',verQ('strand_history',[eqp('strand_id',rowId),'order=version.desc']));
+    return { live:live[0], past:(past||[]) };
+  }
+  /* ⚠ ONE SHAPE, NOT TWO.  A history row and a live row carry the same columns,
+     so both become the same object here and every reader below has one thing to
+     understand.  `data` is an object and `tags` a JSON array on both, which is
+     the pair `rowToEntry` already handles -- a second deserialiser for the same
+     wire shape is the drift this project has recorded seven times. */
+  function verRow(r, isCur){
+    /* ⛔⛔ THE LIVE ROW NAMES ITS AUTHOR IN A DIFFERENT COLUMN, and this
+       round shipped the bug first and a PHOTOGRAPH caught it.  A history row
+       carries the saved-by column; the live row carries the last-editor column,
+       because the history row IS a snapshot of a previous last-editor.  Reading
+       only the history spelling left the CURRENT version with no name against
+       it -- on a screen whose entire purpose is "who changed this, and to what".
+       ⚠ Every data arm was green: the field was absent, not wrong, so the
+       fallback for a genuinely unknown author swallowed it silently.  It took
+       looking at the picture, which is the standing rule that a data gate cannot
+       see whether anything renders. */
+    return { v:(r.version==null?'':r.version), seq:String(r.seq||''),
+             who:String((isCur?r.last_editor_email:r.saved_by_email)||''),
+             when:(isCur?r.updated_at:r.saved_at),
+             data:(r.data||{}), cur:!!isCur };
+  }
+  /* ⭐ ALBERT RULED THIS LABEL AND RULED WHERE IT IS COMPUTED: by the card, not
+     recorded by the server.  Recording "restored from v3" would need the client
+     to tell the server something, which means a new RPC or a magic key in the
+     blob -- and a magic key is the same shape as the field R83e's second paste
+     exists to remove.  ⭐ A restore writes contents identical to an earlier
+     version, so the answer is free and local.
+     ⛔ IT COMPARES THE SEQUENCE AND THE LABEL SAYS SEQUENCE.  A label claiming
+     more than the test behind it would be this round's own defect. */
+  function verSame(list){
+    for(var i=0;i<list.length;i++){
+      list[i].same='';
+      for(var j=list.length-1;j>i;j--){          /* the OLDEST match, ascending */
+        if(list[j].v!==''&&list[j].seq===list[i].seq){ list[i].same=list[j].v; break; }
+      }
+    }
+    return list;
+  }
+  function verCount(n){ return _t(n===1?'lab.ver.chars1':'lab.ver.charsN',{n:_n(n)}); }
+  function openVersions(rowId, name){
+    if(!rowId){ toast(_t('lab.cmt.nosync')); return; }
+    var _nm=name||_t('lab.dlg.aseq');
+    var mo=modal(_t('lab.ver.on',{name:_nm}),'none');
+    var _rows=null, _err=false, _open={}, _arm='';
+    /* ⛔ NO ✕ ON THIS DIALOG, and it is the same two reasons the refused-save box
+       gives.  The glyph baseline is a SHRINK-ONLY ratchet and the cross already
+       stands at every site it is allowed; a further one fails the build, which
+       is exactly how it failed when that box was first drawn.  A worded control
+       closes this one, and the shipped modal still closes on Escape and on the
+       scrim. */
+    function shell(){
+      mo.box.innerHTML='<h3>'+esc(_t('lab.ver.h'))+'</h3>'
+        +'<p class="oshare-sub">'+esc(name||_t('lab.dlg.seq'))+'</p>'
+        +'<div data-ver-body><div class="lab-hint">'+esc(_t('lab.dlg.loading'))+'</div></div>'
+        +'<div class="oshare-actions"><button type="button" class="oshare-btn" data-ver-close>'
+        +esc(_t('lab.dlg.close'))+'</button></div>';
+      paint();
+    }
+    function body(){ return mo.box.querySelector('[data-ver-body]'); }
+    function cardHTML(r){
+      var isOpen=!!_open[r.v], armed=(_arm!==''&&_arm===String(r.v));
+      var meta=r.who ? _t('lab.ver.byat',{who:r.who, when:_edWhen(r.when)})
+                     : _t('lab.ver.at',{when:_edWhen(r.when)});
+      var h='<div class="lab-ver"><div class="lab-ver-h">'
+        +'<span class="lab-ver-v">'+esc(_t('lab.ver.vn',{v:r.v}))+'</span>'
+        +(r.cur?('<span class="lab-ver-cur">'+esc(_t('lab.ver.cur'))+'</span>'):'')
+        +'</div>'
+        +'<div class="lab-ver-m">'+esc(meta)+' · '+esc(verCount(r.seq.length))+'</div>';
+      if(r.same!=='') h+='<div class="lab-ver-m">'+esc(_t('lab.ver.same',{v:r.same}))+'</div>';
+      if(isOpen) h+= r.seq
+        ? ('<div class="lab-ver-seq">'+esc((typeof spaceSeq==='function')
+              ?spaceSeq(r.seq,(r.data||{}).type,(r.data||{}).linkage):r.seq)+'</div>')
+        : ('<div class="lab-ver-m">'+esc(_t('lab.ver.blank'))+'</div>');
+      /* ⭐⭐ SAY WHAT HAPPENS, BEFORE IT HAPPENS.  A restore is a NEW SAVE that
+         everyone in the lab sees, and the sentence says so and says that nothing
+         is removed -- because "restore" reads as "undo" and undo reads as
+         "throw the newer one away", which is precisely what this does not do. */
+      if(armed) h+='<div class="lab-ver-warn">'+esc(_t('lab.ver.warn!',{v:r.v}))+'</div>';
+      h+='<div class="lab-ver-a">'
+        +'<button type="button" class="lab-x2" data-ver-look="'+esc(r.v)+'">'
+        +esc(_t(isOpen?'lab.ver.hide':'lab.ver.look'))+'</button>';
+      if(!r.cur){
+        h+= armed
+          ? ('<button type="button" class="lab-x2 lab-pri" data-ver-go="'+esc(r.v)+'">'
+             +esc(_t('lab.ver.go'))+'</button>'
+             +'<button type="button" class="lab-x2" data-ver-cancel>'+esc(_t('lab.cancel'))+'</button>')
+          : ('<button type="button" class="lab-x2" data-ver-arm="'+esc(r.v)+'">'
+             +esc(_t('lab.ver.restore'))+'</button>');
+      }
+      return h+'</div></div>';
+    }
+    function draw(){
+      var b=body(); if(!b) return;
+      if(_err){ b.innerHTML='<div class="lab-hint">'+esc(_t('lab.ver.fail'))+'</div>'; return; }
+      if(!_rows){ b.innerHTML='<div class="lab-hint">'+esc(_t('lab.dlg.loading'))+'</div>'; return; }
+      /* ⭐ THE STATE NOBODY DESIGNS, AND TODAY IT IS THE ONLY STATE THERE IS.
+         One row in the list means the record has never been re-saved, so there
+         is no earlier version to go back to -- which is a true and healthy
+         answer, not a failure, and the sentence says why it is empty and what
+         will fill it rather than apologising. */
+      if(_rows.length<2){
+        b.innerHTML='<div class="lab-verlist">'+cardHTML(_rows[0])+'</div>'
+          +'<p class="lab-ver-m">'+esc(_t('lab.ver.none!'))+'</p>';
+        return; }
+      b.innerHTML='<div class="lab-verlist">'+_rows.map(cardHTML).join('')+'</div>';
+    }
+    async function paint(){
+      try{
+        var got=await verFetch(rowId);
+        if(!got){ _err=true; draw(); return; }
+        var list=[verRow(got.live,true)].concat((got.past||[]).map(function(p){ return verRow(p,false); }));
+        _rows=verSame(list); _err=false;
+      }catch(_e){ ocFail('ver#load',_e); _err=true; }
+      draw();
+    }
+    /* ⛔ NO RESTORE RPC, AND THERE MUST NOT BE ONE.  The old contents go back
+       through the ORDINARY SAVE PATH -- the same conditional write the shared
+       editor uses, carrying the same two fields -- so the shipped trigger bumps
+       the counter and stamps who did it, and the server needs nothing at all
+       beyond the table that is already live.
+       ⚠ THE TWO FIELDS ARE THE TWO THE EDITOR WRITES, and deliberately not the
+       name, the tags or the folder: restoring more than the ordinary save path
+       writes would need rights the ordinary save path never asked for. */
+    async function verRestore(btn, r){
+      var cur=_rows&&_rows[0]; if(!cur) return;
+      if(btn) btn.disabled=true;
+      try{
+        var qs=verQ('strands',[eqp('id',rowId),eqp('updated_at',cur.when)]);
+        var back=await rest('PATCH',qs,{seq:r.seq,data:r.data},{Prefer:'return=representation'});
+        /* ⛔ THE RESTORE'S OWN COLLISION, AND IT IS NOT THE EDITOR'S.  The
+           conflict box the editor opens acts on the entry that is on the
+           calculator right now; from here there is no such entry and no open
+           editor, so offering its two buttons would offer to discard work that
+           does not exist.  Nothing was written, this says so first, and the
+           list is re-read so the person is looking at what is actually there. */
+        if(!back || !back.length){ toast(_t('lab.ver.clash!')); _arm=''; await paint(); return; }
+        _arm=''; _open={};
+        toast(_t('lab.ver.done',{v:(back[0].version==null?'':back[0].version)}));
+        await paint();
+        try{ renderLabList(); }catch(_e){ ocFail('ver#relist',_e); }
+      }catch(err){ toast((err&&err.message)||_t('lab.err.generic!')); }
+      finally{ if(btn) btn.disabled=false; }
+    }
+    mo.box.addEventListener('click',function(ev){
+      var b;
+      if((b=ev.target.closest('[data-ver-close]'))){ mo.close(); return; }
+      if((b=ev.target.closest('[data-ver-look]'))){
+        var k=b.getAttribute('data-ver-look'); _open[k]=!_open[k]; draw(); return; }
+      if((b=ev.target.closest('[data-ver-arm]'))){ _arm=b.getAttribute('data-ver-arm'); draw(); return; }
+      if((b=ev.target.closest('[data-ver-cancel]'))){ _arm=''; draw(); return; }
+      if((b=ev.target.closest('[data-ver-go]'))){
+        var vv=b.getAttribute('data-ver-go');
+        var row=(_rows||[]).filter(function(x){ return String(x.v)===String(vv); })[0];
+        if(row) verRestore(b,row);
+        return; }
+    });
+    /* ⚠ REGISTERED AS THE DIALOG PAINTER so a language change repaints it.  It
+       re-fetches rather than re-using what is in hand, which is the same choice
+       the comments dialog makes and for the same reason: the list is small, and
+       a stale list on a screen whose whole purpose is to say what is there is
+       worse than a second read. */
+    /* ⚠ THE TWO CALLS ARE SPLIT ONTO TWO LINES DELIBERATELY, and it is not a
+       style choice.  This block is inserted between the paint registration of
+       the dialog ABOVE it and the section comment BELOW it, and those two lines
+       are adjacent in the anchor.  Written on ONE line here, this function's own
+       close would recreate that exact pair immediately before the comment: the
+       anchor would become a substring of its own replacement, and no assertion
+       could then tell an applied patch from an unapplied one.  Same behaviour,
+       and the containment is broken structurally rather than by luck. */
+    _setDlgPaint(shell);
+    shell();
+  }
   // ---- lab monomers (any lab member edit; merged into CUSTOM so lab codes resolve) ----
   var _labMon=[];
   async function fetchLabMonomers(labId){ return (await rest('GET','custom_bases?lab_id=eq.'+encodeURIComponent(labId)+'&select=*&order=code.asc'))||[]; }
@@ -18613,6 +18951,15 @@ try{
     var shared = !labId && !!e.__labId;
     if((isAuthor||_isMgr(labId)) && !shared) acts+='<button type="button" class="lab-x2" data-lab-move="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'">'+esc(_t('lab.fold.go'))+'</button>';
     if(labId){ acts+='<button type="button" class="lab-x2" data-lab-comments="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'">'+esc(_t('lab.cmt.h'))+'</button>';
+      /* R84a. ⭐ THE UNDO, ON THE CARD.  It is offered to EVERY seat and
+         not only to those who may write, because reading what a record used
+         to say is not editing it -- the server agrees, and grants the SELECT
+         to every signed-in caller who can see the record at all, inheriting
+         the visibility term from the live row rather than restating it.
+         ⚠ Whether the restore is permitted is the SERVER's answer and is
+         taken from a refused conditional write, never from a cached guess
+         about the seat. */
+      acts+='<button type="button" class="lab-x2" data-lab-vers="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'">'+esc(_t('lab.ver.h'))+'</button>';
       /* ⚠⚠ "Remove" AND "Delete" ARE DIFFERENT OUTCOMES AND REUSING THE SHIPPED
          KEY WOULD HAVE COLLAPSED THEM IN JAPANESE.  Remove un-shares the row
          from the lab (removeFromLab clears lab_id and the author keeps it);
@@ -19124,6 +19471,10 @@ try{
       +'<div class="labed-a">'
       +'<button type="button" class="lab-x2 lab-pri" data-ed-save>'+esc(_t('lab.ed.save'))+'</button>'
       +'<button type="button" class="lab-x2" data-ed-copy>'+esc(_t('lab.ed.copy',{where:_edWhere(sh.labId)}))+'</button>'
+      /* R84a. ⚠ THE ROW ID, NOT THE CLIENT ID.  The history is keyed on the
+         server's own row and `sh.rowId` is what the conditional save above
+         already addresses; the client id would match nothing. */
+      +'<button type="button" class="lab-x2" data-lab-vers="'+esc(sh.rowId||'')+'" data-lab-nm="'+esc(sh.name||'')+'">'+esc(_t('lab.ver.h'))+'</button>'
       +'<button type="button" class="lab-x2" data-ed-cancel>'+esc(_t('lab.cancel'))+'</button>'
       +'</div>';
   }
@@ -19491,6 +19842,7 @@ try{
       }).catch(function(err){ toast(err.message||_t('lab.err.remove')); _rowBusy(b,false,_mnm); });
       return; }
     if((b=e.target.closest('[data-lab-comments]'))){ openComments(b.getAttribute('data-lab-comments'), b.getAttribute('data-lab-nm')); return; }
+    if((b=e.target.closest('[data-lab-vers]'))){ openVersions(b.getAttribute('data-lab-vers'), b.getAttribute('data-lab-nm')); return; }
     if((b=e.target.closest('[data-labmon-add]'))){ openMonPicker(); return; }
     if((b=e.target.closest('[data-labmon-mine]'))){ var _lm=_labMon[+b.getAttribute('data-labmon-mine')]; if(_lm){ addLabMonomerToMine(Object.assign({},_lm.data||{},{code:_lm.code})); } return; }
     if((b=e.target.closest('[data-labmon-rm]'))){
