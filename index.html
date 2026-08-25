@@ -380,7 +380,7 @@ var I18N = {
   "lab.bulk.moveh":"File in a folder",
   "lab.bulk.moveok":"Filed {ok}.",
   "lab.bulk.movepart":"Filed {ok}. {bad} stayed where they were: you can only file records you wrote, unless you manage the lab.",
-  "lab.bulk.movepro":"Nothing was filed. Filing needs an active plan, so all {bad} stayed where they were.",
+  "lab.bulk.movepro":"Nothing was filed. {lab} cannot take new records until its payment goes through, so all {bad} stayed where they were.",
   "lab.bulk.movesub":"Choose where these {n} go. They stay in the shared library.",
   "lab.bulk.moving":"Filing {n} of {total}...",
   "lab.bulk.n1":"1 entry selected",
@@ -444,6 +444,8 @@ var I18N = {
   "lab.ed.all!":"Everyone in the lab sees your changes.",
   "lab.ed.band":"Editing {name} in {lab}",
   "lab.ed.clash!":"{who} saved this record while you were editing it.",
+  "lab.ed.closed!":"{lab} has closed, and your changes were not saved to it.",
+  "lab.ed.closedb!":"Everything you had in {lab} is now in your own library, exactly as it was. Nothing was deleted and nobody edited your record.",
   "lab.ed.copied":"Saved a copy in {where}.",
   "lab.ed.copy":"Save a copy in {where}",
   "lab.ed.discard":"Discard my changes and open the latest version",
@@ -460,6 +462,7 @@ var I18N = {
   "lab.ed.openit":"Open it",
   "lab.ed.ok":"Saved to the lab.",
   "lab.ed.save":"Save to the lab",
+  "lab.ed.savemine":"Save these changes to the record in my library",
   "lab.err.add":"Could not add",
   "lab.err.create":"Could not create",
   "lab.err.del":"Could not delete",
@@ -569,7 +572,6 @@ var I18N = {
   "lab.leave.go":"Leave this lab",
   "lab.leave.q":"Leave {name}?",
   "lab.leave.why!":"You will lose access to the shared library. What you added to it stays with the lab, and comes back into your own library, where you can open and copy it but not change it.",
-  "lab.lib.crumb":"Lab: {name}",
   "lab.lib.emptyh":"Nothing shared to this lab yet",
   "lab.lib.emptylab":"Move one of your saved sequences into the lab library and everyone in the lab can see it. The rest of your library stays private.",
   "lab.lib.emptymine":"No saved sequences yet. Save one from the calculator, then sort it into folders here.",
@@ -651,6 +653,7 @@ var I18N = {
   "lab.mv.fail":"Could not move it",
   "lab.mv.go":"Move",
   "lab.mv.h":"Move a sequence to the lab library",
+  "lab.mv.lapsed!":"{lab} cannot take new shared records until its payment goes through. Everything already in {lab} still opens and can still be edited, and nothing has been lost. Your copy is in your own library.",
   "lab.mv.mix":"{parts} in {labname}",
   "lab.mv.nolab":"Join or create a lab first (Account ▸ Lab).",
   "lab.mv.none":"Select the sequences you want to move to the lab library.",
@@ -1613,7 +1616,7 @@ var I18N = {
   "lab.bulk.moveh":"\u653e\u5165\u8cc7\u6599\u593e",
   "lab.bulk.moveok":"\u5df2\u653e\u5165 {ok} \u9805\u3002",
   "lab.bulk.movepart":"\u5df2\u653e\u5165 {ok} \u7b46\u3002{bad} \u7b46\u7559\u5728\u539f\u4f4d\uff1a\u4f60\u53ea\u80fd\u5c07\u81ea\u5df1\u5efa\u7acb\u7684\u8a18\u9304\u653e\u5165\u8cc7\u6599\u593e\uff0c\u9664\u975e\u4f60\u662f\u5be6\u9a57\u5ba4\u8ca0\u8cac\u4eba\u3002",
-  "lab.bulk.movepro":"\u6c92\u6709\u4efb\u4f55\u4e00\u7b46\u88ab\u653e\u5165\u8cc7\u6599\u593e\u3002\u653e\u5165\u8cc7\u6599\u593e\u9700\u8981\u6709\u6548\u7684\u8a02\u95b1\u65b9\u6848\uff0c\u6240\u4ee5 {bad} \u7b46\u5168\u90e8\u7559\u5728\u539f\u4f4d\u3002",
+  "lab.bulk.movepro":"\u6c92\u6709\u4efb\u4f55\u4e00\u7b46\u88ab\u653e\u5165\u8cc7\u6599\u593e\u3002\u5728\u4ed8\u6b3e\u5b8c\u6210\u4e4b\u524d\uff0c{lab} \u7121\u6cd5\u63a5\u6536\u65b0\u7684\u8a18\u9304\uff0c\u6240\u4ee5 {bad} \u7b46\u5168\u90e8\u7559\u5728\u539f\u4f4d\u3002",
   "lab.bulk.movesub":"\u9078\u64c7\u9019 {n} \u9805\u8981\u653e\u5230\u54ea\u88e1\u3002\u5b83\u5011\u4ecd\u7136\u7559\u5728\u5171\u7528\u8cc7\u6599\u5eab\u88e1\u3002",
   "lab.bulk.moving":"\u6b63\u5728\u653e\u5165\u7b2c {n} / {total} \u9805…",
   "lab.bulk.n1":"\u5df2\u9078 1 \u7b46\u8a18\u9304",
@@ -1677,6 +1680,8 @@ var I18N = {
   "lab.ed.all!":"\u5be6\u9a57\u5ba4\u4e2d\u7684\u6bcf\u500b\u4eba\u90fd\u6703\u770b\u5230\u4f60\u7684\u8b8a\u66f4\u3002",
   "lab.ed.band":"\u6b63\u5728\u7de8\u8f2f {lab} \u4e2d\u7684 {name}",
   "lab.ed.clash!":"\u5728\u4f60\u7de8\u8f2f\u671f\u9593\uff0c{who} \u5132\u5b58\u4e86\u9019\u4e00\u7b46\u3002",
+  "lab.ed.closed!":"{lab} \u5df2\u7d93\u95dc\u9589\uff0c\u4f60\u7684\u8b8a\u66f4\u6c92\u6709\u5132\u5b58\u5230\u90a3\u88e1\u3002",
+  "lab.ed.closedb!":"\u4f60\u653e\u5728 {lab} \u88e1\u7684\u5167\u5bb9\u5df2\u539f\u6a23\u56de\u5230\u4f60\u81ea\u5df1\u7684\u8cc7\u6599\u5eab\u3002\u6c92\u6709\u4efb\u4f55\u6771\u897f\u88ab\u522a\u9664\uff0c\u4e5f\u6c92\u6709\u4eba\u7de8\u8f2f\u904e\u4f60\u7684\u8a18\u9304\u3002",
   "lab.ed.copied":"\u5df2\u5728\u300c{where}\u300d\u5132\u5b58\u526f\u672c\u3002",
   "lab.ed.copy":"\u5728\u300c{where}\u300d\u5132\u5b58\u526f\u672c",
   "lab.ed.discard":"\u6368\u68c4\u6211\u7684\u8b8a\u66f4\uff0c\u958b\u555f\u6700\u65b0\u7248\u672c",
@@ -1693,6 +1698,7 @@ var I18N = {
   "lab.ed.openit":"\u958b\u555f\u5b83",
   "lab.ed.ok":"\u5df2\u5132\u5b58\u5230\u5be6\u9a57\u5ba4\u3002",
   "lab.ed.save":"\u5132\u5b58\u5230\u5be6\u9a57\u5ba4",
+  "lab.ed.savemine":"\u5c07\u9019\u4e9b\u8b8a\u66f4\u5132\u5b58\u5230\u6211\u8cc7\u6599\u5eab\u88e1\u7684\u90a3\u4e00\u7b46",
   "lab.err.add":"\u7121\u6cd5\u65b0\u589e",
   "lab.err.create":"\u7121\u6cd5\u5efa\u7acb",
   "lab.err.del":"\u7121\u6cd5\u522a\u9664",
@@ -1802,7 +1808,6 @@ var I18N = {
   "lab.leave.go":"\u96e2\u958b\u9019\u500b\u5be6\u9a57\u5ba4",
   "lab.leave.q":"\u8981\u96e2\u958b {name} \u55ce\uff1f",
   "lab.leave.why!":"\u4f60\u5c07\u5931\u53bb\u5171\u7528\u8cc7\u6599\u5eab\u7684\u5b58\u53d6\u6b0a\u3002\u4f60\u65b0\u589e\u7684\u5167\u5bb9\u6703\u7559\u5728\u5be6\u9a57\u5ba4\uff0c\u4e26\u56de\u5230\u4f60\u81ea\u5df1\u7684\u8cc7\u6599\u5eab\u3002\u9019\u4e9b\u5167\u5bb9\u4f60\u53ef\u4ee5\u958b\u555f\u548c\u8907\u88fd\uff0c\u4f46\u4f60\u7121\u6cd5\u8b8a\u66f4\u3002",
-  "lab.lib.crumb":"\u5be6\u9a57\u5ba4\uff1a{name}",
   "lab.lib.emptyh":"\u9019\u500b\u5be6\u9a57\u5ba4\u9084\u6c92\u6709\u5171\u7528\u7684\u5167\u5bb9",
   "lab.lib.emptylab":"\u628a\u4f60\u5132\u5b58\u7684\u5e8f\u5217\u79fb\u5230\u5be6\u9a57\u5ba4\u7684\u5171\u7528\u8cc7\u6599\u5eab\uff0c\u5be6\u9a57\u5ba4\u88e1\u7684\u6bcf\u500b\u4eba\u90fd\u770b\u5f97\u5230\u3002\u4f60\u8cc7\u6599\u5eab\u88e1\u7684\u5176\u4ed6\u5e8f\u5217\u4ecd\u7136\u53ea\u6709\u4f60\u770b\u5f97\u5230\u3002",
   "lab.lib.emptymine":"\u9084\u6c92\u6709\u5df2\u5132\u5b58\u7684\u5e8f\u5217\u3002\u5148\u5f9e\u8a08\u7b97\u6a5f\u5132\u5b58\u4e00\u7b46\uff0c\u518d\u5728\u9019\u88e1\u6b78\u5165\u8cc7\u6599\u593e\u3002",
@@ -1884,6 +1889,7 @@ var I18N = {
   "lab.mv.fail":"\u79fb\u52d5\u5931\u6557",
   "lab.mv.go":"\u79fb\u52d5",
   "lab.mv.h":"\u628a\u5e8f\u5217\u79fb\u5230\u5be6\u9a57\u5ba4\u7684\u5171\u7528\u8cc7\u6599\u5eab",
+  "lab.mv.lapsed!":"\u5728\u4ed8\u6b3e\u5b8c\u6210\u4e4b\u524d\uff0c{lab} \u7121\u6cd5\u63a5\u6536\u65b0\u7684\u5171\u7528\u8a18\u9304\u3002\u5df2\u7d93\u5728 {lab} \u88e1\u7684\u5167\u5bb9\u4ecd\u7136\u53ef\u4ee5\u958b\u555f\u548c\u7de8\u8f2f\uff0c\u6c92\u6709\u4efb\u4f55\u6771\u897f\u907a\u5931\u3002\u4f60\u7684\u526f\u672c\u5728\u4f60\u81ea\u5df1\u7684\u8cc7\u6599\u5eab\u88e1\u3002",
   "lab.mv.mix":"{labname}\uff1a{parts}",
   "lab.mv.nolab":"\u8acb\u5148\u52a0\u5165\u6216\u5efa\u7acb\u5be6\u9a57\u5ba4\uff08\u5e33\u6236 ▸ \u5be6\u9a57\u5ba4\uff09\u3002",
   "lab.mv.none":"\u8acb\u5148\u9078\u53d6\u5e8f\u5217\uff0c\u518d\u79fb\u5230\u5be6\u9a57\u5ba4\u7684\u5171\u7528\u8cc7\u6599\u5eab\u3002",
@@ -2840,7 +2846,7 @@ var I18N = {
   "lab.bulk.moveh":"\u653e\u5165\u6587\u4ef6\u5939",
   "lab.bulk.moveok":"\u5df2\u653e\u5165 {ok} \u9879\u3002",
   "lab.bulk.movepart":"\u5df2\u653e\u5165 {ok} \u6761\u3002{bad} \u6761\u7559\u5728\u539f\u4f4d\uff1a\u4f60\u53ea\u80fd\u5c06\u81ea\u5df1\u521b\u5efa\u7684\u8bb0\u5f55\u653e\u5165\u6587\u4ef6\u5939\uff0c\u9664\u975e\u4f60\u662f\u5b9e\u9a8c\u5ba4\u8d1f\u8d23\u4eba\u3002",
-  "lab.bulk.movepro":"\u6ca1\u6709\u4efb\u4f55\u4e00\u6761\u88ab\u653e\u5165\u6587\u4ef6\u5939\u3002\u653e\u5165\u6587\u4ef6\u5939\u9700\u8981\u6709\u6548\u7684\u8ba2\u9605\u65b9\u6848\uff0c\u6240\u4ee5 {bad} \u6761\u5168\u90e8\u7559\u5728\u539f\u4f4d\u3002",
+  "lab.bulk.movepro":"\u6ca1\u6709\u4efb\u4f55\u4e00\u6761\u88ab\u653e\u5165\u6587\u4ef6\u5939\u3002\u5728\u4ed8\u6b3e\u5b8c\u6210\u4e4b\u524d\uff0c{lab} \u65e0\u6cd5\u63a5\u6536\u65b0\u7684\u8bb0\u5f55\uff0c\u6240\u4ee5 {bad} \u6761\u5168\u90e8\u7559\u5728\u539f\u4f4d\u3002",
   "lab.bulk.movesub":"\u9009\u62e9\u8fd9 {n} \u9879\u8981\u653e\u5230\u54ea\u91cc\u3002\u5b83\u4eec\u4ecd\u7136\u7559\u5728\u5171\u7528\u8d44\u6e90\u5e93\u91cc\u3002",
   "lab.bulk.moving":"\u6b63\u5728\u653e\u5165\u7b2c {n} / {total} \u9879…",
   "lab.bulk.n1":"\u5df2\u9009 1 \u6761\u8bb0\u5f55",
@@ -2904,6 +2910,8 @@ var I18N = {
   "lab.ed.all!":"\u5b9e\u9a8c\u5ba4\u4e2d\u7684\u6bcf\u4e2a\u4eba\u90fd\u4f1a\u770b\u5230\u4f60\u7684\u66f4\u6539\u3002",
   "lab.ed.band":"\u6b63\u5728\u7f16\u8f91 {lab} \u4e2d\u7684 {name}",
   "lab.ed.clash!":"\u5728\u4f60\u7f16\u8f91\u671f\u95f4\uff0c{who} \u4fdd\u5b58\u4e86\u8fd9\u4e00\u6761\u3002",
+  "lab.ed.closed!":"{lab} \u5df2\u7ecf\u5173\u95ed\uff0c\u4f60\u7684\u66f4\u6539\u6ca1\u6709\u4fdd\u5b58\u5230\u90a3\u91cc\u3002",
+  "lab.ed.closedb!":"\u4f60\u653e\u5728 {lab} \u91cc\u7684\u5185\u5bb9\u5df2\u539f\u6837\u56de\u5230\u4f60\u81ea\u5df1\u7684\u8d44\u6e90\u5e93\u3002\u6ca1\u6709\u4efb\u4f55\u4e1c\u897f\u88ab\u5220\u9664\uff0c\u4e5f\u6ca1\u6709\u4eba\u7f16\u8f91\u8fc7\u4f60\u7684\u8bb0\u5f55\u3002",
   "lab.ed.copied":"\u5df2\u5728\u300c{where}\u300d\u4fdd\u5b58\u526f\u672c\u3002",
   "lab.ed.copy":"\u5728\u300c{where}\u300d\u4fdd\u5b58\u526f\u672c",
   "lab.ed.discard":"\u820d\u5f03\u6211\u7684\u66f4\u6539\uff0c\u6253\u5f00\u6700\u65b0\u7248\u672c",
@@ -2920,6 +2928,7 @@ var I18N = {
   "lab.ed.openit":"\u6253\u5f00\u5b83",
   "lab.ed.ok":"\u5df2\u4fdd\u5b58\u5230\u5b9e\u9a8c\u5ba4\u3002",
   "lab.ed.save":"\u4fdd\u5b58\u5230\u5b9e\u9a8c\u5ba4",
+  "lab.ed.savemine":"\u5c06\u8fd9\u4e9b\u66f4\u6539\u4fdd\u5b58\u5230\u6211\u8d44\u6e90\u5e93\u91cc\u7684\u90a3\u4e00\u6761",
   "lab.err.add":"\u65e0\u6cd5\u6dfb\u52a0",
   "lab.err.create":"\u65e0\u6cd5\u521b\u5efa",
   "lab.err.del":"\u65e0\u6cd5\u5220\u9664",
@@ -3029,7 +3038,6 @@ var I18N = {
   "lab.leave.go":"\u79bb\u5f00\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4",
   "lab.leave.q":"\u8981\u79bb\u5f00 {name} \u5417\uff1f",
   "lab.leave.why!":"\u4f60\u5c06\u5931\u53bb\u5171\u7528\u8d44\u6e90\u5e93\u7684\u8bbf\u95ee\u6743\u9650\u3002\u4f60\u6dfb\u52a0\u7684\u5185\u5bb9\u4f1a\u7559\u5728\u5b9e\u9a8c\u5ba4\uff0c\u5e76\u56de\u5230\u4f60\u81ea\u5df1\u7684\u8d44\u6e90\u5e93\u3002\u8fd9\u4e9b\u5185\u5bb9\u4f60\u53ef\u4ee5\u6253\u5f00\u548c\u590d\u5236\uff0c\u4f46\u4f60\u65e0\u6cd5\u53d8\u66f4\u3002",
-  "lab.lib.crumb":"\u5b9e\u9a8c\u5ba4\uff1a{name}",
   "lab.lib.emptyh":"\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u8fd8\u6ca1\u6709\u5171\u7528\u7684\u5185\u5bb9",
   "lab.lib.emptylab":"\u628a\u4f60\u4fdd\u5b58\u7684\u5e8f\u5217\u79fb\u5230\u5b9e\u9a8c\u5ba4\u7684\u5171\u7528\u8d44\u6e90\u5e93\uff0c\u5b9e\u9a8c\u5ba4\u91cc\u7684\u6bcf\u4e2a\u4eba\u90fd\u770b\u5f97\u5230\u3002\u4f60\u8d44\u6e90\u5e93\u91cc\u7684\u5176\u4ed6\u5e8f\u5217\u4ecd\u7136\u53ea\u6709\u4f60\u770b\u5f97\u5230\u3002",
   "lab.lib.emptymine":"\u8fd8\u6ca1\u6709\u5df2\u4fdd\u5b58\u7684\u5e8f\u5217\u3002\u5148\u4ece\u8ba1\u7b97\u5668\u4fdd\u5b58\u4e00\u6761\uff0c\u518d\u5728\u8fd9\u91cc\u5f52\u5165\u6587\u4ef6\u5939\u3002",
@@ -3111,6 +3119,7 @@ var I18N = {
   "lab.mv.fail":"\u79fb\u52a8\u5931\u8d25",
   "lab.mv.go":"\u79fb\u52a8",
   "lab.mv.h":"\u628a\u5e8f\u5217\u79fb\u5230\u5b9e\u9a8c\u5ba4\u7684\u5171\u7528\u8d44\u6e90\u5e93",
+  "lab.mv.lapsed!":"\u5728\u4ed8\u6b3e\u5b8c\u6210\u4e4b\u524d\uff0c{lab} \u65e0\u6cd5\u63a5\u6536\u65b0\u7684\u5171\u4eab\u8bb0\u5f55\u3002\u5df2\u7ecf\u5728 {lab} \u91cc\u7684\u5185\u5bb9\u4ecd\u7136\u53ef\u4ee5\u6253\u5f00\u548c\u7f16\u8f91\uff0c\u6ca1\u6709\u4efb\u4f55\u4e1c\u897f\u4e22\u5931\u3002\u4f60\u7684\u526f\u672c\u5728\u4f60\u81ea\u5df1\u7684\u8d44\u6e90\u5e93\u91cc\u3002",
   "lab.mv.mix":"{labname}\uff1a{parts}",
   "lab.mv.nolab":"\u8bf7\u5148\u52a0\u5165\u6216\u521b\u5efa\u5b9e\u9a8c\u5ba4\uff08\u8d26\u6237 ▸ \u5b9e\u9a8c\u5ba4\uff09\u3002",
   "lab.mv.none":"\u8bf7\u5148\u9009\u53d6\u5e8f\u5217\uff0c\u518d\u79fb\u5230\u5b9e\u9a8c\u5ba4\u7684\u5171\u7528\u8d44\u6e90\u5e93\u3002",
@@ -4067,7 +4076,7 @@ var I18N = {
   "lab.bulk.moveh":"\u30d5\u30a9\u30eb\u30c0\u30fc\u306b\u5165\u308c\u308b",
   "lab.bulk.moveok":"{ok} \u4ef6\u5165\u308c\u307e\u3057\u305f\u3002",
   "lab.bulk.movepart":"{ok} \u4ef6\u3092\u30d5\u30a9\u30eb\u30c0\u30fc\u306b\u5165\u308c\u307e\u3057\u305f\u3002{bad} \u4ef6\u306f\u5143\u306e\u5834\u6240\u306b\u6b8b\u308a\u307e\u3057\u305f\u3002\u30ec\u30b3\u30fc\u30c9\u3092\u30d5\u30a9\u30eb\u30c0\u30fc\u306b\u5165\u308c\u3089\u308c\u308b\u306e\u306f\u3001\u305d\u308c\u3092\u4f5c\u6210\u3057\u305f\u672c\u4eba\u307e\u305f\u306f\u30e9\u30dc\u7ba1\u7406\u8005\u3067\u3059\u3002",
-  "lab.bulk.movepro":"\u30d5\u30a9\u30eb\u30c0\u30fc\u306b\u306f 1 \u4ef6\u3082\u5165\u308a\u307e\u305b\u3093\u3067\u3057\u305f\u3002\u30d5\u30a9\u30eb\u30c0\u30fc\u306b\u5165\u308c\u308b\u306b\u306f\u6709\u52b9\u306a\u30d7\u30e9\u30f3\u304c\u5fc5\u8981\u306a\u305f\u3081\u3001{bad} \u4ef6\u306f\u3059\u3079\u3066\u5143\u306e\u5834\u6240\u306b\u6b8b\u308a\u307e\u3057\u305f\u3002",
+  "lab.bulk.movepro":"\u30d5\u30a9\u30eb\u30c0\u30fc\u306b\u306f 1 \u4ef6\u3082\u5165\u308a\u307e\u305b\u3093\u3067\u3057\u305f\u3002\u652f\u6255\u3044\u304c\u5b8c\u4e86\u3059\u308b\u307e\u3067\u3001{lab} \u306f\u65b0\u3057\u3044\u30ec\u30b3\u30fc\u30c9\u3092\u53d7\u3051\u53d6\u308c\u306a\u3044\u305f\u3081\u3001{bad} \u4ef6\u306f\u3059\u3079\u3066\u5143\u306e\u5834\u6240\u306b\u6b8b\u308a\u307e\u3057\u305f\u3002",
   "lab.bulk.movesub":"\u3053\u306e {n} \u4ef6\u306e\u79fb\u52d5\u5148\u3092\u9078\u3093\u3067\u304f\u3060\u3055\u3044\u3002\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u5185\u306b\u6b8b\u308a\u307e\u3059\u3002",
   "lab.bulk.moving":"{total} \u4ef6\u4e2d {n} \u4ef6\u3092\u30d5\u30a9\u30eb\u30c0\u30fc\u306b\u5165\u308c\u3066\u3044\u307e\u3059…",
   "lab.bulk.n1":"\u30ec\u30b3\u30fc\u30c9 1 \u4ef6\u3092\u9078\u629e\u4e2d",
@@ -4131,6 +4140,8 @@ var I18N = {
   "lab.ed.all!":"\u30e9\u30dc\u306e\u5168\u54e1\u306b\u3042\u306a\u305f\u306e\u5909\u66f4\u304c\u898b\u3048\u307e\u3059\u3002",
   "lab.ed.band":"{lab} \u306e {name} \u3092\u7de8\u96c6\u4e2d",
   "lab.ed.clash!":"\u3042\u306a\u305f\u304c\u7de8\u96c6\u3057\u3066\u3044\u308b\u9593\u306b {who} \u304c\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u3092\u4fdd\u5b58\u3057\u307e\u3057\u305f\u3002",
+  "lab.ed.closed!":"{lab} \u306f\u7d42\u4e86\u3057\u3001\u3042\u306a\u305f\u306e\u5909\u66f4\u306f\u305d\u3053\u306b\u306f\u4fdd\u5b58\u3055\u308c\u307e\u305b\u3093\u3067\u3057\u305f\u3002",
+  "lab.ed.closedb!":"{lab} \u306b\u7f6e\u3044\u3066\u3044\u305f\u3082\u306e\u306f\u3001\u305d\u306e\u307e\u307e\u306e\u72b6\u614b\u3067\u3042\u306a\u305f\u81ea\u8eab\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u79fb\u3063\u3066\u3044\u307e\u3059\u3002\u524a\u9664\u3055\u308c\u305f\u3082\u306e\u306f\u306a\u304f\u3001\u8ab0\u3082\u3042\u306a\u305f\u306e\u30ec\u30b3\u30fc\u30c9\u3092\u7de8\u96c6\u3057\u3066\u3044\u307e\u305b\u3093\u3002",
   "lab.ed.copied":"\u300c{where}\u300d\u306b\u30b3\u30d4\u30fc\u3092\u4fdd\u5b58\u3057\u307e\u3057\u305f\u3002",
   "lab.ed.copy":"\u300c{where}\u300d\u306b\u30b3\u30d4\u30fc\u3092\u4fdd\u5b58",
   "lab.ed.discard":"\u81ea\u5206\u306e\u5909\u66f4\u3092\u7834\u68c4\u3057\u3066\u6700\u65b0\u7248\u3092\u958b\u304f",
@@ -4147,6 +4158,7 @@ var I18N = {
   "lab.ed.openit":"\u958b\u304f",
   "lab.ed.ok":"\u30e9\u30dc\u306b\u4fdd\u5b58\u3057\u307e\u3057\u305f\u3002",
   "lab.ed.save":"\u30e9\u30dc\u306b\u4fdd\u5b58",
+  "lab.ed.savemine":"\u3053\u306e\u5909\u66f4\u3092\u81ea\u5206\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u306e\u30ec\u30b3\u30fc\u30c9\u306b\u4fdd\u5b58",
   "lab.err.add":"\u8ffd\u52a0\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f",
   "lab.err.create":"\u4f5c\u6210\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f",
   "lab.err.del":"\u524a\u9664\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f",
@@ -4256,7 +4268,6 @@ var I18N = {
   "lab.leave.go":"\u3053\u306e\u30e9\u30dc\u304b\u3089\u9000\u51fa",
   "lab.leave.q":"{name} \u304b\u3089\u9000\u51fa\u3057\u307e\u3059\u304b?",
   "lab.leave.why!":"\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u30a2\u30af\u30bb\u30b9\u3067\u304d\u306a\u304f\u306a\u308a\u307e\u3059\u3002\u8ffd\u52a0\u3057\u305f\u3082\u306e\u306f\u30e9\u30dc\u306b\u6b8b\u308a\u3001\u3054\u81ea\u8eab\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u3082\u623b\u308a\u307e\u3059\u3002\u8ffd\u52a0\u3057\u305f\u3082\u306e\u306f\u3001\u958b\u3044\u305f\u308a\u30b3\u30d4\u30fc\u3057\u305f\u308a\u3059\u308b\u3053\u3068\u306f\u3067\u304d\u307e\u3059\u304c\u3001\u5909\u66f4\u306f\u3067\u304d\u307e\u305b\u3093\u3002",
-  "lab.lib.crumb":"\u30e9\u30dc: {name}",
   "lab.lib.emptyh":"\u3053\u306e\u30e9\u30dc\u306b\u306f\u307e\u3060\u5171\u6709\u3055\u308c\u305f\u3082\u306e\u304c\u3042\u308a\u307e\u305b\u3093",
   "lab.lib.emptylab":"\u4fdd\u5b58\u3057\u305f\u914d\u5217\u3092\u30e9\u30dc\u306e\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u3078\u79fb\u3059\u3068\u3001\u30e9\u30dc\u306e\u5168\u54e1\u304c\u898b\u3089\u308c\u308b\u3088\u3046\u306b\u306a\u308a\u307e\u3059\u3002\u81ea\u5206\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u3042\u308b\u4ed6\u306e\u914d\u5217\u306f\u3001\u5f15\u304d\u7d9a\u304d\u81ea\u5206\u3060\u3051\u304c\u898b\u3089\u308c\u307e\u3059\u3002",
   "lab.lib.emptymine":"\u4fdd\u5b58\u3055\u308c\u305f\u914d\u5217\u306f\u307e\u3060\u3042\u308a\u307e\u305b\u3093\u3002\u307e\u305a\u8a08\u7b97\u30c4\u30fc\u30eb\u304b\u3089\u4fdd\u5b58\u3057\u3001\u3053\u3053\u3067\u30d5\u30a9\u30eb\u30c0\u30fc\u306b\u6574\u7406\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
@@ -4338,6 +4349,7 @@ var I18N = {
   "lab.mv.fail":"\u79fb\u52d5\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f",
   "lab.mv.go":"\u79fb\u52d5",
   "lab.mv.h":"\u914d\u5217\u3092\u30e9\u30dc\u306e\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u79fb\u52d5",
+  "lab.mv.lapsed!":"{lab} \u306f\u652f\u6255\u3044\u304c\u5b8c\u4e86\u3059\u308b\u307e\u3067\u3001\u65b0\u3057\u3044\u5171\u6709\u30ec\u30b3\u30fc\u30c9\u3092\u53d7\u3051\u53d6\u308c\u307e\u305b\u3093\u3002\u3059\u3067\u306b {lab} \u306b\u3042\u308b\u3082\u306e\u306f\u4eca\u307e\u3067\u3069\u304a\u308a\u958b\u3044\u3066\u7de8\u96c6\u3067\u304d\u3001\u5931\u308f\u308c\u305f\u3082\u306e\u306f\u3042\u308a\u307e\u305b\u3093\u3002\u30b3\u30d4\u30fc\u306f\u3042\u306a\u305f\u81ea\u8eab\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u3042\u308a\u307e\u3059\u3002",
   "lab.mv.mix":"{labname}\uff1a{parts}",
   "lab.mv.nolab":"\u5148\u306b\u30e9\u30dc\u306b\u53c2\u52a0\u3059\u308b\u304b\u3001\u30e9\u30dc\u3092\u4f5c\u6210\u3057\u3066\u304f\u3060\u3055\u3044\uff08\u30a2\u30ab\u30a6\u30f3\u30c8 ▸ \u30e9\u30dc\uff09\u3002",
   "lab.mv.none":"\u30e9\u30dc\u306e\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u79fb\u52d5\u3059\u308b\u914d\u5217\u3092\u9078\u3093\u3067\u304f\u3060\u3055\u3044\u3002",
@@ -12192,64 +12204,24 @@ function proOn(){ return !!proIsPro; }
 function allFolders(){ var s={}; (history||[]).forEach(function(h){ if(h.folder) s[h.folder]=1; }); return Object.keys(s).sort(); }
 function allTags(){ var s={}; (history||[]).forEach(function(h){ (h.tags||[]).forEach(function(t){ if(t) s[t]=1; }); }); return Object.keys(s).sort(); }
 
-function ensureProToolbar(el){
-  try{
-    var head=el.querySelector('[data-hlist]'); if(!head) return;
-    var host=head.parentNode; if(!host) return;
-    var bar=host.querySelector('.prolibbar');
-    if(!proOn()){ if(bar) bar.remove(); return; }
-    if(!bar){
-      bar=document.createElement('div'); bar.className='prolibbar';
-      bar.style.cssText='display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:0 0 8px;font-size:12px';
-      host.insertBefore(bar, head);
-      bar.addEventListener('click',function(ev){ ev.stopPropagation(); });
-    }
-    var fo=allFolders(), tg=allTags();
-    bar.innerHTML=
-      '<select class="ctl-btn sm" data-libfolder style="max-width:150px"><option value="">All folders</option>'+
-        fo.map(function(f){ return '<option value="'+esc(f)+'"'+(libFolder===f?' selected':'')+'>'+esc(f)+'</option>'; }).join('')+'</select>'+
-      '<select class="ctl-btn sm" data-libtag style="max-width:150px"><option value="">All tags</option>'+
-        tg.map(function(t){ return '<option value="'+esc(t)+'"'+(libTag===t?' selected':'')+'>'+esc(t)+'</option>'; }).join('')+'</select>'+
-      '<button class="ctl-btn sm" data-libbatch>Batch entry</button>'+
-      '<span style="color:var(--muted)">Pro library · '+(history||[]).length+' strands</span>';
-  }catch(_){ /* teardown of something that may already be gone -- the goal state is reached either way */ }
-}
+/* R84d/J2, as ruled by Albert 2026-08-24.  ⛔ A SECOND Pro library toolbar and
+   its drawer-row decorator stood here and COULD NOT RENDER.  Both opened by
+   looking for an element carrying a list attribute that occurs zero times as an
+   attribute anywhere in this file, so both returned on their first line, every
+   time; R84a measured it statically, structurally and in a real browser.
+   ⭐ IT WAS DELETED FOR THE SECOND REASON RATHER THAN THE FIRST.  Dead weight in
+   a file at 89% of its wire ceiling is the small half; the large half is that
+   dead code which reads as live is how a stale quote gets written into a brief,
+   and half of R76j's B19 finding was quoted off this block.
+   ⚠ THE DELEGATES BELOW ARE NOT PART OF IT AND MUST NOT FOLLOW IT.  The live
+   library table and both live toolbars emit the attributes they listen for, and
+   the one-line escaper kept below is still called in this block.
+   ⚠⚠ THAT SENTENCE DELIBERATELY CARRIES NO COUNT.  A number in a comment that
+   SHIPS goes stale the first time anybody adds or removes a caller, and this
+   project's record holds fourteen instances of a guard or a comment that went
+   quietly wrong that way -- one of them measured on the build BEFORE the one it
+   described.  The count belongs in the round note, where it is dated. */
 function esc(s){ return ocEsc(s); }   /* BUG-5: this copy did NOT escape the single quote. Delegates now. */
-
-function decorateDrawer(el){
-  try{
-    var list=el.querySelector('[data-hlist]'); if(!list) return;
-    ensureProToolbar(el);
-    var pro=proOn();
-    list.querySelectorAll('.hitem').forEach(function(row){
-      var i=+row.getAttribute('data-hload'); var h=(history||[])[i]; if(!h) return;
-      var show=true;
-      if(pro && libFolder && (h.folder||'')!==libFolder) show=false;
-      if(pro && libTag && (h.tags||[]).indexOf(libTag)<0) show=false;
-      row.style.display=show?'':'none';
-      if(!pro || row.querySelector('.prox')) return;
-      var mid=row.querySelector('.hmid'); if(!mid) return;
-      var box=document.createElement('div'); box.className='prox';
-      box.style.cssText='display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:6px';
-      box.innerHTML=
-        '<input class="catgate-input" data-libf="'+i+'" placeholder="Folder" value="'+esc(h.folder||'')+'" style="width:110px;padding:4px 7px;font-size:12px" />'+
-        '<input class="catgate-input" data-libt="'+i+'" placeholder="tags, comma" value="'+esc((h.tags||[]).join(', '))+'" style="width:140px;padding:4px 7px;font-size:12px" />'+
-        '<input class="catgate-input" data-libn="'+i+'" placeholder="Note" value="'+esc(h.note||'')+'" style="flex:1;min-width:120px;padding:4px 7px;font-size:12px" />'+
-        '<button class="ctl-btn sm" data-libdup="'+i+'" title="Duplicate this strand">Duplicate</button>'+
-        '<button class="ctl-btn sm" data-libver="'+i+'" title="Save as a new version">+ Version</button>';
-      box.addEventListener('click',function(ev){ ev.stopPropagation(); });
-      mid.appendChild(box);
-    });
-  }catch(_e){ ocFail('decorateDrawer#1',_e); }
-}
-if(typeof W.drawerListHTML==='function'){
-  var _origDrawerList=W.drawerListHTML;
-  W.drawerListHTML=function(){
-    var out=_origDrawerList.apply(this,arguments);
-    setTimeout(function(){ try{ (typeof calcs!=='undefined'?calcs:[]).forEach(decorateDrawer); }catch(_e){ ocFail('decorateDrawer#2',_e); } },0);
-    return out;
-  };
-}
 
 /* Set-B interactions */
 document.addEventListener('click', function(e){
@@ -12287,14 +12259,6 @@ document.addEventListener('input', function(e){
     if(changed && h){ saveHist(); pushSoon(h); }
   }catch(_e){ ocFail('decorateDrawer#8',_e); }
 }, false);
-document.addEventListener('change', function(e){
-  try{
-    var t=e.target;
-    if(t.matches && t.matches('[data-libfolder]')){ libFolder=t.value; (typeof calcs!=='undefined'?calcs:[]).forEach(decorateDrawer); }
-    if(t.matches && t.matches('[data-libtag]')){ libTag=t.value; (typeof calcs!=='undefined'?calcs:[]).forEach(decorateDrawer); }
-  }catch(_e){ ocFail('decorateDrawer#9',_e); }
-}, false);
-
 /* ---- B5: Pro export adds folder/tags/note/epsilon260/monoisotopic ---- */
 function strandExtras(h){
   var eps='', mono='';
@@ -18912,7 +18876,16 @@ try{
   function setOpenFolder(fid){ var m=meta(); m.openFolder=fid||''; setMeta(m); }
   /* ⚠ The fallback is `lab.h`, the same key the Lab tab uses, so a lab whose
      name has not arrived yet is named the way the rest of the app names one. */
-  function labName(labId){ try{ var L=(_labs||[]).filter(function(x){return x.lab_id===labId;})[0]; return L?L.name:_t('lab.h'); }catch(_){ return _t('lab.h'); } }
+  /* R84d/J6b.  ⚠ A NAME THAT OUTLIVES THE LAB.  A dissolved lab leaves
+     my_labs() at once, so every sentence naming it would fall back to the
+     generic heading -- including `lab.ed.closed!`, whose entire job is to say
+     WHICH lab closed.  The live list still wins whenever it has the lab; this
+     only answers after it stops, and it is populated by the ordinary renders
+     that must already have run for the reader to be looking at that record. */
+  var _labNm={};
+  function labName(labId){ try{ var L=(_labs||[]).filter(function(x){return x.lab_id===labId;})[0];
+    if(L&&L.name){ _labNm[labId]=L.name; return L.name; }
+    return _labNm[labId]||_t('lab.h'); }catch(_){ return _labNm[labId]||_t('lab.h'); } }
   /* R75c. Personal = MY rows that no lab I am still in is showing me.
      It used to be 'rows with no lab', which is why a removed member's own
      work vanished from every screen they had: the scope still pointed at
@@ -19037,7 +19010,7 @@ try{
       var here=openF?folders.filter(function(f){return f.id===openF;})[0]:null; if(openF&&!here){ openF=''; setOpenFolder(''); }
       var hereSp=fIsSpace(here);
       var _v=_view(), _crumbs=fPath(folders, openF);
-      var crumb='<div class="fbread"><button type="button" class="fcrumb" data-fhome>'+(labId?esc(_t('lab.lib.crumb',{name:labName(labId)})):esc(_t('lab.lib.mine')))+'</button>'+_crumbs.map(function(cf,ci){ var last=(ci===_crumbs.length-1); return ' <span class="fsep">›</span> '+(last?('<span class="fhere">'+esc(fName(cf))+'</span> '):('<button type="button" class="fcrumb" data-fopen="'+esc(cf.id)+'">'+esc(fName(cf))+'</button>')); }).join('')+(here?(''+(hereSp?'':'<button type="button" class="fmenu fmenu-crumb" data-fmenu="'+esc(here.id)+'" data-fname="'+esc(here.name)+'" title="'+esc(_t('lab.fold.menuT'))+'" aria-label="'+esc(_t('lab.fold.menu',{name:here.name}))+'">⋯</button>')):'')+'</div>'
+      var crumb='<div class="fbread"><button type="button" class="fcrumb" data-fhome>'+(labId?esc(_t('lab.lib.sharedlab',{name:labName(labId)})):esc(_t('lab.lib.mine')))+'</button>'+_crumbs.map(function(cf,ci){ var last=(ci===_crumbs.length-1); return ' <span class="fsep">›</span> '+(last?('<span class="fhere">'+esc(fName(cf))+'</span> '):('<button type="button" class="fcrumb" data-fopen="'+esc(cf.id)+'">'+esc(fName(cf))+'</button>')); }).join('')+(here?(''+(hereSp?'':'<button type="button" class="fmenu fmenu-crumb" data-fmenu="'+esc(here.id)+'" data-fname="'+esc(here.name)+'" title="'+esc(_t('lab.fold.menuT'))+'" aria-label="'+esc(_t('lab.fold.menu',{name:here.name}))+'">⋯</button>')):'')+'</div>'
         /* ⚠⚠ R76d/D3. THE SENTENCE THAT MAKES THIS HONEST. It names BOTH
            people who can see in, because the lab manager CAN read and
            edit what is here (D3, and R76a everywhere else in the lab).
@@ -19186,7 +19159,7 @@ try{
          partial failure becomes unattributable. */
       (function step(){
         if(i>=ids.length){
-          if(st) st.textContent=_t(badN?(proN?'lab.bulk.movepro':'lab.bulk.movepart'):'lab.bulk.moveok',{ok:_n(okN),bad:_n(badN)});
+          if(st) st.textContent=_t(badN?(proN?'lab.bulk.movepro':'lab.bulk.movepart'):'lab.bulk.moveok',{ok:_n(okN),bad:_n(badN),lab:labName(meta().labId)});
           _sel.clear();
           setTimeout(function(){ mo.close(); renderLabList(); }, badN?2600:700);
           return;
@@ -19290,11 +19263,45 @@ try{
     sc.addEventListener('click',function(e){ if(e.target.closest && e.target.closest('.oshare-x')) close(); });
     return {sc:sc, box:box, close:close};
   }
+  /* R84d/J6a.  ⛔⛔ THE PICKER USED TO PRINT PostgREST'S OWN BODY AT A READER.
+     A WITH CHECK refusal comes back 42501 and `rerr()` passes `j.message`
+     through untouched, so the toast read `new row violates row-level security
+     policy for table "strands"` -- English, in every locale, to somebody who has
+     done nothing wrong.  Four fears, none of them addressed, and the loudest:
+     "the control I pressed said Move, so where is my record now?"
+     ⭐ THE SENTENCE DESCRIBES THE LAB'S STATE AND NAMES NO CONTROL, because
+     which control the refusal attaches to is genuinely open: `strands_insert`'s
+     WITH CHECK begins with a branch that has nothing to do with the lab, so a
+     client_id this account already owns can satisfy it without the paid test
+     being reached at all.  A sentence naming the control would be a guess; a
+     sentence about the lab is true either way, and it answers the fear by
+     saying where the reader's own copy is.
+     ⚠ ONLY A POLICY REFUSAL IS REWORDED.  Anything else keeps the server's own
+     text -- that is the channel a member cap arrives on -- because replacing an
+     unrelated fault with a payment explanation is a second wrong story, not a
+     fix. */
+  function _isPolicyRefusal(err){
+    var m=String((err&&err.message)||'');
+    return /row-level security|42501/i.test(m);
+  }
+  /* ⚠ IT PAINTS, IT DOES NOT TOAST.  Three sentences do not fit in 3.6 seconds,
+     and LAB-P2-15 already says a message that has to be read must not vanish.
+     ⚠ The toast is kept as the fallback for the case where the dialog is gone,
+     because a refusal with nothing on screen is the defect this replaces. */
+  function _pickRefused(mo,labId,err){
+    var msg=_isPolicyRefusal(err) ? _t('lab.mv.lapsed!',{lab:labName(labId)})
+                                  : ((err&&err.message)||_t('lab.err.add'));
+    var st=null; try{ st=mo&&mo.box&&mo.box.querySelector('[data-pickstat]'); }
+    catch(_e){ ocFail('labpick#stat',_e); }
+    if(st){ st.textContent=msg; try{ if(window.oligoAnnounce) window.oligoAnnounce(msg); }
+            catch(_e2){ ocFail('labpick#say',_e2); } return; }
+    toast(msg);
+  }
   function openPicker(){ var labId=meta().labId; var hist=(typeof history!=='undefined'&&history)?history:[]; var mo=modal(_t('lab.mv.h'),'none');
     function shell(){
       mo.box.innerHTML='<button type="button" class="oshare-btn oshare-x" aria-label="'+esc(_t('lab.dlg.close'))+'">✕</button><h3>'+esc(_t('lab.mv.h'))+'</h3><p class="oshare-sub">'+esc(_t('lab.mv.sub!'))+'</p><div class="oshare-list">'+
-        (hist.length? hist.map(function(h,i){ return '<div class="lab-pick"><span class="lc-n">'+esc(h.name||_t('lab.lib.nth',{n:_n(i+1)}))+'</span><span class="lc-seq">'+esc(h.seq||'')+'</span><button type="button" class="lab-btn" data-pickadd="'+i+'">'+esc(_t('lab.mv.go'))+'</button></div>'; }).join('') : '<div class="lab-hint">'+esc(_t('lab.lib.picknone'))+'</div>')+'</div>'; }
-    mo.box.addEventListener('click',function(e){ var b=e.target.closest('[data-pickadd]'); if(!b) return; var h=hist[+b.getAttribute('data-pickadd')]; if(!h) return; b.disabled=true; addToLab(h,labId).then(function(){ toast(_t('lab.mv.done')); mo.close(); renderLabList(); }).catch(function(err){ toast(err.message||_t('lab.err.add')); b.disabled=false; }); });
+        (hist.length? hist.map(function(h,i){ return '<div class="lab-pick"><span class="lc-n">'+esc(h.name||_t('lab.lib.nth',{n:_n(i+1)}))+'</span><span class="lc-seq">'+esc(h.seq||'')+'</span><button type="button" class="lab-btn" data-pickadd="'+i+'">'+esc(_t('lab.mv.go'))+'</button></div>'; }).join('') : '<div class="lab-hint">'+esc(_t('lab.lib.picknone'))+'</div>')+'</div>'+'<div class="lab-hint" data-pickstat role="status"></div>'; }
+    mo.box.addEventListener('click',function(e){ var b=e.target.closest('[data-pickadd]'); if(!b) return; var h=hist[+b.getAttribute('data-pickadd')]; if(!h) return; b.disabled=true; addToLab(h,labId).then(function(){ toast(_t('lab.mv.done')); mo.close(); renderLabList(); }).catch(function(err){ _pickRefused(mo,labId,err); b.disabled=false; }); });
     _setDlgPaint(shell); shell();
   }
   async function openAccess(rowId,name,author,folderId,authorUid){ if(!rowId){ toast(_t('lab.acc.nosync')); return; } var labId=meta().labId; var _nm=name||_t('lab.dlg.aseq'); var mo=modal(_t('lab.acc.to',{name:_nm}),'none');
@@ -19572,6 +19579,35 @@ try{
     try{ rows=await rest('GET','strands?id=eq.'+encodeURIComponent(sh.rowId)); }
     catch(_e){ ocFail('labed#diag',_e); }
     if(!rows || !rows.length){ edBox('gone', sh, null); return 'gone'; }
+    /* R84d/J6b.  ⛔⛔ THE LAB CLOSED, AND THE SHIPPED BOX BLAMED A COLLEAGUE.
+       `dissolve_lab` re-homes every record in one bulk UPDATE, so `updated_at`
+       moves on a row nobody touched and the branch below reads that as a
+       conflict.  Nobody saved it.  The lab closed and the record came back.
+       ⭐ TWO FACTS, AND NEITHER ALONE IS ENOUGH.  The lab has left my_labs() AND
+       the row has come home.  A member who was merely REMOVED also loses the lab
+       from that list, but R76c ruled their rows stay put, so `lab_id` survives
+       and this stays shut for them -- telling somebody their lab closed when it
+       has not would be a new false sentence replacing an old one.  An author who
+       moved the record out themselves still has the lab, so it stays shut there
+       too.
+       ⚠ THE DIRECTION IS CHOSEN, and it is the same asymmetry `_edStillMay`
+       obeys four lines down: a lab list that could not be READ is not a lab that
+       CLOSED.  `_labsOk` is false when the ask failed and this branch requires
+       it true, so a network fault falls through to the shipped behaviour.
+       ⚠ NOTHING NEW IS ASKED OF THE SERVER: the list is the one the client
+       already keeps and the row is already in hand. */
+    if(sh.labId && !rows[0].lab_id){
+      /* ⚠⚠ THE CACHE IS THE THING THAT HAS GONE STALE, so it is dropped rather
+         than read.  `labs()` holds its answer for thirty seconds and the whole
+         premise of this branch is that the lab list this client believes in is
+         out of date -- asking the cache would answer with the lab that has just
+         been torn down and route the reader back to the sentence blaming a
+         colleague.  One RPC, on a path that has already failed a save. */
+      invalidateLabs();
+      var _mine=[]; try{ _mine=(await labs())||[]; }catch(_e){ ocFail('labed#labs',_e); }
+      if(_labsOk && !_mine.some(function(x){ return x && x.lab_id===sh.labId; })){
+        edBox('closed', sh, rowToEntry(rows[0])); return 'closed'; }
+    }
     /* R83d/J4. ⛔ THE TENTH CASE. `updated_at` moving proves the row was
        written; it does NOT prove the write is the only thing that refused
        us. When BOTH happened, the story the person needs is the rights. */
@@ -19609,14 +19645,23 @@ try{
              sets `last_editor_email` from a TRIGGER.
          ⚠ `lab.cmt.someone` is shipped and already translated four ways. */
       var who = latest ? (latest.__led || _t('lab.cmt.someone')) : '';
+      /* R84d/J6b.  ⭐ THE CLOSED-LAB HEAD ANSWERS THE SAVE QUESTION IN ITS
+         FIRST CLAUSE.  A reader called that omission "the single largest defect
+         on the page": the box appears in response to Save and the shipped one
+         never said whether the save landed. */
       var head = (why==='conflict') ? _t('lab.ed.clash!',{who:who})
+               : (why==='closed') ? _t('lab.ed.closed!',{lab:labName(sh.labId)})
                : (why==='gone') ? _t('lab.ed.gone!') : _t('lab.ed.norights!');
       /* ⭐ THE BODY IS THE PARTITION, NOT A DECORATION. Twelve of twelve readers
          could not tell `gone` from `norights` AS SITUATIONS, and in Japanese the
          two carried different outcome letters, so it was never the labels. The
          one fact that differs is whether the record is still there to open, and
          that is what these two sentences say. */
+      /* ⭐ AND THE BODY DENIES THE FALSE BELIEF EXPLICITLY -- "nobody edited
+         your record" -- because the box it replaces asserted exactly that, and
+         a reader read it as a plain statement of fact rather than a guess. */
       var body = (why==='gone') ? _t('lab.ed.goneb!')
+               : (why==='closed') ? _t('lab.ed.closedb!',{lab:labName(sh.labId)})
                : (why==='norights') ? _t('lab.ed.norightsb!') : '';
       /* ⛔ NO ✕ ON THIS DIALOG, AND THAT IS DELIBERATE TWICE OVER.
          (a) `tools/round70/glyph-baseline.json` is a SHRINK-ONLY ratchet and ✕
@@ -19630,7 +19675,19 @@ try{
       mo.box.innerHTML='<h3>'+esc(head)+'</h3>'
         +(body?('<p class="oshare-sub">'+esc(body)+'</p>'):'')
         +'<div class="labed-a">'
-        +'<button type="button" class="lab-x2 lab-pri" data-ed-copy>'+esc(_t('lab.ed.copy',{where:_edWhere(sh.labId)}))+'</button>'
+        /* R84d/J6b.  ⛔⛔ THE CONTROL IS THE HALF THE STRING CANNOT DO, AND IT IS
+           WHAT SATISFIES ALBERT'S RULE that once a lab closes and its records
+           are distributed nobody may affect anybody else's copy.  After a
+           teardown the record is ALREADY back in this person's own library, so
+           "Save a copy in My library" hands them TWO records with the same name
+           and different contents -- a reader called it "a real data-integrity
+           problem in a lab", and said they would press it precisely because it
+           looks like the safe one.  ⭐ So on this branch the copy control is not
+           drawn at all; the primary saves the changes INTO the record that came
+           back, and the second exit is the shipped one. */
+        +(why==='closed'
+          ? ('<button type="button" class="lab-x2 lab-pri" data-ed-mine>'+esc(_t('lab.ed.savemine'))+'</button>')
+          : ('<button type="button" class="lab-x2 lab-pri" data-ed-copy>'+esc(_t('lab.ed.copy',{where:_edWhere(sh.labId)}))+'</button>'))
         /* ⛔ THE OTHER TWO BUTTONS DO NOT MOVE, and Albert asked. What moved is
            the middle one: `Start again from v5` named the version the person
            ALREADY HELD, so pressing it silently discarded a colleague's work.
@@ -19649,8 +19706,16 @@ try{
              and open the latest version" in four locales, and it sits beside
              `lab.ed.leave`, "Discard my changes and close", so the pair reads
              as one choice with two endings. */
-          : ((latest?('<button type="button" class="lab-x2" data-ed-latest>'+esc(_t('lab.ed.discard'))+'</button>'):'')
-            +'<button type="button" class="lab-x2" data-ed-leave>'+esc(_t('lab.ed.leave'))+'</button>'))
+          /* ⛔ NO `Discard my changes and open the latest version` ON THE CLOSED
+             BRANCH.  There is no newer version to open: the contents are
+             byte-identical to what the reader already holds, and only `lab_id`
+             changed.  Offering it would name an outcome that does not exist.
+             ⚠ `lab.ed.leave` is reused, not re-keyed -- it already reads
+             "Discard my changes and close" in four locales. */
+          : (why==='closed'
+            ? ('<button type="button" class="lab-x2" data-ed-leave>'+esc(_t('lab.ed.leave'))+'</button>')
+            : ((latest?('<button type="button" class="lab-x2" data-ed-latest>'+esc(_t('lab.ed.discard'))+'</button>'):'')
+              +'<button type="button" class="lab-x2" data-ed-leave>'+esc(_t('lab.ed.leave'))+'</button>')))
         +'</div>';
     }
     mo.box.addEventListener('click', function(ev){
@@ -19666,6 +19731,10 @@ try{
         }
         return; }
       if((b=ev.target.closest('[data-ed-copy]'))){ edCopy(b, function(){ mo.close(); }); return; }
+      /* R84d/J6b.  ⚠ IT CLOSES ONLY ON SUCCESS, exactly as edCopy does.  A box
+         that shuts on a failed write is a box that reports a save that did not
+         happen, which is the class of defect this whole dialog exists for. */
+      if((b=ev.target.closest('[data-ed-mine]'))){ edSaveMine(b, latest, function(){ mo.close(); }); return; }
     });
     _setDlgPaint(shell); shell();
   }
@@ -19677,6 +19746,45 @@ try{
      the exact moment somebody is trying not to lose work. So every outcome
      below keeps the work somewhere and SAYS WHERE, and the personal library is
      the floor under all of them. */
+  /* R84d/J6b.  ⭐⭐ THE SAVE THAT DOES NOT FORK, AND IT IS ONE MEASUREMENT.
+     `dissolve_lab` sets `lab_id = null` and changes nothing else, so the record
+     is in this person's own library WITH ITS client_id INTACT -- and `addToLab`
+     upserts on (user_id, client_id).  Writing that same client_id back with a
+     null lab therefore UPDATES the record that came home instead of minting a
+     second one.  ⛔ THE ID COMES FROM THE ROW IN HAND, NEVER FROM THE EDITOR:
+     the editor's entry carries a fresh id every time it is built, and taking it
+     is exactly how a duplicate gets created by accident.
+     ⚠ AND IT NEEDS NO PLAN.  `strands_insert`'s WITH CHECK is satisfied by its
+     FIRST branch -- a client_id this account already owns -- so this write never
+     reaches the paid test and cannot be refused for a lab that no longer exists.
+     ⚠ NAME, FOLDER AND TAGS COME FROM THE ROW, not from the calculator.  This is
+     a save of the EDIT; taking the calculator's empty folder would silently
+     unfile a record nobody asked to move. */
+  async function edSaveMine(btn, latest, done){
+    var sh=_edShared(); if(!sh) return;
+    if(!latest || !latest.id){ toast(_t('lab.err.generic!')); return; }
+    var entry=(typeof ocEntryForSave==='function')?ocEntryForSave():null;
+    if(!entry){ toast(_t('lab.err.generic!')); return; }
+    if(btn) btn.disabled=true;
+    try{
+      var e2=Object.assign({}, _edStrip(entry),
+        {id:latest.id, name:sh.name||latest.name||'', folder:latest.folder||'',
+         tags:Array.isArray(latest.tags)?latest.tags:[]});
+      await addToLab(e2, null);
+      try{ S.__shared=null; }catch(_e){ ocFail('labed#mineclear',_e); }
+      /* ⚠ THE LOCAL LIBRARY IS THE OTHER HALF.  It is local-first, so without a
+         pull the reader is looking at a stale copy of a row that has just been
+         written, and the whole point of this control is that there is exactly
+         one record and it carries their change. */
+      try{ if(window.oligoSync && oligoSync.pullCloud) await oligoSync.pullCloud(); }
+      catch(_e){ ocFail('labed#minepull',_e); }
+      try{ if(typeof applyAll==='function') applyAll(); }catch(_e){ ocFail('labed#mineapply',_e); }
+      edPaint(); toast(_t('lab.ed.ok'));
+      try{ renderLabList(); }catch(_e){ ocFail('labed#minelist',_e); }
+      if(done) done();
+    }catch(err){ toast((err&&err.message)||_t('lab.err.generic!')); }
+    finally{ if(btn) btn.disabled=false; }
+  }
   async function edCopy(btn, done){
     var sh=_edShared(); if(!sh) return;
     var entry=(typeof ocEntryForSave==='function')?ocEntryForSave():null;
@@ -25063,7 +25171,26 @@ try{
   }
 
   function report(o, out, s){
-    var okList=out.filter(function(r){ return r.ok; }).map(function(r){ return r.email; });
+    /* R84d/J3.  ⛔⛔ `ok` IS NOT `added`, AND _reportFoot FOUR LINES UP ALREADY
+       KNOWS IT.  An address already in the lab answers {ok:true, added:false,
+       notified:false}: nothing was inserted and no mail was sent.  Counting it
+       under "N addresses added" told a manager a specific false thing about a
+       specific colleague, while the foot immediately below said the opposite.
+       ⚠⚠ AND THEY MUST NOT SIMPLY DISAPPEAR.  Narrowing this filter alone would
+       drop them out of the report entirely, so a manager who typed six
+       addresses would see five accounted for and one gone -- a worse lie than
+       the one being fixed.  They join the duplicate bucket, which already ships
+       in four locales and already says exactly this.
+       ⭐⭐ AND THAT BUCKET CANNOT BE COMPUTED WITHOUT THEM, WHICH IS THE FINDING.
+       `state()` fills `s.dup` from the roster THIS CLIENT HOLDS, so an address
+       another manager added thirty seconds ago passes the client's own dedupe,
+       is sent, and comes back already-present.  A stale roster, a race, a
+       second manager: that address has no other home in this report.
+       ⚠ THE TWO LISTS CANNOT OVERLAP.  Only `s.good` is ever sent, and `state()`
+       puts an address in exactly one of good/dup/bad/over. */
+    var okList=out.filter(function(r){ return r.ok && r.added; }).map(function(r){ return r.email; });
+    var already=out.filter(function(r){ return r.ok && !r.added; }).map(function(r){ return r.email; });
+    var dupList=(s.dup||[]).concat(already);
     var noList=out.filter(function(r){ return !r.ok; });
     var body='';
     if(okList.length){
@@ -25076,9 +25203,9 @@ try{
       body+='<br><br>'+_t('ui.lab.inv.r.fail',{n:noList.length})+'<br>'
           + noList.map(function(r){ return esc(r.email)+': '+esc(r.msg); }).join('<br>');
     }
-    if(s.dup.length){
-      body+='<br><br>'+_t(s.dup.length===1?'ui.lab.inv.r.dup1':'ui.lab.inv.r.dupn',
-                          {list:esc(s.dup.join(', '))});
+    if(dupList.length){
+      body+='<br><br>'+_t(dupList.length===1?'ui.lab.inv.r.dup1':'ui.lab.inv.r.dupn',
+                          {list:esc(dupList.join(', '))});
     }
     if(s.bad.length){
       body+='<br><br>'+_t('ui.lab.inv.r.bad',{list:esc(s.bad.join(', '))});
