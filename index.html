@@ -316,7 +316,7 @@ var I18N = {
   "faq.mw.07.q":"Advanced Modification: 2′-sugar modifications",
   "faq.mw.08.a":"They summarize the strand at a glance: total length (nt), the number of PO and PS bonds, the end groups, any custom monomers, and the count of each base (A/C/G/T/U).",
   "faq.mw.08.q":"What do the chips under the result mean?",
-  "faq.mw.09.a!":"Use <b>Share</b> on a saved sequence, or <b>Share a Copy</b> for several, to make a link. Whoever opens it sees the sequence in a read-only <b>Shared with you</b> view, and the recipient can save it to their own library. Neither of you needs an account. <b>Privacy:</b> the link contains the sequence data itself, so anyone with the link can view it; do not share sequences you consider confidential. Free sharing is limited to 10 sequences per link.",
+  "faq.mw.09.a!":"Use <b>Share a copy</b> on a saved sequence, or <b>Share selected as a copy</b> for several, to make a link. Whoever opens it sees the sequence in a read-only <b>Shared with you</b> view, and the recipient can save it to their own library. Neither of you needs an account. <b>Privacy:</b> the link contains the sequence data itself, so anyone with the link can view it; do not share sequences you consider confidential. Free sharing is limited to 10 sequences per link.",
   "faq.mw.09.q":"Sharing sequences by link",
   "faq.mw.10.a":"For double-stranded oligos (siRNA, ASOs), choose <b>Duplex</b> in the Strand mode card directly below the Sequence heading. Then choose <b>Automatic complement</b> to generate a matching reverse-complement antisense strand (A pairs with T/U and G with C), or <b>Enter manually</b> for a modified, mismatched, or overhanging antisense strand. Editing the sense strand updates an automatic complement immediately. A manually entered antisense has its own Strand Configuration controls and Quick Insert moremon. <b>Example (Automatic complement):</b> sense <code>ATCGATCG</code> → antisense <code>CGATCGAT</code>; duplex MW = sense + antisense. <b>Tip:</b> when Duplex is active, the Concentration tab lets you base its math on the sense, antisense, or whole duplex.",
   "faq.mw.10.q":"Duplex mode (antisense + duplex MW)",
@@ -446,7 +446,7 @@ var I18N = {
   "lab.ed.band":"Editing {name} in {lab}",
   "lab.ed.clash!":"{who} saved this record while you were editing it.",
   "lab.ed.closed!":"{lab} has closed, and your changes were not saved to it.",
-  "lab.ed.closedb!":"Everything you had in {lab} is now in your own library, exactly as it was. Nothing was deleted and nobody edited your record.",
+  "lab.ed.closedb!":"Everything you had in {lab} is now in your own library, exactly as it was. Nothing was deleted and nobody edited your record. That copy is the last version you saved, so anything you changed on this screen since then is not in it yet.",
   "lab.ed.copied":"Saved a copy in {where}.",
   "lab.ed.copy":"Save a copy in {where}",
   "lab.ed.discard":"Discard my changes and open the latest version",
@@ -455,6 +455,7 @@ var I18N = {
   "lab.ed.goneb!":"Nothing was saved, and your work is still on this screen. You can keep a copy of it.",
   "lab.ed.keep":"Keep editing",
   "lab.ed.leave":"Discard my changes and close",
+  "lab.ed.leaveb!":"Discarding affects only the changes on this screen. Anything already saved stays where it is.",
   "lab.ed.meta":"Version {v} · last saved by {who}, {when}",
   "lab.ed.metat":"Last saved {when}",
   "lab.ed.norights!":"Your edit access to this record was removed.",
@@ -506,7 +507,6 @@ var I18N = {
   "lab.find.rec":"Search this library",
   "lab.find.scope!":"Search covers everything below this point, not only what is on screen.",
   "lab.find.where":"In {path}",
-  "lab.fold.all":"All",
   "lab.fold.aria1":"{name}, {n} sequence",
   "lab.fold.ariaN":"{name}, {n} sequences",
   "lab.fold.confirm":"Confirm delete",
@@ -533,7 +533,6 @@ var I18N = {
   "lab.fold.new":"+ New folder",
   "lab.fold.nodest":"There is nowhere else to put this folder. Folders go three levels deep, and a folder cannot move inside itself.",
   "lab.fold.newh":"New folder",
-  "lab.fold.open":"Open folder {name}",
   "lab.fold.rename":"Rename",
   "lab.fold.top":"Top level",
   "lab.fold.renamed":"Renamed",
@@ -665,8 +664,8 @@ var I18N = {
   "lab.mv.mix":"{parts} in {labname}",
   "lab.mv.nolab":"Join or create a lab first (Account ▸ Lab).",
   "lab.mv.none":"Select the sequences you want to move to the lab library.",
-  "lab.mv.ok1":"{n} sequence moved into the {labname} library.",
-  "lab.mv.okN":"{n} sequences moved into the {labname} library.",
+  "lab.mv.ok1":"{n} sequence copied into the {labname} library.",
+  "lab.mv.okN":"{n} sequences copied into the {labname} library.",
   "lab.mv.pdupe":"{n} already there",
   "lab.mv.pfail":"{n} failed",
   "lab.mv.pick":"Move one of my sequences here",
@@ -962,8 +961,8 @@ var I18N = {
   "mk.0213":"Reopen, copy, or export a sequence you saved. Signed in, your account holds the copy that travels between devices and this browser keeps an offline mirror; signed out, sequences live in this browser only.",
   "mk.0214":"Scan",
   "mk.0215":"Export selected · CSV",
-  "mk.0216":"Share a Copy",
-  "mk.0217":"Move to the lab library",
+  "mk.0216":"Share selected as a copy",
+  "mk.0217":"Copy to the lab library",
   "mk.0218":"Clear all…",
   "mk.0219":"Select",
   "mk.0220":"Name",
@@ -1376,15 +1375,30 @@ var I18N = {
   "ui.lab.inv.why.twice":"listed more than once",
   "ui.lab.inv.yourlab":"your lab",
   "ui.lang.label":"Language",
+  "ui.lib.adel":"Delete {name}",
+  "ui.lib.amore":"More actions for {name}",
+  "ui.lib.aname":"Strand name",
+  "ui.lib.aren":"Rename {name}",
+  "ui.lib.ashare":"Share a copy of {name}",
+  "ui.lib.copyname":"{name} (copy)",
+  "ui.lib.dup":"Duplicate",
+  "ui.lib.phfolder":"e.g. siRNA project",
+  "ui.lib.phnote":"optional note",
+  "ui.lib.phtags":"comma-separated",
+  "ui.lib.untitled":"Untitled strand",
+  "ui.lib.ver":"Save as version",
   "ui.lib.counted":"single strands and duplexes",
   "ui.lib.mwdiff":"changed",
   "ui.lib.mwdiffT":"A monomer definition has changed since this was saved. The saved molecular weight is {was}; the same sequence gives {now} today.",
   "ui.lib.mwgone":"no result",
   "ui.lib.mwgoneT":"This record uses {codes}, which this calculator cannot resolve now, so no molecular weight is shown. The molecular weight saved with it was {was}.",
   "ui.lib.readonly":"Read only",
-  "ui.lib.fromshare":"Saved from a shared link · {when}",
+  "ui.lib.fromshare":"Saved from a shared link",
   "ui.lib.rolab!":"This belongs to a lab you are no longer in. You can still open and copy it, but you cannot edit or delete it.",
   "ui.sh.title":"Share link",
+  "ui.sh.copied":"Copied ✓",
+  "ui.sh.msgmany":"{n} oligos from the Oligo Calculator",
+  "ui.sh.msgone":"Oligo: {name}",
   "ui.sh.copy":"Copy link",
   "ui.sh.email":"Email",
   "ui.sh.native":"More ways to share",
@@ -1392,7 +1406,58 @@ var I18N = {
   "ui.sh.err.none":"Select at least one sequence to share.",
   "ui.sh.err.big":"This selection is too large to share as a link.",
   "ui.sh.err.lab!":"Sequences in a lab's shared library cannot be turned into a public link. Your labmates can already open them in the lab.",
-  "ui.sh.priv!":"A share link carries the sequence data, and the name of any custom monomer it uses. Anyone with the link can read all of it. Do not share sequences you consider confidential.",
+  "ui.sh.priv!":"A share link carries the sequence data, and the name of any custom monomer it uses. Anyone with the link can read all of it. The link cannot be withdrawn: it is not stored on a server, so there is nothing to delete. Do not share sequences you consider confidential.",
+  "ui.rc.priv!":"A share link carries the sequence data itself. Anyone with the link can read it.",
+  "punct.stop":". ",
+  "ui.rc.h":"Shared with you",
+  "ui.rc.sub1":"{n} sequence was shared with you. Look it over, then save it if you want it.",
+  "ui.rc.subN":"{n} sequences were shared with you. Look them over, then save the ones you want.",
+  "ui.rc.cb1":"This share uses {n} custom base:",
+  "ui.rc.cbN":"This share uses {n} custom bases:",
+  "ui.rc.cbadd1":"Saving a sequence also adds the custom base it uses to your Custom bases. Nothing is added if you choose Not now.",
+  "ui.rc.cbaddN":"Saving a sequence also adds the custom bases it uses to your Custom bases. Nothing is added if you choose Not now.",
+  "ui.rc.cbhave":"Those definitions are already available here, so saving will not create duplicates.",
+  "ui.rc.unnamed":"unnamed",
+  "ui.rc.seqn":"Sequence {n}",
+  "ui.rc.cbs":"Custom bases: {codes}",
+  "ui.rc.cbwill1":"{n} will be added when you save",
+  "ui.rc.cbwillN":"{n} will be added when you save",
+  "ui.rc.cbok":"already available",
+  "ui.rc.dup":"duplex",
+  "ui.rc.bad":"Could not compute this sequence.",
+  "ui.rc.notsaved":"It will not be saved.",
+  "ui.rc.invalid":"This sequence is not valid, so it cannot be saved.",
+  "ui.rc.save":"Save to my library",
+  "ui.rc.save1":"Save sequence + {n} custom base",
+  "ui.rc.saveN":"Save sequence + {n} custom bases",
+  "ui.rc.ok":"Saved the sequence ✓",
+  "ui.rc.okadd1":"Saved the sequence and added {n} custom base ✓",
+  "ui.rc.okaddN":"Saved the sequence and added {n} custom bases ✓",
+  "ui.rc.okhave":"Saved the sequence. Its custom bases were already available ✓",
+  "ui.rc.done":"Saved ✓",
+  "ui.rc.full":"Your plan’s library is full, so this was not saved.",
+  "ui.rc.err":"Could not save this sequence.",
+  "ui.rc.all":"Save all to my library",
+  "ui.rc.all1":"Save all + {n} custom base",
+  "ui.rc.allN":"Save all + {n} custom bases",
+  "ui.rc.bok1":"Saved {n} sequence ✓",
+  "ui.rc.bokN":"Saved {n} sequences ✓",
+  "ui.rc.badd1":"added {n} custom base",
+  "ui.rc.baddN":"added {n} custom bases",
+  "ui.rc.bskip":"{n} skipped, not a valid sequence",
+  "ui.rc.bfull":"{n} held back, your plan’s library is full",
+  "ui.rc.berr":"{n} could not be saved",
+  "ui.rc.bnone":"Could not save.",
+  "ui.rc.no":"Not now",
+  "ui.rc.cf.aria":"Shared custom-base conflict",
+  "ui.rc.cf.h":"Custom-base conflict",
+  "ui.rc.cf.body!":"This link defines {codes} differently from the definition already available in this calculator. Nothing was imported. Ask the sender to reconcile the mass, phosphate state, kind, or formula and share again.",
+  "ui.rc.broken":"This share link looks broken or incomplete.",
+  "ui.rc.v.empty":"Empty sequence.",
+  "ui.rc.v.ends":"The sequence text and its end-group settings do not agree.",
+  "ui.rc.v.aends":"The antisense text and its end-group settings do not agree.",
+  "ui.rc.v.parse":"Could not read this sequence.",
+  "ui.lib.shrow":"Share a copy",
   "ui.nav.mwshort":"Calc.",
   "ui.seatbig.back!":"Go back and change it",
   "ui.seatbig.body!":"{n} seats is {usd} {per}, billed to this account. Most labs buy between 3 and 30. If that is what you meant, carry on.",
@@ -1570,7 +1635,7 @@ var I18N = {
   "faq.mw.07.q":"\u9032\u968e\u4fee\u98fe\uff1a2′ \u91a3\u57fa\u4fee\u98fe",
   "faq.mw.08.a":"\u5b83\u5011\u4e00\u773c\u6458\u8981\u6574\u80a1\uff1a\u7e3d\u9577\u5ea6\uff08nt\uff09\u3001PO \u8207 PS \u9375\u5404\u6709\u5e7e\u500b\u3001\u7aef\u57fa\u3001\u6709\u6c92\u6709\u81ea\u8a02\u55ae\u9ad4\uff0c\u4ee5\u53ca\u6bcf\u7a2e\u9e7c\u57fa\uff08A/C/G/T/U\uff09\u5404\u6709\u5e7e\u500b\u3002",
   "faq.mw.08.q":"\u7d50\u679c\u4e0b\u65b9\u90a3\u4e9b\u6a19\u7c64\u662f\u4ec0\u9ebc\u610f\u601d\uff1f",
-  "faq.mw.09.a!":"\u5728\u4e00\u7b46\u5df2\u5132\u5b58\u5e8f\u5217\u4e0a\u6309 <b>Share</b>\uff0c\u6216\u9078\u597d\u5e7e\u7b46\u4e4b\u5f8c\u6309<b>\u5206\u4eab\u526f\u672c</b>\uff0c\u5c31\u6703\u7522\u751f\u4e00\u500b\u9023\u7d50\u3002\u6253\u958b\u9023\u7d50\u7684\u4eba\u6703\u5728\u552f\u8b80\u7684 <b>Shared with you</b> \u6aa2\u8996\u88e1\u770b\u5230\u5167\u5bb9\uff0c\u800c\u4e14\u53ef\u4ee5\u628a\u5b83\u5b58\u9032\u81ea\u5df1\u7684\u8cc7\u6599\u5eab\u3002\u96d9\u65b9\u90fd\u4e0d\u9700\u8981\u5e33\u6236\u3002<b>\u96b1\u79c1\uff1a</b>\u9023\u7d50\u672c\u8eab\u5c31\u5e36\u8457\u5e8f\u5217\u8cc7\u6599\uff0c\u6240\u4ee5\u4efb\u4f55\u62ff\u5230\u9023\u7d50\u7684\u4eba\u90fd\u770b\u5f97\u5230\uff1b\u4f60\u8a8d\u70ba\u6a5f\u5bc6\u7684\u5e8f\u5217\u8acb\u4e0d\u8981\u5206\u4eab\u3002\u514d\u8cbb\u5206\u4eab\u6bcf\u500b\u9023\u7d50\u6700\u591a 10 \u7b46\u3002",
+  "faq.mw.09.a!":"\u5728\u4e00\u7b46\u5df2\u5132\u5b58\u5e8f\u5217\u4e0a\u6309 <b>\u5206\u4eab\u526f\u672c</b>\uff0c\u6216\u9078\u597d\u5e7e\u7b46\u4e4b\u5f8c\u6309<b>\u5206\u4eab\u6240\u9078\u9805\u76ee\u7684\u526f\u672c</b>\uff0c\u5c31\u6703\u7522\u751f\u4e00\u500b\u9023\u7d50\u3002\u6253\u958b\u9023\u7d50\u7684\u4eba\u6703\u5728\u552f\u8b80\u7684 <b>\u5206\u4eab\u7d66\u4f60\u7684\u5167\u5bb9</b> \u6aa2\u8996\u88e1\u770b\u5230\u5167\u5bb9\uff0c\u800c\u4e14\u53ef\u4ee5\u628a\u5b83\u5b58\u9032\u81ea\u5df1\u7684\u8cc7\u6599\u5eab\u3002\u96d9\u65b9\u90fd\u4e0d\u9700\u8981\u5e33\u6236\u3002<b>\u96b1\u79c1\uff1a</b>\u9023\u7d50\u672c\u8eab\u5c31\u5e36\u8457\u5e8f\u5217\u8cc7\u6599\uff0c\u6240\u4ee5\u4efb\u4f55\u62ff\u5230\u9023\u7d50\u7684\u4eba\u90fd\u770b\u5f97\u5230\uff1b\u4f60\u8a8d\u70ba\u6a5f\u5bc6\u7684\u5e8f\u5217\u8acb\u4e0d\u8981\u5206\u4eab\u3002\u514d\u8cbb\u5206\u4eab\u6bcf\u500b\u9023\u7d50\u6700\u591a 10 \u7b46\u3002",
   "faq.mw.09.q":"\u7528\u9023\u7d50\u5206\u4eab\u5e8f\u5217",
   "faq.mw.10.a":"\u8981\u8655\u7406\u96d9\u80a1\u5be1\u6838\u82f7\u9178\uff08siRNA\u3001ASO\uff09\uff0c\u8acb\u5728\u5e8f\u5217\u6a19\u984c\u6b63\u4e0b\u65b9\u7684\u6838\u9178\u80a1\u6a21\u5f0f\u5361\u7247\u88e1\u9078<b>\u96d9\u80a1</b>\u3002\u63a5\u8457\u9078<b>\u81ea\u52d5\u4e92\u88dc</b>\uff0c\u7522\u751f\u4e00\u689d\u4e92\u76f8\u914d\u5c0d\u7684\u53cd\u5411\u4e92\u88dc\u53cd\u7fa9\u80a1\uff08A \u5c0d T/U\uff0cG \u5c0d C\uff09\uff0c\u6216\u662f\u9078<b>\u624b\u52d5\u8f38\u5165</b>\uff0c\u81ea\u5df1\u7d66\u4e00\u689d\u6709\u4fee\u98fe\u3001\u6709\u932f\u914d\u6216\u6709\u7a81\u51fa\u672b\u7aef\u7684\u53cd\u7fa9\u80a1\u3002\u7de8\u8f2f\u6b63\u7fa9\u80a1\u6642\uff0c\u81ea\u52d5\u4e92\u88dc\u7684\u90a3\u4e00\u689d\u6703\u7acb\u523b\u8ddf\u8457\u66f4\u65b0\u3002\u624b\u52d5\u8f38\u5165\u7684\u53cd\u7fa9\u80a1\u6709\u81ea\u5df1\u7684\u6838\u9178\u80a1\u8a2d\u5b9a\u8207\u5feb\u901f\u63d2\u5165\u9762\u677f\u3002<b>\u7bc4\u4f8b\uff08\u81ea\u52d5\u4e92\u88dc\uff09\uff1a</b>\u6b63\u7fa9\u80a1 <code>ATCGATCG</code> → \u53cd\u7fa9\u80a1 <code>CGATCGAT</code>\uff1b\u96d9\u80a1\u5206\u5b50\u91cf = \u6b63\u7fa9\u80a1 + \u53cd\u7fa9\u80a1\u3002<b>\u63d0\u793a\uff1a</b>\u96d9\u80a1\u958b\u8457\u7684\u6642\u5019\uff0c\u6fc3\u5ea6\u5206\u9801\u53ef\u4ee5\u9078\u64c7\u8981\u7528\u6b63\u7fa9\u80a1\u3001\u53cd\u7fa9\u80a1\u9084\u662f\u6574\u500b\u96d9\u80a1\u4f86\u8a08\u7b97\u3002",
   "faq.mw.10.q":"\u96d9\u80a1\u6a21\u5f0f\uff08\u53cd\u7fa9 + \u96d9\u80a1\u5206\u5b50\u91cf\uff09",
@@ -1700,7 +1765,7 @@ var I18N = {
   "lab.ed.band":"\u6b63\u5728\u7de8\u8f2f {lab} \u4e2d\u7684 {name}",
   "lab.ed.clash!":"\u5728\u4f60\u7de8\u8f2f\u671f\u9593\uff0c{who} \u5132\u5b58\u4e86\u9019\u4e00\u7b46\u3002",
   "lab.ed.closed!":"{lab} \u5df2\u7d93\u95dc\u9589\uff0c\u4f60\u7684\u8b8a\u66f4\u6c92\u6709\u5132\u5b58\u5230\u90a3\u88e1\u3002",
-  "lab.ed.closedb!":"\u4f60\u653e\u5728 {lab} \u88e1\u7684\u5167\u5bb9\u5df2\u539f\u6a23\u56de\u5230\u4f60\u81ea\u5df1\u7684\u8cc7\u6599\u5eab\u3002\u6c92\u6709\u4efb\u4f55\u6771\u897f\u88ab\u522a\u9664\uff0c\u4e5f\u6c92\u6709\u4eba\u7de8\u8f2f\u904e\u4f60\u7684\u8a18\u9304\u3002",
+  "lab.ed.closedb!":"\u4f60\u653e\u5728 {lab} \u88e1\u7684\u5167\u5bb9\u5df2\u539f\u6a23\u56de\u5230\u4f60\u81ea\u5df1\u7684\u8cc7\u6599\u5eab\u3002\u6c92\u6709\u4efb\u4f55\u6771\u897f\u88ab\u522a\u9664\uff0c\u4e5f\u6c92\u6709\u4eba\u7de8\u8f2f\u904e\u4f60\u7684\u8a18\u9304\u3002\u90a3\u4e00\u4efd\u662f\u4f60\u6700\u5f8c\u4e00\u6b21\u5132\u5b58\u7684\u7248\u672c\uff0c\u56e0\u6b64\u4f60\u5728\u9019\u500b\u756b\u9762\u4e0a\u4e4b\u5f8c\u6539\u52d5\u7684\u5167\u5bb9\u9084\u4e0d\u5728\u88e1\u9762\u3002",
   "lab.ed.copied":"\u5df2\u5728\u300c{where}\u300d\u5132\u5b58\u526f\u672c\u3002",
   "lab.ed.copy":"\u5728\u300c{where}\u300d\u5132\u5b58\u526f\u672c",
   "lab.ed.discard":"\u6368\u68c4\u6211\u7684\u8b8a\u66f4\uff0c\u958b\u555f\u6700\u65b0\u7248\u672c",
@@ -1709,6 +1774,7 @@ var I18N = {
   "lab.ed.goneb!":"\u6c92\u6709\u5132\u5b58\u4efb\u4f55\u6771\u897f\uff0c\u4f60\u7684\u5167\u5bb9\u4ecd\u7136\u7559\u5728\u9019\u500b\u756b\u9762\u4e0a\u3002\u4f60\u53ef\u4ee5\u7559\u4e00\u4efd\u526f\u672c\u3002",
   "lab.ed.keep":"\u7e7c\u7e8c\u7de8\u8f2f",
   "lab.ed.leave":"\u6368\u68c4\u6211\u7684\u8b8a\u66f4\u4e26\u95dc\u9589",
+  "lab.ed.leaveb!":"\u6368\u68c4\u53ea\u6703\u5f71\u97ff\u9019\u500b\u756b\u9762\u4e0a\u7684\u8b8a\u66f4\u3002\u5df2\u7d93\u5132\u5b58\u904e\u7684\u5167\u5bb9\u90fd\u6703\u7559\u5728\u539f\u8655\u3002",
   "lab.ed.meta":"\u7248\u672c {v} · \u4e0a\u6b21\u7531 {who} \u5132\u5b58\u65bc {when}",
   "lab.ed.metat":"\u4e0a\u6b21\u5132\u5b58\u65bc {when}",
   "lab.ed.norights!":"\u4f60\u5c0d\u9019\u4e00\u7b46\u7684\u7de8\u8f2f\u6b0a\u9650\u5df2\u88ab\u79fb\u9664\u3002",
@@ -1760,7 +1826,6 @@ var I18N = {
   "lab.find.rec":"\u641c\u5c0b\u9019\u500b\u8cc7\u6599\u5eab",
   "lab.find.scope!":"\u641c\u5c0b\u6db5\u84cb\u9019\u4e00\u5c64\u4ee5\u4e0b\u7684\u6240\u6709\u5167\u5bb9\uff0c\u4e0d\u53ea\u662f\u756b\u9762\u4e0a\u770b\u5230\u7684\u3002",
   "lab.find.where":"\u4f4d\u65bc {path}",
-  "lab.fold.all":"\u5168\u90e8",
   "lab.fold.aria1":"{name}\uff0c{n} \u7b46\u5e8f\u5217",
   "lab.fold.ariaN":"{name}\uff0c{n} \u7b46\u5e8f\u5217",
   "lab.fold.confirm":"\u78ba\u5b9a\u522a\u9664",
@@ -1787,7 +1852,6 @@ var I18N = {
   "lab.fold.new":"+ \u65b0\u589e\u8cc7\u6599\u593e",
   "lab.fold.nodest":"\u6c92\u6709\u5176\u4ed6\u5730\u65b9\u53ef\u4ee5\u653e\u9019\u500b\u8cc7\u6599\u593e\u3002\u8cc7\u6599\u593e\u6700\u591a\u4e09\u5c64\uff0c\u800c\u4e14\u4e0d\u80fd\u79fb\u5230\u81ea\u5df1\u88e1\u9762\u3002",
   "lab.fold.newh":"\u65b0\u589e\u8cc7\u6599\u593e",
-  "lab.fold.open":"\u958b\u555f\u8cc7\u6599\u593e {name}",
   "lab.fold.rename":"\u91cd\u65b0\u547d\u540d",
   "lab.fold.top":"\u6700\u4e0a\u5c64",
   "lab.fold.renamed":"\u5df2\u91cd\u65b0\u547d\u540d",
@@ -1919,8 +1983,8 @@ var I18N = {
   "lab.mv.mix":"{labname}\uff1a{parts}",
   "lab.mv.nolab":"\u8acb\u5148\u52a0\u5165\u6216\u5efa\u7acb\u5be6\u9a57\u5ba4\uff08\u5e33\u6236 ▸ \u5be6\u9a57\u5ba4\uff09\u3002",
   "lab.mv.none":"\u8acb\u5148\u9078\u53d6\u5e8f\u5217\uff0c\u518d\u79fb\u5230\u5be6\u9a57\u5ba4\u7684\u5171\u7528\u8cc7\u6599\u5eab\u3002",
-  "lab.mv.ok1":"\u5df2\u5c07 {n} \u7b46\u5e8f\u5217\u79fb\u5230 {labname} \u7684\u5171\u7528\u8cc7\u6599\u5eab\u3002",
-  "lab.mv.okN":"\u5df2\u5c07 {n} \u7b46\u5e8f\u5217\u79fb\u5230 {labname} \u7684\u5171\u7528\u8cc7\u6599\u5eab\u3002",
+  "lab.mv.ok1":"\u5df2\u5c07 {n} \u7b46\u5e8f\u5217\u8907\u88fd\u5230 {labname} \u7684\u5171\u7528\u8cc7\u6599\u5eab\u3002",
+  "lab.mv.okN":"\u5df2\u5c07 {n} \u7b46\u5e8f\u5217\u8907\u88fd\u5230 {labname} \u7684\u5171\u7528\u8cc7\u6599\u5eab\u3002",
   "lab.mv.pdupe":"\u5df2\u5b58\u5728 {n} \u7b46",
   "lab.mv.pfail":"\u5931\u6557 {n} \u7b46",
   "lab.mv.pick":"\u628a\u6211\u7684\u5e8f\u5217\u79fb\u5230\u9019\u88e1",
@@ -2216,8 +2280,8 @@ var I18N = {
   "mk.0213":"\u91cd\u65b0\u958b\u555f\u3001\u8907\u88fd\u6216\u532f\u51fa\u4f60\u5b58\u904e\u7684\u5e8f\u5217\u3002\u767b\u5165\u4e4b\u5f8c\uff0c\u53ef\u8de8\u88dd\u7f6e\u4f7f\u7528\u7684\u90a3\u4efd\u5b58\u5728\u4f60\u7684\u5e33\u6236\u88e1\uff0c\u9019\u500b\u700f\u89bd\u5668\u53e6\u5916\u4fdd\u7559\u4e00\u4efd\u96e2\u7dda\u526f\u672c\uff1b\u672a\u767b\u5165\u6642\uff0c\u5e8f\u5217\u53ea\u5b58\u5728\u9019\u500b\u700f\u89bd\u5668\u88e1\u3002",
   "mk.0214":"\u6383\u63cf",
   "mk.0215":"\u532f\u51fa\u9078\u53d6\u9805\u76ee · CSV",
-  "mk.0216":"\u5206\u4eab\u526f\u672c",
-  "mk.0217":"\u79fb\u5230\u5be6\u9a57\u5ba4\u7684\u5171\u7528\u8cc7\u6599\u5eab",
+  "mk.0216":"\u5206\u4eab\u6240\u9078\u9805\u76ee\u7684\u526f\u672c",
+  "mk.0217":"\u8907\u88fd\u5230\u5be6\u9a57\u5ba4\u7684\u5171\u7528\u8cc7\u6599\u5eab",
   "mk.0218":"\u5168\u90e8\u6e05\u9664…",
   "mk.0219":"\u9078\u53d6",
   "mk.0220":"\u540d\u7a31",
@@ -2625,15 +2689,30 @@ var I18N = {
   "ui.lab.inv.why.twice":"\u91cd\u8907\u51fa\u73fe",
   "ui.lab.inv.yourlab":"\u4f60\u7684\u5be6\u9a57\u5ba4",
   "ui.lang.label":"\u8a9e\u8a00",
+  "ui.lib.adel":"\u522a\u9664 {name}",
+  "ui.lib.amore":"{name} \u7684\u66f4\u591a\u64cd\u4f5c",
+  "ui.lib.aname":"\u5e8f\u5217\u540d\u7a31",
+  "ui.lib.aren":"\u91cd\u65b0\u547d\u540d {name}",
+  "ui.lib.ashare":"\u5206\u4eab {name} \u7684\u526f\u672c",
+  "ui.lib.copyname":"{name}\uff08\u526f\u672c\uff09",
+  "ui.lib.dup":"\u5efa\u7acb\u526f\u672c",
+  "ui.lib.phfolder":"\u4f8b\u5982\uff1asiRNA \u5c08\u6848",
+  "ui.lib.phnote":"\u9078\u586b\u5099\u8a3b",
+  "ui.lib.phtags":"\u4ee5\u9017\u865f\u5206\u9694",
+  "ui.lib.untitled":"\u672a\u547d\u540d\u5e8f\u5217",
+  "ui.lib.ver":"\u53e6\u5b58\u70ba\u7248\u672c",
   "ui.lib.counted":"\u55ae\u80a1\u8207\u96d9\u80a1",
   "ui.lib.mwdiff":"\u5df2\u8b8a\u52d5",
   "ui.lib.mwdiffT":"\u5132\u5b58\u4e4b\u5f8c\uff0c\u6709\u55ae\u9ad4\u7684\u5b9a\u7fa9\u88ab\u6539\u904e\u3002\u5132\u5b58\u6642\u7684\u5206\u5b50\u91cf\u662f {was}\uff1b\u540c\u4e00\u689d\u5e8f\u5217\u73fe\u5728\u7b97\u51fa\u4f86\u662f {now}\u3002",
   "ui.lib.mwgone":"\u7121\u7d50\u679c",
   "ui.lib.mwgoneT":"\u9019\u7b46\u7d00\u9304\u7528\u5230 {codes}\uff0c\u9019\u500b\u8a08\u7b97\u6a5f\u73fe\u5728\u7121\u6cd5\u89e3\u6790\u5b83\uff0c\u56e0\u6b64\u4e0d\u986f\u793a\u5206\u5b50\u91cf\u3002\u5132\u5b58\u6642\u8a18\u4e0b\u7684\u5206\u5b50\u91cf\u662f {was}\u3002",
   "ui.lib.readonly":"\u552f\u8b80",
-  "ui.lib.fromshare":"\u5f9e\u5206\u4eab\u9023\u7d50\u5b58\u4e0b · {when}",
+  "ui.lib.fromshare":"\u5f9e\u5206\u4eab\u9023\u7d50\u5b58\u4e0b",
   "ui.lib.rolab!":"\u4f60\u5df2\u4e0d\u5728\u9019\u7b46\u8cc7\u6599\u6240\u5c6c\u7684\u5be6\u9a57\u5ba4\u3002\u4f60\u4ecd\u7136\u53ef\u4ee5\u958b\u555f\u548c\u8907\u88fd\uff0c\u4f46\u7121\u6cd5\u7de8\u8f2f\u6216\u522a\u9664\u3002",
   "ui.sh.title":"\u5206\u4eab\u9023\u7d50",
+  "ui.sh.copied":"\u5df2\u8907\u88fd ✓",
+  "ui.sh.msgmany":"\u4f86\u81ea Oligo Calculator \u7684 {n} \u7b46\u5be1\u6838\u82f7\u9178",
+  "ui.sh.msgone":"\u5be1\u6838\u82f7\u9178\uff1a{name}",
   "ui.sh.copy":"\u8907\u88fd\u9023\u7d50",
   "ui.sh.email":"\u96fb\u5b50\u90f5\u4ef6",
   "ui.sh.native":"\u5176\u4ed6\u5206\u4eab\u65b9\u5f0f",
@@ -2641,7 +2720,58 @@ var I18N = {
   "ui.sh.err.none":"\u8acb\u81f3\u5c11\u9078\u53d6\u4e00\u7b46\u5e8f\u5217\u518d\u5206\u4eab\u3002",
   "ui.sh.err.big":"\u9019\u6b21\u9078\u53d6\u7684\u5167\u5bb9\u592a\u5927\uff0c\u7121\u6cd5\u505a\u6210\u9023\u7d50\u5206\u4eab\u3002",
   "ui.sh.err.lab!":"\u5be6\u9a57\u5ba4\u5171\u7528\u8cc7\u6599\u5eab\u88e1\u7684\u5e8f\u5217\u7121\u6cd5\u505a\u6210\u516c\u958b\u9023\u7d50\u3002\u4f60\u5be6\u9a57\u5ba4\u88e1\u7684\u6210\u54e1\u672c\u4f86\u5c31\u53ef\u4ee5\u5728\u5be6\u9a57\u5ba4\u88e1\u6253\u958b\u9019\u4e9b\u5e8f\u5217\u3002",
-  "ui.sh.priv!":"\u5206\u4eab\u9023\u7d50\u672c\u8eab\u5c31\u5e36\u8457\u5e8f\u5217\u8cc7\u6599\uff0c\u9084\u6709\u5b83\u7528\u5230\u7684\u4efb\u4f55\u81ea\u8a02\u55ae\u9ad4\u540d\u7a31\u3002\u4efb\u4f55\u62ff\u5230\u9023\u7d50\u7684\u4eba\u90fd\u80fd\u8b80\u5230\u5168\u90e8\u5167\u5bb9\u3002\u4f60\u8a8d\u70ba\u6a5f\u5bc6\u7684\u5e8f\u5217\u8acb\u4e0d\u8981\u5206\u4eab\u3002",
+  "ui.sh.priv!":"\u5206\u4eab\u9023\u7d50\u672c\u8eab\u5c31\u5e36\u8457\u5e8f\u5217\u8cc7\u6599\uff0c\u9084\u6709\u5b83\u7528\u5230\u7684\u4efb\u4f55\u81ea\u8a02\u55ae\u9ad4\u540d\u7a31\u3002\u4efb\u4f55\u62ff\u5230\u9023\u7d50\u7684\u4eba\u90fd\u80fd\u8b80\u5230\u5168\u90e8\u5167\u5bb9\u3002\u9019\u500b\u9023\u7d50\u6536\u4e0d\u56de\u4f86\uff1a\u5b83\u6c92\u6709\u5b58\u5728\u4f3a\u670d\u5668\u4e0a\uff0c\u6240\u4ee5\u4e5f\u6c92\u6709\u4ec0\u9ebc\u53ef\u4ee5\u522a\u3002\u4f60\u8a8d\u70ba\u6a5f\u5bc6\u7684\u5e8f\u5217\u8acb\u4e0d\u8981\u5206\u4eab\u3002",
+  "ui.rc.priv!":"\u9019\u500b\u5206\u4eab\u9023\u7d50\u672c\u8eab\u5c31\u5e36\u8457\u5e8f\u5217\u8cc7\u6599\u3002\u4efb\u4f55\u62ff\u5230\u9023\u7d50\u7684\u4eba\u90fd\u80fd\u8b80\u5230\u3002",
+  "punct.stop":"\u3002",
+  "ui.rc.h":"\u5206\u4eab\u7d66\u4f60\u7684\u5167\u5bb9",
+  "ui.rc.sub1":"\u6709\u4eba\u5206\u4eab\u4e86 {n} \u7b46\u5e8f\u5217\u7d66\u4f60\u3002\u5148\u770b\u4e00\u4e0b\uff0c\u60f3\u7559\u4e0b\u4f86\u518d\u5132\u5b58\u3002",
+  "ui.rc.subN":"\u6709\u4eba\u5206\u4eab\u4e86 {n} \u7b46\u5e8f\u5217\u7d66\u4f60\u3002\u5148\u770b\u4e00\u4e0b\uff0c\u60f3\u7559\u4e0b\u4f86\u7684\u518d\u5132\u5b58\u3002",
+  "ui.rc.cb1":"\u9019\u4efd\u5206\u4eab\u7528\u5230 {n} \u500b\u81ea\u8a02\u9e7c\u57fa\uff1a",
+  "ui.rc.cbN":"\u9019\u4efd\u5206\u4eab\u7528\u5230 {n} \u500b\u81ea\u8a02\u9e7c\u57fa\uff1a",
+  "ui.rc.cbadd1":"\u5132\u5b58\u5e8f\u5217\u6642\uff0c\u5b83\u7528\u5230\u7684\u81ea\u8a02\u9e7c\u57fa\u4e5f\u6703\u4e00\u8d77\u52a0\u5230\u4f60\u7684\u81ea\u8a02\u9e7c\u57fa\u88e1\u3002\u4f60\u9078\u300c\u5148\u4e0d\u8981\u300d\u7684\u8a71\uff0c\u4ec0\u9ebc\u90fd\u4e0d\u6703\u52a0\u9032\u53bb\u3002",
+  "ui.rc.cbaddN":"\u5132\u5b58\u5e8f\u5217\u6642\uff0c\u5b83\u7528\u5230\u7684\u81ea\u8a02\u9e7c\u57fa\u4e5f\u6703\u4e00\u8d77\u52a0\u5230\u4f60\u7684\u81ea\u8a02\u9e7c\u57fa\u88e1\u3002\u4f60\u9078\u300c\u5148\u4e0d\u8981\u300d\u7684\u8a71\uff0c\u4ec0\u9ebc\u90fd\u4e0d\u6703\u52a0\u9032\u53bb\u3002",
+  "ui.rc.cbhave":"\u9019\u4e9b\u5b9a\u7fa9\u9019\u908a\u5df2\u7d93\u6709\u4e86\uff0c\u6240\u4ee5\u5132\u5b58\u4e0d\u6703\u91cd\u8907\u3002",
+  "ui.rc.unnamed":"\u672a\u547d\u540d",
+  "ui.rc.seqn":"\u5e8f\u5217 {n}",
+  "ui.rc.cbs":"\u81ea\u8a02\u9e7c\u57fa\uff1a{codes}",
+  "ui.rc.cbwill1":"\u5132\u5b58\u6642\u6703\u52a0\u5165 {n} \u500b",
+  "ui.rc.cbwillN":"\u5132\u5b58\u6642\u6703\u52a0\u5165 {n} \u500b",
+  "ui.rc.cbok":"\u9019\u908a\u5df2\u7d93\u6709\u4e86",
+  "ui.rc.dup":"\u96d9\u80a1",
+  "ui.rc.bad":"\u7121\u6cd5\u8a08\u7b97\u9019\u7b46\u5e8f\u5217\u3002",
+  "ui.rc.notsaved":"\u5b83\u4e0d\u6703\u88ab\u5132\u5b58\u3002",
+  "ui.rc.invalid":"\u9019\u7b46\u5e8f\u5217\u4e0d\u6b63\u78ba\uff0c\u6240\u4ee5\u7121\u6cd5\u5132\u5b58\u3002",
+  "ui.rc.save":"\u5132\u5b58\u5230\u6211\u7684\u8cc7\u6599\u5eab",
+  "ui.rc.save1":"\u5132\u5b58\u5e8f\u5217 + {n} \u500b\u81ea\u8a02\u9e7c\u57fa",
+  "ui.rc.saveN":"\u5132\u5b58\u5e8f\u5217 + {n} \u500b\u81ea\u8a02\u9e7c\u57fa",
+  "ui.rc.ok":"\u5df2\u5132\u5b58\u5e8f\u5217 ✓",
+  "ui.rc.okadd1":"\u5df2\u5132\u5b58\u5e8f\u5217\uff0c\u4e26\u52a0\u5165 {n} \u500b\u81ea\u8a02\u9e7c\u57fa ✓",
+  "ui.rc.okaddN":"\u5df2\u5132\u5b58\u5e8f\u5217\uff0c\u4e26\u52a0\u5165 {n} \u500b\u81ea\u8a02\u9e7c\u57fa ✓",
+  "ui.rc.okhave":"\u5df2\u5132\u5b58\u5e8f\u5217\u3002\u5b83\u7528\u5230\u7684\u81ea\u8a02\u9e7c\u57fa\u9019\u908a\u672c\u4f86\u5c31\u6709 ✓",
+  "ui.rc.done":"\u5df2\u5132\u5b58 ✓",
+  "ui.rc.full":"\u4f60\u65b9\u6848\u7684\u8cc7\u6599\u5eab\u5df2\u7d93\u6eff\u4e86\uff0c\u6240\u4ee5\u9019\u7b46\u6c92\u6709\u5132\u5b58\u3002",
+  "ui.rc.err":"\u7121\u6cd5\u5132\u5b58\u9019\u7b46\u5e8f\u5217\u3002",
+  "ui.rc.all":"\u5168\u90e8\u5132\u5b58\u5230\u6211\u7684\u8cc7\u6599\u5eab",
+  "ui.rc.all1":"\u5168\u90e8\u5132\u5b58 + {n} \u500b\u81ea\u8a02\u9e7c\u57fa",
+  "ui.rc.allN":"\u5168\u90e8\u5132\u5b58 + {n} \u500b\u81ea\u8a02\u9e7c\u57fa",
+  "ui.rc.bok1":"\u5df2\u5132\u5b58 {n} \u7b46\u5e8f\u5217 ✓",
+  "ui.rc.bokN":"\u5df2\u5132\u5b58 {n} \u7b46\u5e8f\u5217 ✓",
+  "ui.rc.badd1":"\u52a0\u5165 {n} \u500b\u81ea\u8a02\u9e7c\u57fa",
+  "ui.rc.baddN":"\u52a0\u5165 {n} \u500b\u81ea\u8a02\u9e7c\u57fa",
+  "ui.rc.bskip":"{n} \u7b46\u8df3\u904e\uff0c\u4e0d\u662f\u6b63\u78ba\u7684\u5e8f\u5217",
+  "ui.rc.bfull":"{n} \u7b46\u4fdd\u7559\uff0c\u4f60\u65b9\u6848\u7684\u8cc7\u6599\u5eab\u5df2\u7d93\u6eff\u4e86",
+  "ui.rc.berr":"{n} \u7b46\u7121\u6cd5\u5132\u5b58",
+  "ui.rc.bnone":"\u7121\u6cd5\u5132\u5b58\u3002",
+  "ui.rc.no":"\u5148\u4e0d\u8981",
+  "ui.rc.cf.aria":"\u5206\u4eab\u7684\u81ea\u8a02\u9e7c\u57fa\u6709\u885d\u7a81",
+  "ui.rc.cf.h":"\u81ea\u8a02\u9e7c\u57fa\u6709\u885d\u7a81",
+  "ui.rc.cf.body!":"\u9019\u500b\u9023\u7d50\u5c0d {codes} \u7684\u5b9a\u7fa9\uff0c\u8ddf\u9019\u500b\u8a08\u7b97\u6a5f\u88e1\u5df2\u7d93\u6709\u7684\u5b9a\u7fa9\u4e0d\u4e00\u6a23\u3002\u6c92\u6709\u5f59\u5165\u4efb\u4f55\u6771\u897f\u3002\u8acb\u8acb\u5206\u4eab\u7684\u4eba\u628a\u8cea\u91cf\u3001\u78f7\u9178\u72c0\u614b\u3001\u985e\u578b\u6216\u7d44\u6210\u5f0f\u5c0d\u4e00\u81f4\u5f8c\u518d\u5206\u4eab\u4e00\u6b21\u3002",
+  "ui.rc.broken":"\u9019\u500b\u5206\u4eab\u9023\u7d50\u770b\u8d77\u4f86\u58de\u4e86\u6216\u4e0d\u5b8c\u6574\u3002",
+  "ui.rc.v.empty":"\u5e8f\u5217\u662f\u7a7a\u7684\u3002",
+  "ui.rc.v.ends":"\u5e8f\u5217\u6587\u5b57\u8ddf\u5b83\u7684\u7aef\u57fa\u8a2d\u5b9a\u5c0d\u4e0d\u8d77\u4f86\u3002",
+  "ui.rc.v.aends":"\u53cd\u7fa9\u6587\u5b57\u8ddf\u5b83\u7684\u7aef\u57fa\u8a2d\u5b9a\u5c0d\u4e0d\u8d77\u4f86\u3002",
+  "ui.rc.v.parse":"\u7121\u6cd5\u8b80\u53d6\u9019\u7b46\u5e8f\u5217\u3002",
+  "ui.lib.shrow":"\u5206\u4eab\u526f\u672c",
   "ui.seatbig.back!":"\u8fd4\u56de\u4fee\u6539",
   "ui.seatbig.body!":"{n} \u5e2d{per}\u662f {usd}\uff0c\u5c07\u5411\u9019\u500b\u5e33\u865f\u6536\u8cbb\u3002\u591a\u6578\u5be6\u9a57\u5ba4\u8cb7 3 \u5230 30 \u5e2d\u3002\u5982\u679c\u9019\u5c31\u662f\u4f60\u8981\u7684\uff0c\u8acb\u7e7c\u7e8c\u3002",
   "ui.seatbig.eyebrow!":"\u8acb\u78ba\u8a8d",
@@ -2818,7 +2948,7 @@ var I18N = {
   "faq.mw.07.q":"\u9ad8\u7ea7\u4fee\u9970\uff1a2′ \u7cd6\u57fa\u4fee\u9970",
   "faq.mw.08.a":"\u5b83\u4eec\u4e00\u773c\u6458\u8981\u6574\u6761\u94fe\uff1a\u603b\u957f\u5ea6\uff08nt\uff09\u3001PO \u4e0e PS \u952e\u5404\u6709\u51e0\u4e2a\u3001\u7aef\u57fa\u3001\u6709\u6ca1\u6709\u81ea\u5b9a\u4e49\u5355\u4f53\uff0c\u4ee5\u53ca\u6bcf\u79cd\u78b1\u57fa\uff08A/C/G/T/U\uff09\u5404\u6709\u51e0\u4e2a\u3002",
   "faq.mw.08.q":"\u7ed3\u679c\u4e0b\u65b9\u90a3\u4e9b\u6807\u7b7e\u662f\u4ec0\u4e48\u610f\u601d\uff1f",
-  "faq.mw.09.a!":"\u5728\u4e00\u6761\u5df2\u4fdd\u5b58\u5e8f\u5217\u4e0a\u6309 <b>Share</b>\uff0c\u6216\u9009\u597d\u51e0\u6761\u4e4b\u540e\u6309<b>\u5206\u4eab\u526f\u672c</b>\uff0c\u5c31\u4f1a\u751f\u6210\u4e00\u4e2a\u94fe\u63a5\u3002\u6253\u5f00\u94fe\u63a5\u7684\u4eba\u4f1a\u5728\u53ea\u8bfb\u7684 <b>Shared with you</b> \u89c6\u56fe\u91cc\u770b\u5230\u5185\u5bb9\uff0c\u800c\u4e14\u53ef\u4ee5\u628a\u5b83\u5b58\u8fdb\u81ea\u5df1\u7684\u8d44\u6e90\u5e93\u3002\u53cc\u65b9\u90fd\u4e0d\u9700\u8981\u8d26\u6237\u3002<b>\u9690\u79c1\uff1a</b>\u94fe\u63a5\u672c\u8eab\u5c31\u5e26\u7740\u5e8f\u5217\u6570\u636e\uff0c\u6240\u4ee5\u4efb\u4f55\u62ff\u5230\u94fe\u63a5\u7684\u4eba\u90fd\u770b\u5f97\u5230\uff1b\u4f60\u8ba4\u4e3a\u673a\u5bc6\u7684\u5e8f\u5217\u8bf7\u4e0d\u8981\u5206\u4eab\u3002\u514d\u8d39\u5206\u4eab\u6bcf\u4e2a\u94fe\u63a5\u6700\u591a 10 \u6761\u3002",
+  "faq.mw.09.a!":"\u5728\u4e00\u6761\u5df2\u4fdd\u5b58\u5e8f\u5217\u4e0a\u6309 <b>\u5206\u4eab\u526f\u672c</b>\uff0c\u6216\u9009\u597d\u51e0\u6761\u4e4b\u540e\u6309<b>\u5206\u4eab\u6240\u9009\u9879\u76ee\u7684\u526f\u672c</b>\uff0c\u5c31\u4f1a\u751f\u6210\u4e00\u4e2a\u94fe\u63a5\u3002\u6253\u5f00\u94fe\u63a5\u7684\u4eba\u4f1a\u5728\u53ea\u8bfb\u7684 <b>\u5206\u4eab\u7ed9\u4f60\u7684\u5185\u5bb9</b> \u89c6\u56fe\u91cc\u770b\u5230\u5185\u5bb9\uff0c\u800c\u4e14\u53ef\u4ee5\u628a\u5b83\u5b58\u8fdb\u81ea\u5df1\u7684\u8d44\u6e90\u5e93\u3002\u53cc\u65b9\u90fd\u4e0d\u9700\u8981\u8d26\u6237\u3002<b>\u9690\u79c1\uff1a</b>\u94fe\u63a5\u672c\u8eab\u5c31\u5e26\u7740\u5e8f\u5217\u6570\u636e\uff0c\u6240\u4ee5\u4efb\u4f55\u62ff\u5230\u94fe\u63a5\u7684\u4eba\u90fd\u770b\u5f97\u5230\uff1b\u4f60\u8ba4\u4e3a\u673a\u5bc6\u7684\u5e8f\u5217\u8bf7\u4e0d\u8981\u5206\u4eab\u3002\u514d\u8d39\u5206\u4eab\u6bcf\u4e2a\u94fe\u63a5\u6700\u591a 10 \u6761\u3002",
   "faq.mw.09.q":"\u7528\u94fe\u63a5\u5206\u4eab\u5e8f\u5217",
   "faq.mw.10.a":"\u8981\u5904\u7406\u53cc\u94fe\u5be1\u6838\u82f7\u9178\uff08siRNA\u3001ASO\uff09\uff0c\u8bf7\u5728\u5e8f\u5217\u6807\u9898\u6b63\u4e0b\u65b9\u7684\u94fe\u6a21\u5f0f\u5361\u7247\u91cc\u9009<b>\u53cc\u94fe</b>\u3002\u63a5\u7740\u9009<b>\u81ea\u52a8\u4e92\u8865</b>\uff0c\u751f\u6210\u4e00\u6761\u4e92\u76f8\u914d\u5bf9\u7684\u53cd\u5411\u4e92\u8865\u53cd\u4e49\u94fe\uff08A \u5bf9 T/U\uff0cG \u5bf9 C\uff09\uff0c\u6216\u662f\u9009<b>\u624b\u52a8\u8f93\u5165</b>\uff0c\u81ea\u5df1\u7ed9\u4e00\u6761\u6709\u4fee\u9970\u3001\u6709\u9519\u914d\u6216\u6709\u7a81\u51fa\u672b\u7aef\u7684\u53cd\u4e49\u94fe\u3002\u7f16\u8f91\u6b63\u4e49\u94fe\u65f6\uff0c\u81ea\u52a8\u4e92\u8865\u7684\u90a3\u4e00\u6761\u4f1a\u7acb\u523b\u8ddf\u7740\u66f4\u65b0\u3002\u624b\u52a8\u8f93\u5165\u7684\u53cd\u4e49\u94fe\u6709\u81ea\u5df1\u7684\u94fe\u8bbe\u7f6e\u4e0e\u5feb\u901f\u63d2\u5165\u9762\u677f\u3002<b>\u8303\u4f8b\uff08\u81ea\u52a8\u4e92\u8865\uff09\uff1a</b>\u6b63\u4e49\u94fe <code>ATCGATCG</code> → \u53cd\u4e49\u94fe <code>CGATCGAT</code>\uff1b\u53cc\u94fe\u5206\u5b50\u91cf = \u6b63\u4e49\u94fe + \u53cd\u4e49\u94fe\u3002<b>\u63d0\u793a\uff1a</b>\u53cc\u94fe\u5f00\u7740\u7684\u65f6\u5019\uff0c\u6d53\u5ea6\u9009\u9879\u5361\u53ef\u4ee5\u9009\u62e9\u8981\u7528\u6b63\u4e49\u94fe\u3001\u53cd\u4e49\u94fe\u8fd8\u662f\u6574\u4e2a\u53cc\u94fe\u6765\u8ba1\u7b97\u3002",
   "faq.mw.10.q":"\u53cc\u94fe\u6a21\u5f0f\uff08\u53cd\u4e49 + \u53cc\u94fe\u5206\u5b50\u91cf\uff09",
@@ -2948,7 +3078,7 @@ var I18N = {
   "lab.ed.band":"\u6b63\u5728\u7f16\u8f91 {lab} \u4e2d\u7684 {name}",
   "lab.ed.clash!":"\u5728\u4f60\u7f16\u8f91\u671f\u95f4\uff0c{who} \u4fdd\u5b58\u4e86\u8fd9\u4e00\u6761\u3002",
   "lab.ed.closed!":"{lab} \u5df2\u7ecf\u5173\u95ed\uff0c\u4f60\u7684\u66f4\u6539\u6ca1\u6709\u4fdd\u5b58\u5230\u90a3\u91cc\u3002",
-  "lab.ed.closedb!":"\u4f60\u653e\u5728 {lab} \u91cc\u7684\u5185\u5bb9\u5df2\u539f\u6837\u56de\u5230\u4f60\u81ea\u5df1\u7684\u8d44\u6e90\u5e93\u3002\u6ca1\u6709\u4efb\u4f55\u4e1c\u897f\u88ab\u5220\u9664\uff0c\u4e5f\u6ca1\u6709\u4eba\u7f16\u8f91\u8fc7\u4f60\u7684\u8bb0\u5f55\u3002",
+  "lab.ed.closedb!":"\u4f60\u653e\u5728 {lab} \u91cc\u7684\u5185\u5bb9\u5df2\u539f\u6837\u56de\u5230\u4f60\u81ea\u5df1\u7684\u8d44\u6e90\u5e93\u3002\u6ca1\u6709\u4efb\u4f55\u4e1c\u897f\u88ab\u5220\u9664\uff0c\u4e5f\u6ca1\u6709\u4eba\u7f16\u8f91\u8fc7\u4f60\u7684\u8bb0\u5f55\u3002\u90a3\u4e00\u4efd\u662f\u4f60\u6700\u540e\u4e00\u6b21\u4fdd\u5b58\u7684\u7248\u672c\uff0c\u56e0\u6b64\u4f60\u5728\u8fd9\u4e2a\u753b\u9762\u4e0a\u4e4b\u540e\u6539\u52a8\u7684\u5185\u5bb9\u8fd8\u4e0d\u5728\u91cc\u9762\u3002",
   "lab.ed.copied":"\u5df2\u5728\u300c{where}\u300d\u4fdd\u5b58\u526f\u672c\u3002",
   "lab.ed.copy":"\u5728\u300c{where}\u300d\u4fdd\u5b58\u526f\u672c",
   "lab.ed.discard":"\u820d\u5f03\u6211\u7684\u66f4\u6539\uff0c\u6253\u5f00\u6700\u65b0\u7248\u672c",
@@ -2957,6 +3087,7 @@ var I18N = {
   "lab.ed.goneb!":"\u6ca1\u6709\u4fdd\u5b58\u4efb\u4f55\u4e1c\u897f\uff0c\u4f60\u7684\u5185\u5bb9\u4ecd\u7136\u7559\u5728\u8fd9\u4e2a\u753b\u9762\u4e0a\u3002\u4f60\u53ef\u4ee5\u7559\u4e00\u4efd\u526f\u672c\u3002",
   "lab.ed.keep":"\u7ee7\u7eed\u7f16\u8f91",
   "lab.ed.leave":"\u820d\u5f03\u6211\u7684\u66f4\u6539\u5e76\u5173\u95ed",
+  "lab.ed.leaveb!":"\u820d\u5f03\u53ea\u4f1a\u5f71\u54cd\u8fd9\u4e2a\u753b\u9762\u4e0a\u7684\u66f4\u6539\u3002\u5df2\u7ecf\u4fdd\u5b58\u8fc7\u7684\u5185\u5bb9\u90fd\u4f1a\u7559\u5728\u539f\u5904\u3002",
   "lab.ed.meta":"\u7248\u672c {v} · \u4e0a\u6b21\u7531 {who} \u4fdd\u5b58\u4e8e {when}",
   "lab.ed.metat":"\u4e0a\u6b21\u4fdd\u5b58\u4e8e {when}",
   "lab.ed.norights!":"\u4f60\u5bf9\u8fd9\u4e00\u6761\u7684\u7f16\u8f91\u6743\u9650\u5df2\u88ab\u79fb\u9664\u3002",
@@ -3008,7 +3139,6 @@ var I18N = {
   "lab.find.rec":"\u641c\u7d22\u8fd9\u4e2a\u8d44\u6e90\u5e93",
   "lab.find.scope!":"\u641c\u7d22\u6db5\u76d6\u8fd9\u4e00\u5c42\u4ee5\u4e0b\u7684\u6240\u6709\u5185\u5bb9\uff0c\u4e0d\u53ea\u662f\u753b\u9762\u4e0a\u770b\u5230\u7684\u3002",
   "lab.find.where":"\u4f4d\u4e8e {path}",
-  "lab.fold.all":"\u5168\u90e8",
   "lab.fold.aria1":"{name}\uff0c{n} \u6761\u5e8f\u5217",
   "lab.fold.ariaN":"{name}\uff0c{n} \u6761\u5e8f\u5217",
   "lab.fold.confirm":"\u786e\u5b9a\u5220\u9664",
@@ -3035,7 +3165,6 @@ var I18N = {
   "lab.fold.new":"+ \u65b0\u5efa\u6587\u4ef6\u5939",
   "lab.fold.nodest":"\u6ca1\u6709\u5176\u4ed6\u5730\u65b9\u53ef\u4ee5\u653e\u8fd9\u4e2a\u6587\u4ef6\u5939\u3002\u6587\u4ef6\u5939\u6700\u591a\u4e09\u5c42\uff0c\u800c\u4e14\u4e0d\u80fd\u79fb\u5230\u81ea\u5df1\u91cc\u9762\u3002",
   "lab.fold.newh":"\u65b0\u5efa\u6587\u4ef6\u5939",
-  "lab.fold.open":"\u6253\u5f00\u6587\u4ef6\u5939 {name}",
   "lab.fold.rename":"\u91cd\u547d\u540d",
   "lab.fold.top":"\u6700\u4e0a\u5c42",
   "lab.fold.renamed":"\u5df2\u91cd\u547d\u540d",
@@ -3167,8 +3296,8 @@ var I18N = {
   "lab.mv.mix":"{labname}\uff1a{parts}",
   "lab.mv.nolab":"\u8bf7\u5148\u52a0\u5165\u6216\u521b\u5efa\u5b9e\u9a8c\u5ba4\uff08\u8d26\u6237 ▸ \u5b9e\u9a8c\u5ba4\uff09\u3002",
   "lab.mv.none":"\u8bf7\u5148\u9009\u53d6\u5e8f\u5217\uff0c\u518d\u79fb\u5230\u5b9e\u9a8c\u5ba4\u7684\u5171\u7528\u8d44\u6e90\u5e93\u3002",
-  "lab.mv.ok1":"\u5df2\u5c06 {n} \u6761\u5e8f\u5217\u79fb\u5230 {labname} \u7684\u5171\u7528\u8d44\u6e90\u5e93\u3002",
-  "lab.mv.okN":"\u5df2\u5c06 {n} \u6761\u5e8f\u5217\u79fb\u5230 {labname} \u7684\u5171\u7528\u8d44\u6e90\u5e93\u3002",
+  "lab.mv.ok1":"\u5df2\u5c06 {n} \u6761\u5e8f\u5217\u590d\u5236\u5230 {labname} \u7684\u5171\u7528\u8d44\u6e90\u5e93\u3002",
+  "lab.mv.okN":"\u5df2\u5c06 {n} \u6761\u5e8f\u5217\u590d\u5236\u5230 {labname} \u7684\u5171\u7528\u8d44\u6e90\u5e93\u3002",
   "lab.mv.pdupe":"\u5df2\u5b58\u5728 {n} \u6761",
   "lab.mv.pfail":"\u5931\u8d25 {n} \u6761",
   "lab.mv.pick":"\u628a\u6211\u7684\u5e8f\u5217\u79fb\u5230\u8fd9\u91cc",
@@ -3464,8 +3593,8 @@ var I18N = {
   "mk.0213":"\u91cd\u65b0\u6253\u5f00\u3001\u590d\u5236\u6216\u5bfc\u51fa\u4f60\u5b58\u8fc7\u7684\u5e8f\u5217\u3002\u767b\u5f55\u4e4b\u540e\uff0c\u53ef\u8de8\u8bbe\u5907\u4f7f\u7528\u7684\u90a3\u4efd\u5b58\u5728\u4f60\u7684\u8d26\u6237\u91cc\uff0c\u8fd9\u4e2a\u6d4f\u89c8\u5668\u53e6\u5916\u4fdd\u7559\u4e00\u4efd\u79bb\u7ebf\u526f\u672c\uff1b\u672a\u767b\u5f55\u65f6\uff0c\u5e8f\u5217\u53ea\u5b58\u5728\u8fd9\u4e2a\u6d4f\u89c8\u5668\u91cc\u3002",
   "mk.0214":"\u626b\u63cf",
   "mk.0215":"\u5bfc\u51fa\u6240\u9009\u9879\u76ee · CSV",
-  "mk.0216":"\u5206\u4eab\u526f\u672c",
-  "mk.0217":"\u79fb\u5230\u5b9e\u9a8c\u5ba4\u7684\u5171\u7528\u8d44\u6e90\u5e93",
+  "mk.0216":"\u5206\u4eab\u6240\u9009\u9879\u76ee\u7684\u526f\u672c",
+  "mk.0217":"\u590d\u5236\u5230\u5b9e\u9a8c\u5ba4\u7684\u5171\u7528\u8d44\u6e90\u5e93",
   "mk.0218":"\u5168\u90e8\u6e05\u9664…",
   "mk.0219":"\u9009\u53d6",
   "mk.0220":"\u540d\u79f0",
@@ -3873,15 +4002,30 @@ var I18N = {
   "ui.lab.inv.why.twice":"\u91cd\u590d\u51fa\u73b0",
   "ui.lab.inv.yourlab":"\u4f60\u7684\u5b9e\u9a8c\u5ba4",
   "ui.lang.label":"\u8bed\u8a00",
+  "ui.lib.adel":"\u5220\u9664 {name}",
+  "ui.lib.amore":"{name} \u7684\u66f4\u591a\u64cd\u4f5c",
+  "ui.lib.aname":"\u5e8f\u5217\u540d\u79f0",
+  "ui.lib.aren":"\u91cd\u547d\u540d {name}",
+  "ui.lib.ashare":"\u5206\u4eab {name} \u7684\u526f\u672c",
+  "ui.lib.copyname":"{name}\uff08\u526f\u672c\uff09",
+  "ui.lib.dup":"\u521b\u5efa\u526f\u672c",
+  "ui.lib.phfolder":"\u4f8b\u5982\uff1asiRNA \u9879\u76ee",
+  "ui.lib.phnote":"\u9009\u586b\u5907\u6ce8",
+  "ui.lib.phtags":"\u4ee5\u9017\u53f7\u5206\u9694",
+  "ui.lib.untitled":"\u672a\u547d\u540d\u5e8f\u5217",
+  "ui.lib.ver":"\u53e6\u5b58\u4e3a\u7248\u672c",
   "ui.lib.counted":"\u5355\u94fe\u4e0e\u53cc\u94fe",
   "ui.lib.mwdiff":"\u5df2\u53d8\u52a8",
   "ui.lib.mwdiffT":"\u4fdd\u5b58\u4e4b\u540e\uff0c\u6709\u5355\u4f53\u7684\u5b9a\u4e49\u88ab\u6539\u8fc7\u3002\u4fdd\u5b58\u65f6\u7684\u5206\u5b50\u91cf\u662f {was}\uff1b\u540c\u4e00\u6761\u5e8f\u5217\u73b0\u5728\u7b97\u51fa\u6765\u662f {now}\u3002",
   "ui.lib.mwgone":"\u65e0\u7ed3\u679c",
   "ui.lib.mwgoneT":"\u8fd9\u6761\u8bb0\u5f55\u7528\u5230 {codes}\uff0c\u8fd9\u4e2a\u8ba1\u7b97\u5668\u73b0\u5728\u65e0\u6cd5\u89e3\u6790\u5b83\uff0c\u56e0\u6b64\u4e0d\u663e\u793a\u5206\u5b50\u91cf\u3002\u4fdd\u5b58\u65f6\u8bb0\u4e0b\u7684\u5206\u5b50\u91cf\u662f {was}\u3002",
   "ui.lib.readonly":"\u53ea\u8bfb",
-  "ui.lib.fromshare":"\u4ece\u5206\u4eab\u94fe\u63a5\u5b58\u4e0b · {when}",
+  "ui.lib.fromshare":"\u4ece\u5206\u4eab\u94fe\u63a5\u5b58\u4e0b",
   "ui.lib.rolab!":"\u4f60\u5df2\u4e0d\u5728\u8fd9\u4efd\u8d44\u6599\u6240\u5c5e\u7684\u5b9e\u9a8c\u5ba4\u3002\u4f60\u4ecd\u7136\u53ef\u4ee5\u6253\u5f00\u548c\u590d\u5236\uff0c\u4f46\u65e0\u6cd5\u7f16\u8f91\u6216\u5220\u9664\u3002",
   "ui.sh.title":"\u5206\u4eab\u94fe\u63a5",
+  "ui.sh.copied":"\u5df2\u590d\u5236 ✓",
+  "ui.sh.msgmany":"\u6765\u81ea Oligo Calculator \u7684 {n} \u6761\u5be1\u6838\u82f7\u9178",
+  "ui.sh.msgone":"\u5be1\u6838\u82f7\u9178\uff1a{name}",
   "ui.sh.copy":"\u590d\u5236\u94fe\u63a5",
   "ui.sh.email":"\u7535\u5b50\u90ae\u4ef6",
   "ui.sh.native":"\u5176\u4ed6\u5206\u4eab\u65b9\u5f0f",
@@ -3889,7 +4033,58 @@ var I18N = {
   "ui.sh.err.none":"\u8bf7\u81f3\u5c11\u9009\u53d6\u4e00\u6761\u5e8f\u5217\u518d\u5206\u4eab\u3002",
   "ui.sh.err.big":"\u8fd9\u6b21\u9009\u53d6\u7684\u5185\u5bb9\u592a\u5927\uff0c\u65e0\u6cd5\u505a\u6210\u94fe\u63a5\u5206\u4eab\u3002",
   "ui.sh.err.lab!":"\u5b9e\u9a8c\u5ba4\u5171\u7528\u8d44\u6e90\u5e93\u91cc\u7684\u5e8f\u5217\u65e0\u6cd5\u505a\u6210\u516c\u5f00\u94fe\u63a5\u3002\u4f60\u5b9e\u9a8c\u5ba4\u91cc\u7684\u6210\u5458\u672c\u6765\u5c31\u53ef\u4ee5\u5728\u5b9e\u9a8c\u5ba4\u91cc\u6253\u5f00\u8fd9\u4e9b\u5e8f\u5217\u3002",
-  "ui.sh.priv!":"\u5206\u4eab\u94fe\u63a5\u672c\u8eab\u5c31\u5e26\u7740\u5e8f\u5217\u6570\u636e\uff0c\u8fd8\u6709\u5b83\u7528\u5230\u7684\u4efb\u4f55\u81ea\u5b9a\u4e49\u5355\u4f53\u540d\u79f0\u3002\u4efb\u4f55\u62ff\u5230\u94fe\u63a5\u7684\u4eba\u90fd\u80fd\u8bfb\u5230\u5168\u90e8\u5185\u5bb9\u3002\u4f60\u8ba4\u4e3a\u673a\u5bc6\u7684\u5e8f\u5217\u8bf7\u4e0d\u8981\u5206\u4eab\u3002",
+  "ui.sh.priv!":"\u5206\u4eab\u94fe\u63a5\u672c\u8eab\u5c31\u5e26\u7740\u5e8f\u5217\u6570\u636e\uff0c\u8fd8\u6709\u5b83\u7528\u5230\u7684\u4efb\u4f55\u81ea\u5b9a\u4e49\u5355\u4f53\u540d\u79f0\u3002\u4efb\u4f55\u62ff\u5230\u94fe\u63a5\u7684\u4eba\u90fd\u80fd\u8bfb\u5230\u5168\u90e8\u5185\u5bb9\u3002\u8fd9\u4e2a\u94fe\u63a5\u6536\u4e0d\u56de\u6765\uff1a\u5b83\u6ca1\u6709\u5b58\u5728\u670d\u52a1\u5668\u4e0a\uff0c\u6240\u4ee5\u4e5f\u6ca1\u6709\u4ec0\u4e48\u53ef\u4ee5\u5220\u3002\u4f60\u8ba4\u4e3a\u673a\u5bc6\u7684\u5e8f\u5217\u8bf7\u4e0d\u8981\u5206\u4eab\u3002",
+  "ui.rc.priv!":"\u8fd9\u4e2a\u5206\u4eab\u94fe\u63a5\u672c\u8eab\u5c31\u5e26\u7740\u5e8f\u5217\u6570\u636e\u3002\u4efb\u4f55\u62ff\u5230\u94fe\u63a5\u7684\u4eba\u90fd\u80fd\u8bfb\u5230\u3002",
+  "punct.stop":"\u3002",
+  "ui.rc.h":"\u5206\u4eab\u7ed9\u4f60\u7684\u5185\u5bb9",
+  "ui.rc.sub1":"\u6709\u4eba\u5206\u4eab\u4e86 {n} \u6761\u5e8f\u5217\u7ed9\u4f60\u3002\u5148\u770b\u4e00\u4e0b\uff0c\u60f3\u7559\u4e0b\u6765\u518d\u4fdd\u5b58\u3002",
+  "ui.rc.subN":"\u6709\u4eba\u5206\u4eab\u4e86 {n} \u6761\u5e8f\u5217\u7ed9\u4f60\u3002\u5148\u770b\u4e00\u4e0b\uff0c\u60f3\u7559\u4e0b\u6765\u7684\u518d\u4fdd\u5b58\u3002",
+  "ui.rc.cb1":"\u8fd9\u4efd\u5206\u4eab\u7528\u5230 {n} \u4e2a\u81ea\u5b9a\u4e49\u78b1\u57fa\uff1a",
+  "ui.rc.cbN":"\u8fd9\u4efd\u5206\u4eab\u7528\u5230 {n} \u4e2a\u81ea\u5b9a\u4e49\u78b1\u57fa\uff1a",
+  "ui.rc.cbadd1":"\u4fdd\u5b58\u5e8f\u5217\u65f6\uff0c\u5b83\u7528\u5230\u7684\u81ea\u5b9a\u4e49\u78b1\u57fa\u4e5f\u4f1a\u4e00\u8d77\u52a0\u5230\u4f60\u7684\u81ea\u5b9a\u4e49\u78b1\u57fa\u91cc\u3002\u4f60\u9009\u300c\u5148\u4e0d\u8981\u300d\u7684\u8bdd\uff0c\u4ec0\u4e48\u90fd\u4e0d\u4f1a\u52a0\u8fdb\u53bb\u3002",
+  "ui.rc.cbaddN":"\u4fdd\u5b58\u5e8f\u5217\u65f6\uff0c\u5b83\u7528\u5230\u7684\u81ea\u5b9a\u4e49\u78b1\u57fa\u4e5f\u4f1a\u4e00\u8d77\u52a0\u5230\u4f60\u7684\u81ea\u5b9a\u4e49\u78b1\u57fa\u91cc\u3002\u4f60\u9009\u300c\u5148\u4e0d\u8981\u300d\u7684\u8bdd\uff0c\u4ec0\u4e48\u90fd\u4e0d\u4f1a\u52a0\u8fdb\u53bb\u3002",
+  "ui.rc.cbhave":"\u8fd9\u4e9b\u5b9a\u4e49\u8fd9\u8fb9\u5df2\u7ecf\u6709\u4e86\uff0c\u6240\u4ee5\u4fdd\u5b58\u4e0d\u4f1a\u91cd\u590d\u3002",
+  "ui.rc.unnamed":"\u672a\u547d\u540d",
+  "ui.rc.seqn":"\u5e8f\u5217 {n}",
+  "ui.rc.cbs":"\u81ea\u5b9a\u4e49\u78b1\u57fa\uff1a{codes}",
+  "ui.rc.cbwill1":"\u4fdd\u5b58\u65f6\u4f1a\u52a0\u5165 {n} \u4e2a",
+  "ui.rc.cbwillN":"\u4fdd\u5b58\u65f6\u4f1a\u52a0\u5165 {n} \u4e2a",
+  "ui.rc.cbok":"\u8fd9\u8fb9\u5df2\u7ecf\u6709\u4e86",
+  "ui.rc.dup":"\u53cc\u94fe",
+  "ui.rc.bad":"\u65e0\u6cd5\u8ba1\u7b97\u8fd9\u6761\u5e8f\u5217\u3002",
+  "ui.rc.notsaved":"\u5b83\u4e0d\u4f1a\u88ab\u4fdd\u5b58\u3002",
+  "ui.rc.invalid":"\u8fd9\u6761\u5e8f\u5217\u4e0d\u6b63\u786e\uff0c\u6240\u4ee5\u65e0\u6cd5\u4fdd\u5b58\u3002",
+  "ui.rc.save":"\u4fdd\u5b58\u5230\u6211\u7684\u8d44\u6e90\u5e93",
+  "ui.rc.save1":"\u4fdd\u5b58\u5e8f\u5217 + {n} \u4e2a\u81ea\u5b9a\u4e49\u78b1\u57fa",
+  "ui.rc.saveN":"\u4fdd\u5b58\u5e8f\u5217 + {n} \u4e2a\u81ea\u5b9a\u4e49\u78b1\u57fa",
+  "ui.rc.ok":"\u5df2\u4fdd\u5b58\u5e8f\u5217 ✓",
+  "ui.rc.okadd1":"\u5df2\u4fdd\u5b58\u5e8f\u5217\uff0c\u5e76\u52a0\u5165 {n} \u4e2a\u81ea\u5b9a\u4e49\u78b1\u57fa ✓",
+  "ui.rc.okaddN":"\u5df2\u4fdd\u5b58\u5e8f\u5217\uff0c\u5e76\u52a0\u5165 {n} \u4e2a\u81ea\u5b9a\u4e49\u78b1\u57fa ✓",
+  "ui.rc.okhave":"\u5df2\u4fdd\u5b58\u5e8f\u5217\u3002\u5b83\u7528\u5230\u7684\u81ea\u5b9a\u4e49\u78b1\u57fa\u8fd9\u8fb9\u672c\u6765\u5c31\u6709 ✓",
+  "ui.rc.done":"\u5df2\u4fdd\u5b58 ✓",
+  "ui.rc.full":"\u4f60\u65b9\u6848\u7684\u8d44\u6e90\u5e93\u5df2\u7ecf\u6ee1\u4e86\uff0c\u6240\u4ee5\u8fd9\u6761\u6ca1\u6709\u4fdd\u5b58\u3002",
+  "ui.rc.err":"\u65e0\u6cd5\u4fdd\u5b58\u8fd9\u6761\u5e8f\u5217\u3002",
+  "ui.rc.all":"\u5168\u90e8\u4fdd\u5b58\u5230\u6211\u7684\u8d44\u6e90\u5e93",
+  "ui.rc.all1":"\u5168\u90e8\u4fdd\u5b58 + {n} \u4e2a\u81ea\u5b9a\u4e49\u78b1\u57fa",
+  "ui.rc.allN":"\u5168\u90e8\u4fdd\u5b58 + {n} \u4e2a\u81ea\u5b9a\u4e49\u78b1\u57fa",
+  "ui.rc.bok1":"\u5df2\u4fdd\u5b58 {n} \u6761\u5e8f\u5217 ✓",
+  "ui.rc.bokN":"\u5df2\u4fdd\u5b58 {n} \u6761\u5e8f\u5217 ✓",
+  "ui.rc.badd1":"\u52a0\u5165 {n} \u4e2a\u81ea\u5b9a\u4e49\u78b1\u57fa",
+  "ui.rc.baddN":"\u52a0\u5165 {n} \u4e2a\u81ea\u5b9a\u4e49\u78b1\u57fa",
+  "ui.rc.bskip":"{n} \u6761\u8df3\u8fc7\uff0c\u4e0d\u662f\u6b63\u786e\u7684\u5e8f\u5217",
+  "ui.rc.bfull":"{n} \u6761\u4fdd\u7559\uff0c\u4f60\u65b9\u6848\u7684\u8d44\u6e90\u5e93\u5df2\u7ecf\u6ee1\u4e86",
+  "ui.rc.berr":"{n} \u6761\u65e0\u6cd5\u4fdd\u5b58",
+  "ui.rc.bnone":"\u65e0\u6cd5\u4fdd\u5b58\u3002",
+  "ui.rc.no":"\u5148\u4e0d\u8981",
+  "ui.rc.cf.aria":"\u5206\u4eab\u7684\u81ea\u5b9a\u4e49\u78b1\u57fa\u6709\u51b2\u7a81",
+  "ui.rc.cf.h":"\u81ea\u5b9a\u4e49\u78b1\u57fa\u6709\u51b2\u7a81",
+  "ui.rc.cf.body!":"\u8fd9\u4e2a\u94fe\u63a5\u5bf9 {codes} \u7684\u5b9a\u4e49\uff0c\u8ddf\u8fd9\u4e2a\u8ba1\u7b97\u5668\u91cc\u5df2\u7ecf\u6709\u7684\u5b9a\u4e49\u4e0d\u4e00\u6837\u3002\u6ca1\u6709\u5bfc\u5165\u4efb\u4f55\u4e1c\u897f\u3002\u8bf7\u8bf7\u5206\u4eab\u7684\u4eba\u628a\u8d28\u91cf\u3001\u78f7\u9178\u72b6\u6001\u3001\u7c7b\u578b\u6216\u7ec4\u6210\u5f0f\u5bf9\u4e00\u81f4\u540e\u518d\u5206\u4eab\u4e00\u6b21\u3002",
+  "ui.rc.broken":"\u8fd9\u4e2a\u5206\u4eab\u94fe\u63a5\u770b\u8d77\u6765\u574f\u4e86\u6216\u4e0d\u5b8c\u6574\u3002",
+  "ui.rc.v.empty":"\u5e8f\u5217\u662f\u7a7a\u7684\u3002",
+  "ui.rc.v.ends":"\u5e8f\u5217\u6587\u5b57\u8ddf\u5b83\u7684\u7aef\u57fa\u8bbe\u7f6e\u5bf9\u4e0d\u8d77\u6765\u3002",
+  "ui.rc.v.aends":"\u53cd\u4e49\u6587\u5b57\u8ddf\u5b83\u7684\u7aef\u57fa\u8bbe\u7f6e\u5bf9\u4e0d\u8d77\u6765\u3002",
+  "ui.rc.v.parse":"\u65e0\u6cd5\u8bfb\u53d6\u8fd9\u6761\u5e8f\u5217\u3002",
+  "ui.lib.shrow":"\u5206\u4eab\u526f\u672c",
   "ui.seatbig.back!":"\u8fd4\u56de\u4fee\u6539",
   "ui.seatbig.body!":"{n} \u5e2d{per}\u662f {usd}\uff0c\u5c06\u5411\u8fd9\u4e2a\u8d26\u53f7\u6536\u8d39\u3002\u591a\u6570\u5b9e\u9a8c\u5ba4\u4e70 3 \u5230 30 \u5e2d\u3002\u5982\u679c\u8fd9\u5c31\u662f\u4f60\u8981\u7684\uff0c\u8bf7\u7ee7\u7eed\u3002",
   "ui.seatbig.eyebrow!":"\u8bf7\u786e\u8ba4",
@@ -4066,7 +4261,7 @@ var I18N = {
   "faq.mw.07.q":"\u9ad8\u5ea6\u306a\u4fee\u98fe: 2′ \u7cd6\u4fee\u98fe",
   "faq.mw.08.a":"\u9396\u3092\u3072\u3068\u76ee\u3067\u307e\u3068\u3081\u305f\u3082\u306e\u3067\u3059\u3002\u5168\u9577 (nt)\u3001PO \u3068 PS \u306e\u7d50\u5408\u6570\u3001\u672b\u7aef\u57fa\u3001\u30ab\u30b9\u30bf\u30e0\u30e2\u30ce\u30de\u30fc\u3001\u5404\u5869\u57fa (A/C/G/T/U) \u306e\u500b\u6570\u3092\u8868\u793a\u3057\u307e\u3059\u3002",
   "faq.mw.08.q":"\u7d50\u679c\u306e\u4e0b\u306e\u30c1\u30c3\u30d7\u306f\u4f55\u3092\u8868\u3057\u3066\u3044\u307e\u3059\u304b?",
-  "faq.mw.09.a!":"\u4fdd\u5b58\u3057\u305f\u914d\u5217\u3067 <b>Share</b>\u3001\u8907\u6570\u306e\u5834\u5408\u306f <b>\u30b3\u30d4\u30fc\u3092\u5171\u6709</b> \u3092\u4f7f\u3046\u3068\u30ea\u30f3\u30af\u3092\u4f5c\u308c\u307e\u3059\u3002\u958b\u3044\u305f\u4eba\u306f\u8aad\u307f\u53d6\u308a\u5c02\u7528\u306e <b>Shared with you</b> \u753b\u9762\u3067\u305d\u306e\u914d\u5217\u3092\u898b\u3089\u308c\u3001\u81ea\u5206\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u4fdd\u5b58\u3067\u304d\u307e\u3059\u3002\u3069\u3061\u3089\u3082\u30a2\u30ab\u30a6\u30f3\u30c8\u306f\u4e0d\u8981\u3067\u3059\u3002<b>\u30d7\u30e9\u30a4\u30d0\u30b7\u30fc:</b> \u30ea\u30f3\u30af\u306b\u306f\u914d\u5217\u30c7\u30fc\u30bf\u305d\u306e\u3082\u306e\u304c\u542b\u307e\u308c\u308b\u305f\u3081\u3001\u30ea\u30f3\u30af\u3092\u77e5\u3063\u3066\u3044\u308b\u4eba\u306f\u8ab0\u3067\u3082\u898b\u3089\u308c\u307e\u3059\u3002\u6a5f\u5bc6\u3068\u8003\u3048\u308b\u914d\u5217\u306f\u5171\u6709\u3057\u306a\u3044\u3067\u304f\u3060\u3055\u3044\u3002\u7121\u6599\u306e\u5171\u6709\u306f 1 \u30ea\u30f3\u30af\u3042\u305f\u308a 10 \u4ef6\u307e\u3067\u3067\u3059\u3002",
+  "faq.mw.09.a!":"\u4fdd\u5b58\u3057\u305f\u914d\u5217\u3067 <b>\u30b3\u30d4\u30fc\u3092\u5171\u6709</b>\u3001\u8907\u6570\u306e\u5834\u5408\u306f <b>\u9078\u629e\u3057\u305f\u9805\u76ee\u306e\u30b3\u30d4\u30fc\u3092\u5171\u6709</b> \u3092\u4f7f\u3046\u3068\u30ea\u30f3\u30af\u3092\u4f5c\u308c\u307e\u3059\u3002\u958b\u3044\u305f\u4eba\u306f\u8aad\u307f\u53d6\u308a\u5c02\u7528\u306e <b>\u5171\u6709\u3055\u308c\u305f\u5185\u5bb9</b> \u753b\u9762\u3067\u305d\u306e\u914d\u5217\u3092\u898b\u3089\u308c\u3001\u81ea\u5206\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u4fdd\u5b58\u3067\u304d\u307e\u3059\u3002\u3069\u3061\u3089\u3082\u30a2\u30ab\u30a6\u30f3\u30c8\u306f\u4e0d\u8981\u3067\u3059\u3002<b>\u30d7\u30e9\u30a4\u30d0\u30b7\u30fc:</b> \u30ea\u30f3\u30af\u306b\u306f\u914d\u5217\u30c7\u30fc\u30bf\u305d\u306e\u3082\u306e\u304c\u542b\u307e\u308c\u308b\u305f\u3081\u3001\u30ea\u30f3\u30af\u3092\u77e5\u3063\u3066\u3044\u308b\u4eba\u306f\u8ab0\u3067\u3082\u898b\u3089\u308c\u307e\u3059\u3002\u6a5f\u5bc6\u3068\u8003\u3048\u308b\u914d\u5217\u306f\u5171\u6709\u3057\u306a\u3044\u3067\u304f\u3060\u3055\u3044\u3002\u7121\u6599\u306e\u5171\u6709\u306f 1 \u30ea\u30f3\u30af\u3042\u305f\u308a 10 \u4ef6\u307e\u3067\u3067\u3059\u3002",
   "faq.mw.09.q":"\u30ea\u30f3\u30af\u3067\u914d\u5217\u3092\u5171\u6709\u3059\u308b",
   "faq.mw.10.a":"\u4e8c\u672c\u9396\u30aa\u30ea\u30b4 (siRNA\u3001ASO) \u306e\u5834\u5408\u306f\u3001\u914d\u5217\u306e\u898b\u51fa\u3057\u306e\u3059\u3050\u4e0b\u306b\u3042\u308b\u9396\u30e2\u30fc\u30c9\u306e\u30ab\u30fc\u30c9\u3067<b>\u4e8c\u672c\u9396</b>\u3092\u9078\u3093\u3067\u304f\u3060\u3055\u3044\u3002\u6b21\u306b<b>\u81ea\u52d5\u76f8\u88dc</b>\u3092\u9078\u3076\u3068\u3001\u5bfe\u5fdc\u3059\u308b\u9006\u76f8\u88dc\u306e\u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u9396\u304c\u751f\u6210\u3055\u308c\u307e\u3059 (A \u306f T/U \u3068\u3001G \u306f C \u3068\u5bfe\u306b\u306a\u308a\u307e\u3059)\u3002\u4fee\u98fe\u3055\u308c\u305f\u9396\u3001\u30df\u30b9\u30de\u30c3\u30c1\u306e\u3042\u308b\u9396\u3001\u7a81\u51fa\u306e\u3042\u308b\u9396\u306b\u3057\u305f\u3044\u5834\u5408\u306f<b>\u624b\u5165\u529b</b>\u3092\u9078\u3093\u3067\u304f\u3060\u3055\u3044\u3002\u30bb\u30f3\u30b9\u9396\u3092\u7de8\u96c6\u3059\u308b\u3068\u3001\u81ea\u52d5\u751f\u6210\u3055\u308c\u305f\u76f8\u88dc\u9396\u306f\u3059\u3050\u306b\u66f4\u65b0\u3055\u308c\u307e\u3059\u3002\u624b\u5165\u529b\u3057\u305f\u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u9396\u306b\u306f\u72ec\u81ea\u306e\u9396\u306e\u8a2d\u5b9a\u30b3\u30f3\u30c8\u30ed\u30fc\u30eb\u3068\u30af\u30a4\u30c3\u30af\u633f\u5165\u306e moremon \u304c\u4ed8\u304d\u307e\u3059\u3002<b>\u4f8b (\u81ea\u52d5\u76f8\u88dc):</b> \u30bb\u30f3\u30b9 <code>ATCGATCG</code> → \u30a2\u30f3\u30c1\u30bb\u30f3\u30b9 <code>CGATCGAT</code>\u3002\u4e8c\u672c\u9396\u306e\u5206\u5b50\u91cf = \u30bb\u30f3\u30b9 + \u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u3002<b>\u30d2\u30f3\u30c8:</b> \u4e8c\u672c\u9396\u304c\u6709\u52b9\u306a\u3068\u304d\u306f\u3001\u6fc3\u5ea6\u30bf\u30d6\u3067\u30bb\u30f3\u30b9\u9396\u3001\u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u9396\u3001\u4e8c\u672c\u9396\u5168\u4f53\u306e\u3069\u308c\u3092\u57fa\u6e96\u306b\u8a08\u7b97\u3059\u308b\u304b\u3092\u9078\u3079\u307e\u3059\u3002",
   "faq.mw.10.q":"\u4e8c\u672c\u9396\u30e2\u30fc\u30c9 (\u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u3068\u4e8c\u672c\u9396\u306e\u5206\u5b50\u91cf)",
@@ -4196,7 +4391,7 @@ var I18N = {
   "lab.ed.band":"{lab} \u306e {name} \u3092\u7de8\u96c6\u4e2d",
   "lab.ed.clash!":"\u3042\u306a\u305f\u304c\u7de8\u96c6\u3057\u3066\u3044\u308b\u9593\u306b {who} \u304c\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u3092\u4fdd\u5b58\u3057\u307e\u3057\u305f\u3002",
   "lab.ed.closed!":"{lab} \u306f\u7d42\u4e86\u3057\u3001\u3042\u306a\u305f\u306e\u5909\u66f4\u306f\u305d\u3053\u306b\u306f\u4fdd\u5b58\u3055\u308c\u307e\u305b\u3093\u3067\u3057\u305f\u3002",
-  "lab.ed.closedb!":"{lab} \u306b\u7f6e\u3044\u3066\u3044\u305f\u3082\u306e\u306f\u3001\u305d\u306e\u307e\u307e\u306e\u72b6\u614b\u3067\u3042\u306a\u305f\u81ea\u8eab\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u79fb\u3063\u3066\u3044\u307e\u3059\u3002\u524a\u9664\u3055\u308c\u305f\u3082\u306e\u306f\u306a\u304f\u3001\u8ab0\u3082\u3042\u306a\u305f\u306e\u30ec\u30b3\u30fc\u30c9\u3092\u7de8\u96c6\u3057\u3066\u3044\u307e\u305b\u3093\u3002",
+  "lab.ed.closedb!":"{lab} \u306b\u7f6e\u3044\u3066\u3044\u305f\u3082\u306e\u306f\u3001\u305d\u306e\u307e\u307e\u306e\u72b6\u614b\u3067\u3042\u306a\u305f\u81ea\u8eab\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u79fb\u3063\u3066\u3044\u307e\u3059\u3002\u524a\u9664\u3055\u308c\u305f\u3082\u306e\u306f\u306a\u304f\u3001\u8ab0\u3082\u3042\u306a\u305f\u306e\u30ec\u30b3\u30fc\u30c9\u3092\u7de8\u96c6\u3057\u3066\u3044\u307e\u305b\u3093\u3002\u305d\u306e\u30b3\u30d4\u30fc\u306f\u6700\u5f8c\u306b\u4fdd\u5b58\u3057\u305f\u7248\u306a\u306e\u3067\u3001\u305d\u306e\u5f8c\u3053\u306e\u753b\u9762\u3067\u5909\u66f4\u3057\u305f\u5185\u5bb9\u306f\u307e\u3060\u542b\u307e\u308c\u3066\u3044\u307e\u305b\u3093\u3002",
   "lab.ed.copied":"\u300c{where}\u300d\u306b\u30b3\u30d4\u30fc\u3092\u4fdd\u5b58\u3057\u307e\u3057\u305f\u3002",
   "lab.ed.copy":"\u300c{where}\u300d\u306b\u30b3\u30d4\u30fc\u3092\u4fdd\u5b58",
   "lab.ed.discard":"\u81ea\u5206\u306e\u5909\u66f4\u3092\u7834\u68c4\u3057\u3066\u6700\u65b0\u7248\u3092\u958b\u304f",
@@ -4205,6 +4400,7 @@ var I18N = {
   "lab.ed.goneb!":"\u4f55\u3082\u4fdd\u5b58\u3055\u308c\u3066\u3044\u307e\u305b\u3093\u3002\u4f5c\u696d\u5185\u5bb9\u306f\u3053\u306e\u753b\u9762\u306b\u6b8b\u3063\u3066\u3044\u307e\u3059\u3002\u30b3\u30d4\u30fc\u3092\u6b8b\u3059\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002",
   "lab.ed.keep":"\u7de8\u96c6\u3092\u7d9a\u3051\u308b",
   "lab.ed.leave":"\u81ea\u5206\u306e\u5909\u66f4\u3092\u7834\u68c4\u3057\u3066\u9589\u3058\u308b",
+  "lab.ed.leaveb!":"\u7834\u68c4\u3055\u308c\u308b\u306e\u306f\u3053\u306e\u753b\u9762\u306e\u5909\u66f4\u3060\u3051\u3067\u3059\u3002\u3059\u3067\u306b\u4fdd\u5b58\u3055\u308c\u3066\u3044\u308b\u5185\u5bb9\u306f\u305d\u306e\u307e\u307e\u6b8b\u308a\u307e\u3059\u3002",
   "lab.ed.meta":"\u30d0\u30fc\u30b8\u30e7\u30f3 {v} · \u6700\u7d42\u4fdd\u5b58 {who}\u3001{when}",
   "lab.ed.metat":"\u6700\u7d42\u4fdd\u5b58 {when}",
   "lab.ed.norights!":"\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u306e\u7de8\u96c6\u6a29\u9650\u304c\u53d6\u308a\u6d88\u3055\u308c\u307e\u3057\u305f\u3002",
@@ -4256,7 +4452,6 @@ var I18N = {
   "lab.find.rec":"\u3053\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u3092\u691c\u7d22",
   "lab.find.scope!":"\u691c\u7d22\u306f\u3053\u306e\u968e\u5c64\u3088\u308a\u4e0b\u306e\u3059\u3079\u3066\u3092\u5bfe\u8c61\u3068\u3057\u3001\u753b\u9762\u306b\u898b\u3048\u3066\u3044\u308b\u3082\u306e\u3060\u3051\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002",
   "lab.find.where":"\u5834\u6240\uff1a{path}",
-  "lab.fold.all":"\u3059\u3079\u3066",
   "lab.fold.aria1":"{name}\u3001{n} \u4ef6\u306e\u914d\u5217",
   "lab.fold.ariaN":"{name}\u3001{n} \u4ef6\u306e\u914d\u5217",
   "lab.fold.confirm":"\u524a\u9664\u3059\u308b",
@@ -4283,7 +4478,6 @@ var I18N = {
   "lab.fold.new":"+ \u65b0\u3057\u3044\u30d5\u30a9\u30eb\u30c0\u30fc",
   "lab.fold.nodest":"\u3053\u306e\u30d5\u30a9\u30eb\u30c0\u30fc\u3092\u7f6e\u3051\u308b\u5834\u6240\u306f\u307b\u304b\u306b\u3042\u308a\u307e\u305b\u3093\u3002\u30d5\u30a9\u30eb\u30c0\u30fc\u306f 3 \u968e\u5c64\u307e\u3067\u3067\u3001\u81ea\u5206\u81ea\u8eab\u306e\u4e2d\u306b\u306f\u79fb\u52d5\u3067\u304d\u307e\u305b\u3093\u3002",
   "lab.fold.newh":"\u65b0\u3057\u3044\u30d5\u30a9\u30eb\u30c0\u30fc",
-  "lab.fold.open":"\u30d5\u30a9\u30eb\u30c0\u30fc {name} \u3092\u958b\u304f",
   "lab.fold.rename":"\u540d\u524d\u3092\u5909\u66f4",
   "lab.fold.top":"\u6700\u4e0a\u4f4d",
   "lab.fold.renamed":"\u540d\u524d\u3092\u5909\u66f4\u3057\u307e\u3057\u305f",
@@ -4415,8 +4609,8 @@ var I18N = {
   "lab.mv.mix":"{labname}\uff1a{parts}",
   "lab.mv.nolab":"\u5148\u306b\u30e9\u30dc\u306b\u53c2\u52a0\u3059\u308b\u304b\u3001\u30e9\u30dc\u3092\u4f5c\u6210\u3057\u3066\u304f\u3060\u3055\u3044\uff08\u30a2\u30ab\u30a6\u30f3\u30c8 ▸ \u30e9\u30dc\uff09\u3002",
   "lab.mv.none":"\u30e9\u30dc\u306e\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u79fb\u52d5\u3059\u308b\u914d\u5217\u3092\u9078\u3093\u3067\u304f\u3060\u3055\u3044\u3002",
-  "lab.mv.ok1":"{n} \u4ef6\u306e\u914d\u5217\u3092 {labname} \u306e\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u79fb\u52d5\u3057\u307e\u3057\u305f\u3002",
-  "lab.mv.okN":"{n} \u4ef6\u306e\u914d\u5217\u3092 {labname} \u306e\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u79fb\u52d5\u3057\u307e\u3057\u305f\u3002",
+  "lab.mv.ok1":"{n} \u4ef6\u306e\u914d\u5217\u3092 {labname} \u306e\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f\u3002",
+  "lab.mv.okN":"{n} \u4ef6\u306e\u914d\u5217\u3092 {labname} \u306e\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f\u3002",
   "lab.mv.pdupe":"\u65e2\u306b\u3042\u308a {n} \u4ef6",
   "lab.mv.pfail":"\u5931\u6557 {n} \u4ef6",
   "lab.mv.pick":"\u81ea\u5206\u306e\u914d\u5217\u3092\u3053\u3053\u3078\u79fb\u52d5",
@@ -4712,8 +4906,8 @@ var I18N = {
   "mk.0213":"\u4fdd\u5b58\u3057\u305f\u914d\u5217\u3092\u958b\u304d\u76f4\u3059\u3001\u30b3\u30d4\u30fc\u3059\u308b\u3001\u66f8\u304d\u51fa\u3059\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002\u30b5\u30a4\u30f3\u30a4\u30f3\u3057\u3066\u3044\u308c\u3070\u3001\u7aef\u672b\u9593\u3092\u79fb\u52d5\u3059\u308b\u30b3\u30d4\u30fc\u306f\u30a2\u30ab\u30a6\u30f3\u30c8\u304c\u4fdd\u6301\u3057\u3001\u3053\u306e\u30d6\u30e9\u30a6\u30b6\u306f\u30aa\u30d5\u30e9\u30a4\u30f3\u306e\u8907\u88fd\u3092\u4fdd\u3061\u307e\u3059\u3002\u30b5\u30a4\u30f3\u30a2\u30a6\u30c8\u3057\u3066\u3044\u308b\u5834\u5408\u3001\u914d\u5217\u306f\u3053\u306e\u30d6\u30e9\u30a6\u30b6\u306e\u4e2d\u3060\u3051\u306b\u3042\u308a\u307e\u3059\u3002",
   "mk.0214":"\u30b9\u30ad\u30e3\u30f3",
   "mk.0215":"\u9078\u629e\u9805\u76ee\u3092\u66f8\u304d\u51fa\u3059 · CSV",
-  "mk.0216":"\u30b3\u30d4\u30fc\u3092\u5171\u6709",
-  "mk.0217":"\u30e9\u30dc\u306e\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u3078\u79fb\u3059",
+  "mk.0216":"\u9078\u629e\u3057\u305f\u9805\u76ee\u306e\u30b3\u30d4\u30fc\u3092\u5171\u6709",
+  "mk.0217":"\u30e9\u30dc\u306e\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u30b3\u30d4\u30fc",
   "mk.0218":"\u3059\u3079\u3066\u6d88\u53bb…",
   "mk.0219":"\u9078\u629e",
   "mk.0220":"\u540d\u524d",
@@ -5121,15 +5315,30 @@ var I18N = {
   "ui.lab.inv.why.twice":"\u91cd\u8907\u3057\u3066\u3044\u307e\u3059",
   "ui.lab.inv.yourlab":"\u3042\u306a\u305f\u306e\u30e9\u30dc",
   "ui.lang.label":"\u8a00\u8a9e",
+  "ui.lib.adel":"{name} \u3092\u524a\u9664",
+  "ui.lib.amore":"{name} \u306e\u305d\u306e\u4ed6\u306e\u64cd\u4f5c",
+  "ui.lib.aname":"\u914d\u5217\u306e\u540d\u524d",
+  "ui.lib.aren":"{name} \u306e\u540d\u524d\u3092\u5909\u66f4",
+  "ui.lib.ashare":"{name} \u306e\u30b3\u30d4\u30fc\u3092\u5171\u6709",
+  "ui.lib.copyname":"{name}\uff08\u30b3\u30d4\u30fc\uff09",
+  "ui.lib.dup":"\u8907\u88fd",
+  "ui.lib.phfolder":"\u4f8b: siRNA \u30d7\u30ed\u30b8\u30a7\u30af\u30c8",
+  "ui.lib.phnote":"\u4efb\u610f\u306e\u30e1\u30e2",
+  "ui.lib.phtags":"\u30ab\u30f3\u30de\u533a\u5207\u308a",
+  "ui.lib.untitled":"\u540d\u79f0\u672a\u8a2d\u5b9a\u306e\u914d\u5217",
+  "ui.lib.ver":"\u30d0\u30fc\u30b8\u30e7\u30f3\u3068\u3057\u3066\u4fdd\u5b58",
   "ui.lib.counted":"\u4e00\u672c\u9396\u3068\u4e8c\u672c\u9396",
   "ui.lib.mwdiff":"\u5909\u66f4\u3042\u308a",
   "ui.lib.mwdiffT":"\u4fdd\u5b58\u3057\u305f\u5f8c\u306b\u30e2\u30ce\u30de\u30fc\u306e\u5b9a\u7fa9\u304c\u5909\u66f4\u3055\u308c\u307e\u3057\u305f\u3002\u4fdd\u5b58\u6642\u306e\u5206\u5b50\u91cf\u306f {was} \u3067\u3001\u540c\u3058\u914d\u5217\u306f\u73fe\u5728 {now} \u306b\u306a\u308a\u307e\u3059\u3002",
   "ui.lib.mwgone":"\u7d50\u679c\u306a\u3057",
   "ui.lib.mwgoneT":"\u3053\u306e\u8a18\u9332\u306f {codes} \u3092\u4f7f\u3063\u3066\u3044\u307e\u3059\u304c\u3001\u3053\u306e\u8a08\u7b97\u30c4\u30fc\u30eb\u306f\u73fe\u5728\u305d\u308c\u3092\u8a8d\u8b58\u3067\u304d\u306a\u3044\u305f\u3081\u3001\u5206\u5b50\u91cf\u3092\u8868\u793a\u3057\u307e\u305b\u3093\u3002\u4fdd\u5b58\u6642\u306e\u5206\u5b50\u91cf\u306f {was} \u3067\u3057\u305f\u3002",
   "ui.lib.readonly":"\u8aad\u307f\u53d6\u308a\u5c02\u7528",
-  "ui.lib.fromshare":"\u5171\u6709\u30ea\u30f3\u30af\u304b\u3089\u4fdd\u5b58 · {when}",
+  "ui.lib.fromshare":"\u5171\u6709\u30ea\u30f3\u30af\u304b\u3089\u4fdd\u5b58",
   "ui.lib.rolab!":"\u3053\u306e\u9805\u76ee\u304c\u5c5e\u3059\u308b\u30e9\u30dc\u306e\u30e1\u30f3\u30d0\u30fc\u3067\u306f\u306a\u304f\u306a\u308a\u307e\u3057\u305f\u3002\u958b\u3044\u305f\u308a\u30b3\u30d4\u30fc\u3057\u305f\u308a\u3059\u308b\u3053\u3068\u306f\u3067\u304d\u307e\u3059\u304c\u3001\u7de8\u96c6\u3084\u524a\u9664\u306f\u3067\u304d\u307e\u305b\u3093\u3002",
   "ui.sh.title":"\u5171\u6709\u30ea\u30f3\u30af",
+  "ui.sh.copied":"\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f ✓",
+  "ui.sh.msgmany":"Oligo Calculator \u306e {n} \u4ef6\u306e\u30aa\u30ea\u30b4",
+  "ui.sh.msgone":"\u30aa\u30ea\u30b4: {name}",
   "ui.sh.copy":"\u30ea\u30f3\u30af\u3092\u30b3\u30d4\u30fc",
   "ui.sh.email":"\u30e1\u30fc\u30eb",
   "ui.sh.native":"\u307b\u304b\u306e\u65b9\u6cd5\u3067\u5171\u6709",
@@ -5137,7 +5346,58 @@ var I18N = {
   "ui.sh.err.none":"\u5171\u6709\u3059\u308b\u914d\u5217\u3092 1 \u4ef6\u4ee5\u4e0a\u9078\u3093\u3067\u304f\u3060\u3055\u3044\u3002",
   "ui.sh.err.big":"\u9078\u629e\u3057\u305f\u5185\u5bb9\u304c\u5927\u304d\u3059\u304e\u308b\u305f\u3081\u3001\u30ea\u30f3\u30af\u306b\u3057\u3066\u5171\u6709\u3067\u304d\u307e\u305b\u3093\u3002",
   "ui.sh.err.lab!":"\u30e9\u30dc\u306e\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u3042\u308b\u914d\u5217\u306f\u3001\u516c\u958b\u30ea\u30f3\u30af\u306b\u3067\u304d\u307e\u305b\u3093\u3002\u30e9\u30dc\u306e\u30e1\u30f3\u30d0\u30fc\u306f\u30e9\u30dc\u5185\u3067\u305d\u306e\u307e\u307e\u958b\u3051\u307e\u3059\u3002",
-  "ui.sh.priv!":"\u5171\u6709\u30ea\u30f3\u30af\u306b\u306f\u914d\u5217\u30c7\u30fc\u30bf\u305d\u306e\u3082\u306e\u3068\u3001\u4f7f\u7528\u3057\u3066\u3044\u308b\u30ab\u30b9\u30bf\u30e0\u30e2\u30ce\u30de\u30fc\u306e\u540d\u524d\u304c\u542b\u307e\u308c\u307e\u3059\u3002\u30ea\u30f3\u30af\u3092\u77e5\u3063\u3066\u3044\u308b\u4eba\u306f\u8ab0\u3067\u3082\u305d\u306e\u3059\u3079\u3066\u3092\u8aad\u3081\u307e\u3059\u3002\u6a5f\u5bc6\u3068\u8003\u3048\u308b\u914d\u5217\u306f\u5171\u6709\u3057\u306a\u3044\u3067\u304f\u3060\u3055\u3044\u3002",
+  "ui.sh.priv!":"\u5171\u6709\u30ea\u30f3\u30af\u306b\u306f\u914d\u5217\u30c7\u30fc\u30bf\u305d\u306e\u3082\u306e\u3068\u3001\u4f7f\u7528\u3057\u3066\u3044\u308b\u30ab\u30b9\u30bf\u30e0\u30e2\u30ce\u30de\u30fc\u306e\u540d\u524d\u304c\u542b\u307e\u308c\u307e\u3059\u3002\u30ea\u30f3\u30af\u3092\u77e5\u3063\u3066\u3044\u308b\u4eba\u306f\u8ab0\u3067\u3082\u305d\u306e\u3059\u3079\u3066\u3092\u8aad\u3081\u307e\u3059\u3002\u3053\u306e\u30ea\u30f3\u30af\u306f\u53d6\u308a\u6d88\u305b\u307e\u305b\u3093\u3002\u30b5\u30fc\u30d0\u30fc\u306b\u4fdd\u5b58\u3055\u308c\u3066\u3044\u306a\u3044\u305f\u3081\u3001\u524a\u9664\u3059\u3079\u304d\u3082\u306e\u304c\u3042\u308a\u307e\u305b\u3093\u3002\u6a5f\u5bc6\u3068\u8003\u3048\u308b\u914d\u5217\u306f\u5171\u6709\u3057\u306a\u3044\u3067\u304f\u3060\u3055\u3044\u3002",
+  "ui.rc.priv!":"\u5171\u6709\u30ea\u30f3\u30af\u306b\u306f\u914d\u5217\u30c7\u30fc\u30bf\u305d\u306e\u3082\u306e\u304c\u542b\u307e\u308c\u307e\u3059\u3002\u30ea\u30f3\u30af\u3092\u77e5\u3063\u3066\u3044\u308b\u4eba\u306f\u8ab0\u3067\u3082\u8aad\u3081\u307e\u3059\u3002",
+  "punct.stop":"\u3002",
+  "ui.rc.h":"\u5171\u6709\u3055\u308c\u305f\u5185\u5bb9",
+  "ui.rc.sub1":"{n} \u4ef6\u306e\u914d\u5217\u304c\u5171\u6709\u3055\u308c\u307e\u3057\u305f\u3002\u5185\u5bb9\u3092\u78ba\u304b\u3081\u3066\u304b\u3089\u3001\u5fc5\u8981\u306a\u3082\u306e\u3092\u4fdd\u5b58\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
+  "ui.rc.subN":"{n} \u4ef6\u306e\u914d\u5217\u304c\u5171\u6709\u3055\u308c\u307e\u3057\u305f\u3002\u5185\u5bb9\u3092\u78ba\u304b\u3081\u3066\u304b\u3089\u3001\u5fc5\u8981\u306a\u3082\u306e\u3092\u4fdd\u5b58\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
+  "ui.rc.cb1":"\u3053\u306e\u5171\u6709\u306f {n} \u4ef6\u306e\u30ab\u30b9\u30bf\u30e0\u5869\u57fa\u3092\u4f7f\u3063\u3066\u3044\u307e\u3059:",
+  "ui.rc.cbN":"\u3053\u306e\u5171\u6709\u306f {n} \u4ef6\u306e\u30ab\u30b9\u30bf\u30e0\u5869\u57fa\u3092\u4f7f\u3063\u3066\u3044\u307e\u3059:",
+  "ui.rc.cbadd1":"\u914d\u5217\u3092\u4fdd\u5b58\u3059\u308b\u3068\u3001\u305d\u308c\u304c\u4f7f\u3063\u3066\u3044\u308b\u30ab\u30b9\u30bf\u30e0\u5869\u57fa\u3082\u3042\u306a\u305f\u306e\u30ab\u30b9\u30bf\u30e0\u5869\u57fa\u306b\u8ffd\u52a0\u3055\u308c\u307e\u3059\u3002\u300c\u4eca\u306f\u3057\u306a\u3044\u300d\u3092\u9078\u3079\u3070\u3001\u4f55\u3082\u8ffd\u52a0\u3055\u308c\u307e\u305b\u3093\u3002",
+  "ui.rc.cbaddN":"\u914d\u5217\u3092\u4fdd\u5b58\u3059\u308b\u3068\u3001\u305d\u308c\u304c\u4f7f\u3063\u3066\u3044\u308b\u30ab\u30b9\u30bf\u30e0\u5869\u57fa\u3082\u3042\u306a\u305f\u306e\u30ab\u30b9\u30bf\u30e0\u5869\u57fa\u306b\u8ffd\u52a0\u3055\u308c\u307e\u3059\u3002\u300c\u4eca\u306f\u3057\u306a\u3044\u300d\u3092\u9078\u3079\u3070\u3001\u4f55\u3082\u8ffd\u52a0\u3055\u308c\u307e\u305b\u3093\u3002",
+  "ui.rc.cbhave":"\u3053\u308c\u3089\u306e\u5b9a\u7fa9\u306f\u3053\u3053\u306b\u3059\u3067\u306b\u3042\u308b\u306e\u3067\u3001\u4fdd\u5b58\u3057\u3066\u3082\u91cd\u8907\u306f\u3067\u304d\u307e\u305b\u3093\u3002",
+  "ui.rc.unnamed":"\u540d\u524d\u306a\u3057",
+  "ui.rc.seqn":"\u914d\u5217 {n}",
+  "ui.rc.cbs":"\u30ab\u30b9\u30bf\u30e0\u5869\u57fa: {codes}",
+  "ui.rc.cbwill1":"\u4fdd\u5b58\u6642\u306b {n} \u4ef6\u304c\u8ffd\u52a0\u3055\u308c\u307e\u3059",
+  "ui.rc.cbwillN":"\u4fdd\u5b58\u6642\u306b {n} \u4ef6\u304c\u8ffd\u52a0\u3055\u308c\u307e\u3059",
+  "ui.rc.cbok":"\u3059\u3067\u306b\u3042\u308a\u307e\u3059",
+  "ui.rc.dup":"\u4e8c\u672c\u9396",
+  "ui.rc.bad":"\u3053\u306e\u914d\u5217\u3092\u8a08\u7b97\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f\u3002",
+  "ui.rc.notsaved":"\u3053\u308c\u306f\u4fdd\u5b58\u3055\u308c\u307e\u305b\u3093\u3002",
+  "ui.rc.invalid":"\u3053\u306e\u914d\u5217\u306f\u6b63\u3057\u304f\u306a\u3044\u305f\u3081\u4fdd\u5b58\u3067\u304d\u307e\u305b\u3093\u3002",
+  "ui.rc.save":"\u81ea\u5206\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u4fdd\u5b58",
+  "ui.rc.save1":"\u914d\u5217\u3068\u30ab\u30b9\u30bf\u30e0\u5869\u57fa {n} \u4ef6\u3092\u4fdd\u5b58",
+  "ui.rc.saveN":"\u914d\u5217\u3068\u30ab\u30b9\u30bf\u30e0\u5869\u57fa {n} \u4ef6\u3092\u4fdd\u5b58",
+  "ui.rc.ok":"\u914d\u5217\u3092\u4fdd\u5b58\u3057\u307e\u3057\u305f ✓",
+  "ui.rc.okadd1":"\u914d\u5217\u3092\u4fdd\u5b58\u3057\u3001\u30ab\u30b9\u30bf\u30e0\u5869\u57fa {n} \u4ef6\u3092\u8ffd\u52a0\u3057\u307e\u3057\u305f ✓",
+  "ui.rc.okaddN":"\u914d\u5217\u3092\u4fdd\u5b58\u3057\u3001\u30ab\u30b9\u30bf\u30e0\u5869\u57fa {n} \u4ef6\u3092\u8ffd\u52a0\u3057\u307e\u3057\u305f ✓",
+  "ui.rc.okhave":"\u914d\u5217\u3092\u4fdd\u5b58\u3057\u307e\u3057\u305f\u3002\u4f7f\u308f\u308c\u3066\u3044\u308b\u30ab\u30b9\u30bf\u30e0\u5869\u57fa\u306f\u3059\u3067\u306b\u3042\u308a\u307e\u3057\u305f ✓",
+  "ui.rc.done":"\u4fdd\u5b58\u3057\u307e\u3057\u305f ✓",
+  "ui.rc.full":"\u3054\u5229\u7528\u30d7\u30e9\u30f3\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u304c\u4e00\u676f\u306e\u305f\u3081\u3001\u4fdd\u5b58\u3055\u308c\u307e\u305b\u3093\u3067\u3057\u305f\u3002",
+  "ui.rc.err":"\u3053\u306e\u914d\u5217\u3092\u4fdd\u5b58\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f\u3002",
+  "ui.rc.all":"\u3059\u3079\u3066\u81ea\u5206\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u4fdd\u5b58",
+  "ui.rc.all1":"\u3059\u3079\u3066\u3068\u30ab\u30b9\u30bf\u30e0\u5869\u57fa {n} \u4ef6\u3092\u4fdd\u5b58",
+  "ui.rc.allN":"\u3059\u3079\u3066\u3068\u30ab\u30b9\u30bf\u30e0\u5869\u57fa {n} \u4ef6\u3092\u4fdd\u5b58",
+  "ui.rc.bok1":"{n} \u4ef6\u306e\u914d\u5217\u3092\u4fdd\u5b58\u3057\u307e\u3057\u305f ✓",
+  "ui.rc.bokN":"{n} \u4ef6\u306e\u914d\u5217\u3092\u4fdd\u5b58\u3057\u307e\u3057\u305f ✓",
+  "ui.rc.badd1":"\u30ab\u30b9\u30bf\u30e0\u5869\u57fa {n} \u4ef6\u3092\u8ffd\u52a0",
+  "ui.rc.baddN":"\u30ab\u30b9\u30bf\u30e0\u5869\u57fa {n} \u4ef6\u3092\u8ffd\u52a0",
+  "ui.rc.bskip":"{n} \u4ef6\u3092\u30b9\u30ad\u30c3\u30d7\u3057\u307e\u3057\u305f\u3002\u6b63\u3057\u3044\u914d\u5217\u3067\u306f\u3042\u308a\u307e\u305b\u3093",
+  "ui.rc.bfull":"{n} \u4ef6\u3092\u4fdd\u7559\u3057\u307e\u3057\u305f\u3002\u3054\u5229\u7528\u30d7\u30e9\u30f3\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u304c\u4e00\u676f\u3067\u3059",
+  "ui.rc.berr":"{n} \u4ef6\u3092\u4fdd\u5b58\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f",
+  "ui.rc.bnone":"\u4fdd\u5b58\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f\u3002",
+  "ui.rc.no":"\u4eca\u306f\u3057\u306a\u3044",
+  "ui.rc.cf.aria":"\u5171\u6709\u3055\u308c\u305f\u30ab\u30b9\u30bf\u30e0\u5869\u57fa\u306e\u7af6\u5408",
+  "ui.rc.cf.h":"\u30ab\u30b9\u30bf\u30e0\u5869\u57fa\u306e\u7af6\u5408",
+  "ui.rc.cf.body!":"\u3053\u306e\u30ea\u30f3\u30af\u306e {codes} \u306e\u5b9a\u7fa9\u306f\u3001\u3053\u306e\u8a08\u7b97\u6a5f\u306b\u3059\u3067\u306b\u3042\u308b\u5b9a\u7fa9\u3068\u7570\u306a\u308a\u307e\u3059\u3002\u4f55\u3082\u53d6\u308a\u8fbc\u307e\u308c\u3066\u3044\u307e\u305b\u3093\u3002\u8cea\u91cf\u3001\u30ea\u30f3\u9178\u306e\u72b6\u614b\u3001\u7a2e\u5225\u3001\u7d44\u6210\u5f0f\u3092\u5408\u308f\u305b\u3066\u304b\u3089\u3082\u3046\u4e00\u5ea6\u5171\u6709\u3057\u3066\u3082\u3089\u3063\u3066\u304f\u3060\u3055\u3044\u3002",
+  "ui.rc.broken":"\u3053\u306e\u5171\u6709\u30ea\u30f3\u30af\u306f\u58ca\u308c\u3066\u3044\u308b\u304b\u3001\u4e0d\u5b8c\u5168\u306a\u3088\u3046\u3067\u3059\u3002",
+  "ui.rc.v.empty":"\u914d\u5217\u304c\u7a7a\u3067\u3059\u3002",
+  "ui.rc.v.ends":"\u914d\u5217\u306e\u30c6\u30ad\u30b9\u30c8\u3068\u672b\u7aef\u57fa\u306e\u8a2d\u5b9a\u304c\u4e00\u81f4\u3057\u307e\u305b\u3093\u3002",
+  "ui.rc.v.aends":"\u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u306e\u30c6\u30ad\u30b9\u30c8\u3068\u672b\u7aef\u57fa\u306e\u8a2d\u5b9a\u304c\u4e00\u81f4\u3057\u307e\u305b\u3093\u3002",
+  "ui.rc.v.parse":"\u3053\u306e\u914d\u5217\u3092\u8aad\u307f\u53d6\u308c\u307e\u305b\u3093\u3067\u3057\u305f\u3002",
+  "ui.lib.shrow":"\u30b3\u30d4\u30fc\u3092\u5171\u6709",
   "ui.seatbig.back!":"\u623b\u3063\u3066\u5909\u66f4\u3059\u308b",
   "ui.seatbig.body!":"{n} \u30e9\u30a4\u30bb\u30f3\u30b9\u3067 {per} {usd}\u3001\u3053\u306e\u30a2\u30ab\u30a6\u30f3\u30c8\u306b\u8acb\u6c42\u3055\u308c\u307e\u3059\u3002\u591a\u304f\u306e\u30e9\u30dc\u306f 3\u301c30 \u30e9\u30a4\u30bb\u30f3\u30b9\u3092\u8cfc\u5165\u3057\u3066\u3044\u307e\u3059\u3002\u305d\u308c\u3067\u3088\u3051\u308c\u3070\u305d\u306e\u307e\u307e\u9032\u3093\u3067\u304f\u3060\u3055\u3044\u3002",
   "ui.seatbig.eyebrow!":"\u3054\u78ba\u8a8d\u304f\u3060\u3055\u3044",
@@ -6152,7 +6412,7 @@ body[data-mode="dark"] .catcard .btn-ins{color:var(--accent)}
 .htable .badge.dna{color:var(--accent-2); background:var(--accent-soft); border-color:color-mix(in srgb,var(--accent) 24%,var(--line))} body[data-mode="dark"] .htable .badge.dna{color:var(--accent)}
 .htable .hmw{font-family:var(--font-num); font-weight:600; text-align:right}
 .htable .hact{display:flex; gap:6px; justify-content:flex-end; flex-wrap:wrap}
-.htable .hact button{font-family:var(--font-head); font-weight:600; font-size:12px; border-radius:8px; padding:6px 10px; min-height:44px; min-width:44px; border:1px solid var(--line-2); background:var(--surface-2); color:var(--text)}
+.htable .hact button{font-family:var(--font-head); font-weight:600; font-size:12px; border-radius:8px; padding:6px 8px; min-height:44px; min-width:44px; border:1px solid var(--line-2); background:var(--surface-2); color:var(--text)}
 .htable .hact .load{background:var(--accent); color:var(--accent-ink); border-color:var(--accent)}
 /* R52 (audit P2-02): 16 x 16 -- 36% of the requirement, the smallest target
    in the app, and it sits in the same row as a 36px Delete. This is the highest
@@ -6171,6 +6431,12 @@ body[data-mode="dark"] .catcard .btn-ins{color:var(--accent)}
   .htable tr{border:1px solid var(--line); border-radius:11px; margin-bottom:10px; padding:6px 10px; background:var(--surface)}
   .htable td{border:0; padding:6px 4px; display:flex; justify-content:space-between; gap:12px}
   .htable td::before{content:attr(data-th); font-family:var(--font-head); font-weight:700; font-size:12px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted)}
+  /* R86b/J1.  The VISIBLE narrow-screen heading, translated.  `data-th` stays
+     English because seven CSS rules select on its VALUE; this reads the
+     translated twin instead, at (0,2,1) against the (0,1,1) above, so it wins
+     on specificity rather than on source order.  A row with no `data-thl` --
+     the static skeleton -- falls through to the rule above, unchanged. */
+  .htable td[data-thl]::before{content:attr(data-thl)}
   .htable th:nth-child(1),.htable th:nth-child(2),.htable th:nth-child(3),.htable th:nth-child(4),.htable th:nth-child(5),.htable th:nth-child(6),.htable th:nth-child(7){width:auto}
   .htable .hact{justify-content:flex-start}
   .htable .hseq{max-width:60vw}
@@ -6988,6 +7254,10 @@ tr.hexp>td{background:var(--surface-2); border-top:0}
 .hexp-f input{font-family:var(--font-num); font-size:13px; color:var(--text); background:var(--surface); border:1px solid var(--line-2); border-radius:9px; padding:8px 10px; min-height:40px; outline:none}
 .hexp-f input:focus{border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft)}
 .hexp-acts{display:flex; gap:8px; align-items:flex-end}
+/* R86b/J1.  Copy and Share lead the ⋯ panel and take the whole first line, so
+   the editing fields below them keep their own row.  No new colour, no new
+   token: it borrows `.hexp-acts`, which its two siblings already use. */
+.hexp-acts.hexp-lead{flex-basis:100%; margin-bottom:2px}
 .hexp-acts button{font-family:var(--font-head); font-weight:600; font-size:12px; color:var(--text); background:var(--surface); border:1px solid var(--line-2); border-radius:9px; padding:0 13px; min-height:40px; cursor:pointer}
 .hexp-acts button:hover{border-color:var(--accent)}
 @media (max-width:767px){
@@ -7135,7 +7405,7 @@ if(/[?&]billing=/.test(window.__ocSearch)){
 
 <header class="topbar" role="banner">
   <div class="brand">
-    <img src="data:image/png;base64,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" alt="">
+    <img src="icons/icon-192.png" width="192" height="192" alt="">
     <div><h1>Oligo Calculator<span class="tagline" data-i18n="mk.0003">Oligonucleotide molecular weight, Tm, ε260 and concentration</span></h1></div>
   </div>
   <nav class="tabnav" role="tablist" aria-label="Calculator sections" data-i18n-attr="aria-label:ak.0006">
@@ -7515,8 +7785,8 @@ if(/[?&]billing=/.test(window.__ocSearch)){
              desktop/touch split all come along unchanged. -->
         <button class="hb hb-scan" data-scan="sense" aria-label="Scan a label photo and add sequences to your library" data-i18n="mk.0214" data-i18n-attr="aria-label:ak.0087"><span aria-hidden="true"><svg class="i16"><use href="#i-camera"/></svg></span> Scan</button>
         <button class="hb" data-hexport data-i18n="mk.0215">Export selected · CSV</button>
-          <button class="hb" data-hsharesel data-i18n="mk.0216">Share a Copy</button>
-          <button class="hb" data-hcopylab hidden data-i18n="mk.0217">Move to the lab library</button>
+          <button class="hb" data-hsharesel data-i18n="mk.0216">Share selected as a copy</button>
+          <button class="hb" data-hcopylab hidden data-i18n="mk.0217">Copy to the lab library</button>
           <!-- R52 (audit LOW): this is unhidden by renderHistShell when the
                signed-in user actually manages a lab. It was verified live as
                hidden === true AND display:none with nothing ever unhiding it,
@@ -12307,12 +12577,18 @@ document.addEventListener('click', function(e){
          no client change, so this was one SQL statement away from writing past
          a cap with no wall and a 403 nobody would ever see. */
       try{ if(window.ocPlan&&window.ocPlan.gateSave&&!window.ocPlan.gateSave(1,{retry:function(){ try{ dup.click(); }catch(_e){ ocFail('decorateDrawer#3',_e); } }})) return; }catch(_e){ ocFail('decorateDrawer#4',_e); }
-      var c=Object.assign({},h); c.id=uuid(); c.t=Date.now(); c.name=(h.name||'Untitled strand')+' (copy)';
+      /* R86b/J1.  ⚠⚠ `window.t`, never bare `t()` -- `t` is `e.target` three
+         lines above this. */
+      var _t8=function(k,v){ try{ if(typeof window.t==='function') return window.t(k,v); }catch(_){ } return ''; };
+      var _un=_t8('ui.lib.untitled');
+      var c=Object.assign({},h); c.id=uuid(); c.t=Date.now(); c.name=_t8('ui.lib.copyname',{name:(h.name||_un)});
       history.unshift(c); saveHist(); if(syncEnabled()) pushStrand(c); applyAll(); return; }
     var ver=t.closest && t.closest('[data-libver]');
     if(ver){ e.stopPropagation(); var h2=(history||[])[+ver.dataset.libver]; if(!h2) return;
-      var m=(h2.name||'Untitled strand').match(/^(.*?)(?:\s+v(\d+))?$/);
-      var base=(m&&m[1])||h2.name||'Untitled strand'; var nv=((m&&+m[2])||1)+1;
+      var _t8b=function(k,v){ try{ if(typeof window.t==='function') return window.t(k,v); }catch(_){ } return ''; };
+      var _un2=_t8b('ui.lib.untitled');
+      var m=(h2.name||_un2).match(/^(.*?)(?:\s+v(\d+))?$/);
+      var base=(m&&m[1])||h2.name||_un2; var nv=((m&&+m[2])||1)+1;
       try{ if(window.ocPlan&&window.ocPlan.gateSave&&!window.ocPlan.gateSave(1,{retry:function(){ try{ ver.click(); }catch(_e){ ocFail('decorateDrawer#5',_e); } }})) return; }catch(_e){ ocFail('decorateDrawer#6',_e); }   /* R52 P1-30 */
       var c2=Object.assign({},h2); c2.id=uuid(); c2.t=Date.now(); c2.name=base+' v'+nv;
       history.unshift(c2); saveHist(); if(syncEnabled()) pushStrand(c2); applyAll(); return; }
@@ -13890,6 +14166,15 @@ function renderHistShell(){
   var _roL='', _roW='';
   try{ if(typeof window.t==='function'){ _roL=window.t('ui.lib.readonly'); _roW=window.t('ui.lib.rolab!'); } }
   catch(_e){ ocFail('renderHistShell#ro1',_e); }
+  /* R86b/J1.  ⚠⚠ `window.t`, never bare `t()` -- CLAUDE.md: `t` is shadowed far
+     wider than "three click delegates", and this very function already calls a
+     bare t('mk.0044') one cell over.  Same shape as block #14's own `_t` and
+     R86a's, deliberately, so the three cannot drift.
+     ⚠ `_nm` is the ONE place a row's display name is decided.  The visible
+     label and the accessible name read it from here, so they cannot disagree --
+     the row used to show "Untitled strand" and announce "Delete strand". */
+  var _T=function(k,v){ try{ if(typeof window.t==='function') return window.t(k,v); }catch(_){ } return ''; };
+  var _nm=function(h){ return h.name||_T('ui.lib.untitled'); };
   /* R77d piece 4. ⚠⚠ THE STORED NUMBER IS A RECORD AND IS NEVER
      OVERWRITTEN. saveCurrent() freezes `mw` and `mwStr`, and `mods` records
      that a strand used (X)×2 and NEVER what (X) weighed -- so an edit to
@@ -13966,18 +14251,18 @@ function renderHistShell(){
     if(w.gone) return '<span class="h-chip" title="'+cbEsc(T('ui.lib.mwgoneT',{codes:w.codes,was:w.was}))+'">'+cbEsc(T('ui.lib.mwgone'))+'</span>';
     return base+' <span class="h-chip" title="'+cbEsc(T('ui.lib.mwdiffT',{was:w.was,now:w.now}))+'">'+cbEsc(T('ui.lib.mwdiff'))+'</span>';
   }
-  /* R86a/J5.  The date is LOCALE-FORMATTED through Intl, never an English
-     string: docs/NORTH-STAR.md's rule for every displayed number, and a date
-     is one.  ⚠ `lang()` is block #14's; this block reads ocI18n the same way
-     block #14's own `_n` does. */
+  /* R86e/J4e (Albert's ruling).  ⛔ THE DATE IS GONE FROM THIS CHIP.  The
+     Saved column on the same row already carries a date, and two dates with
+     nothing saying which is which is worse than no date.
+     ⚠ R86a's Intl formatting went with it rather than being left unreferenced:
+     `h.fromShare` is still the timestamp that decides whether the chip renders
+     AT ALL, it is simply no longer displayed.  The `{when}` placeholder is
+     removed from `ui.lib.fromshare` in all four locales in the same patch --
+     leaving it would make i18n-lint report a placeholder no builder supplies. */
   function _histFromShare(h){
     if(!h||!h.fromShare) return '';
     var T2=function(k,v){ try{ return (typeof window.t==='function')?window.t(k,v):''; }catch(_){ return ''; } };
-    var when='';
-    try{ var lg=(window.ocI18n&&window.ocI18n.get)?window.ocI18n.get():'en';
-      when=new Date(h.fromShare).toLocaleDateString(lg,{day:'numeric',month:'short',year:'numeric'}); }
-    catch(_e){ try{ when=new Date(h.fromShare).toLocaleDateString(); }catch(_e2){ return ''; } }
-    var s=T2('ui.lib.fromshare',{when:when}); if(!s) return '';
+    var s=T2('ui.lib.fromshare'); if(!s) return '';
     return '<span class="h-chip">'+cbEsc(s)+'</span>';
   }
   var _g=_custGen();
@@ -13992,28 +14277,95 @@ function renderHistShell(){
     catch(_e2){ ocFail('renderHistShell#ro2',_e2); }
     /* the ⋯ panel edits folder, tags and note straight onto the entry and
        pushes it, so it is the same discarded-typing defect one control over */
-    var expanded=(pro && histExpanded===i && !ro);
+    /* R86b/J1.  ⛔⛔ THE ⋯ PANEL USED TO BE PRO-ONLY, AND THAT IS WHY THE
+       GATE IS SPLIT IN TWO RATHER THAN WIDENED.  Albert's ruling allows the
+       action buttons to move into the ⋯ panel; read literally against the old
+       `(pro && ...)` it would have PAYWALLED Copy and Share, which are free,
+       and taken both away from a read-only lab record as well.
+       `expanded` now says only WHETHER THIS ROW IS OPEN -- every row can open.
+       `proEdit` carries the gate that actually exists: the EDITING fields are
+       for a Pro user on a record they are allowed to change. */
+    var proEdit=(pro && !ro);
+    var expanded=(histExpanded===i);
+    /* R86b/J1.  ⚠⚠ `data-th` KEEPS ITS ENGLISH VALUE ON PURPOSE.  Seven CSS
+       rules select on it -- td[data-th="Name"], ["Sequence"], ["Type"] x2,
+       ["Select"] x3 across both style blocks -- so translating the attribute
+       in place would break the cascade in four locales and in none of the
+       gates, because a data gate cannot see whether anything renders.
+       The VISIBLE narrow-screen heading moves to `data-thl`, and the CSS gains
+       one higher-specificity rule beside the existing one.  A row without
+       `data-thl` -- the static skeleton at the top of the file -- keeps
+       rendering `data-th` exactly as it does today, so the loading state is
+       untouched and 21 attributes did not have to be added to it.
+       ⭐ The seven labels are the table's OWN <thead> keys, so the narrow
+       heading and the wide heading can no longer disagree.  They did: this
+       cell said `MW` while the header said `MW (g/mol)`. */
     var tr='<tr'+(expanded?' class="is-exp"':'')+'>'+
-      '<td data-th="Select"><input type="checkbox" data-hpick="'+i+'" aria-label="Select '+cbEsc(h.name||h.seq||'strand')+'"'+(histSelHas(i)?' checked':'')+'></td>'+
-      '<td data-th="Name">'+(ro
-        ? '<span class="hn-ro" title="'+cbEsc(_roW)+'">'+cbEsc(h.name||'Untitled strand')+'</span>'
-        : '<button type="button" class="hn-edit" data-hrename="'+i+'" aria-label="Rename '+cbEsc(h.name||'strand')+'">'+cbEsc(h.name||'Untitled strand')+'</button>')+
+      '<td data-th="Select" data-thl="'+cbEsc(_T('mk.0219'))+'"><input type="checkbox" data-hpick="'+i+'" aria-label="'+cbEsc(_T('lab.card.sel',{name:(h.name||h.seq||_T('ui.lib.untitled'))}))+'"'+(histSelHas(i)?' checked':'')+'></td>'+
+      '<td data-th="Name" data-thl="'+cbEsc(_T('mk.0220'))+'">'+(ro
+        ? '<span class="hn-ro" title="'+cbEsc(_roW)+'">'+cbEsc(_nm(h))+'</span>'
+        : '<button type="button" class="hn-edit" data-hrename="'+i+'" aria-label="'+cbEsc(_T('ui.lib.aren',{name:_nm(h)}))+'">'+cbEsc(_nm(h))+'</button>')+
         (h.folder?'<span class="h-chip">'+cbEsc(h.folder)+'</span>':'')+((h.tags&&h.tags.length)?h.tags.map(function(t){return '<span class="h-chip tag">'+cbEsc(t)+'</span>';}).join(''):'')+_histFromShare(h)+'</td>'+
-      '<td data-th="Sequence"><span class="hseq">'+cbEsc(h.duplex?((h.seq||'').replace(/\s+/g,'')+' / '+(h.duplex.antiSeq||'').replace(/\s+/g,'')):((h.seq||'').replace(/\s+/g,'')))+'</span></td>'+
-      '<td data-th="Type"><span class="badge'+(h.type==='DNA'?' dna':'')+'">'+cbEsc(h.type||'')+(h.duplex?' '+t('mk.0044'):'')+' · '+(h.n||0)+' nt</span></td>'+
-      '<td data-th="MW" class="hmw">'+_histMwCell(h)+'</td>'+
-      '<td data-th="Saved" style="color:var(--muted)">'+cbEsc(fmtTime(h.t))+'</td>'+
-      '<td data-th="Actions"><div class="hact"><button type="button" class="load" data-hloadx="'+i+'">Load</button><button type="button" data-hcopyx="'+i+'">Copy</button><button type="button" data-hsharex="'+i+'" aria-label="Share '+cbEsc(h.name||'strand')+'">Share</button>'+
-        ((pro&&!ro)?'<button type="button" class="hmore" data-hmore="'+i+'" aria-expanded="'+(expanded?'true':'false')+'" aria-label="Library options for '+cbEsc(h.name||'strand')+'">⋯</button>':'')+
+      '<td data-th="Sequence" data-thl="'+cbEsc(_T('mk.0221'))+'"><span class="hseq">'+cbEsc(h.duplex?((h.seq||'').replace(/\s+/g,'')+' / '+(h.duplex.antiSeq||'').replace(/\s+/g,'')):((h.seq||'').replace(/\s+/g,'')))+'</span></td>'+
+      '<td data-th="Type" data-thl="'+cbEsc(_T('mk.0222'))+'"><span class="badge'+(h.type==='DNA'?' dna':'')+'">'+cbEsc(h.type||'')+(h.duplex?' '+t('mk.0044'):'')+' · '+(h.n||0)+' nt</span></td>'+
+      '<td data-th="MW" class="hmw" data-thl="'+cbEsc(_T('mk.0223'))+'">'+_histMwCell(h)+'</td>'+
+      '<td data-th="Saved" style="color:var(--muted)" data-thl="'+cbEsc(_T('mk.0224'))+'">'+cbEsc(fmtTime(h.t))+'</td>'+
+      /* R86b/J1.  ⭐⭐ THE ROW CARRIES TWO CONTROLS AND A GLYPH, NOT FIVE.
+         MEASURED, not preferred (tools/round86b/layout-measure.mjs, and its
+         two captured runs): as shipped, in ENGLISH, 24 of 32 locale x viewport
+         combinations already WRAP `.hact` onto a second line, and 768px wraps
+         onto FOUR at 194px tall.  Routing the three labels through the table
+         takes the widest control set from 275px to 333px -- ja's rendering of
+         mk.0216 is SIX GLYPHS where `Share` was five letters -- against a
+         cell that is 216px at 1280 and 132px at 768.
+         ⚠ The string is DESCRIBED and not spelled: i18n-lint rule 6 fails on a
+         literal CJK character anywhere in this file, comments included, and it
+         caught this very comment on the first run of this patch.  Translating the five
+         controls where they stand ships a WORSE row than the one we have.
+         ⭐ Load stays because the product itself declares it primary: it is the
+         only control here carrying the accent fill (`.htable .hact .load`), and
+         burying the one control the design marks as primary would contradict
+         the design.  ⛔ There are NO ANALYTICS in this repo (FOURTEEN §9), so
+         "Load is pressed most" is argued from the surface and not measured, and
+         this comment says so rather than implying a number nobody has.
+         ⭐ ✕ stays because R78d already made it two-press armed, so it is safe
+         in the open -- and a destructive control sitting one row under an
+         ordinary one inside a menu is a worse mis-tap than a 44px glyph at the
+         end of a row that asks first. */
+      '<td data-th="Actions" data-thl="'+cbEsc(_T('mk.0225'))+'"><div class="hact"><button type="button" class="load" data-hloadx="'+i+'">'+cbEsc(_T('mk.0228'))+'</button>'+
+        '<button type="button" class="hmore" data-hmore="'+i+'" aria-expanded="'+(expanded?'true':'false')+'" aria-label="'+cbEsc(_T('ui.lib.amore',{name:_nm(h)}))+'">⋯</button>'+
         (ro
           ? (_roL?('<span class="lc-ro" title="'+cbEsc(_roW)+'">'+cbEsc(_roL)+'</span>'):'')
-          : '<button type="button" class="hdel" data-hdelx="'+i+'" aria-label="Delete '+cbEsc(h.name||'strand')+'">✕</button>')+'</div></td>'+
+          : '<button type="button" class="hdel" data-hdelx="'+i+'" aria-label="'+cbEsc(_T('ui.lib.adel',{name:_nm(h)}))+'">✕</button>')+'</div></td>'+
     '</tr>';
+    /* R86b/J1.  ⭐ Copy and Share lead the panel, and they render for EVERYONE
+       -- including a read-only lab record, where "you may not edit this" has
+       never meant "you may not copy it".  ⛔ The editing fields below them are
+       the only thing `proEdit` gates.  The two delegates are unchanged: they
+       are `document.body` listeners keyed on [data-hcopyx] / [data-hsharex],
+       so they keep working from inside the panel without being touched.
+       ⚠ Share on a lab record still refuses, loudly, inside buildUrl -- R86a/J4
+       put the test there rather than at the button precisely so that moving the
+       button could not move the boundary. */
     if(expanded){ tr+='<tr class="hexp"><td colspan="7"><div class="hexp-grid">'+
-      '<label class="hexp-f">Folder<input data-libf="'+i+'" value="'+cbEsc(h.folder||'')+'" placeholder="e.g. siRNA project"></label>'+
-      '<label class="hexp-f">Tags<input data-libt="'+i+'" value="'+cbEsc((h.tags||[]).join(', '))+'" placeholder="comma-separated"></label>'+
-      '<label class="hexp-f hexp-note">Note<input data-libn="'+i+'" value="'+cbEsc(h.note||'')+'" placeholder="optional note"></label>'+
-      (window.oligoSheet?window.oligoSheet.mdPanel(h,i):'')+'<div class="hexp-acts"><button type="button" data-libdup="'+i+'">Duplicate</button><button type="button" data-libver="'+i+'">Save as version</button></div>'+
+      '<div class="hexp-acts hexp-lead"><button type="button" data-hcopyx="'+i+'">'+cbEsc(_T('mk.0229'))+'</button>'+
+      /* R86e/J4d (Albert's ruling: "People SHOULD NOT share even by accident
+         the lab stuff").  ⛔⛔ THE CONTROL IS HIDDEN ON A LAB RECORD AND THE
+         REFUSAL UNDERNEATH IT STAYS.  Copy is deliberately KEPT: R86b's reason
+         for leading with both -- "you may not edit this" has never meant "you
+         may not copy it" -- is untouched by a ruling about PUBLISHING.
+         ⚠ `__labId` is the same marker `buildUrl` throws on, so the button and
+         the guard cannot disagree about what a lab record is.
+         ⚠ 4a: the row gets its OWN key.  The toolbar acts on the TICKED ROWS
+         and says so; a row button acts on THAT ONE ROW and scope-free is
+         correct there -- and `ui.lib.ashare`, R86b's own aria-label, already
+         said "Share a copy of {name}", so the visible words now agree with the
+         label a screen reader has been reading out since R86b. */
+      (h.__labId?'':'<button type="button" data-hsharex="'+i+'" aria-label="'+cbEsc(_T('ui.lib.ashare',{name:_nm(h)}))+'">'+cbEsc(_T('ui.lib.shrow'))+'</button>')+'</div>'+
+      (proEdit?('<label class="hexp-f">'+cbEsc(_T('lab.md.folder'))+'<input data-libf="'+i+'" value="'+cbEsc(h.folder||'')+'" placeholder="'+cbEsc(_T('ui.lib.phfolder'))+'"></label>'+
+      '<label class="hexp-f">'+cbEsc(_T('lab.md.tags'))+'<input data-libt="'+i+'" value="'+cbEsc((h.tags||[]).join(', '))+'" placeholder="'+cbEsc(_T('ui.lib.phtags'))+'"></label>'+
+      '<label class="hexp-f hexp-note">'+cbEsc(_T('lab.md.note'))+'<input data-libn="'+i+'" value="'+cbEsc(h.note||'')+'" placeholder="'+cbEsc(_T('ui.lib.phnote'))+'"></label>'+
+      (window.oligoSheet?window.oligoSheet.mdPanel(h,i):'')+'<div class="hexp-acts"><button type="button" data-libdup="'+i+'">'+cbEsc(_T('ui.lib.dup'))+'</button><button type="button" data-libver="'+i+'">'+cbEsc(_T('ui.lib.ver'))+'</button></div>'):'')+
     '</div></td></tr>'; }
     return tr;
   }).join('');
@@ -14030,7 +14382,11 @@ document.body.addEventListener('click', function(e){
   if(shx){ var h3=(history||[])[+shx.dataset.hsharex]; if(h3 && window.oligoShare) window.oligoShare.shareStrands([h3]); return; }
   var rn=e.target.closest('[data-hrename]');
   if(rn){ var i0=+rn.dataset.hrename, h0=(history||[])[i0]; if(!h0) return; var td=rn.closest('td'); if(!td) return;
-    var inp=document.createElement('input'); inp.className='hn-input'; inp.value=h0.name||''; inp.maxLength=120; inp.setAttribute('aria-label','Strand name');
+    var inp=document.createElement('input'); inp.className='hn-input'; inp.value=h0.name||''; inp.maxLength=120;
+    /* R86b/J1.  ⚠ This delegate is in the same block as renderHistShell but
+       OUTSIDE it, so `_T` is not in scope here -- window.t is read directly,
+       guarded the same way, rather than hoisting a helper across a boundary. */
+    try{ if(typeof window.t==='function') inp.setAttribute('aria-label',window.t('ui.lib.aname')); }catch(_e){ ocFail('renderHistShell#aname',_e); }
     rn.replaceWith(inp); try{ inp.focus(); inp.select(); }catch(_){ /* focus / caret / scroll restoration on a node that may already be gone -- cosmetic, no value is shown or hidden by it */ }
     var done=false, commit=function(){ if(done) return; done=true; var nm=(inp.value||'').trim().slice(0,120); if(nm) h0.name=nm; saveHist(); if(_syncOn()) oligoSync.pushStrand(h0); renderHistShell(); if(typeof syncAccountUI==='function') syncAccountUI(); };
     inp.addEventListener('keydown', function(ev){ if(ev.key==='Enter'){ ev.preventDefault(); commit(); } else if(ev.key==='Escape'){ ev.preventDefault(); done=true; renderHistShell(); } });
@@ -15036,6 +15392,11 @@ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded'
 .oshare-btn.primary{background:var(--accent);color:var(--accent-ink);border-color:transparent}
 .oshare-btn[disabled]{opacity:.55;cursor:default}
 .oshare-priv{font-size:11.5px;color:var(--muted);line-height:1.5;margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
+/* R86e/J4c: the disclosure reads BEFORE the primary action now, so its rule
+   belongs under it, not over it.  ⚠ A SEPARATE SELECTOR RATHER THAN AN EDIT to
+   the line above: `.oshare-priv` is still worn alone by the RECIPIENT sheet's
+   own warning, which is still a footer there. Two surfaces, two roles. */
+.oshare-priv.oshare-priv-lead{margin-top:2px;margin-bottom:14px;border-top:0;padding-top:0;border-bottom:1px solid var(--line);padding-bottom:10px}
 .oshare-list{display:flex;flex-direction:column;gap:10px;margin:10px 0}
 .oshare-card{border:1px solid var(--line-2);border-radius:12px;padding:12px 14px;background:var(--surface-2)}
 .oshare-card .nm{font-family:var(--font-head);font-weight:600;font-size:13px}
@@ -16425,6 +16786,12 @@ body[data-seqfocus="antisense"] .warn[data-antiwarn]{display:none}
 @media (max-width:1099px){
   .htable input[type=checkbox]{width:44px; height:44px}
   .htable td[data-th="Select"] input[type=checkbox]{margin:0}
+  /* R86b/J1.  Give the Actions column the room a fixed-layout table was not
+     leaving it.  20+15 becomes 14+12, so `width:auto` on the last column grows
+     from 22% to 31%.  Both donors already ellipsise, so the characters given up
+     were not on screen. */
+  .htable th:nth-child(3){width:14%}
+  .htable th:nth-child(4){width:12%}
 }
 
 /* U4 · both below the project's own 11px floor, at every viewport. The avatar is
@@ -16814,7 +17181,16 @@ try{
     var url;
     try{ url=buildUrl(strands); }
     catch(e){ toast(_t(e.message==='TOO_MANY'?'ui.sh.err.many':e.message==='EMPTY'?'ui.sh.err.none':e.message==='LAB'?'ui.sh.err.lab!':'ui.sh.err.big')); return; }
-    var text= strands.length===1 ? ('Oligo: '+(strands[0].name||strands[0].seq||'strand')) : (strands.length+' oligos from the Oligo Calculator');
+    /* R86b/J3 (Albert's ruling §8, 2026-08-25).  ⚠⚠ THIS STRING LEAVES THE
+       PRODUCT.  It is the `text` handed to navigator.share() and pasted into
+       the mailto body, so it is read in the RECIPIENT's inbox and not on any
+       screen this product draws.  Albert ruled it goes in the SENDER's
+       language -- "they're writing the message; it should be in the language
+       they're writing in" -- so it follows the UI locale of whoever pressed
+       Share, which is what these two keys do.  ⛔ A later round reading them as
+       ordinary UI copy, and "fixing" them to the reader's locale, would be
+       undoing a ruling rather than finding a defect. */
+    var text= strands.length===1 ? _t('ui.sh.msgone',{name:(strands[0].name||strands[0].seq||_t('ui.lib.untitled'))}) : _t('ui.sh.msgmany',{n:strands.length});
     /* R86a/J2 (Albert's ruling 3c, 2026-08-25).  ⛔⛔ THE DISCLOSURE WAS
        SKIPPED ON DESKTOP, NOT JUST ON A PHONE.  The branch that stood here
        was `if(navigator.share && window.isSecureContext){ ... return; }`, and
@@ -16879,8 +17255,28 @@ try{
     var box=el('div','oshare-box');
     var x=el('button','oshare-btn oshare-x','✕'); x.type='button'; x.setAttribute('aria-label',_t('lab.dlg.close')); x.addEventListener('click',function(){ sc._close(); }); box.appendChild(x);
     box.appendChild(el('h3',null,_t('ui.sh.title'))); box.appendChild(el('p','oshare-sub',text));
+    /* R86e/J4c.  ⭐ THE DISCLOSURE IS NOW ABOVE THE PRIMARY ACTION.  It used to
+       sit last, under Copy link, and three readers of three understood it and
+       all three said they would never have read it there.  The `-lead` class
+       flips the rule from a top border to a bottom one so it reads as a
+       lead-in rather than as a footer stranded above the content.
+       ⚠ The 11.5 px muted size is UNCHANGED and is an open row: moving it is
+       what was ruled, resizing it was not.
+       ⚠⚠ THE SECOND CLASS IS ADDED, NOT WRITTEN AS 'a b'.  A two-word class
+       list is a space between two word characters, which is precisely what
+       i18n-lint rule 7 calls prose -- it failed on this line on the first run.
+       One token cannot be mistaken for a sentence, and the baseline of
+       hard-coded literals does not grow to buy a CSS class. */
+    var pv=el('p','oshare-priv',_t('ui.sh.priv!')); pv.classList.add('oshare-priv-lead'); box.appendChild(pv);
     var row=el('div','oshare-row'); var inp=el('input'); inp.readOnly=true; inp.value=url; inp.setAttribute('aria-label',_t('ui.sh.title')); row.appendChild(inp);
-    var copy=el('button','oshare-btn primary',_t('ui.sh.copy')); copy.type='button'; copy.addEventListener('click',function(){ if(typeof copyText==='function') copyText(url,copy); else { try{ inp.select(); document.execCommand('copy'); copy.textContent='Copied ✓'; }catch(_){ /* focus / caret / scroll restoration on a node that may already be gone -- cosmetic, no value is shown or hidden by it */ } } }); row.appendChild(copy); box.appendChild(row);
+    /* R86b/J4.  ⛔ THE `else` BELOW IS DEAD AND IS KEYED ANYWAY.  `copyText`
+       is a function declared in the engine block, which parses long before
+       this one, so the fallback has never run in front of anybody -- it is
+       keyed because it is one string sitting in a surface this round is already
+       translating, and left in place because removing a fallback is a different
+       decision from translating one.  ⚠ Stated here so a later round does not
+       report it as a live defect it cannot reproduce. */
+    var copy=el('button','oshare-btn primary',_t('ui.sh.copy')); copy.type='button'; copy.addEventListener('click',function(){ if(typeof copyText==='function') copyText(url,copy); else { try{ inp.select(); document.execCommand('copy'); copy.textContent=_t('ui.sh.copied'); }catch(_){ /* focus / caret / scroll restoration on a node that may already be gone -- cosmetic, no value is shown or hidden by it */ } } }); row.appendChild(copy); box.appendChild(row);
     var em=el('button','oshare-btn',_t('ui.sh.email')); em.type='button'; em.addEventListener('click',function(){ location.href='mailto:?subject='+encodeURIComponent('Oligo Calculator')+'&body='+encodeURIComponent(text+'\n\n'+url); }); box.appendChild(em);
     /* R86a/J2.  THE NATIVE SHEET, REACHED FROM INSIDE THE DISCLOSURE.
        ⚠ It is offered only where it exists, so a desktop without the Web
@@ -16899,7 +17295,6 @@ try{
        no token, uid, email, note, tag or folder -- but a custom monomer's NAME
        does travel verbatim, so an internal codename leaves with the link. Worth
        one line of copy. */
-    box.appendChild(el('p','oshare-priv',_t('ui.sh.priv!')));
     sc.appendChild(box);
   }
 
@@ -16920,7 +17315,7 @@ try{
      permanent. A crafted link containing ACGX used to preview and save a
      partial calculation, importing its custom definitions on the way. */
   function validShared(s){
-    if(!s) return {ok:false, reason:'empty', message:'Empty strand.'};
+    if(!s) return {ok:false, reason:'empty', message:_t('ui.rc.v.empty')};
     try{
       if(typeof validateStrandInput!=='function') return {ok:true, reason:'', message:''};
       var v=validateStrandInput({ seq:s.seq, type:s.type,
@@ -16933,12 +17328,12 @@ try{
         var p=parseSeq(seq||'',type||'DNA');
         return p.five===five && (!checkThio||p.fiveThio===!!fiveThio) && seqThree(seq)===three;
       }
-      if(!endsAgree(s.seq,s.type,s.five,!!s.fiveThio,s.three,true)) return {ok:false,reason:'ends',message:'The strand text and its end-group settings do not agree.'};
+      if(!endsAgree(s.seq,s.type,s.five,!!s.fiveThio,s.three,true)) return {ok:false,reason:'ends',message:_t('ui.rc.v.ends')};
       if(s.duplex&&(s.duplex.mode==='custom'||s.duplex.mode==='manual') &&
          !endsAgree(s.duplex.antiSeq,s.duplex.antiType,s.duplex.antiFive,false,s.duplex.antiThree,false))
-        return {ok:false,reason:'ends',message:'The antisense text and its end-group settings do not agree.'};
+        return {ok:false,reason:'ends',message:_t('ui.rc.v.aends')};
       return v;
-    }catch(_){ return {ok:false, reason:'parse', message:'Could not read this strand.'}; }
+    }catch(_){ return {ok:false, reason:'parse', message:_t('ui.rc.v.parse')}; }
   }
   function computeShared(s){
     if(!validShared(s).ok) return null;
@@ -17011,49 +17406,72 @@ try{
     referenced.forEach(function(d){ var old=existingDef(d.code); if(old&&!sameDef(old,d)) conflicts.push(d); });
     payload.customBases=referenced;
     if(conflicts.length){
-      var cs=openScrim(finish,{label:'Shared custom-base conflict',initialFocus:'none'}), cb=el('div','oshare-box');
-      var cx=el('button','oshare-btn oshare-x','\u2715'); cx.type='button'; cx.setAttribute('aria-label','Close'); cx.addEventListener('click',function(){ cs._close(); }); cb.appendChild(cx);
-      cb.appendChild(el('h3',null,'Custom-base conflict'));
-      cb.appendChild(el('p','oshare-sub','This link defines '+conflicts.map(function(d){return '('+d.code+')';}).join(', ')+' differently from the definition already available in this calculator. Nothing was imported. Ask the sender to reconcile the mass, phosphate state, kind, or formula and share again.'));
-      var cn=el('button','oshare-btn','Close'); cn.type='button'; cn.addEventListener('click',function(){ cs._close(); }); cb.appendChild(cn); cs.appendChild(cb); return;
+      var cs=openScrim(finish,{label:_t('ui.rc.cf.aria'),initialFocus:'none'}), cb=el('div','oshare-box');
+      var cx=el('button','oshare-btn oshare-x','\u2715'); cx.type='button'; cx.setAttribute('aria-label',_t('lab.dlg.close')); cx.addEventListener('click',function(){ cs._close(); }); cb.appendChild(cx);
+      cb.appendChild(el('h3',null,_t('ui.rc.cf.h')));
+      cb.appendChild(el('p','oshare-sub',_t('ui.rc.cf.body!',{codes:conflicts.map(function(d){return '('+d.code+')';}).join(', ')})));
+      var cn=el('button','oshare-btn',_t('lab.dlg.close')); cn.type='button'; cn.addEventListener('click',function(){ cs._close(); }); cb.appendChild(cn); cs.appendChild(cb); return;
     }
     mergeSessionDefs(referenced);
     /* focus the dialog container, not the first control: this sheet is a review
        list and a :focus-visible ring on "✕ Close" reads as a suggested answer */
-    var sc=openScrim(finish,{label:'Shared with you', initialFocus:'none'});
+    var sc=openScrim(finish,{label:_t('ui.rc.h'), initialFocus:'none'});
     var box=el('div','oshare-box');
-    var x=el('button','oshare-btn oshare-x','✕'); x.type='button'; x.setAttribute('aria-label','Close'); x.addEventListener('click',function(){ sc._close(); }); box.appendChild(x);
-    box.appendChild(el('h3',null,'Shared with you'));
-    box.appendChild(el('p','oshare-sub', payload.strands.length+' sequence'+(payload.strands.length===1?'':'s')+' shared with you. Look them over, then save the ones you want.'));
+    var x=el('button','oshare-btn oshare-x','✕'); x.type='button'; x.setAttribute('aria-label',_t('lab.dlg.close')); x.addEventListener('click',function(){ sc._close(); }); box.appendChild(x);
+    box.appendChild(el('h3',null,_t('ui.rc.h')));
+    /* R86e/J2.  ⚠⚠ THE PLURAL IS A WHOLE SENTENCE PER LANGUAGE, NOT A
+       CONCATENATED "s".  What stood here was
+           n + ' sequence' + (n === 1 ? '' : 's') + ' shared with you. ...'
+       which cannot be keyed at all: the inflection is English grammar welded
+       into a builder.  This is the `lab.hp.n1` / `lab.hp.nN` pattern the
+       product already ships -- eight more sites below do the same. ⚠ CJK and
+       ja do not inflect for number, so both members carry the same text there;
+       that is correct, not a copy-paste slip. */
+    box.appendChild(el('p','oshare-sub', _t(payload.strands.length===1?'ui.rc.sub1':'ui.rc.subN',{n:payload.strands.length})));
     if(referenced.length){
       var missAll=missingDefs(referenced), dn=el('div','oshare-defnote'); dn.setAttribute('role','status');
-      dn.innerHTML='<b>This share uses '+referenced.length+' custom base'+(referenced.length===1?'':'s')+':</b> '+referenced.map(function(d){return '('+ocEsc(d.code)+') '+ocEsc(d.name||'unnamed');}).join(', ')+'. '+
-        (missAll.length?('Saving a strand also adds the custom base'+(missAll.length===1?'':'s')+' it uses to your Custom bases. Nothing is added if you choose Not now.'):'Those definitions are already available here, so saving will not create duplicates.');
+      /* R86e/J2.  ⚠ THE FULL STOP BETWEEN THE CODES AND THE NEXT SENTENCE IS
+         `punct.stop`, NOT '. '.  The codes are DATA, so the mark cannot live in
+         either key, and written as a literal it would put an ASCII stop after a
+         Chinese clause -- the exact defect `sep-lint` exists for, and the one
+         R71 fixed by introducing the sibling `punct.colon`. */
+      dn.innerHTML='<b>'+ocEsc(_t(referenced.length===1?'ui.rc.cb1':'ui.rc.cbN',{n:referenced.length}))+'</b> '+referenced.map(function(d){return '('+ocEsc(d.code)+') '+ocEsc(d.name||_t('ui.rc.unnamed'));}).join(', ')+ocEsc(_t('punct.stop'))+
+        ocEsc(missAll.length?_t(missAll.length===1?'ui.rc.cbadd1':'ui.rc.cbaddN'):_t('ui.rc.cbhave'));
       box.appendChild(dn);
     }
     var list=el('div','oshare-list');
     payload.strands.forEach(function(s,idx){
       var card=el('div','oshare-card');
-      card.appendChild(el('div','nm', s.name||('Strand '+(idx+1))));
+      card.appendChild(el('div','nm', s.name||_t('ui.rc.seqn',{n:idx+1})));
       card.appendChild(el('div','sq', (typeof spaceSeq==='function'?spaceSeq(s.seq,s.type,s.linkage):s.seq)));
       var sdefs=defsFor(s,payload.customBases), smiss=missingDefs(sdefs);
-      if(sdefs.length) card.appendChild(el('div','oshare-defs','Custom bases: '+sdefs.map(function(d){return '('+d.code+')';}).join(', ')+(smiss.length?(' - '+smiss.length+' will be added when you save'):' - already available')));
+      if(sdefs.length) card.appendChild(el('div','oshare-defs',_t('ui.rc.cbs',{codes:sdefs.map(function(d){return '('+d.code+')';}).join(', ')})+' \u00b7 '+(smiss.length?_t(smiss.length===1?'ui.rc.cbwill1':'ui.rc.cbwillN',{n:smiss.length}):_t('ui.rc.cbok'))));
       var vs=validShared(s);
       var c=vs.ok?computeShared(s):null, mw=el('div','mw');
-      if(c){ mw.innerHTML='MW <b>'+fmt(c.mw,c.n)+'</b> g/mol'+(c.dmw?(' · duplex <b>'+fmt(c.dmw,1)+'</b>'):'')+' · '+s.type+' · '+s.linkage+' · '+c.n+' nt · ε₂₆₀ '+fmtEps(c.eps); }
+      /* ⚠ MW, g/mol, nt and ε₂₆₀ are NOTATION and stay as written.  The
+         shipped `mk.0223` translates the words for "molecular weight" but keeps
+         the unit parenthesised and Latin in all three locales, so leaving the
+         unit alone here is house style rather than an omission.  ⚠⚠ THAT KEY IS
+         DESCRIBED AND NOT QUOTED: this comment SHIPS, and a comment that spells
+         a CJK string trips chkjs and i18n-lint rule 6 -- which is exactly what
+         it did on this round's first run.  `duplex` is a GLOSSARY TERM, keyed.
+         ⚠ `s.type` and `s.linkage` are DATA (DNA / PO), displayed untranslated
+         here exactly as everywhere else in the product; an open row, not a
+         thing this round half-does. */
+      if(c){ mw.innerHTML='MW <b>'+fmt(c.mw,c.n)+'</b> g/mol'+(c.dmw?(' · '+ocEsc(_t('ui.rc.dup'))+' <b>'+fmt(c.dmw,1)+'</b>'):'')+' · '+s.type+' · '+s.linkage+' · '+c.n+' nt · ε₂₆₀ '+fmtEps(c.eps); }
       else { mw.className='mw oshare-bad'; mw.setAttribute('role','alert');
-             mw.textContent='✕ '+(vs.ok?'Could not compute this strand.':vs.message)+' It will not be saved.'; }
+             mw.textContent='✕ '+(vs.ok?_t('ui.rc.bad'):vs.message)+' '+_t('ui.rc.notsaved'); }
       card.appendChild(mw);
-      var b1=el('button','oshare-btn',smiss.length?('Save strand + '+smiss.length+' custom base'+(smiss.length===1?'':'s')):'Save to my library'); b1.type='button';
-      if(!c){ b1.disabled=true; b1.setAttribute('aria-disabled','true'); b1.title='This sequence is not valid, so it cannot be saved.'; }
+      var b1=el('button','oshare-btn',smiss.length?_t(smiss.length===1?'ui.rc.save1':'ui.rc.saveN',{n:smiss.length}):_t('ui.rc.save')); b1.type='button';
+      if(!c){ b1.disabled=true; b1.setAttribute('aria-disabled','true'); b1.title=_t('ui.rc.invalid'); }
       else b1.addEventListener('click',function(){
         try{ if(window.ocPlan&&window.ocPlan.gateSave&&!window.ocPlan.gateSave(1,{retry:function(){ try{ b1.click(); }catch(_e){ ocFail('saveShared#retry',_e); } }})) return; }catch(_e){ ocFail('saveShared#gate',_e); }
         var r=saveShared(s,payload.customBases);
         /* R52 P1-10: name the actual reason */
-        toast(r&&r.ok ? ('Saved sequence'+(r.added.length?(' and added '+r.added.length+' custom base'+(r.added.length===1?'':'s')):(r.used.length?' - custom bases already available':''))+' ✓')
-            : r==='gated' ? 'Your plan’s library is full, so this was not saved.'
-            : 'Could not save this strand.');
-        if(r&&r.ok){ b1.disabled=true; b1.textContent='Saved ✓'; }
+        toast(r&&r.ok ? (r.added.length?_t(r.added.length===1?'ui.rc.okadd1':'ui.rc.okaddN',{n:r.added.length}):(r.used.length?_t('ui.rc.okhave'):_t('ui.rc.ok')))
+            : r==='gated' ? _t('ui.rc.full')
+            : _t('ui.rc.err'));
+        if(r&&r.ok){ b1.disabled=true; b1.textContent=_t('ui.rc.done'); }
         if(typeof renderHistShell==='function') try{ renderHistShell(); }catch(_e){ ocFail('finish#4',_e); } });
       card.appendChild(b1);
       list.appendChild(card);
@@ -17061,7 +17479,7 @@ try{
     box.appendChild(list);
     var acts=el('div','oshare-actions');
     var allMissing=missingDefs(referenced);
-    var all=el('button','oshare-btn primary',allMissing.length?('Save all + '+allMissing.length+' custom base'+(allMissing.length===1?'':'s')):'Save all to my library'); all.type='button'; all.addEventListener('click',function(){
+    var all=el('button','oshare-btn primary',allMissing.length?_t(allMissing.length===1?'ui.rc.all1':'ui.rc.allN',{n:allMissing.length}):_t('ui.rc.all')); all.type='button'; all.addEventListener('click',function(){
       /* R51 (audit F-03): every strand is accounted for out loud, and the sheet
          stays open whenever something was left behind -- the r42 precedent.
          R52 (audit P1-10): and the gate is asked ONCE for the whole batch. It
@@ -17082,12 +17500,12 @@ try{
         else if(r==='gated') gated++; else other++;
       });
       var parts=[];
-      if(okc)     parts.push('Saved '+okc+' sequence'+(okc===1?'':'s')+' ✓');
-      var addN=Object.keys(addedCodes).length; if(addN) parts.push('added '+addN+' custom base'+(addN===1?'':'s'));
-      if(invalid) parts.push(invalid+' skipped, not a valid sequence');
-      if(gated)   parts.push(gated+' held back, your plan’s library is full');
-      if(other)   parts.push(other+' could not be saved');
-      toast(parts.length?parts.join(' · '):'Could not save.');
+      if(okc)     parts.push(_t(okc===1?'ui.rc.bok1':'ui.rc.bokN',{n:okc}));
+      var addN=Object.keys(addedCodes).length; if(addN) parts.push(_t(addN===1?'ui.rc.badd1':'ui.rc.baddN',{n:addN}));
+      if(invalid) parts.push(_t('ui.rc.bskip',{n:invalid}));
+      if(gated)   parts.push(_t('ui.rc.bfull',{n:gated}));
+      if(other)   parts.push(_t('ui.rc.berr',{n:other}));
+      toast(parts.length?parts.join(' · '):_t('ui.rc.bnone'));
       if(typeof renderHistShell==='function') try{ renderHistShell(); }catch(_e){ ocFail('finish#7',_e); }
       /* R52 (audit P1-10): only close, and only then let finish() strip the
          fragment, when there is genuinely nothing left to retry. The dialog is
@@ -17096,9 +17514,9 @@ try{
          in-app -- the recipient had to go back to the original email. */
       if(!invalid && !other && !gated) sc._close();
     });
-    var no=el('button','oshare-btn','Not now'); no.type='button'; no.addEventListener('click',function(){ sc._close(); });
+    var no=el('button','oshare-btn',_t('ui.rc.no')); no.type='button'; no.addEventListener('click',function(){ sc._close(); });
     acts.appendChild(all); acts.appendChild(no); box.appendChild(acts);
-    box.appendChild(el('p','oshare-priv','A share link contains the strand data. Anyone with the link can view it.'));
+    box.appendChild(el('p','oshare-priv',_t('ui.rc.priv!')));
     sc.appendChild(box);
   }
   function validate(p){
@@ -17179,7 +17597,7 @@ try{
     try{ var h=(window.__oligoShareHash||location.hash||''); window.__oligoShareHash=''; if(h.indexOf('share=')<0) return; var m=h.match(/[#&]share=([^&]+)/); if(!m) return;
       var payload=null; try{ payload=decJson(m[1]); }catch(_){ payload=null; }
       var v=validate(payload);
-      if(!v){ toast('This share link looks broken or incomplete.'); try{ window.history.replaceState(null,'',location.pathname+location.search); }catch(_){ /* URL rewrite refused (sandboxed frame / opaque origin) -- the address bar is cosmetic here */ } return; }
+      if(!v){ toast(_t('ui.rc.broken')); try{ window.history.replaceState(null,'',location.pathname+location.search); }catch(_){ /* URL rewrite refused (sandboxed frame / opaque origin) -- the address bar is cosmetic here */ } return; }
       renderRecipient(v);
     }catch(_){ /* URL rewrite refused (sandboxed frame / opaque origin) -- the address bar is cosmetic here */ }
   }
@@ -18235,7 +18653,19 @@ try{
   async function fetchComments(rowId){ return (await rest('GET','strand_comments?strand_id=eq.'+encodeURIComponent(rowId)+'&select=*&order=created_at.asc'))||[]; }
   async function addComment(rowId,txt){ var uid=await myUid(); if(!uid) throw new Error(_t('lab.err.signin')); await rest('POST','strand_comments',[{strand_id:rowId,user_id:uid,author_email:myEmail(),body:txt}],{Prefer:'return=minimal'}); }
   async function deleteComment(id){ await rest('DELETE','strand_comments?id=eq.'+encodeURIComponent(id),undefined,{Prefer:'return=minimal'}); }
-  function openComments(rowId,name){ if(!rowId){ toast(_t('lab.cmt.nosync')); return; } var _nm=name||_t('lab.dlg.aseq'); var mo=modal(_t('lab.cmt.on',{name:_nm}),'none'); var mine=myEmail();
+  /* R86d/J1 (ruling 11, 2026-08-25).  ⛔⛔ TWO DEFECTS, AND FIXING EITHER
+     ALONE MOVES THE BUG.  (a) a manager could not moderate their own lab: the
+     deployed DELETE policy is `(user_id = auth.uid()) OR is_lab_manager(...)`
+     and the client drew no control at all.  (b) the two sides asked DIFFERENT
+     questions about one act -- the client compared `author_email`, which is
+     nullable and is whatever the session said at the time; the server compares
+     `user_id`, which is `not null`.  ⭐ The test is now the column the policy
+     names, with the manager arm beside it.
+     ⚠ `myUid()` decodes the JWT the list was already fetched with, so a
+     rendered list implies a uid.  Resolved once per dialog, not per row; when
+     it cannot be resolved the own arm is false, which is what the server would
+     answer anyway.  A button that 404s is worse than no button. */
+  function openComments(rowId,name,labId){ if(!rowId){ toast(_t('lab.cmt.nosync')); return; } var _nm=name||_t('lab.dlg.aseq'); var mo=modal(_t('lab.cmt.on',{name:_nm}),'none'); var _mgr=_isMgr(labId), _uid=null;
     /* ⚠ `maxlength` LEADS THE KEYED ATTRIBUTES ON PURPOSE, at all three inputs
        in this block.  Routing a placeholder through _t() splits the literal, and
        if a fixed attribute follows the last keyed one then the tail piece begins
@@ -18254,8 +18684,30 @@ try{
     function shell(){ var keep=_keepVal(mo.box,'[data-cmt-input]');
       mo.box.innerHTML='<button type="button" class="oshare-btn oshare-x" aria-label="'+esc(_t('lab.dlg.close'))+'">✕</button><h3>'+esc(_t('lab.cmt.h'))+'</h3><p class="oshare-sub">'+esc(name||_t('lab.dlg.seq'))+'</p><div data-cmt-body><div class="lab-hint">'+esc(_t('lab.dlg.loading'))+'</div></div><div class="oshare-row"><input data-cmt-input maxlength="1000" placeholder="'+esc(_t('lab.cmt.ph'))+'" aria-label="'+esc(_t('lab.cmt.aria'))+'"><button type="button" class="oshare-btn primary" data-cmt-send>'+esc(_t('lab.cmt.post'))+'</button></div>';
       _putVal(mo.box,'[data-cmt-input]',keep); paint(); }
-    mo.box.addEventListener('click',function(e){ var s=e.target.closest('[data-cmt-send]'); if(s){ var inp=mo.box.querySelector('[data-cmt-input]'); var v=((inp&&inp.value)||'').trim(); if(!v) return; s.disabled=true; addComment(rowId,v).then(function(){ if(inp)inp.value=''; s.disabled=false; paint(); }).catch(function(err){ toast(err.message||_t('lab.err.post')); s.disabled=false; }); return; } var d=e.target.closest('[data-cmt-del]'); if(d){ deleteComment(d.getAttribute('data-cmt-del')).then(paint).catch(function(err){ toast(err.message||_t('lab.err.del')); }); } });
-    async function paint(){ var body=mo.box.querySelector('[data-cmt-body]'); if(!body) return; try{ var rows=await fetchComments(rowId); body.innerHTML=(rows.length? rows.map(function(c){ var own=(String(c.author_email||'').toLowerCase()===mine); return '<div class="lab-cmt"><div class="lc-cmt-h"><span class="lc-cmt-a">'+esc(c.author_email||_t('lab.cmt.someone'))+'</span>'+(own?'<button type="button" class="lab-x" data-cmt-del="'+esc(c.id)+'" aria-label="'+esc(_t('lab.cmt.del'))+'">✕</button>':'')+'</div><div class="lc-cmt-b">'+esc(c.body||'')+'</div></div>'; }).join('') : '<div class="lab-hint">'+esc(_t('lab.cmt.none'))+'</div>'); }catch(err){ body.innerHTML='<div class="lab-hint">'+esc(_t('lab.cmt.failload'))+'</div>'; } }
+    mo.box.addEventListener('click',function(e){ var s=e.target.closest('[data-cmt-send]'); if(s){ var inp=mo.box.querySelector('[data-cmt-input]'); var v=((inp&&inp.value)||'').trim(); if(!v) return; s.disabled=true; addComment(rowId,v).then(function(){ if(inp)inp.value=''; s.disabled=false; paint(); }).catch(function(err){ toast(err.message||_t('lab.err.post')); s.disabled=false; }); return; } var d=e.target.closest('[data-cmt-del]');
+      /* R86d/J2 (ruling 12, 2026-08-25).  ⛔ DELETING A COLLEAGUE'S COMMENT WAS
+         ONE UNGUARDED PRESS, on a control sized and placed like the close
+         button beside it.  ⭐ THE GESTURE IS R78d's, NOT A NEW ONE: measured on
+         the library row and matched part for part -- `dataset.armed`, the label
+         from a key, the accessible name moved to `ui.arm.confirm`, the
+         announcement, the same 2500 ms disarm.  One gesture to learn, not two.
+         ⛔ NO UNDO STACK: that is a feature and this is a defect.
+         ⚠ NO NEW KEY, NO NEW RULE.  `lab.card.armdel` and `.lab-x.armed` both
+         ship already, which at 91% of the ceiling is the point.
+         ⚠ The ✕ restore is an escape and never the character: the glyph
+         baseline is a shrink-only ratchet at 25 sites. */
+      if(d){ if(d.dataset.armed!=='1'){ d.dataset.armed='1'; d.dataset.o=d.textContent;
+        var _cv=_t('lab.card.armdel'); if(_cv) d.textContent=_cv; d.classList.add('armed');
+        var _ca0=d.getAttribute('aria-label')||'', _can=_t('ui.arm.confirm',{label:_ca0});
+        d.dataset.a0=_ca0; if(_can) d.setAttribute('aria-label',_can);
+        if(window.oligoAnnounce) window.oligoAnnounce(_can||_ca0);
+        setTimeout(function(){ if(d&&d.dataset.armed==='1'){ d.dataset.armed='0'; d.textContent=d.dataset.o||'\u2715'; d.classList.remove('armed'); if(d.dataset.a0) d.setAttribute('aria-label',d.dataset.a0); } },2500); return; }
+        deleteComment(d.getAttribute('data-cmt-del')).then(paint).catch(function(err){ toast(err.message||_t('lab.err.del')); }); } });
+    async function paint(){ var body=mo.box.querySelector('[data-cmt-body]'); if(!body) return;
+      /* ⚠ ONCE, NOT PER ROW.  null means "not asked yet"; '' means "asked and
+         there is none", so a failed decode is not re-asked on every repaint. */
+      if(_uid===null){ try{ _uid=(await myUid())||''; }catch(_e){ _uid=''; } }
+      try{ var rows=await fetchComments(rowId); body.innerHTML=(rows.length? rows.map(function(c){ var own=(!!_uid && String(c.user_id||'')===_uid), may=(own||_mgr); return '<div class="lab-cmt"><div class="lc-cmt-h"><span class="lc-cmt-a">'+esc(c.author_email||_t('lab.cmt.someone'))+'</span>'+(may?'<button type="button" class="lab-x" data-cmt-del="'+esc(c.id)+'" aria-label="'+esc(_t('lab.cmt.del'))+'">✕</button>':'')+'</div><div class="lc-cmt-b">'+esc(c.body||'')+'</div></div>'; }).join('') : '<div class="lab-hint">'+esc(_t('lab.cmt.none'))+'</div>'); }catch(err){ body.innerHTML='<div class="lab-hint">'+esc(_t('lab.cmt.failload'))+'</div>'; } }
     _setDlgPaint(shell); shell();
   }
   // ---- version history (append-only; the trigger writes it and nobody else) ----
@@ -19016,24 +19468,20 @@ try{
     for(i=0;i<kids.length;i++) n+=fCountDeep(folders, list, kids[i].id);
     return n;
   }
-  function folderCounts(list){ var c={__unfiled:0,__all:list.length}; list.forEach(function(e){ if(e.__folderId) c[e.__folderId]=(c[e.__folderId]||0)+1; else c.__unfiled++; }); return c; }
-  function folderRailHTML(folders, list, cur){ var c=folderCounts(list);
-    var html='<div class="frail" data-frail>'+
-      '<button type="button" class="fchip'+(cur===''?' on':'')+'" data-fchip="__all">'+esc(_t('lab.fold.all'))+'<span class="fcount">'+_n(c.__all)+'</span></button>'+
-      '<button type="button" class="fchip'+(cur==='__unfiled'?' on':'')+'" data-fchip="__unfiled" data-drop="__unfiled">'+esc(_t('lab.fold.unfiled'))+'<span class="fcount">'+_n(c.__unfiled)+'</span></button>';
-    /* R51 (audit F-07): this nested a role="button" INSIDE a real <button>.
-       Invalid, ambiguous to activate, and the nested control had click wiring
-       but no Enter/Space handling, so it was keyboard-dead. Two native sibling
-       buttons in a plain wrapper: native keyboard behaviour, distinct
-       accessible names, and the drop target moves to the wrapper so
-       drag-and-drop for pointer users is unchanged. */
-    (folders||[]).forEach(function(f){ html+='<span class="fchipwrap'+(cur===f.id?' on':'')+'" data-drop="'+esc(f.id)+'">'+
-      '<button type="button" class="fchip'+(cur===f.id?' on':'')+'" data-fchip="'+esc(f.id)+'" aria-label="'+esc(_t('lab.fold.open',{name:f.name}))+'">'+esc(f.name)+'<span class="fcount">'+_n(c[f.id]||0)+'</span></button>'+
-      '<button type="button" class="fmenu" data-fmenu="'+esc(f.id)+'" data-fname="'+esc(f.name)+'" aria-label="'+esc(_t('lab.fold.menu',{name:f.name}))+'" title="'+esc(_t('lab.fold.menuT'))+'">⋯</button>'+
-      '</span>'; });
-    html+='<button type="button" class="fchip fnew" data-fnew>'+esc(_t('lab.fold.new'))+'</button></div>';
-    return html;
-  }
+  /* R86d/J4 (the ruling on R85a review row 1).  ⭐ THE DEAD CHIP-RAIL RENDERER
+     AND ITS COUNTER WERE HERE AND ARE GONE -- unreachable since R76e replaced
+     the rail with the folder browser, and the last place the DIRECT-ONLY folder
+     count survived.  ⛔ Blast radius measured first, as R84d's twin deletion
+     earned: of the four data attributes it emitted, three have live emitters
+     elsewhere and keep their delegates, and the two that leave with it had no
+     delegate and no other emitter.
+     ⚠⚠ NOT ONE OF THOSE NAMES IS SPELLED IN THIS COMMENT, and that is the
+     rule rather than shyness: two shipped comments spelling `folder_reorder`
+     have made a "grep reads 0" proof read 2 since R76e.  A tombstone that
+     spells its own corpse is how a deletion stops being greppable.
+     ⚠ THE STYLESHEET STAYS: round81a/fadedctl.mjs probes those rules against
+     its OWN fixture markup, so they are its subject and not this function's.
+     docs/ROUND86d-CHANGE-NOTE.md §4 names every one of them. */
   function openMoveTo(rowId,name){ var _nm=name||_t('lab.dlg.aseq'); var mo=modal(_t('lab.fold.movearia',{name:_nm}),'none');
     function shell(){
       mo.box.innerHTML='<button type="button" class="oshare-btn oshare-x" aria-label="'+esc(_t('lab.dlg.close'))+'">✕</button><h3>'+esc(_t('lab.fold.moveh'))+'</h3><p class="oshare-sub">'+esc(name||_t('lab.dlg.seq'))+'</p><div class="oshare-list">'+
@@ -19169,7 +19617,10 @@ try{
       +'<button type="button" class="lab-x2" data-lab-load="'+esc(e.id)+'">'+esc(_t(labId?'lab.card.opencopy':'lab.card.open'))+'</button>';
     var shared = !labId && !!e.__labId;
     if((isAuthor||_isMgr(labId)) && !shared) acts+='<button type="button" class="lab-x2" data-lab-move="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'">'+esc(_t('lab.fold.go'))+'</button>';
-    if(labId){ acts+='<button type="button" class="lab-x2" data-lab-comments="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'">'+esc(_t('lab.cmt.h'))+'</button>';
+    /* R86d/J1.  ⚠ THE LAB TRAVELS WITH THE BUTTON.  `_isMgr` needs a lab id
+       and the dialog had none, so it could not tell a manager from anybody
+       else.  `labId` is already this function's own argument. */
+    if(labId){ acts+='<button type="button" class="lab-x2" data-lab-comments="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'" data-lab-lid="'+esc(labId||'')+'">'+esc(_t('lab.cmt.h'))+'</button>';
       /* R84a. ⭐ THE UNDO, ON THE CARD.  It is offered to EVERY seat and
          not only to those who may write, because reading what a record used
          to say is not editing it -- the server agrees, and grants the SELECT
@@ -19825,38 +20276,35 @@ try{
          is the server's own answer and cannot be written by an editor.
          ⚠ THIS LINE IS THE ONE LANE B'S PASTE 2 IS HELD ON. A granted editor's
          save was the last writer of this key on the strands table. */
-      var qs='strands?id=eq.'+encodeURIComponent(sh.rowId)
-           + '&updated_at=eq.'+encodeURIComponent(sh.ver);
       /* ⚠⚠ return=representation, NOT return=minimal. Every other write in this
          file uses minimal; this one cannot. A minimal response is a bare 204
          whether the write landed on one row or none, and telling those apart is
          the whole point. */
-      /* R85a/J3a.  ⛔⛔ ONE RETRY, AND THE RULING NEEDS IT.
-         Albert's ruling is that edOutcome compares `version`; the OUTCOME he
-         ruled for is that "a re-filing then retries cleanly instead of accusing
-         somebody".  Measured, the compare alone does not deliver that: with the
-         compare-and-swap still keyed on `updated_at`, a re-filing still returns
-         zero rows, and a version-compare then falls PAST the conflict branch to
-         the one that says the reader has lost their rights.  That is a worse
-         sentence than the one being fixed.  So the diagnosis answers `stale`
-         and the save is re-issued once against the updated_at it just read.
-         ⚠⚠ TWO ATTEMPTS, NEVER A LOOP.  A second stale answer means
-         the row is being re-filed repeatedly; it says so and stops, rather than
-         spinning against another client.
-         ⛔ AND `updated_at` IS NOT TOUCHED, on or off the wire.  It means
-         "when the row last changed", a re-filing IS a change to the row, and
-         the local-first sync orders on it.  Narrowing it would be a second,
-         unruled behaviour change. */
-      var rows=null, _att;
-      for(_att=0;_att<2;_att++){
-        qs='strands?id=eq.'+encodeURIComponent(sh.rowId)
-         + '&updated_at=eq.'+encodeURIComponent(sh.ver);
-        rows=await rest('PATCH',qs,{seq:entry.seq||'',data:d},{Prefer:'return=representation'});
-        if(rows && rows.length) break;
-        var _out=await edOutcome(sh);
-        if(_out!=='stale') return _out;
-      }
-      if(!(rows && rows.length)){ toast(_t('lab.ed.again!')); return 'stale'; }
+      /* R86d/J3 (the ruling on R85a review row 2, 2026-08-25).
+         ⭐⭐ KEYED ON `version`, AND THE RETRY GOES WITH IT.  The write and the
+         diagnosis now ask the SAME question, which was the root cause: keyed on
+         `updated_at` a re-filing matched no row, so a save that should simply
+         land had to be diagnosed, re-issued and bounded.
+         ⛔ THE SAFETY ARGUMENT, RE-VERIFIED against the APPLIED paste rather
+         than carried over: `strand_content_changed` is seq / name / tags / data,
+         this PATCH writes seq and data and a rename writes name, so every
+         ordinary edit bumps the version; the column is `not null default 1`.
+         ⛔⛔ AND THE SECOND TERM, WHICH THE RULING DID NOT KNOW IT NEEDED.  A
+         teardown re-homes every record in a SECURITY DEFINER bulk UPDATE that
+         takes the guard's `else` branch, so it leaves `version` STANDING while
+         `lab_id` goes null.  A version-only compare would MATCH there: the
+         author's save would land and be confirmed "Saved to the lab." after the
+         lab was destroyed, silently retiring R84d/J6b's closed box for the one
+         person it was built for.  ⚠ A re-filing INSIDE the lab moves neither
+         term, so it still lands.
+         ⚠ `lab.ed.again!` STAYS; row 2 predicted it would not.  `stale` is
+         still reachable -- a record relocated to a DIFFERENT lab misses on
+         `lab_id` while `version` stands.  What goes is the LOOP. */
+      var _lq=sh.labId?('&lab_id=eq.'+encodeURIComponent(sh.labId)):'';
+      var qs='strands?id=eq.'+encodeURIComponent(sh.rowId)
+           + '&version=eq.'+encodeURIComponent(sh.vn)+_lq;
+      var rows=await rest('PATCH',qs,{seq:entry.seq||'',data:d},{Prefer:'return=representation'});
+      if(!(rows && rows.length)){ var _out=await edOutcome(sh); if(_out==='stale') toast(_t('lab.ed.again!')); return _out; }
       if(rows && rows.length){
         var r0=rows[0];
         sh.ver=r0.updated_at||sh.ver;
@@ -20070,7 +20518,13 @@ try{
             ? ('<button type="button" class="lab-x2" data-ed-leave>'+esc(_t('lab.ed.leave'))+'</button>')
             : ((latest?('<button type="button" class="lab-x2" data-ed-latest>'+esc(_t('lab.ed.discard'))+'</button>'):'')
               +'<button type="button" class="lab-x2" data-ed-leave>'+esc(_t('lab.ed.leave'))+'</button>')))
-        +'</div>';
+        +'</div>'
+        /* R86d/J5b (ruling 7).  ⚠ 2 of 3 readers asked whether Discard reaches
+           only the edit in front of them or also the copy already filed.
+           ⛔ ONLY WHERE THE CONTROL IS: `conflict` draws Keep and Discard-and-
+           open-the-latest instead.  ⚠ `.labed-m` is the shipped muted-note
+           class, so no rule is added to either stylesheet. */
+        +(why!=='conflict'?('<p class="labed-m">'+esc(_t('lab.ed.leaveb!'))+'</p>'):'');
     }
     mo.box.addEventListener('click', function(ev){
       var b;
@@ -20316,7 +20770,7 @@ try{
         toast(_t('lab.card.deleted')); renderLabList();
       }).catch(function(err){ toast(err.message||_t('lab.err.remove')); _rowBusy(b,false,_mnm); });
       return; }
-    if((b=e.target.closest('[data-lab-comments]'))){ openComments(b.getAttribute('data-lab-comments'), b.getAttribute('data-lab-nm')); return; }
+    if((b=e.target.closest('[data-lab-comments]'))){ openComments(b.getAttribute('data-lab-comments'), b.getAttribute('data-lab-nm'), b.getAttribute('data-lab-lid')); return; }
     if((b=e.target.closest('[data-lab-vers]'))){ openVersions(b.getAttribute('data-lab-vers'), b.getAttribute('data-lab-nm')); return; }
     if((b=e.target.closest('[data-labmon-add]'))){ openMonPicker(); return; }
     if((b=e.target.closest('[data-labmon-mine]'))){ var _lm=_labMon[+b.getAttribute('data-labmon-mine')]; if(_lm){ addLabMonomerToMine(Object.assign({},_lm.data||{},{code:_lm.code})); } return; }
