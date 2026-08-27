@@ -725,6 +725,28 @@ var I18N = {
   "lab.rules.mgr":"A manager adds and removes people, changes roles, and buys seats. A manager can also edit, delete, file and copy anything in the lab.",
   "lab.rules.see":"Everyone in the lab sees the shared library, and can open anything in it and save their own copy. A member’s own workspace is visible only to them and to the lab’s managers.",
   "lab.sel.none":"Select one or more sequences to export.",
+  "lab.shelf.h":"Archive",
+  "lab.shelf.go":"Archive",
+  "lab.shelf.back":"Put back",
+  "lab.shelf.purge":"Delete for good",
+  "lab.shelf.armpurge":"Delete for good?",
+  "lab.shelf.ariapurge":"Delete {name} for good",
+  "lab.shelf.done":"Archived.",
+  "lab.shelf.backdone":"Put back in the library.",
+  "lab.shelf.purged":"Deleted for good.",
+  "lab.shelf.emptyh":"Nothing is archived",
+  "lab.shelf.empty":"Records you archive are kept here, out of the library. You can put any of them back.",
+  "lab.shelf.quota!":"Archiving does not free up space. An archived record still counts toward the limit on your plan.",
+  "lab.shelf.sub!":"These records are out of the library and are kept. Nothing here is deleted unless you delete it.",
+  "lab.shelf.labwarn!":"Archiving a shared record takes it out of the library for the whole lab. The person who saved it and the lab\u2019s managers can put it back.",
+  "lab.shelf.err.notauthor":"Only the person who saved this record can archive it, put it back, or delete it.",
+  "lab.shelf.err.notmgr":"Only the person who saved this record, or a manager of this lab, can archive it, put it back, or delete it.",
+  "lab.shelf.err.notmember":"You are not a member of this lab, so you cannot change what is in its archive.",
+  "lab.shelf.err.gone":"That record is no longer there.",
+  "lab.shelf.err.full":"This space holds as many archived records as it can. Put one back, or delete one for good, before archiving another.",
+  "lab.shelf.savedaway":"Saved. Somebody archived this record while you were editing, so it is no longer in the library.",
+  "lab.shelf.seeit":"Open the archive",
+  "lab.shelf.wasarchived!":"This record has also been moved to the archive, so it is no longer in the library.",
   "lab.sub!":"A lab is one shared library. Everyone in it sees the same sequences and monomers, and everyone keeps their own work if the lab is ever closed.",
   "lab.tab":"Lab",
   "lab.tag.leaving":"Leaving {date}",
@@ -2046,6 +2068,28 @@ var I18N = {
   "lab.rules.mgr":"\u8ca0\u8cac\u4eba\u53ef\u4ee5\u65b0\u589e\u6216\u79fb\u9664\u6210\u54e1\u3001\u8b8a\u66f4\u89d2\u8272\uff0c\u4e26\u8cfc\u8cb7\u5e2d\u4f4d\u3002\u8ca0\u8cac\u4eba\u4e5f\u53ef\u4ee5\u7de8\u8f2f\u3001\u522a\u9664\u3001\u8907\u88fd\u5be6\u9a57\u5ba4\u88e1\u7684\u4efb\u4f55\u5167\u5bb9\uff0c\u6216\u5c07\u5b83\u5011\u653e\u5165\u8cc7\u6599\u593e\u3002",
   "lab.rules.see":"\u5be6\u9a57\u5ba4\u88e1\u7684\u6bcf\u500b\u4eba\u90fd\u770b\u5f97\u5230\u5171\u7528\u8cc7\u6599\u5eab\uff0c\u4e5f\u53ef\u4ee5\u958b\u555f\u88e1\u9762\u7684\u4efb\u4f55\u5167\u5bb9\u4e26\u5132\u5b58\u6210\u81ea\u5df1\u7684\u526f\u672c\u3002\u6210\u54e1\u81ea\u5df1\u7684\u5de5\u4f5c\u5340\u53ea\u6709\u672c\u4eba\u548c\u5be6\u9a57\u5ba4\u8ca0\u8cac\u4eba\u770b\u5f97\u5230\u3002",
   "lab.sel.none":"\u8acb\u5148\u9078\u53d6\u8981\u532f\u51fa\u7684\u5e8f\u5217\u3002",
+  "lab.shelf.h":"\u5c01\u5b58",
+  "lab.shelf.go":"\u5c01\u5b58",
+  "lab.shelf.back":"\u653e\u56de",
+  "lab.shelf.purge":"\u6c38\u4e45\u522a\u9664",
+  "lab.shelf.armpurge":"\u78ba\u5b9a\u6c38\u4e45\u522a\u9664\uff1f",
+  "lab.shelf.ariapurge":"\u6c38\u4e45\u522a\u9664\u300c{name}\u300d",
+  "lab.shelf.done":"\u5df2\u5c01\u5b58\u3002",
+  "lab.shelf.backdone":"\u5df2\u653e\u56de\u8cc7\u6599\u5eab\u3002",
+  "lab.shelf.purged":"\u5df2\u6c38\u4e45\u522a\u9664\u3002",
+  "lab.shelf.emptyh":"\u6c92\u6709\u5c01\u5b58\u7684\u7d00\u9304",
+  "lab.shelf.empty":"\u5c01\u5b58\u7684\u7d00\u9304\u6703\u7559\u5728\u9019\u88e1\uff0c\u4e0d\u6703\u51fa\u73fe\u5728\u8cc7\u6599\u5eab\u3002\u4f60\u96a8\u6642\u53ef\u4ee5\u628a\u5b83\u5011\u653e\u56de\u53bb\u3002",
+  "lab.shelf.quota!":"\u5c01\u5b58\u4e0d\u6703\u7a7a\u51fa\u984d\u5ea6\u3002\u5c01\u5b58\u7684\u7d00\u9304\u4ecd\u7136\u8a08\u5165\u4f60\u65b9\u6848\u7684\u4e0a\u9650\u3002",
+  "lab.shelf.sub!":"\u9019\u4e9b\u7d00\u9304\u5df2\u7d93\u79fb\u51fa\u8cc7\u6599\u5eab\uff0c\u4f46\u4ecd\u7136\u4fdd\u7559\u8457\u3002\u9664\u975e\u4f60\u81ea\u5df1\u522a\u9664\uff0c\u5426\u5247\u9019\u88e1\u7684\u6771\u897f\u4e0d\u6703\u6d88\u5931\u3002",
+  "lab.shelf.labwarn!":"\u5c01\u5b58\u5171\u7528\u7684\u7d00\u9304\uff0c\u6703\u8b93\u6574\u500b\u5be6\u9a57\u5ba4\u7684\u8cc7\u6599\u5eab\u90fd\u770b\u4e0d\u5230\u5b83\u3002\u5132\u5b58\u9019\u7b46\u7d00\u9304\u7684\u4eba\u548c\u5be6\u9a57\u5ba4\u8ca0\u8cac\u4eba\u53ef\u4ee5\u628a\u5b83\u653e\u56de\u53bb\u3002",
+  "lab.shelf.err.notauthor":"\u53ea\u6709\u5132\u5b58\u9019\u7b46\u7d00\u9304\u7684\u4eba\u53ef\u4ee5\u5c01\u5b58\u3001\u653e\u56de\u6216\u522a\u9664\u5b83\u3002",
+  "lab.shelf.err.notmgr":"\u53ea\u6709\u5132\u5b58\u9019\u7b46\u7d00\u9304\u7684\u4eba\uff0c\u6216\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u8ca0\u8cac\u4eba\uff0c\u53ef\u4ee5\u5c01\u5b58\u3001\u653e\u56de\u6216\u522a\u9664\u5b83\u3002",
+  "lab.shelf.err.notmember":"\u4f60\u4e0d\u662f\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u6210\u54e1\uff0c\u6240\u4ee5\u7121\u6cd5\u8b8a\u66f4\u5b83\u5c01\u5b58\u7684\u5167\u5bb9\u3002",
+  "lab.shelf.err.gone":"\u9019\u7b46\u7d00\u9304\u5df2\u7d93\u4e0d\u5728\u4e86\u3002",
+  "lab.shelf.err.full":"\u9019\u500b\u7a7a\u9593\u5c01\u5b58\u7684\u7d00\u9304\u5df2\u7d93\u9054\u5230\u4e0a\u9650\u3002\u8acb\u5148\u653e\u56de\u4e00\u7b46\uff0c\u6216\u6c38\u4e45\u522a\u9664\u4e00\u7b46\uff0c\u518d\u5c01\u5b58\u65b0\u7684\u3002",
+  "lab.shelf.savedaway":"\u5df2\u5132\u5b58\u3002\u4f60\u5728\u7de8\u8f2f\u7684\u6642\u5019\u6709\u4eba\u628a\u9019\u7b46\u7d00\u9304\u5c01\u5b58\u4e86\uff0c\u6240\u4ee5\u5b83\u5df2\u7d93\u4e0d\u5728\u8cc7\u6599\u5eab\u88e1\u3002",
+  "lab.shelf.seeit":"\u958b\u555f\u5c01\u5b58",
+  "lab.shelf.wasarchived!":"\u9019\u7b46\u7d00\u9304\u540c\u6642\u4e5f\u88ab\u5c01\u5b58\u4e86\uff0c\u6240\u4ee5\u5b83\u5df2\u7d93\u4e0d\u5728\u8cc7\u6599\u5eab\u88e1\u3002",
   "lab.sub!":"\u5be6\u9a57\u5ba4\u5c31\u662f\u4e00\u500b\u5171\u7528\u7684\u8cc7\u6599\u5eab\u3002\u5be6\u9a57\u5ba4\u6210\u54e1\u90fd\u770b\u5f97\u5230\u540c\u4e00\u6279\u5e8f\u5217\u8207\u55ae\u9ad4\uff0c\u800c\u82e5\u5be6\u9a57\u5ba4\u65e5\u5f8c\u7d50\u675f\uff0c\u6bcf\u500b\u4eba\u4ecd\u4fdd\u7559\u81ea\u5df1\u7684\u6210\u679c\u3002",
   "lab.tab":"\u5be6\u9a57\u5ba4",
   "lab.tag.leaving":"{date} \u96e2\u958b",
@@ -3361,6 +3405,28 @@ var I18N = {
   "lab.rules.mgr":"\u8d1f\u8d23\u4eba\u53ef\u4ee5\u6dfb\u52a0\u6216\u79fb\u9664\u6210\u5458\u3001\u53d8\u66f4\u89d2\u8272\uff0c\u5e76\u8d2d\u4e70\u5e2d\u4f4d\u3002\u8d1f\u8d23\u4eba\u4e5f\u53ef\u4ee5\u7f16\u8f91\u3001\u5220\u9664\u3001\u590d\u5236\u5b9e\u9a8c\u5ba4\u91cc\u7684\u4efb\u4f55\u5185\u5bb9\uff0c\u6216\u5c06\u5b83\u4eec\u653e\u5165\u6587\u4ef6\u5939\u3002",
   "lab.rules.see":"\u5b9e\u9a8c\u5ba4\u91cc\u7684\u6bcf\u4e2a\u4eba\u90fd\u770b\u5f97\u5230\u5171\u7528\u6570\u636e\u5e93\uff0c\u4e5f\u53ef\u4ee5\u6253\u5f00\u91cc\u9762\u7684\u4efb\u4f55\u5185\u5bb9\u5e76\u4fdd\u5b58\u4e3a\u81ea\u5df1\u7684\u526f\u672c\u3002\u6210\u5458\u81ea\u5df1\u7684\u5de5\u4f5c\u53f0\u53ea\u6709\u672c\u4eba\u548c\u5b9e\u9a8c\u5ba4\u8d1f\u8d23\u4eba\u770b\u5f97\u5230\u3002",
   "lab.sel.none":"\u8bf7\u5148\u9009\u53d6\u8981\u5bfc\u51fa\u7684\u5e8f\u5217\u3002",
+  "lab.shelf.h":"\u5f52\u6863",
+  "lab.shelf.go":"\u5f52\u6863",
+  "lab.shelf.back":"\u653e\u56de",
+  "lab.shelf.purge":"\u6c38\u4e45\u5220\u9664",
+  "lab.shelf.armpurge":"\u786e\u5b9a\u6c38\u4e45\u5220\u9664\uff1f",
+  "lab.shelf.ariapurge":"\u6c38\u4e45\u5220\u9664\u201c{name}\u201d",
+  "lab.shelf.done":"\u5df2\u5f52\u6863\u3002",
+  "lab.shelf.backdone":"\u5df2\u653e\u56de\u6570\u636e\u5e93\u3002",
+  "lab.shelf.purged":"\u5df2\u6c38\u4e45\u5220\u9664\u3002",
+  "lab.shelf.emptyh":"\u6ca1\u6709\u5f52\u6863\u7684\u8bb0\u5f55",
+  "lab.shelf.empty":"\u5f52\u6863\u7684\u8bb0\u5f55\u4f1a\u7559\u5728\u8fd9\u91cc\uff0c\u4e0d\u4f1a\u51fa\u73b0\u5728\u6570\u636e\u5e93\u3002\u4f60\u968f\u65f6\u53ef\u4ee5\u628a\u5b83\u4eec\u653e\u56de\u53bb\u3002",
+  "lab.shelf.quota!":"\u5f52\u6863\u4e0d\u4f1a\u7a7a\u51fa\u989d\u5ea6\u3002\u5f52\u6863\u7684\u8bb0\u5f55\u4ecd\u7136\u8ba1\u5165\u4f60\u65b9\u6848\u7684\u4e0a\u9650\u3002",
+  "lab.shelf.sub!":"\u8fd9\u4e9b\u8bb0\u5f55\u5df2\u7ecf\u79fb\u51fa\u6570\u636e\u5e93\uff0c\u4f46\u4ecd\u7136\u4fdd\u7559\u7740\u3002\u9664\u975e\u4f60\u81ea\u5df1\u5220\u9664\uff0c\u5426\u5219\u8fd9\u91cc\u7684\u4e1c\u897f\u4e0d\u4f1a\u6d88\u5931\u3002",
+  "lab.shelf.labwarn!":"\u5f52\u6863\u5171\u7528\u7684\u8bb0\u5f55\uff0c\u4f1a\u8ba9\u6574\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u6570\u636e\u5e93\u90fd\u770b\u4e0d\u5230\u5b83\u3002\u4fdd\u5b58\u8fd9\u6761\u8bb0\u5f55\u7684\u4eba\u548c\u5b9e\u9a8c\u5ba4\u8d1f\u8d23\u4eba\u53ef\u4ee5\u628a\u5b83\u653e\u56de\u53bb\u3002",
+  "lab.shelf.err.notauthor":"\u53ea\u6709\u4fdd\u5b58\u8fd9\u6761\u8bb0\u5f55\u7684\u4eba\u53ef\u4ee5\u5f52\u6863\u3001\u653e\u56de\u6216\u5220\u9664\u5b83\u3002",
+  "lab.shelf.err.notmgr":"\u53ea\u6709\u4fdd\u5b58\u8fd9\u6761\u8bb0\u5f55\u7684\u4eba\uff0c\u6216\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u8d1f\u8d23\u4eba\uff0c\u53ef\u4ee5\u5f52\u6863\u3001\u653e\u56de\u6216\u5220\u9664\u5b83\u3002",
+  "lab.shelf.err.notmember":"\u4f60\u4e0d\u662f\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u6210\u5458\uff0c\u6240\u4ee5\u65e0\u6cd5\u53d8\u66f4\u5b83\u5f52\u6863\u7684\u5185\u5bb9\u3002",
+  "lab.shelf.err.gone":"\u8fd9\u6761\u8bb0\u5f55\u5df2\u7ecf\u4e0d\u5728\u4e86\u3002",
+  "lab.shelf.err.full":"\u8fd9\u4e2a\u7a7a\u95f4\u5f52\u6863\u7684\u8bb0\u5f55\u5df2\u7ecf\u8fbe\u5230\u4e0a\u9650\u3002\u8bf7\u5148\u653e\u56de\u4e00\u6761\uff0c\u6216\u6c38\u4e45\u5220\u9664\u4e00\u6761\uff0c\u518d\u5f52\u6863\u65b0\u7684\u3002",
+  "lab.shelf.savedaway":"\u5df2\u4fdd\u5b58\u3002\u4f60\u5728\u7f16\u8f91\u7684\u65f6\u5019\u6709\u4eba\u628a\u8fd9\u6761\u8bb0\u5f55\u5f52\u6863\u4e86\uff0c\u6240\u4ee5\u5b83\u5df2\u7ecf\u4e0d\u5728\u6570\u636e\u5e93\u91cc\u3002",
+  "lab.shelf.seeit":"\u6253\u5f00\u5f52\u6863",
+  "lab.shelf.wasarchived!":"\u8fd9\u6761\u8bb0\u5f55\u540c\u65f6\u4e5f\u88ab\u5f52\u6863\u4e86\uff0c\u6240\u4ee5\u5b83\u5df2\u7ecf\u4e0d\u5728\u6570\u636e\u5e93\u91cc\u3002",
   "lab.sub!":"\u5b9e\u9a8c\u5ba4\u5c31\u662f\u4e00\u4e2a\u5171\u7528\u7684\u6570\u636e\u5e93\u3002\u5b9e\u9a8c\u5ba4\u6210\u5458\u90fd\u770b\u5f97\u5230\u540c\u4e00\u6279\u5e8f\u5217\u4e0e\u5355\u4f53\uff0c\u800c\u82e5\u5b9e\u9a8c\u5ba4\u65e5\u540e\u7ed3\u675f\uff0c\u6bcf\u4e2a\u4eba\u4ecd\u4fdd\u7559\u81ea\u5df1\u7684\u6210\u679c\u3002",
   "lab.tab":"\u5b9e\u9a8c\u5ba4",
   "lab.tag.leaving":"{date} \u79bb\u5f00",
@@ -4676,6 +4742,28 @@ var I18N = {
   "lab.rules.mgr":"\u7ba1\u7406\u8005\u306f\u30e1\u30f3\u30d0\u30fc\u306e\u8ffd\u52a0\u30fb\u524a\u9664\u3001\u5f79\u5272\u306e\u5909\u66f4\u3001\u30e9\u30a4\u30bb\u30f3\u30b9\u306e\u8cfc\u5165\u304c\u3067\u304d\u307e\u3059\u3002\u7ba1\u7406\u8005\u306f\u30e9\u30dc\u5185\u306e\u3042\u3089\u3086\u308b\u3082\u306e\u3092\u7de8\u96c6\u30fb\u524a\u9664\u30fb\u30b3\u30d4\u30fc\u3057\u305f\u308a\u3001\u30d5\u30a9\u30eb\u30c0\u30fc\u306b\u5165\u308c\u305f\u308a\u3059\u308b\u3053\u3068\u3082\u3067\u304d\u307e\u3059\u3002",
   "lab.rules.see":"\u30e9\u30dc\u306e\u5168\u54e1\u304c\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u3092\u898b\u3089\u308c\u307e\u3059\u3002\u305d\u306e\u4e2d\u306e\u3082\u306e\u3092\u958b\u3044\u3066\u81ea\u5206\u306e\u30b3\u30d4\u30fc\u3068\u3057\u3066\u4fdd\u5b58\u3059\u308b\u3053\u3068\u3082\u3067\u304d\u307e\u3059\u3002\u30e1\u30f3\u30d0\u30fc\u81ea\u8eab\u306e\u30ef\u30fc\u30af\u30b9\u30da\u30fc\u30b9\u306f\u3001\u672c\u4eba\u3068\u30e9\u30dc\u7ba1\u7406\u8005\u3060\u3051\u304c\u898b\u3089\u308c\u307e\u3059\u3002",
   "lab.sel.none":"\u66f8\u304d\u51fa\u3059\u914d\u5217\u3092\u9078\u3093\u3067\u304f\u3060\u3055\u3044\u3002",
+  "lab.shelf.h":"\u30a2\u30fc\u30ab\u30a4\u30d6",
+  "lab.shelf.go":"\u30a2\u30fc\u30ab\u30a4\u30d6",
+  "lab.shelf.back":"\u623b\u3059",
+  "lab.shelf.purge":"\u5b8c\u5168\u306b\u524a\u9664",
+  "lab.shelf.armpurge":"\u5b8c\u5168\u306b\u524a\u9664\u3057\u307e\u3059\u304b\uff1f",
+  "lab.shelf.ariapurge":"\u300c{name}\u300d\u3092\u5b8c\u5168\u306b\u524a\u9664",
+  "lab.shelf.done":"\u30a2\u30fc\u30ab\u30a4\u30d6\u3057\u307e\u3057\u305f\u3002",
+  "lab.shelf.backdone":"\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u623b\u3057\u307e\u3057\u305f\u3002",
+  "lab.shelf.purged":"\u5b8c\u5168\u306b\u524a\u9664\u3057\u307e\u3057\u305f\u3002",
+  "lab.shelf.emptyh":"\u30a2\u30fc\u30ab\u30a4\u30d6\u3055\u308c\u305f\u30ec\u30b3\u30fc\u30c9\u306f\u3042\u308a\u307e\u305b\u3093",
+  "lab.shelf.empty":"\u30a2\u30fc\u30ab\u30a4\u30d6\u3057\u305f\u30ec\u30b3\u30fc\u30c9\u306f\u30e9\u30a4\u30d6\u30e9\u30ea\u304b\u3089\u5916\u308c\u3001\u3053\u3053\u306b\u6b8b\u308a\u307e\u3059\u3002\u3044\u3064\u3067\u3082\u623b\u305b\u307e\u3059\u3002",
+  "lab.shelf.quota!":"\u30a2\u30fc\u30ab\u30a4\u30d6\u3057\u3066\u3082\u7a7a\u304d\u306f\u5897\u3048\u307e\u305b\u3093\u3002\u30a2\u30fc\u30ab\u30a4\u30d6\u3057\u305f\u30ec\u30b3\u30fc\u30c9\u3082\u30d7\u30e9\u30f3\u306e\u4e0a\u9650\u306b\u6570\u3048\u3089\u308c\u307e\u3059\u3002",
+  "lab.shelf.sub!":"\u3053\u308c\u3089\u306e\u30ec\u30b3\u30fc\u30c9\u306f\u30e9\u30a4\u30d6\u30e9\u30ea\u304b\u3089\u5916\u308c\u3066\u3044\u307e\u3059\u304c\u3001\u4fdd\u7ba1\u3055\u308c\u3066\u3044\u307e\u3059\u3002\u81ea\u5206\u3067\u524a\u9664\u3057\u306a\u3044\u304b\u304e\u308a\u3001\u3053\u3053\u304b\u3089\u6d88\u3048\u308b\u3053\u3068\u306f\u3042\u308a\u307e\u305b\u3093\u3002",
+  "lab.shelf.labwarn!":"\u5171\u6709\u30ec\u30b3\u30fc\u30c9\u3092\u30a2\u30fc\u30ab\u30a4\u30d6\u3059\u308b\u3068\u3001\u30e9\u30dc\u5168\u54e1\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u304b\u3089\u5916\u308c\u307e\u3059\u3002\u4fdd\u5b58\u3057\u305f\u672c\u4eba\u3068\u30e9\u30dc\u306e\u7ba1\u7406\u8005\u304c\u623b\u305b\u307e\u3059\u3002",
+  "lab.shelf.err.notauthor":"\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u3092\u30a2\u30fc\u30ab\u30a4\u30d6\u3057\u305f\u308a\u3001\u623b\u3057\u305f\u308a\u3001\u524a\u9664\u3057\u305f\u308a\u3067\u304d\u308b\u306e\u306f\u3001\u4fdd\u5b58\u3057\u305f\u672c\u4eba\u3060\u3051\u3067\u3059\u3002",
+  "lab.shelf.err.notmgr":"\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u3092\u30a2\u30fc\u30ab\u30a4\u30d6\u3057\u305f\u308a\u3001\u623b\u3057\u305f\u308a\u3001\u524a\u9664\u3057\u305f\u308a\u3067\u304d\u308b\u306e\u306f\u3001\u4fdd\u5b58\u3057\u305f\u672c\u4eba\u3068\u3001\u3053\u306e\u30e9\u30dc\u306e\u7ba1\u7406\u8005\u3060\u3051\u3067\u3059\u3002",
+  "lab.shelf.err.notmember":"\u3042\u306a\u305f\u306f\u3053\u306e\u30e9\u30dc\u306e\u30e1\u30f3\u30d0\u30fc\u3067\u306f\u306a\u3044\u305f\u3081\u3001\u3053\u306e\u30e9\u30dc\u306e\u30a2\u30fc\u30ab\u30a4\u30d6\u3092\u5909\u66f4\u3067\u304d\u307e\u305b\u3093\u3002",
+  "lab.shelf.err.gone":"\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u306f\u3082\u3046\u3042\u308a\u307e\u305b\u3093\u3002",
+  "lab.shelf.err.full":"\u3053\u306e\u5834\u6240\u306e\u30a2\u30fc\u30ab\u30a4\u30d6\u306f\u4e0a\u9650\u306b\u9054\u3057\u3066\u3044\u307e\u3059\u3002\u3072\u3068\u3064\u623b\u3059\u304b\u3001\u3072\u3068\u3064\u5b8c\u5168\u306b\u524a\u9664\u3057\u3066\u304b\u3089\u3001\u6b21\u3092\u30a2\u30fc\u30ab\u30a4\u30d6\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
+  "lab.shelf.savedaway":"\u4fdd\u5b58\u3057\u307e\u3057\u305f\u3002\u7de8\u96c6\u4e2d\u306b\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u304c\u30a2\u30fc\u30ab\u30a4\u30d6\u3055\u308c\u305f\u305f\u3081\u3001\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u306f\u3042\u308a\u307e\u305b\u3093\u3002",
+  "lab.shelf.seeit":"\u30a2\u30fc\u30ab\u30a4\u30d6\u3092\u958b\u304f",
+  "lab.shelf.wasarchived!":"\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u306f\u30a2\u30fc\u30ab\u30a4\u30d6\u306b\u3082\u79fb\u3055\u308c\u3066\u3044\u308b\u305f\u3081\u3001\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u306f\u3042\u308a\u307e\u305b\u3093\u3002",
   "lab.sub!":"\u30e9\u30dc\u306f 1 \u3064\u306e\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u3067\u3059\u3002\u53c2\u52a0\u3057\u3066\u3044\u308b\u5168\u54e1\u304c\u540c\u3058\u914d\u5217\u3068\u30e2\u30ce\u30de\u30fc\u3092\u898b\u3066\u304a\u308a\u3001\u30e9\u30dc\u304c\u7d42\u4e86\u3057\u3066\u3082\u5404\u81ea\u306e\u4f5c\u696d\u306f\u624b\u5143\u306b\u6b8b\u308a\u307e\u3059\u3002",
   "lab.tab":"\u30e9\u30dc",
   "lab.tag.leaving":"{date} \u306b\u9000\u51fa",
@@ -12175,7 +12263,20 @@ async function pullCloud(){
 
     var _uid=await userId(); if(!_uid) throw new Error('no session');
     var res=await Promise.all([
-      fetchT(sbUrl()+'/rest/v1/strands?select=*&order=updated_at.desc',{headers:h}),
+      
+
+
+
+
+
+
+
+
+
+
+
+
+      fetchT(sbUrl()+'/rest/v1/strands?select=*&shelved_at=is.null&order=updated_at.desc',{headers:h}),
       fetchT(sbUrl()+'/rest/v1/custom_bases?user_id=eq.'+encodeURIComponent(_uid)+'&select=*&order=code.asc',{headers:h})
     ]);
     if(!res[0].ok||!res[1].ok) throw new Error('pull '+res[0].status+'/'+res[1].status);
@@ -18544,7 +18645,7 @@ try{
 
   function setScope(scope,labId){ var m=meta(); var _was=(m.scope||'my')+'\u0000'+(m.labId||'');
     m.scope=scope; if(labId!==undefined) m.labId=labId; m.openFolder=''; setMeta(m);
-    if(_was!==((m.scope||'my')+'\u0000'+(m.labId||''))){ _sel.clear(); _lastList=[]; } }
+    if(_was!==((m.scope||'my')+'\u0000'+(m.labId||''))){ _sel.clear(); _lastList=[]; _shelf=false; } }
   
 
 
@@ -18591,7 +18692,7 @@ try{
     _memByUid=null; _memMapLab=null;
     _labs=null; _labsAt=0; _labsOk=false;
     try{ _sel.clear(); }catch(_){   }
-    _lastList=[]; _labMon=[];
+    _lastList=[]; _labMon=[]; _shelf=false;    
     
 
 
@@ -18640,8 +18741,24 @@ try{
     return true;
   }
 
-  function rowToEntry(row){ var d=Object.assign({}, row.data||{}); d.id=row.client_id||d.id; if(row.name!=null)d.name=row.name; if(row.folder!=null)d.folder=row.folder; if(Array.isArray(row.tags))d.tags=row.tags; d.__rowId=row.id; d.__uid=row.user_id; d.__author=(_memByUid&&row.user_id&&_memByUid[row.user_id])||(row.data&&row.data.authorEmail)||''; d.__folderId=row.folder_id||''; d.__labId=row.lab_id||''; d.__ver=row.updated_at||''; d.__vn=(row.version==null?'':row.version); d.__led=row.last_editor_email||''; return d; }
-  async function fetchLabStrands(labId){ var rows=await rest('GET','strands?lab_id=eq.'+encodeURIComponent(labId)+'&select=*&order=updated_at.desc'); return (rows||[]).map(rowToEntry); }
+  
+
+
+
+
+
+
+
+
+
+  function rowToEntry(row){ var d=Object.assign({}, row.data||{}); d.id=row.client_id||d.id; if(row.name!=null)d.name=row.name; if(row.folder!=null)d.folder=row.folder; if(Array.isArray(row.tags))d.tags=row.tags; d.__rowId=row.id; d.__uid=row.user_id; d.__author=(_memByUid&&row.user_id&&_memByUid[row.user_id])||(row.data&&row.data.authorEmail)||''; d.__folderId=row.folder_id||''; d.__labId=row.lab_id||''; d.__ver=row.updated_at||''; d.__vn=(row.version==null?'':row.version); d.__led=row.last_editor_email||''; d.__shelvedAt=row.shelved_at||''; return d; }
+  
+
+
+
+
+  async function fetchLabStrands(labId){ var rows=await rest('GET','strands?lab_id=eq.'+encodeURIComponent(labId)+'&shelved_at=is.null&select=*&order=updated_at.desc'); return (rows||[]).map(rowToEntry); }
+  async function fetchLabShelf(labId){ var rows=await rest('GET','strands?lab_id=eq.'+encodeURIComponent(labId)+'&shelved_at=not.is.null&select=*&order=updated_at.desc'); return (rows||[]).map(rowToEntry); }
   async function addToLab(entry,labId){ if(!entry.id){ entry.id=(window.oligoSync&&oligoSync.uuid)?oligoSync.uuid():('id-'+(''+Math.random()).slice(2)); try{ saveHist(); }catch(_e){ ocFail('addToLab#1',_e); } } var uid=await myUid(); if(!uid) throw new Error(_t('lab.err.signin')); 
 
 
@@ -19530,6 +19647,34 @@ try{
 
 
 
+
+
+
+
+
+
+
+
+  function _shelfMsg(err){ var m=(err&&err.message)||'';
+    if(m.indexOf('shelf_full')>=0)                  return _t('lab.shelf.err.full');
+    if(m.indexOf('strand_not_found')>=0)            return _t('lab.shelf.err.gone');
+    if(m.indexOf('not a member of this lab')>=0)    return _t('lab.shelf.err.notmember');
+    if(m.indexOf('or a manager of this lab')>=0)    return _t('lab.shelf.err.notmgr');
+    if(m.indexOf('not the author of this record')>=0) return _t('lab.shelf.err.notauthor');
+    return _rpcMsg(err)||_t('lab.err.generic!'); }
+  
+
+
+
+
+
+
+
+
+
+
+
+
   var _myUidSync=null;
   function fMine(f){ return !!(f && f.created_by && _myUidSync && f.created_by===_myUidSync); }
   
@@ -19722,7 +19867,7 @@ try{
 
 
 
-  async function personalLegacy(){ var rows=await rest('GET','strands?lab_id=is.null&select=*&order=updated_at.desc'); return (rows||[]).map(rowToEntry); }
+  async function personalLegacy(){ var rows=await rest('GET','strands?lab_id=is.null&shelved_at=is.null&select=*&order=updated_at.desc'); return (rows||[]).map(rowToEntry); }
   
 
 
@@ -19739,10 +19884,95 @@ try{
          for(var i=0;i<LS.length;i++){ if(LS[i]&&LS[i].lab_id) cur[LS[i].lab_id]=1; } }
     catch(_e){ ocFail('personal#2',_e); ok=false; }
     if(!ok) return await personalLegacy();
-    var rows=await rest('GET','strands?select=*&order=updated_at.desc&'+eqp('user_id',uid));
+    var rows=await rest('GET','strands?select=*&shelved_at=is.null&order=updated_at.desc&'+eqp('user_id',uid));
+    return (rows||[]).filter(function(r){ return !r.lab_id || !cur[r.lab_id]; }).map(rowToEntry);
+  }
+  
+
+
+
+
+
+  async function personalShelfLegacy(){ var rows=await rest('GET','strands?lab_id=is.null&shelved_at=not.is.null&select=*&order=updated_at.desc'); return (rows||[]).map(rowToEntry); }
+  async function fetchPersonalShelf(){
+    var uid=null; try{ uid=await myUid(); }catch(_e){ ocFail('shelf#1',_e); }
+    if(!uid) return await personalShelfLegacy();
+    var cur={}, ok=false;
+    try{ var LS=(await labs())||[]; ok=_labsOk;
+         for(var i=0;i<LS.length;i++){ if(LS[i]&&LS[i].lab_id) cur[LS[i].lab_id]=1; } }
+    catch(_e){ ocFail('shelf#2',_e); ok=false; }
+    if(!ok) return await personalShelfLegacy();
+    var rows=await rest('GET','strands?select=*&shelved_at=not.is.null&order=updated_at.desc&'+eqp('user_id',uid));
     return (rows||[]).filter(function(r){ return !r.lab_id || !cur[r.lab_id]; }).map(rowToEntry);
   }
   async function fetchStrandsScope(labId){ return labId ? await fetchLabStrands(labId) : await fetchPersonalStrands(); }
+  async function fetchShelfScope(labId){ return labId ? await fetchLabShelf(labId) : await fetchPersonalShelf(); }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  var _shelf=false;
+  function shelfCard(e, mine, uid, labId){
+    
+
+
+
+
+
+
+
+
+    var isAuthor = labId ? ((uid&&e.__uid===uid)||(!!e.__author&&e.__author===mine)) : true;
+    var acts='<button type="button" class="lab-x2" data-lab-load="'+esc(e.id)+'">'+esc(_t(labId?'lab.card.opencopy':'lab.card.open'))+'</button>';
+    if((isAuthor||_isMgr(labId)) && e.__rowId){
+      acts+='<button type="button" class="lab-x2 lab-pri" data-lab-unshelve="'+esc(e.__rowId)+'">'+esc(_t('lab.shelf.back'))+'</button>'
+        +'<button type="button" class="lab-x2 lab-mgrdel" data-lab-purge="'+esc(e.__rowId)+'" data-lab-nm="'+esc(e.name||'')+'" aria-label="'+esc(_t('lab.shelf.ariapurge',{name:e.name||_t('lab.card.untitled')}))+'">'+esc(_t('lab.shelf.purge'))+'</button>';
+    }
+    
+
+    return '<div class="lab-card" data-rowid="'+esc(e.__rowId||'')+'"><div class="lab-card-h"><span class="lc-n">'+esc(e.name||_t('lab.card.untitled'))+'</span><span class="lc-mw">'+esc(labMW(e))+' g/mol</span></div>'+
+      '<div class="lc-seq">'+esc((typeof spaceSeq==='function')?spaceSeq(e.seq,e.type,e.linkage):e.seq||'')+'</div>'+
+      (labId?('<div class="lc-meta">'+(e.__author?esc(_t('lab.card.by',{email:e.__author})):esc(_t('lab.card.shared')))+(isAuthor?' \u00b7 <b>'+esc(_t('lab.card.you'))+'</b>':'')+'</div>'):'')+
+      '<div class="lc-acts">'+acts+'</div></div>';
+  }
+  async function renderShelf(ll, labId, mine, uid, _stale){
+    var list=await fetchShelfScope(labId);            if(_stale()) return;
+    
+
+
+
+
+    _shown=[];
+    var crumb='<div class="fbread"><button type="button" class="fcrumb" data-shelfout>'
+      +(labId?esc(_t('lab.lib.sharedlab',{name:labName(labId)})):esc(_t('lab.lib.mine')))
+      +'</button> <span class="fsep">\u203a</span> <span class="fhere">'+esc(_t('lab.shelf.h'))+'</span></div>';
+    
+
+
+
+
+
+
+
+
+    var html=crumb
+      +'<div class="lab-hint" style="padding:0 2px 8px">'+esc(_t('lab.shelf.sub!'))+'</div>'
+      +'<div class="lab-hint" style="padding:0 2px 8px">'+esc(_t('lab.shelf.quota!'))+'</div>'
+      +(labId?('<div class="lab-hint" style="padding:0 2px 8px">'+esc(_t('lab.shelf.labwarn!'))+'</div>'):'');
+    html+= list.length ? list.map(function(e){ return shelfCard(e,mine,uid,labId); }).join('')
+      : ('<div class="lab-empty"><h3>'+esc(_t('lab.shelf.emptyh'))+'</h3><p>'+esc(_t('lab.shelf.empty'))+'</p></div>');
+    ll.innerHTML=html;
+    _hideFlat(true);
+  }
   function fileCard(e, mine, uid, labId, where){
     var isAuthor = labId ? ((uid&&e.__uid===uid)||(!!e.__author&&e.__author===mine)) : true;
     
@@ -19791,8 +20021,17 @@ try{
 
 
 
+      
+
+
+
+
+
+
+
+      if((isAuthor||_isMgr(labId)) && e.__rowId) acts+='<button type="button" class="lab-x2" data-lab-shelve="'+esc(e.__rowId)+'">'+esc(_t('lab.shelf.go'))+'</button>';
       acts+= '<span class="lc-cap'+(canEdit?' can':'')+'">'+esc(_t(canEdit?'lab.acc.can':'lab.acc.view'))+'</span>';
-    } else if(!shared) { acts+='<button type="button" class="lab-x2" data-pdel="'+esc(e.id)+'">'+esc(_t('lab.card.del'))+'</button>'; }
+    } else if(!shared) { acts+=(e.__rowId?('<button type="button" class="lab-x2" data-lab-shelve="'+esc(e.__rowId)+'">'+esc(_t('lab.shelf.go'))+'</button>'):'')+'<button type="button" class="lab-x2" data-pdel="'+esc(e.id)+'">'+esc(_t('lab.card.del'))+'</button>'; }
     return '<div class="lab-card"'+(isAuthor?' draggable="true"':'')+' data-rowid="'+esc(e.__rowId||'')+'"><div class="lab-card-h"><label class="lab-pick"><input type="checkbox" class="lab-pick-cb" data-labpick="'+esc(e.id)+'" aria-label="'+esc(_t('lab.card.sel',{name:e.name||_t('lab.dlg.aseq')}))+'"'+(_sel.has(e.id)?' checked':'')+'></label><span class="lc-n">'+esc(e.name||_t('lab.card.untitled'))+'</span><span class="lc-mw">'+esc(labMW(e))+' g/mol</span></div>'+
       '<div class="lc-seq">'+esc((typeof spaceSeq==='function')?spaceSeq(e.seq,e.type,e.linkage):e.seq||'')+'</div>'+
       (labId?('<div class="lc-meta">'+(e.__author?esc(_t('lab.card.by',{email:e.__author})):esc(_t('lab.card.shared')))+(isAuthor?' · <b>'+esc(_t('lab.card.you'))+'</b>':'')+'</div>'):'')+
@@ -19832,6 +20071,12 @@ try{
     
 
     _myUidSync=uid; await ensureMemberMap(labId,_e);  if(_stale()) return;
+    
+
+
+
+    if(_shelf){ try{ await renderShelf(ll, labId, mine, uid, _stale); }
+                catch(err){ offlineFallback(ll, err); } return; }
     try{
       if(labId) await mergeLabMonomers(labId,_e);     if(_stale()) return;
       var folders=await fetchFolders(labId,_e);       if(_stale()) return;
@@ -19853,7 +20098,7 @@ try{
 
 
         +(hereSp?('<div class="lab-hint" style="padding:0 2px 8px">'+esc(_t(fMine(here)?'lab.priv.who!':'lab.priv.othwho!'))+(fMine(here)?(' '+esc(_t('lab.priv.perm'))):'')+'</div>'):'');
-      var html=crumb+'<div class="lab-libbar">'+(openF?('<button type="button" class="lab-btn" data-fup="'+esc((here&&here.parent_id)||'')+'">‹ '+esc(_t('lab.tree.up'))+'</button><button type="button" class="lab-btn" data-fnew>'+esc(_t('lab.tree.newsub'))+'</button>'):'<button type="button" class="lab-btn" data-fnew>'+esc(_t('lab.fold.new'))+'</button>')+(labId?'<button type="button" class="lab-btn" data-lablib-add>+ '+esc(_t('lab.mv.pick'))+'</button>':'')+'</div>';
+      var html=crumb+'<div class="lab-libbar">'+(openF?('<button type="button" class="lab-btn" data-fup="'+esc((here&&here.parent_id)||'')+'">‹ '+esc(_t('lab.tree.up'))+'</button><button type="button" class="lab-btn" data-fnew>'+esc(_t('lab.tree.newsub'))+'</button>'):'<button type="button" class="lab-btn" data-fnew>'+esc(_t('lab.fold.new'))+'</button>')+(labId?'<button type="button" class="lab-btn" data-lablib-add>+ '+esc(_t('lab.mv.pick'))+'</button>':'')+'<button type="button" class="lab-btn" data-shelfin>'+esc(_t('lab.shelf.h'))+'</button>'+'</div>';
       
 
       var _sibs=fKids(folders, openF||null);
@@ -20450,7 +20695,37 @@ try{
         sh.ver=r0.updated_at||sh.ver;
         sh.vn=(r0.version==null?'':r0.version);
         sh.led=r0.last_editor_email||sh.led;
-        edPaint(); toast(_t('lab.ed.ok'));
+        edPaint();
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        if(r0.shelved_at){
+          toastAct(_t('lab.shelf.savedaway'), _t('lab.shelf.seeit'), function(){
+            try{ _shelf=true; }catch(_e){ ocFail('labed#shelfv',_e); }
+            try{ renderLabList(); }catch(_e){ ocFail('labed#shelfl',_e); }
+            try{ if(typeof setTab==='function') setTab('hist'); }catch(_e){ ocFail('labed#shelft',_e); } });
+          try{ renderLabList(); }catch(_e){ ocFail('labed#relist3',_e); }
+          return 'shelved';
+        }
+        toast(_t('lab.ed.ok'));
         try{ renderLabList(); }catch(_e){ ocFail('labed#relist',_e); }
         return 'ok';
       }
@@ -20605,6 +20880,16 @@ try{
       var body = (why==='gone') ? _t('lab.ed.goneb!')
                : (why==='closed') ? _t('lab.ed.closedb!',{lab:labName(sh.labId)})
                : (why==='norights') ? _t('lab.ed.norightsb!') : '';
+      
+
+
+
+
+
+
+
+
+      if(latest && latest.__shelvedAt) body = body ? (body+' '+_t('lab.shelf.wasarchived!')) : _t('lab.shelf.wasarchived!');
       
 
 
@@ -20816,6 +21101,55 @@ try{
 
   document.addEventListener('click', function(e){
     var b;
+    
+
+
+
+
+
+
+    if((b=e.target.closest('[data-shelfin]'))){ _shelf=true; _dropSel('shelf'); renderLabList(); return; }
+    if((b=e.target.closest('[data-shelfout]'))){ _shelf=false; _dropSel('shelf'); renderLabList(); return; }
+    if((b=e.target.closest('[data-lab-shelve]'))){
+      var _shid=b.getAttribute('data-lab-shelve'); if(!_shid){ toast(_t('lab.mon.nosync')); return; }
+      b.disabled=true;
+      
+
+
+
+      rpc('strand_shelve',{p_strand:_shid}).then(function(){
+        toastAct(_t('lab.shelf.done'), _t('lab.shelf.back'), function(){
+          rpc('strand_unshelve',{p_strand:_shid}).then(function(){ toast(_t('lab.shelf.backdone')); renderLabList(); })
+            .catch(function(err){ toast(_shelfMsg(err)); }); });
+        renderLabList();
+      }).catch(function(err){ toast(_shelfMsg(err)); if(b) b.disabled=false; });
+      return; }
+    if((b=e.target.closest('[data-lab-unshelve]'))){
+      var _uhid=b.getAttribute('data-lab-unshelve'); if(!_uhid){ toast(_t('lab.mon.nosync')); return; }
+      b.disabled=true;
+      rpc('strand_unshelve',{p_strand:_uhid}).then(function(){ toast(_t('lab.shelf.backdone')); renderLabList(); })
+        .catch(function(err){ toast(_shelfMsg(err)); if(b) b.disabled=false; });
+      return; }
+    if((b=e.target.closest('[data-lab-purge]'))){
+      
+
+
+
+
+      if(b.dataset.armed!=='1'){ b.dataset.armed='1'; b.dataset.o=b.textContent;
+        b.textContent=_t('lab.shelf.armpurge'); b.classList.add('armed');
+        var _p0=b.getAttribute('aria-label')||'', _pn=_t('ui.arm.confirm',{label:_p0});
+        b.dataset.a0=_p0; if(_pn) b.setAttribute('aria-label',_pn);
+        if(window.oligoAnnounce) window.oligoAnnounce(_pn||_p0);
+        setTimeout(function(){ if(b&&b.dataset.armed==='1'){ b.dataset.armed='0';
+          b.textContent=b.dataset.o||_t('lab.shelf.purge'); b.classList.remove('armed');
+          if(b.dataset.a0) b.setAttribute('aria-label',b.dataset.a0); } },3000); return; }
+      if(b.dataset.a0) b.setAttribute('aria-label', b.dataset.a0);
+      var _pgid=b.getAttribute('data-lab-purge'); if(!_pgid){ toast(_t('lab.mon.nosync')); return; }
+      b.disabled=true;
+      rpc('strand_purge',{p_strand:_pgid}).then(function(){ toast(_t('lab.shelf.purged')); renderLabList(); })
+        .catch(function(err){ toast(_shelfMsg(err)); if(b) b.disabled=false; });
+      return; }
     if((b=e.target.closest('[data-lab-retry]'))){ b.disabled=true; renderLabList(); return; }    
     if((b=e.target.closest('[data-fmenu]'))){ openFolderMenu(b.getAttribute('data-fmenu'), b.getAttribute('data-fname')); return; }
     if((b=e.target.closest('[data-fnew]'))){ openNewFolder(); return; }
