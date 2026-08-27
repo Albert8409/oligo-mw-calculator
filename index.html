@@ -936,6 +936,26 @@ var I18N = {
   "mk.0151":"Path length",
   "mk.0152":"cm",
   "mk.0153":"Stock concentration",
+  "ui.ps.title":"Post-synthesis yield",
+  "ui.ps.sub":"how well the synthesis coupled, from the reading above",
+  "ui.ps.scale":"Scale",
+  "ui.ps.support":"Solid support",
+  "ui.ps.custom":"Custom",
+  "ui.ps.custval":"Scale in nmol",
+  "ui.ps.fromlib":"Taken from the Scale saved in your library. Changing it here does not change that record.",
+  "ui.ps.uny":"UnyLinker",
+  "ui.ps.cpg":"Nucleoside-CPG",
+  "ui.ps.help":"UnyLinker is a universal support: the 3′ base is coupled like every other one, so all {n} bases are coupled. A nucleoside-loaded CPG arrives with the 3′ base already attached, so that one is never coupled and only {c} are.",
+  "ui.ps.yield":"Yield",
+  "ui.ps.of":"{got} recovered from a {want} nmol synthesis",
+  "ui.ps.coup":"Avg. coupling efficiency",
+  "ui.ps.cn":"over {c} couplings on {sup}",
+  "ui.ps.noread":"Take a reading above, and give the volume it was resuspended in.",
+  "ui.ps.noscale":"Choose a scale, or type one in nmol, to get a yield.",
+  "ui.ps.nomw":"This needs a molecular weight. Enter a sequence, or turn on Custom above.",
+  "ui.ps.duplex":"The molecular weight source is set to Duplex. Two strands are two separate syntheses, so one coupling efficiency cannot describe them. Choose Sense or Antisense.",
+  "ui.ps.short":"A coupling efficiency needs at least one coupled base.",
+  "ui.ps.over":"This is more material than the synthesis started with, so no coupling efficiency is shown. Check the volume, the scale, and the Nanodrop setting.",
   "mk.0154":"Dilute the stock · C₁V₁ = C₂V₂",
   "mk.0155":"using the stock above",
   "mk.0156":"Stock used for the dilution",
@@ -2279,6 +2299,26 @@ var I18N = {
   "mk.0151":"\u5149\u5f91",
   "mk.0152":"cm",
   "mk.0153":"\u6bcd\u6db2\u6fc3\u5ea6",
+  "ui.ps.title":"\u5408\u6210\u5f8c\u7522\u7387",
+  "ui.ps.sub":"\u7531\u4e0a\u65b9\u7684\u8b80\u503c\u770b\u9019\u6b21\u5408\u6210\u7684\u5076\u5408\u8868\u73fe",
+  "ui.ps.scale":"\u5408\u6210\u898f\u6a21",
+  "ui.ps.support":"\u56fa\u76f8\u8f09\u9ad4",
+  "ui.ps.custom":"\u81ea\u8a02",
+  "ui.ps.custval":"\u4ee5 nmol \u8868\u793a\u7684\u5408\u6210\u898f\u6a21",
+  "ui.ps.fromlib":"\u9019\u662f\u5f9e\u4f60\u8cc7\u6599\u5eab\u4e2d\u5132\u5b58\u7684\u5408\u6210\u898f\u6a21\u5e36\u904e\u4f86\u7684\u3002\u5728\u9019\u88e1\u4fee\u6539\u4e0d\u6703\u6539\u52d5\u90a3\u7b46\u7d00\u9304\u3002",
+  "ui.ps.uny":"UnyLinker",
+  "ui.ps.cpg":"\u6838\u82f7-CPG",
+  "ui.ps.help":"UnyLinker \u662f\u901a\u7528\u8f09\u9ad4\uff1a3′ \u7aef\u7684\u9e7c\u57fa\u548c\u5176\u4ed6\u9e7c\u57fa\u4e00\u6a23\u8981\u5076\u5408\uff0c\u6240\u4ee5 {n} \u500b\u9e7c\u57fa\u5168\u90e8\u90fd\u8981\u5076\u5408\u3002\u6838\u82f7-CPG \u51fa\u5ee0\u6642 3′ \u7aef\u7684\u9e7c\u57fa\u5df2\u7d93\u63a5\u5728\u4e0a\u9762\uff0c\u6240\u4ee5\u90a3\u4e00\u500b\u6c38\u9060\u4e0d\u6703\u88ab\u5076\u5408\uff0c\u53ea\u6709 {c} \u500b\u8981\u5076\u5408\u3002",
+  "ui.ps.yield":"\u7522\u7387",
+  "ui.ps.of":"\u7531 {want} nmol \u7684\u5408\u6210\u56de\u6536\u5230 {got}",
+  "ui.ps.coup":"\u5e73\u5747\u5076\u5408\u6548\u7387",
+  "ui.ps.cn":"\u5728 {sup} \u4e0a\u5171 {c} \u6b21\u5076\u5408",
+  "ui.ps.noread":"\u8acb\u5148\u5728\u4e0a\u65b9\u53d6\u5f97\u8b80\u503c\uff0c\u4e26\u586b\u5165\u56de\u6eb6\u7684\u9ad4\u7a4d\u3002",
+  "ui.ps.noscale":"\u8acb\u9078\u64c7\u5408\u6210\u898f\u6a21\uff0c\u6216\u4ee5 nmol \u8f38\u5165\uff0c\u624d\u80fd\u7b97\u51fa\u7522\u7387\u3002",
+  "ui.ps.nomw":"\u9019\u88e1\u9700\u8981\u5206\u5b50\u91cf\u3002\u8acb\u8f38\u5165\u5e8f\u5217\uff0c\u6216\u958b\u555f\u4e0a\u65b9\u7684\u81ea\u8a02\u3002",
+  "ui.ps.duplex":"\u5206\u5b50\u91cf\u4f86\u6e90\u8a2d\u5728\u96d9\u80a1\u3002\u5169\u80a1\u662f\u5169\u6b21\u5404\u81ea\u7368\u7acb\u7684\u5408\u6210\uff0c\u4e00\u500b\u5076\u5408\u6548\u7387\u7121\u6cd5\u540c\u6642\u63cf\u8ff0\u5b83\u5011\u3002\u8acb\u6539\u9078\u6b63\u7fa9\u6216\u53cd\u7fa9\u3002",
+  "ui.ps.short":"\u5076\u5408\u6548\u7387\u81f3\u5c11\u9700\u8981\u4e00\u500b\u88ab\u5076\u5408\u7684\u9e7c\u57fa\u3002",
+  "ui.ps.over":"\u9019\u6bd4\u5408\u6210\u4e00\u958b\u59cb\u6295\u5165\u7684\u91cf\u9084\u591a\uff0c\u6240\u4ee5\u4e0d\u986f\u793a\u5076\u5408\u6548\u7387\u3002\u8acb\u6aa2\u67e5\u9ad4\u7a4d\u3001\u5408\u6210\u898f\u6a21\uff0c\u4ee5\u53ca Nanodrop \u7684\u8a2d\u5b9a\u3002",
   "mk.0154":"\u7a00\u91cb\u6bcd\u6db2 · C₁V₁ = C₂V₂",
   "mk.0155":"\u4ee5\u4e0a\u65b9\u7684\u6bcd\u6db2\u6fc3\u5ea6\u70ba\u6e96",
   "mk.0156":"\u7a00\u91cb\u6240\u7528\u7684\u6bcd\u6db2",
@@ -3616,6 +3656,26 @@ var I18N = {
   "mk.0151":"\u5149\u7a0b",
   "mk.0152":"cm",
   "mk.0153":"\u6bcd\u6db2\u6d53\u5ea6",
+  "ui.ps.title":"\u5408\u6210\u540e\u4ea7\u7387",
+  "ui.ps.sub":"\u7531\u4e0a\u65b9\u7684\u8bfb\u6570\u770b\u8fd9\u6b21\u5408\u6210\u7684\u5076\u8054\u8868\u73b0",
+  "ui.ps.scale":"\u5408\u6210\u89c4\u6a21",
+  "ui.ps.support":"\u56fa\u76f8\u8f7d\u4f53",
+  "ui.ps.custom":"\u81ea\u5b9a\u4e49",
+  "ui.ps.custval":"\u4ee5 nmol \u8868\u793a\u7684\u5408\u6210\u89c4\u6a21",
+  "ui.ps.fromlib":"\u8fd9\u662f\u4ece\u4f60\u6570\u636e\u5e93\u4e2d\u4fdd\u5b58\u7684\u5408\u6210\u89c4\u6a21\u5e26\u8fc7\u6765\u7684\u3002\u5728\u8fd9\u91cc\u4fee\u6539\u4e0d\u4f1a\u6539\u52a8\u90a3\u6761\u8bb0\u5f55\u3002",
+  "ui.ps.uny":"UnyLinker",
+  "ui.ps.cpg":"\u6838\u82f7-CPG",
+  "ui.ps.help":"UnyLinker \u662f\u901a\u7528\u8f7d\u4f53\uff1a3′ \u7aef\u7684\u78b1\u57fa\u548c\u5176\u4ed6\u78b1\u57fa\u4e00\u6837\u8981\u5076\u8054\uff0c\u6240\u4ee5 {n} \u4e2a\u78b1\u57fa\u5168\u90e8\u90fd\u8981\u5076\u8054\u3002\u6838\u82f7-CPG \u51fa\u5382\u65f6 3′ \u7aef\u7684\u78b1\u57fa\u5df2\u7ecf\u63a5\u5728\u4e0a\u9762\uff0c\u6240\u4ee5\u90a3\u4e00\u4e2a\u6c38\u8fdc\u4e0d\u4f1a\u88ab\u5076\u8054\uff0c\u53ea\u6709 {c} \u4e2a\u8981\u5076\u8054\u3002",
+  "ui.ps.yield":"\u4ea7\u7387",
+  "ui.ps.of":"\u4ece {want} nmol \u7684\u5408\u6210\u56de\u6536\u5230 {got}",
+  "ui.ps.coup":"\u5e73\u5747\u5076\u8054\u6548\u7387",
+  "ui.ps.cn":"\u5728 {sup} \u4e0a\u5171 {c} \u6b21\u5076\u8054",
+  "ui.ps.noread":"\u8bf7\u5148\u5728\u4e0a\u65b9\u53d6\u5f97\u8bfb\u6570\uff0c\u5e76\u586b\u5165\u590d\u6eb6\u7684\u4f53\u79ef\u3002",
+  "ui.ps.noscale":"\u8bf7\u9009\u62e9\u5408\u6210\u89c4\u6a21\uff0c\u6216\u4ee5 nmol \u8f93\u5165\uff0c\u624d\u80fd\u7b97\u51fa\u4ea7\u7387\u3002",
+  "ui.ps.nomw":"\u8fd9\u91cc\u9700\u8981\u5206\u5b50\u91cf\u3002\u8bf7\u8f93\u5165\u5e8f\u5217\uff0c\u6216\u6253\u5f00\u4e0a\u65b9\u7684\u81ea\u5b9a\u4e49\u3002",
+  "ui.ps.duplex":"\u5206\u5b50\u91cf\u6765\u6e90\u8bbe\u5728\u53cc\u94fe\u3002\u4e24\u6761\u94fe\u662f\u4e24\u6b21\u5404\u81ea\u72ec\u7acb\u7684\u5408\u6210\uff0c\u4e00\u4e2a\u5076\u8054\u6548\u7387\u65e0\u6cd5\u540c\u65f6\u63cf\u8ff0\u5b83\u4eec\u3002\u8bf7\u6539\u9009\u6b63\u4e49\u6216\u53cd\u4e49\u3002",
+  "ui.ps.short":"\u5076\u8054\u6548\u7387\u81f3\u5c11\u9700\u8981\u4e00\u4e2a\u88ab\u5076\u8054\u7684\u78b1\u57fa\u3002",
+  "ui.ps.over":"\u8fd9\u6bd4\u5408\u6210\u4e00\u5f00\u59cb\u6295\u5165\u7684\u91cf\u8fd8\u591a\uff0c\u6240\u4ee5\u4e0d\u663e\u793a\u5076\u8054\u6548\u7387\u3002\u8bf7\u68c0\u67e5\u4f53\u79ef\u3001\u5408\u6210\u89c4\u6a21\uff0c\u4ee5\u53ca Nanodrop \u7684\u8bbe\u5b9a\u3002",
   "mk.0154":"\u7a00\u91ca\u6bcd\u6db2 · C₁V₁ = C₂V₂",
   "mk.0155":"\u4ee5\u4e0a\u65b9\u7684\u6bcd\u6db2\u6d53\u5ea6\u4e3a\u51c6",
   "mk.0156":"\u7a00\u91ca\u6240\u7528\u7684\u6bcd\u6db2",
@@ -4953,6 +5013,26 @@ var I18N = {
   "mk.0151":"\u5149\u8def\u9577",
   "mk.0152":"cm",
   "mk.0153":"\u539f\u6db2\u6fc3\u5ea6",
+  "ui.ps.title":"\u5408\u6210\u5f8c\u306e\u53ce\u7387",
+  "ui.ps.sub":"\u4e0a\u306e\u6e2c\u5b9a\u5024\u304b\u3089\u898b\u305f\u3001\u3053\u306e\u5408\u6210\u306e\u30ab\u30c3\u30d7\u30ea\u30f3\u30b0\u306e\u51fa\u6765",
+  "ui.ps.scale":"\u5408\u6210\u30b9\u30b1\u30fc\u30eb",
+  "ui.ps.support":"\u56fa\u76f8\u62c5\u4f53",
+  "ui.ps.custom":"\u30ab\u30b9\u30bf\u30e0",
+  "ui.ps.custval":"nmol \u3067\u8868\u3057\u305f\u5408\u6210\u30b9\u30b1\u30fc\u30eb",
+  "ui.ps.fromlib":"\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u4fdd\u5b58\u3055\u308c\u3066\u3044\u308b\u5408\u6210\u30b9\u30b1\u30fc\u30eb\u304b\u3089\u53d6\u308a\u8fbc\u307f\u307e\u3057\u305f\u3002\u3053\u3053\u3067\u5909\u66f4\u3057\u3066\u3082\u3001\u305d\u306e\u8a18\u9332\u306f\u5909\u308f\u308a\u307e\u305b\u3093\u3002",
+  "ui.ps.uny":"UnyLinker",
+  "ui.ps.cpg":"\u30cc\u30af\u30ec\u30aa\u30b7\u30c9-CPG",
+  "ui.ps.help":"UnyLinker \u306f\u30e6\u30cb\u30d0\u30fc\u30b5\u30eb\u62c5\u4f53\u3067\u3059\u30023′ \u672b\u7aef\u306e\u5869\u57fa\u3082\u4ed6\u3068\u540c\u3058\u3088\u3046\u306b\u30ab\u30c3\u30d7\u30ea\u30f3\u30b0\u3059\u308b\u306e\u3067\u3001{n} \u500b\u306e\u5869\u57fa\u3059\u3079\u3066\u304c\u30ab\u30c3\u30d7\u30ea\u30f3\u30b0\u306e\u5bfe\u8c61\u306b\u306a\u308a\u307e\u3059\u3002\u30cc\u30af\u30ec\u30aa\u30b7\u30c9-CPG \u306f 3′ \u672b\u7aef\u306e\u5869\u57fa\u304c\u6700\u521d\u304b\u3089\u4ed8\u3044\u3066\u3044\u308b\u306e\u3067\u3001\u305d\u306e 1 \u500b\u306f\u30ab\u30c3\u30d7\u30ea\u30f3\u30b0\u3055\u308c\u305a\u3001\u5bfe\u8c61\u306f {c} \u500b\u3067\u3059\u3002",
+  "ui.ps.yield":"\u53ce\u7387",
+  "ui.ps.of":"{want} nmol \u306e\u5408\u6210\u304b\u3089 {got} \u3092\u56de\u53ce",
+  "ui.ps.coup":"\u5e73\u5747\u30ab\u30c3\u30d7\u30ea\u30f3\u30b0\u52b9\u7387",
+  "ui.ps.cn":"{sup} \u3067 {c} \u56de\u306e\u30ab\u30c3\u30d7\u30ea\u30f3\u30b0",
+  "ui.ps.noread":"\u307e\u305a\u4e0a\u3067\u6e2c\u5b9a\u5024\u3092\u53d6\u308a\u3001\u518d\u61f8\u6fc1\u3057\u305f\u5bb9\u91cf\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
+  "ui.ps.noscale":"\u53ce\u7387\u3092\u51fa\u3059\u306b\u306f\u3001\u5408\u6210\u30b9\u30b1\u30fc\u30eb\u3092\u9078\u3076\u304b\u3001nmol \u3067\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
+  "ui.ps.nomw":"\u3053\u308c\u306b\u306f\u5206\u5b50\u91cf\u304c\u5fc5\u8981\u3067\u3059\u3002\u914d\u5217\u3092\u5165\u529b\u3059\u308b\u304b\u3001\u4e0a\u306e\u30ab\u30b9\u30bf\u30e0\u3092\u6709\u52b9\u306b\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
+  "ui.ps.duplex":"\u5206\u5b50\u91cf\u306e\u53d6\u5f97\u5143\u304c\u4e8c\u672c\u9396\u306b\u306a\u3063\u3066\u3044\u307e\u3059\u30022 \u672c\u306e\u9396\u306f\u305d\u308c\u305e\u308c\u5225\u306e\u5408\u6210\u306a\u306e\u3067\u30011 \u3064\u306e\u30ab\u30c3\u30d7\u30ea\u30f3\u30b0\u52b9\u7387\u3067\u306f\u4e21\u65b9\u3092\u8868\u305b\u307e\u305b\u3093\u3002\u30bb\u30f3\u30b9\u304b\u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u3092\u9078\u3093\u3067\u304f\u3060\u3055\u3044\u3002",
+  "ui.ps.short":"\u30ab\u30c3\u30d7\u30ea\u30f3\u30b0\u52b9\u7387\u306b\u306f\u3001\u30ab\u30c3\u30d7\u30ea\u30f3\u30b0\u3055\u308c\u305f\u5869\u57fa\u304c\u5c11\u306a\u304f\u3068\u3082 1 \u500b\u5fc5\u8981\u3067\u3059\u3002",
+  "ui.ps.over":"\u3053\u308c\u306f\u5408\u6210\u306b\u6295\u5165\u3057\u305f\u91cf\u3088\u308a\u591a\u3044\u306e\u3067\u3001\u30ab\u30c3\u30d7\u30ea\u30f3\u30b0\u52b9\u7387\u306f\u8868\u793a\u3057\u307e\u305b\u3093\u3002\u5bb9\u91cf\u3001\u5408\u6210\u30b9\u30b1\u30fc\u30eb\u3001Nanodrop \u306e\u8a2d\u5b9a\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
   "mk.0154":"\u539f\u6db2\u3092\u5e0c\u91c8\u3059\u308b · C₁V₁ = C₂V₂",
   "mk.0155":"\u4e0a\u306e\u539f\u6db2\u6fc3\u5ea6\u3092\u4f7f\u3046",
   "mk.0156":"\u5e0c\u91c8\u306b\u4f7f\u3046\u539f\u6db2",
@@ -13257,7 +13337,7 @@ function renderAntisenseStatus(){
   if(ah){ var hs=[];
     if(S.duplexMode==='custom'){
       if(!_aSettled) hs.push('Prefixes: m 2′-OMe, f 2′-F, moe 2′-MOE, cEt. An s between two bases marks that linkage phosphorothioate. Spaces are ignored.');
-      if((S.antiType||S.type)==='Hybrid') hs.push('Hybrid mode: put a d or r in front of every base (dA, rU), or use Quick Insert.');
+      if((S.antiType||S.type)==='Hybrid') hs.push('Hybrid mode: put a d or r, or a 2′ modification, in front of every base (dA, rU, mC), or use Quick Insert.');
       if((S.antiLinkage||'PO')==='Mixed') hs.push('Mixed linkage: type s between two bases for a phosphorothioate.');
       if((S.antiFive||'OH')==='phosphate') hs.push('5′-phosphate: type s right after the “P ” to make it a 5′-phosphorothioate.'); }
     ah.innerHTML=hs.map(function(h){return '<span>'+h+'</span>';}).join(''); ah.hidden=!hs.length; }
@@ -13309,7 +13389,7 @@ function renderResultPanel(){
     if(eo) eo.style.display=isEmpty?'':'none';
     if(hq) hq.hidden=!(!isEmpty && !blocked && !inProgress);
     if(se){ var sm='';
-      if(r.needPrefix) sm='Hybrid mode needs a d or r in front of every base (dA, rU). Bare bases are not counted, so there is no result yet.';
+      if(r.needPrefix) sm='Hybrid mode needs a d or r, or a 2′ modification, in front of every base (dA, rU, mC). Bare bases are not counted, so there is no result yet.';
       else if(danglingS && !seqFocused) sm='There is a phosphorothioate marker “s” with no base after it. Add the next base, or delete the “s”. No result until the sequence is valid.';
       else if(blocked) sm='Unrecognised '+(badArr.length>1?'tokens ':'token ')+badArr.map(function(t){return '“'+t+'”';}).join(', ')+'. Remove '+(badArr.length>1?'them':'it')+', or put a real base there (A, C, G, T or U). No result until the sequence is valid.';
       se.textContent=sm; se.hidden=!sm; } }
@@ -13358,12 +13438,12 @@ function renderResultPanel(){
     else {
       body.dataset.state='invalid'; if(_slbl) _slbl.textContent='Check sequence';
       _ann = r.needPrefix
-        ? 'Check sequence. Hybrid mode needs every base prefixed with d or r. No result.'
+        ? 'Check sequence. Hybrid mode needs a d or r, or a 2′ modification, in front of every base. No result.'
         : (danglingS
             ? 'Check sequence. A phosphorothioate marker s has no base after it. No result.'
             : ('Check sequence. Unrecognised '+(badArr.length>1?'codes ':'code ')+badArr.join(', ')+'. No result.'));
       var ei=_q('#result .e-invalid');
-      if(ei){ if(r.needPrefix) ei.innerHTML='Nothing to calculate. <b>Hybrid</b> mode needs a <b>d</b> or <b>r</b> in front of every base (dA, rU). Bare bases are not counted.';
+      if(ei){ if(r.needPrefix) ei.innerHTML='Nothing to calculate. <b>Hybrid</b> mode needs a <b>d</b> or <b>r</b>, or a 2′ modification, in front of every base (dA, rU, mC). Bare bases are not counted.';
         else if(danglingS) ei.innerHTML='Nothing to calculate. There is a phosphorothioate marker <b>“s”</b> with no base after it. Add the next base, or delete the <b>“s”</b>.';
         else ei.innerHTML='Nothing to calculate. The sequence contains '+(badArr.length>1?'unrecognised tokens ':'an unrecognised token ')+badArr.map(function(t){return '<b>“'+cbEsc(t)+'”</b>';}).join(', ')+'. Remove '+(badArr.length>1?'them':'it')+', or replace with a valid base (A, C, G, T/U).'; }
     }
@@ -13521,7 +13601,7 @@ function antiDuplexInfo(){
     var inprog=!aR.needPrefix && aR.n>0 && bad.length>0 && bad.every(function(t){return /^[mfrdceotMEO]$/.test(String(t));}) && /[mfrdceot]$/i.test(araw);
     out.inProgress=inprog;
     var antiFocused=!!(document.activeElement && document.activeElement.id==='antiseq');
-    if(aR.needPrefix){ out.invalid=true; out.reason='Hybrid mode needs a d or r in front of every base (dA, rU). Bare bases are not counted.'; }
+    if(aR.needPrefix){ out.invalid=true; out.reason='Hybrid mode needs a d or r, or a 2′ modification, in front of every base (dA, rU, mC). Bare bases are not counted.'; }
     else if(bad.length>0 && !inprog){ out.invalid=true; out.reason='Unrecognised token'+(bad.length>1?'s ':' ')+bad.map(function(t){return '“'+t+'”';}).join(', ')+'. Remove '+(bad.length>1?'them':'it')+', or put a real base there (A, C, G, T or U).'; }
     else if(aR.danglingLink && !antiFocused){ out.invalid=true; out.reason='There is a phosphorothioate marker “s” with no base after it. Add the next base, or delete the “s”.'; }
     else if(aR.n===0){ out.invalid=true; out.reason='Enter the antisense strand to complete the duplex.'; }
@@ -17299,6 +17379,61 @@ body[data-mode="dark"] #scanOv .scan-row-acts [data-scanlib]{color:var(--accent)
 
 .tm-cmp-h+.tm-cr .tm-cv,.tm-cmp-h+.tm-cr+.tm-cr .tm-cv{font-size:13px;color:var(--muted)}
 @media (max-width:560px){.tm-cr{grid-template-columns:1fr auto}.tm-cx{grid-column:1/-1}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ps{border:1px solid var(--line); border-radius:10px; background:var(--surface-2); margin:18px 0 6px}
+.ps>summary{list-style:none; cursor:pointer; padding:11px 13px; min-height:44px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-family:var(--font-head); font-weight:600; font-size:14px; color:var(--text)}
+.ps>summary::-webkit-details-marker{display:none}
+.ps>summary:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:10px}
+.ps .ps-sub{font-family:var(--font-ui); font-weight:400; font-size:12px; color:var(--muted)}
+.ps>summary .chev{margin-left:auto; display:inline-flex; align-items:center; color:var(--muted); transition:transform .15s}
+.ps[open]>summary .chev{transform:rotate(180deg)}
+.ps-body{padding:0 13px 13px}
+.ps-fields{grid-template-columns:minmax(0,220px)}
+.ps-sup{display:flex; align-items:center; gap:12px; margin:4px 0 8px; flex-wrap:wrap}
+.ps-sup .cl{font-family:var(--font-head); font-weight:600; font-size:13px}
+.ps-help{margin:0 0 10px; font-size:11.5px; line-height:1.5; color:var(--muted); max-width:62ch}
+.ps-row{display:flex; align-items:baseline; justify-content:space-between; gap:10px; padding:7px 0; border-top:1px solid var(--line)}
+.ps-l{font-family:var(--font-head); font-weight:600; font-size:13px}
+.ps-v{font-family:var(--font-num); font-size:19px; font-weight:700}
+.ps-fine{font-size:11.5px; line-height:1.5; color:var(--muted); margin:-4px 0 2px}
+.ps-consq{margin:9px 0 0; font-size:12.5px; line-height:1.55; color:var(--text); border-top:1px solid var(--line); padding-top:9px}
+.ps-msg{margin:8px 0 0; font-size:12.5px; line-height:1.55; color:var(--muted)}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ps-fields .selbox{margin:0}
+.ps-cust{margin-top:8px}
+.ps-conv{font-family:var(--font-num); margin:6px 0 0}
+.ps-src{margin:6px 0 0; max-width:62ch}
 </style>
 <script id="oligo-share-js">
 
@@ -30986,6 +31121,513 @@ window.addEventListener('oligo:lang', function(){ sync(); });
     LAYOUTS: LAYOUTS, cellsFor: cellsFor, checkAll: checkAll, byPlate: byPlate,
     openExport: openExport, openXlsx: openXlsx, isXlsx: isXlsx, WELLRE: WELLRE
   };
+})();
+</script>
+<script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(function(){
+'use strict';
+var W = window, D = document;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var SCALES = [100, 500, 1000, 2000];
+
+
+
+
+
+
+
+
+var MU = '\u00b5';
+var UNIT_NMOL = {
+  'mol': 1e9, 'mmol': 1e6,
+  '\u00b5mol': 1e3, '\u03bcmol': 1e3, 'umol': 1e3,
+  'nmol': 1, 'pmol': 1e-3
+};
+
+function T(k, v){ try{ return (typeof W.t === 'function') ? W.t(k, v) : k; }catch(_){ return k; } }
+function fail(w, e){ try{ if(typeof W.ocFail === 'function') W.ocFail(w, e); }catch(_){ } }
+
+
+
+
+function ready(){
+  try{
+    return !!(typeof S !== 'undefined' && S
+      && typeof V_UNITS !== 'undefined' && typeof MOL_UNITS !== 'undefined'
+      && typeof uf === 'function' && typeof autoUnit === 'function'
+      && typeof nfmt === 'function' && typeof currentMW === 'function'
+      && typeof srcStrand === 'function');
+  }catch(_){ return false; }
+}
+
+function num(v){ var x = parseFloat(v); return isFinite(x) ? x : 0; }
+
+
+
+
+
+function pctY(x){ return isFinite(x) ? (nfmt(x) + '%') : '\u2014'; }
+function pctC(x){
+  if(!isFinite(x)) return '\u2014';
+  return x.toLocaleString(undefined, {minimumFractionDigits:1, maximumFractionDigits:1}) + '%';
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+var RE_SCALE = /^([0-9]{1,3}(?:,[0-9]{3})+|[0-9]+)(?:\.([0-9]+))?\s*([A-Za-z\u00b5\u03bc]*)$/;
+
+function parseScale(txt){
+  var s = String(txt == null ? '' : txt).trim();
+  if(!s) return null;
+  var m = RE_SCALE.exec(s);
+  if(!m) return null;
+  
+
+
+  var n = parseFloat(m[1].replace(/,/g, '') + (m[2] ? ('.' + m[2]) : ''));
+  if(!isFinite(n) || n <= 0) return null;
+  var u = m[3] ? m[3].toLowerCase() : 'nmol';
+  if(!Object.prototype.hasOwnProperty.call(UNIT_NMOL, u)) return null;
+  var out = n * UNIT_NMOL[u];
+  return (isFinite(out) && out > 0) ? out : null;
+}
+
+
+
+function hadUnit(txt){
+  var m = RE_SCALE.exec(String(txt == null ? '' : txt).trim());
+  return !!(m && m[3] && m[3].toLowerCase() !== 'nmol');
+}
+
+function fmtInt(n){
+  try{ return n.toLocaleString(undefined, {maximumFractionDigits:0}); }catch(_){ return String(n); }
+}
+
+
+
+
+function scaleLabel(n){
+  var s = fmtInt(n) + ' nmol';
+  if(n >= 1000 && n % 1000 === 0) s += ' (' + fmtInt(n / 1000) + ' ' + MU + 'mol)';
+  return s;
+}
+
+
+
+
+function sel(){
+  if(S && S.psScaleSel != null) return String(S.psScaleSel);
+  
+
+
+
+  if(S && S.psScale != null && String(S.psScale).replace(/\s+/g, '')) return 'custom';
+  return '';
+}
+function rawScale(){ return (S && S.psScale != null) ? String(S.psScale) : ''; }
+
+function effScale(){
+  var k = sel();
+  if(k === 'custom') return parseScale(rawScale());
+  if(!k) return null;
+  var n = parseFloat(k);
+  return (isFinite(n) && n > 0) ? n : null;
+}
+
+
+
+
+
+function adopt(h){
+  var raw = '';
+  try{ raw = (h && h.md && h.md.scale != null) ? String(h.md.scale) : ''; }catch(_e){ raw = ''; }
+  if(!raw.replace(/\s+/g, '')){
+    
+
+
+
+    if(S && S.psFromLib){
+      S.psFromLib = '';
+      try{ if(typeof save === 'function') save(); }catch(_s){ }
+    }
+    return;
+  }
+  var n = parseScale(raw);
+  
+
+
+
+  S.psScale = raw;
+  S.psScaleSel = (n !== null && SCALES.indexOf(n) >= 0) ? String(n) : 'custom';
+  S.psFromLib = '1';
+  try{ if(typeof save === 'function') save(); }catch(_e2){ }
+}
+
+
+
+
+
+
+function model(){
+  var m = { stage:'noread', coup:'ok', n:0, couplings:0, sup:'uny',
+            mol:0, nmol:0, frac:0, pct:0, eff:0, est:false, unit:'', scale:0 };
+  if(!ready()) { m.stage = 'engine'; return m; }
+
+  var mw  = currentMW();
+  var src = srcStrand();
+  m.n   = (src && src.n) || 0;
+  m.sup = (S.psSupport === 'cpg') ? 'cpg' : 'uny';
+  m.couplings = (m.sup === 'cpg') ? (m.n - 1) : m.n;
+
+  
+
+  var eps  = S.useCustomMW ? 0 : ((src && src.eps) || 0);
+  var pRaw = parseFloat(S.path);
+  var path = (isFinite(pRaw) && pRaw > 0) ? pRaw : 1;
+  var a260mode = (S.readMode === 'a260') && !S.useCustomMW && eps > 0;
+  var C1   = a260mode ? (num(S.a260) / (eps * path)) : (mw > 0 ? (num(S.nd) * 1e-3) / mw : 0);
+  var volL = num(S.vol) * uf(S.volUnit || '\u00b5L', V_UNITS);
+
+  m.mol = C1 * volL;
+  try{ m.est = !!(a260mode && C1 > 0 && typeof W.epsQuality === 'function'
+                  && W.epsQuality(src && src.tokens)); }catch(_e){ m.est = false; }
+
+  if(!(mw > 0))                { m.stage = 'nomw';   return m; }
+  if(!(C1 > 0) || !(volL > 0)) { m.stage = 'noread'; return m; }
+
+  var scale = effScale();
+  if(scale === null) { m.stage = 'noscale'; return m; }
+  m.scale = scale;
+
+  var au  = autoUnit(m.mol, MOL_UNITS);
+  m.unit  = au.u;
+  m.nmol  = m.mol / 1e-9;
+  m.frac  = m.nmol / scale;
+  m.pct   = m.frac * 100;
+  m.stage = 'yield';
+
+  
+
+
+
+  if((src && src.label) === 'duplex') { m.coup = 'duplex'; return m; }
+  if(!(m.couplings >= 1))             { m.coup = 'short';  return m; }
+  if(m.frac > 1)                      { m.coup = 'over';   return m; }
+  m.eff = Math.pow(m.frac, 1 / m.couplings) * 100;
+  return m;
+}
+
+ 
+var root = null, els = null;
+
+function build(host){
+  var sec = D.createElement('details');
+  sec.className = 'ps';
+  sec.setAttribute('data-ps', '');
+  sec.innerHTML =
+    '<summary class="ps-head">'
+  +   '<span class="snum" aria-hidden="true">3</span>'
+  +   '<span class="ps-t"></span><span class="ps-sub"></span>'
+  +   '<span class="chev" aria-hidden="true"><svg class="i16"><use href="#i-caret"/></svg></span>'
+  + '</summary>'
+  + '<div class="ps-body">'
+  +   '<div class="fields ps-fields">'
+  +     '<div class="fld"><label for="ps-scale-sel"></label>'
+  +       '<select class="selbox" id="ps-scale-sel"></select>'
+  +       '<div class="inp ps-cust" hidden>'
+  +         '<input id="ps-scale" type="text" inputmode="decimal" placeholder="1000">'
+  +         '<span class="u" data-ps-unit></span></div>'
+  +     '</div>'
+  +   '</div>'
+  +   '<p class="ps-fine ps-conv" hidden></p>'
+  +   '<p class="ps-fine ps-src" hidden></p>'
+  +   '<div class="ps-sup"><span class="cl" id="ps-sup-l"></span>'
+  +     '<span class="seg" role="radiogroup" aria-labelledby="ps-sup-l">'
+  +       '<button type="button" data-ps-sup="uny" role="radio" aria-checked="true" class="on"></button>'
+  +       '<button type="button" data-ps-sup="cpg" role="radio" aria-checked="false"></button>'
+  +     '</span></div>'
+  +   '<p class="ps-help"></p>'
+  +   '<div class="ps-out" hidden>'
+  +     '<div class="ps-row"><span class="ps-l ps-ly"></span><span class="ps-v ps-vy"></span></div>'
+  +     '<div class="ps-fine ps-of"></div>'
+  +     '<div class="ps-row ps-crow"><span class="ps-l ps-lc"></span><span class="ps-v ps-vc"></span></div>'
+  +     '<div class="ps-fine ps-cn"></div>'
+  +   '</div>'
+  +   '<p class="ps-msg" role="status"></p>'
+  + '</div>';
+  host.appendChild(sec);
+
+  els = {
+    sec:   sec,
+    t:     sec.querySelector('.ps-t'),
+    sub:   sec.querySelector('.ps-sub'),
+    lbl:   sec.querySelector('label[for="ps-scale-sel"]'),
+    ssel:  sec.querySelector('#ps-scale-sel'),
+    cust:  sec.querySelector('.ps-cust'),
+    scale: sec.querySelector('#ps-scale'),
+    conv:  sec.querySelector('.ps-conv'),
+    src:   sec.querySelector('.ps-src'),
+    supl:  sec.querySelector('#ps-sup-l'),
+    sups:  sec.querySelectorAll('[data-ps-sup]'),
+    help:  sec.querySelector('.ps-help'),
+    out:   sec.querySelector('.ps-out'),
+    ly:    sec.querySelector('.ps-ly'), vy: sec.querySelector('.ps-vy'),
+    of:    sec.querySelector('.ps-of'),
+    crow:  sec.querySelector('.ps-crow'),
+    lc:    sec.querySelector('.ps-lc'), vc: sec.querySelector('.ps-vc'),
+    cn:    sec.querySelector('.ps-cn'),
+    msg:   sec.querySelector('.ps-msg')
+  };
+
+  
+
+
+
+
+  sec.querySelector('[data-ps-unit]').textContent = 'nmol';
+
+  els.ssel.addEventListener('change', function(){
+    try{
+      S.psScaleSel = els.ssel.value;
+      S.psFromLib = '';                      
+      if(typeof save === 'function') save();
+      render();
+      if(S.psScaleSel === 'custom') { try{ els.scale.focus(); }catch(_f){ } }
+    }catch(e){ fail('postsynth#sel', e); }
+  });
+  els.scale.addEventListener('input', function(){
+    try{
+      S.psScale = els.scale.value;
+      S.psFromLib = '';
+      if(typeof save === 'function') save();
+      render();
+    }catch(e){ fail('postsynth#scale', e); }
+  });
+  for(var i = 0; i < els.sups.length; i++){
+    els.sups[i].addEventListener('click', function(ev){
+      try{
+        S.psSupport = ev.currentTarget.getAttribute('data-ps-sup');
+        if(typeof save === 'function') save();
+        render();
+      }catch(e){ fail('postsynth#sup', e); }
+    });
+  }
+  return sec;
+}
+
+
+
+
+
+function paintOptions(){
+  var want = sel(), html = '<option value="">\u2014</option>';
+  for(var i = 0; i < SCALES.length; i++){
+    html += '<option value="' + SCALES[i] + '">' + scaleLabel(SCALES[i]) + '</option>';
+  }
+  html += '<option value="custom"></option>';
+  els.ssel.innerHTML = html;
+  els.ssel.lastChild.textContent = T('ui.ps.custom');
+  els.ssel.value = want;
+  if(els.ssel.value !== want) els.ssel.value = '';
+}
+
+function render(){
+  if(!els) return;
+  var m = model();
+  var supName = T(m.sup === 'cpg' ? 'ui.ps.cpg' : 'ui.ps.uny');
+
+  els.t.textContent   = T('ui.ps.title');
+  els.sub.textContent = T('ui.ps.sub');
+  els.lbl.textContent = T('ui.ps.scale');
+  els.supl.textContent = T('ui.ps.support');
+  for(var i = 0; i < els.sups.length; i++){
+    var b  = els.sups[i], k = b.getAttribute('data-ps-sup'), on = (k === m.sup);
+    b.textContent = T(k === 'cpg' ? 'ui.ps.cpg' : 'ui.ps.uny');
+    b.classList.toggle('on', on);
+    b.setAttribute('aria-checked', on ? 'true' : 'false');
+    b.tabIndex = on ? 0 : -1;
+  }
+
+  if(D.activeElement !== els.ssel) paintOptions();
+  var isCustom = (sel() === 'custom');
+  els.cust.hidden = !isCustom;
+  els.scale.setAttribute('aria-label', T('ui.ps.custval'));
+  if(D.activeElement !== els.scale) els.scale.value = rawScale();
+
+  
+
+
+
+  var conv = (isCustom && hadUnit(rawScale())) ? effScale() : null;
+  els.conv.textContent = (conv !== null) ? ('= ' + nfmt(conv) + ' nmol') : '';
+  els.conv.hidden = (conv === null);
+
+  var fromLib = !!(S && S.psFromLib);
+  els.src.textContent = fromLib ? T('ui.ps.fromlib') : '';
+  els.src.hidden = !fromLib;
+
+  els.help.textContent = T('ui.ps.help', {n: m.n, c: Math.max(m.n - 1, 0)});
+
+  if(m.stage !== 'yield'){
+    els.out.hidden = true;
+    els.msg.textContent = T('ui.ps.' + (m.stage === 'engine' ? 'noread' : m.stage));
+    els.msg.hidden = false;
+    return;
+  }
+
+  els.out.hidden = false;
+  var mark = m.est ? '\u2248' : '';
+  els.ly.textContent = T('ui.ps.yield');
+  els.vy.textContent = mark + pctY(m.pct);
+  els.of.textContent = T('ui.ps.of', {
+    got:  nfmt(m.mol / uf(m.unit, MOL_UNITS)) + ' ' + m.unit,
+    want: nfmt(m.scale)
+  });
+
+  if(m.coup === 'ok'){
+    els.crow.hidden = false;
+    els.lc.textContent = T('ui.ps.coup');
+    els.vc.textContent = mark + pctC(m.eff);
+    els.cn.textContent = T('ui.ps.cn', {c: m.couplings, sup: supName});
+    els.cn.hidden = false;
+    els.msg.textContent = ''; els.msg.hidden = true;
+  } else {
+    
+
+
+
+    els.vc.textContent = ''; els.cn.textContent = '';
+    els.crow.hidden = true; els.cn.hidden = true;
+    els.msg.textContent = T('ui.ps.' + m.coup);
+    els.msg.hidden = false;
+  }
+}
+
+function mount(){
+  try{
+    if(root || !ready()) return;
+    var host = D.getElementById('panel-conc');
+    if(!host) return;
+    root = build(host);
+
+     
+    var prev = W.renderConcShell;
+    if(typeof prev === 'function'){
+      W.renderConcShell = function(){
+        var r; try{ r = prev.apply(this, arguments); }finally{ try{ render(); }catch(e){ fail('postsynth#render', e); } }
+        return r;
+      };
+    }
+    
+
+    var pls = W.loadSavedState;
+    if(typeof pls === 'function'){
+      W.loadSavedState = function(h){
+        try{ adopt(h); }catch(e){ fail('postsynth#adopt', e); }
+        var r; try{ r = pls.apply(this, arguments); }finally{ try{ render(); }catch(e2){ fail('postsynth#loadrender', e2); } }
+        return r;
+      };
+    }
+    W.addEventListener('oligo:lang', function(){ try{ render(); }catch(e){ fail('postsynth#lang', e); } });
+    render();
+    W.ocPostSynth = { render: render, model: model, parseScale: parseScale,
+                      scaleLabel: scaleLabel, el: function(){ return root; } };
+  }catch(e){ fail('postsynth#mount', e); }
+}
+
+if(D.readyState === 'loading') D.addEventListener('DOMContentLoaded', mount);
+else mount();
 })();
 </script>
 </body>
