@@ -421,6 +421,7 @@ var I18N = {
   "lab.closing!":"Closing {date}",
   "lab.cmt.aria":"Add a comment",
   "lab.cmt.del":"Delete comment",
+  "lab.cmt.err.notmine":"Only the person who wrote this comment, or a manager of this lab, can delete it.",
   "lab.cmt.failload":"Could not load comments.",
   "lab.cmt.h":"Comments",
   "lab.cmt.none":"No comments yet.",
@@ -1329,7 +1330,7 @@ var I18N = {
   "tm.fold.note.dimer!":"The self-dimer row is the best contiguous self-dimer helix, not a self-dimer minimum free energy: it scores ONE run of adjacent pairs, with no bulges and no internal loops. In an asymmetric homodimer its mirror helix also forms and is not counted.",
   "tm.fold.note.dna!":"Loop parameters: SantaLucia &amp; Hicks 2004, whose loop terms are given as free energy only. The loop ΔH° is taken as zero here for a loop scored by the general loop equation, so such a loop contributes to entropy alone. Internal loops with one or two unpaired bases on each side use the value Mathews measured for that exact loop, and for those loops the published enthalpy is now carried as well. Although that enthalpy is measured rather than assumed, this engine derives loop entropy from the free energy. Carrying it drives the entropy of a small number of folds toward zero, and the folding temperature, which is the ratio of the two, becomes numerically unstable. Where the result falls outside the range these parameters were measured in, or reports a stable fold as entropy-driven, the folding temperature falls back to taking the loop ΔH° as zero, which is the value earlier versions reported. No nearest-neighbor value changed, so the duplex melting temperature is unaffected.",
   "tm.fold.note.mb!":", and multibranch loops. Inside a multibranch loop we score dangling ends and flush coaxial stacking; <b>mismatch-mediated coaxial stacking and dangling ends on the free tails are not scored</b>. Both omitted terms are stabilising in the Turner model, so the ΔG shown is conservative for the structure reported. That is a statement about the model and not an experimental error bound. ",
-  "tm.fold.note.mbdna!":". <b>No multibranch structure for DNA.</b> A fold with three or more stems meeting at one loop is reported as whichever single branch is most stable, so a real structure can be more stable than the one shown. ",
+  "tm.fold.note.mbdna!":", and multibranch loops. Inside a multibranch loop we score dangling ends and flush coaxial stacking; <b>mismatch-mediated coaxial stacking, terminal mismatches, and dangling ends on the free tails are not scored</b>. All three omitted terms are stabilising, so the ΔG shown is conservative for the structure reported. That is a statement about the model and not an experimental error bound. The dangling-end values are the tabulated DNA set: several closing pairs carry one value for every dangling base, and the two G-T rows are taken from the Watson-Crick pairs they most resemble. ",
   "tm.fold.note.mbrna!":". <b>Multibranch structure is not searched above {n} nt.</b> The search costs the cube of the length and would block the page. A fold with three or more stems meeting at one loop is reported as whichever single branch is most stable, so a real structure can be more stable than the one shown. ",
   "tm.fold.note.mfe!":" The structure is the lowest-free-energy structure this search found, and not a proven global minimum: the search ranks with a cheaper energy model, then scores only its best {k} candidates exactly. It is shown in dot-bracket: stacks, bulges and internal loops",
   "tm.fold.note.one!":" One stem and one loop only. ",
@@ -1853,6 +1854,7 @@ var I18N = {
   "lab.closing!":"{date} \u95dc\u9589",
   "lab.cmt.aria":"\u65b0\u589e\u7559\u8a00",
   "lab.cmt.del":"\u522a\u9664\u7559\u8a00",
+  "lab.cmt.err.notmine":"\u53ea\u6709\u5beb\u4e0b\u9019\u5247\u7559\u8a00\u7684\u4eba\uff0c\u6216\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u8ca0\u8cac\u4eba\uff0c\u53ef\u4ee5\u522a\u9664\u5b83\u3002",
   "lab.cmt.failload":"\u7121\u6cd5\u8f09\u5165\u7559\u8a00\u3002",
   "lab.cmt.h":"\u7559\u8a00",
   "lab.cmt.none":"\u9084\u6c92\u6709\u7559\u8a00\u3002",
@@ -2756,7 +2758,7 @@ var I18N = {
   "tm.fold.note.dimer!":"\u81ea\u8eab\u4e8c\u805a\u9ad4\u9019\u4e00\u5217\u7d66\u7684\u662f\u6700\u4f73\u7684\u9023\u7e8c\u81ea\u8eab\u4e8c\u805a\u9ad4\u87ba\u65cb\uff0c\u4e0d\u662f\u81ea\u8eab\u4e8c\u805a\u9ad4\u7684\u6700\u5c0f\u81ea\u7531\u80fd\uff1a\u5b83\u53ea\u8a08\u7b97\u4e00\u6bb5\u76f8\u9130\u914d\u5c0d\uff0c\u4e0d\u542b\u51f8\u8d77\u4e5f\u4e0d\u542b\u5167\u90e8\u74b0\u3002\u5728\u4e0d\u5c0d\u7a31\u7684\u540c\u578b\u4e8c\u805a\u9ad4\u4e2d\uff0c\u5b83\u7684\u93e1\u50cf\u87ba\u65cb\u4e5f\u6703\u5f62\u6210\uff0c\u4f46\u6c92\u6709\u88ab\u8a08\u5165\u3002",
   "tm.fold.note.dna!":"\u74b0\u53c3\u6578\uff1aSantaLucia &amp; Hicks 2004\uff0c\u5176\u74b0\u9805\u50c5\u4ee5\u81ea\u7531\u80fd\u7d66\u51fa\u3002\u4ee5\u901a\u7528\u74b0\u65b9\u7a0b\u5f0f\u8a08\u7b97\u7684\u74b0\uff0c\u9019\u88e1\u5c07\u5176 ΔH° \u53d6\u70ba\u96f6\uff0c\u56e0\u6b64\u9019\u985e\u74b0\u53ea\u8ca2\u737b\u71b5\u3002\u5169\u5074\u5404\u6709\u4e00\u5230\u5169\u500b\u672a\u914d\u5c0d\u9e7c\u57fa\u7684\u5167\u90e8\u74b0\uff0c\u63a1\u7528 Mathews \u5c0d\u8a72\u74b0\u7684\u5be6\u6e2c\u503c\uff0c\u800c\u4e14\u73fe\u5728\u4e5f\u4e00\u4f75\u8f09\u5165\u5df2\u767c\u8868\u7684\u7113\u503c\u3002\u9019\u500b\u7113\u503c\u96d6\u7136\u662f\u5be6\u6e2c\u800c\u975e\u5047\u8a2d\uff0c\u4f46\u672c\u5f15\u64ce\u7684\u74b0\u71b5\u662f\u5f9e\u81ea\u7531\u80fd\u63a8\u5c0e\u51fa\u4f86\u7684\u3002\u8f09\u5165\u7113\u503c\u6703\u8b93\u5c11\u6578\u647a\u758a\u7684\u71b5\u8da8\u8fd1\u65bc\u96f6\uff0c\u800c\u647a\u758a\u7684\u7194\u89e3\u6eab\u5ea6\u662f\u5169\u8005\u7684\u6bd4\u503c\uff0c\u65bc\u662f\u5728\u6578\u503c\u4e0a\u8b8a\u5f97\u4e0d\u7a69\u5b9a\u3002\u7576\u7d50\u679c\u843d\u5728\u9019\u4e9b\u53c3\u6578\u7684\u91cf\u6e2c\u7bc4\u570d\u4e4b\u5916\uff0c\u6216\u662f\u628a\u7a69\u5b9a\u7684\u647a\u758a\u5224\u70ba\u7531\u71b5\u9a45\u52d5\u6642\uff0c\u647a\u758a\u7684\u7194\u89e3\u6eab\u5ea6\u6539\u70ba\u5c07\u74b0\u7684 ΔH° \u53d6\u70ba\u96f6\uff0c\u4e5f\u5c31\u662f\u5148\u524d\u7248\u672c\u4e00\u76f4\u56de\u5831\u7684\u6578\u503c\u3002\u6c92\u6709\u4efb\u4f55\u6700\u9130\u8fd1\u53c3\u6578\u6539\u8b8a\uff0c\u6240\u4ee5\u96d9\u80a1\u7684\u7194\u89e3\u6eab\u5ea6\u4e0d\u53d7\u5f71\u97ff\u3002",
   "tm.fold.note.mb!":"\uff0c\u4ee5\u53ca\u591a\u5206\u652f\u74b0\u3002\u5728\u591a\u5206\u652f\u74b0\u5167\u6211\u5011\u6703\u8a08\u5165\u61f8\u5782\u672b\u7aef\u8207\u9f4a\u5e73\u7684\u5171\u8ef8\u5806\u758a\uff1b<b>\u932f\u914d\u4ecb\u5c0e\u7684\u5171\u8ef8\u5806\u758a\uff0c\u4ee5\u53ca\u6e38\u96e2\u5c3e\u7aef\u4e0a\u7684\u61f8\u5782\u672b\u7aef\uff0c\u90fd\u4e0d\u8a08\u5165</b>\u3002\u9019\u5169\u9805\u88ab\u7565\u904e\u7684\u80fd\u91cf\u9805\u5728 Turner \u6a21\u578b\u4e2d\u90fd\u662f\u4f7f\u7d50\u69cb\u66f4\u7a69\u5b9a\u7684\uff0c\u6240\u4ee5\u986f\u793a\u7684 ΔG \u5c0d\u6240\u5831\u544a\u7684\u7d50\u69cb\u800c\u8a00\u662f\u4fdd\u5b88\u7684\u3002\u9019\u662f\u95dc\u65bc\u6a21\u578b\u672c\u8eab\u7684\u9673\u8ff0\uff0c\u4e0d\u662f\u5be6\u9a57\u8aa4\u5dee\u7bc4\u570d\u3002 ",
-  "tm.fold.note.mbdna!":"\u3002<b>DNA \u4e0d\u641c\u5c0b\u591a\u5206\u652f\u7d50\u69cb\u3002</b>\u82e5\u6709\u4e09\u500b\u4ee5\u4e0a\u7684\u8396\u4ea4\u6703\u65bc\u540c\u4e00\u500b\u74b0\uff0c\u6211\u5011\u53ea\u5831\u544a\u5176\u4e2d\u6700\u7a69\u5b9a\u7684\u90a3\u4e00\u652f\uff0c\u6240\u4ee5\u771f\u5be6\u7d50\u69cb\u6709\u53ef\u80fd\u6bd4\u986f\u793a\u7684\u66f4\u7a69\u5b9a\u3002 ",
+  "tm.fold.note.mbdna!":"\uff0c\u4ee5\u53ca\u591a\u5206\u652f\u74b0\u3002\u5728\u591a\u5206\u652f\u74b0\u5167\u6211\u5011\u6703\u8a08\u5165\u61f8\u5782\u672b\u7aef\u8207\u9f4a\u5e73\u7684\u5171\u8ef8\u5806\u758a\uff1b<b>\u932f\u914d\u4ecb\u5c0e\u7684\u5171\u8ef8\u5806\u758a\u3001\u672b\u7aef\u932f\u914d\uff0c\u4ee5\u53ca\u6e38\u96e2\u5c3e\u7aef\u4e0a\u7684\u61f8\u5782\u672b\u7aef\uff0c\u90fd\u4e0d\u8a08\u5165</b>\u3002\u9019\u4e09\u9805\u88ab\u7565\u904e\u7684\u80fd\u91cf\u9805\u90fd\u662f\u4f7f\u7d50\u69cb\u66f4\u7a69\u5b9a\u7684\uff0c\u6240\u4ee5\u986f\u793a\u7684 ΔG \u5c0d\u6240\u5831\u544a\u7684\u7d50\u69cb\u800c\u8a00\u662f\u4fdd\u5b88\u7684\u3002\u9019\u662f\u95dc\u65bc\u6a21\u578b\u672c\u8eab\u7684\u9673\u8ff0\uff0c\u4e0d\u662f\u5be6\u9a57\u8aa4\u5dee\u7bc4\u570d\u3002\u61f8\u5782\u672b\u7aef\u63a1\u7528\u5df2\u88fd\u8868\u7684 DNA \u6578\u503c\uff1a\u5176\u4e2d\u6709\u5e7e\u500b\u9589\u5408\u9e7c\u57fa\u5c0d\uff0c\u56db\u7a2e\u61f8\u5782\u9e7c\u57fa\u5171\u7528\u540c\u4e00\u500b\u503c\uff0c\u800c\u5169\u5217 G-T \u5247\u6cbf\u7528\u8207\u5176\u6700\u76f8\u8fd1\u7684\u83ef\u751f-\u514b\u91cc\u514b\u9e7c\u57fa\u5c0d\u7684\u6578\u503c\u3002 ",
   "tm.fold.note.mbrna!":"\u3002<b>\u8d85\u904e {n} nt \u5c31\u4e0d\u641c\u5c0b\u591a\u5206\u652f\u7d50\u69cb\u3002</b>\u641c\u5c0b\u6210\u672c\u662f\u9577\u5ea6\u7684\u4e09\u6b21\u65b9\uff0c\u6703\u8b93\u9801\u9762\u5361\u4f4f\u3002\u82e5\u6709\u4e09\u500b\u4ee5\u4e0a\u7684\u8396\u4ea4\u6703\u65bc\u540c\u4e00\u500b\u74b0\uff0c\u6211\u5011\u53ea\u5831\u544a\u5176\u4e2d\u6700\u7a69\u5b9a\u7684\u90a3\u4e00\u652f\uff0c\u6240\u4ee5\u771f\u5be6\u7d50\u69cb\u6709\u53ef\u80fd\u6bd4\u986f\u793a\u7684\u66f4\u7a69\u5b9a\u3002 ",
   "tm.fold.note.mfe!":" \u9019\u500b\u7d50\u69cb\u662f\u9019\u6b21\u641c\u5c0b\u627e\u5230\u7684\u6700\u4f4e\u81ea\u7531\u80fd\u7d50\u69cb\uff0c\u4e26\u4e0d\u662f\u5df2\u8b49\u660e\u7684\u5168\u57df\u6700\u5c0f\u503c\uff1a\u641c\u5c0b\u5148\u7528\u8f03\u4fbf\u5b9c\u7684\u80fd\u91cf\u6a21\u578b\u6392\u5e8f\uff0c\u518d\u53ea\u5c0d\u524d {k} \u500b\u5019\u9078\u7d50\u69cb\u505a\u7cbe\u78ba\u8a08\u5206\u3002\u7d50\u679c\u4ee5\u9ede\u62ec\u865f\u8868\u793a\uff1a\u5305\u542b\u5806\u758a\u3001\u51f8\u8d77\u8207\u5167\u90e8\u74b0",
   "tm.fold.note.one!":" \u53ea\u8a08\u7b97\u4e00\u500b\u8396\u8207\u4e00\u500b\u74b0\u3002 ",
@@ -3279,6 +3281,7 @@ var I18N = {
   "lab.closing!":"{date} \u5173\u95ed",
   "lab.cmt.aria":"\u6dfb\u52a0\u8bc4\u8bba",
   "lab.cmt.del":"\u5220\u9664\u8bc4\u8bba",
+  "lab.cmt.err.notmine":"\u53ea\u6709\u53d1\u8868\u8fd9\u6761\u8bc4\u8bba\u7684\u4eba\uff0c\u6216\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u8d1f\u8d23\u4eba\uff0c\u53ef\u4ee5\u5220\u9664\u5b83\u3002",
   "lab.cmt.failload":"\u65e0\u6cd5\u52a0\u8f7d\u8bc4\u8bba\u3002",
   "lab.cmt.h":"\u8bc4\u8bba",
   "lab.cmt.none":"\u8fd8\u6ca1\u6709\u8bc4\u8bba\u3002",
@@ -4182,7 +4185,7 @@ var I18N = {
   "tm.fold.note.dimer!":"\u81ea\u8eab\u4e8c\u805a\u4f53\u8fd9\u4e00\u884c\u7ed9\u7684\u662f\u6700\u4f73\u7684\u8fde\u7eed\u81ea\u8eab\u4e8c\u805a\u4f53\u87ba\u65cb\uff0c\u4e0d\u662f\u81ea\u8eab\u4e8c\u805a\u4f53\u7684\u6700\u5c0f\u81ea\u7531\u80fd\uff1a\u5b83\u53ea\u8ba1\u7b97\u4e00\u6bb5\u76f8\u90bb\u914d\u5bf9\uff0c\u4e0d\u542b\u51f8\u8d77\u4e5f\u4e0d\u542b\u5185\u90e8\u73af\u3002\u5728\u4e0d\u5bf9\u79f0\u7684\u540c\u578b\u4e8c\u805a\u4f53\u4e2d\uff0c\u5b83\u7684\u955c\u50cf\u87ba\u65cb\u4e5f\u4f1a\u5f62\u6210\uff0c\u4f46\u6ca1\u6709\u88ab\u8ba1\u5165\u3002",
   "tm.fold.note.dna!":"\u73af\u53c2\u6570\uff1aSantaLucia &amp; Hicks 2004\uff0c\u5176\u73af\u9879\u4ec5\u4ee5\u81ea\u7531\u80fd\u7ed9\u51fa\u3002\u4ee5\u901a\u7528\u73af\u65b9\u7a0b\u8ba1\u7b97\u7684\u73af\uff0c\u8fd9\u91cc\u5c06\u5176 ΔH° \u53d6\u4e3a\u96f6\uff0c\u56e0\u6b64\u8fd9\u7c7b\u73af\u53ea\u8d21\u732e\u71b5\u3002\u4e24\u4fa7\u5404\u6709\u4e00\u5230\u4e24\u4e2a\u672a\u914d\u5bf9\u78b1\u57fa\u7684\u5185\u90e8\u73af\uff0c\u91c7\u7528 Mathews \u5bf9\u8be5\u73af\u7684\u5b9e\u6d4b\u503c\uff0c\u800c\u4e14\u73b0\u5728\u4e5f\u4e00\u5e76\u8f7d\u5165\u5df2\u53d1\u8868\u7684\u7113\u503c\u3002\u8fd9\u4e2a\u7113\u503c\u867d\u7136\u662f\u5b9e\u6d4b\u800c\u975e\u5047\u8bbe\uff0c\u4f46\u672c\u5f15\u64ce\u7684\u73af\u71b5\u662f\u4ece\u81ea\u7531\u80fd\u63a8\u5bfc\u51fa\u6765\u7684\u3002\u8f7d\u5165\u7113\u503c\u4f1a\u8ba9\u5c11\u6570\u6298\u53e0\u7684\u71b5\u8d8b\u8fd1\u4e8e\u96f6\uff0c\u800c\u6298\u53e0\u7684\u89e3\u94fe\u6e29\u5ea6\u662f\u4e24\u8005\u7684\u6bd4\u503c\uff0c\u4e8e\u662f\u5728\u6570\u503c\u4e0a\u53d8\u5f97\u4e0d\u7a33\u5b9a\u3002\u5f53\u7ed3\u679c\u843d\u5728\u8fd9\u4e9b\u53c2\u6570\u7684\u6d4b\u91cf\u8303\u56f4\u4e4b\u5916\uff0c\u6216\u662f\u628a\u7a33\u5b9a\u7684\u6298\u53e0\u5224\u4e3a\u7531\u71b5\u9a71\u52a8\u65f6\uff0c\u6298\u53e0\u7684\u89e3\u94fe\u6e29\u5ea6\u6539\u4e3a\u5c06\u73af\u7684 ΔH° \u53d6\u4e3a\u96f6\uff0c\u4e5f\u5c31\u662f\u5148\u524d\u7248\u672c\u4e00\u76f4\u62a5\u544a\u7684\u6570\u503c\u3002\u6ca1\u6709\u4efb\u4f55\u6700\u8fd1\u90bb\u53c2\u6570\u6539\u53d8\uff0c\u6240\u4ee5\u53cc\u94fe\u7684\u89e3\u94fe\u6e29\u5ea6\u4e0d\u53d7\u5f71\u54cd\u3002",
   "tm.fold.note.mb!":"\uff0c\u4ee5\u53ca\u591a\u5206\u652f\u73af\u3002\u5728\u591a\u5206\u652f\u73af\u5185\u6211\u4eec\u4f1a\u8ba1\u5165\u60ac\u5782\u672b\u7aef\u4e0e\u9f50\u5e73\u7684\u5171\u8f74\u5806\u53e0\uff1b<b>\u9519\u914d\u4ecb\u5bfc\u7684\u5171\u8f74\u5806\u53e0\uff0c\u4ee5\u53ca\u6e38\u79bb\u5c3e\u7aef\u4e0a\u7684\u60ac\u5782\u672b\u7aef\uff0c\u90fd\u4e0d\u8ba1\u5165</b>\u3002\u8fd9\u4e24\u9879\u88ab\u7565\u8fc7\u7684\u80fd\u91cf\u9879\u5728 Turner \u6a21\u578b\u4e2d\u90fd\u662f\u4f7f\u7ed3\u6784\u66f4\u7a33\u5b9a\u7684\uff0c\u6240\u4ee5\u663e\u793a\u7684 ΔG \u5bf9\u6240\u62a5\u544a\u7684\u7ed3\u6784\u800c\u8a00\u662f\u4fdd\u5b88\u7684\u3002\u8fd9\u662f\u5173\u4e8e\u6a21\u578b\u672c\u8eab\u7684\u9648\u8ff0\uff0c\u4e0d\u662f\u5b9e\u9a8c\u8bef\u5dee\u8303\u56f4\u3002",
-  "tm.fold.note.mbdna!":"\u3002<b>DNA \u4e0d\u641c\u7d22\u591a\u5206\u652f\u7ed3\u6784\u3002</b>\u82e5\u6709\u4e09\u4e2a\u4ee5\u4e0a\u7684\u830e\u4ea4\u4f1a\u4e8e\u540c\u4e00\u4e2a\u73af\uff0c\u6211\u4eec\u53ea\u62a5\u544a\u5176\u4e2d\u6700\u7a33\u5b9a\u7684\u90a3\u4e00\u652f\uff0c\u6240\u4ee5\u771f\u5b9e\u7ed3\u6784\u6709\u53ef\u80fd\u6bd4\u663e\u793a\u7684\u66f4\u7a33\u5b9a\u3002",
+  "tm.fold.note.mbdna!":"\uff0c\u4ee5\u53ca\u591a\u5206\u652f\u73af\u3002\u5728\u591a\u5206\u652f\u73af\u5185\u6211\u4eec\u4f1a\u8ba1\u5165\u60ac\u5782\u672b\u7aef\u4e0e\u9f50\u5e73\u7684\u5171\u8f74\u5806\u53e0\uff1b<b>\u9519\u914d\u4ecb\u5bfc\u7684\u5171\u8f74\u5806\u53e0\u3001\u672b\u7aef\u9519\u914d\uff0c\u4ee5\u53ca\u6e38\u79bb\u5c3e\u7aef\u4e0a\u7684\u60ac\u5782\u672b\u7aef\uff0c\u90fd\u4e0d\u8ba1\u5165</b>\u3002\u8fd9\u4e09\u9879\u88ab\u7565\u8fc7\u7684\u80fd\u91cf\u9879\u90fd\u662f\u4f7f\u7ed3\u6784\u66f4\u7a33\u5b9a\u7684\uff0c\u6240\u4ee5\u663e\u793a\u7684 ΔG \u5bf9\u6240\u62a5\u544a\u7684\u7ed3\u6784\u800c\u8a00\u662f\u4fdd\u5b88\u7684\u3002\u8fd9\u662f\u5173\u4e8e\u6a21\u578b\u672c\u8eab\u7684\u9648\u8ff0\uff0c\u4e0d\u662f\u5b9e\u9a8c\u8bef\u5dee\u8303\u56f4\u3002\u60ac\u5782\u672b\u7aef\u91c7\u7528\u5df2\u5236\u8868\u7684 DNA \u6570\u503c\uff1a\u5176\u4e2d\u6709\u51e0\u4e2a\u95ed\u5408\u78b1\u57fa\u5bf9\uff0c\u56db\u79cd\u60ac\u5782\u78b1\u57fa\u5171\u7528\u540c\u4e00\u4e2a\u503c\uff0c\u800c\u4e24\u884c G-T \u5219\u6cbf\u7528\u4e0e\u5176\u6700\u76f8\u8fd1\u7684\u6c83\u68ee-\u514b\u91cc\u514b\u78b1\u57fa\u5bf9\u7684\u6570\u503c\u3002",
   "tm.fold.note.mbrna!":"\u3002<b>\u8d85\u8fc7 {n} nt \u5c31\u4e0d\u641c\u7d22\u591a\u5206\u652f\u7ed3\u6784\u3002</b>\u641c\u7d22\u6210\u672c\u662f\u957f\u5ea6\u7684\u4e09\u6b21\u65b9\uff0c\u4f1a\u8ba9\u9875\u9762\u5361\u4f4f\u3002\u82e5\u6709\u4e09\u4e2a\u4ee5\u4e0a\u7684\u830e\u4ea4\u4f1a\u4e8e\u540c\u4e00\u4e2a\u73af\uff0c\u6211\u4eec\u53ea\u62a5\u544a\u5176\u4e2d\u6700\u7a33\u5b9a\u7684\u90a3\u4e00\u652f\uff0c\u6240\u4ee5\u771f\u5b9e\u7ed3\u6784\u6709\u53ef\u80fd\u6bd4\u663e\u793a\u7684\u66f4\u7a33\u5b9a\u3002",
   "tm.fold.note.mfe!":"\u8fd9\u4e2a\u7ed3\u6784\u662f\u8fd9\u6b21\u641c\u7d22\u627e\u5230\u7684\u6700\u4f4e\u81ea\u7531\u80fd\u7ed3\u6784\uff0c\u5e76\u4e0d\u662f\u5df2\u8bc1\u660e\u7684\u5168\u5c40\u6700\u5c0f\u503c\uff1a\u641c\u7d22\u5148\u7528\u8f83\u4fbf\u5b9c\u7684\u80fd\u91cf\u6a21\u578b\u6392\u5e8f\uff0c\u518d\u53ea\u5bf9\u524d {k} \u4e2a\u5019\u9009\u7ed3\u6784\u505a\u7cbe\u786e\u8ba1\u5206\u3002\u7ed3\u679c\u4ee5\u70b9\u62ec\u53f7\u8868\u793a\uff1a\u5305\u542b\u5806\u53e0\u3001\u51f8\u8d77\u4e0e\u5185\u90e8\u73af",
   "tm.fold.note.one!":"\u53ea\u8ba1\u7b97\u4e00\u4e2a\u830e\u4e0e\u4e00\u4e2a\u73af\u3002",
@@ -4705,6 +4708,7 @@ var I18N = {
   "lab.closing!":"{date} \u306b\u7d42\u4e86",
   "lab.cmt.aria":"\u30b3\u30e1\u30f3\u30c8\u3092\u8ffd\u52a0",
   "lab.cmt.del":"\u30b3\u30e1\u30f3\u30c8\u3092\u524a\u9664",
+  "lab.cmt.err.notmine":"\u3053\u306e\u30b3\u30e1\u30f3\u30c8\u3092\u524a\u9664\u3067\u304d\u308b\u306e\u306f\u3001\u66f8\u3044\u305f\u672c\u4eba\u3068\u3001\u3053\u306e\u30e9\u30dc\u306e\u7ba1\u7406\u8005\u3060\u3051\u3067\u3059\u3002",
   "lab.cmt.failload":"\u30b3\u30e1\u30f3\u30c8\u3092\u8aad\u307f\u8fbc\u3081\u307e\u305b\u3093\u3067\u3057\u305f\u3002",
   "lab.cmt.h":"\u30b3\u30e1\u30f3\u30c8",
   "lab.cmt.none":"\u307e\u3060\u30b3\u30e1\u30f3\u30c8\u306f\u3042\u308a\u307e\u305b\u3093\u3002",
@@ -5608,7 +5612,7 @@ var I18N = {
   "tm.fold.note.dimer!":"\u30bb\u30eb\u30d5\u30c0\u30a4\u30de\u30fc\u306e\u884c\u306f\u3001\u30bb\u30eb\u30d5\u30c0\u30a4\u30de\u30fc\u306e\u81ea\u7531\u30a8\u30cd\u30eb\u30ae\u30fc\u6700\u5c0f\u5024\u3067\u306f\u306a\u304f\u3001\u9023\u7d9a\u3057\u305f\u6700\u826f\u306e\u30bb\u30eb\u30d5\u30c0\u30a4\u30de\u30fc\u30d8\u30ea\u30c3\u30af\u30b9\u3067\u3059\u3002\u96a3\u308a\u5408\u3046\u5869\u57fa\u5bfe\u306e\u9023\u306a\u308a 1 \u3064\u3060\u3051\u3092\u63a1\u70b9\u3057\u3001\u30d0\u30eb\u30b8\u3082\u5185\u90e8\u30eb\u30fc\u30d7\u3082\u542b\u307f\u307e\u305b\u3093\u3002\u975e\u5bfe\u79f0\u306a\u30db\u30e2\u30c0\u30a4\u30de\u30fc\u3067\u306f\u305d\u306e\u93e1\u50cf\u30d8\u30ea\u30c3\u30af\u30b9\u3082\u5f62\u6210\u3055\u308c\u307e\u3059\u304c\u3001\u6570\u3048\u3066\u3044\u307e\u305b\u3093\u3002",
   "tm.fold.note.dna!":"\u30eb\u30fc\u30d7\u30d1\u30e9\u30e1\u30fc\u30bf: SantaLucia &amp; Hicks 2004\u3002\u3053\u306e\u6587\u732e\u306e\u30eb\u30fc\u30d7\u9805\u306f\u81ea\u7531\u30a8\u30cd\u30eb\u30ae\u30fc\u306e\u307f\u3067\u4e0e\u3048\u3089\u308c\u3066\u3044\u307e\u3059\u3002\u672c\u30a8\u30f3\u30b8\u30f3\u3067\u306f\u3001\u4e00\u822c\u306e\u30eb\u30fc\u30d7\u5f0f\u3067\u8a08\u7b97\u3055\u308c\u308b\u30eb\u30fc\u30d7\u306e ΔH° \u3092\u30bc\u30ed\u3068\u3057\u3066\u6271\u3046\u305f\u3081\u3001\u305d\u3046\u3057\u305f\u30eb\u30fc\u30d7\u306f\u30a8\u30f3\u30c8\u30ed\u30d4\u30fc\u306b\u3060\u3051\u5bc4\u4e0e\u3057\u307e\u3059\u3002\u4e21\u5074\u306b\u305d\u308c\u305e\u308c 1 \u3064\u307e\u305f\u306f 2 \u3064\u306e\u975e\u5bfe\u5408\u5869\u57fa\u304c\u3042\u308b\u5185\u90e8\u30eb\u30fc\u30d7\u306b\u306f Mathews \u304c\u6e2c\u5b9a\u3057\u305f\u5024\u3092\u7528\u3044\u3001\u305d\u308c\u3089\u306e\u30eb\u30fc\u30d7\u306b\u3064\u3044\u3066\u306f\u516c\u8868\u3055\u308c\u3066\u3044\u308b\u30a8\u30f3\u30bf\u30eb\u30d4\u30fc\u3082\u4f75\u305b\u3066\u53d6\u308a\u8fbc\u307f\u307e\u3059\u3002\u3053\u306e\u30a8\u30f3\u30bf\u30eb\u30d4\u30fc\u306f\u4eee\u5b9a\u3067\u306f\u306a\u304f\u5b9f\u6e2c\u5024\u3067\u3059\u304c\u3001\u672c\u30a8\u30f3\u30b8\u30f3\u306f\u30eb\u30fc\u30d7\u306e\u30a8\u30f3\u30c8\u30ed\u30d4\u30fc\u3092\u81ea\u7531\u30a8\u30cd\u30eb\u30ae\u30fc\u304b\u3089\u5c0e\u51fa\u3057\u3066\u3044\u307e\u3059\u3002\u305d\u306e\u305f\u3081\u53d6\u308a\u8fbc\u3080\u3068\u5c11\u6570\u306e\u30d5\u30a9\u30fc\u30eb\u30c9\u3067\u30a8\u30f3\u30c8\u30ed\u30d4\u30fc\u304c\u30bc\u30ed\u306b\u8fd1\u3065\u304d\u3001\u4e21\u8005\u306e\u6bd4\u3067\u3042\u308b\u30d5\u30a9\u30fc\u30eb\u30c9\u306e\u878d\u89e3\u6e29\u5ea6\u304c\u6570\u5024\u7684\u306b\u4e0d\u5b89\u5b9a\u306b\u306a\u308a\u307e\u3059\u3002\u7d50\u679c\u304c\u3053\u308c\u3089\u306e\u30d1\u30e9\u30e1\u30fc\u30bf\u306e\u6e2c\u5b9a\u7bc4\u56f2\u3092\u5916\u308c\u308b\u5834\u5408\u3001\u307e\u305f\u306f\u5b89\u5b9a\u306a\u30d5\u30a9\u30fc\u30eb\u30c9\u3092\u30a8\u30f3\u30c8\u30ed\u30d4\u30fc\u99c6\u52d5\u3068\u5831\u544a\u3059\u308b\u5834\u5408\u306b\u306f\u3001\u30d5\u30a9\u30fc\u30eb\u30c9\u306e\u878d\u89e3\u6e29\u5ea6\u306f\u30eb\u30fc\u30d7\u306e ΔH° \u3092\u30bc\u30ed\u3068\u3057\u3066\u6c42\u3081\u307e\u3059\u3002\u3053\u308c\u306f\u4ee5\u524d\u306e\u30d0\u30fc\u30b8\u30e7\u30f3\u304c\u5831\u544a\u3057\u3066\u3044\u305f\u5024\u3067\u3059\u3002\u6700\u8fd1\u63a5\u5869\u57fa\u5bfe\u306e\u30d1\u30e9\u30e1\u30fc\u30bf\u306f\u4e00\u3064\u3082\u5909\u308f\u3063\u3066\u3044\u306a\u3044\u305f\u3081\u3001\u4e8c\u672c\u9396\u306e\u878d\u89e3\u6e29\u5ea6\u306b\u306f\u5f71\u97ff\u3057\u307e\u305b\u3093\u3002",
   "tm.fold.note.mb!":"\u3001\u304a\u3088\u3073\u30de\u30eb\u30c1\u30d6\u30e9\u30f3\u30c1\u30eb\u30fc\u30d7\u3067\u3059\u3002\u30de\u30eb\u30c1\u30d6\u30e9\u30f3\u30c1\u30eb\u30fc\u30d7\u306e\u5185\u5074\u3067\u306f\u30c0\u30f3\u30b0\u30ea\u30f3\u30b0\u30a8\u30f3\u30c9\u3068\u540c\u8ef8\u30b9\u30bf\u30c3\u30ad\u30f3\u30b0\u3092\u63a1\u70b9\u3057\u307e\u3059\u304c\u3001<b>\u30df\u30b9\u30de\u30c3\u30c1\u3092\u4ecb\u3057\u305f\u540c\u8ef8\u30b9\u30bf\u30c3\u30ad\u30f3\u30b0\u3068\u3001\u81ea\u7531\u306a\u5c3e\u90e8\u306e\u30c0\u30f3\u30b0\u30ea\u30f3\u30b0\u30a8\u30f3\u30c9\u306f\u63a1\u70b9\u3057\u307e\u305b\u3093</b>\u3002\u7701\u3044\u305f\u3053\u306e 2 \u9805\u306f Turner \u30e2\u30c7\u30eb\u3067\u306f\u3069\u3061\u3089\u3082\u5b89\u5b9a\u5316\u9805\u306a\u306e\u3067\u3001\u8868\u793a\u3055\u308c\u3066\u3044\u308b ΔG \u306f\u5831\u544a\u3055\u308c\u305f\u69cb\u9020\u306b\u5bfe\u3057\u3066\u63a7\u3048\u3081\u306e\u5024\u3067\u3059\u3002\u3053\u308c\u306f\u30e2\u30c7\u30eb\u306b\u3064\u3044\u3066\u306e\u8a18\u8ff0\u3067\u3042\u308a\u3001\u5b9f\u9a13\u8aa4\u5dee\u306e\u7bc4\u56f2\u3092\u793a\u3059\u3082\u306e\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002 ",
-  "tm.fold.note.mbdna!":"\u3002<b>DNA \u3067\u306f\u30de\u30eb\u30c1\u30d6\u30e9\u30f3\u30c1\u69cb\u9020\u3092\u63a2\u7d22\u3057\u307e\u305b\u3093\u3002</b>3 \u3064\u4ee5\u4e0a\u306e\u30b9\u30c6\u30e0\u304c 1 \u3064\u306e\u30eb\u30fc\u30d7\u3067\u51fa\u4f1a\u3046\u30d5\u30a9\u30fc\u30eb\u30c9\u306f\u3001\u6700\u3082\u5b89\u5b9a\u306a\u5358\u4e00\u306e\u30d6\u30e9\u30f3\u30c1\u3068\u3057\u3066\u5831\u544a\u3055\u308c\u308b\u305f\u3081\u3001\u5b9f\u969b\u306e\u69cb\u9020\u306f\u8868\u793a\u3055\u308c\u3066\u3044\u308b\u3082\u306e\u3088\u308a\u5b89\u5b9a\u3067\u3042\u308a\u3046\u308b\u3053\u3068\u306b\u3054\u6ce8\u610f\u304f\u3060\u3055\u3044\u3002",
+  "tm.fold.note.mbdna!":"\u3001\u304a\u3088\u3073\u30de\u30eb\u30c1\u30d6\u30e9\u30f3\u30c1\u30eb\u30fc\u30d7\u3067\u3059\u3002\u30de\u30eb\u30c1\u30d6\u30e9\u30f3\u30c1\u30eb\u30fc\u30d7\u306e\u5185\u5074\u3067\u306f\u30c0\u30f3\u30b0\u30ea\u30f3\u30b0\u30a8\u30f3\u30c9\u3068\u540c\u8ef8\u30b9\u30bf\u30c3\u30ad\u30f3\u30b0\u3092\u63a1\u70b9\u3057\u307e\u3059\u304c\u3001<b>\u30df\u30b9\u30de\u30c3\u30c1\u3092\u4ecb\u3057\u305f\u540c\u8ef8\u30b9\u30bf\u30c3\u30ad\u30f3\u30b0\u3001\u672b\u7aef\u30df\u30b9\u30de\u30c3\u30c1\u3001\u304a\u3088\u3073\u81ea\u7531\u306a\u5c3e\u90e8\u306e\u30c0\u30f3\u30b0\u30ea\u30f3\u30b0\u30a8\u30f3\u30c9\u306f\u63a1\u70b9\u3057\u307e\u305b\u3093</b>\u3002\u7701\u3044\u305f\u3053\u306e 3 \u9805\u306f\u3044\u305a\u308c\u3082\u5b89\u5b9a\u5316\u9805\u306a\u306e\u3067\u3001\u8868\u793a\u3055\u308c\u3066\u3044\u308b ΔG \u306f\u5831\u544a\u3055\u308c\u305f\u69cb\u9020\u306b\u5bfe\u3057\u3066\u63a7\u3048\u3081\u306e\u5024\u3067\u3059\u3002\u3053\u308c\u306f\u30e2\u30c7\u30eb\u306b\u3064\u3044\u3066\u306e\u8a18\u8ff0\u3067\u3042\u308a\u3001\u5b9f\u9a13\u8aa4\u5dee\u306e\u7bc4\u56f2\u3092\u793a\u3059\u3082\u306e\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002\u30c0\u30f3\u30b0\u30ea\u30f3\u30b0\u30a8\u30f3\u30c9\u306b\u306f\u8868\u5316\u3055\u308c\u305f DNA \u306e\u5024\u3092\u7528\u3044\u3066\u3044\u307e\u3059\u3002\u3044\u304f\u3064\u304b\u306e\u9589\u3058\u5869\u57fa\u5bfe\u3067\u306f 4 \u7a2e\u985e\u306e\u30c0\u30f3\u30b0\u30ea\u30f3\u30b0\u5869\u57fa\u304c\u540c\u3058\u5024\u3092\u5171\u6709\u3057\u3001G-T \u306e 2 \u884c\u306f\u6700\u3082\u8fd1\u3044\u30ef\u30c8\u30bd\u30f3\u30fb\u30af\u30ea\u30c3\u30af\u5869\u57fa\u5bfe\u306e\u5024\u3092\u6d41\u7528\u3057\u3066\u3044\u307e\u3059\u3002 ",
   "tm.fold.note.mbrna!":"\u3002<b>{n} nt \u3092\u8d85\u3048\u308b\u3068\u30de\u30eb\u30c1\u30d6\u30e9\u30f3\u30c1\u69cb\u9020\u306f\u63a2\u7d22\u3057\u307e\u305b\u3093\u3002</b>\u63a2\u7d22\u306f\u9577\u3055\u306e 3 \u4e57\u306e\u30b3\u30b9\u30c8\u304c\u304b\u304b\u308a\u3001\u30da\u30fc\u30b8\u304c\u5fdc\u7b54\u3057\u306a\u304f\u306a\u308a\u307e\u3059\u30023 \u3064\u4ee5\u4e0a\u306e\u30b9\u30c6\u30e0\u304c 1 \u3064\u306e\u30eb\u30fc\u30d7\u3067\u51fa\u4f1a\u3046\u30d5\u30a9\u30fc\u30eb\u30c9\u306f\u3001\u6700\u3082\u5b89\u5b9a\u306a\u5358\u4e00\u306e\u30d6\u30e9\u30f3\u30c1\u3068\u3057\u3066\u5831\u544a\u3055\u308c\u308b\u305f\u3081\u3001\u5b9f\u969b\u306e\u69cb\u9020\u306f\u8868\u793a\u3055\u308c\u3066\u3044\u308b\u3082\u306e\u3088\u308a\u5b89\u5b9a\u3067\u3042\u308a\u3046\u308b\u3053\u3068\u306b\u3054\u6ce8\u610f\u304f\u3060\u3055\u3044\u3002 ",
   "tm.fold.note.mfe!":" \u3053\u306e\u69cb\u9020\u306f\u4eca\u56de\u306e\u63a2\u7d22\u3067\u898b\u3064\u304b\u3063\u305f\u81ea\u7531\u30a8\u30cd\u30eb\u30ae\u30fc\u6700\u5c0f\u306e\u69cb\u9020\u3067\u3042\u308a\u3001\u5927\u57df\u7684\u306a\u6700\u5c0f\u5024\u3067\u3042\u308b\u3053\u3068\u304c\u8a3c\u660e\u3055\u308c\u3066\u3044\u308b\u308f\u3051\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002\u63a2\u7d22\u306f\u307e\u305a\u7c21\u6613\u306a\u30a8\u30cd\u30eb\u30ae\u30fc\u30e2\u30c7\u30eb\u3067\u9806\u4f4d\u4ed8\u3051\u3057\u3001\u4e0a\u4f4d {k} \u5019\u88dc\u3060\u3051\u3092\u53b3\u5bc6\u306b\u63a1\u70b9\u3057\u307e\u3059\u3002\u8868\u8a18\u306f\u30c9\u30c3\u30c8\u30d6\u30e9\u30b1\u30c3\u30c8\u3067\u3059\u3002\u30b9\u30bf\u30c3\u30af\u3001\u30d0\u30eb\u30b8\u3001\u5185\u90e8\u30eb\u30fc\u30d7",
   "tm.fold.note.one!":" \u30b9\u30c6\u30e0 1 \u3064\u3068\u30eb\u30fc\u30d7 1 \u3064\u306e\u307f\u3067\u3059\u3002 ",
@@ -20314,7 +20318,36 @@ try{
    
   async function fetchComments(rowId){ return (await rest('GET','strand_comments?strand_id=eq.'+encodeURIComponent(rowId)+'&select=*&order=created_at.asc'))||[]; }
   async function addComment(rowId,txt){ var uid=await myUid(); if(!uid) throw new Error(_t('lab.err.signin')); await rest('POST','strand_comments',[{strand_id:rowId,user_id:uid,author_email:myEmail(),body:txt}],{Prefer:'return=minimal'}); }
-  async function deleteComment(id){ await rest('DELETE','strand_comments?id=eq.'+encodeURIComponent(id),undefined,{Prefer:'return=minimal'}); }
+  
+
+
+
+
+
+
+
+
+
+
+
+  async function deleteComment(id){ await rpc('comment_delete',{p_comment:id}); }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  function _cmtDelErr(err){ var m=(err&&err.message)||'';
+    if(m.indexOf('comment_not_permitted')>=0) return _t('lab.cmt.err.notmine');
+    return _rpcMsg(err)||_t('lab.err.del'); }
   
 
 
@@ -20364,7 +20397,7 @@ try{
         d.dataset.a0=_ca0; if(_can) d.setAttribute('aria-label',_can);
         if(window.oligoAnnounce) window.oligoAnnounce(_can||_ca0);
         setTimeout(function(){ if(d&&d.dataset.armed==='1'){ d.dataset.armed='0'; d.textContent=d.dataset.o||'\u2715'; d.classList.remove('armed'); if(d.dataset.a0) d.setAttribute('aria-label',d.dataset.a0); } },2500); return; }
-        deleteComment(d.getAttribute('data-cmt-del')).then(paint).catch(function(err){ toast(err.message||_t('lab.err.del')); }); } });
+        deleteComment(d.getAttribute('data-cmt-del')).then(paint).catch(function(err){ toast(_cmtDelErr(err)); }); } });
     async function paint(){ var body=mo.box.querySelector('[data-cmt-body]'); if(!body) return;
       
 
@@ -30336,6 +30369,51 @@ try{
 
 
 
+  var MB_DNA_G = { a: 3.0, b: 0.2, c: 0.2 };
+  var MB_DNA_H = { a: 9.0, b: 0.0, c: 0.0 };
+
+  
+
+
+
+
+
+
+
+
+
+
+  var D3_DNA_G = {
+    AT:{A:-0.2,C:-0.2,G:-0.2,T:-0.2}, CG:{A:-1.1,C:-0.4,G:-1.1,T:-0.8},
+    GC:{A:-0.4,C:-0.2,G:-0.4,T:-0.3}, GT:{A:-0.2,C:-0.2,G:-0.2,T:-0.2},
+    TA:{A:-0.2,C:-0.2,G:-0.2,T:-0.2}, TG:{A:-0.2,C:-0.2,G:-0.2,T:-0.2} };
+  var D3_DNA_H = {
+    AT:{A: 4.3,C: 6.3,G: 2.5,T: 2.6}, CG:{A:-8.0,C:-2.5,G:-3.1,T:-3.9},
+    GC:{A:-1.9,C:-0.2,G:-4.0,T:-5.5}, GT:{A:-1.9,C:-0.2,G:-4.0,T:-5.5},
+    TA:{A:-5.3,C: 2.0,G:-4.8,T: 0.9}, TG:{A:-8.0,C:-2.5,G:-3.1,T:-3.9} };
+  var D5_DNA_G = {
+    AT:{A:-0.5,C:-0.2,G:-0.5,T:-0.3}, CG:{A:-0.8,C:-0.5,G:-0.8,T:-0.7},
+    GC:{A:-0.9,C:-0.5,G:-0.7,T:-0.6}, GT:{A:-0.1,C:-0.1,G:-0.1,T:-0.1},
+    TA:{A:-0.5,C:-0.2,G:-0.6,T:-0.3}, TG:{A:-0.1,C:-0.1,G:-0.1,T:-0.1} };
+  var D5_DNA_H = {
+    AT:{A: 0.8,C: 2.0,G: 1.5,T: 1.1}, CG:{A:-4.6,C:-4.2,G:-4.7,T:-5.0},
+    GC:{A:-6.2,C:-3.3,G:-5.1,T:-0.9}, GT:{A:-6.2,C:-3.3,G:-5.1,T:-0.9},
+    TA:{A:-0.9,C:-0.6,G:-2.5,T:-9.0}, TG:{A:-4.6,C:-4.2,G:-4.7,T:-5.0} };
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -30352,10 +30430,16 @@ try{
 
 
   var ML_NODANGLE = { dH: 0, dS: 0 };
-  function mlDangle(seq, top, bot, x3, x5) {
-    var key = seq[top] + seq[bot], dH = 0, dS = 0, t, r3 = D3_G[key], r5 = D5_G[key];
-    if (r3 && r3[x3] !== undefined) { t = gh(r3[x3], D3_H[key][x3]); dH += t.dH; dS += t.dS; }
-    if (r5 && r5[x5] !== undefined) { t = gh(r5[x5], D5_H[key][x5]); dH += t.dH; dS += t.dS; }
+  
+
+
+  function mlDangle(seq, top, bot, x3, x5, isRna) {
+    if (isRna === undefined) isRna = (seq.kind !== 'd');
+    var g3 = isRna ? D3_G : D3_DNA_G, h3 = isRna ? D3_H : D3_DNA_H;
+    var g5 = isRna ? D5_G : D5_DNA_G, h5 = isRna ? D5_H : D5_DNA_H;
+    var key = seq[top] + seq[bot], dH = 0, dS = 0, t, r3 = g3[key], r5 = g5[key];
+    if (r3 && r3[x3] !== undefined) { t = gh(r3[x3], h3[key][x3]); dH += t.dH; dS += t.dS; }
+    if (r5 && r5[x5] !== undefined) { t = gh(r5[x5], h5[key][x5]); dH += t.dH; dS += t.dS; }
     return { dH: dH, dS: dS };
   }
 
@@ -30519,7 +30603,10 @@ try{
 
 
 
-  function mlStacking(seq, i, j, branches) {
+  function mlStacking(seq, i, j, branches, isRna, dnaModel) {
+    if (isRna === undefined) isRna = (seq.kind !== 'd');
+    var _d3g = isRna ? D3_G : D3_DNA_G, _d3h = isRna ? D3_H : D3_DNA_H;
+    var _d5g = isRna ? D5_G : D5_DNA_G, _d5h = isRna ? D5_H : D5_DNA_H;
     var E = loopEnds(i, j, branches), k = E.length;
     
 
@@ -30532,26 +30619,48 @@ try{
     var pk = function (n1, n2) { return seq[n1] + seq[n2]; };
     var d3 = function (m) {                        
       var key = pk(E[m].top, E[m].bot), X = seq[gapStart[m]];
-      var g = D3_G[key], h = D3_H[key];
+      var g = _d3g[key], h = _d3h[key];
       return (g && g[X] !== undefined) ? { g: g[X], h: h[X] } : null;
     };
     var d5 = function (m) {                        
       var pm = (m - 1 + k) % k, key = pk(E[m].top, E[m].bot);
       var X = seq[gapStart[pm] + gapLen[pm] - 1];
-      var g = D5_G[key], h = D5_H[key];
+      var g = _d5g[key], h = _d5h[key];
       return (g && g[X] !== undefined) ? { g: g[X], h: h[X] } : null;
     };
+    
+
+
+
+
+
+
+
+
+
+
     var tmm = function (m) {                       
+      if (!isRna) return null;
       var pm = (m - 1 + k) % k, key = pk(E[m].top, E[m].bot);
       var X = seq[gapStart[m]], Y = seq[gapStart[pm] + gapLen[pm] - 1];
       var g = RNA_TMM_G[key], h = RNA_TMM_H[key];
       return (g && g[X] && g[X][Y] !== undefined) ? { g: g[X][Y], h: h[X][Y] } : null;
     };
+    
+
+
+
+
     var coax = function (m) {                      
       if (gapLen[m] !== 0) return null;
-      var v = OC_STACK(seq[E[m].exit], seq[E[m].bot],
-                       seq[E[(m + 1) % k].entry], seq[E[(m + 1) % k].top]);
-      return v ? { g: dG(v[0], v[1]), h: v[0] } : null;
+      var n1 = E[m], n2 = E[(m + 1) % k];
+      if (isRna) {
+        var v = OC_STACK(seq[n1.exit], seq[n1.bot], seq[n2.entry], seq[n2.top]);
+        return v ? { g: dG(v[0], v[1]), h: v[0] } : null;
+      }
+      var tbl = (dnaModel === 'dna04') ? T._tables.NN_DNA_04 : T._tables.NN_DNA_98;
+      var w = tbl[seq[n1.exit] + seq[n2.entry]];
+      return w ? { g: dG(w[0], w[1]), h: w[0] } : null;
     };
     
 
@@ -30613,7 +30722,8 @@ try{
 
   
 
-  function mlEnergy(seq, i, j, branches) {
+  function mlEnergy(seq, i, j, branches, isRna, dnaModel) {
+    if (isRna === undefined) isRna = (seq.kind !== 'd');
     var k = branches.length + 1;
     
 
@@ -30625,19 +30735,43 @@ try{
     var tot = 0;
     for (m = 0; m < E.length; m++) tot += Math.abs(gaps[(m - 1 + E.length) % E.length] - gaps[m]);
     var asym = Math.min(MB_ASYM_CAP, tot / E.length);
-    var g = MB_G.a + MB_G.b * asym + MB_G.c * k;
-    var h = MB_H.a + MB_H.b * asym + MB_H.c * k;
-    var st = mlStacking(seq, i, j, branches);
+    var g, h, unpaired = 0;
+    if (isRna) {
+      g = MB_G.a + MB_G.b * asym + MB_G.c * k;
+      h = MB_H.a + MB_H.b * asym + MB_H.c * k;
+    } else {
+      
+
+
+
+
+      for (m = 0; m < gaps.length; m++) unpaired += gaps[m];
+      g = MB_DNA_G.a + MB_DNA_G.b * unpaired + MB_DNA_G.c * k;
+      h = MB_DNA_H.a + MB_DNA_H.b * unpaired + MB_DNA_H.c * k;
+    }
+    
+
+
+
+
+    var st = mlStacking(seq, i, j, branches, isRna, dnaModel);
     g += st.g; h += st.h;
-     
+    
+
+
+
     for (m = 0; m < E.length; m++) {
       var x = seq[E[m].top], y = seq[E[m].bot];
-      if (!((x === 'G' && y === 'C') || (x === 'C' && y === 'G'))) {
-        g += RNA_RULES.termAU[0]; h += RNA_RULES.termAU[1];
+      if (isRna) {
+        if (!((x === 'G' && y === 'C') || (x === 'C' && y === 'G'))) {
+          g += RNA_RULES.termAU[0]; h += RNA_RULES.termAU[1];
+        }
+      } else if (x === 'A' || x === 'T') {
+        h += 2.2; g += 2.2 - T37 * 6.9 / 1000;
       }
     }
     return { dH: h, dS: (h - g) / T37 * 1000, dG37: g, asym: asym,
-             helices: k, stackG: st.g };
+             unpaired: unpaired, helices: k, stackG: st.g };
   }
 
   
@@ -30670,8 +30804,10 @@ try{
         var l1 = kids[0][0] - a - 1, l2 = b - kids[0][1] - 1;
         if (l1 + l2 > 0) { if (l1 === 0 || l2 === 0) bulges++; else internals++; }
       } else {
-        if (!isRna) return null;              
-        var ml = mlEnergy(seq, a, b, kids);
+        
+
+
+        var ml = mlEnergy(seq, a, b, kids, isRna, model);
         dH += ml.dH; dS += ml.dS; mls++; branchN += kids.length;
       }
     }
@@ -30799,7 +30935,7 @@ try{
             
 
 
-            var dc = mlDang ? mlDangle(seq, i, j, seq[i + 1], seq[j - 1]) : ML_NODANGLE;
+            var dc = mlDang ? mlDangle(seq, i, j, seq[i + 1], seq[j - 1], isRna) : ML_NODANGLE;
             var base = { dH: MLA.dH + MLC.dH + t2.dH + dc.dH,
                          dS: MLA.dS + MLC.dS + t2.dS + dc.dS };
             for (var h = i + 2; h <= j - 2; h++) {
@@ -30822,7 +30958,7 @@ try{
 
 
 
-          var dbg = mlDang ? mlDangle(seq, j, i, seq[j + 1], seq[i - 1]) : ML_NODANGLE;
+          var dbg = mlDang ? mlDangle(seq, j, i, seq[j + 1], seq[i - 1], isRna) : ML_NODANGLE;
           wb = { dH: v.dH + MLC.dH + te.dH + dbg.dH,
                  dS: v.dS + MLC.dS + te.dS + dbg.dS }; wt = ['B'];
         }
@@ -30880,7 +31016,13 @@ try{
     var saltPerStack = eqSalt > 0
       ? (isRna ? rnaSaltPerStack(eqSalt) : 0.368 * Math.log(eqSalt)) : 0;
     var minStem = opts.minStem || 2;
-    var mlOk = isRna && n <= MB_MAX_NT && opts.multibranch !== false;
+    
+
+
+
+
+
+    var mlOk = n <= MB_MAX_NT && opts.multibranch !== false;
 
     
 
@@ -31003,9 +31145,18 @@ try{
       }
     }
     altList.sort(function (u, w) { return u.dG37 - w.dG37; });
+    
+
+
+
+
+
+
     var mlNote = !isRna
-        ? '. Stacks, bulges and internal loops, including the tabulated 1x1, 1x2, '
-          + '2x1 and 2x2 loops. No multibranch for DNA'
+        ? (n > MB_MAX_NT
+           ? '. Stacks, bulges and internal loops; multibranch not searched above '
+             + MB_MAX_NT + ' nt'
+           : '. Stacks, bulges, internal loops including the tabulated 1x1, 1x2, 2x1 and 2x2 loops, and multibranch. Flush coaxial stacking and dangling ends are scored inside multibranch loops; mismatch-mediated coaxial stacking, terminal mismatches and exterior-loop dangles are not. All are stabilising, so this dG is conservative for the structure reported, which is a statement about the model and not an experimental error bound')
         : (n > MB_MAX_NT
            ? '. Stacks, bulges and internal loops; multibranch not searched above '
              + MB_MAX_NT + ' nt'
@@ -32024,11 +32175,20 @@ try{
 
          + (hp && hp.structure
             ? t('tm.fold.note.mfe!', { k: RESCORE_K })
+              
+
+
+
+
+
+
+
+
+
+
               + (hp.mbSearched
-                 ? t('tm.fold.note.mb!')
-                 : (hp.rna
-                    ? t('tm.fold.note.mbrna!', { n: MB_LIMIT })
-                    : t('tm.fold.note.mbdna!')))
+                 ? (hp.rna ? t('tm.fold.note.mb!') : t('tm.fold.note.mbdna!'))
+                 : t('tm.fold.note.mbrna!', { n: MB_LIMIT }))
             : t('tm.fold.note.one!'))
          
 
