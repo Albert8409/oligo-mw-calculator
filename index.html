@@ -308,7 +308,13 @@ var I18N = {
   "faq.conc.title":"Concentration Calculator",
   "faq.intro.about":"Who built the calculator, why it exists, how to cite it, and where your data is stored.",
   "faq.intro.conc":"Molecular-weight sources, Nanodrop and A₂₆₀ readings, stock concentration, and dilution.",
+  "faq.intro.lib":"Where saved sequences are kept, who can do what inside a lab, and what archiving a record does.",
   "faq.intro.mw":"Sequence entry, strand chemistry, duplexes, custom monomers, the catalog, results, and the library.",
+  "faq.lib.01.a":"Signed in, your account holds the copy that travels between devices and this browser keeps an offline mirror; signed out, sequences live in this browser only.",
+  "faq.lib.01.q":"Where your saved sequences are kept",
+  "faq.lib.02.q":"Finding the lab's shared library",
+  "faq.lib.04.q":"What archiving a record does",
+  "faq.lib.title":"Your library and your labs",
   "faq.mw.01.a":"Type an oligonucleotide sequence and it returns the molecular weight in g/mol, using the standard additive model: 5′-end + every nucleoside + every backbone linkage. <b>Example:</b> <code>ATCG</code> (DNA) → <b>1,173.83 g/mol</b>.",
   "faq.mw.01.q":"What does the MW Calculator do?",
   "faq.mw.02.a":"Type in the Sequence box, use the Quick Insert buttons directly below it, or open <b>Compose</b> for modified, saved, custom, and catalog monomers. The moremon expands in the page, so it never covers the chemistry controls below. You can paste a sequence too; spaces are ignored. <b>Example:</b> type <code>ATCGATCGAT</code> → 3,027.04 g/mol.",
@@ -408,7 +414,7 @@ var I18N = {
   "lab.card.deleted":"Deleted",
   "lab.card.editlab":"Edit the shared copy",
   "lab.card.mgrdel":"Delete {name} from the lab",
-  "lab.card.mgrdelT":"You manage this lab. This deletes the record for everyone, including the person who saved it.",
+  "lab.card.mgrdelT":"You manage this lab. This deletes the record for everyone in the lab, including the person who saved it.",
   "lab.card.open":"Open",
   "lab.card.opencopy":"Open a copy",
   "lab.card.rmdone":"Removed from lab",
@@ -421,7 +427,7 @@ var I18N = {
   "lab.closing!":"Closing {date}",
   "lab.cmt.aria":"Add a comment",
   "lab.cmt.del":"Delete comment",
-  "lab.cmt.err.notmine":"Only the person who wrote this comment, or a manager of this lab, can delete it.",
+  "lab.cmt.err.notmine":"That did not go through. Only the person who wrote this comment, or a manager of this lab, can delete it.",
   "lab.cmt.failload":"Could not load comments.",
   "lab.cmt.h":"Comments",
   "lab.cmt.none":"No comments yet.",
@@ -709,7 +715,7 @@ var I18N = {
   "lab.orph.del":"Delete workspace",
   "lab.orph.done":"Workspace deleted",
   "lab.orph.err.live":"This workspace belongs to a member who is still in the lab, so it cannot be deleted.",
-  "lab.orph.err.notmgr":"Only a manager of this lab can delete a workspace.",
+  "lab.orph.err.notmgr":"That did not go through. Only a manager of this lab can delete a workspace.",
   "lab.orph.h":"A workspace with no owner",
   "lab.orph.menu":"Delete the workspace of a member who has left this lab",
   "lab.orph.why!":"The member who owned this workspace has left the lab. Deleting it makes any sequences still inside it Unfiled, and nothing is lost. Only a lab manager can do this.",
@@ -747,6 +753,7 @@ var I18N = {
   "lab.rules.see":"Everyone in the lab sees the shared library, and can open anything in it and save their own copy. A member’s own workspace is visible only to them and to the lab’s managers.",
   "lab.sel.none":"Select one or more sequences to export.",
   "lab.shelf.ariapurge":"Delete {name} for good",
+  "lab.shelf.armgo":"Take this out of the lab library?",
   "lab.shelf.armpurge":"Delete for good?",
   "lab.shelf.back":"Put back",
   "lab.shelf.backdone":"Put back in the library.",
@@ -755,9 +762,9 @@ var I18N = {
   "lab.shelf.emptyh":"Nothing is archived",
   "lab.shelf.err.full":"This space holds as many archived records as it can. Put one back, or delete one for good, before archiving another.",
   "lab.shelf.err.gone":"That record is no longer there.",
-  "lab.shelf.err.notauthor":"Only the person who saved this record can archive it, put it back, or delete it.",
+  "lab.shelf.err.notauthor":"That did not go through. Only the person who saved this record can archive it, put it back, or delete it.",
   "lab.shelf.err.notmember":"You are not a member of this lab, so you cannot change what is in its archive.",
-  "lab.shelf.err.notmgr":"Only the person who saved this record, or a manager of this lab, can archive it, put it back, or delete it.",
+  "lab.shelf.err.notmgr":"That did not go through. Only the person who saved this record, or a manager of this lab, can archive it, put it back, or delete it.",
   "lab.shelf.go":"Archive",
   "lab.shelf.h":"Archived records",
   "lab.shelf.labwarn!":"Archiving a shared record takes it out of the library for the whole lab. The person who saved it and the lab’s managers can put it back.",
@@ -1010,7 +1017,7 @@ var I18N = {
   "mk.0210":"Library",
   "mk.0211":"Saved entries",
   "mk.0212":"Library",
-  "mk.0213":"Reopen, copy, or export a sequence you saved. Signed in, your account holds the copy that travels between devices and this browser keeps an offline mirror; signed out, sequences live in this browser only.",
+  "mk.0213":"Reopen, copy, or export a sequence you saved.",
   "mk.0214":"Scan",
   "mk.0215":"Export selected · CSV",
   "mk.0216":"Share selected as a copy",
@@ -1284,7 +1291,7 @@ var I18N = {
   "tm.cov.ok!":"Every residue and linkage in this strand is covered by a published parameter set.",
   "tm.dir.higher!":"The real Tm will be <b>higher</b> than this.",
   "tm.dir.lower!":"The real Tm will be <b>lower</b> than this.",
-  "tm.dir.unknown!":"This strand carries both stabilising and destabilising modifications, so <b>the direction of the error is not known</b>.",
+  "tm.dir.unknown!":"This strand carries both stabilizing and destabilizing modifications, so <b>the direction of the error is not known</b>.",
   "tm.echo.lbl":"Strand",
   "tm.empty":"Enter a valid sequence in the Calculator to see a melting temperature.",
   "tm.err!":"The melting temperature could not be recalculated. The previous value was cleared.",
@@ -1321,6 +1328,11 @@ var I18N = {
   "tm.fold.loop":"{n} nt loop",
   "tm.fold.mb.many":"{n} multibranch loops",
   "tm.fold.mb.one":"{n} multibranch loop",
+  "tm.fold.mbc.behind!":"{v} kcal/mol less stable than the best structure found without this requirement",
+  "tm.fold.mbc.better!":"{v} kcal/mol more stable than the best structure found without this requirement",
+  "tm.fold.mbc.name":"With a multi-arm junction",
+  "tm.fold.mbc.none!":"No structure with a multi-arm junction.",
+  "tm.fold.mbc.same!":"The most stable structure already contains a multi-arm junction. Adding that requirement does not change the result.",
   "tm.fold.name.branched":"Branched fold",
   "tm.fold.name.hairpin":"Hairpin",
   "tm.fold.name.junction":"{n}-way junction",
@@ -1329,11 +1341,12 @@ var I18N = {
   "tm.fold.nostruct":"No stable hairpin or self-dimer found.",
   "tm.fold.note.dimer!":"The self-dimer row is the best contiguous self-dimer helix, not a self-dimer minimum free energy: it scores ONE run of adjacent pairs, with no bulges and no internal loops. In an asymmetric homodimer its mirror helix also forms and is not counted.",
   "tm.fold.note.dna!":"Loop parameters: SantaLucia &amp; Hicks 2004, whose loop terms are given as free energy only. The loop ΔH° is taken as zero here for a loop scored by the general loop equation, so such a loop contributes to entropy alone. Internal loops with one or two unpaired bases on each side use the value Mathews measured for that exact loop, and for those loops the published enthalpy is now carried as well. Although that enthalpy is measured rather than assumed, this engine derives loop entropy from the free energy. Carrying it drives the entropy of a small number of folds toward zero, and the folding temperature, which is the ratio of the two, becomes numerically unstable. Where the result falls outside the range these parameters were measured in, or reports a stable fold as entropy-driven, the folding temperature falls back to taking the loop ΔH° as zero, which is the value earlier versions reported. No nearest-neighbor value changed, so the duplex melting temperature is unaffected.",
-  "tm.fold.note.mb!":", and multibranch loops. Inside a multibranch loop we score dangling ends and flush coaxial stacking; <b>mismatch-mediated coaxial stacking and dangling ends on the free tails are not scored</b>. Both omitted terms are stabilising in the Turner model, so the ΔG shown is conservative for the structure reported. That is a statement about the model and not an experimental error bound. ",
-  "tm.fold.note.mbdna!":", and multibranch loops. Inside a multibranch loop we score dangling ends and flush coaxial stacking; <b>mismatch-mediated coaxial stacking, terminal mismatches, and dangling ends on the free tails are not scored</b>. All three omitted terms are stabilising, so the ΔG shown is conservative for the structure reported. That is a statement about the model and not an experimental error bound. The dangling-end values are the tabulated DNA set: several closing pairs carry one value for every dangling base, and the two G-T rows are taken from the Watson-Crick pairs they most resemble. ",
+  "tm.fold.note.mb!":", and multibranch loops. Inside a multibranch loop we score dangling ends and flush coaxial stacking; <b>mismatch-mediated coaxial stacking and dangling ends on the free tails are not scored</b>. Both omitted terms are stabilizing in the Turner model, so the ΔG shown is conservative for the structure reported. That is a statement about the model and not an experimental error bound. ",
+  "tm.fold.note.mbc!":"A structure with a multi-arm junction is found by searching again with that requirement in force. The second search keeps the best junction-containing fold for every region it examines, so it reaches structures the unrestricted search discards along the way. That is why this result is occasionally more stable than the one above it.",
+  "tm.fold.note.mbdna!":", and multibranch loops. Inside a multibranch loop we score dangling ends and flush coaxial stacking; <b>mismatch-mediated coaxial stacking, terminal mismatches, and dangling ends on the free tails are not scored</b>. All three omitted terms are stabilizing in the SantaLucia model, so the ΔG shown is conservative for the structure reported. That is a statement about the model and not an experimental error bound. The dangling-end values are the tabulated DNA set: several closing pairs carry one value for every dangling base, and the two G-T rows are taken from the Watson-Crick pairs they most resemble. ",
   "tm.fold.note.mbrna!":". <b>Multibranch structure is not searched above {n} nt.</b> The search costs the cube of the length and would block the page. A fold with three or more stems meeting at one loop is reported as whichever single branch is most stable, so a real structure can be more stable than the one shown. ",
-  "tm.fold.note.mfe!":" The structure is the lowest-free-energy structure this search found, and not a proven global minimum: the search ranks with a cheaper energy model, then scores only its best {k} candidates exactly. It is shown in dot-bracket: stacks, bulges and internal loops",
-  "tm.fold.note.one!":" One stem and one loop only. ",
+  "tm.fold.note.mfe!":"The structure is the lowest-free-energy structure this search found, and not a proven global minimum: the search ranks with a cheaper energy model, then scores only its best {k} candidates exactly. It is shown in dot-bracket: stacks, bulges and internal loops",
+  "tm.fold.note.one!":"No stable hairpin found.",
   "tm.fold.note.rna!":"Loop parameters: Turner 2004, which is Mathews 2004 (ΔG°₃₇) and Lu 2006 (ΔH), via the Nearest Neighbor Database; stem from Xia 1998. Real loop enthalpies, not an assumption. <b>The salt correction for this fold is fitted to RNA.</b> Each stack carries the Debye screening and Manning condensation term Yao and Lorenz published in 2023, referenced to the 1.021 M sodium the Turner parameters themselves were measured in, so the free energy and the folding temperature respond to the buffer you entered. The enthalpy does not, and neither do the base-pair and loop counts. That published model also corrects the electrostatics of loops; this engine does not, and never has. The duplex melting temperature is still corrected with Owczarzy 2004, which is fitted to DNA. GU wobble pairs are scored as stem pairs, and internal loops with one or two unpaired bases on each side use the value Turner measured for that exact loop rather than the general loop equation.",
   "tm.fold.note.tmm!":" ⚠ This loop uses the GG/CG terminal mismatch, which is anomalous in the published table and is carried unaltered.",
   "tm.fold.scope!":"This strand is {n} nt, and this calculator is built for oligos up to {max} nt. Above that length, folds with three or more stems meeting at one loop become common, and those are the ones this search scores least accurately. The structure below is still computed. Read it as approximate.",
@@ -1366,7 +1379,7 @@ var I18N = {
   "tm.res.tm":"Predicted Tm",
   "tm.salt.mono!":"Owczarzy 2004 (monovalent)",
   "tm.selfdimer":"Self-dimer",
-  "tm.selfwarn!":"⚠ <b>This strand's hairpin melts {d} °C above the duplex</b> ({hp} °C vs {dup} °C). At any temperature where the duplex would form, the strand is already folded on itself, so it will hybridise poorly. See Self-structure below.",
+  "tm.selfwarn!":"⚠ <b>This strand's hairpin melts {d} °C above the duplex</b> ({hp} °C vs {dup} °C). At any temperature where the duplex would form, the strand is already folded on itself, so it will hybridize poorly. See Self-structure below.",
   "tm.tabs.h":"Possible structures",
   "tm.tabs.more":"+{n} more",
   "tm.tabs.unit":"kcal/mol",
@@ -1412,6 +1425,7 @@ var I18N = {
   "ui.fold.data.gcpairs":"G:C pairs in this structure",
   "ui.fold.exp":"Expand",
   "ui.fold.expa":"Open the structure drawing full screen",
+  "ui.fold.mbc":"Also show the best structure with a multi-arm junction",
   "ui.fold.note.h":"How this was calculated",
   "ui.fold.note.h2":"Where this does not apply",
   "ui.hist.armClear":"Confirm clear all?",
@@ -1620,8 +1634,8 @@ var I18N = {
   "ak.0021":"\u6fc3\u5ea6\u3002Nanodrop\u3001\u83ab\u8033\u6fc3\u5ea6\u3001\u7a00\u91cb",
   "ak.0022":"\u6b65\u9a5f 5\uff0c\u8cea\u8b5c\u3002\u7cbe\u78ba\u8cea\u91cf\u8207 m/z \u968e\u68af",
   "ak.0023":"\u8cea\u8b5c\u3002\u7cbe\u78ba\u8cea\u91cf\u8207 m/z \u968e\u68af",
-  "ak.0024":"\u5df2\u5132\u5b58\u8a18\u9304",
-  "ak.0025":"\u5df2\u5132\u5b58\u8a18\u9304",
+  "ak.0024":"\u5df2\u5132\u5b58\u7d00\u9304",
+  "ak.0025":"\u5df2\u5132\u5b58\u7d00\u9304",
   "ak.0026":"\u5ee0\u5546\u578b\u9304",
   "ak.0027":"\u5ee0\u5546\u578b\u9304",
   "ak.0028":"\u8a08\u7b97\u65b9\u6cd5\u8aaa\u660e",
@@ -1741,7 +1755,13 @@ var I18N = {
   "faq.conc.title":"\u6fc3\u5ea6\u8a08\u7b97\u6a5f",
   "faq.intro.about":"\u8ab0\u505a\u4e86\u9019\u500b\u8a08\u7b97\u6a5f\u3001\u5b83\u70ba\u4ec0\u9ebc\u5b58\u5728\u3001\u8981\u600e\u9ebc\u5f15\u7528\uff0c\u4ee5\u53ca\u4f60\u7684\u8cc7\u6599\u5b58\u653e\u5728\u54ea\u88e1\u3002",
   "faq.intro.conc":"\u5206\u5b50\u91cf\u4f86\u6e90\u3001Nanodrop \u8207 A₂₆₀ \u8b80\u503c\u3001\u6bcd\u6db2\u6fc3\u5ea6\uff0c\u4ee5\u53ca\u7a00\u91cb\u3002",
+  "faq.intro.lib":"\u5df2\u5132\u5b58\u7684\u5e8f\u5217\u653e\u5728\u54ea\u88e1\u3001\u5be6\u9a57\u5ba4\u88e1\u7684\u6b0a\u9650\u5982\u4f55\u5283\u5206\uff0c\u4ee5\u53ca\u5c01\u5b58\u4e00\u7b46\u7d00\u9304\u6703\u600e\u9ebc\u6a23\u3002",
   "faq.intro.mw":"\u5e8f\u5217\u8f38\u5165\u3001\u6838\u9178\u80a1\u7684\u5316\u5b78\u3001\u96d9\u80a1\u3001\u81ea\u8a02\u55ae\u9ad4\u3001\u578b\u9304\u3001\u7d50\u679c\uff0c\u4ee5\u53ca\u8cc7\u6599\u5eab\u3002",
+  "faq.lib.01.a":"\u767b\u5165\u4e4b\u5f8c\uff0c\u53ef\u8de8\u88dd\u7f6e\u4f7f\u7528\u7684\u90a3\u4efd\u5b58\u5728\u4f60\u7684\u5e33\u6236\u88e1\uff0c\u9019\u500b\u700f\u89bd\u5668\u53e6\u5916\u4fdd\u7559\u4e00\u4efd\u96e2\u7dda\u526f\u672c\uff1b\u672a\u767b\u5165\u6642\uff0c\u5e8f\u5217\u53ea\u5b58\u5728\u9019\u500b\u700f\u89bd\u5668\u88e1\u3002",
+  "faq.lib.01.q":"\u4f60\u5df2\u5132\u5b58\u7684\u5e8f\u5217\u653e\u5728\u54ea\u88e1",
+  "faq.lib.02.q":"\u5982\u4f55\u627e\u5230\u5be6\u9a57\u5ba4\u7684\u5171\u7528\u8cc7\u6599\u5eab",
+  "faq.lib.04.q":"\u5c01\u5b58\u4e00\u7b46\u7d00\u9304\u6703\u600e\u9ebc\u6a23",
+  "faq.lib.title":"\u4f60\u7684\u8cc7\u6599\u5eab\u8207\u4f60\u7684\u5be6\u9a57\u5ba4",
   "faq.mw.01.a":"\u8f38\u5165\u4e00\u6bb5\u5be1\u6838\u82f7\u9178\u5e8f\u5217\uff0c\u5b83\u6703\u7528\u6a19\u6e96\u7684\u52a0\u6210\u6a21\u578b\u7b97\u51fa\u4ee5 g/mol \u70ba\u55ae\u4f4d\u7684\u5206\u5b50\u91cf\uff1a5′ \u7aef + \u6bcf\u4e00\u500b\u6838\u82f7 + \u6bcf\u4e00\u500b\u9aa8\u67b6\u9023\u7d50\u3002<b>\u7bc4\u4f8b\uff1a</b><code>ATCG</code>\uff08DNA\uff09→ <b>1,173.83 g/mol</b>\u3002",
   "faq.mw.01.q":"\u5206\u5b50\u91cf\u8a08\u7b97\u6a5f\u5728\u505a\u4ec0\u9ebc\uff1f",
   "faq.mw.02.a":"\u5728\u5e8f\u5217\u6b04\u4f4d\u88e1\u6253\u5b57\u3001\u7528\u6b63\u4e0b\u65b9\u7684\u5feb\u901f\u63d2\u5165\u6309\u9215\uff0c\u6216\u6253\u958b <b>Compose</b> \u53d6\u7528\u4fee\u98fe\u3001\u5df2\u5132\u5b58\u3001\u81ea\u8a02\u8207\u578b\u9304\u88e1\u7684\u55ae\u9ad4\u3002\u55ae\u9ad4\u9762\u677f\u662f\u5728\u9801\u9762\u88e1\u5c55\u958b\u7684\uff0c\u6240\u4ee5\u4e0d\u6703\u84cb\u4f4f\u4e0b\u65b9\u7684\u5316\u5b78\u8a2d\u5b9a\u3002\u4f60\u4e5f\u53ef\u4ee5\u76f4\u63a5\u8cbc\u4e0a\u5e8f\u5217\uff1b\u7a7a\u683c\u6703\u88ab\u5ffd\u7565\u3002<b>\u7bc4\u4f8b\uff1a</b>\u8f38\u5165 <code>ATCGATCGAT</code> → 3,027.04 g/mol\u3002",
@@ -1780,7 +1800,7 @@ var I18N = {
   "lab.about.h":"\u9019\u500b\u5be6\u9a57\u5ba4",
   "lab.acc.author":"\u5efa\u7acb\u8005",
   "lab.acc.can":"\u53ef\u7de8\u8f2f",
-  "lab.acc.canwhy!":"\u4f60\u53ef\u4ee5\u7de8\u8f2f\u9019\u7b46\u8a18\u9304\u3002\u53ea\u6709\u5132\u5b58\u5b83\u7684\u4eba\u53ef\u4ee5\u8b8a\u66f4\u8ab0\u80fd\u7de8\u8f2f\uff0c\u6216\u662f\u628a\u5b83\u79fb\u51fa\u5be6\u9a57\u5ba4\u3002",
+  "lab.acc.canwhy!":"\u4f60\u53ef\u4ee5\u7de8\u8f2f\u9019\u7b46\u7d00\u9304\u3002\u53ea\u6709\u5132\u5b58\u5b83\u7684\u4eba\u53ef\u4ee5\u8b8a\u66f4\u8ab0\u80fd\u7de8\u8f2f\uff0c\u6216\u662f\u628a\u5b83\u79fb\u51fa\u5be6\u9a57\u5ba4\u3002",
   "lab.acc.dogrant":"\u6388\u4e88\u7de8\u8f2f\u6b0a\u9650",
   "lab.acc.dorevoke":"\u79fb\u9664\u7de8\u8f2f\u6b0a\u9650",
   "lab.acc.edit":"\u7de8\u8f2f",
@@ -1795,7 +1815,7 @@ var I18N = {
   "lab.acc.sum":"{n} \u4f4d\u5be6\u9a57\u5ba4\u6210\u54e1\u90fd\u53ef\u4ee5\u6aa2\u8996 · {m} \u4f4d\u53ef\u4ee5\u7de8\u8f2f · \u7531 {author} \u5efa\u7acb",
   "lab.acc.to":"\u7ba1\u7406\u300c{name}\u300d\u7684\u5b58\u53d6\u6b0a",
   "lab.acc.view":"\u50c5\u53ef\u6aa2\u8996",
-  "lab.acc.viewwhy!":"\u9019\u7b46\u8a18\u9304\u662f\u5be6\u9a57\u5ba4\u88e1\u7684\u5176\u4ed6\u4eba\u5132\u5b58\u7684\uff0c\u800c\u4e14\u6c92\u6709\u7d66\u4f60\u7de8\u8f2f\u6b0a\u9650\u3002\u4f60\u4ecd\u7136\u53ef\u4ee5\u958b\u555f\u526f\u672c\uff0c\u4e5f\u53ef\u4ee5\u67e5\u770b\u7248\u672c\u7d00\u9304\u3002",
+  "lab.acc.viewwhy!":"\u9019\u7b46\u7d00\u9304\u662f\u5be6\u9a57\u5ba4\u88e1\u7684\u5176\u4ed6\u4eba\u5132\u5b58\u7684\uff0c\u800c\u4e14\u6c92\u6709\u7d66\u4f60\u7de8\u8f2f\u6b0a\u9650\u3002\u4f60\u4ecd\u7136\u53ef\u4ee5\u958b\u555f\u526f\u672c\uff0c\u4e5f\u53ef\u4ee5\u67e5\u770b\u7248\u672c\u7d00\u9304\u3002",
   "lab.add.already":"{email} \u5df2\u7d93\u662f\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u6210\u54e1\uff0c\u6240\u4ee5\u6c92\u6709\u4efb\u4f55\u8b8a\u66f4\u3002",
   "lab.add.aria":"\u8981\u65b0\u589e\u7684\u4eba\u7684\u96fb\u5b50\u90f5\u4ef6\u5730\u5740",
   "lab.add.done":"{email} \u73fe\u5728\u53ef\u4ee5\u52a0\u5165\u4e86\uff0c\u6211\u5011\u5df2\u7d93\u5bc4\u51fa\u96fb\u5b50\u90f5\u4ef6\u901a\u77e5\u5c0d\u65b9\u3002",
@@ -1813,7 +1833,7 @@ var I18N = {
   "lab.bill.h":"\u5e2d\u4f4d\u8207\u8a08\u8cbb",
   "lab.bulk.allsel":"\u5168\u9078",
   "lab.bulk.andmore":"\u9084\u6709 {n} \u9805",
-  "lab.bulk.aria":"\u5df2\u9078\u8a18\u9304\u7684\u64cd\u4f5c",
+  "lab.bulk.aria":"\u5df2\u9078\u7d00\u9304\u7684\u64cd\u4f5c",
   "lab.bulk.batch":"\u6279\u6b21\u8f38\u5165",
   "lab.bulk.clear":"\u6e05\u9664\u9078\u53d6",
   "lab.bulk.dropped":"\u5df2\u6e05\u9664\u9078\u53d6\uff0c\u56e0\u70ba\u4f60\u5207\u63db\u5230\u5225\u7684\u8cc7\u6599\u593e\u3002",
@@ -1822,12 +1842,12 @@ var I18N = {
   "lab.bulk.hidden1":"\u53e6\u6709 {n} \u9805\u5df2\u9078\uff0c\u4f46\u6c92\u6709\u986f\u793a\u5728\u9019\u88e1\u3002\u64cd\u4f5c\u53ea\u6703\u5957\u7528\u5230\u4f60\u770b\u5f97\u5230\u7684\u9805\u76ee\u3002",
   "lab.bulk.move":"\u653e\u5165\u8cc7\u6599\u593e",
   "lab.bulk.moveok":"\u5df2\u653e\u5165 {ok} \u9805\u3002",
-  "lab.bulk.movepart":"\u5df2\u653e\u5165 {ok} \u7b46\u3002{bad} \u7b46\u7559\u5728\u539f\u4f4d\uff1a\u4f60\u53ea\u80fd\u5c07\u81ea\u5df1\u5efa\u7acb\u7684\u8a18\u9304\u653e\u5165\u8cc7\u6599\u593e\uff0c\u9664\u975e\u4f60\u662f\u5be6\u9a57\u5ba4\u8ca0\u8cac\u4eba\u3002",
-  "lab.bulk.movepro":"\u6c92\u6709\u4efb\u4f55\u4e00\u7b46\u88ab\u653e\u5165\u8cc7\u6599\u593e\u3002\u5728\u4ed8\u6b3e\u5b8c\u6210\u4e4b\u524d\uff0c{lab} \u7121\u6cd5\u63a5\u6536\u65b0\u7684\u8a18\u9304\uff0c\u6240\u4ee5 {bad} \u7b46\u5168\u90e8\u7559\u5728\u539f\u4f4d\u3002\u5df2\u7d93\u5728 {lab} \u88e1\u7684\u5167\u5bb9\u4ecd\u7136\u53ef\u4ee5\u958b\u555f\u548c\u7de8\u8f2f\u3002",
+  "lab.bulk.movepart":"\u5df2\u653e\u5165 {ok} \u7b46\u3002{bad} \u7b46\u7559\u5728\u539f\u4f4d\uff1a\u4f60\u53ea\u80fd\u5c07\u81ea\u5df1\u5efa\u7acb\u7684\u7d00\u9304\u653e\u5165\u8cc7\u6599\u593e\uff0c\u9664\u975e\u4f60\u662f\u5be6\u9a57\u5ba4\u8ca0\u8cac\u4eba\u3002",
+  "lab.bulk.movepro":"\u6c92\u6709\u4efb\u4f55\u4e00\u7b46\u88ab\u653e\u5165\u8cc7\u6599\u593e\u3002\u5728\u4ed8\u6b3e\u5b8c\u6210\u4e4b\u524d\uff0c{lab} \u7121\u6cd5\u63a5\u6536\u65b0\u7684\u7d00\u9304\uff0c\u6240\u4ee5 {bad} \u7b46\u5168\u90e8\u7559\u5728\u539f\u4f4d\u3002\u5df2\u7d93\u5728 {lab} \u88e1\u7684\u5167\u5bb9\u4ecd\u7136\u53ef\u4ee5\u958b\u555f\u548c\u7de8\u8f2f\u3002",
   "lab.bulk.movesub":"\u9078\u64c7\u9019 {n} \u9805\u8981\u653e\u5230\u54ea\u88e1\u3002\u5b83\u5011\u4ecd\u7136\u7559\u5728\u5171\u7528\u8cc7\u6599\u5eab\u88e1\u3002",
   "lab.bulk.moving":"\u6b63\u5728\u653e\u5165\u7b2c {n} / {total} \u9805…",
-  "lab.bulk.n1":"\u5df2\u9078 1 \u7b46\u8a18\u9304",
-  "lab.bulk.nN":"\u5df2\u9078 {n} \u7b46\u8a18\u9304",
+  "lab.bulk.n1":"\u5df2\u9078 1 \u7b46\u7d00\u9304",
+  "lab.bulk.nN":"\u5df2\u9078 {n} \u7b46\u7d00\u9304",
   "lab.bulk.nonesel":"\u53d6\u6d88\u5168\u9078",
   "lab.bulk.sumN":"{where} \u4e2d\uff1a",
   "lab.cancel":"\u53d6\u6d88",
@@ -1841,7 +1861,7 @@ var I18N = {
   "lab.card.deleted":"\u5df2\u522a\u9664",
   "lab.card.editlab":"\u7de8\u8f2f\u5be6\u9a57\u5ba4\u7248\u672c",
   "lab.card.mgrdel":"\u5c07 {name} \u5f9e\u5be6\u9a57\u5ba4\u522a\u9664",
-  "lab.card.mgrdelT":"\u4f60\u662f\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u8ca0\u8cac\u4eba\u3002\u9019\u6703\u70ba\u6240\u6709\u4eba\u522a\u9664\u9019\u7b46\u8a18\u9304\uff0c\u5305\u542b\u5132\u5b58\u5b83\u7684\u4eba\u3002",
+  "lab.card.mgrdelT":"\u4f60\u662f\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u8ca0\u8cac\u4eba\u3002\u9019\u500b\u52d5\u4f5c\u6703\u522a\u9664\u9019\u7b46\u7d00\u9304\uff0c\u5305\u62ec\u7576\u521d\u5132\u5b58\u5b83\u7684\u4eba\u5728\u5167\uff0c\u5be6\u9a57\u5ba4\u88e1\u7684\u6bcf\u500b\u4eba\u90fd\u6703\u5931\u53bb\u5b83\u3002",
   "lab.card.open":"\u958b\u555f",
   "lab.card.opencopy":"\u958b\u555f\u526f\u672c",
   "lab.card.rmdone":"\u5df2\u79fb\u51fa\u5be6\u9a57\u5ba4",
@@ -1854,7 +1874,7 @@ var I18N = {
   "lab.closing!":"{date} \u95dc\u9589",
   "lab.cmt.aria":"\u65b0\u589e\u7559\u8a00",
   "lab.cmt.del":"\u522a\u9664\u7559\u8a00",
-  "lab.cmt.err.notmine":"\u53ea\u6709\u5beb\u4e0b\u9019\u5247\u7559\u8a00\u7684\u4eba\uff0c\u6216\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u8ca0\u8cac\u4eba\uff0c\u53ef\u4ee5\u522a\u9664\u5b83\u3002",
+  "lab.cmt.err.notmine":"\u9019\u500b\u52d5\u4f5c\u6c92\u6709\u751f\u6548\u3002\u53ea\u6709\u5beb\u4e0b\u9019\u5247\u7559\u8a00\u7684\u4eba\uff0c\u6216\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u8ca0\u8cac\u4eba\uff0c\u53ef\u4ee5\u522a\u9664\u5b83\u3002",
   "lab.cmt.failload":"\u7121\u6cd5\u8f09\u5165\u7559\u8a00\u3002",
   "lab.cmt.h":"\u7559\u8a00",
   "lab.cmt.none":"\u9084\u6c92\u6709\u7559\u8a00\u3002",
@@ -1894,7 +1914,7 @@ var I18N = {
   "lab.ed.band":"\u6b63\u5728\u7de8\u8f2f {lab} \u4e2d\u7684 {name}",
   "lab.ed.clash!":"\u5728\u4f60\u7de8\u8f2f\u671f\u9593\uff0c{who} \u5132\u5b58\u4e86\u9019\u4e00\u7b46\u3002",
   "lab.ed.closed!":"{lab} \u5df2\u7d93\u95dc\u9589\uff0c\u4f60\u7684\u8b8a\u66f4\u6c92\u6709\u5132\u5b58\u5230\u90a3\u88e1\u3002",
-  "lab.ed.closedb!":"\u9019\u500b\u5be6\u9a57\u5ba4\u662f\u7531\u5b83\u7684\u8ca0\u8cac\u4eba\u95dc\u9589\u7684\u3002\u4f60\u653e\u5728 {lab} \u88e1\u7684\u5167\u5bb9\u5df2\u539f\u6a23\u56de\u5230\u4f60\u81ea\u5df1\u7684\u8cc7\u6599\u5eab\uff1a\u6c92\u6709\u4efb\u4f55\u6771\u897f\u88ab\u522a\u9664\uff0c\u4e5f\u6c92\u6709\u4eba\u7de8\u8f2f\u904e\u4f60\u7684\u8a18\u9304\u3002\u90a3\u4e00\u4efd\u662f\u4f60\u6700\u5f8c\u4e00\u6b21\u5132\u5b58\u7684\u7248\u672c\uff0c\u56e0\u6b64\u4f60\u5728\u9019\u500b\u756b\u9762\u4e0a\u4e4b\u5f8c\u6539\u52d5\u7684\u5167\u5bb9\u9084\u4e0d\u5728\u88e1\u9762\u3002\u60f3\u7559\u4e0b\u9019\u4e9b\u6539\u52d5\uff0c\u8acb\u7528\u4e0b\u9762\u7684\u6309\u9215\u628a\u5b83\u5011\u5b58\u9032\u90a3\u4e00\u4efd\u3002",
+  "lab.ed.closedb!":"\u9019\u500b\u5be6\u9a57\u5ba4\u662f\u7531\u5b83\u7684\u8ca0\u8cac\u4eba\u95dc\u9589\u7684\u3002\u4f60\u653e\u5728 {lab} \u88e1\u7684\u5167\u5bb9\u5df2\u539f\u6a23\u56de\u5230\u4f60\u81ea\u5df1\u7684\u8cc7\u6599\u5eab\uff1a\u6c92\u6709\u4efb\u4f55\u6771\u897f\u88ab\u522a\u9664\uff0c\u4e5f\u6c92\u6709\u4eba\u7de8\u8f2f\u904e\u4f60\u7684\u7d00\u9304\u3002\u90a3\u4e00\u4efd\u662f\u4f60\u6700\u5f8c\u4e00\u6b21\u5132\u5b58\u7684\u7248\u672c\uff0c\u56e0\u6b64\u4f60\u5728\u9019\u500b\u756b\u9762\u4e0a\u4e4b\u5f8c\u6539\u52d5\u7684\u5167\u5bb9\u9084\u4e0d\u5728\u88e1\u9762\u3002\u60f3\u7559\u4e0b\u9019\u4e9b\u6539\u52d5\uff0c\u8acb\u7528\u4e0b\u9762\u7684\u6309\u9215\u628a\u5b83\u5011\u5b58\u9032\u90a3\u4e00\u4efd\u3002",
   "lab.ed.copied":"\u5df2\u5728\u300c{where}\u300d\u5132\u5b58\u526f\u672c\u3002",
   "lab.ed.copy":"\u5728\u300c{where}\u300d\u5132\u5b58\u526f\u672c",
   "lab.ed.discard":"\u6368\u68c4\u6211\u7684\u8b8a\u66f4\uff0c\u958b\u555f\u6700\u65b0\u7248\u672c",
@@ -2102,7 +2122,7 @@ var I18N = {
   "lab.mv.fail":"\u79fb\u52d5\u5931\u6557",
   "lab.mv.go":"\u79fb\u52d5",
   "lab.mv.h":"\u628a\u5e8f\u5217\u79fb\u5230\u5be6\u9a57\u5ba4\u7684\u5171\u7528\u8cc7\u6599\u5eab",
-  "lab.mv.lapsed!":"\u5728\u4ed8\u6b3e\u5b8c\u6210\u4e4b\u524d\uff0c{lab} \u7121\u6cd5\u63a5\u6536\u65b0\u7684\u5171\u7528\u8a18\u9304\u3002\u5df2\u7d93\u5728 {lab} \u88e1\u7684\u5167\u5bb9\u4ecd\u7136\u53ef\u4ee5\u958b\u555f\u548c\u7de8\u8f2f\uff0c\u6c92\u6709\u4efb\u4f55\u6771\u897f\u907a\u5931\u3002\u4f60\u7684\u526f\u672c\u5728\u4f60\u81ea\u5df1\u7684\u8cc7\u6599\u5eab\u88e1\u3002",
+  "lab.mv.lapsed!":"\u5728\u4ed8\u6b3e\u5b8c\u6210\u4e4b\u524d\uff0c{lab} \u7121\u6cd5\u63a5\u6536\u65b0\u7684\u5171\u7528\u7d00\u9304\u3002\u5df2\u7d93\u5728 {lab} \u88e1\u7684\u5167\u5bb9\u4ecd\u7136\u53ef\u4ee5\u958b\u555f\u548c\u7de8\u8f2f\uff0c\u6c92\u6709\u4efb\u4f55\u6771\u897f\u907a\u5931\u3002\u4f60\u7684\u526f\u672c\u5728\u4f60\u81ea\u5df1\u7684\u8cc7\u6599\u5eab\u88e1\u3002",
   "lab.mv.mix":"{labname}\uff1a{parts}",
   "lab.mv.nolab":"\u8acb\u5148\u52a0\u5165\u6216\u5efa\u7acb\u5be6\u9a57\u5ba4\uff08\u5e33\u6236 ▸ \u5be6\u9a57\u5ba4\uff09\u3002",
   "lab.mv.none":"\u8acb\u5148\u9078\u53d6\u5e8f\u5217\uff0c\u518d\u79fb\u5230\u5be6\u9a57\u5ba4\u7684\u5171\u7528\u8cc7\u6599\u5eab\u3002",
@@ -2142,7 +2162,7 @@ var I18N = {
   "lab.orph.del":"\u522a\u9664\u5de5\u4f5c\u5340",
   "lab.orph.done":"\u5de5\u4f5c\u5340\u5df2\u522a\u9664",
   "lab.orph.err.live":"\u9019\u500b\u5de5\u4f5c\u5340\u5c6c\u65bc\u4ecd\u5728\u5be6\u9a57\u5ba4\u88e1\u7684\u6210\u54e1\uff0c\u56e0\u6b64\u7121\u6cd5\u522a\u9664\u3002",
-  "lab.orph.err.notmgr":"\u53ea\u6709\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u8ca0\u8cac\u4eba\u53ef\u4ee5\u522a\u9664\u5de5\u4f5c\u5340\u3002",
+  "lab.orph.err.notmgr":"\u9019\u500b\u52d5\u4f5c\u6c92\u6709\u751f\u6548\u3002\u53ea\u6709\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u8ca0\u8cac\u4eba\u53ef\u4ee5\u522a\u9664\u5de5\u4f5c\u5340\u3002",
   "lab.orph.h":"\u6c92\u6709\u64c1\u6709\u8005\u7684\u5de5\u4f5c\u5340",
   "lab.orph.menu":"\u522a\u9664\u5df2\u96e2\u958b\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u6210\u54e1\u7684\u5de5\u4f5c\u5340",
   "lab.orph.why!":"\u64c1\u6709\u9019\u500b\u5de5\u4f5c\u5340\u7684\u6210\u54e1\u5df2\u7d93\u96e2\u958b\u5be6\u9a57\u5ba4\u3002\u522a\u9664\u5b83\u6703\u8b93\u9084\u7559\u5728\u88e1\u9762\u7684\u5e8f\u5217\u8b8a\u6210\u300c\u672a\u5206\u985e\u300d\uff0c\u4e0d\u6703\u907a\u5931\u4efb\u4f55\u6771\u897f\u3002\u53ea\u6709\u5be6\u9a57\u5ba4\u7684\u8ca0\u8cac\u4eba\u53ef\u4ee5\u9019\u6a23\u505a\u3002",
@@ -2180,6 +2200,7 @@ var I18N = {
   "lab.rules.see":"\u5be6\u9a57\u5ba4\u88e1\u7684\u6bcf\u500b\u4eba\u90fd\u770b\u5f97\u5230\u5171\u7528\u8cc7\u6599\u5eab\uff0c\u4e5f\u53ef\u4ee5\u958b\u555f\u88e1\u9762\u7684\u4efb\u4f55\u5167\u5bb9\u4e26\u5132\u5b58\u6210\u81ea\u5df1\u7684\u526f\u672c\u3002\u6210\u54e1\u81ea\u5df1\u7684\u5de5\u4f5c\u5340\u53ea\u6709\u672c\u4eba\u548c\u5be6\u9a57\u5ba4\u8ca0\u8cac\u4eba\u770b\u5f97\u5230\u3002",
   "lab.sel.none":"\u8acb\u5148\u9078\u53d6\u8981\u532f\u51fa\u7684\u5e8f\u5217\u3002",
   "lab.shelf.ariapurge":"\u6c38\u4e45\u522a\u9664\u300c{name}\u300d",
+  "lab.shelf.armgo":"\u8981\u628a\u9019\u7b46\u7d00\u9304\u79fb\u51fa\u5be6\u9a57\u5ba4\u8cc7\u6599\u5eab\u55ce\uff1f",
   "lab.shelf.armpurge":"\u78ba\u5b9a\u6c38\u4e45\u522a\u9664\uff1f",
   "lab.shelf.back":"\u653e\u56de",
   "lab.shelf.backdone":"\u5df2\u653e\u56de\u8cc7\u6599\u5eab\u3002",
@@ -2188,9 +2209,9 @@ var I18N = {
   "lab.shelf.emptyh":"\u6c92\u6709\u5c01\u5b58\u7684\u7d00\u9304",
   "lab.shelf.err.full":"\u9019\u500b\u7a7a\u9593\u5c01\u5b58\u7684\u7d00\u9304\u5df2\u7d93\u9054\u5230\u4e0a\u9650\u3002\u8acb\u5148\u653e\u56de\u4e00\u7b46\uff0c\u6216\u6c38\u4e45\u522a\u9664\u4e00\u7b46\uff0c\u518d\u5c01\u5b58\u65b0\u7684\u3002",
   "lab.shelf.err.gone":"\u9019\u7b46\u7d00\u9304\u5df2\u7d93\u4e0d\u5728\u4e86\u3002",
-  "lab.shelf.err.notauthor":"\u53ea\u6709\u5132\u5b58\u9019\u7b46\u7d00\u9304\u7684\u4eba\u53ef\u4ee5\u5c01\u5b58\u3001\u653e\u56de\u6216\u522a\u9664\u5b83\u3002",
+  "lab.shelf.err.notauthor":"\u9019\u500b\u52d5\u4f5c\u6c92\u6709\u751f\u6548\u3002\u53ea\u6709\u5132\u5b58\u9019\u7b46\u7d00\u9304\u7684\u4eba\u53ef\u4ee5\u5c01\u5b58\u3001\u653e\u56de\u6216\u522a\u9664\u5b83\u3002",
   "lab.shelf.err.notmember":"\u4f60\u4e0d\u662f\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u6210\u54e1\uff0c\u6240\u4ee5\u7121\u6cd5\u8b8a\u66f4\u5b83\u5c01\u5b58\u7684\u5167\u5bb9\u3002",
-  "lab.shelf.err.notmgr":"\u53ea\u6709\u5132\u5b58\u9019\u7b46\u7d00\u9304\u7684\u4eba\uff0c\u6216\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u8ca0\u8cac\u4eba\uff0c\u53ef\u4ee5\u5c01\u5b58\u3001\u653e\u56de\u6216\u522a\u9664\u5b83\u3002",
+  "lab.shelf.err.notmgr":"\u9019\u500b\u52d5\u4f5c\u6c92\u6709\u751f\u6548\u3002\u53ea\u6709\u5132\u5b58\u9019\u7b46\u7d00\u9304\u7684\u4eba\uff0c\u6216\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u8ca0\u8cac\u4eba\uff0c\u53ef\u4ee5\u5c01\u5b58\u3001\u653e\u56de\u6216\u522a\u9664\u5b83\u3002",
   "lab.shelf.go":"\u5c01\u5b58",
   "lab.shelf.h":"\u5df2\u5c01\u5b58\u7684\u7d00\u9304",
   "lab.shelf.labwarn!":"\u5c01\u5b58\u5171\u7528\u7684\u7d00\u9304\uff0c\u6703\u8b93\u6574\u500b\u5be6\u9a57\u5ba4\u7684\u8cc7\u6599\u5eab\u90fd\u770b\u4e0d\u5230\u5b83\u3002\u5132\u5b58\u9019\u7b46\u7d00\u9304\u7684\u4eba\u548c\u5be6\u9a57\u5ba4\u8ca0\u8cac\u4eba\u53ef\u4ee5\u628a\u5b83\u653e\u56de\u53bb\u3002",
@@ -2265,7 +2286,7 @@ var I18N = {
   "mk.0025":"\u8cea\u8b5c",
   "mk.0026":"\u7cbe\u78ba\u8cea\u91cf\u3001m/z \u968e\u68af",
   "mk.0027":"\u8cc7\u6599\u5eab",
-  "mk.0028":"\u5df2\u5132\u5b58\u8a18\u9304",
+  "mk.0028":"\u5df2\u5132\u5b58\u7d00\u9304",
   "mk.0029":"\u578b\u9304",
   "mk.0030":"\u79d1\u5b78\u8aaa\u660e",
   "mk.0031":"\u8a08\u7b97\u65b9\u6cd5",
@@ -2441,9 +2462,9 @@ var I18N = {
   "mk.0208":"\u63d2\u5165",
   "mk.0209":"+ \u8cc7\u6599\u5eab",
   "mk.0210":"\u8cc7\u6599\u5eab",
-  "mk.0211":"\u5df2\u5132\u5b58\u8a18\u9304",
+  "mk.0211":"\u5df2\u5132\u5b58\u7d00\u9304",
   "mk.0212":"\u8cc7\u6599\u5eab",
-  "mk.0213":"\u91cd\u65b0\u958b\u555f\u3001\u8907\u88fd\u6216\u532f\u51fa\u4f60\u5b58\u904e\u7684\u5e8f\u5217\u3002\u767b\u5165\u4e4b\u5f8c\uff0c\u53ef\u8de8\u88dd\u7f6e\u4f7f\u7528\u7684\u90a3\u4efd\u5b58\u5728\u4f60\u7684\u5e33\u6236\u88e1\uff0c\u9019\u500b\u700f\u89bd\u5668\u53e6\u5916\u4fdd\u7559\u4e00\u4efd\u96e2\u7dda\u526f\u672c\uff1b\u672a\u767b\u5165\u6642\uff0c\u5e8f\u5217\u53ea\u5b58\u5728\u9019\u500b\u700f\u89bd\u5668\u88e1\u3002",
+  "mk.0213":"\u91cd\u65b0\u958b\u555f\u3001\u8907\u88fd\u6216\u532f\u51fa\u4f60\u5b58\u904e\u7684\u5e8f\u5217\u3002",
   "mk.0214":"\u6383\u63cf",
   "mk.0215":"\u532f\u51fa\u9078\u53d6\u9805\u76ee · CSV",
   "mk.0216":"\u5206\u4eab\u6240\u9078\u9805\u76ee\u7684\u526f\u672c",
@@ -2479,7 +2500,7 @@ var I18N = {
   "mk.0247":"\u8a2a\u5ba2",
   "mk.0248":"\u5c1a\u672a\u767b\u5165\u3002\u50c5\u9650\u9019\u500b\u700f\u89bd\u5668",
   "mk.0249":"\u767b\u51fa",
-  "mk.0250":"\u5df2\u5132\u5b58\u8a18\u9304",
+  "mk.0250":"\u5df2\u5132\u5b58\u7d00\u9304",
   "mk.0251":"\u53ea\u4fdd\u5b58\u5728\u9019\u500b\u700f\u89bd\u5668",
   "mk.0252":"\u7167\u7247\u6383\u63cf",
   "mk.0253":"\u9700\u8981\u514d\u8cbb\u5e33\u6236",
@@ -2507,7 +2528,7 @@ var I18N = {
   "mk.0275":"\u53ea\u6709\u9a57\u8b49\u78bc\uff0c\u6c92\u6709\u9023\u7d50\u53ef\u4ee5\u9ede\u3002\u9a57\u8b49\u78bc\u88ab\u9000\u56de\u7684\u8a71\uff0c\u518d\u8981\u4e00\u7d44\u65b0\u7684\u3002\u6700\u65b0\u90a3\u5c01\u4fe1\u88e1\u7684\u624d\u6709\u6548\u3002",
   "mk.0276":"\u4f60\u5df2\u7d93\u767b\u5165\u4e86\u3002",
   "mk.0277":"\u4f60\u7684\u5e33\u6236",
-  "mk.0278":"\u76ee\u524d\u4f7f\u7528 Free \u65b9\u6848\uff1a50 \u7b46\u8a18\u9304\u8207 10 \u6b21\u6383\u63cf\u53ef\u4ee5\u8a66\u7528\u3002\u4f60\u7684\u8cc7\u6599\u5eab\u6703\u540c\u6b65\u5230\u9019\u500b\u5e33\u6236\uff0c\u9019\u500b\u700f\u89bd\u5668\u4e5f\u6703\u4fdd\u7559\u4e00\u4efd\u96e2\u7dda\u526f\u672c\u3002",
+  "mk.0278":"\u76ee\u524d\u4f7f\u7528 Free \u65b9\u6848\uff1a50 \u7b46\u7d00\u9304\u8207 10 \u6b21\u6383\u63cf\u53ef\u4ee5\u8a66\u7528\u3002\u4f60\u7684\u8cc7\u6599\u5eab\u6703\u540c\u6b65\u5230\u9019\u500b\u5e33\u6236\uff0c\u9019\u500b\u700f\u89bd\u5668\u4e5f\u6703\u4fdd\u7559\u4e00\u4efd\u96e2\u7dda\u526f\u672c\u3002",
   "mk.0279":"\u767b\u51fa",
   "mk.0280":"\u5df2\u767b\u5165",
   "mk.0281":"\u4f60\u7684\u5e33\u6236",
@@ -2519,7 +2540,7 @@ var I18N = {
   "mk.0287":"\u5e74\u7e73",
   "mk.0288":"Free",
   "mk.0289":"\u4f60\u7684\u8cc7\u6599\u5eab\uff0c\u6bcf\u53f0\u88dd\u7f6e\u90fd\u6709",
-  "mk.0290":"\u7b46\u5132\u5b58\u8a18\u9304\uff0c\u540c\u6b65\u5230\u4f60\u7684\u5e33\u6236",
+  "mk.0290":"\u7b46\u5132\u5b58\u7d00\u9304\uff0c\u540c\u6b65\u5230\u4f60\u7684\u5e33\u6236",
   "mk.0291":"\u6b21\u7167\u7247\u6383\u63cf\u53ef\u4ee5\u8a66\u7528",
   "mk.0292":"\u8a9e\u97f3\u8f38\u5165\uff0c\u7121\u9650\u6b21",
   "mk.0293":"\u7a2e\u5df2\u9a57\u8b49\u4e9e\u78f7\u91af\u80fa · 45 \u7b46\u5ee0\u5546\u54c1\u9805",
@@ -2530,7 +2551,7 @@ var I18N = {
   "mk.0298":"/\u6708",
   "mk.0299":"\u7d66\u6bcf\u9031\u90fd\u5f85\u5728\u5be6\u9a57\u684c\u524d\u7684\u4f60",
   "mk.0300":"\u7121\u9650",
-  "mk.0301":"\u7b46\u5132\u5b58\u8a18\u9304\u3002\u4e00\u672c\u6c38\u9060\u5beb\u4e0d\u6eff\u7684\u7b46\u8a18\u672c",
+  "mk.0301":"\u7b46\u5132\u5b58\u7d00\u9304\u3002\u4e00\u672c\u6c38\u9060\u5beb\u4e0d\u6eff\u7684\u7b46\u8a18\u672c",
   "mk.0302":"\u6b21\u7167\u7247\u6383\u63cf\uff08\u6bcf\u6708\uff09",
   "mk.0303":"\u8cc7\u6599\u593e\u3001\u6a19\u7c64\u3001\u5099\u8a3b\u3001\u6279\u6b21\u532f\u51fa",
   "mk.0304":"Free \u65b9\u6848\u7684\u6240\u6709\u529f\u80fd",
@@ -2566,7 +2587,7 @@ var I18N = {
   "mk.0341":"\u5b8c\u6574",
   "mk.0342":"\u5b8c\u6574",
   "mk.0343":"\u5b8c\u6574",
-  "mk.0344":"\u5df2\u5132\u5b58\u8a18\u9304",
+  "mk.0344":"\u5df2\u5132\u5b58\u7d00\u9304",
   "mk.0345":"\u7121\u9650",
   "mk.0346":"\u7121\u9650",
   "mk.0347":"\u7167\u7247\u6383\u63cf",
@@ -2626,7 +2647,7 @@ var I18N = {
   "mk.0410":"\u5c1a\u672a\u767b\u5165",
   "mk.0411":"★ Pro · \u4f7f\u7528\u4e2d",
   "mk.0412":"\u65b9\u6848\u8207\u5e33\u6236",
-  "mk.0413":"\u5df2\u5132\u5b58\u8a18\u9304",
+  "mk.0413":"\u5df2\u5132\u5b58\u7d00\u9304",
   "mk.0414":"\u79d1\u5b78\u8aaa\u660e",
   "mk.0415":"\u767b\u5165",
   "mk.0416":"\u4e3b\u984c",
@@ -2634,7 +2655,7 @@ var I18N = {
   "mk.0418":"\u6dfa\u8272",
   "mk.0419":"\u6df1\u8272",
   "mk.0420":"\u8cc7\u6599\u5eab",
-  "mk.0421":"\u5df2\u5132\u5b58\u8a18\u9304",
+  "mk.0421":"\u5df2\u5132\u5b58\u7d00\u9304",
   "mk.0422":"\u578b\u9304",
   "mk.0423":"\u65b9\u6cd5",
   "mk.0424":"\u8a9e\u6cd5",
@@ -2749,19 +2770,25 @@ var I18N = {
   "tm.fold.loop":"{n} nt \u7684\u74b0",
   "tm.fold.mb.many":"{n} \u500b\u591a\u5206\u652f\u74b0",
   "tm.fold.mb.one":"{n} \u500b\u591a\u5206\u652f\u74b0",
+  "tm.fold.mbc.behind!":"\u7a69\u5b9a\u5ea6\u6bd4\u4e0d\u52a0\u9019\u9805\u8981\u6c42\u6642\u627e\u5230\u7684\u6700\u4f73\u7d50\u69cb\u4f4e {v} kcal/mol",
+  "tm.fold.mbc.better!":"\u7a69\u5b9a\u5ea6\u6bd4\u4e0d\u52a0\u9019\u9805\u8981\u6c42\u6642\u627e\u5230\u7684\u6700\u4f73\u7d50\u69cb\u9ad8 {v} kcal/mol",
+  "tm.fold.mbc.name":"\u542b\u591a\u5411\u4ea4\u532f",
+  "tm.fold.mbc.none!":"\u6c92\u6709\u542b\u591a\u5411\u4ea4\u532f\u7684\u7d50\u69cb\u3002",
+  "tm.fold.mbc.same!":"\u6700\u7a69\u5b9a\u7684\u7d50\u69cb\u5df2\u7d93\u542b\u6709\u591a\u5411\u4ea4\u532f\u3002\u52a0\u4e0a\u9019\u9805\u8981\u6c42\u4e0d\u6703\u6539\u8b8a\u7d50\u679c\u3002",
   "tm.fold.name.branched":"\u5206\u652f\u647a\u758a",
   "tm.fold.name.hairpin":"\u9aee\u593e",
   "tm.fold.name.junction":"{n} \u5411\u4ea4\u532f",
-  "tm.fold.nomodel!":"\u9019\u80a1\u6c92\u6709\u5efa\u6a21\uff1a{note}\uff08{why}\uff09\u3002\u9aee\u593e\u8207\u81ea\u8eab\u4e8c\u805a\u9ad4\u90fd\u9700\u8981\u74b0\u7684\u53c3\u6578\u3002",
+  "tm.fold.nomodel!":"\u672a\u5c0d\u9019\u80a1\u5efa\u6a21\uff1a{note}\uff08{why}\uff09\u3002\u9aee\u593e\u8207\u81ea\u8eab\u4e8c\u805a\u9ad4\u90fd\u9700\u8981\u74b0\u7684\u53c3\u6578\u3002",
   "tm.fold.none":"\u7121",
   "tm.fold.nostruct":"\u627e\u4e0d\u5230\u7a69\u5b9a\u7684\u9aee\u593e\u6216\u81ea\u8eab\u4e8c\u805a\u9ad4\u3002",
   "tm.fold.note.dimer!":"\u81ea\u8eab\u4e8c\u805a\u9ad4\u9019\u4e00\u5217\u7d66\u7684\u662f\u6700\u4f73\u7684\u9023\u7e8c\u81ea\u8eab\u4e8c\u805a\u9ad4\u87ba\u65cb\uff0c\u4e0d\u662f\u81ea\u8eab\u4e8c\u805a\u9ad4\u7684\u6700\u5c0f\u81ea\u7531\u80fd\uff1a\u5b83\u53ea\u8a08\u7b97\u4e00\u6bb5\u76f8\u9130\u914d\u5c0d\uff0c\u4e0d\u542b\u51f8\u8d77\u4e5f\u4e0d\u542b\u5167\u90e8\u74b0\u3002\u5728\u4e0d\u5c0d\u7a31\u7684\u540c\u578b\u4e8c\u805a\u9ad4\u4e2d\uff0c\u5b83\u7684\u93e1\u50cf\u87ba\u65cb\u4e5f\u6703\u5f62\u6210\uff0c\u4f46\u6c92\u6709\u88ab\u8a08\u5165\u3002",
   "tm.fold.note.dna!":"\u74b0\u53c3\u6578\uff1aSantaLucia &amp; Hicks 2004\uff0c\u5176\u74b0\u9805\u50c5\u4ee5\u81ea\u7531\u80fd\u7d66\u51fa\u3002\u4ee5\u901a\u7528\u74b0\u65b9\u7a0b\u5f0f\u8a08\u7b97\u7684\u74b0\uff0c\u9019\u88e1\u5c07\u5176 ΔH° \u53d6\u70ba\u96f6\uff0c\u56e0\u6b64\u9019\u985e\u74b0\u53ea\u8ca2\u737b\u71b5\u3002\u5169\u5074\u5404\u6709\u4e00\u5230\u5169\u500b\u672a\u914d\u5c0d\u9e7c\u57fa\u7684\u5167\u90e8\u74b0\uff0c\u63a1\u7528 Mathews \u5c0d\u8a72\u74b0\u7684\u5be6\u6e2c\u503c\uff0c\u800c\u4e14\u73fe\u5728\u4e5f\u4e00\u4f75\u8f09\u5165\u5df2\u767c\u8868\u7684\u7113\u503c\u3002\u9019\u500b\u7113\u503c\u96d6\u7136\u662f\u5be6\u6e2c\u800c\u975e\u5047\u8a2d\uff0c\u4f46\u672c\u5f15\u64ce\u7684\u74b0\u71b5\u662f\u5f9e\u81ea\u7531\u80fd\u63a8\u5c0e\u51fa\u4f86\u7684\u3002\u8f09\u5165\u7113\u503c\u6703\u8b93\u5c11\u6578\u647a\u758a\u7684\u71b5\u8da8\u8fd1\u65bc\u96f6\uff0c\u800c\u647a\u758a\u7684\u7194\u89e3\u6eab\u5ea6\u662f\u5169\u8005\u7684\u6bd4\u503c\uff0c\u65bc\u662f\u5728\u6578\u503c\u4e0a\u8b8a\u5f97\u4e0d\u7a69\u5b9a\u3002\u7576\u7d50\u679c\u843d\u5728\u9019\u4e9b\u53c3\u6578\u7684\u91cf\u6e2c\u7bc4\u570d\u4e4b\u5916\uff0c\u6216\u662f\u628a\u7a69\u5b9a\u7684\u647a\u758a\u5224\u70ba\u7531\u71b5\u9a45\u52d5\u6642\uff0c\u647a\u758a\u7684\u7194\u89e3\u6eab\u5ea6\u6539\u70ba\u5c07\u74b0\u7684 ΔH° \u53d6\u70ba\u96f6\uff0c\u4e5f\u5c31\u662f\u5148\u524d\u7248\u672c\u4e00\u76f4\u56de\u5831\u7684\u6578\u503c\u3002\u6c92\u6709\u4efb\u4f55\u6700\u9130\u8fd1\u53c3\u6578\u6539\u8b8a\uff0c\u6240\u4ee5\u96d9\u80a1\u7684\u7194\u89e3\u6eab\u5ea6\u4e0d\u53d7\u5f71\u97ff\u3002",
-  "tm.fold.note.mb!":"\uff0c\u4ee5\u53ca\u591a\u5206\u652f\u74b0\u3002\u5728\u591a\u5206\u652f\u74b0\u5167\u6211\u5011\u6703\u8a08\u5165\u61f8\u5782\u672b\u7aef\u8207\u9f4a\u5e73\u7684\u5171\u8ef8\u5806\u758a\uff1b<b>\u932f\u914d\u4ecb\u5c0e\u7684\u5171\u8ef8\u5806\u758a\uff0c\u4ee5\u53ca\u6e38\u96e2\u5c3e\u7aef\u4e0a\u7684\u61f8\u5782\u672b\u7aef\uff0c\u90fd\u4e0d\u8a08\u5165</b>\u3002\u9019\u5169\u9805\u88ab\u7565\u904e\u7684\u80fd\u91cf\u9805\u5728 Turner \u6a21\u578b\u4e2d\u90fd\u662f\u4f7f\u7d50\u69cb\u66f4\u7a69\u5b9a\u7684\uff0c\u6240\u4ee5\u986f\u793a\u7684 ΔG \u5c0d\u6240\u5831\u544a\u7684\u7d50\u69cb\u800c\u8a00\u662f\u4fdd\u5b88\u7684\u3002\u9019\u662f\u95dc\u65bc\u6a21\u578b\u672c\u8eab\u7684\u9673\u8ff0\uff0c\u4e0d\u662f\u5be6\u9a57\u8aa4\u5dee\u7bc4\u570d\u3002 ",
-  "tm.fold.note.mbdna!":"\uff0c\u4ee5\u53ca\u591a\u5206\u652f\u74b0\u3002\u5728\u591a\u5206\u652f\u74b0\u5167\u6211\u5011\u6703\u8a08\u5165\u61f8\u5782\u672b\u7aef\u8207\u9f4a\u5e73\u7684\u5171\u8ef8\u5806\u758a\uff1b<b>\u932f\u914d\u4ecb\u5c0e\u7684\u5171\u8ef8\u5806\u758a\u3001\u672b\u7aef\u932f\u914d\uff0c\u4ee5\u53ca\u6e38\u96e2\u5c3e\u7aef\u4e0a\u7684\u61f8\u5782\u672b\u7aef\uff0c\u90fd\u4e0d\u8a08\u5165</b>\u3002\u9019\u4e09\u9805\u88ab\u7565\u904e\u7684\u80fd\u91cf\u9805\u90fd\u662f\u4f7f\u7d50\u69cb\u66f4\u7a69\u5b9a\u7684\uff0c\u6240\u4ee5\u986f\u793a\u7684 ΔG \u5c0d\u6240\u5831\u544a\u7684\u7d50\u69cb\u800c\u8a00\u662f\u4fdd\u5b88\u7684\u3002\u9019\u662f\u95dc\u65bc\u6a21\u578b\u672c\u8eab\u7684\u9673\u8ff0\uff0c\u4e0d\u662f\u5be6\u9a57\u8aa4\u5dee\u7bc4\u570d\u3002\u61f8\u5782\u672b\u7aef\u63a1\u7528\u5df2\u88fd\u8868\u7684 DNA \u6578\u503c\uff1a\u5176\u4e2d\u6709\u5e7e\u500b\u9589\u5408\u9e7c\u57fa\u5c0d\uff0c\u56db\u7a2e\u61f8\u5782\u9e7c\u57fa\u5171\u7528\u540c\u4e00\u500b\u503c\uff0c\u800c\u5169\u5217 G-T \u5247\u6cbf\u7528\u8207\u5176\u6700\u76f8\u8fd1\u7684\u83ef\u751f-\u514b\u91cc\u514b\u9e7c\u57fa\u5c0d\u7684\u6578\u503c\u3002 ",
+  "tm.fold.note.mb!":"\uff0c\u4ee5\u53ca\u591a\u5206\u652f\u74b0\u3002\u5728\u591a\u5206\u652f\u74b0\u5167\u6211\u5011\u6703\u8a08\u5165\u61f8\u5782\u672b\u7aef\u8207\u9f4a\u5e73\u7684\u5171\u8ef8\u5806\u758a\uff1b<b>\u932f\u914d\u4ecb\u5c0e\u7684\u5171\u8ef8\u5806\u758a\u4ee5\u53ca\u6e38\u96e2\u5c3e\u7aef\u4e0a\u7684\u61f8\u5782\u672b\u7aef\uff0c\u90fd\u4e0d\u8a08\u5165</b>\u3002\u9019\u5169\u9805\u88ab\u7565\u904e\u7684\u80fd\u91cf\u9805\u5728 Turner \u6a21\u578b\u4e2d\u90fd\u662f\u4f7f\u7d50\u69cb\u66f4\u7a69\u5b9a\u7684\uff0c\u6240\u4ee5\u986f\u793a\u7684 ΔG \u5c0d\u6240\u5831\u544a\u7684\u7d50\u69cb\u800c\u8a00\u662f\u4fdd\u5b88\u7684\u3002\u9019\u662f\u95dc\u65bc\u6a21\u578b\u672c\u8eab\u7684\u9673\u8ff0\uff0c\u4e0d\u662f\u5be6\u9a57\u8aa4\u5dee\u7bc4\u570d\u3002 ",
+  "tm.fold.note.mbc!":"\u542b\u591a\u5411\u4ea4\u532f\u7684\u7d50\u69cb\uff0c\u662f\u5728\u52a0\u4e0a\u9019\u500b\u689d\u4ef6\u4e4b\u5f8c\u91cd\u65b0\u641c\u5c0b\u5f97\u5230\u7684\u3002\u7b2c\u4e8c\u6b21\u641c\u5c0b\u6703\u5728\u6bcf\u500b\u6aa2\u67e5\u904e\u7684\u5340\u6bb5\u4e0a\u4fdd\u7559\u542b\u4ea4\u532f\u7684\u6700\u4f73\u7d50\u69cb\uff0c\u56e0\u6b64\u80fd\u5230\u9054\u6c92\u6709\u689d\u4ef6\u7684\u641c\u5c0b\u5728\u4e2d\u9014\u6368\u68c4\u7684\u7d50\u69cb\u3002\u9019\u5c31\u662f\u70ba\u4ec0\u9ebc\u9019\u500b\u7d50\u679c\u5076\u723e\u6703\u6bd4\u4e0a\u65b9\u7684\u7d50\u69cb\u66f4\u7a69\u5b9a\u3002",
+  "tm.fold.note.mbdna!":"\uff0c\u4ee5\u53ca\u591a\u5206\u652f\u74b0\u3002\u5728\u591a\u5206\u652f\u74b0\u5167\u6211\u5011\u6703\u8a08\u5165\u61f8\u5782\u672b\u7aef\u8207\u9f4a\u5e73\u7684\u5171\u8ef8\u5806\u758a\uff1b<b>\u932f\u914d\u4ecb\u5c0e\u7684\u5171\u8ef8\u5806\u758a\u3001\u672b\u7aef\u932f\u914d\uff0c\u4ee5\u53ca\u6e38\u96e2\u5c3e\u7aef\u4e0a\u7684\u61f8\u5782\u672b\u7aef\uff0c\u90fd\u4e0d\u8a08\u5165</b>\u3002\u9019\u4e09\u9805\u88ab\u7565\u904e\u7684\u80fd\u91cf\u9805\u5728 SantaLucia \u6a21\u578b\u4e2d\u90fd\u662f\u4f7f\u7d50\u69cb\u66f4\u7a69\u5b9a\u7684\uff0c\u6240\u4ee5\u986f\u793a\u7684 ΔG \u5c0d\u6240\u5831\u544a\u7684\u7d50\u69cb\u800c\u8a00\u662f\u4fdd\u5b88\u7684\u3002\u9019\u662f\u95dc\u65bc\u6a21\u578b\u672c\u8eab\u7684\u9673\u8ff0\uff0c\u4e0d\u662f\u5be6\u9a57\u8aa4\u5dee\u7bc4\u570d\u3002\u61f8\u5782\u672b\u7aef\u63a1\u7528\u5df2\u88fd\u8868\u7684 DNA \u6578\u503c\uff1a\u5176\u4e2d\u6709\u5e7e\u500b\u9589\u5408\u9e7c\u57fa\u5c0d\uff0c\u56db\u7a2e\u61f8\u5782\u9e7c\u57fa\u5171\u7528\u540c\u4e00\u500b\u503c\uff0c\u800c\u5169\u5217 G-T \u5247\u6cbf\u7528\u8207\u5176\u6700\u76f8\u8fd1\u7684\u83ef\u751f-\u514b\u91cc\u514b\u9e7c\u57fa\u5c0d\u7684\u6578\u503c\u3002 ",
   "tm.fold.note.mbrna!":"\u3002<b>\u8d85\u904e {n} nt \u5c31\u4e0d\u641c\u5c0b\u591a\u5206\u652f\u7d50\u69cb\u3002</b>\u641c\u5c0b\u6210\u672c\u662f\u9577\u5ea6\u7684\u4e09\u6b21\u65b9\uff0c\u6703\u8b93\u9801\u9762\u5361\u4f4f\u3002\u82e5\u6709\u4e09\u500b\u4ee5\u4e0a\u7684\u8396\u4ea4\u6703\u65bc\u540c\u4e00\u500b\u74b0\uff0c\u6211\u5011\u53ea\u5831\u544a\u5176\u4e2d\u6700\u7a69\u5b9a\u7684\u90a3\u4e00\u652f\uff0c\u6240\u4ee5\u771f\u5be6\u7d50\u69cb\u6709\u53ef\u80fd\u6bd4\u986f\u793a\u7684\u66f4\u7a69\u5b9a\u3002 ",
-  "tm.fold.note.mfe!":" \u9019\u500b\u7d50\u69cb\u662f\u9019\u6b21\u641c\u5c0b\u627e\u5230\u7684\u6700\u4f4e\u81ea\u7531\u80fd\u7d50\u69cb\uff0c\u4e26\u4e0d\u662f\u5df2\u8b49\u660e\u7684\u5168\u57df\u6700\u5c0f\u503c\uff1a\u641c\u5c0b\u5148\u7528\u8f03\u4fbf\u5b9c\u7684\u80fd\u91cf\u6a21\u578b\u6392\u5e8f\uff0c\u518d\u53ea\u5c0d\u524d {k} \u500b\u5019\u9078\u7d50\u69cb\u505a\u7cbe\u78ba\u8a08\u5206\u3002\u7d50\u679c\u4ee5\u9ede\u62ec\u865f\u8868\u793a\uff1a\u5305\u542b\u5806\u758a\u3001\u51f8\u8d77\u8207\u5167\u90e8\u74b0",
-  "tm.fold.note.one!":" \u53ea\u8a08\u7b97\u4e00\u500b\u8396\u8207\u4e00\u500b\u74b0\u3002 ",
+  "tm.fold.note.mfe!":"\u9019\u500b\u7d50\u69cb\u662f\u9019\u6b21\u641c\u5c0b\u627e\u5230\u7684\u6700\u4f4e\u81ea\u7531\u80fd\u7d50\u69cb\uff0c\u4e26\u4e0d\u662f\u5df2\u8b49\u660e\u7684\u5168\u57df\u6700\u5c0f\u503c\uff1a\u641c\u5c0b\u5148\u7528\u8f03\u4fbf\u5b9c\u7684\u80fd\u91cf\u6a21\u578b\u6392\u5e8f\uff0c\u518d\u53ea\u5c0d\u524d {k} \u500b\u5019\u9078\u7d50\u69cb\u505a\u7cbe\u78ba\u8a08\u5206\u3002\u7d50\u679c\u4ee5\u9ede\u62ec\u865f\u8868\u793a\uff1a\u5305\u542b\u5806\u758a\u3001\u51f8\u8d77\u8207\u5167\u90e8\u74b0",
+  "tm.fold.note.one!":"\u627e\u4e0d\u5230\u7a69\u5b9a\u7684\u9aee\u593e\u3002",
   "tm.fold.note.rna!":"\u74b0\u53c3\u6578\uff1aTurner 2004\uff0c\u4e5f\u5c31\u662f\u53d6\u81ea Nearest Neighbor Database \u7684 Mathews 2004\uff08ΔG°₃₇\uff09\u8207 Lu 2006\uff08ΔH\uff09\uff1b\u8396\u4f86\u81ea Xia 1998\u3002\u9019\u662f\u771f\u6b63\u91cf\u6e2c\u7684\u74b0\u7113\u503c\uff0c\u4e0d\u662f\u5047\u8a2d\u3002<b>\u9019\u500b\u647a\u758a\u7684\u9e7d\u6821\u6b63\u662f\u91dd\u5c0d RNA \u64ec\u5408\u7684\u3002</b>\u6bcf\u4e00\u500b\u5806\u758a\u90fd\u5e36\u6709 Yao \u8207 Lorenz \u5728 2023 \u5e74\u767c\u8868\u7684\u5fb7\u62dc\u5c4f\u853d\u8207 Manning \u51dd\u805a\u9805\uff0c\u4e26\u4ee5 Turner \u53c3\u6578\u672c\u8eab\u7684\u91cf\u6e2c\u689d\u4ef6 1.021 M \u9209\u96e2\u5b50\u70ba\u57fa\u6e96\uff0c\u56e0\u6b64\u81ea\u7531\u80fd\u8207\u647a\u758a\u7684\u7194\u89e3\u6eab\u5ea6\u6703\u96a8\u4f60\u8f38\u5165\u7684\u7de9\u885d\u6db2\u800c\u8b8a\u3002\u7113\u503c\u4e0d\u6703\uff0c\u9e7c\u57fa\u5c0d\u8207\u74b0\u7684\u8a08\u6578\u4e5f\u4e0d\u6703\u3002\u90a3\u7bc7\u767c\u8868\u7684\u6a21\u578b\u540c\u6642\u4e5f\u6821\u6b63\u74b0\u7684\u975c\u96fb\u4f5c\u7528\uff0c\u672c\u5f15\u64ce\u6c92\u6709\uff0c\u904e\u53bb\u4e5f\u4e0d\u66fe\u6709\u3002\u96d9\u80a1\u7684\u7194\u89e3\u6eab\u5ea6\u4ecd\u7136\u4ee5 Owczarzy 2004 \u6821\u6b63\uff0c\u800c\u90a3\u662f\u5c0d DNA \u64ec\u5408\u7684\u3002GU \u6416\u64fa\u914d\u5c0d\u8a08\u70ba\u8396\u914d\u5c0d\uff1b\u5169\u5074\u5404\u6709\u4e00\u5230\u5169\u500b\u672a\u914d\u5c0d\u9e7c\u57fa\u7684\u5167\u90e8\u74b0\uff0c\u63a1\u7528 Turner \u5c0d\u8a72\u74b0\u7684\u5be6\u6e2c\u503c\uff0c\u800c\u4e0d\u662f\u901a\u7528\u7684\u74b0\u65b9\u7a0b\u5f0f\u3002",
   "tm.fold.note.tmm!":" ⚠ \u9019\u500b\u74b0\u7528\u5230 GG/CG \u672b\u7aef\u932f\u914d\u3002\u5b83\u5728\u5df2\u767c\u8868\u7684\u8868\u683c\u4e2d\u662f\u7570\u5e38\u503c\uff0c\u6211\u5011\u539f\u6a23\u6cbf\u7528\uff0c\u6c92\u6709\u4fee\u6539\u3002",
   "tm.fold.scope!":"\u9019\u80a1\u6709 {n} nt\uff0c\u800c\u9019\u500b\u8a08\u7b97\u5de5\u5177\u7684\u8a2d\u8a08\u7bc4\u570d\u662f {max} nt \u4ee5\u5167\u7684\u5be1\u6838\u82f7\u9178\u3002\u8d85\u904e\u9019\u500b\u9577\u5ea6\u4e4b\u5f8c\uff0c\u4e09\u500b\u4ee5\u4e0a\u7684\u8396\u4ea4\u6703\u65bc\u540c\u4e00\u500b\u74b0\u7684\u647a\u758a\u6703\u8b8a\u5f97\u5e38\u898b\uff0c\u800c\u90a3\u6b63\u662f\u9019\u500b\u641c\u5c0b\u7b97\u5f97\u6700\u4e0d\u6e96\u7684\u4e00\u985e\u3002\u4e0b\u9762\u7684\u7d50\u69cb\u4ecd\u7136\u6703\u8a08\u7b97\u51fa\u4f86\u3002\u8acb\u7576\u6210\u8fd1\u4f3c\u503c\u4f86\u770b\u3002",
@@ -2840,6 +2867,7 @@ var I18N = {
   "ui.fold.data.gcpairs":"\u4e8c\u7d1a\u7d50\u69cb G:C \u9e7c\u57fa\u5c0d\u6578",
   "ui.fold.exp":"\u653e\u5927",
   "ui.fold.expa":"\u4ee5\u5168\u87a2\u5e55\u958b\u555f\u7d50\u69cb\u5716",
+  "ui.fold.mbc":"\u540c\u6642\u986f\u793a\u542b\u591a\u5411\u4ea4\u532f\u7684\u6700\u7a69\u5b9a\u7d50\u69cb",
   "ui.fold.note.h":"\u9019\u500b\u7d50\u679c\u5982\u4f55\u8a08\u7b97",
   "ui.fold.note.h2":"\u4e0d\u9069\u7528\u7684\u60c5\u6cc1",
   "ui.hist.armClear":"\u78ba\u5b9a\u5168\u90e8\u6e05\u9664\uff1f",
@@ -3168,7 +3196,13 @@ var I18N = {
   "faq.conc.title":"\u6d53\u5ea6\u8ba1\u7b97\u5668",
   "faq.intro.about":"\u8c01\u505a\u4e86\u8fd9\u4e2a\u8ba1\u7b97\u5668\u3001\u5b83\u4e3a\u4ec0\u4e48\u5b58\u5728\u3001\u8981\u600e\u4e48\u5f15\u7528\uff0c\u4ee5\u53ca\u4f60\u7684\u6570\u636e\u5b58\u653e\u5728\u54ea\u91cc\u3002",
   "faq.intro.conc":"\u5206\u5b50\u91cf\u6765\u6e90\u3001Nanodrop \u4e0e A₂₆₀ \u8bfb\u6570\u3001\u6bcd\u6db2\u6d53\u5ea6\uff0c\u4ee5\u53ca\u7a00\u91ca\u3002",
+  "faq.intro.lib":"\u5df2\u4fdd\u5b58\u7684\u5e8f\u5217\u653e\u5728\u54ea\u91cc\u3001\u5b9e\u9a8c\u5ba4\u91cc\u8c01\u6709\u54ea\u4e9b\u6743\u9650\uff0c\u4ee5\u53ca\u5f52\u6863\u4e00\u6761\u8bb0\u5f55\u4f1a\u600e\u4e48\u6837\u3002",
   "faq.intro.mw":"\u5e8f\u5217\u8f93\u5165\u3001\u94fe\u7684\u5316\u5b66\u3001\u53cc\u94fe\u3001\u81ea\u5b9a\u4e49\u5355\u4f53\u3001\u76ee\u5f55\u3001\u7ed3\u679c\uff0c\u4ee5\u53ca\u6570\u636e\u5e93\u3002",
+  "faq.lib.01.a":"\u767b\u5f55\u4e4b\u540e\uff0c\u53ef\u8de8\u8bbe\u5907\u4f7f\u7528\u7684\u90a3\u4efd\u5b58\u5728\u4f60\u7684\u8d26\u6237\u91cc\uff0c\u8fd9\u4e2a\u6d4f\u89c8\u5668\u53e6\u5916\u4fdd\u7559\u4e00\u4efd\u79bb\u7ebf\u526f\u672c\uff1b\u672a\u767b\u5f55\u65f6\uff0c\u5e8f\u5217\u53ea\u5b58\u5728\u8fd9\u4e2a\u6d4f\u89c8\u5668\u91cc\u3002",
+  "faq.lib.01.q":"\u4f60\u5df2\u4fdd\u5b58\u7684\u5e8f\u5217\u653e\u5728\u54ea\u91cc",
+  "faq.lib.02.q":"\u5982\u4f55\u627e\u5230\u5b9e\u9a8c\u5ba4\u7684\u5171\u7528\u6570\u636e\u5e93",
+  "faq.lib.04.q":"\u5f52\u6863\u4e00\u6761\u8bb0\u5f55\u4f1a\u600e\u4e48\u6837",
+  "faq.lib.title":"\u4f60\u7684\u6570\u636e\u5e93\u4e0e\u4f60\u7684\u5b9e\u9a8c\u5ba4",
   "faq.mw.01.a":"\u8f93\u5165\u4e00\u6bb5\u5be1\u6838\u82f7\u9178\u5e8f\u5217\uff0c\u5b83\u4f1a\u7528\u6807\u51c6\u7684\u52a0\u6210\u6a21\u578b\u7b97\u51fa\u4ee5 g/mol \u4e3a\u5355\u4f4d\u7684\u5206\u5b50\u91cf\uff1a5′ \u7aef + \u6bcf\u4e00\u4e2a\u6838\u82f7 + \u6bcf\u4e00\u4e2a\u9aa8\u67b6\u8fde\u63a5\u3002<b>\u8303\u4f8b\uff1a</b><code>ATCG</code>\uff08DNA\uff09→ <b>1,173.83 g/mol</b>\u3002",
   "faq.mw.01.q":"\u5206\u5b50\u91cf\u8ba1\u7b97\u5668\u5728\u505a\u4ec0\u4e48\uff1f",
   "faq.mw.02.a":"\u5728\u5e8f\u5217\u8f93\u5165\u6846\u91cc\u6253\u5b57\u3001\u7528\u6b63\u4e0b\u65b9\u7684\u5feb\u901f\u63d2\u5165\u6309\u94ae\uff0c\u6216\u6253\u5f00 <b>Compose</b> \u53d6\u7528\u4fee\u9970\u3001\u5df2\u4fdd\u5b58\u3001\u81ea\u5b9a\u4e49\u4e0e\u76ee\u5f55\u91cc\u7684\u5355\u4f53\u3002\u5355\u4f53\u9762\u677f\u662f\u5728\u9875\u9762\u91cc\u5c55\u5f00\u7684\uff0c\u6240\u4ee5\u4e0d\u4f1a\u76d6\u4f4f\u4e0b\u65b9\u7684\u5316\u5b66\u8bbe\u7f6e\u3002\u4f60\u4e5f\u53ef\u4ee5\u76f4\u63a5\u7c98\u8d34\u5e8f\u5217\uff1b\u7a7a\u683c\u4f1a\u88ab\u5ffd\u7565\u3002<b>\u8303\u4f8b\uff1a</b>\u8f93\u5165 <code>ATCGATCGAT</code> → 3,027.04 g/mol\u3002",
@@ -3268,7 +3302,7 @@ var I18N = {
   "lab.card.deleted":"\u5df2\u5220\u9664",
   "lab.card.editlab":"\u7f16\u8f91\u5b9e\u9a8c\u5ba4\u7248\u672c",
   "lab.card.mgrdel":"\u5c06 {name} \u4ece\u5b9e\u9a8c\u5ba4\u5220\u9664",
-  "lab.card.mgrdelT":"\u4f60\u662f\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u8d1f\u8d23\u4eba\u3002\u8fd9\u4f1a\u4e3a\u6240\u6709\u4eba\u5220\u9664\u8fd9\u6761\u8bb0\u5f55\uff0c\u5305\u542b\u4fdd\u5b58\u5b83\u7684\u4eba\u3002",
+  "lab.card.mgrdelT":"\u4f60\u662f\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u8d1f\u8d23\u4eba\u3002\u8fd9\u4e2a\u64cd\u4f5c\u4f1a\u5220\u9664\u8fd9\u6761\u8bb0\u5f55\uff0c\u5305\u62ec\u5f53\u521d\u4fdd\u5b58\u5b83\u7684\u4eba\u5728\u5185\uff0c\u5b9e\u9a8c\u5ba4\u91cc\u7684\u6bcf\u4e2a\u4eba\u90fd\u4f1a\u5931\u53bb\u5b83\u3002",
   "lab.card.open":"\u6253\u5f00",
   "lab.card.opencopy":"\u6253\u5f00\u526f\u672c",
   "lab.card.rmdone":"\u5df2\u79fb\u51fa\u5b9e\u9a8c\u5ba4",
@@ -3281,7 +3315,7 @@ var I18N = {
   "lab.closing!":"{date} \u5173\u95ed",
   "lab.cmt.aria":"\u6dfb\u52a0\u8bc4\u8bba",
   "lab.cmt.del":"\u5220\u9664\u8bc4\u8bba",
-  "lab.cmt.err.notmine":"\u53ea\u6709\u53d1\u8868\u8fd9\u6761\u8bc4\u8bba\u7684\u4eba\uff0c\u6216\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u8d1f\u8d23\u4eba\uff0c\u53ef\u4ee5\u5220\u9664\u5b83\u3002",
+  "lab.cmt.err.notmine":"\u8fd9\u4e2a\u64cd\u4f5c\u6ca1\u6709\u751f\u6548\u3002\u53ea\u6709\u53d1\u8868\u8fd9\u6761\u8bc4\u8bba\u7684\u4eba\uff0c\u6216\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u8d1f\u8d23\u4eba\uff0c\u53ef\u4ee5\u5220\u9664\u5b83\u3002",
   "lab.cmt.failload":"\u65e0\u6cd5\u52a0\u8f7d\u8bc4\u8bba\u3002",
   "lab.cmt.h":"\u8bc4\u8bba",
   "lab.cmt.none":"\u8fd8\u6ca1\u6709\u8bc4\u8bba\u3002",
@@ -3569,7 +3603,7 @@ var I18N = {
   "lab.orph.del":"\u5220\u9664\u5de5\u4f5c\u53f0",
   "lab.orph.done":"\u5de5\u4f5c\u53f0\u5df2\u5220\u9664",
   "lab.orph.err.live":"\u8fd9\u4e2a\u5de5\u4f5c\u53f0\u5c5e\u4e8e\u4ecd\u5728\u5b9e\u9a8c\u5ba4\u91cc\u7684\u6210\u5458\uff0c\u56e0\u6b64\u65e0\u6cd5\u5220\u9664\u3002",
-  "lab.orph.err.notmgr":"\u53ea\u6709\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u8d1f\u8d23\u4eba\u53ef\u4ee5\u5220\u9664\u5de5\u4f5c\u53f0\u3002",
+  "lab.orph.err.notmgr":"\u8fd9\u4e2a\u64cd\u4f5c\u6ca1\u6709\u751f\u6548\u3002\u53ea\u6709\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u8d1f\u8d23\u4eba\u53ef\u4ee5\u5220\u9664\u5de5\u4f5c\u53f0\u3002",
   "lab.orph.h":"\u6ca1\u6709\u62e5\u6709\u8005\u7684\u5de5\u4f5c\u53f0",
   "lab.orph.menu":"\u5220\u9664\u5df2\u79bb\u5f00\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u6210\u5458\u7684\u5de5\u4f5c\u53f0",
   "lab.orph.why!":"\u62e5\u6709\u8fd9\u4e2a\u5de5\u4f5c\u53f0\u7684\u6210\u5458\u5df2\u7ecf\u79bb\u5f00\u5b9e\u9a8c\u5ba4\u3002\u5220\u9664\u5b83\u4f1a\u8ba9\u8fd8\u7559\u5728\u91cc\u9762\u7684\u5e8f\u5217\u53d8\u6210\u300c\u672a\u5206\u7c7b\u300d\uff0c\u4e0d\u4f1a\u4e22\u5931\u4efb\u4f55\u4e1c\u897f\u3002\u53ea\u6709\u5b9e\u9a8c\u5ba4\u7684\u8d1f\u8d23\u4eba\u53ef\u4ee5\u8fd9\u6837\u505a\u3002",
@@ -3607,6 +3641,7 @@ var I18N = {
   "lab.rules.see":"\u5b9e\u9a8c\u5ba4\u91cc\u7684\u6bcf\u4e2a\u4eba\u90fd\u770b\u5f97\u5230\u5171\u7528\u6570\u636e\u5e93\uff0c\u4e5f\u53ef\u4ee5\u6253\u5f00\u91cc\u9762\u7684\u4efb\u4f55\u5185\u5bb9\u5e76\u4fdd\u5b58\u4e3a\u81ea\u5df1\u7684\u526f\u672c\u3002\u6210\u5458\u81ea\u5df1\u7684\u5de5\u4f5c\u53f0\u53ea\u6709\u672c\u4eba\u548c\u5b9e\u9a8c\u5ba4\u8d1f\u8d23\u4eba\u770b\u5f97\u5230\u3002",
   "lab.sel.none":"\u8bf7\u5148\u9009\u53d6\u8981\u5bfc\u51fa\u7684\u5e8f\u5217\u3002",
   "lab.shelf.ariapurge":"\u6c38\u4e45\u5220\u9664“{name}”",
+  "lab.shelf.armgo":"\u8981\u628a\u8fd9\u6761\u8bb0\u5f55\u79fb\u51fa\u5b9e\u9a8c\u5ba4\u6570\u636e\u5e93\u5417\uff1f",
   "lab.shelf.armpurge":"\u786e\u5b9a\u6c38\u4e45\u5220\u9664\uff1f",
   "lab.shelf.back":"\u653e\u56de",
   "lab.shelf.backdone":"\u5df2\u653e\u56de\u6570\u636e\u5e93\u3002",
@@ -3615,9 +3650,9 @@ var I18N = {
   "lab.shelf.emptyh":"\u6ca1\u6709\u5f52\u6863\u7684\u8bb0\u5f55",
   "lab.shelf.err.full":"\u8fd9\u4e2a\u7a7a\u95f4\u5f52\u6863\u7684\u8bb0\u5f55\u5df2\u7ecf\u8fbe\u5230\u4e0a\u9650\u3002\u8bf7\u5148\u653e\u56de\u4e00\u6761\uff0c\u6216\u6c38\u4e45\u5220\u9664\u4e00\u6761\uff0c\u518d\u5f52\u6863\u65b0\u7684\u3002",
   "lab.shelf.err.gone":"\u8fd9\u6761\u8bb0\u5f55\u5df2\u7ecf\u4e0d\u5728\u4e86\u3002",
-  "lab.shelf.err.notauthor":"\u53ea\u6709\u4fdd\u5b58\u8fd9\u6761\u8bb0\u5f55\u7684\u4eba\u53ef\u4ee5\u5f52\u6863\u3001\u653e\u56de\u6216\u5220\u9664\u5b83\u3002",
+  "lab.shelf.err.notauthor":"\u8fd9\u4e2a\u64cd\u4f5c\u6ca1\u6709\u751f\u6548\u3002\u53ea\u6709\u4fdd\u5b58\u8fd9\u6761\u8bb0\u5f55\u7684\u4eba\u53ef\u4ee5\u5f52\u6863\u3001\u653e\u56de\u6216\u5220\u9664\u5b83\u3002",
   "lab.shelf.err.notmember":"\u4f60\u4e0d\u662f\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u6210\u5458\uff0c\u6240\u4ee5\u65e0\u6cd5\u53d8\u66f4\u5b83\u5f52\u6863\u7684\u5185\u5bb9\u3002",
-  "lab.shelf.err.notmgr":"\u53ea\u6709\u4fdd\u5b58\u8fd9\u6761\u8bb0\u5f55\u7684\u4eba\uff0c\u6216\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u8d1f\u8d23\u4eba\uff0c\u53ef\u4ee5\u5f52\u6863\u3001\u653e\u56de\u6216\u5220\u9664\u5b83\u3002",
+  "lab.shelf.err.notmgr":"\u8fd9\u4e2a\u64cd\u4f5c\u6ca1\u6709\u751f\u6548\u3002\u53ea\u6709\u4fdd\u5b58\u8fd9\u6761\u8bb0\u5f55\u7684\u4eba\uff0c\u6216\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u8d1f\u8d23\u4eba\uff0c\u53ef\u4ee5\u5f52\u6863\u3001\u653e\u56de\u6216\u5220\u9664\u5b83\u3002",
   "lab.shelf.go":"\u5f52\u6863",
   "lab.shelf.h":"\u5df2\u5f52\u6863\u7684\u8bb0\u5f55",
   "lab.shelf.labwarn!":"\u5f52\u6863\u5171\u7528\u7684\u8bb0\u5f55\uff0c\u4f1a\u8ba9\u6574\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u6570\u636e\u5e93\u90fd\u770b\u4e0d\u5230\u5b83\u3002\u4fdd\u5b58\u8fd9\u6761\u8bb0\u5f55\u7684\u4eba\u548c\u5b9e\u9a8c\u5ba4\u8d1f\u8d23\u4eba\u53ef\u4ee5\u628a\u5b83\u653e\u56de\u53bb\u3002",
@@ -3870,7 +3905,7 @@ var I18N = {
   "mk.0210":"\u6570\u636e\u5e93",
   "mk.0211":"\u5df2\u4fdd\u5b58\u8bb0\u5f55",
   "mk.0212":"\u6570\u636e\u5e93",
-  "mk.0213":"\u91cd\u65b0\u6253\u5f00\u3001\u590d\u5236\u6216\u5bfc\u51fa\u4f60\u5b58\u8fc7\u7684\u5e8f\u5217\u3002\u767b\u5f55\u4e4b\u540e\uff0c\u53ef\u8de8\u8bbe\u5907\u4f7f\u7528\u7684\u90a3\u4efd\u5b58\u5728\u4f60\u7684\u8d26\u6237\u91cc\uff0c\u8fd9\u4e2a\u6d4f\u89c8\u5668\u53e6\u5916\u4fdd\u7559\u4e00\u4efd\u79bb\u7ebf\u526f\u672c\uff1b\u672a\u767b\u5f55\u65f6\uff0c\u5e8f\u5217\u53ea\u5b58\u5728\u8fd9\u4e2a\u6d4f\u89c8\u5668\u91cc\u3002",
+  "mk.0213":"\u91cd\u65b0\u6253\u5f00\u3001\u590d\u5236\u6216\u5bfc\u51fa\u4f60\u5b58\u8fc7\u7684\u5e8f\u5217\u3002",
   "mk.0214":"\u626b\u63cf",
   "mk.0215":"\u5bfc\u51fa\u6240\u9009\u9879\u76ee · CSV",
   "mk.0216":"\u5206\u4eab\u6240\u9009\u9879\u76ee\u7684\u526f\u672c",
@@ -4176,19 +4211,25 @@ var I18N = {
   "tm.fold.loop":"{n} nt \u7684\u73af",
   "tm.fold.mb.many":"{n} \u4e2a\u591a\u5206\u652f\u73af",
   "tm.fold.mb.one":"{n} \u4e2a\u591a\u5206\u652f\u73af",
+  "tm.fold.mbc.behind!":"\u7a33\u5b9a\u6027\u6bd4\u4e0d\u52a0\u8fd9\u9879\u8981\u6c42\u65f6\u627e\u5230\u7684\u6700\u4f73\u7ed3\u6784\u4f4e {v} kcal/mol",
+  "tm.fold.mbc.better!":"\u7a33\u5b9a\u6027\u6bd4\u4e0d\u52a0\u8fd9\u9879\u8981\u6c42\u65f6\u627e\u5230\u7684\u6700\u4f73\u7ed3\u6784\u9ad8 {v} kcal/mol",
+  "tm.fold.mbc.name":"\u542b\u591a\u5411\u4ea4\u6c47",
+  "tm.fold.mbc.none!":"\u6ca1\u6709\u542b\u591a\u5411\u4ea4\u6c47\u7684\u7ed3\u6784\u3002",
+  "tm.fold.mbc.same!":"\u6700\u7a33\u5b9a\u7684\u7ed3\u6784\u5df2\u7ecf\u542b\u6709\u591a\u5411\u4ea4\u6c47\u3002\u52a0\u4e0a\u8fd9\u9879\u8981\u6c42\u4e0d\u4f1a\u6539\u53d8\u7ed3\u679c\u3002",
   "tm.fold.name.branched":"\u5206\u652f\u6298\u53e0",
   "tm.fold.name.hairpin":"\u53d1\u5939",
   "tm.fold.name.junction":"{n} \u5411\u4ea4\u6c47",
-  "tm.fold.nomodel!":"\u8fd9\u6761\u94fe\u6ca1\u6709\u5efa\u6a21\uff1a{note}\uff08{why}\uff09\u3002\u53d1\u5939\u4e0e\u81ea\u8eab\u4e8c\u805a\u4f53\u90fd\u9700\u8981\u73af\u7684\u53c2\u6570\u3002",
+  "tm.fold.nomodel!":"\u672a\u5bf9\u8fd9\u6761\u94fe\u5efa\u6a21\uff1a{note}\uff08{why}\uff09\u3002\u53d1\u5939\u4e0e\u81ea\u8eab\u4e8c\u805a\u4f53\u90fd\u9700\u8981\u73af\u7684\u53c2\u6570\u3002",
   "tm.fold.none":"\u65e0",
   "tm.fold.nostruct":"\u627e\u4e0d\u5230\u7a33\u5b9a\u7684\u53d1\u5939\u6216\u81ea\u8eab\u4e8c\u805a\u4f53\u3002",
   "tm.fold.note.dimer!":"\u81ea\u8eab\u4e8c\u805a\u4f53\u8fd9\u4e00\u884c\u7ed9\u7684\u662f\u6700\u4f73\u7684\u8fde\u7eed\u81ea\u8eab\u4e8c\u805a\u4f53\u87ba\u65cb\uff0c\u4e0d\u662f\u81ea\u8eab\u4e8c\u805a\u4f53\u7684\u6700\u5c0f\u81ea\u7531\u80fd\uff1a\u5b83\u53ea\u8ba1\u7b97\u4e00\u6bb5\u76f8\u90bb\u914d\u5bf9\uff0c\u4e0d\u542b\u51f8\u8d77\u4e5f\u4e0d\u542b\u5185\u90e8\u73af\u3002\u5728\u4e0d\u5bf9\u79f0\u7684\u540c\u578b\u4e8c\u805a\u4f53\u4e2d\uff0c\u5b83\u7684\u955c\u50cf\u87ba\u65cb\u4e5f\u4f1a\u5f62\u6210\uff0c\u4f46\u6ca1\u6709\u88ab\u8ba1\u5165\u3002",
   "tm.fold.note.dna!":"\u73af\u53c2\u6570\uff1aSantaLucia &amp; Hicks 2004\uff0c\u5176\u73af\u9879\u4ec5\u4ee5\u81ea\u7531\u80fd\u7ed9\u51fa\u3002\u4ee5\u901a\u7528\u73af\u65b9\u7a0b\u8ba1\u7b97\u7684\u73af\uff0c\u8fd9\u91cc\u5c06\u5176 ΔH° \u53d6\u4e3a\u96f6\uff0c\u56e0\u6b64\u8fd9\u7c7b\u73af\u53ea\u8d21\u732e\u71b5\u3002\u4e24\u4fa7\u5404\u6709\u4e00\u5230\u4e24\u4e2a\u672a\u914d\u5bf9\u78b1\u57fa\u7684\u5185\u90e8\u73af\uff0c\u91c7\u7528 Mathews \u5bf9\u8be5\u73af\u7684\u5b9e\u6d4b\u503c\uff0c\u800c\u4e14\u73b0\u5728\u4e5f\u4e00\u5e76\u8f7d\u5165\u5df2\u53d1\u8868\u7684\u7113\u503c\u3002\u8fd9\u4e2a\u7113\u503c\u867d\u7136\u662f\u5b9e\u6d4b\u800c\u975e\u5047\u8bbe\uff0c\u4f46\u672c\u5f15\u64ce\u7684\u73af\u71b5\u662f\u4ece\u81ea\u7531\u80fd\u63a8\u5bfc\u51fa\u6765\u7684\u3002\u8f7d\u5165\u7113\u503c\u4f1a\u8ba9\u5c11\u6570\u6298\u53e0\u7684\u71b5\u8d8b\u8fd1\u4e8e\u96f6\uff0c\u800c\u6298\u53e0\u7684\u89e3\u94fe\u6e29\u5ea6\u662f\u4e24\u8005\u7684\u6bd4\u503c\uff0c\u4e8e\u662f\u5728\u6570\u503c\u4e0a\u53d8\u5f97\u4e0d\u7a33\u5b9a\u3002\u5f53\u7ed3\u679c\u843d\u5728\u8fd9\u4e9b\u53c2\u6570\u7684\u6d4b\u91cf\u8303\u56f4\u4e4b\u5916\uff0c\u6216\u662f\u628a\u7a33\u5b9a\u7684\u6298\u53e0\u5224\u4e3a\u7531\u71b5\u9a71\u52a8\u65f6\uff0c\u6298\u53e0\u7684\u89e3\u94fe\u6e29\u5ea6\u6539\u4e3a\u5c06\u73af\u7684 ΔH° \u53d6\u4e3a\u96f6\uff0c\u4e5f\u5c31\u662f\u5148\u524d\u7248\u672c\u4e00\u76f4\u62a5\u544a\u7684\u6570\u503c\u3002\u6ca1\u6709\u4efb\u4f55\u6700\u8fd1\u90bb\u53c2\u6570\u6539\u53d8\uff0c\u6240\u4ee5\u53cc\u94fe\u7684\u89e3\u94fe\u6e29\u5ea6\u4e0d\u53d7\u5f71\u54cd\u3002",
-  "tm.fold.note.mb!":"\uff0c\u4ee5\u53ca\u591a\u5206\u652f\u73af\u3002\u5728\u591a\u5206\u652f\u73af\u5185\u6211\u4eec\u4f1a\u8ba1\u5165\u60ac\u5782\u672b\u7aef\u4e0e\u9f50\u5e73\u7684\u5171\u8f74\u5806\u53e0\uff1b<b>\u9519\u914d\u4ecb\u5bfc\u7684\u5171\u8f74\u5806\u53e0\uff0c\u4ee5\u53ca\u6e38\u79bb\u5c3e\u7aef\u4e0a\u7684\u60ac\u5782\u672b\u7aef\uff0c\u90fd\u4e0d\u8ba1\u5165</b>\u3002\u8fd9\u4e24\u9879\u88ab\u7565\u8fc7\u7684\u80fd\u91cf\u9879\u5728 Turner \u6a21\u578b\u4e2d\u90fd\u662f\u4f7f\u7ed3\u6784\u66f4\u7a33\u5b9a\u7684\uff0c\u6240\u4ee5\u663e\u793a\u7684 ΔG \u5bf9\u6240\u62a5\u544a\u7684\u7ed3\u6784\u800c\u8a00\u662f\u4fdd\u5b88\u7684\u3002\u8fd9\u662f\u5173\u4e8e\u6a21\u578b\u672c\u8eab\u7684\u9648\u8ff0\uff0c\u4e0d\u662f\u5b9e\u9a8c\u8bef\u5dee\u8303\u56f4\u3002",
-  "tm.fold.note.mbdna!":"\uff0c\u4ee5\u53ca\u591a\u5206\u652f\u73af\u3002\u5728\u591a\u5206\u652f\u73af\u5185\u6211\u4eec\u4f1a\u8ba1\u5165\u60ac\u5782\u672b\u7aef\u4e0e\u9f50\u5e73\u7684\u5171\u8f74\u5806\u53e0\uff1b<b>\u9519\u914d\u4ecb\u5bfc\u7684\u5171\u8f74\u5806\u53e0\u3001\u672b\u7aef\u9519\u914d\uff0c\u4ee5\u53ca\u6e38\u79bb\u5c3e\u7aef\u4e0a\u7684\u60ac\u5782\u672b\u7aef\uff0c\u90fd\u4e0d\u8ba1\u5165</b>\u3002\u8fd9\u4e09\u9879\u88ab\u7565\u8fc7\u7684\u80fd\u91cf\u9879\u90fd\u662f\u4f7f\u7ed3\u6784\u66f4\u7a33\u5b9a\u7684\uff0c\u6240\u4ee5\u663e\u793a\u7684 ΔG \u5bf9\u6240\u62a5\u544a\u7684\u7ed3\u6784\u800c\u8a00\u662f\u4fdd\u5b88\u7684\u3002\u8fd9\u662f\u5173\u4e8e\u6a21\u578b\u672c\u8eab\u7684\u9648\u8ff0\uff0c\u4e0d\u662f\u5b9e\u9a8c\u8bef\u5dee\u8303\u56f4\u3002\u60ac\u5782\u672b\u7aef\u91c7\u7528\u5df2\u5236\u8868\u7684 DNA \u6570\u503c\uff1a\u5176\u4e2d\u6709\u51e0\u4e2a\u95ed\u5408\u78b1\u57fa\u5bf9\uff0c\u56db\u79cd\u60ac\u5782\u78b1\u57fa\u5171\u7528\u540c\u4e00\u4e2a\u503c\uff0c\u800c\u4e24\u884c G-T \u5219\u6cbf\u7528\u4e0e\u5176\u6700\u76f8\u8fd1\u7684\u6c83\u68ee-\u514b\u91cc\u514b\u78b1\u57fa\u5bf9\u7684\u6570\u503c\u3002",
+  "tm.fold.note.mb!":"\uff0c\u4ee5\u53ca\u591a\u5206\u652f\u73af\u3002\u5728\u591a\u5206\u652f\u73af\u5185\u6211\u4eec\u4f1a\u8ba1\u5165\u60ac\u5782\u672b\u7aef\u4e0e\u9f50\u5e73\u7684\u5171\u8f74\u5806\u53e0\uff1b<b>\u9519\u914d\u4ecb\u5bfc\u7684\u5171\u8f74\u5806\u53e0\u4ee5\u53ca\u6e38\u79bb\u5c3e\u7aef\u4e0a\u7684\u60ac\u5782\u672b\u7aef\uff0c\u90fd\u4e0d\u8ba1\u5165</b>\u3002\u8fd9\u4e24\u9879\u88ab\u7565\u8fc7\u7684\u80fd\u91cf\u9879\u5728 Turner \u6a21\u578b\u4e2d\u90fd\u662f\u4f7f\u7ed3\u6784\u66f4\u7a33\u5b9a\u7684\uff0c\u6240\u4ee5\u663e\u793a\u7684 ΔG \u5bf9\u6240\u62a5\u544a\u7684\u7ed3\u6784\u800c\u8a00\u662f\u4fdd\u5b88\u7684\u3002\u8fd9\u662f\u5173\u4e8e\u6a21\u578b\u672c\u8eab\u7684\u9648\u8ff0\uff0c\u4e0d\u662f\u5b9e\u9a8c\u8bef\u5dee\u8303\u56f4\u3002",
+  "tm.fold.note.mbc!":"\u542b\u591a\u5411\u4ea4\u6c47\u7684\u7ed3\u6784\uff0c\u662f\u5728\u8981\u6c42\u7ed3\u6784\u5fc5\u987b\u542b\u6709\u591a\u5411\u4ea4\u6c47\u4e4b\u540e\u91cd\u65b0\u641c\u7d22\u5f97\u5230\u7684\u3002\u7b2c\u4e8c\u6b21\u641c\u7d22\u4f1a\u5728\u6bcf\u4e2a\u68c0\u67e5\u8fc7\u7684\u533a\u6bb5\u4e0a\u4fdd\u7559\u542b\u4ea4\u6c47\u7684\u6700\u4f73\u7ed3\u6784\uff0c\u56e0\u6b64\u80fd\u5230\u8fbe\u4e0d\u52a0\u8fd9\u9879\u8981\u6c42\u65f6\u641c\u7d22\u5728\u4e2d\u9014\u820d\u5f03\u7684\u7ed3\u6784\u3002\u8fd9\u5c31\u662f\u4e3a\u4ec0\u4e48\u8fd9\u4e2a\u7ed3\u679c\u5076\u5c14\u4f1a\u6bd4\u4e0a\u65b9\u7684\u7ed3\u6784\u66f4\u7a33\u5b9a\u3002",
+  "tm.fold.note.mbdna!":"\uff0c\u4ee5\u53ca\u591a\u5206\u652f\u73af\u3002\u5728\u591a\u5206\u652f\u73af\u5185\u6211\u4eec\u4f1a\u8ba1\u5165\u60ac\u5782\u672b\u7aef\u4e0e\u9f50\u5e73\u7684\u5171\u8f74\u5806\u53e0\uff1b<b>\u9519\u914d\u4ecb\u5bfc\u7684\u5171\u8f74\u5806\u53e0\u3001\u672b\u7aef\u9519\u914d\uff0c\u4ee5\u53ca\u6e38\u79bb\u5c3e\u7aef\u4e0a\u7684\u60ac\u5782\u672b\u7aef\uff0c\u90fd\u4e0d\u8ba1\u5165</b>\u3002\u8fd9\u4e09\u9879\u88ab\u7565\u8fc7\u7684\u80fd\u91cf\u9879\u5728 SantaLucia \u6a21\u578b\u4e2d\u90fd\u662f\u4f7f\u7ed3\u6784\u66f4\u7a33\u5b9a\u7684\uff0c\u6240\u4ee5\u663e\u793a\u7684 ΔG \u5bf9\u6240\u62a5\u544a\u7684\u7ed3\u6784\u800c\u8a00\u662f\u4fdd\u5b88\u7684\u3002\u8fd9\u662f\u5173\u4e8e\u6a21\u578b\u672c\u8eab\u7684\u9648\u8ff0\uff0c\u4e0d\u662f\u5b9e\u9a8c\u8bef\u5dee\u8303\u56f4\u3002\u60ac\u5782\u672b\u7aef\u91c7\u7528\u5df2\u5236\u8868\u7684 DNA \u6570\u503c\uff1a\u5176\u4e2d\u6709\u51e0\u4e2a\u95ed\u5408\u78b1\u57fa\u5bf9\uff0c\u56db\u79cd\u60ac\u5782\u78b1\u57fa\u5171\u7528\u540c\u4e00\u4e2a\u503c\uff0c\u800c\u4e24\u884c G-T \u5219\u6cbf\u7528\u4e0e\u5176\u6700\u76f8\u8fd1\u7684\u6c83\u68ee-\u514b\u91cc\u514b\u78b1\u57fa\u5bf9\u7684\u6570\u503c\u3002",
   "tm.fold.note.mbrna!":"\u3002<b>\u8d85\u8fc7 {n} nt \u5c31\u4e0d\u641c\u7d22\u591a\u5206\u652f\u7ed3\u6784\u3002</b>\u641c\u7d22\u6210\u672c\u662f\u957f\u5ea6\u7684\u4e09\u6b21\u65b9\uff0c\u4f1a\u8ba9\u9875\u9762\u5361\u4f4f\u3002\u82e5\u6709\u4e09\u4e2a\u4ee5\u4e0a\u7684\u830e\u4ea4\u4f1a\u4e8e\u540c\u4e00\u4e2a\u73af\uff0c\u6211\u4eec\u53ea\u62a5\u544a\u5176\u4e2d\u6700\u7a33\u5b9a\u7684\u90a3\u4e00\u652f\uff0c\u6240\u4ee5\u771f\u5b9e\u7ed3\u6784\u6709\u53ef\u80fd\u6bd4\u663e\u793a\u7684\u66f4\u7a33\u5b9a\u3002",
   "tm.fold.note.mfe!":"\u8fd9\u4e2a\u7ed3\u6784\u662f\u8fd9\u6b21\u641c\u7d22\u627e\u5230\u7684\u6700\u4f4e\u81ea\u7531\u80fd\u7ed3\u6784\uff0c\u5e76\u4e0d\u662f\u5df2\u8bc1\u660e\u7684\u5168\u5c40\u6700\u5c0f\u503c\uff1a\u641c\u7d22\u5148\u7528\u8f83\u4fbf\u5b9c\u7684\u80fd\u91cf\u6a21\u578b\u6392\u5e8f\uff0c\u518d\u53ea\u5bf9\u524d {k} \u4e2a\u5019\u9009\u7ed3\u6784\u505a\u7cbe\u786e\u8ba1\u5206\u3002\u7ed3\u679c\u4ee5\u70b9\u62ec\u53f7\u8868\u793a\uff1a\u5305\u542b\u5806\u53e0\u3001\u51f8\u8d77\u4e0e\u5185\u90e8\u73af",
-  "tm.fold.note.one!":"\u53ea\u8ba1\u7b97\u4e00\u4e2a\u830e\u4e0e\u4e00\u4e2a\u73af\u3002",
+  "tm.fold.note.one!":"\u627e\u4e0d\u5230\u7a33\u5b9a\u7684\u53d1\u5939\u3002",
   "tm.fold.note.rna!":"\u73af\u53c2\u6570\uff1aTurner 2004\uff0c\u4e5f\u5c31\u662f\u53d6\u81ea Nearest Neighbor Database \u7684 Mathews 2004\uff08ΔG°₃₇\uff09\u4e0e Lu 2006\uff08ΔH\uff09\uff1b\u830e\u6765\u81ea Xia 1998\u3002\u8fd9\u662f\u771f\u6b63\u6d4b\u91cf\u7684\u73af\u7113\u503c\uff0c\u4e0d\u662f\u5047\u8bbe\u3002<b>\u8fd9\u4e2a\u6298\u53e0\u7684\u76d0\u6821\u6b63\u662f\u9488\u5bf9 RNA \u62df\u5408\u7684\u3002</b>\u6bcf\u4e00\u4e2a\u5806\u53e0\u90fd\u5e26\u6709 Yao \u4e0e Lorenz \u5728 2023 \u5e74\u53d1\u8868\u7684\u5fb7\u62dc\u5c4f\u853d\u4e0e Manning \u51dd\u805a\u9879\uff0c\u5e76\u4ee5 Turner \u53c2\u6570\u672c\u8eab\u7684\u6d4b\u91cf\u6761\u4ef6 1.021 M \u94a0\u79bb\u5b50\u4e3a\u57fa\u51c6\uff0c\u56e0\u6b64\u81ea\u7531\u80fd\u4e0e\u6298\u53e0\u7684\u89e3\u94fe\u6e29\u5ea6\u4f1a\u968f\u4f60\u8f93\u5165\u7684\u7f13\u51b2\u6db2\u800c\u53d8\u3002\u7113\u503c\u4e0d\u4f1a\uff0c\u78b1\u57fa\u5bf9\u4e0e\u73af\u7684\u8ba1\u6570\u4e5f\u4e0d\u4f1a\u3002\u90a3\u7bc7\u53d1\u8868\u7684\u6a21\u578b\u540c\u65f6\u4e5f\u6821\u6b63\u73af\u7684\u9759\u7535\u4f5c\u7528\uff0c\u672c\u5f15\u64ce\u6ca1\u6709\uff0c\u8fc7\u53bb\u4e5f\u4e0d\u66fe\u6709\u3002\u53cc\u94fe\u7684\u89e3\u94fe\u6e29\u5ea6\u4ecd\u7136\u4ee5 Owczarzy 2004 \u6821\u6b63\uff0c\u800c\u90a3\u662f\u5bf9 DNA \u62df\u5408\u7684\u3002GU \u6447\u6446\u914d\u5bf9\u8ba1\u4e3a\u830e\u914d\u5bf9\uff1b\u4e24\u4fa7\u5404\u6709\u4e00\u5230\u4e24\u4e2a\u672a\u914d\u5bf9\u78b1\u57fa\u7684\u5185\u90e8\u73af\uff0c\u91c7\u7528 Turner \u5bf9\u8be5\u73af\u7684\u5b9e\u6d4b\u503c\uff0c\u800c\u4e0d\u662f\u901a\u7528\u7684\u73af\u65b9\u7a0b\u3002",
   "tm.fold.note.tmm!":"⚠ \u8fd9\u4e2a\u73af\u7528\u5230 GG/CG \u672b\u7aef\u9519\u914d\u3002\u5b83\u5728\u5df2\u53d1\u8868\u7684\u8868\u683c\u4e2d\u662f\u5f02\u5e38\u503c\uff0c\u6211\u4eec\u539f\u6837\u6cbf\u7528\uff0c\u6ca1\u6709\u4fee\u6539\u3002",
   "tm.fold.scope!":"\u8fd9\u6761\u94fe\u6709 {n} nt\uff0c\u800c\u8fd9\u4e2a\u8ba1\u7b97\u5de5\u5177\u7684\u8bbe\u8ba1\u8303\u56f4\u662f {max} nt \u4ee5\u5185\u7684\u5be1\u6838\u82f7\u9178\u3002\u8d85\u8fc7\u8fd9\u4e2a\u957f\u5ea6\u4e4b\u540e\uff0c\u4e09\u4e2a\u4ee5\u4e0a\u7684\u830e\u4ea4\u4f1a\u4e8e\u540c\u4e00\u4e2a\u73af\u7684\u6298\u53e0\u4f1a\u53d8\u5f97\u5e38\u89c1\uff0c\u800c\u90a3\u6b63\u662f\u8fd9\u4e2a\u641c\u7d22\u7b97\u5f97\u6700\u4e0d\u51c6\u7684\u4e00\u7c7b\u3002\u4e0b\u9762\u7684\u7ed3\u6784\u4ecd\u7136\u4f1a\u8ba1\u7b97\u51fa\u6765\u3002\u8bf7\u5f53\u6210\u8fd1\u4f3c\u503c\u6765\u770b\u3002",
@@ -4267,6 +4308,7 @@ var I18N = {
   "ui.fold.data.gcpairs":"\u4e8c\u7ea7\u7ed3\u6784 G:C \u78b1\u57fa\u5bf9\u6570",
   "ui.fold.exp":"\u653e\u5927",
   "ui.fold.expa":"\u4ee5\u5168\u5c4f\u6253\u5f00\u7ed3\u6784\u56fe",
+  "ui.fold.mbc":"\u540c\u65f6\u663e\u793a\u542b\u591a\u5411\u4ea4\u6c47\u7684\u6700\u7a33\u5b9a\u7ed3\u6784",
   "ui.fold.note.h":"\u8fd9\u4e2a\u7ed3\u679c\u5982\u4f55\u8ba1\u7b97",
   "ui.fold.note.h2":"\u4e0d\u9002\u7528\u7684\u60c5\u51b5",
   "ui.hist.armClear":"\u786e\u5b9a\u5168\u90e8\u6e05\u9664\uff1f",
@@ -4595,7 +4637,13 @@ var I18N = {
   "faq.conc.title":"\u6fc3\u5ea6\u8a08\u7b97\u30c4\u30fc\u30eb",
   "faq.intro.about":"\u8ab0\u304c\u4f55\u306e\u305f\u3081\u306b\u4f5c\u3063\u305f\u304b\u3001\u5f15\u7528\u65b9\u6cd5\u3001\u30c7\u30fc\u30bf\u306e\u4fdd\u5b58\u5834\u6240\u306b\u3064\u3044\u3066\u3002",
   "faq.intro.conc":"\u5206\u5b50\u91cf\u306e\u53d6\u5f97\u5143\u3001Nanodrop \u3068 A₂₆₀ \u306e\u6e2c\u5b9a\u3001\u539f\u6db2\u6fc3\u5ea6\u3001\u5e0c\u91c8\u306b\u3064\u3044\u3066\u3002",
+  "faq.intro.lib":"\u4fdd\u5b58\u3057\u305f\u914d\u5217\u306f\u3069\u3053\u306b\u3042\u308b\u304b\u3001\u30e9\u30dc\u5185\u3067\u306e\u6a29\u9650\u3001\u30ec\u30b3\u30fc\u30c9\u3092\u30a2\u30fc\u30ab\u30a4\u30d6\u3059\u308b\u3068\u3069\u3046\u306a\u308b\u304b\u3002",
   "faq.intro.mw":"\u914d\u5217\u306e\u5165\u529b\u3001\u9396\u306e\u5316\u5b66\u4fee\u98fe\u3001\u4e8c\u672c\u9396\u3001\u30ab\u30b9\u30bf\u30e0\u30e2\u30ce\u30de\u30fc\u3001\u30ab\u30bf\u30ed\u30b0\u3001\u7d50\u679c\u3001\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u3064\u3044\u3066\u3002",
+  "faq.lib.01.a":"\u30b5\u30a4\u30f3\u30a4\u30f3\u3057\u3066\u3044\u308c\u3070\u3001\u7aef\u672b\u9593\u3092\u79fb\u52d5\u3059\u308b\u30b3\u30d4\u30fc\u306f\u30a2\u30ab\u30a6\u30f3\u30c8\u304c\u4fdd\u6301\u3057\u3001\u3053\u306e\u30d6\u30e9\u30a6\u30b6\u306f\u30aa\u30d5\u30e9\u30a4\u30f3\u306e\u8907\u88fd\u3092\u4fdd\u3061\u307e\u3059\u3002\u30b5\u30a4\u30f3\u30a2\u30a6\u30c8\u3057\u3066\u3044\u308b\u5834\u5408\u3001\u914d\u5217\u306f\u3053\u306e\u30d6\u30e9\u30a6\u30b6\u306e\u4e2d\u3060\u3051\u306b\u3042\u308a\u307e\u3059\u3002",
+  "faq.lib.01.q":"\u4fdd\u5b58\u3057\u305f\u914d\u5217\u306f\u3069\u3053\u306b\u3042\u308b\u304b",
+  "faq.lib.02.q":"\u30e9\u30dc\u306e\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u306f\u3069\u3053\u306b\u3042\u308b\u304b",
+  "faq.lib.04.q":"\u30ec\u30b3\u30fc\u30c9\u3092\u30a2\u30fc\u30ab\u30a4\u30d6\u3059\u308b\u3068\u3069\u3046\u306a\u308b\u304b",
+  "faq.lib.title":"\u30de\u30a4\u30e9\u30a4\u30d6\u30e9\u30ea\u3068\u30e9\u30dc",
   "faq.mw.01.a":"\u30aa\u30ea\u30b4\u30cc\u30af\u30ec\u30aa\u30c1\u30c9\u306e\u914d\u5217\u3092\u5165\u529b\u3059\u308b\u3068\u3001\u6a19\u6e96\u7684\u306a\u52a0\u7b97\u30e2\u30c7\u30eb\u3067\u5206\u5b50\u91cf\u3092 g/mol \u3067\u8fd4\u3057\u307e\u3059\u30025′ \u672b\u7aef + \u3059\u3079\u3066\u306e\u30cc\u30af\u30ec\u30aa\u30b7\u30c9 + \u3059\u3079\u3066\u306e\u9aa8\u683c\u7d50\u5408\u3001\u3068\u3044\u3046\u7a4d\u307f\u4e0a\u3052\u3067\u3059\u3002<b>\u4f8b:</b> <code>ATCG</code> (DNA) → <b>1,173.83 g/mol</b>\u3002",
   "faq.mw.01.q":"\u5206\u5b50\u91cf\u8a08\u7b97\u30c4\u30fc\u30eb\u306f\u4f55\u3092\u3057\u307e\u3059\u304b?",
   "faq.mw.02.a":"\u914d\u5217\u306e\u5165\u529b\u6b04\u306b\u6253\u3061\u8fbc\u3080\u304b\u3001\u305d\u306e\u3059\u3050\u4e0b\u306e\u30af\u30a4\u30c3\u30af\u633f\u5165\u30dc\u30bf\u30f3\u3092\u4f7f\u3046\u304b\u3001\u4fee\u98fe\u30fb\u4fdd\u5b58\u6e08\u307f\u30fb\u30ab\u30b9\u30bf\u30e0\u30fb\u30ab\u30bf\u30ed\u30b0\u306e\u30e2\u30ce\u30de\u30fc\u306f <b>Compose</b> \u3092\u958b\u3044\u3066\u304f\u3060\u3055\u3044\u3002moremon \u306f\u30da\u30fc\u30b8\u5185\u3067\u5c55\u958b\u3059\u308b\u305f\u3081\u3001\u4e0b\u306b\u3042\u308b\u5316\u5b66\u4fee\u98fe\u306e\u30b3\u30f3\u30c8\u30ed\u30fc\u30eb\u3092\u96a0\u3057\u307e\u305b\u3093\u3002\u914d\u5217\u3092\u8cbc\u308a\u4ed8\u3051\u308b\u3053\u3068\u3082\u3067\u304d\u3001\u7a7a\u767d\u306f\u7121\u8996\u3055\u308c\u307e\u3059\u3002<b>\u4f8b:</b> <code>ATCGATCGAT</code> \u3068\u5165\u529b\u3059\u308b\u3068 3,027.04 g/mol\u3002",
@@ -4695,7 +4743,7 @@ var I18N = {
   "lab.card.deleted":"\u524a\u9664\u3057\u307e\u3057\u305f",
   "lab.card.editlab":"\u30e9\u30dc\u306e\u539f\u672c\u3092\u7de8\u96c6",
   "lab.card.mgrdel":"{name} \u3092\u30e9\u30dc\u304b\u3089\u524a\u9664",
-  "lab.card.mgrdelT":"\u3042\u306a\u305f\u306f\u3053\u306e\u30e9\u30dc\u306e\u7ba1\u7406\u8005\u3067\u3059\u3002\u4fdd\u5b58\u3057\u305f\u672c\u4eba\u3092\u542b\u3080\u5168\u54e1\u304b\u3089\u8a18\u9332\u304c\u524a\u9664\u3055\u308c\u307e\u3059\u3002",
+  "lab.card.mgrdelT":"\u3042\u306a\u305f\u306f\u3053\u306e\u30e9\u30dc\u306e\u7ba1\u7406\u8005\u3067\u3059\u3002\u3053\u306e\u64cd\u4f5c\u3092\u884c\u3046\u3068\u3001\u4fdd\u5b58\u3057\u305f\u672c\u4eba\u3092\u542b\u3081\u3001\u30e9\u30dc\u306e\u5168\u54e1\u304c\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u3092\u5931\u3044\u307e\u3059\u3002",
   "lab.card.open":"\u958b\u304f",
   "lab.card.opencopy":"\u30b3\u30d4\u30fc\u3092\u958b\u304f",
   "lab.card.rmdone":"\u30e9\u30dc\u304b\u3089\u5916\u3057\u307e\u3057\u305f",
@@ -4708,7 +4756,7 @@ var I18N = {
   "lab.closing!":"{date} \u306b\u7d42\u4e86",
   "lab.cmt.aria":"\u30b3\u30e1\u30f3\u30c8\u3092\u8ffd\u52a0",
   "lab.cmt.del":"\u30b3\u30e1\u30f3\u30c8\u3092\u524a\u9664",
-  "lab.cmt.err.notmine":"\u3053\u306e\u30b3\u30e1\u30f3\u30c8\u3092\u524a\u9664\u3067\u304d\u308b\u306e\u306f\u3001\u66f8\u3044\u305f\u672c\u4eba\u3068\u3001\u3053\u306e\u30e9\u30dc\u306e\u7ba1\u7406\u8005\u3060\u3051\u3067\u3059\u3002",
+  "lab.cmt.err.notmine":"\u3053\u306e\u64cd\u4f5c\u306f\u884c\u308f\u308c\u307e\u305b\u3093\u3067\u3057\u305f\u3002\u3053\u306e\u30b3\u30e1\u30f3\u30c8\u3092\u524a\u9664\u3067\u304d\u308b\u306e\u306f\u3001\u66f8\u3044\u305f\u672c\u4eba\u3068\u3001\u3053\u306e\u30e9\u30dc\u306e\u7ba1\u7406\u8005\u3060\u3051\u3067\u3059\u3002",
   "lab.cmt.failload":"\u30b3\u30e1\u30f3\u30c8\u3092\u8aad\u307f\u8fbc\u3081\u307e\u305b\u3093\u3067\u3057\u305f\u3002",
   "lab.cmt.h":"\u30b3\u30e1\u30f3\u30c8",
   "lab.cmt.none":"\u307e\u3060\u30b3\u30e1\u30f3\u30c8\u306f\u3042\u308a\u307e\u305b\u3093\u3002",
@@ -4996,7 +5044,7 @@ var I18N = {
   "lab.orph.del":"\u30ef\u30fc\u30af\u30b9\u30da\u30fc\u30b9\u3092\u524a\u9664",
   "lab.orph.done":"\u30ef\u30fc\u30af\u30b9\u30da\u30fc\u30b9\u3092\u524a\u9664\u3057\u307e\u3057\u305f",
   "lab.orph.err.live":"\u3053\u306e\u30ef\u30fc\u30af\u30b9\u30da\u30fc\u30b9\u306f\u3001\u307e\u3060\u30e9\u30dc\u306b\u3044\u308b\u30e1\u30f3\u30d0\u30fc\u306e\u3082\u306e\u306a\u306e\u3067\u3001\u524a\u9664\u3067\u304d\u307e\u305b\u3093\u3002",
-  "lab.orph.err.notmgr":"\u30ef\u30fc\u30af\u30b9\u30da\u30fc\u30b9\u3092\u524a\u9664\u3067\u304d\u308b\u306e\u306f\u3001\u3053\u306e\u30e9\u30dc\u306e\u7ba1\u7406\u8005\u3060\u3051\u3067\u3059\u3002",
+  "lab.orph.err.notmgr":"\u3053\u306e\u64cd\u4f5c\u306f\u884c\u308f\u308c\u307e\u305b\u3093\u3067\u3057\u305f\u3002\u30ef\u30fc\u30af\u30b9\u30da\u30fc\u30b9\u3092\u524a\u9664\u3067\u304d\u308b\u306e\u306f\u3001\u3053\u306e\u30e9\u30dc\u306e\u7ba1\u7406\u8005\u3060\u3051\u3067\u3059\u3002",
   "lab.orph.h":"\u6301\u3061\u4e3b\u306e\u3044\u306a\u3044\u30ef\u30fc\u30af\u30b9\u30da\u30fc\u30b9",
   "lab.orph.menu":"\u3053\u306e\u30e9\u30dc\u3092\u96e2\u308c\u305f\u30e1\u30f3\u30d0\u30fc\u306e\u30ef\u30fc\u30af\u30b9\u30da\u30fc\u30b9\u3092\u524a\u9664",
   "lab.orph.why!":"\u3053\u306e\u30ef\u30fc\u30af\u30b9\u30da\u30fc\u30b9\u3092\u6301\u3063\u3066\u3044\u305f\u30e1\u30f3\u30d0\u30fc\u306f\u3001\u3059\u3067\u306b\u30e9\u30dc\u3092\u96e2\u308c\u3066\u3044\u307e\u3059\u3002\u524a\u9664\u3059\u308b\u3068\u3001\u4e2d\u306b\u6b8b\u3063\u3066\u3044\u308b\u914d\u5217\u306f\u300c\u672a\u5206\u985e\u300d\u306b\u306a\u308a\u3001\u5931\u308f\u308c\u308b\u3082\u306e\u306f\u3042\u308a\u307e\u305b\u3093\u3002\u3053\u308c\u304c\u3067\u304d\u308b\u306e\u306f\u30e9\u30dc\u306e\u7ba1\u7406\u8005\u3060\u3051\u3067\u3059\u3002",
@@ -5034,6 +5082,7 @@ var I18N = {
   "lab.rules.see":"\u30e9\u30dc\u306e\u5168\u54e1\u304c\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u3092\u898b\u3089\u308c\u307e\u3059\u3002\u305d\u306e\u4e2d\u306e\u3082\u306e\u3092\u958b\u3044\u3066\u81ea\u5206\u306e\u30b3\u30d4\u30fc\u3068\u3057\u3066\u4fdd\u5b58\u3059\u308b\u3053\u3068\u3082\u3067\u304d\u307e\u3059\u3002\u30e1\u30f3\u30d0\u30fc\u81ea\u8eab\u306e\u30ef\u30fc\u30af\u30b9\u30da\u30fc\u30b9\u306f\u3001\u672c\u4eba\u3068\u30e9\u30dc\u7ba1\u7406\u8005\u3060\u3051\u304c\u898b\u3089\u308c\u307e\u3059\u3002",
   "lab.sel.none":"\u66f8\u304d\u51fa\u3059\u914d\u5217\u3092\u9078\u3093\u3067\u304f\u3060\u3055\u3044\u3002",
   "lab.shelf.ariapurge":"\u300c{name}\u300d\u3092\u5b8c\u5168\u306b\u524a\u9664",
+  "lab.shelf.armgo":"\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u3092\u30e9\u30dc\u306e\u5171\u6709\u30e9\u30a4\u30d6\u30e9\u30ea\u304b\u3089\u5916\u3057\u307e\u3059\u304b\uff1f",
   "lab.shelf.armpurge":"\u5b8c\u5168\u306b\u524a\u9664\u3057\u307e\u3059\u304b\uff1f",
   "lab.shelf.back":"\u623b\u3059",
   "lab.shelf.backdone":"\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u623b\u3057\u307e\u3057\u305f\u3002",
@@ -5042,9 +5091,9 @@ var I18N = {
   "lab.shelf.emptyh":"\u30a2\u30fc\u30ab\u30a4\u30d6\u3055\u308c\u305f\u30ec\u30b3\u30fc\u30c9\u306f\u3042\u308a\u307e\u305b\u3093",
   "lab.shelf.err.full":"\u3053\u306e\u5834\u6240\u306e\u30a2\u30fc\u30ab\u30a4\u30d6\u306f\u4e0a\u9650\u306b\u9054\u3057\u3066\u3044\u307e\u3059\u3002\u3072\u3068\u3064\u623b\u3059\u304b\u3001\u3072\u3068\u3064\u5b8c\u5168\u306b\u524a\u9664\u3057\u3066\u304b\u3089\u3001\u6b21\u3092\u30a2\u30fc\u30ab\u30a4\u30d6\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
   "lab.shelf.err.gone":"\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u306f\u3082\u3046\u3042\u308a\u307e\u305b\u3093\u3002",
-  "lab.shelf.err.notauthor":"\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u3092\u30a2\u30fc\u30ab\u30a4\u30d6\u3057\u305f\u308a\u3001\u623b\u3057\u305f\u308a\u3001\u524a\u9664\u3057\u305f\u308a\u3067\u304d\u308b\u306e\u306f\u3001\u4fdd\u5b58\u3057\u305f\u672c\u4eba\u3060\u3051\u3067\u3059\u3002",
+  "lab.shelf.err.notauthor":"\u3053\u306e\u64cd\u4f5c\u306f\u884c\u308f\u308c\u307e\u305b\u3093\u3067\u3057\u305f\u3002\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u3092\u30a2\u30fc\u30ab\u30a4\u30d6\u3057\u305f\u308a\u3001\u623b\u3057\u305f\u308a\u3001\u524a\u9664\u3057\u305f\u308a\u3067\u304d\u308b\u306e\u306f\u3001\u4fdd\u5b58\u3057\u305f\u672c\u4eba\u3060\u3051\u3067\u3059\u3002",
   "lab.shelf.err.notmember":"\u3042\u306a\u305f\u306f\u3053\u306e\u30e9\u30dc\u306e\u30e1\u30f3\u30d0\u30fc\u3067\u306f\u306a\u3044\u305f\u3081\u3001\u3053\u306e\u30e9\u30dc\u306e\u30a2\u30fc\u30ab\u30a4\u30d6\u3092\u5909\u66f4\u3067\u304d\u307e\u305b\u3093\u3002",
-  "lab.shelf.err.notmgr":"\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u3092\u30a2\u30fc\u30ab\u30a4\u30d6\u3057\u305f\u308a\u3001\u623b\u3057\u305f\u308a\u3001\u524a\u9664\u3057\u305f\u308a\u3067\u304d\u308b\u306e\u306f\u3001\u4fdd\u5b58\u3057\u305f\u672c\u4eba\u3068\u3001\u3053\u306e\u30e9\u30dc\u306e\u7ba1\u7406\u8005\u3060\u3051\u3067\u3059\u3002",
+  "lab.shelf.err.notmgr":"\u3053\u306e\u64cd\u4f5c\u306f\u884c\u308f\u308c\u307e\u305b\u3093\u3067\u3057\u305f\u3002\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u3092\u30a2\u30fc\u30ab\u30a4\u30d6\u3057\u305f\u308a\u3001\u623b\u3057\u305f\u308a\u3001\u524a\u9664\u3057\u305f\u308a\u3067\u304d\u308b\u306e\u306f\u3001\u4fdd\u5b58\u3057\u305f\u672c\u4eba\u3068\u3001\u3053\u306e\u30e9\u30dc\u306e\u7ba1\u7406\u8005\u3060\u3051\u3067\u3059\u3002",
   "lab.shelf.go":"\u30a2\u30fc\u30ab\u30a4\u30d6",
   "lab.shelf.h":"\u30a2\u30fc\u30ab\u30a4\u30d6\u6e08\u307f\u306e\u30ec\u30b3\u30fc\u30c9",
   "lab.shelf.labwarn!":"\u5171\u6709\u30ec\u30b3\u30fc\u30c9\u3092\u30a2\u30fc\u30ab\u30a4\u30d6\u3059\u308b\u3068\u3001\u30e9\u30dc\u5168\u54e1\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u304b\u3089\u5916\u308c\u307e\u3059\u3002\u4fdd\u5b58\u3057\u305f\u672c\u4eba\u3068\u30e9\u30dc\u306e\u7ba1\u7406\u8005\u304c\u623b\u305b\u307e\u3059\u3002",
@@ -5297,7 +5346,7 @@ var I18N = {
   "mk.0210":"\u30e9\u30a4\u30d6\u30e9\u30ea",
   "mk.0211":"\u4fdd\u5b58\u3057\u305f\u30ec\u30b3\u30fc\u30c9",
   "mk.0212":"\u30e9\u30a4\u30d6\u30e9\u30ea",
-  "mk.0213":"\u4fdd\u5b58\u3057\u305f\u914d\u5217\u3092\u958b\u304d\u76f4\u3059\u3001\u30b3\u30d4\u30fc\u3059\u308b\u3001\u66f8\u304d\u51fa\u3059\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002\u30b5\u30a4\u30f3\u30a4\u30f3\u3057\u3066\u3044\u308c\u3070\u3001\u7aef\u672b\u9593\u3092\u79fb\u52d5\u3059\u308b\u30b3\u30d4\u30fc\u306f\u30a2\u30ab\u30a6\u30f3\u30c8\u304c\u4fdd\u6301\u3057\u3001\u3053\u306e\u30d6\u30e9\u30a6\u30b6\u306f\u30aa\u30d5\u30e9\u30a4\u30f3\u306e\u8907\u88fd\u3092\u4fdd\u3061\u307e\u3059\u3002\u30b5\u30a4\u30f3\u30a2\u30a6\u30c8\u3057\u3066\u3044\u308b\u5834\u5408\u3001\u914d\u5217\u306f\u3053\u306e\u30d6\u30e9\u30a6\u30b6\u306e\u4e2d\u3060\u3051\u306b\u3042\u308a\u307e\u3059\u3002",
+  "mk.0213":"\u4fdd\u5b58\u3057\u305f\u914d\u5217\u3092\u958b\u304d\u76f4\u3059\u3001\u30b3\u30d4\u30fc\u3059\u308b\u3001\u66f8\u304d\u51fa\u3059\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002",
   "mk.0214":"\u30b9\u30ad\u30e3\u30f3",
   "mk.0215":"\u9078\u629e\u9805\u76ee\u3092\u66f8\u304d\u51fa\u3059 · CSV",
   "mk.0216":"\u9078\u629e\u3057\u305f\u9805\u76ee\u306e\u30b3\u30d4\u30fc\u3092\u5171\u6709",
@@ -5603,6 +5652,11 @@ var I18N = {
   "tm.fold.loop":"{n} nt \u306e\u30eb\u30fc\u30d7",
   "tm.fold.mb.many":"\u30de\u30eb\u30c1\u30d6\u30e9\u30f3\u30c1\u30eb\u30fc\u30d7 {n} \u500b",
   "tm.fold.mb.one":"\u30de\u30eb\u30c1\u30d6\u30e9\u30f3\u30c1\u30eb\u30fc\u30d7 {n} \u500b",
+  "tm.fold.mbc.behind!":"\u3053\u306e\u6761\u4ef6\u3092\u8ab2\u3055\u305a\u306b\u898b\u3064\u304b\u308b\u6700\u826f\u306e\u69cb\u9020\u3088\u308a {v} kcal/mol \u4e0d\u5b89\u5b9a",
+  "tm.fold.mbc.better!":"\u3053\u306e\u6761\u4ef6\u3092\u8ab2\u3055\u305a\u306b\u898b\u3064\u304b\u308b\u6700\u826f\u306e\u69cb\u9020\u3088\u308a {v} kcal/mol \u5b89\u5b9a",
+  "tm.fold.mbc.name":"\u591a\u5206\u5c90\u30b8\u30e3\u30f3\u30af\u30b7\u30e7\u30f3\u3042\u308a",
+  "tm.fold.mbc.none!":"\u591a\u5206\u5c90\u30b8\u30e3\u30f3\u30af\u30b7\u30e7\u30f3\u3092\u542b\u3080\u69cb\u9020\u306f\u3042\u308a\u307e\u305b\u3093\u3002",
+  "tm.fold.mbc.same!":"\u6700\u3082\u5b89\u5b9a\u306a\u69cb\u9020\u306b\u306f\u3001\u3059\u3067\u306b\u591a\u5206\u5c90\u30b8\u30e3\u30f3\u30af\u30b7\u30e7\u30f3\u304c\u542b\u307e\u308c\u3066\u3044\u307e\u3059\u3002\u3053\u306e\u6761\u4ef6\u3092\u52a0\u3048\u3066\u3082\u7d50\u679c\u306f\u5909\u308f\u308a\u307e\u305b\u3093\u3002",
   "tm.fold.name.branched":"\u5206\u5c90\u69cb\u9020",
   "tm.fold.name.hairpin":"\u30d8\u30a2\u30d4\u30f3",
   "tm.fold.name.junction":"{n} \u5206\u5c90\u30b8\u30e3\u30f3\u30af\u30b7\u30e7\u30f3",
@@ -5612,10 +5666,11 @@ var I18N = {
   "tm.fold.note.dimer!":"\u30bb\u30eb\u30d5\u30c0\u30a4\u30de\u30fc\u306e\u884c\u306f\u3001\u30bb\u30eb\u30d5\u30c0\u30a4\u30de\u30fc\u306e\u81ea\u7531\u30a8\u30cd\u30eb\u30ae\u30fc\u6700\u5c0f\u5024\u3067\u306f\u306a\u304f\u3001\u9023\u7d9a\u3057\u305f\u6700\u826f\u306e\u30bb\u30eb\u30d5\u30c0\u30a4\u30de\u30fc\u30d8\u30ea\u30c3\u30af\u30b9\u3067\u3059\u3002\u96a3\u308a\u5408\u3046\u5869\u57fa\u5bfe\u306e\u9023\u306a\u308a 1 \u3064\u3060\u3051\u3092\u63a1\u70b9\u3057\u3001\u30d0\u30eb\u30b8\u3082\u5185\u90e8\u30eb\u30fc\u30d7\u3082\u542b\u307f\u307e\u305b\u3093\u3002\u975e\u5bfe\u79f0\u306a\u30db\u30e2\u30c0\u30a4\u30de\u30fc\u3067\u306f\u305d\u306e\u93e1\u50cf\u30d8\u30ea\u30c3\u30af\u30b9\u3082\u5f62\u6210\u3055\u308c\u307e\u3059\u304c\u3001\u6570\u3048\u3066\u3044\u307e\u305b\u3093\u3002",
   "tm.fold.note.dna!":"\u30eb\u30fc\u30d7\u30d1\u30e9\u30e1\u30fc\u30bf: SantaLucia &amp; Hicks 2004\u3002\u3053\u306e\u6587\u732e\u306e\u30eb\u30fc\u30d7\u9805\u306f\u81ea\u7531\u30a8\u30cd\u30eb\u30ae\u30fc\u306e\u307f\u3067\u4e0e\u3048\u3089\u308c\u3066\u3044\u307e\u3059\u3002\u672c\u30a8\u30f3\u30b8\u30f3\u3067\u306f\u3001\u4e00\u822c\u306e\u30eb\u30fc\u30d7\u5f0f\u3067\u8a08\u7b97\u3055\u308c\u308b\u30eb\u30fc\u30d7\u306e ΔH° \u3092\u30bc\u30ed\u3068\u3057\u3066\u6271\u3046\u305f\u3081\u3001\u305d\u3046\u3057\u305f\u30eb\u30fc\u30d7\u306f\u30a8\u30f3\u30c8\u30ed\u30d4\u30fc\u306b\u3060\u3051\u5bc4\u4e0e\u3057\u307e\u3059\u3002\u4e21\u5074\u306b\u305d\u308c\u305e\u308c 1 \u3064\u307e\u305f\u306f 2 \u3064\u306e\u975e\u5bfe\u5408\u5869\u57fa\u304c\u3042\u308b\u5185\u90e8\u30eb\u30fc\u30d7\u306b\u306f Mathews \u304c\u6e2c\u5b9a\u3057\u305f\u5024\u3092\u7528\u3044\u3001\u305d\u308c\u3089\u306e\u30eb\u30fc\u30d7\u306b\u3064\u3044\u3066\u306f\u516c\u8868\u3055\u308c\u3066\u3044\u308b\u30a8\u30f3\u30bf\u30eb\u30d4\u30fc\u3082\u4f75\u305b\u3066\u53d6\u308a\u8fbc\u307f\u307e\u3059\u3002\u3053\u306e\u30a8\u30f3\u30bf\u30eb\u30d4\u30fc\u306f\u4eee\u5b9a\u3067\u306f\u306a\u304f\u5b9f\u6e2c\u5024\u3067\u3059\u304c\u3001\u672c\u30a8\u30f3\u30b8\u30f3\u306f\u30eb\u30fc\u30d7\u306e\u30a8\u30f3\u30c8\u30ed\u30d4\u30fc\u3092\u81ea\u7531\u30a8\u30cd\u30eb\u30ae\u30fc\u304b\u3089\u5c0e\u51fa\u3057\u3066\u3044\u307e\u3059\u3002\u305d\u306e\u305f\u3081\u53d6\u308a\u8fbc\u3080\u3068\u5c11\u6570\u306e\u30d5\u30a9\u30fc\u30eb\u30c9\u3067\u30a8\u30f3\u30c8\u30ed\u30d4\u30fc\u304c\u30bc\u30ed\u306b\u8fd1\u3065\u304d\u3001\u4e21\u8005\u306e\u6bd4\u3067\u3042\u308b\u30d5\u30a9\u30fc\u30eb\u30c9\u306e\u878d\u89e3\u6e29\u5ea6\u304c\u6570\u5024\u7684\u306b\u4e0d\u5b89\u5b9a\u306b\u306a\u308a\u307e\u3059\u3002\u7d50\u679c\u304c\u3053\u308c\u3089\u306e\u30d1\u30e9\u30e1\u30fc\u30bf\u306e\u6e2c\u5b9a\u7bc4\u56f2\u3092\u5916\u308c\u308b\u5834\u5408\u3001\u307e\u305f\u306f\u5b89\u5b9a\u306a\u30d5\u30a9\u30fc\u30eb\u30c9\u3092\u30a8\u30f3\u30c8\u30ed\u30d4\u30fc\u99c6\u52d5\u3068\u5831\u544a\u3059\u308b\u5834\u5408\u306b\u306f\u3001\u30d5\u30a9\u30fc\u30eb\u30c9\u306e\u878d\u89e3\u6e29\u5ea6\u306f\u30eb\u30fc\u30d7\u306e ΔH° \u3092\u30bc\u30ed\u3068\u3057\u3066\u6c42\u3081\u307e\u3059\u3002\u3053\u308c\u306f\u4ee5\u524d\u306e\u30d0\u30fc\u30b8\u30e7\u30f3\u304c\u5831\u544a\u3057\u3066\u3044\u305f\u5024\u3067\u3059\u3002\u6700\u8fd1\u63a5\u5869\u57fa\u5bfe\u306e\u30d1\u30e9\u30e1\u30fc\u30bf\u306f\u4e00\u3064\u3082\u5909\u308f\u3063\u3066\u3044\u306a\u3044\u305f\u3081\u3001\u4e8c\u672c\u9396\u306e\u878d\u89e3\u6e29\u5ea6\u306b\u306f\u5f71\u97ff\u3057\u307e\u305b\u3093\u3002",
   "tm.fold.note.mb!":"\u3001\u304a\u3088\u3073\u30de\u30eb\u30c1\u30d6\u30e9\u30f3\u30c1\u30eb\u30fc\u30d7\u3067\u3059\u3002\u30de\u30eb\u30c1\u30d6\u30e9\u30f3\u30c1\u30eb\u30fc\u30d7\u306e\u5185\u5074\u3067\u306f\u30c0\u30f3\u30b0\u30ea\u30f3\u30b0\u30a8\u30f3\u30c9\u3068\u540c\u8ef8\u30b9\u30bf\u30c3\u30ad\u30f3\u30b0\u3092\u63a1\u70b9\u3057\u307e\u3059\u304c\u3001<b>\u30df\u30b9\u30de\u30c3\u30c1\u3092\u4ecb\u3057\u305f\u540c\u8ef8\u30b9\u30bf\u30c3\u30ad\u30f3\u30b0\u3068\u3001\u81ea\u7531\u306a\u5c3e\u90e8\u306e\u30c0\u30f3\u30b0\u30ea\u30f3\u30b0\u30a8\u30f3\u30c9\u306f\u63a1\u70b9\u3057\u307e\u305b\u3093</b>\u3002\u7701\u3044\u305f\u3053\u306e 2 \u9805\u306f Turner \u30e2\u30c7\u30eb\u3067\u306f\u3069\u3061\u3089\u3082\u5b89\u5b9a\u5316\u9805\u306a\u306e\u3067\u3001\u8868\u793a\u3055\u308c\u3066\u3044\u308b ΔG \u306f\u5831\u544a\u3055\u308c\u305f\u69cb\u9020\u306b\u5bfe\u3057\u3066\u63a7\u3048\u3081\u306e\u5024\u3067\u3059\u3002\u3053\u308c\u306f\u30e2\u30c7\u30eb\u306b\u3064\u3044\u3066\u306e\u8a18\u8ff0\u3067\u3042\u308a\u3001\u5b9f\u9a13\u8aa4\u5dee\u306e\u7bc4\u56f2\u3092\u793a\u3059\u3082\u306e\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002 ",
-  "tm.fold.note.mbdna!":"\u3001\u304a\u3088\u3073\u30de\u30eb\u30c1\u30d6\u30e9\u30f3\u30c1\u30eb\u30fc\u30d7\u3067\u3059\u3002\u30de\u30eb\u30c1\u30d6\u30e9\u30f3\u30c1\u30eb\u30fc\u30d7\u306e\u5185\u5074\u3067\u306f\u30c0\u30f3\u30b0\u30ea\u30f3\u30b0\u30a8\u30f3\u30c9\u3068\u540c\u8ef8\u30b9\u30bf\u30c3\u30ad\u30f3\u30b0\u3092\u63a1\u70b9\u3057\u307e\u3059\u304c\u3001<b>\u30df\u30b9\u30de\u30c3\u30c1\u3092\u4ecb\u3057\u305f\u540c\u8ef8\u30b9\u30bf\u30c3\u30ad\u30f3\u30b0\u3001\u672b\u7aef\u30df\u30b9\u30de\u30c3\u30c1\u3001\u304a\u3088\u3073\u81ea\u7531\u306a\u5c3e\u90e8\u306e\u30c0\u30f3\u30b0\u30ea\u30f3\u30b0\u30a8\u30f3\u30c9\u306f\u63a1\u70b9\u3057\u307e\u305b\u3093</b>\u3002\u7701\u3044\u305f\u3053\u306e 3 \u9805\u306f\u3044\u305a\u308c\u3082\u5b89\u5b9a\u5316\u9805\u306a\u306e\u3067\u3001\u8868\u793a\u3055\u308c\u3066\u3044\u308b ΔG \u306f\u5831\u544a\u3055\u308c\u305f\u69cb\u9020\u306b\u5bfe\u3057\u3066\u63a7\u3048\u3081\u306e\u5024\u3067\u3059\u3002\u3053\u308c\u306f\u30e2\u30c7\u30eb\u306b\u3064\u3044\u3066\u306e\u8a18\u8ff0\u3067\u3042\u308a\u3001\u5b9f\u9a13\u8aa4\u5dee\u306e\u7bc4\u56f2\u3092\u793a\u3059\u3082\u306e\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002\u30c0\u30f3\u30b0\u30ea\u30f3\u30b0\u30a8\u30f3\u30c9\u306b\u306f\u8868\u5316\u3055\u308c\u305f DNA \u306e\u5024\u3092\u7528\u3044\u3066\u3044\u307e\u3059\u3002\u3044\u304f\u3064\u304b\u306e\u9589\u3058\u5869\u57fa\u5bfe\u3067\u306f 4 \u7a2e\u985e\u306e\u30c0\u30f3\u30b0\u30ea\u30f3\u30b0\u5869\u57fa\u304c\u540c\u3058\u5024\u3092\u5171\u6709\u3057\u3001G-T \u306e 2 \u884c\u306f\u6700\u3082\u8fd1\u3044\u30ef\u30c8\u30bd\u30f3\u30fb\u30af\u30ea\u30c3\u30af\u5869\u57fa\u5bfe\u306e\u5024\u3092\u6d41\u7528\u3057\u3066\u3044\u307e\u3059\u3002 ",
+  "tm.fold.note.mbc!":"\u591a\u5206\u5c90\u30b8\u30e3\u30f3\u30af\u30b7\u30e7\u30f3\u3092\u542b\u3080\u69cb\u9020\u306f\u3001\u305d\u306e\u6761\u4ef6\u3092\u8ab2\u3057\u305f\u3046\u3048\u3067\u63a2\u7d22\u3092\u3084\u308a\u76f4\u3057\u3066\u6c42\u3081\u307e\u3059\u3002\u4e8c\u5ea6\u76ee\u306e\u63a2\u7d22\u306f\u3001\u8abf\u3079\u308b\u9818\u57df\u3054\u3068\u306b\u30b8\u30e3\u30f3\u30af\u30b7\u30e7\u30f3\u3092\u542b\u3080\u6700\u826f\u306e\u69cb\u9020\u3092\u4fdd\u6301\u3059\u308b\u305f\u3081\u3001\u6761\u4ef6\u306a\u3057\u306e\u63a2\u7d22\u304c\u9014\u4e2d\u3067\u6368\u3066\u308b\u69cb\u9020\u306b\u3082\u5230\u9054\u3057\u307e\u3059\u3002\u305d\u306e\u305f\u3081\u3001\u3053\u306e\u7d50\u679c\u304c\u4e0a\u306e\u69cb\u9020\u3088\u308a\u5b89\u5b9a\u306b\u306a\u308b\u3053\u3068\u304c\u307e\u308c\u306b\u3042\u308a\u307e\u3059\u3002",
+  "tm.fold.note.mbdna!":"\u3001\u304a\u3088\u3073\u30de\u30eb\u30c1\u30d6\u30e9\u30f3\u30c1\u30eb\u30fc\u30d7\u3067\u3059\u3002\u30de\u30eb\u30c1\u30d6\u30e9\u30f3\u30c1\u30eb\u30fc\u30d7\u306e\u5185\u5074\u3067\u306f\u30c0\u30f3\u30b0\u30ea\u30f3\u30b0\u30a8\u30f3\u30c9\u3068\u540c\u8ef8\u30b9\u30bf\u30c3\u30ad\u30f3\u30b0\u3092\u63a1\u70b9\u3057\u307e\u3059\u304c\u3001<b>\u30df\u30b9\u30de\u30c3\u30c1\u3092\u4ecb\u3057\u305f\u540c\u8ef8\u30b9\u30bf\u30c3\u30ad\u30f3\u30b0\u3001\u672b\u7aef\u30df\u30b9\u30de\u30c3\u30c1\u3001\u304a\u3088\u3073\u81ea\u7531\u306a\u5c3e\u90e8\u306e\u30c0\u30f3\u30b0\u30ea\u30f3\u30b0\u30a8\u30f3\u30c9\u306f\u63a1\u70b9\u3057\u307e\u305b\u3093</b>\u3002\u7701\u3044\u305f\u3053\u306e 3 \u9805\u306f SantaLucia \u30e2\u30c7\u30eb\u3067\u306f\u3044\u305a\u308c\u3082\u5b89\u5b9a\u5316\u9805\u306a\u306e\u3067\u3001\u8868\u793a\u3055\u308c\u3066\u3044\u308b ΔG \u306f\u5831\u544a\u3055\u308c\u305f\u69cb\u9020\u306b\u5bfe\u3057\u3066\u63a7\u3048\u3081\u306e\u5024\u3067\u3059\u3002\u3053\u308c\u306f\u30e2\u30c7\u30eb\u306b\u3064\u3044\u3066\u306e\u8a18\u8ff0\u3067\u3042\u308a\u3001\u5b9f\u9a13\u8aa4\u5dee\u306e\u7bc4\u56f2\u3092\u793a\u3059\u3082\u306e\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002\u30c0\u30f3\u30b0\u30ea\u30f3\u30b0\u30a8\u30f3\u30c9\u306b\u306f\u8868\u5316\u3055\u308c\u305f DNA \u306e\u5024\u3092\u7528\u3044\u3066\u3044\u307e\u3059\u3002\u3044\u304f\u3064\u304b\u306e\u9589\u3058\u5869\u57fa\u5bfe\u3067\u306f 4 \u7a2e\u985e\u306e\u30c0\u30f3\u30b0\u30ea\u30f3\u30b0\u5869\u57fa\u304c\u540c\u3058\u5024\u3092\u5171\u6709\u3057\u3001G-T \u306e 2 \u884c\u306f\u6700\u3082\u8fd1\u3044\u30ef\u30c8\u30bd\u30f3\u30fb\u30af\u30ea\u30c3\u30af\u5869\u57fa\u5bfe\u306e\u5024\u3092\u6d41\u7528\u3057\u3066\u3044\u307e\u3059\u3002 ",
   "tm.fold.note.mbrna!":"\u3002<b>{n} nt \u3092\u8d85\u3048\u308b\u3068\u30de\u30eb\u30c1\u30d6\u30e9\u30f3\u30c1\u69cb\u9020\u306f\u63a2\u7d22\u3057\u307e\u305b\u3093\u3002</b>\u63a2\u7d22\u306f\u9577\u3055\u306e 3 \u4e57\u306e\u30b3\u30b9\u30c8\u304c\u304b\u304b\u308a\u3001\u30da\u30fc\u30b8\u304c\u5fdc\u7b54\u3057\u306a\u304f\u306a\u308a\u307e\u3059\u30023 \u3064\u4ee5\u4e0a\u306e\u30b9\u30c6\u30e0\u304c 1 \u3064\u306e\u30eb\u30fc\u30d7\u3067\u51fa\u4f1a\u3046\u30d5\u30a9\u30fc\u30eb\u30c9\u306f\u3001\u6700\u3082\u5b89\u5b9a\u306a\u5358\u4e00\u306e\u30d6\u30e9\u30f3\u30c1\u3068\u3057\u3066\u5831\u544a\u3055\u308c\u308b\u305f\u3081\u3001\u5b9f\u969b\u306e\u69cb\u9020\u306f\u8868\u793a\u3055\u308c\u3066\u3044\u308b\u3082\u306e\u3088\u308a\u5b89\u5b9a\u3067\u3042\u308a\u3046\u308b\u3053\u3068\u306b\u3054\u6ce8\u610f\u304f\u3060\u3055\u3044\u3002 ",
-  "tm.fold.note.mfe!":" \u3053\u306e\u69cb\u9020\u306f\u4eca\u56de\u306e\u63a2\u7d22\u3067\u898b\u3064\u304b\u3063\u305f\u81ea\u7531\u30a8\u30cd\u30eb\u30ae\u30fc\u6700\u5c0f\u306e\u69cb\u9020\u3067\u3042\u308a\u3001\u5927\u57df\u7684\u306a\u6700\u5c0f\u5024\u3067\u3042\u308b\u3053\u3068\u304c\u8a3c\u660e\u3055\u308c\u3066\u3044\u308b\u308f\u3051\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002\u63a2\u7d22\u306f\u307e\u305a\u7c21\u6613\u306a\u30a8\u30cd\u30eb\u30ae\u30fc\u30e2\u30c7\u30eb\u3067\u9806\u4f4d\u4ed8\u3051\u3057\u3001\u4e0a\u4f4d {k} \u5019\u88dc\u3060\u3051\u3092\u53b3\u5bc6\u306b\u63a1\u70b9\u3057\u307e\u3059\u3002\u8868\u8a18\u306f\u30c9\u30c3\u30c8\u30d6\u30e9\u30b1\u30c3\u30c8\u3067\u3059\u3002\u30b9\u30bf\u30c3\u30af\u3001\u30d0\u30eb\u30b8\u3001\u5185\u90e8\u30eb\u30fc\u30d7",
-  "tm.fold.note.one!":" \u30b9\u30c6\u30e0 1 \u3064\u3068\u30eb\u30fc\u30d7 1 \u3064\u306e\u307f\u3067\u3059\u3002 ",
+  "tm.fold.note.mfe!":"\u3053\u306e\u69cb\u9020\u306f\u4eca\u56de\u306e\u63a2\u7d22\u3067\u898b\u3064\u304b\u3063\u305f\u81ea\u7531\u30a8\u30cd\u30eb\u30ae\u30fc\u6700\u5c0f\u306e\u69cb\u9020\u3067\u3042\u308a\u3001\u5927\u57df\u7684\u306a\u6700\u5c0f\u5024\u3067\u3042\u308b\u3053\u3068\u304c\u8a3c\u660e\u3055\u308c\u3066\u3044\u308b\u308f\u3051\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002\u63a2\u7d22\u306f\u307e\u305a\u7c21\u6613\u306a\u30a8\u30cd\u30eb\u30ae\u30fc\u30e2\u30c7\u30eb\u3067\u9806\u4f4d\u4ed8\u3051\u3057\u3001\u4e0a\u4f4d {k} \u5019\u88dc\u3060\u3051\u3092\u53b3\u5bc6\u306b\u63a1\u70b9\u3057\u307e\u3059\u3002\u8868\u8a18\u306f\u30c9\u30c3\u30c8\u30d6\u30e9\u30b1\u30c3\u30c8\u3067\u3059\u3002\u30b9\u30bf\u30c3\u30af\u3001\u30d0\u30eb\u30b8\u3001\u5185\u90e8\u30eb\u30fc\u30d7",
+  "tm.fold.note.one!":"\u5b89\u5b9a\u306a\u30d8\u30a2\u30d4\u30f3\u306f\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f\u3002",
   "tm.fold.note.rna!":"\u30eb\u30fc\u30d7\u30d1\u30e9\u30e1\u30fc\u30bf: Turner 2004\u3001\u3059\u306a\u308f\u3061 Mathews 2004 (ΔG°₃₇) \u3068 Lu 2006 (ΔH) \u3092 Nearest Neighbor Database \u7d4c\u7531\u3067\u3002\u30b9\u30c6\u30e0\u306f Xia 1998\u3002\u30eb\u30fc\u30d7\u306e\u30a8\u30f3\u30bf\u30eb\u30d4\u30fc\u306f\u5b9f\u6e2c\u5024\u3067\u3042\u308a\u3001\u4eee\u5b9a\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002<b>\u3053\u306e\u30d5\u30a9\u30fc\u30eb\u30c9\u306e\u5869\u6fc3\u5ea6\u88dc\u6b63\u306f RNA \u306b\u30d5\u30a3\u30c3\u30c8\u3055\u308c\u305f\u3082\u306e\u3067\u3059\u3002</b>\u30b9\u30bf\u30c3\u30af\u3054\u3068\u306b\u3001Yao \u3068 Lorenz \u304c 2023 \u5e74\u306b\u767a\u8868\u3057\u305f\u30c7\u30d0\u30a4\u906e\u853d\u3068 Manning \u51dd\u7e2e\u306e\u9805\u3092\u9069\u7528\u3057\u307e\u3059\u3002Turner \u30d1\u30e9\u30e1\u30fc\u30bf\u81ea\u4f53\u304c\u6e2c\u5b9a\u3055\u308c\u305f 1.021 M \u30ca\u30c8\u30ea\u30a6\u30e0\u30a4\u30aa\u30f3\u3092\u57fa\u6e96\u3068\u3057\u3066\u3044\u308b\u305f\u3081\u3001\u81ea\u7531\u30a8\u30cd\u30eb\u30ae\u30fc\u3068\u30d5\u30a9\u30fc\u30eb\u30c9\u306e\u878d\u89e3\u6e29\u5ea6\u306f\u5165\u529b\u3057\u305f\u7de9\u885d\u6db2\u306b\u5fdc\u3058\u3066\u5909\u308f\u308a\u307e\u3059\u3002\u30a8\u30f3\u30bf\u30eb\u30d4\u30fc\u306f\u5909\u308f\u3089\u305a\u3001\u5869\u57fa\u5bfe\u3068\u30eb\u30fc\u30d7\u306e\u30ab\u30a6\u30f3\u30c8\u3082\u5909\u308f\u308a\u307e\u305b\u3093\u3002\u767a\u8868\u3055\u308c\u305f\u30e2\u30c7\u30eb\u306f\u30eb\u30fc\u30d7\u306e\u9759\u96fb\u76f8\u4e92\u4f5c\u7528\u3082\u88dc\u6b63\u3057\u307e\u3059\u304c\u3001\u672c\u30a8\u30f3\u30b8\u30f3\u306f\u88dc\u6b63\u3057\u3066\u304a\u3089\u305a\u3001\u3053\u308c\u307e\u3067\u3082\u88dc\u6b63\u3057\u3066\u3044\u307e\u305b\u3093\u3002\u4e8c\u672c\u9396\u306e\u878d\u89e3\u6e29\u5ea6\u306f\u4eca\u3082 Owczarzy 2004 \u3067\u88dc\u6b63\u3057\u3066\u304a\u308a\u3001\u3053\u308c\u306f DNA \u306b\u30d5\u30a3\u30c3\u30c8\u3055\u308c\u305f\u3082\u306e\u3067\u3059\u3002GU \u30a6\u30a9\u30d6\u30eb\u5bfe\u3082\u30b9\u30c6\u30e0\u306e\u5869\u57fa\u5bfe\u3068\u3057\u3066\u63a1\u70b9\u3057\u307e\u3059\u3002\u4e21\u5074\u306b\u305d\u308c\u305e\u308c 1 \u3064\u307e\u305f\u306f 2 \u3064\u306e\u975e\u5bfe\u5408\u5869\u57fa\u304c\u3042\u308b\u5185\u90e8\u30eb\u30fc\u30d7\u306b\u306f\u3001\u4e00\u822c\u306e\u30eb\u30fc\u30d7\u5f0f\u3067\u306f\u306a\u304f Turner \u304c\u6e2c\u5b9a\u3057\u305f\u5024\u3092\u7528\u3044\u307e\u3059\u3002",
   "tm.fold.note.tmm!":" ⚠ \u3053\u306e\u30eb\u30fc\u30d7\u306f GG/CG \u672b\u7aef\u30df\u30b9\u30de\u30c3\u30c1\u3092\u4f7f\u3044\u307e\u3059\u3002\u3053\u308c\u306f\u516c\u8868\u8868\u306e\u4e2d\u3067\u7570\u5e38\u5024\u3067\u3059\u304c\u3001\u305d\u306e\u307e\u307e\u4f7f\u3063\u3066\u3044\u307e\u3059\u3002",
   "tm.fold.scope!":"\u3053\u306e\u9396\u306f {n} nt \u3067\u3059\u3002\u3053\u306e\u8a08\u7b97\u30c4\u30fc\u30eb\u304c\u60f3\u5b9a\u3057\u3066\u3044\u308b\u306e\u306f {max} nt \u307e\u3067\u306e\u30aa\u30ea\u30b4\u30cc\u30af\u30ec\u30aa\u30c1\u30c9\u3067\u3059\u3002\u3053\u306e\u9577\u3055\u3092\u8d85\u3048\u308b\u3068\u30013 \u3064\u4ee5\u4e0a\u306e\u30b9\u30c6\u30e0\u304c 1 \u3064\u306e\u30eb\u30fc\u30d7\u3067\u51fa\u4f1a\u3046\u30d5\u30a9\u30fc\u30eb\u30c9\u304c\u591a\u304f\u306a\u308a\u3001\u305d\u308c\u306f\u3053\u306e\u63a2\u7d22\u306e\u63a1\u70b9\u304c\u3082\u3063\u3068\u3082\u4e0d\u6b63\u78ba\u306b\u306a\u308b\u5f62\u3067\u3059\u3002\u4e0b\u306e\u69cb\u9020\u306f\u5f15\u304d\u7d9a\u304d\u8a08\u7b97\u3057\u307e\u3059\u3002\u8fd1\u4f3c\u3068\u3057\u3066\u304a\u8aad\u307f\u304f\u3060\u3055\u3044\u3002",
@@ -5694,6 +5749,7 @@ var I18N = {
   "ui.fold.data.gcpairs":"\u4e8c\u6b21\u69cb\u9020\u4e2d\u306eG:C\u5869\u57fa\u5bfe\u6570",
   "ui.fold.exp":"\u62e1\u5927",
   "ui.fold.expa":"\u69cb\u9020\u56f3\u3092\u5168\u753b\u9762\u3067\u958b\u304f",
+  "ui.fold.mbc":"\u591a\u5206\u5c90\u30b8\u30e3\u30f3\u30af\u30b7\u30e7\u30f3\u3092\u542b\u3080\u6700\u3082\u5b89\u5b9a\u306a\u69cb\u9020\u3082\u8868\u793a\u3059\u308b",
   "ui.fold.note.h":"\u3053\u306e\u7d50\u679c\u306e\u8a08\u7b97\u65b9\u6cd5",
   "ui.fold.note.h2":"\u5bfe\u8c61\u5916\u306e\u9805\u76ee",
   "ui.hist.armClear":"\u3059\u3079\u3066\u6d88\u53bb\u3057\u307e\u3059\u304b\uff1f",
@@ -5751,7 +5807,7 @@ var I18N = {
   "ui.lib.mwdiff":"\u5909\u66f4\u3042\u308a",
   "ui.lib.mwdiffT":"\u4fdd\u5b58\u3057\u305f\u5f8c\u306b\u30e2\u30ce\u30de\u30fc\u306e\u5b9a\u7fa9\u304c\u5909\u66f4\u3055\u308c\u307e\u3057\u305f\u3002\u4fdd\u5b58\u6642\u306e\u5206\u5b50\u91cf\u306f {was} \u3067\u3001\u540c\u3058\u914d\u5217\u306f\u73fe\u5728 {now} \u306b\u306a\u308a\u307e\u3059\u3002",
   "ui.lib.mwgone":"\u7d50\u679c\u306a\u3057",
-  "ui.lib.mwgoneT":"\u3053\u306e\u8a18\u9332\u306f {codes} \u3092\u4f7f\u3063\u3066\u3044\u307e\u3059\u304c\u3001\u3053\u306e\u8a08\u7b97\u30c4\u30fc\u30eb\u306f\u73fe\u5728\u305d\u308c\u3092\u8a8d\u8b58\u3067\u304d\u306a\u3044\u305f\u3081\u3001\u5206\u5b50\u91cf\u3092\u8868\u793a\u3057\u307e\u305b\u3093\u3002\u4fdd\u5b58\u6642\u306e\u5206\u5b50\u91cf\u306f {was} \u3067\u3057\u305f\u3002",
+  "ui.lib.mwgoneT":"\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u306f {codes} \u3092\u4f7f\u3063\u3066\u3044\u307e\u3059\u304c\u3001\u3053\u306e\u8a08\u7b97\u30c4\u30fc\u30eb\u306f\u73fe\u5728\u305d\u308c\u3092\u8a8d\u8b58\u3067\u304d\u306a\u3044\u305f\u3081\u3001\u5206\u5b50\u91cf\u3092\u8868\u793a\u3057\u307e\u305b\u3093\u3002\u4fdd\u5b58\u6642\u306e\u5206\u5b50\u91cf\u306f {was} \u3067\u3057\u305f\u3002",
   "ui.lib.phfolder":"\u4f8b: siRNA \u30d7\u30ed\u30b8\u30a7\u30af\u30c8",
   "ui.lib.phnote":"\u4efb\u610f\u306e\u30e1\u30e2",
   "ui.lib.phtags":"\u30ab\u30f3\u30de\u533a\u5207\u308a",
@@ -5766,7 +5822,7 @@ var I18N = {
   "ui.ps.custom":"\u30ab\u30b9\u30bf\u30e0",
   "ui.ps.custval":"nmol \u3067\u8868\u3057\u305f\u5408\u6210\u30b9\u30b1\u30fc\u30eb",
   "ui.ps.duplex":"\u5206\u5b50\u91cf\u306e\u53d6\u5f97\u5143\u304c\u4e8c\u672c\u9396\u306b\u306a\u3063\u3066\u3044\u307e\u3059\u30022 \u672c\u306e\u9396\u306f\u305d\u308c\u305e\u308c\u5225\u306e\u5408\u6210\u306a\u306e\u3067\u30011 \u3064\u306e\u30ab\u30c3\u30d7\u30ea\u30f3\u30b0\u52b9\u7387\u3067\u306f\u4e21\u65b9\u3092\u8868\u305b\u307e\u305b\u3093\u3002\u30bb\u30f3\u30b9\u304b\u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u3092\u9078\u3093\u3067\u304f\u3060\u3055\u3044\u3002",
-  "ui.ps.fromlib":"\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u4fdd\u5b58\u3055\u308c\u3066\u3044\u308b\u5408\u6210\u30b9\u30b1\u30fc\u30eb\u304b\u3089\u53d6\u308a\u8fbc\u307f\u307e\u3057\u305f\u3002\u3053\u3053\u3067\u5909\u66f4\u3057\u3066\u3082\u3001\u305d\u306e\u8a18\u9332\u306f\u5909\u308f\u308a\u307e\u305b\u3093\u3002",
+  "ui.ps.fromlib":"\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u4fdd\u5b58\u3055\u308c\u3066\u3044\u308b\u5408\u6210\u30b9\u30b1\u30fc\u30eb\u304b\u3089\u53d6\u308a\u8fbc\u307f\u307e\u3057\u305f\u3002\u3053\u3053\u3067\u5909\u66f4\u3057\u3066\u3082\u3001\u305d\u306e\u30ec\u30b3\u30fc\u30c9\u306f\u5909\u308f\u308a\u307e\u305b\u3093\u3002",
   "ui.ps.help":"UnyLinker \u306f\u30e6\u30cb\u30d0\u30fc\u30b5\u30eb\u62c5\u4f53\u3067\u3059\u30023′ \u672b\u7aef\u306e\u5869\u57fa\u3082\u4ed6\u3068\u540c\u3058\u3088\u3046\u306b\u30ab\u30c3\u30d7\u30ea\u30f3\u30b0\u3059\u308b\u306e\u3067\u3001{n} \u500b\u306e\u5869\u57fa\u3059\u3079\u3066\u304c\u30ab\u30c3\u30d7\u30ea\u30f3\u30b0\u306e\u5bfe\u8c61\u306b\u306a\u308a\u307e\u3059\u3002\u30cc\u30af\u30ec\u30aa\u30b7\u30c9-CPG \u306f 3′ \u672b\u7aef\u306e\u5869\u57fa\u304c\u6700\u521d\u304b\u3089\u4ed8\u3044\u3066\u3044\u308b\u306e\u3067\u3001\u305d\u306e 1 \u500b\u306f\u30ab\u30c3\u30d7\u30ea\u30f3\u30b0\u3055\u308c\u305a\u3001\u5bfe\u8c61\u306f {c} \u500b\u3067\u3059\u3002",
   "ui.ps.nomw":"\u3053\u308c\u306b\u306f\u5206\u5b50\u91cf\u304c\u5fc5\u8981\u3067\u3059\u3002\u914d\u5217\u3092\u5165\u529b\u3059\u308b\u304b\u3001\u4e0a\u306e\u30ab\u30b9\u30bf\u30e0\u3092\u6709\u52b9\u306b\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
   "ui.ps.noread":"\u307e\u305a\u4e0a\u3067\u6e2c\u5b9a\u5024\u3092\u53d6\u308a\u3001\u518d\u61f8\u6fc1\u3057\u305f\u5bb9\u91cf\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
@@ -8282,7 +8338,7 @@ if(/[?&]billing=/.test(window.__ocSearch)){
       <section id="panel-hist" class="view view-hist" role="tabpanel" aria-labelledby="tab-hist">
         <div class="crumb" data-i18n="mk.0211"><b data-i18n="mk.0210">Library</b><span class="sepc">›</span>Saved entries</div>
         <div class="vhead"><h2 data-i18n="mk.0212">Library</h2><button class="view-close" type="button" onclick="closeAuxView('hist')" aria-label="Close Library and return to the previous page" data-i18n-attr="aria-label:ak.0084">✕</button></div>
-        <div class="vsub" data-i18n="mk.0213">Reopen, copy, or export a sequence you saved. Signed in, your account holds the copy that travels between devices and this browser keeps an offline mirror; signed out, sequences live in this browser only.</div>
+        <div class="vsub" data-i18n="mk.0213">Reopen, copy, or export a sequence you saved.</div>
         <div class="histbar">
           <span class="search">⌕ <input placeholder="Search by name or sequence…" aria-label="Search saved sequences" data-i18n-attr="placeholder:ak.0085,aria-label:ak.0086"></span>
           
@@ -11671,10 +11727,46 @@ const FAQ_DATA = (function(){
     for (i = 1; i <= n; i++) items.push(item('faq.' + id + '.' + (i < 10 ? '0' + i : '' + i)));
     return { get title(){ return t('faq.' + id + '.title'); }, items: items };
   }
-  return { mw: sec('mw', 17), conc: sec('conc', 7), about: sec('about', 3) };
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  function pair(qk, get_a){ return { get q(){ return t(qk); }, get a(){ return get_a(); } }; }
+  var lib = { get title(){ return t('faq.lib.title'); }, items: [
+    pair('faq.lib.01.q', function(){ return t('faq.lib.01.a'); }),
+    pair('faq.lib.02.q', function(){ return t('lab.lib.p'); }),
+    pair('lab.rules.h',  function(){ return '<ul><li>'+t('lab.rules.mgr')+'</li><li>'+t('lab.rules.see')+'</li><li>'+t('lab.rules.edit!')+'</li></ul>'; }),
+    pair('faq.lib.04.q', function(){ return '<p>'+t('lab.shelf.sub!')+'</p><p>'+t('lab.shelf.labwarn!')+'</p><p>'+t('lab.shelf.quota!')+'</p>'; })
+  ] };
+  return { mw: sec('mw', 17), conc: sec('conc', 7), about: sec('about', 3), lib: lib };
 })();
 function renderFaq(){
-  const sub = (S.tab==='conc') ? ['conc','mw'] : ['mw','conc'];
+  
+
+
+
+
+  const sub = ((S.tab==='conc') ? ['conc','mw'] : ['mw','conc']).concat(['lib']);
   const secHTML = (sec, cls) =>
     `<div class="faq-sec"><div class="${cls}">${sec.title}</div>`+
     sec.items.map(it=>`<details class="faq-item"><summary>${it.q}</summary><div class="faq-ans">${it.a}</div></details>`).join("")+
@@ -15196,7 +15288,7 @@ try{ var _mqTheme=window.matchMedia('(prefers-color-scheme: dark)');
   if(_mqTheme.addEventListener) _mqTheme.addEventListener('change',_onTheme); else if(_mqTheme.addListener) _mqTheme.addListener(_onTheme);
 }catch(_){   }
 function renderScientificHelp(){
-  var intros={ mw:t('faq.intro.mw'), conc:t('faq.intro.conc'), about:t('faq.intro.about') };
+  var intros={ mw:t('faq.intro.mw'), conc:t('faq.intro.conc'), about:t('faq.intro.about'), lib:t('faq.intro.lib') };
   function faqSection(key, following){
     var sec=FAQ_DATA[key]; if(!sec) return '';
     return '<h3 class="'+(following?'help-faq-section':'')+'">'+sec.title+'</h3><p class="help-faq-intro">'+intros[key]+'</p><div class="help-faq-list">'+
@@ -15205,7 +15297,11 @@ function renderScientificHelp(){
   }
   document.querySelectorAll('.help-sheet [data-helpfaq]').forEach(function(host){
     var key=host.dataset.helpfaq;
-    host.innerHTML=key==='combined' ? (faqSection('mw',false)+faqSection('conc',true)) : faqSection(key,false);
+    
+
+
+
+    host.innerHTML=key==='combined' ? (faqSection('mw',false)+faqSection('conc',true)+faqSection('lib',true)) : faqSection(key,false);
   });
 }
 
@@ -16254,7 +16350,7 @@ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded'
 
 .lc-cap{font-size:11px;color:var(--muted)}
 .lc-cap.can{font-weight:600;color:var(--accent-2)}
-.lab-x2.lab-pri{background:var(--accent);color:var(--accent-ink);border-color:transparent}
+.lab-x2.lab-pri{background:var(--accent);color:var(--accent-ink);border-color:transparent} .lab-x2.armed{color:var(--err);border-color:color-mix(in srgb,var(--err) 40%,var(--line));background:var(--err-soft)}
 
 .labed{border:1px solid var(--accent-2);border-radius:12px;background:var(--surface);padding:10px 12px;margin:0 0 14px}
 .labed[hidden]{display:none}
@@ -17902,6 +17998,13 @@ body[data-mode="dark"] #scanOv .scan-row-acts [data-scanlib]{color:var(--accent)
 
 
 
+.tm-mbsw{display:flex;margin-top:2px;padding:10px 0 2px;border-top:1px solid var(--line)}
+.tm-mbnote{display:block;padding:2px 0 6px}
+.tm-foldnote-p{display:block;margin-top:7px}
+
+
+
+
 
 
 
@@ -18333,7 +18436,7 @@ details.tm-foldwrap:not([open]) > .tm-foldnote{display:none}
   flex:0 0 auto; padding:0 2px}
 .tm-cmp-basis{display:block;margin-top:7px;line-height:1.65}
 .tm-cx code{font-family:var(--font-num);font-size:12px;line-height:1.65;letter-spacing:.02em;word-break:break-all}
-.tm-cv-none{font-family:var(--font-head);font-size:13px;font-weight:600;color:var(--muted)}
+.tm-cv-none{font-family:var(--font-head);font-size:13px;color:var(--muted)}
 
 
 
@@ -19436,11 +19539,6 @@ try{
 
 
 
-  function rules(){
-    return '<ul class="lv-rules"><li>'+esc(t('lab.rules.mgr'))+'</li>'+
-           '<li>'+esc(t('lab.rules.see'))+'</li>'+
-           '<li>'+esc(t('lab.rules.edit!'))+'</li></ul>';
-  }
 
    
   function leaveBlock(L, role, mgrs){
@@ -19499,7 +19597,17 @@ try{
 
 
     out+=sec('', t('lab.lib.h'),
-      '<p class="lv-note">'+esc(t('lab.lib.p'))+'</p><div class="lv-acts">'+
+      
+
+
+
+
+
+
+
+
+
+      '<div class="lv-acts">'+
       btn('data-lab-lib="'+esc(L.lab_id)+'"', t('lab.lib.go'))+'</div>');
     out+=sec('', t('lab.people.h'), rosterBlock(L, role));
 
@@ -19513,7 +19621,23 @@ try{
         '<div class="lv-acts">'+btn('data-lab-several', t('lab.add.several'))+'</div>');
     }
 
-    out+=sec('', t('lab.rules.h'), rules());
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     if(role==='manager'){
       out+=sec('', t('lab.bill.h'),
@@ -21546,8 +21670,33 @@ try{
 
 
 
-      +'<div class="lab-hint" style="padding:0 2px 8px">'+esc(_t('lab.shelf.sub!'))+' '+esc(_t('lab.shelf.quota!'))+'</div>'
-      +(labId?('<div class="lab-hint" style="padding:0 2px 8px">'+esc(_t('lab.shelf.labwarn!'))+'</div>'):'');
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      +'<div class="lab-hint" style="padding:0 2px 8px">'+esc(_t('lab.shelf.quota!'))+'</div>';
     html+= list.length ? list.map(function(e){ return shelfCard(e,mine,uid,labId); }).join('')
       : ('<div class="lab-empty"><h3>'+esc(_t('lab.shelf.emptyh'))+'</h3><p>'+esc(_t('lab.shelf.empty'))+'</p></div>');
     ll.innerHTML=html;
@@ -21610,7 +21759,15 @@ try{
 
 
 
-      if((isAuthor||_isMgr(labId)) && e.__rowId) acts+=(_b.shelve='<button type="button" class="lab-x2" data-lab-shelve="'+esc(e.__rowId)+'">'+esc(_t('lab.shelf.go'))+'</button>');
+      
+
+
+
+
+
+
+
+    if((isAuthor||_isMgr(labId)) && e.__rowId) acts+=(_b.shelve='<button type="button" class="lab-x2" data-lab-shelve="'+esc(e.__rowId)+'" data-lab-all="1">'+esc(_t('lab.shelf.go'))+'</button>');
       
 
 
@@ -22862,6 +23019,41 @@ try{
     if((b=e.target.closest('[data-shelfin]'))){ _shelf=true; _dropSel('shelf'); renderLabList(); return; }
     if((b=e.target.closest('[data-shelfout]'))){ _shelf=false; _dropSel('shelf'); renderLabList(); return; }
     if((b=e.target.closest('[data-lab-shelve]'))){
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      if(b.getAttribute('data-lab-all')==='1' && b.dataset.armed!=='1'){
+        b.dataset.armed='1'; b.dataset.o=b.textContent;
+        b.textContent=_t('lab.shelf.armgo'); b.classList.add('armed');
+        var _s0=_t('lab.shelf.armgo'), _sn=_t('ui.arm.confirm',{label:_s0});
+        b.dataset.a0=b.getAttribute('aria-label')||'';
+        if(_sn) b.setAttribute('aria-label',_sn);
+        if(window.oligoAnnounce) window.oligoAnnounce(_sn||_s0);
+        setTimeout(function(){ if(b&&b.dataset.armed==='1'){ b.dataset.armed='0';
+          b.textContent=b.dataset.o||_t('lab.shelf.go'); b.classList.remove('armed');
+          if(b.dataset.a0) b.setAttribute('aria-label',b.dataset.a0);
+          else b.removeAttribute('aria-label'); } },3000); return; }
+      if(b.dataset.a0) b.setAttribute('aria-label', b.dataset.a0);
       var _shid=b.getAttribute('data-lab-shelve'); if(!_shid){ toast(_t('lab.mon.nosync')); return; }
       b.disabled=true;
       
@@ -30880,12 +31072,33 @@ try{
   }
 
    
-  function foldDP(seq, isRna, opts, saltPerStack, allowML, mlDang) {
+  function foldDP(seq, isRna, opts, saltPerStack, allowML, mlDang, wantML) {
     var n = seq.length;
     var V = new Array(n * n).fill(null), BT = new Array(n * n).fill(null);
     var KIND = new Uint8Array(n * n);               
     var WM = allowML ? new Array(n * n).fill(null) : null;
     var WMT = allowML ? new Array(n * n).fill(null) : null;
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    var cML = !!(wantML && allowML);
+    var CV = cML ? [new Array(n * n).fill(null), new Array(n * n).fill(null)] : null;
+    var CBT = cML ? [new Array(n * n).fill(null), new Array(n * n).fill(null)] : null;
+    var CKIND = cML ? [new Uint8Array(n * n), new Uint8Array(n * n)] : null;
+    var CWM = cML ? [new Array(n * n).fill(null), new Array(n * n).fill(null)] : null;
+    var CWMT = cML ? [new Array(n * n).fill(null), new Array(n * n).fill(null)] : null;
     var MLA = allowML ? gh(MB_G.a, MB_H.a) : null;
     var MLC = allowML ? gh(MB_G.c, MB_H.c) : null;
     function termAU(i, j) {
@@ -30946,6 +31159,62 @@ try{
             }
           }
           if (best) { V[i * n + j] = best; BT[i * n + j] = bt; KIND[i * n + j] = kind; }
+          
+
+
+
+
+
+          if (cML) {
+            var cf, cb = [null, null], cbt = [null, null], ck = [0, 0];
+            var chp = hairpinTerm(seq, i, j, isRna);
+            if (chp) { cb[0] = chp; cbt[0] = null; ck[0] = 0; }
+            var cpmax = Math.min(i + MFE_MAXINT + 1, j - MIN_LOOP - 1);
+            for (var cp = i + 1; cp <= cpmax; cp++) {
+              var cbud = MFE_MAXINT - (cp - i - 1);
+              var cqmin = Math.max(cp + MIN_LOOP + 1, j - 1 - cbud);
+              for (var cq = j - 1; cq >= cqmin; cq--) {
+                var ci0 = CV[0][cp * n + cq], ci1 = CV[1][cp * n + cq];
+                if (!ci0 && !ci1) continue;
+                var clp = twoLoop(seq, i, j, cp, cq, isRna, opts.model, saltPerStack);
+                if (!clp) continue;
+                if (ci0) {
+                  var cc0 = { dH: ci0.dH + clp.dH, dS: ci0.dS + clp.dS };
+                  if (!cb[0] || dG(cc0.dH, cc0.dS) < dG(cb[0].dH, cb[0].dS)) {
+                    cb[0] = cc0; cbt[0] = [cp, cq]; ck[0] = 1;
+                  }
+                }
+                if (ci1) {
+                  var cc1 = { dH: ci1.dH + clp.dH, dS: ci1.dS + clp.dS };
+                  if (!cb[1] || dG(cc1.dH, cc1.dS) < dG(cb[1].dH, cb[1].dS)) {
+                    cb[1] = cc1; cbt[1] = [cp, cq]; ck[1] = 1;
+                  }
+                }
+              }
+            }
+            var ct2 = termAU(i, j);
+            var cdc = mlDang ? mlDangle(seq, i, j, seq[i + 1], seq[j - 1], isRna) : ML_NODANGLE;
+            var cbase = { dH: MLA.dH + MLC.dH + ct2.dH + cdc.dH,
+                          dS: MLA.dS + MLC.dS + ct2.dS + cdc.dS };
+            for (var ch = i + 2; ch <= j - 2; ch++) {
+              for (var cfl = 0; cfl < 2; cfl++) {
+                var CL = CWM[cfl][(i + 1) * n + (ch - 1)]; if (!CL) continue;
+                for (var cfr = 0; cfr < 2; cfr++) {
+                  var CR = CWM[cfr][ch * n + (j - 1)]; if (!CR) continue;
+                  var cc2 = { dH: cbase.dH + CL.dH + CR.dH, dS: cbase.dS + CL.dS + CR.dS };
+                  if (!cb[1] || dG(cc2.dH, cc2.dS) < dG(cb[1].dH, cb[1].dS)) {
+                    cb[1] = cc2; cbt[1] = [ch, cfl, cfr]; ck[1] = 2;
+                  }
+                }
+              }
+            }
+            for (cf = 0; cf < 2; cf++) {
+              if (cb[cf]) {
+                CV[cf][i * n + j] = cb[cf]; CBT[cf][i * n + j] = cbt[cf];
+                CKIND[cf][i * n + j] = ck[cf];
+              }
+            }
+          }
         }
         if (!allowML) continue;
         
@@ -30973,9 +31242,50 @@ try{
           if (!wb || dG(cc.dH, cc.dS) < dG(wb.dH, wb.dS)) { wb = cc; wt = ['S', h2]; }
         }
         if (wb) { WM[i * n + j] = wb; WMT[i * n + j] = wt; }
+        
+
+
+        if (cML) {
+          var cg, cwb = [null, null], cwt = [null, null];
+          for (cg = 0; cg < 2; cg++) {
+            var cvv = CV[cg][i * n + j];
+            if (cvv) {
+              var cte = termAU(i, j);
+              var cdbg = mlDang ? mlDangle(seq, j, i, seq[j + 1], seq[i - 1], isRna) : ML_NODANGLE;
+              cwb[cg] = { dH: cvv.dH + MLC.dH + cte.dH + cdbg.dH,
+                          dS: cvv.dS + MLC.dS + cte.dS + cdbg.dS };
+              cwt[cg] = ['B'];
+            }
+            var clf = CWM[cg][(i + 1) * n + j];
+            if (clf && (!cwb[cg] || dG(clf.dH, clf.dS) < dG(cwb[cg].dH, cwb[cg].dS))) {
+              cwb[cg] = clf; cwt[cg] = ['L'];
+            }
+            var crg = CWM[cg][i * n + (j - 1)];
+            if (crg && (!cwb[cg] || dG(crg.dH, crg.dS) < dG(cwb[cg].dH, cwb[cg].dS))) {
+              cwb[cg] = crg; cwt[cg] = ['R'];
+            }
+          }
+          for (var ch2 = i + 1; ch2 <= j; ch2++) {
+            for (var cfa = 0; cfa < 2; cfa++) {
+              var CA = CWM[cfa][i * n + (ch2 - 1)]; if (!CA) continue;
+              for (var cfb = 0; cfb < 2; cfb++) {
+                var CB = CWM[cfb][ch2 * n + j]; if (!CB) continue;
+                var cfo = cfa | cfb;
+                var ccs = { dH: CA.dH + CB.dH, dS: CA.dS + CB.dS };
+                if (!cwb[cfo] || dG(ccs.dH, ccs.dS) < dG(cwb[cfo].dH, cwb[cfo].dS)) {
+                  cwb[cfo] = ccs; cwt[cfo] = ['S', ch2, cfa, cfb];
+                }
+              }
+            }
+          }
+          for (cg = 0; cg < 2; cg++) {
+            if (cwb[cg]) { CWM[cg][i * n + j] = cwb[cg]; CWMT[cg][i * n + j] = cwt[cg]; }
+          }
+        }
       }
     }
-    return { V: V, BT: BT, KIND: KIND, WM: WM, WMT: WMT, n: n };
+    return { V: V, BT: BT, KIND: KIND, WM: WM, WMT: WMT, n: n,
+             CV: CV, CBT: CBT, CKIND: CKIND, CWM: CWM, CWMT: CWMT };
   }
 
   
@@ -30999,6 +31309,39 @@ try{
       if (t[0] === 'L') { i++; continue; }
       if (t[0] === 'R') { j--; continue; }
       pushWM(M, i, t[1] - 1, todo); i = t[1];
+    }
+  }
+  
+
+
+
+
+
+
+
+
+  function tracebackC(M, i0, j0, f0) {
+    var n = M.n, pair = new Int32Array(n).fill(-1), todo = [[i0, j0, f0]];
+    while (todo.length) {
+      var e = todo.pop(), i = e[0], j = e[1], f = e[2];
+      pair[i] = j; pair[j] = i;
+      var k = M.CKIND[f][i * n + j], bt = M.CBT[f][i * n + j];
+      if (k === 1) todo.push([bt[0], bt[1], f]);
+      else if (k === 2) {
+        pushWMC(M, i + 1, bt[0] - 1, bt[1], todo);
+        pushWMC(M, bt[0], j - 1, bt[2], todo);
+      }
+    }
+    return pair;
+  }
+  function pushWMC(M, i, j, f, todo) {
+    var n = M.n;
+    while (i <= j) {
+      var t = M.CWMT[f][i * n + j]; if (!t) return;
+      if (t[0] === 'B') { todo.push([i, j, f]); return; }
+      if (t[0] === 'L') { i++; continue; }
+      if (t[0] === 'R') { j--; continue; }
+      pushWMC(M, i, t[1] - 1, t[2], todo); i = t[1]; f = t[3];
     }
   }
 
@@ -31093,11 +31436,62 @@ try{
 
 
 
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    function runC() {
+      var M = foldDP(seq, isRna, opts, saltPerStack, true, true, true);
+      var cands = [];
+      for (var a = 0; a < n; a++) for (var b = a + MIN_LOOP + 1; b < n; b++) {
+        var v = M.CV[1][a * n + b]; if (!v) continue;
+        var dH2 = v.dH, dS2 = v.dS;
+        if (isRna) {
+          var x = seq[a], y = seq[b];
+          if (!((x === 'G' && y === 'C') || (x === 'C' && y === 'G'))) {
+            var e2 = gh(RNA_RULES.termAU[0], RNA_RULES.termAU[1]); dH2 += e2.dH; dS2 += e2.dS;
+          }
+        } else if (seq[a] === 'A' || seq[a] === 'T') { dH2 += 2.2; dS2 += 6.9; }
+        cands.push([dG(dH2, dS2), a, b]);
+      }
+      cands.sort(function (u, w) { return u[0] - w[0]; });
+      var bestR = null, lim = Math.min(cands.length, RESCORE_K);
+      for (var c = 0; c < lim; c++) {
+        var pr = tracebackC(M, cands[c][1], cands[c][2], 1);
+        var sc = scoreStructure(seq, pr, isRna, opts.model, saltPerStack, minStem);
+        if (!sc) { if (lim < cands.length) lim++; continue; }
+        
+
+
+
+
+
+
+
+        if (!(sc.multiloops > 0)) { if (lim < cands.length) lim++; continue; }
+        if (_altSink) _altSink.push({ sc: sc, pair: pr });
+        if (!bestR || sc.dG37 < bestR.sc.dG37) bestR = { sc: sc, pair: pr };
+      }
+      return bestR;
+    }
     var ALTS = [];
     _altSink = ALTS;
     var plain = run(false, false);
     var withML = mlOk ? run(true, false) : null;
     var withMLD = mlOk ? run(true, true) : null;
+    
+
+
+    var conRun = (mlOk && opts.constrainML === true) ? runC() : null;
     _altSink = null;
     var win = plain;
     if (withML && (!win || withML.sc.dG37 < win.sc.dG37 - 1e-9)) win = withML;
@@ -31152,6 +31546,52 @@ try{
 
 
 
+
+
+
+
+
+    var conObj = null;
+    if (conRun) {
+      var cdb = new Array(n).fill('.'), cz;
+      for (cz = 0; cz < n; cz++) {
+        if (conRun.pair[cz] > cz) { cdb[cz] = '('; cdb[conRun.pair[cz]] = ')'; }
+      }
+      cdb = cdb.join('');
+      conObj = { structure: cdb, dG37: conRun.sc.dG37, tm: conRun.sc.tm,
+                 bp: conRun.sc.bp, bulges: conRun.sc.bulges,
+                 internals: conRun.sc.internals, multiloops: conRun.sc.multiloops,
+                 branches: conRun.sc.branches, dH: conRun.sc.dH, dS: conRun.sc.dS,
+                 
+
+
+
+
+                 rna: isRna, saltCorrected: true,
+                 saltExtrapolated: isRna && saltFromDna(opts),
+                 
+
+
+
+
+
+
+
+
+
+
+
+
+                 from: conRun.sc.from, to: conRun.sc.to,
+                 behind: conRun.sc.dG37 - sc.dG37, same: cdb === db.join('') };
+    }
+    
+
+
+
+
+
+
     var mlNote = !isRna
         ? (n > MB_MAX_NT
            ? '. Stacks, bulges and internal loops; multibranch not searched above '
@@ -31178,6 +31618,11 @@ try{
 
 
              alts: altList,
+             
+
+
+
+             constrained: conObj,
              model: (isRna ? 'Turner 2004 (lowest found by this search; salt term Yao/Lorenz 2023, fitted to RNA)'
                            : 'SantaLucia & Hicks 2004 (lowest found by this search)') + mlNote };
   }
@@ -31221,7 +31666,12 @@ try{
   var T = window.ocTm;
   if (!T) return;
 
-  var DEF = { ct: 0.25, na: 50, k: 0, mg: 0, dntp: 0, target: 'auto', model: 'dna98' };
+  
+
+
+
+  var DEF = { ct: 0.25, na: 50, k: 0, mg: 0, dntp: 0, target: 'auto', model: 'dna98',
+              constrainML: false };
   var KEY = 'oligoTmMeta';
   var C = null;
 
@@ -31372,7 +31822,11 @@ try{
   function conditions(cfg) {
     return { ct: num(cfg.ct, 0.25) * 1e-6, na: num(cfg.na, 50) / 1000,
              k: num(cfg.k, 0) / 1000, mg: num(cfg.mg, 0) / 1000,
-             dntp: num(cfg.dntp, 0) / 1000, model: cfg.model };
+             dntp: num(cfg.dntp, 0) / 1000, model: cfg.model,
+             
+
+
+             constrainML: cfg.constrainML === true };
   }
 
   
@@ -31624,7 +32078,12 @@ try{
     try {
       key = JSON.stringify([tokens.map(function (t) {
         return [t.base, t.sugar, t.custom ? t.id || t.label : 0];
-      }), opt.ct, opt.na, opt.k, opt.mg, opt.dntp, opt.model]);
+      
+
+
+
+
+      }), opt.ct, opt.na, opt.k, opt.mg, opt.dntp, opt.model, !!opt.constrainML]);
     } catch (e) { key = null; }
     if (key && FOLD_CACHE.key === key) return FOLD_CACHE.val;
     var v = Fo.mfe(tokens, opt) || Fo.hairpin(tokens, opt);
@@ -32112,6 +32571,67 @@ try{
         out += _fig;
       }
     }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if (hp && hp.structure && hp.mbSearched) {
+      out += '<label class="switch tm-mbsw"><input type="checkbox" data-tmc="constrainML"'
+           + (opt.constrainML ? ' checked' : '') + '>'
+           + '<span class="track" aria-hidden="true"></span>'
+           + esc(t('ui.fold.mbc')) + '</label>';
+      if (opt.constrainML) {
+        var _c = hp.constrained;
+        if (!_c) {
+          
+
+          out += '<div class="tm-cx tm-mbnote">' + t('tm.fold.mbc.none!') + '</div>';
+        } else if (_c.same) {
+          
+
+
+
+
+          out += '<div class="tm-cx tm-mbnote">' + t('tm.fold.mbc.same!') + '</div>';
+        } else {
+          var cparts = [t('tm.fold.bp', { n: _c.bp })];
+          if (_c.bulges) cparts.push(plural(_c.bulges, 'tm.fold.bulge'));
+          if (_c.internals) cparts.push(plural(_c.internals, 'tm.fold.internal'));
+          if (_c.multiloops) cparts.push(plural(_c.multiloops, 'tm.fold.mb'));
+          
+
+
+          cparts.push(dotBracket(_c));
+          cparts.push(dgTxt(_c));
+          
+
+
+
+
+
+
+
+
+
+          cparts.push(_c.behind >= 0
+            ? t('tm.fold.mbc.behind!', { v: _c.behind.toFixed(2) })
+            : t('tm.fold.mbc.better!', { v: (-_c.behind).toFixed(2) }));
+          out += '<div class="tm-cr"><span class="tm-cn">' + t('tm.fold.mbc.name')
+               + '</span>' + say(_c)
+               + detail(_c, cparts.join(' · ') + t('tm.uni!')) + '</div>';
+        }
+      }
+    }
     if (sd) {
       out += '<div class="tm-cr"><span class="tm-cn">' + t('tm.selfdimer') + '</span>'
            + say(sd)
@@ -32173,6 +32693,29 @@ try{
 
 
 
+         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         + '<div class="tm-foldnote-p">'
          + (hp && hp.structure
             ? t('tm.fold.note.mfe!', { k: RESCORE_K })
               
@@ -32190,6 +32733,7 @@ try{
                  ? (hp.rna ? t('tm.fold.note.mb!') : t('tm.fold.note.mbdna!'))
                  : t('tm.fold.note.mbrna!', { n: MB_LIMIT }))
             : t('tm.fold.note.one!'))
+         + '</div>'
          
 
 
@@ -32197,6 +32741,24 @@ try{
 
 
 
+         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         + (hp && hp.structure && hp.mbSearched && opt.constrainML
+            ? '<div class="tm-foldnote-p">' + t('tm.fold.note.mbc!') + '</div>' : '')
          + '<div class="tm-foldnote-h">' + esc(t('ui.fold.note.h2')) + '</div>'
          + t('tm.fold.note.dimer!')
          + (hp && hp.tmmAnomaly ? t('tm.fold.note.tmm!') : '')
@@ -32268,7 +32830,14 @@ try{
     if (!el) return;
     var k = el.getAttribute('data-tmc');
     load();
-    C[k] = (el.tagName === 'SELECT') ? el.value : el.value;
+    
+
+
+
+
+
+
+    C[k] = (el.type === 'checkbox') ? !!el.checked : el.value;
     persist();
     ocDefer('r65a.render', render, 60);
   }
@@ -32276,7 +32845,15 @@ try{
     var cfg = load();
     document.querySelectorAll('[data-tmc]').forEach(function (el) {
       var k = el.getAttribute('data-tmc');
-      if (document.activeElement !== el && String(el.value) !== String(cfg[k])) el.value = cfg[k];
+      
+
+
+
+      if (el.type === 'checkbox') {
+        if (el.checked !== !!cfg[k]) el.checked = !!cfg[k];
+      } else if (document.activeElement !== el && String(el.value) !== String(cfg[k])) {
+        el.value = cfg[k];
+      }
     });
   }
 
@@ -36969,6 +37546,222 @@ else mount();
     sync();
   } catch (e) {   }
 })();
+</script>
+<script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(function (W, D) {
+  'use strict';
+
+   
+  var MAXFIG = 3;
+
+  var AMP = String.fromCharCode(38);
+
+   
+  function T(key, fallback) {
+    try {
+      var v = W.t ? W.t(key) : null;
+      if (v && v !== key) return v;
+    } catch (_e) {   }
+    return fallback;
+  }
+
+  function esc(v) {
+    return String(v == null ? '' : v)
+      .split(AMP).join(AMP + 'amp;')
+      .split('<').join(AMP + 'lt;')
+      .split('>').join(AMP + 'gt;')
+      .split('"').join(AMP + 'quot;');
+  }
+
+  function txt(el) {
+    return el && el.textContent ? el.textContent.replace(/\s+/g, ' ').trim() : '';
+  }
+
+   
+
+  
+
+
+
+
+  function harvest(root) {
+    var r = root || D;
+    var out = { figures: [], result: [], note: [], seq: '' };
+    var i, n, nodes;
+
+    var seqEl = r.querySelector('[data-seq]');
+    if (seqEl && seqEl.value) out.seq = String(seqEl.value).replace(/\s+/g, '');
+
+    nodes = r.querySelectorAll('.tm-cr');
+    for (i = 0; i < nodes.length; i++) {
+      n = txt(nodes[i]);
+      if (n) out.result.push(n);
+    }
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    nodes = r.querySelectorAll('.tm-fx-fig svg, .tm-draw svg, .tm-ovl-fig svg');
+    for (i = 0; i < nodes.length && out.figures.length < MAXFIG; i++) {
+      if (nodes[i].closest && nodes[i].closest('button')) continue;
+      out.figures.push(nodes[i].outerHTML);
+    }
+
+    nodes = r.querySelectorAll('.tm-foldnote');
+    for (i = 0; i < nodes.length; i++) {
+      n = nodes[i].innerHTML;
+      if (n && n.replace(/<[^>]*>/g, '').trim()) out.note.push(n);
+    }
+
+    return out;
+  }
+
+  
+
+
+
+
+
+
+
+  var CSS = ''
+    + 'body{margin:0;padding:26px;max-width:820px;font-family:Georgia,serif;'
+    + 'font-size:15px;line-height:1.62;color:#1b1b1b;background:#fff}'
+    + 'h1{font-size:20px;line-height:1.3;margin-bottom:4px}'
+    + 'h2{font-size:15px;margin-top:22px;margin-bottom:6px}'
+    + 'p{margin-top:0;margin-bottom:10px}'
+    + '.sub{color:#555;font-size:13px;margin-bottom:18px}'
+    + '.seq{font-family:ui-monospace,Consolas,monospace;font-size:13px;'
+    + 'word-break:break-all;background:#f6f3ec;padding:9px;border-radius:6px}'
+    + 'figure{margin-top:12px;margin-bottom:12px;padding:8px;background:#f7f2e8;'
+    + 'border-width:1px;border-style:solid;border-color:rgba(36,29,19,.28);'
+    + 'border-radius:8px;overflow-x:auto}'
+    + 'figure>svg{display:block;height:auto;margin-left:auto;margin-right:auto}'
+    + '@media' + ' print{@page{size:A4;margin:16mm}'
+    + 'body{padding:0;max-width:none;font-size:10.5pt}'
+    + 'h1{font-size:15pt}h2{font-size:11pt;page-break-after:avoid}'
+    + 'figure{page-break-inside:avoid}p{orphans:3;widows:3}}';
+
+  
+
+
+
+
+
+
+
+  function build(opts) {
+    var o = opts || {};
+    var d = o.data || harvest(o.root);
+    var lang = o.lang || (D.documentElement && D.documentElement.lang) || 'en';
+    var title = o.title || D.title || 'oligocalculator.com';
+    var when = o.when || '';
+    var h = [];
+    var i;
+
+    h.push('<!doctype html>');
+    h.push('<html lang="' + esc(lang) + '"><head><meta charset="utf-8">');
+    h.push('<meta name="viewport"' + ' content="width=device-width,initial-scale=1">');
+    h.push('<title>' + esc(title) + '</title>');
+    h.push('<style>' + CSS + '</style></head><body>');
+    h.push('<h1>' + esc(title) + '</h1>');
+    h.push('<p class="sub">' + 'oligocalculator.com'
+           + (when ? ' ' + AMP + 'middot; ' + esc(when) : '') + '</p>');
+
+    if (d.seq) {
+      h.push('<h2>' + esc(T('lab.md.seq', 'Sequence')) + '</h2>');
+      h.push('<p class="seq">' + esc(d.seq) + '</p>');
+    }
+    if (d.result && d.result.length) {
+      h.push('<h2>' + esc(T('ak.0099', 'Result')) + '</h2>');
+      for (i = 0; i < d.result.length; i++) h.push('<p>' + esc(d.result[i]) + '</p>');
+    }
+    for (i = 0; i < d.figures.length; i++) {
+      h.push('<figure>' + d.figures[i] + '</figure>');
+    }
+    if (d.note && d.note.length) {
+      h.push('<h2>' + esc(T('mk.0423', 'Method')) + '</h2>');
+      
+
+      for (i = 0; i < d.note.length; i++) h.push('<p>' + d.note[i] + '</p>');
+    }
+    h.push('</body></html>');
+    return h.join('');
+  }
+
+  
+
+
+  function download(opts) {
+    var html = build(opts);
+    var name = (opts && opts.filename) || 'oligo-methods.html';
+    var blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = D.createElement('a');
+    a.href = url; a.download = name;
+    D.body.appendChild(a); a.click();
+    setTimeout(function () { a.remove(); URL.revokeObjectURL(url); }, 100);
+    return html.length;
+  }
+
+  W.ocMethodsDoc = { build: build, download: download, harvest: harvest, MAXFIG: MAXFIG };
+
+}(window, document));
 </script>
 </body>
 </html>
