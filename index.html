@@ -222,7 +222,7 @@ var I18N = {
   "ak.0056":"Mass basis",
   "ak.0057":"Total strand concentration in micromolar",
   "ak.0058":"Sodium concentration in millimolar",
-  "ak.0059":"What this strand hybridises to",
+  "ak.0059":"What this strand hybridizes to",
   "ak.0060":"Which published DNA parameter set to use",
   "ak.0061":"Potassium concentration in millimolar",
   "ak.0062":"Magnesium concentration in millimolar",
@@ -936,7 +936,7 @@ var I18N = {
   "mk.0123":"Melting temperature",
   "mk.0124":"For the strand entered in the Calculator. Every number names the published model behind it, and says so when your chemistry has none.",
   "mk.0125":"Strand conc.",
-  "mk.0126":"Hybridises to",
+  "mk.0126":"Hybridizes to",
   "mk.0127":"Auto",
   "mk.0128":"DNA target",
   "mk.0129":"RNA target",
@@ -1241,7 +1241,7 @@ var I18N = {
   "rk.0003":"Define a monomer once and it becomes two things: a button under <b>More monomers</b>, and a code you can type. Codes longer than one letter go in brackets, like <code>(psU)</code>. Definitions are kept in this browser, and while you are signed in they sync to your account. The account copy is the one that follows you to another device.",
   "rk.0004":"Total amount <b>—</b><br>Total mass <b>—</b>",
   "rk.0005":"ESI− m/z ladder on the <b>average</b> basis (selected above); the result panel's ladder follows this toggle.",
-  "rk.0006":"Rows marked <b>working range</b> land between 500 and 2000 m/z, which is what most ESI instruments are set to collect. Oligos ionise in negative mode, meaning they lose protons from the backbone rather than gain them. Which peak comes out tallest depends on your instrument and how it is tuned.",
+  "rk.0006":"Rows marked <b>working range</b> land between 500 and 2000 m/z, which is what most ESI instruments are set to collect. Oligos ionize in negative mode, meaning they lose protons from the backbone rather than gain them. Which peak comes out tallest depends on your instrument and how it is tuned.",
   "rk.0007":"Browse tabulated phosphoramidite monomers. <b>Insert</b> drops a code into the sequence at the cursor; <b>+ Library</b> promotes it to a permanent keypad key.",
   "rk.0008":"Free: <b>30 unique amidites</b> · 45 vendor listings. <b>Oligo Calculator Pro</b> adds the full 267 unique · 351 listings.",
   "rk.0009":"Insert places the code at the cursor in your 5 prime to 3 prime sequence. <b>+ Library</b> keeps it under More monomers.",
@@ -1273,7 +1273,7 @@ var I18N = {
   "tm.cmp.h!":"For comparison: older rules, with the range each was actually measured over",
   "tm.cmp.oor!":": <b>out of range at {n} nt</b>",
   "tm.cmp.wallace":"Wallace rule",
-  "tm.cmp.wallace.range!":"11–17 nt, filter hybridisation, 1.2 M Na⁺",
+  "tm.cmp.wallace.range!":"11–17 nt, filter hybridization, 1.2 M Na⁺",
   "tm.cond.ct":"{n} µM strand",
   "tm.cond.dntp!":"{n} mM dNTP",
   "tm.cond.extrap!":"{salt}, extrapolated from DNA",
@@ -1324,7 +1324,7 @@ var I18N = {
   "tm.fold.leg.three":"<b>Three rungs</b> a G joined to a C",
   "tm.fold.leg.two":"<b>Two rungs</b> an A joined to a {p}",
   "tm.fold.limit!":"{note} (this strand is {n} nt). The melting temperature above is unaffected: that calculation is linear in length.",
-  "tm.fold.limit.note!":"not computed above {max} nt: the structure search grows as the cube of length and would block the page on a repetitive sequence",
+  "tm.fold.limit.note!":"not computed above {max} nt: the structure search costs the cube of the length and would block the page",
   "tm.fold.loop":"{n} nt loop",
   "tm.fold.mb.many":"{n} multibranch loops",
   "tm.fold.mb.one":"{n} multibranch loop",
@@ -1340,7 +1340,7 @@ var I18N = {
   "tm.fold.none":"none",
   "tm.fold.nostruct":"No stable hairpin or self-dimer found.",
   "tm.fold.note.dimer!":"The self-dimer row is the best contiguous self-dimer helix, not a self-dimer minimum free energy: it scores ONE run of adjacent pairs, with no bulges and no internal loops. In an asymmetric homodimer its mirror helix also forms and is not counted.",
-  "tm.fold.note.dna!":"Loop parameters: SantaLucia &amp; Hicks 2004, whose loop terms are given as free energy only. The loop ΔH° is taken as zero here for a loop scored by the general loop equation, so such a loop contributes to entropy alone. Internal loops with one or two unpaired bases on each side use the value Mathews measured for that exact loop, and for those loops the published enthalpy is now carried as well. Although that enthalpy is measured rather than assumed, this engine derives loop entropy from the free energy. Carrying it drives the entropy of a small number of folds toward zero, and the folding temperature, which is the ratio of the two, becomes numerically unstable. Where the result falls outside the range these parameters were measured in, or reports a stable fold as entropy-driven, the folding temperature falls back to taking the loop ΔH° as zero, which is the value earlier versions reported. No nearest-neighbor value changed, so the duplex melting temperature is unaffected.",
+  "tm.fold.note.dna!":"Loop parameters: SantaLucia &amp; Hicks 2004, whose loop terms are given as free energy only. The loop ΔH° is taken as zero here for a loop scored by the general loop equation, so such a loop contributes to entropy alone. Internal loops with one or two unpaired bases on each side use the value Mathews measured for that exact loop, and for those loops the published enthalpy is now carried as well. Although that enthalpy is measured rather than assumed, this engine derives loop entropy from the free energy. Carrying it drives the entropy of a small number of folds toward zero, and the folding temperature, which is the ratio of the two, becomes numerically unstable. Where the result falls outside the range these parameters were measured in, or reports a stable fold as entropy-driven, this engine scores the fold with the loop ΔH° taken as zero instead, and the folding temperature is then the value earlier versions reported. No nearest-neighbor value changed, so the duplex melting temperature is unaffected.",
   "tm.fold.note.mb!":", and multibranch loops. Inside a multibranch loop we score dangling ends and flush coaxial stacking; <b>mismatch-mediated coaxial stacking and dangling ends on the free tails are not scored</b>. Both omitted terms are stabilizing in the Turner model, so the ΔG shown is conservative for the structure reported. That is a statement about the model and not an experimental error bound. ",
   "tm.fold.note.mbc!":"A structure with a multi-arm junction is found by searching again with that requirement in force. The second search keeps the best junction-containing fold for every region it examines, so it reaches structures the unrestricted search discards along the way. That is why this result is occasionally more stable than the one above it.",
   "tm.fold.note.mbdna!":", and multibranch loops. Inside a multibranch loop we score dangling ends and flush coaxial stacking; <b>mismatch-mediated coaxial stacking, terminal mismatches, and dangling ends on the free tails are not scored</b>. All three omitted terms are stabilizing in the SantaLucia model, so the ΔG shown is conservative for the structure reported. That is a statement about the model and not an experimental error bound. The dangling-end values are the tabulated DNA set: several closing pairs carry one value for every dangling base, and the two G-T rows are taken from the Watson-Crick pairs they most resemble. ",
@@ -1349,7 +1349,7 @@ var I18N = {
   "tm.fold.note.one!":"No stable hairpin found.",
   "tm.fold.note.rna!":"Loop parameters: Turner 2004, which is Mathews 2004 (ΔG°₃₇) and Lu 2006 (ΔH), via the Nearest Neighbor Database; stem from Xia 1998. Real loop enthalpies, not an assumption. <b>The salt correction for this fold is fitted to RNA.</b> Each stack carries the Debye screening and Manning condensation term Yao and Lorenz published in 2023, referenced to the 1.021 M sodium the Turner parameters themselves were measured in, so the free energy and the folding temperature respond to the buffer you entered. The enthalpy does not, and neither do the base-pair and loop counts. That published model also corrects the electrostatics of loops; this engine does not, and never has. The duplex melting temperature is still corrected with Owczarzy 2004, which is fitted to DNA. GU wobble pairs are scored as stem pairs, and internal loops with one or two unpaired bases on each side use the value Turner measured for that exact loop rather than the general loop equation.",
   "tm.fold.note.tmm!":" ⚠ This loop uses the GG/CG terminal mismatch, which is anomalous in the published table and is carried unaltered.",
-  "tm.fold.scope!":"This strand is {n} nt, and this calculator is built for oligos up to {max} nt. Above that length, folds with three or more stems meeting at one loop become common, and those are the ones this search scores least accurately. The structure below is still computed. Read it as approximate.",
+  "tm.fold.scope!":"This strand is {n} nt, and this calculator is built for oligos up to {max} nt. Above that length, folds with three or more stems meeting at one loop become common, and those are the folds this search handles least well. The structure below is still computed. Read it as approximate.",
   "tm.fold.stem":"{n} bp stem",
   "tm.fold.where":"residues {a}–{b}",
   "tm.how.anti":"against the antisense strand you entered",
@@ -1423,6 +1423,8 @@ var I18N = {
   "ui.flash.sense":"⚠ Fix the sequence error first",
   "ui.fold.close":"Close",
   "ui.fold.data.gcpairs":"G:C pairs in this structure",
+  "ui.fold.dl":"Export methods",
+  "ui.fold.dla":"Download the method, parameters and figure as a file",
   "ui.fold.exp":"Expand",
   "ui.fold.expa":"Open the structure drawing full screen",
   "ui.fold.mbc":"Also show the best structure with a multi-arm junction",
@@ -2766,7 +2768,7 @@ var I18N = {
   "tm.fold.leg.three":"<b>\u4e09\u689d\u6a6b\u7dda</b> G \u548c C \u76f8\u9023",
   "tm.fold.leg.two":"<b>\u5169\u689d\u6a6b\u7dda</b> A \u548c {p} \u76f8\u9023",
   "tm.fold.limit!":"{note}\uff08\u9019\u80a1\u6709 {n} nt\uff09\u3002\u4e0a\u65b9\u7684\u7194\u89e3\u6eab\u5ea6\u4e0d\u53d7\u5f71\u97ff\uff1a\u90a3\u500b\u8a08\u7b97\u8207\u9577\u5ea6\u6210\u7dda\u6027\u95dc\u4fc2\u3002",
-  "tm.fold.limit.note!":"\u8d85\u904e {max} nt \u5c31\u4e0d\u8a08\u7b97\uff1a\u7d50\u69cb\u641c\u5c0b\u7684\u6210\u672c\u662f\u9577\u5ea6\u7684\u4e09\u6b21\u65b9\uff0c\u9047\u5230\u91cd\u8907\u5e8f\u5217\u6703\u8b93\u9801\u9762\u5361\u4f4f",
+  "tm.fold.limit.note!":"\u8d85\u904e {max} nt \u5c31\u4e0d\u8a08\u7b97\uff1a\u7d50\u69cb\u641c\u5c0b\u7684\u6210\u672c\u662f\u9577\u5ea6\u7684\u4e09\u6b21\u65b9\uff0c\u6703\u8b93\u9801\u9762\u5361\u4f4f",
   "tm.fold.loop":"{n} nt \u7684\u74b0",
   "tm.fold.mb.many":"{n} \u500b\u591a\u5206\u652f\u74b0",
   "tm.fold.mb.one":"{n} \u500b\u591a\u5206\u652f\u74b0",
@@ -2782,16 +2784,16 @@ var I18N = {
   "tm.fold.none":"\u7121",
   "tm.fold.nostruct":"\u627e\u4e0d\u5230\u7a69\u5b9a\u7684\u9aee\u593e\u6216\u81ea\u8eab\u4e8c\u805a\u9ad4\u3002",
   "tm.fold.note.dimer!":"\u81ea\u8eab\u4e8c\u805a\u9ad4\u9019\u4e00\u5217\u7d66\u7684\u662f\u6700\u4f73\u7684\u9023\u7e8c\u81ea\u8eab\u4e8c\u805a\u9ad4\u87ba\u65cb\uff0c\u4e0d\u662f\u81ea\u8eab\u4e8c\u805a\u9ad4\u7684\u6700\u5c0f\u81ea\u7531\u80fd\uff1a\u5b83\u53ea\u8a08\u7b97\u4e00\u6bb5\u76f8\u9130\u914d\u5c0d\uff0c\u4e0d\u542b\u51f8\u8d77\u4e5f\u4e0d\u542b\u5167\u90e8\u74b0\u3002\u5728\u4e0d\u5c0d\u7a31\u7684\u540c\u578b\u4e8c\u805a\u9ad4\u4e2d\uff0c\u5b83\u7684\u93e1\u50cf\u87ba\u65cb\u4e5f\u6703\u5f62\u6210\uff0c\u4f46\u6c92\u6709\u88ab\u8a08\u5165\u3002",
-  "tm.fold.note.dna!":"\u74b0\u53c3\u6578\uff1aSantaLucia &amp; Hicks 2004\uff0c\u5176\u74b0\u9805\u50c5\u4ee5\u81ea\u7531\u80fd\u7d66\u51fa\u3002\u4ee5\u901a\u7528\u74b0\u65b9\u7a0b\u5f0f\u8a08\u7b97\u7684\u74b0\uff0c\u9019\u88e1\u5c07\u5176 ΔH° \u53d6\u70ba\u96f6\uff0c\u56e0\u6b64\u9019\u985e\u74b0\u53ea\u8ca2\u737b\u71b5\u3002\u5169\u5074\u5404\u6709\u4e00\u5230\u5169\u500b\u672a\u914d\u5c0d\u9e7c\u57fa\u7684\u5167\u90e8\u74b0\uff0c\u63a1\u7528 Mathews \u5c0d\u8a72\u74b0\u7684\u5be6\u6e2c\u503c\uff0c\u800c\u4e14\u73fe\u5728\u4e5f\u4e00\u4f75\u8f09\u5165\u5df2\u767c\u8868\u7684\u7113\u503c\u3002\u9019\u500b\u7113\u503c\u96d6\u7136\u662f\u5be6\u6e2c\u800c\u975e\u5047\u8a2d\uff0c\u4f46\u672c\u5f15\u64ce\u7684\u74b0\u71b5\u662f\u5f9e\u81ea\u7531\u80fd\u63a8\u5c0e\u51fa\u4f86\u7684\u3002\u8f09\u5165\u7113\u503c\u6703\u8b93\u5c11\u6578\u647a\u758a\u7684\u71b5\u8da8\u8fd1\u65bc\u96f6\uff0c\u800c\u647a\u758a\u7684\u7194\u89e3\u6eab\u5ea6\u662f\u5169\u8005\u7684\u6bd4\u503c\uff0c\u65bc\u662f\u5728\u6578\u503c\u4e0a\u8b8a\u5f97\u4e0d\u7a69\u5b9a\u3002\u7576\u7d50\u679c\u843d\u5728\u9019\u4e9b\u53c3\u6578\u7684\u91cf\u6e2c\u7bc4\u570d\u4e4b\u5916\uff0c\u6216\u662f\u628a\u7a69\u5b9a\u7684\u647a\u758a\u5224\u70ba\u7531\u71b5\u9a45\u52d5\u6642\uff0c\u647a\u758a\u7684\u7194\u89e3\u6eab\u5ea6\u6539\u70ba\u5c07\u74b0\u7684 ΔH° \u53d6\u70ba\u96f6\uff0c\u4e5f\u5c31\u662f\u5148\u524d\u7248\u672c\u4e00\u76f4\u56de\u5831\u7684\u6578\u503c\u3002\u6c92\u6709\u4efb\u4f55\u6700\u9130\u8fd1\u53c3\u6578\u6539\u8b8a\uff0c\u6240\u4ee5\u96d9\u80a1\u7684\u7194\u89e3\u6eab\u5ea6\u4e0d\u53d7\u5f71\u97ff\u3002",
+  "tm.fold.note.dna!":"\u74b0\u53c3\u6578\uff1aSantaLucia &amp; Hicks 2004\uff0c\u5176\u74b0\u9805\u50c5\u4ee5\u81ea\u7531\u80fd\u7d66\u51fa\u3002\u4ee5\u901a\u7528\u74b0\u65b9\u7a0b\u5f0f\u8a08\u7b97\u7684\u74b0\uff0c\u9019\u88e1\u5c07\u5176 ΔH° \u53d6\u70ba\u96f6\uff0c\u56e0\u6b64\u9019\u985e\u74b0\u53ea\u8ca2\u737b\u71b5\u3002\u5169\u5074\u5404\u6709\u4e00\u5230\u5169\u500b\u672a\u914d\u5c0d\u9e7c\u57fa\u7684\u5167\u90e8\u74b0\uff0c\u63a1\u7528 Mathews \u5c0d\u8a72\u74b0\u7684\u5be6\u6e2c\u503c\uff0c\u800c\u4e14\u73fe\u5728\u4e5f\u4e00\u4f75\u8f09\u5165\u5df2\u767c\u8868\u7684\u7113\u503c\u3002\u9019\u500b\u7113\u503c\u96d6\u7136\u662f\u5be6\u6e2c\u800c\u975e\u5047\u8a2d\uff0c\u4f46\u672c\u5f15\u64ce\u7684\u74b0\u71b5\u662f\u5f9e\u81ea\u7531\u80fd\u63a8\u5c0e\u51fa\u4f86\u7684\u3002\u8f09\u5165\u7113\u503c\u6703\u8b93\u5c11\u6578\u647a\u758a\u7684\u71b5\u8da8\u8fd1\u65bc\u96f6\uff0c\u800c\u647a\u758a\u7684\u7194\u89e3\u6eab\u5ea6\u662f\u5169\u8005\u7684\u6bd4\u503c\uff0c\u65bc\u662f\u5728\u6578\u503c\u4e0a\u8b8a\u5f97\u4e0d\u7a69\u5b9a\u3002\u7576\u7d50\u679c\u843d\u5728\u9019\u4e9b\u53c3\u6578\u7684\u91cf\u6e2c\u7bc4\u570d\u4e4b\u5916\uff0c\u6216\u662f\u628a\u7a69\u5b9a\u7684\u647a\u758a\u5224\u70ba\u7531\u71b5\u9a45\u52d5\u6642\uff0c\u672c\u5f15\u64ce\u6539\u4ee5\u5c07\u74b0\u7684 ΔH° \u53d6\u70ba\u96f6\u4f86\u8a08\u5206\uff0c\u6b64\u6642\u647a\u758a\u7684\u7194\u89e3\u6eab\u5ea6\u5c31\u662f\u5148\u524d\u7248\u672c\u4e00\u76f4\u56de\u5831\u7684\u6578\u503c\u3002\u6c92\u6709\u4efb\u4f55\u6700\u9130\u8fd1\u53c3\u6578\u6539\u8b8a\uff0c\u6240\u4ee5\u96d9\u80a1\u7684\u7194\u89e3\u6eab\u5ea6\u4e0d\u53d7\u5f71\u97ff\u3002",
   "tm.fold.note.mb!":"\uff0c\u4ee5\u53ca\u591a\u5206\u652f\u74b0\u3002\u5728\u591a\u5206\u652f\u74b0\u5167\u6211\u5011\u6703\u8a08\u5165\u61f8\u5782\u672b\u7aef\u8207\u9f4a\u5e73\u7684\u5171\u8ef8\u5806\u758a\uff1b<b>\u932f\u914d\u4ecb\u5c0e\u7684\u5171\u8ef8\u5806\u758a\u4ee5\u53ca\u6e38\u96e2\u5c3e\u7aef\u4e0a\u7684\u61f8\u5782\u672b\u7aef\uff0c\u90fd\u4e0d\u8a08\u5165</b>\u3002\u9019\u5169\u9805\u88ab\u7565\u904e\u7684\u80fd\u91cf\u9805\u5728 Turner \u6a21\u578b\u4e2d\u90fd\u662f\u4f7f\u7d50\u69cb\u66f4\u7a69\u5b9a\u7684\uff0c\u6240\u4ee5\u986f\u793a\u7684 ΔG \u5c0d\u6240\u5831\u544a\u7684\u7d50\u69cb\u800c\u8a00\u662f\u4fdd\u5b88\u7684\u3002\u9019\u662f\u95dc\u65bc\u6a21\u578b\u672c\u8eab\u7684\u9673\u8ff0\uff0c\u4e0d\u662f\u5be6\u9a57\u8aa4\u5dee\u7bc4\u570d\u3002 ",
-  "tm.fold.note.mbc!":"\u542b\u591a\u5411\u4ea4\u532f\u7684\u7d50\u69cb\uff0c\u662f\u5728\u52a0\u4e0a\u9019\u500b\u689d\u4ef6\u4e4b\u5f8c\u91cd\u65b0\u641c\u5c0b\u5f97\u5230\u7684\u3002\u7b2c\u4e8c\u6b21\u641c\u5c0b\u6703\u5728\u6bcf\u500b\u6aa2\u67e5\u904e\u7684\u5340\u6bb5\u4e0a\u4fdd\u7559\u542b\u4ea4\u532f\u7684\u6700\u4f73\u7d50\u69cb\uff0c\u56e0\u6b64\u80fd\u5230\u9054\u6c92\u6709\u689d\u4ef6\u7684\u641c\u5c0b\u5728\u4e2d\u9014\u6368\u68c4\u7684\u7d50\u69cb\u3002\u9019\u5c31\u662f\u70ba\u4ec0\u9ebc\u9019\u500b\u7d50\u679c\u5076\u723e\u6703\u6bd4\u4e0a\u65b9\u7684\u7d50\u69cb\u66f4\u7a69\u5b9a\u3002",
+  "tm.fold.note.mbc!":"\u542b\u591a\u5411\u4ea4\u532f\u7684\u7d50\u69cb\uff0c\u662f\u5728\u8981\u6c42\u7d50\u69cb\u5fc5\u9808\u542b\u6709\u591a\u5411\u4ea4\u532f\u4e4b\u5f8c\u91cd\u65b0\u641c\u5c0b\u5f97\u5230\u7684\u3002\u7b2c\u4e8c\u6b21\u641c\u5c0b\u6703\u5728\u6bcf\u500b\u6aa2\u67e5\u904e\u7684\u5340\u6bb5\u4e0a\u4fdd\u7559\u542b\u4ea4\u532f\u7684\u6700\u4f73\u7d50\u69cb\uff0c\u56e0\u6b64\u80fd\u627e\u5230\u4e0d\u52a0\u9019\u9805\u8981\u6c42\u6642\u641c\u5c0b\u5728\u4e2d\u9014\u6368\u68c4\u7684\u7d50\u69cb\u3002\u9019\u5c31\u662f\u70ba\u4ec0\u9ebc\u9019\u500b\u7d50\u679c\u5076\u723e\u6703\u6bd4\u4e0a\u65b9\u7684\u7d50\u69cb\u66f4\u7a69\u5b9a\u3002",
   "tm.fold.note.mbdna!":"\uff0c\u4ee5\u53ca\u591a\u5206\u652f\u74b0\u3002\u5728\u591a\u5206\u652f\u74b0\u5167\u6211\u5011\u6703\u8a08\u5165\u61f8\u5782\u672b\u7aef\u8207\u9f4a\u5e73\u7684\u5171\u8ef8\u5806\u758a\uff1b<b>\u932f\u914d\u4ecb\u5c0e\u7684\u5171\u8ef8\u5806\u758a\u3001\u672b\u7aef\u932f\u914d\uff0c\u4ee5\u53ca\u6e38\u96e2\u5c3e\u7aef\u4e0a\u7684\u61f8\u5782\u672b\u7aef\uff0c\u90fd\u4e0d\u8a08\u5165</b>\u3002\u9019\u4e09\u9805\u88ab\u7565\u904e\u7684\u80fd\u91cf\u9805\u5728 SantaLucia \u6a21\u578b\u4e2d\u90fd\u662f\u4f7f\u7d50\u69cb\u66f4\u7a69\u5b9a\u7684\uff0c\u6240\u4ee5\u986f\u793a\u7684 ΔG \u5c0d\u6240\u5831\u544a\u7684\u7d50\u69cb\u800c\u8a00\u662f\u4fdd\u5b88\u7684\u3002\u9019\u662f\u95dc\u65bc\u6a21\u578b\u672c\u8eab\u7684\u9673\u8ff0\uff0c\u4e0d\u662f\u5be6\u9a57\u8aa4\u5dee\u7bc4\u570d\u3002\u61f8\u5782\u672b\u7aef\u63a1\u7528\u5df2\u88fd\u8868\u7684 DNA \u6578\u503c\uff1a\u5176\u4e2d\u6709\u5e7e\u500b\u9589\u5408\u9e7c\u57fa\u5c0d\uff0c\u56db\u7a2e\u61f8\u5782\u9e7c\u57fa\u5171\u7528\u540c\u4e00\u500b\u503c\uff0c\u800c\u5169\u5217 G-T \u5247\u6cbf\u7528\u8207\u5176\u6700\u76f8\u8fd1\u7684\u83ef\u751f-\u514b\u91cc\u514b\u9e7c\u57fa\u5c0d\u7684\u6578\u503c\u3002 ",
   "tm.fold.note.mbrna!":"\u3002<b>\u8d85\u904e {n} nt \u5c31\u4e0d\u641c\u5c0b\u591a\u5206\u652f\u7d50\u69cb\u3002</b>\u641c\u5c0b\u6210\u672c\u662f\u9577\u5ea6\u7684\u4e09\u6b21\u65b9\uff0c\u6703\u8b93\u9801\u9762\u5361\u4f4f\u3002\u82e5\u6709\u4e09\u500b\u4ee5\u4e0a\u7684\u8396\u4ea4\u6703\u65bc\u540c\u4e00\u500b\u74b0\uff0c\u6211\u5011\u53ea\u5831\u544a\u5176\u4e2d\u6700\u7a69\u5b9a\u7684\u90a3\u4e00\u652f\uff0c\u6240\u4ee5\u771f\u5be6\u7d50\u69cb\u6709\u53ef\u80fd\u6bd4\u986f\u793a\u7684\u66f4\u7a69\u5b9a\u3002 ",
   "tm.fold.note.mfe!":"\u9019\u500b\u7d50\u69cb\u662f\u9019\u6b21\u641c\u5c0b\u627e\u5230\u7684\u6700\u4f4e\u81ea\u7531\u80fd\u7d50\u69cb\uff0c\u4e26\u4e0d\u662f\u5df2\u8b49\u660e\u7684\u5168\u57df\u6700\u5c0f\u503c\uff1a\u641c\u5c0b\u5148\u7528\u8f03\u4fbf\u5b9c\u7684\u80fd\u91cf\u6a21\u578b\u6392\u5e8f\uff0c\u518d\u53ea\u5c0d\u524d {k} \u500b\u5019\u9078\u7d50\u69cb\u505a\u7cbe\u78ba\u8a08\u5206\u3002\u7d50\u679c\u4ee5\u9ede\u62ec\u865f\u8868\u793a\uff1a\u5305\u542b\u5806\u758a\u3001\u51f8\u8d77\u8207\u5167\u90e8\u74b0",
   "tm.fold.note.one!":"\u627e\u4e0d\u5230\u7a69\u5b9a\u7684\u9aee\u593e\u3002",
   "tm.fold.note.rna!":"\u74b0\u53c3\u6578\uff1aTurner 2004\uff0c\u4e5f\u5c31\u662f\u53d6\u81ea Nearest Neighbor Database \u7684 Mathews 2004\uff08ΔG°₃₇\uff09\u8207 Lu 2006\uff08ΔH\uff09\uff1b\u8396\u4f86\u81ea Xia 1998\u3002\u9019\u662f\u771f\u6b63\u91cf\u6e2c\u7684\u74b0\u7113\u503c\uff0c\u4e0d\u662f\u5047\u8a2d\u3002<b>\u9019\u500b\u647a\u758a\u7684\u9e7d\u6821\u6b63\u662f\u91dd\u5c0d RNA \u64ec\u5408\u7684\u3002</b>\u6bcf\u4e00\u500b\u5806\u758a\u90fd\u5e36\u6709 Yao \u8207 Lorenz \u5728 2023 \u5e74\u767c\u8868\u7684\u5fb7\u62dc\u5c4f\u853d\u8207 Manning \u51dd\u805a\u9805\uff0c\u4e26\u4ee5 Turner \u53c3\u6578\u672c\u8eab\u7684\u91cf\u6e2c\u689d\u4ef6 1.021 M \u9209\u96e2\u5b50\u70ba\u57fa\u6e96\uff0c\u56e0\u6b64\u81ea\u7531\u80fd\u8207\u647a\u758a\u7684\u7194\u89e3\u6eab\u5ea6\u6703\u96a8\u4f60\u8f38\u5165\u7684\u7de9\u885d\u6db2\u800c\u8b8a\u3002\u7113\u503c\u4e0d\u6703\uff0c\u9e7c\u57fa\u5c0d\u8207\u74b0\u7684\u8a08\u6578\u4e5f\u4e0d\u6703\u3002\u90a3\u7bc7\u767c\u8868\u7684\u6a21\u578b\u540c\u6642\u4e5f\u6821\u6b63\u74b0\u7684\u975c\u96fb\u4f5c\u7528\uff0c\u672c\u5f15\u64ce\u6c92\u6709\uff0c\u904e\u53bb\u4e5f\u4e0d\u66fe\u6709\u3002\u96d9\u80a1\u7684\u7194\u89e3\u6eab\u5ea6\u4ecd\u7136\u4ee5 Owczarzy 2004 \u6821\u6b63\uff0c\u800c\u90a3\u662f\u5c0d DNA \u64ec\u5408\u7684\u3002GU \u6416\u64fa\u914d\u5c0d\u8a08\u70ba\u8396\u914d\u5c0d\uff1b\u5169\u5074\u5404\u6709\u4e00\u5230\u5169\u500b\u672a\u914d\u5c0d\u9e7c\u57fa\u7684\u5167\u90e8\u74b0\uff0c\u63a1\u7528 Turner \u5c0d\u8a72\u74b0\u7684\u5be6\u6e2c\u503c\uff0c\u800c\u4e0d\u662f\u901a\u7528\u7684\u74b0\u65b9\u7a0b\u5f0f\u3002",
   "tm.fold.note.tmm!":" ⚠ \u9019\u500b\u74b0\u7528\u5230 GG/CG \u672b\u7aef\u932f\u914d\u3002\u5b83\u5728\u5df2\u767c\u8868\u7684\u8868\u683c\u4e2d\u662f\u7570\u5e38\u503c\uff0c\u6211\u5011\u539f\u6a23\u6cbf\u7528\uff0c\u6c92\u6709\u4fee\u6539\u3002",
-  "tm.fold.scope!":"\u9019\u80a1\u6709 {n} nt\uff0c\u800c\u9019\u500b\u8a08\u7b97\u5de5\u5177\u7684\u8a2d\u8a08\u7bc4\u570d\u662f {max} nt \u4ee5\u5167\u7684\u5be1\u6838\u82f7\u9178\u3002\u8d85\u904e\u9019\u500b\u9577\u5ea6\u4e4b\u5f8c\uff0c\u4e09\u500b\u4ee5\u4e0a\u7684\u8396\u4ea4\u6703\u65bc\u540c\u4e00\u500b\u74b0\u7684\u647a\u758a\u6703\u8b8a\u5f97\u5e38\u898b\uff0c\u800c\u90a3\u6b63\u662f\u9019\u500b\u641c\u5c0b\u7b97\u5f97\u6700\u4e0d\u6e96\u7684\u4e00\u985e\u3002\u4e0b\u9762\u7684\u7d50\u69cb\u4ecd\u7136\u6703\u8a08\u7b97\u51fa\u4f86\u3002\u8acb\u7576\u6210\u8fd1\u4f3c\u503c\u4f86\u770b\u3002",
+  "tm.fold.scope!":"\u9019\u80a1\u6709 {n} nt\uff0c\u800c\u9019\u500b\u8a08\u7b97\u5de5\u5177\u7684\u8a2d\u8a08\u7bc4\u570d\u662f {max} nt \u4ee5\u5167\u7684\u5be1\u6838\u82f7\u9178\u3002\u8d85\u904e\u9019\u500b\u9577\u5ea6\u4e4b\u5f8c\uff0c\u4e09\u500b\u4ee5\u4e0a\u7684\u8396\u4ea4\u6703\u65bc\u540c\u4e00\u500b\u74b0\u7684\u647a\u758a\u6703\u8b8a\u5f97\u5e38\u898b\uff0c\u800c\u90a3\u6b63\u662f\u9019\u500b\u641c\u5c0b\u6700\u4e0d\u64c5\u9577\u8655\u7406\u7684\u4e00\u985e\u3002\u4e0b\u9762\u7684\u7d50\u69cb\u4ecd\u7136\u6703\u8a08\u7b97\u51fa\u4f86\u3002\u8acb\u7576\u6210\u8fd1\u4f3c\u503c\u4f86\u770b\u3002",
   "tm.fold.stem":"{n} bp \u7684\u8396",
   "tm.fold.where":"\u7b2c {a} \u5230 {b} \u500b\u6b98\u57fa",
   "tm.how.anti":"\u5c0d\u4e0a\u4f60\u8f38\u5165\u7684\u53cd\u7fa9\u80a1",
@@ -2865,6 +2867,8 @@ var I18N = {
   "ui.flash.sense":"⚠ \u8acb\u5148\u4fee\u6b63\u5e8f\u5217\u932f\u8aa4",
   "ui.fold.close":"\u95dc\u9589",
   "ui.fold.data.gcpairs":"\u4e8c\u7d1a\u7d50\u69cb G:C \u9e7c\u57fa\u5c0d\u6578",
+  "ui.fold.dl":"\u532f\u51fa\u8a08\u7b97\u65b9\u6cd5",
+  "ui.fold.dla":"\u5c07\u8a08\u7b97\u65b9\u6cd5\u3001\u53c3\u6578\u8207\u7d50\u69cb\u5716\u4e0b\u8f09\u6210\u6a94\u6848",
   "ui.fold.exp":"\u653e\u5927",
   "ui.fold.expa":"\u4ee5\u5168\u87a2\u5e55\u958b\u555f\u7d50\u69cb\u5716",
   "ui.fold.mbc":"\u540c\u6642\u986f\u793a\u542b\u591a\u5411\u4ea4\u532f\u7684\u6700\u7a69\u5b9a\u7d50\u69cb",
@@ -4207,7 +4211,7 @@ var I18N = {
   "tm.fold.leg.three":"<b>\u4e09\u6761\u6a2a\u7ebf</b> G \u548c C \u76f8\u8fde",
   "tm.fold.leg.two":"<b>\u4e24\u6761\u6a2a\u7ebf</b> A \u548c {p} \u76f8\u8fde",
   "tm.fold.limit!":"{note}\uff08\u8fd9\u6761\u94fe\u6709 {n} nt\uff09\u3002\u4e0a\u65b9\u7684\u89e3\u94fe\u6e29\u5ea6\u4e0d\u53d7\u5f71\u54cd\uff1a\u90a3\u4e2a\u8ba1\u7b97\u4e0e\u957f\u5ea6\u6210\u7ebf\u6027\u5173\u7cfb\u3002",
-  "tm.fold.limit.note!":"\u8d85\u8fc7 {max} nt \u5c31\u4e0d\u8ba1\u7b97\uff1a\u7ed3\u6784\u641c\u7d22\u7684\u6210\u672c\u662f\u957f\u5ea6\u7684\u4e09\u6b21\u65b9\uff0c\u9047\u5230\u91cd\u590d\u5e8f\u5217\u4f1a\u8ba9\u9875\u9762\u5361\u4f4f",
+  "tm.fold.limit.note!":"\u8d85\u8fc7 {max} nt \u5c31\u4e0d\u8ba1\u7b97\uff1a\u7ed3\u6784\u641c\u7d22\u7684\u6210\u672c\u662f\u957f\u5ea6\u7684\u4e09\u6b21\u65b9\uff0c\u4f1a\u8ba9\u9875\u9762\u5361\u4f4f",
   "tm.fold.loop":"{n} nt \u7684\u73af",
   "tm.fold.mb.many":"{n} \u4e2a\u591a\u5206\u652f\u73af",
   "tm.fold.mb.one":"{n} \u4e2a\u591a\u5206\u652f\u73af",
@@ -4223,16 +4227,16 @@ var I18N = {
   "tm.fold.none":"\u65e0",
   "tm.fold.nostruct":"\u627e\u4e0d\u5230\u7a33\u5b9a\u7684\u53d1\u5939\u6216\u81ea\u8eab\u4e8c\u805a\u4f53\u3002",
   "tm.fold.note.dimer!":"\u81ea\u8eab\u4e8c\u805a\u4f53\u8fd9\u4e00\u884c\u7ed9\u7684\u662f\u6700\u4f73\u7684\u8fde\u7eed\u81ea\u8eab\u4e8c\u805a\u4f53\u87ba\u65cb\uff0c\u4e0d\u662f\u81ea\u8eab\u4e8c\u805a\u4f53\u7684\u6700\u5c0f\u81ea\u7531\u80fd\uff1a\u5b83\u53ea\u8ba1\u7b97\u4e00\u6bb5\u76f8\u90bb\u914d\u5bf9\uff0c\u4e0d\u542b\u51f8\u8d77\u4e5f\u4e0d\u542b\u5185\u90e8\u73af\u3002\u5728\u4e0d\u5bf9\u79f0\u7684\u540c\u578b\u4e8c\u805a\u4f53\u4e2d\uff0c\u5b83\u7684\u955c\u50cf\u87ba\u65cb\u4e5f\u4f1a\u5f62\u6210\uff0c\u4f46\u6ca1\u6709\u88ab\u8ba1\u5165\u3002",
-  "tm.fold.note.dna!":"\u73af\u53c2\u6570\uff1aSantaLucia &amp; Hicks 2004\uff0c\u5176\u73af\u9879\u4ec5\u4ee5\u81ea\u7531\u80fd\u7ed9\u51fa\u3002\u4ee5\u901a\u7528\u73af\u65b9\u7a0b\u8ba1\u7b97\u7684\u73af\uff0c\u8fd9\u91cc\u5c06\u5176 ΔH° \u53d6\u4e3a\u96f6\uff0c\u56e0\u6b64\u8fd9\u7c7b\u73af\u53ea\u8d21\u732e\u71b5\u3002\u4e24\u4fa7\u5404\u6709\u4e00\u5230\u4e24\u4e2a\u672a\u914d\u5bf9\u78b1\u57fa\u7684\u5185\u90e8\u73af\uff0c\u91c7\u7528 Mathews \u5bf9\u8be5\u73af\u7684\u5b9e\u6d4b\u503c\uff0c\u800c\u4e14\u73b0\u5728\u4e5f\u4e00\u5e76\u8f7d\u5165\u5df2\u53d1\u8868\u7684\u7113\u503c\u3002\u8fd9\u4e2a\u7113\u503c\u867d\u7136\u662f\u5b9e\u6d4b\u800c\u975e\u5047\u8bbe\uff0c\u4f46\u672c\u5f15\u64ce\u7684\u73af\u71b5\u662f\u4ece\u81ea\u7531\u80fd\u63a8\u5bfc\u51fa\u6765\u7684\u3002\u8f7d\u5165\u7113\u503c\u4f1a\u8ba9\u5c11\u6570\u6298\u53e0\u7684\u71b5\u8d8b\u8fd1\u4e8e\u96f6\uff0c\u800c\u6298\u53e0\u7684\u89e3\u94fe\u6e29\u5ea6\u662f\u4e24\u8005\u7684\u6bd4\u503c\uff0c\u4e8e\u662f\u5728\u6570\u503c\u4e0a\u53d8\u5f97\u4e0d\u7a33\u5b9a\u3002\u5f53\u7ed3\u679c\u843d\u5728\u8fd9\u4e9b\u53c2\u6570\u7684\u6d4b\u91cf\u8303\u56f4\u4e4b\u5916\uff0c\u6216\u662f\u628a\u7a33\u5b9a\u7684\u6298\u53e0\u5224\u4e3a\u7531\u71b5\u9a71\u52a8\u65f6\uff0c\u6298\u53e0\u7684\u89e3\u94fe\u6e29\u5ea6\u6539\u4e3a\u5c06\u73af\u7684 ΔH° \u53d6\u4e3a\u96f6\uff0c\u4e5f\u5c31\u662f\u5148\u524d\u7248\u672c\u4e00\u76f4\u62a5\u544a\u7684\u6570\u503c\u3002\u6ca1\u6709\u4efb\u4f55\u6700\u8fd1\u90bb\u53c2\u6570\u6539\u53d8\uff0c\u6240\u4ee5\u53cc\u94fe\u7684\u89e3\u94fe\u6e29\u5ea6\u4e0d\u53d7\u5f71\u54cd\u3002",
+  "tm.fold.note.dna!":"\u73af\u53c2\u6570\uff1aSantaLucia &amp; Hicks 2004\uff0c\u5176\u73af\u9879\u4ec5\u4ee5\u81ea\u7531\u80fd\u7ed9\u51fa\u3002\u4ee5\u901a\u7528\u73af\u65b9\u7a0b\u8ba1\u7b97\u7684\u73af\uff0c\u8fd9\u91cc\u5c06\u5176 ΔH° \u53d6\u4e3a\u96f6\uff0c\u56e0\u6b64\u8fd9\u7c7b\u73af\u53ea\u8d21\u732e\u71b5\u3002\u4e24\u4fa7\u5404\u6709\u4e00\u5230\u4e24\u4e2a\u672a\u914d\u5bf9\u78b1\u57fa\u7684\u5185\u90e8\u73af\uff0c\u91c7\u7528 Mathews \u5bf9\u8be5\u73af\u7684\u5b9e\u6d4b\u503c\uff0c\u800c\u4e14\u73b0\u5728\u4e5f\u4e00\u5e76\u8f7d\u5165\u5df2\u53d1\u8868\u7684\u7113\u503c\u3002\u8fd9\u4e2a\u7113\u503c\u867d\u7136\u662f\u5b9e\u6d4b\u800c\u975e\u5047\u8bbe\uff0c\u4f46\u672c\u5f15\u64ce\u7684\u73af\u71b5\u662f\u4ece\u81ea\u7531\u80fd\u63a8\u5bfc\u51fa\u6765\u7684\u3002\u8f7d\u5165\u7113\u503c\u4f1a\u8ba9\u5c11\u6570\u6298\u53e0\u7684\u71b5\u8d8b\u8fd1\u4e8e\u96f6\uff0c\u800c\u6298\u53e0\u7684\u89e3\u94fe\u6e29\u5ea6\u662f\u4e24\u8005\u7684\u6bd4\u503c\uff0c\u4e8e\u662f\u5728\u6570\u503c\u4e0a\u53d8\u5f97\u4e0d\u7a33\u5b9a\u3002\u5f53\u7ed3\u679c\u843d\u5728\u8fd9\u4e9b\u53c2\u6570\u7684\u6d4b\u91cf\u8303\u56f4\u4e4b\u5916\uff0c\u6216\u662f\u628a\u7a33\u5b9a\u7684\u6298\u53e0\u5224\u4e3a\u7531\u71b5\u9a71\u52a8\u65f6\uff0c\u672c\u5f15\u64ce\u6539\u4ee5\u5c06\u73af\u7684 ΔH° \u53d6\u4e3a\u96f6\u6765\u8ba1\u5206\uff0c\u6b64\u65f6\u6298\u53e0\u7684\u89e3\u94fe\u6e29\u5ea6\u5c31\u662f\u5148\u524d\u7248\u672c\u4e00\u76f4\u62a5\u544a\u7684\u6570\u503c\u3002\u6ca1\u6709\u4efb\u4f55\u6700\u8fd1\u90bb\u53c2\u6570\u6539\u53d8\uff0c\u6240\u4ee5\u53cc\u94fe\u7684\u89e3\u94fe\u6e29\u5ea6\u4e0d\u53d7\u5f71\u54cd\u3002",
   "tm.fold.note.mb!":"\uff0c\u4ee5\u53ca\u591a\u5206\u652f\u73af\u3002\u5728\u591a\u5206\u652f\u73af\u5185\u6211\u4eec\u4f1a\u8ba1\u5165\u60ac\u5782\u672b\u7aef\u4e0e\u9f50\u5e73\u7684\u5171\u8f74\u5806\u53e0\uff1b<b>\u9519\u914d\u4ecb\u5bfc\u7684\u5171\u8f74\u5806\u53e0\u4ee5\u53ca\u6e38\u79bb\u5c3e\u7aef\u4e0a\u7684\u60ac\u5782\u672b\u7aef\uff0c\u90fd\u4e0d\u8ba1\u5165</b>\u3002\u8fd9\u4e24\u9879\u88ab\u7565\u8fc7\u7684\u80fd\u91cf\u9879\u5728 Turner \u6a21\u578b\u4e2d\u90fd\u662f\u4f7f\u7ed3\u6784\u66f4\u7a33\u5b9a\u7684\uff0c\u6240\u4ee5\u663e\u793a\u7684 ΔG \u5bf9\u6240\u62a5\u544a\u7684\u7ed3\u6784\u800c\u8a00\u662f\u4fdd\u5b88\u7684\u3002\u8fd9\u662f\u5173\u4e8e\u6a21\u578b\u672c\u8eab\u7684\u9648\u8ff0\uff0c\u4e0d\u662f\u5b9e\u9a8c\u8bef\u5dee\u8303\u56f4\u3002",
-  "tm.fold.note.mbc!":"\u542b\u591a\u5411\u4ea4\u6c47\u7684\u7ed3\u6784\uff0c\u662f\u5728\u8981\u6c42\u7ed3\u6784\u5fc5\u987b\u542b\u6709\u591a\u5411\u4ea4\u6c47\u4e4b\u540e\u91cd\u65b0\u641c\u7d22\u5f97\u5230\u7684\u3002\u7b2c\u4e8c\u6b21\u641c\u7d22\u4f1a\u5728\u6bcf\u4e2a\u68c0\u67e5\u8fc7\u7684\u533a\u6bb5\u4e0a\u4fdd\u7559\u542b\u4ea4\u6c47\u7684\u6700\u4f73\u7ed3\u6784\uff0c\u56e0\u6b64\u80fd\u5230\u8fbe\u4e0d\u52a0\u8fd9\u9879\u8981\u6c42\u65f6\u641c\u7d22\u5728\u4e2d\u9014\u820d\u5f03\u7684\u7ed3\u6784\u3002\u8fd9\u5c31\u662f\u4e3a\u4ec0\u4e48\u8fd9\u4e2a\u7ed3\u679c\u5076\u5c14\u4f1a\u6bd4\u4e0a\u65b9\u7684\u7ed3\u6784\u66f4\u7a33\u5b9a\u3002",
+  "tm.fold.note.mbc!":"\u542b\u591a\u5411\u4ea4\u6c47\u7684\u7ed3\u6784\uff0c\u662f\u5728\u8981\u6c42\u7ed3\u6784\u5fc5\u987b\u542b\u6709\u591a\u5411\u4ea4\u6c47\u4e4b\u540e\u91cd\u65b0\u641c\u7d22\u5f97\u5230\u7684\u3002\u7b2c\u4e8c\u6b21\u641c\u7d22\u4f1a\u5728\u6bcf\u4e2a\u68c0\u67e5\u8fc7\u7684\u533a\u6bb5\u4e0a\u4fdd\u7559\u542b\u4ea4\u6c47\u7684\u6700\u4f73\u7ed3\u6784\uff0c\u56e0\u6b64\u80fd\u627e\u5230\u4e0d\u52a0\u8fd9\u9879\u8981\u6c42\u65f6\u641c\u7d22\u5728\u4e2d\u9014\u820d\u5f03\u7684\u7ed3\u6784\u3002\u8fd9\u5c31\u662f\u4e3a\u4ec0\u4e48\u8fd9\u4e2a\u7ed3\u679c\u5076\u5c14\u4f1a\u6bd4\u4e0a\u65b9\u7684\u7ed3\u6784\u66f4\u7a33\u5b9a\u3002",
   "tm.fold.note.mbdna!":"\uff0c\u4ee5\u53ca\u591a\u5206\u652f\u73af\u3002\u5728\u591a\u5206\u652f\u73af\u5185\u6211\u4eec\u4f1a\u8ba1\u5165\u60ac\u5782\u672b\u7aef\u4e0e\u9f50\u5e73\u7684\u5171\u8f74\u5806\u53e0\uff1b<b>\u9519\u914d\u4ecb\u5bfc\u7684\u5171\u8f74\u5806\u53e0\u3001\u672b\u7aef\u9519\u914d\uff0c\u4ee5\u53ca\u6e38\u79bb\u5c3e\u7aef\u4e0a\u7684\u60ac\u5782\u672b\u7aef\uff0c\u90fd\u4e0d\u8ba1\u5165</b>\u3002\u8fd9\u4e09\u9879\u88ab\u7565\u8fc7\u7684\u80fd\u91cf\u9879\u5728 SantaLucia \u6a21\u578b\u4e2d\u90fd\u662f\u4f7f\u7ed3\u6784\u66f4\u7a33\u5b9a\u7684\uff0c\u6240\u4ee5\u663e\u793a\u7684 ΔG \u5bf9\u6240\u62a5\u544a\u7684\u7ed3\u6784\u800c\u8a00\u662f\u4fdd\u5b88\u7684\u3002\u8fd9\u662f\u5173\u4e8e\u6a21\u578b\u672c\u8eab\u7684\u9648\u8ff0\uff0c\u4e0d\u662f\u5b9e\u9a8c\u8bef\u5dee\u8303\u56f4\u3002\u60ac\u5782\u672b\u7aef\u91c7\u7528\u5df2\u5236\u8868\u7684 DNA \u6570\u503c\uff1a\u5176\u4e2d\u6709\u51e0\u4e2a\u95ed\u5408\u78b1\u57fa\u5bf9\uff0c\u56db\u79cd\u60ac\u5782\u78b1\u57fa\u5171\u7528\u540c\u4e00\u4e2a\u503c\uff0c\u800c\u4e24\u884c G-T \u5219\u6cbf\u7528\u4e0e\u5176\u6700\u76f8\u8fd1\u7684\u6c83\u68ee-\u514b\u91cc\u514b\u78b1\u57fa\u5bf9\u7684\u6570\u503c\u3002",
   "tm.fold.note.mbrna!":"\u3002<b>\u8d85\u8fc7 {n} nt \u5c31\u4e0d\u641c\u7d22\u591a\u5206\u652f\u7ed3\u6784\u3002</b>\u641c\u7d22\u6210\u672c\u662f\u957f\u5ea6\u7684\u4e09\u6b21\u65b9\uff0c\u4f1a\u8ba9\u9875\u9762\u5361\u4f4f\u3002\u82e5\u6709\u4e09\u4e2a\u4ee5\u4e0a\u7684\u830e\u4ea4\u4f1a\u4e8e\u540c\u4e00\u4e2a\u73af\uff0c\u6211\u4eec\u53ea\u62a5\u544a\u5176\u4e2d\u6700\u7a33\u5b9a\u7684\u90a3\u4e00\u652f\uff0c\u6240\u4ee5\u771f\u5b9e\u7ed3\u6784\u6709\u53ef\u80fd\u6bd4\u663e\u793a\u7684\u66f4\u7a33\u5b9a\u3002",
   "tm.fold.note.mfe!":"\u8fd9\u4e2a\u7ed3\u6784\u662f\u8fd9\u6b21\u641c\u7d22\u627e\u5230\u7684\u6700\u4f4e\u81ea\u7531\u80fd\u7ed3\u6784\uff0c\u5e76\u4e0d\u662f\u5df2\u8bc1\u660e\u7684\u5168\u5c40\u6700\u5c0f\u503c\uff1a\u641c\u7d22\u5148\u7528\u8f83\u4fbf\u5b9c\u7684\u80fd\u91cf\u6a21\u578b\u6392\u5e8f\uff0c\u518d\u53ea\u5bf9\u524d {k} \u4e2a\u5019\u9009\u7ed3\u6784\u505a\u7cbe\u786e\u8ba1\u5206\u3002\u7ed3\u679c\u4ee5\u70b9\u62ec\u53f7\u8868\u793a\uff1a\u5305\u542b\u5806\u53e0\u3001\u51f8\u8d77\u4e0e\u5185\u90e8\u73af",
   "tm.fold.note.one!":"\u627e\u4e0d\u5230\u7a33\u5b9a\u7684\u53d1\u5939\u3002",
   "tm.fold.note.rna!":"\u73af\u53c2\u6570\uff1aTurner 2004\uff0c\u4e5f\u5c31\u662f\u53d6\u81ea Nearest Neighbor Database \u7684 Mathews 2004\uff08ΔG°₃₇\uff09\u4e0e Lu 2006\uff08ΔH\uff09\uff1b\u830e\u6765\u81ea Xia 1998\u3002\u8fd9\u662f\u771f\u6b63\u6d4b\u91cf\u7684\u73af\u7113\u503c\uff0c\u4e0d\u662f\u5047\u8bbe\u3002<b>\u8fd9\u4e2a\u6298\u53e0\u7684\u76d0\u6821\u6b63\u662f\u9488\u5bf9 RNA \u62df\u5408\u7684\u3002</b>\u6bcf\u4e00\u4e2a\u5806\u53e0\u90fd\u5e26\u6709 Yao \u4e0e Lorenz \u5728 2023 \u5e74\u53d1\u8868\u7684\u5fb7\u62dc\u5c4f\u853d\u4e0e Manning \u51dd\u805a\u9879\uff0c\u5e76\u4ee5 Turner \u53c2\u6570\u672c\u8eab\u7684\u6d4b\u91cf\u6761\u4ef6 1.021 M \u94a0\u79bb\u5b50\u4e3a\u57fa\u51c6\uff0c\u56e0\u6b64\u81ea\u7531\u80fd\u4e0e\u6298\u53e0\u7684\u89e3\u94fe\u6e29\u5ea6\u4f1a\u968f\u4f60\u8f93\u5165\u7684\u7f13\u51b2\u6db2\u800c\u53d8\u3002\u7113\u503c\u4e0d\u4f1a\uff0c\u78b1\u57fa\u5bf9\u4e0e\u73af\u7684\u8ba1\u6570\u4e5f\u4e0d\u4f1a\u3002\u90a3\u7bc7\u53d1\u8868\u7684\u6a21\u578b\u540c\u65f6\u4e5f\u6821\u6b63\u73af\u7684\u9759\u7535\u4f5c\u7528\uff0c\u672c\u5f15\u64ce\u6ca1\u6709\uff0c\u8fc7\u53bb\u4e5f\u4e0d\u66fe\u6709\u3002\u53cc\u94fe\u7684\u89e3\u94fe\u6e29\u5ea6\u4ecd\u7136\u4ee5 Owczarzy 2004 \u6821\u6b63\uff0c\u800c\u90a3\u662f\u5bf9 DNA \u62df\u5408\u7684\u3002GU \u6447\u6446\u914d\u5bf9\u8ba1\u4e3a\u830e\u914d\u5bf9\uff1b\u4e24\u4fa7\u5404\u6709\u4e00\u5230\u4e24\u4e2a\u672a\u914d\u5bf9\u78b1\u57fa\u7684\u5185\u90e8\u73af\uff0c\u91c7\u7528 Turner \u5bf9\u8be5\u73af\u7684\u5b9e\u6d4b\u503c\uff0c\u800c\u4e0d\u662f\u901a\u7528\u7684\u73af\u65b9\u7a0b\u3002",
   "tm.fold.note.tmm!":"⚠ \u8fd9\u4e2a\u73af\u7528\u5230 GG/CG \u672b\u7aef\u9519\u914d\u3002\u5b83\u5728\u5df2\u53d1\u8868\u7684\u8868\u683c\u4e2d\u662f\u5f02\u5e38\u503c\uff0c\u6211\u4eec\u539f\u6837\u6cbf\u7528\uff0c\u6ca1\u6709\u4fee\u6539\u3002",
-  "tm.fold.scope!":"\u8fd9\u6761\u94fe\u6709 {n} nt\uff0c\u800c\u8fd9\u4e2a\u8ba1\u7b97\u5de5\u5177\u7684\u8bbe\u8ba1\u8303\u56f4\u662f {max} nt \u4ee5\u5185\u7684\u5be1\u6838\u82f7\u9178\u3002\u8d85\u8fc7\u8fd9\u4e2a\u957f\u5ea6\u4e4b\u540e\uff0c\u4e09\u4e2a\u4ee5\u4e0a\u7684\u830e\u4ea4\u4f1a\u4e8e\u540c\u4e00\u4e2a\u73af\u7684\u6298\u53e0\u4f1a\u53d8\u5f97\u5e38\u89c1\uff0c\u800c\u90a3\u6b63\u662f\u8fd9\u4e2a\u641c\u7d22\u7b97\u5f97\u6700\u4e0d\u51c6\u7684\u4e00\u7c7b\u3002\u4e0b\u9762\u7684\u7ed3\u6784\u4ecd\u7136\u4f1a\u8ba1\u7b97\u51fa\u6765\u3002\u8bf7\u5f53\u6210\u8fd1\u4f3c\u503c\u6765\u770b\u3002",
+  "tm.fold.scope!":"\u8fd9\u6761\u94fe\u6709 {n} nt\uff0c\u800c\u8fd9\u4e2a\u8ba1\u7b97\u5de5\u5177\u7684\u8bbe\u8ba1\u8303\u56f4\u662f {max} nt \u4ee5\u5185\u7684\u5be1\u6838\u82f7\u9178\u3002\u8d85\u8fc7\u8fd9\u4e2a\u957f\u5ea6\u4e4b\u540e\uff0c\u4e09\u4e2a\u4ee5\u4e0a\u7684\u830e\u4ea4\u4f1a\u4e8e\u540c\u4e00\u4e2a\u73af\u7684\u6298\u53e0\u4f1a\u53d8\u5f97\u5e38\u89c1\uff0c\u800c\u90a3\u6b63\u662f\u8fd9\u4e2a\u641c\u7d22\u6700\u4e0d\u64c5\u957f\u5904\u7406\u7684\u4e00\u7c7b\u3002\u4e0b\u9762\u7684\u7ed3\u6784\u4ecd\u7136\u4f1a\u8ba1\u7b97\u51fa\u6765\u3002\u8bf7\u5f53\u6210\u8fd1\u4f3c\u503c\u6765\u770b\u3002",
   "tm.fold.stem":"{n} bp \u7684\u830e",
   "tm.fold.where":"\u7b2c {a} \u5230 {b} \u4e2a\u6b8b\u57fa",
   "tm.how.anti":"\u5bf9\u4e0a\u4f60\u8f93\u5165\u7684\u53cd\u4e49\u94fe",
@@ -4306,6 +4310,8 @@ var I18N = {
   "ui.flash.sense":"⚠ \u8bf7\u5148\u4fee\u6b63\u5e8f\u5217\u9519\u8bef",
   "ui.fold.close":"\u5173\u95ed",
   "ui.fold.data.gcpairs":"\u4e8c\u7ea7\u7ed3\u6784 G:C \u78b1\u57fa\u5bf9\u6570",
+  "ui.fold.dl":"\u5bfc\u51fa\u8ba1\u7b97\u65b9\u6cd5",
+  "ui.fold.dla":"\u5c06\u8ba1\u7b97\u65b9\u6cd5\u3001\u53c2\u6570\u4e0e\u7ed3\u6784\u56fe\u4e0b\u8f7d\u6210\u6587\u4ef6",
   "ui.fold.exp":"\u653e\u5927",
   "ui.fold.expa":"\u4ee5\u5168\u5c4f\u6253\u5f00\u7ed3\u6784\u56fe",
   "ui.fold.mbc":"\u540c\u65f6\u663e\u793a\u542b\u591a\u5411\u4ea4\u6c47\u7684\u6700\u7a33\u5b9a\u7ed3\u6784",
@@ -4544,7 +4550,7 @@ var I18N = {
   "ak.0049":"\u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u9396\u306e\u8a2d\u5b9a",
   "ak.0050":"\u30ab\u30b9\u30bf\u30e0\u30e2\u30ce\u30de\u30fc\u3092\u8ffd\u52a0\u307e\u305f\u306f\u7de8\u96c6",
   "ak.0051":"\u30ab\u30b9\u30bf\u30e0\u30e2\u30ce\u30de\u30fc\u306e\u30a8\u30c7\u30a3\u30bf\u30fc\u3092\u9589\u3058\u308b",
-  "ak.0052":"\u4f8b: \u30b7\u30e5\u30fc\u30c9\u30a6\u30ea\u30b8\u30f3",
+  "ak.0052":"\u4f8b\uff1a\u30b7\u30e5\u30fc\u30c9\u30a6\u30ea\u30b8\u30f3",
   "ak.0053":"\u4f8b: psU",
   "ak.0054":"\u904a\u96e2\u30cc\u30af\u30ec\u30aa\u30b7\u30c9\u306e\u5143\u7d20\u7d44\u6210\u5f0f (\u4f8b: C9H12N2O6)",
   "ak.0055":"\u30e2\u30ce\u30de\u30fc\u306e\u7a2e\u5225",
@@ -4626,7 +4632,7 @@ var I18N = {
   "faq.conc.02.q":"\u5206\u5b50\u91cf\u306f\u3069\u3053\u304b\u3089\u6765\u307e\u3059\u304b?",
   "faq.conc.03.a":"\u8aad\u307f\u53d6\u308a\u30e2\u30fc\u30c9\u306f 2 \u3064\u3067\u3059\u3002<b>ng/µL</b>: \u6fc3\u5ea6 = (ng/µL) ÷ \u5206\u5b50\u91cf\u3002<b>A₂₆₀ (OD)</b>: Beer-Lambert \u3092\u4f7f\u3044\u3001\u6fc3\u5ea6 = A₂₆₀ ÷ ε₂₆₀ \u3067\u3059\u3002\u3053\u3053\u3067 ε₂₆₀ \u306f\u914d\u5217\u304b\u3089\u8a08\u7b97\u3055\u308c\u307e\u3059 (\u6700\u8fd1\u63a5\u5869\u57fa\u5bfe\u30e2\u30c7\u30eb\u3002\u753b\u9762\u306b\u8868\u793a\u3055\u308c\u307e\u3059)\u3002<b>\u4f8b:</b> 3,027 g/mol \u306e\u30aa\u30ea\u30b4\u304c 100 ng/µL \u306a\u3089\u7d04 33 µM\u3002",
   "faq.conc.03.q":"Nanodrop \u306e ng/µL \u3068 A₂₆₀ (OD)",
-  "faq.conc.04.a!":"\u901a\u5e38\u306e DNA \u307e\u305f\u306f RNA \u5869\u57fa\u304b\u3089\u306a\u308b\u4e00\u672c\u9396\u3067\u306f\u3001ε₂₆₀ \u306f\u6a19\u6e96\u7684\u306a\u6700\u8fd1\u63a5\u5869\u57fa\u5bfe\u30e2\u30c7\u30eb\u304b\u3089\u6c42\u3081\u307e\u3059\u3002\u3053\u306e\u30e2\u30c7\u30eb\u306f\u5869\u57fa\u3092 1 \u3064\u305a\u3064\u3067\u306f\u306a\u304f\u3001\u96a3\u308a\u5408\u3046 2 \u5869\u57fa\u306e\u7d44\u3054\u3068\u306b\u898b\u307e\u3059\u3002\u3053\u306e\u5024\u306f\u4fe1\u983c\u3067\u304d\u307e\u3059\u3002<b>\u4e8c\u672c\u9396\u3067\u306f\u5358\u306b 2 \u672c\u306e\u9396\u306e\u5024\u3092\u8db3\u3057\u5408\u308f\u305b\u305f\u3060\u3051</b>\u3067\u3042\u308a\u3001\u30a2\u30cb\u30fc\u30eb\u3057\u305f\u4e8c\u672c\u9396\u306f\u305d\u306e\u5408\u8a08\u3088\u308a\u5149\u306e\u5438\u53ce\u304c\u5c0f\u3055\u3044\u305f\u3081\u3001A₂₆₀ \u306e\u6e2c\u5b9a\u5024\u306f\u6fc3\u5ea6\u3092\u5b9f\u969b\u3088\u308a\u4f4e\u304f\u898b\u7a4d\u3082\u308a\u307e\u3059\u3002\u3069\u308c\u3060\u3051\u5c0f\u3055\u304f\u306a\u308b\u304b\u306f\u914d\u5217\u3001\u5869\u6fc3\u5ea6\u3001\u6e29\u5ea6\u306b\u3088\u3063\u3066\u6c7a\u307e\u308b\u305f\u3081\u3001\u3053\u306e\u8a08\u7b97\u30c4\u30fc\u30eb\u306f\u88dc\u6b63\u3092\u63a8\u6e2c\u3057\u307e\u305b\u3093\u3002\u4e8c\u672c\u9396\u306e\u5024\u3092\u6b63\u78ba\u306b\u6c42\u3081\u308b\u5fc5\u8981\u304c\u3042\u308b\u3068\u304d\u306f\u3001ng/µL \u306e\u7d4c\u8def\u3092\u4f7f\u3046\u304b\u3001\u5b9f\u6e2c\u3057\u305f ε₂₆₀ \u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044\u3002<b>\u6ce8\u610f:</b> <b>\u30ab\u30b9\u30bf\u30e0\u30e2\u30ce\u30de\u30fc\u3084\u30b3\u30f3\u30b8\u30e5\u30b2\u30fc\u30c8</b>\u3068 <b>3′ \u672b\u7aef\u306e\u9006\u4f4d\u5869\u57fa\u30ad\u30e3\u30c3\u30d7</b>\u306e\u30e2\u30eb\u5438\u5149\u5ea6\u306f\u3053\u306e\u8a08\u7b97\u30c4\u30fc\u30eb\u306b\u306f\u5206\u304b\u3089\u306a\u3044\u305f\u3081\u3001ε₂₆₀ \u304b\u3089\u306f<b>\u9664\u5916</b>\u3055\u308c\u307e\u3059\u3002\u305d\u306e\u305f\u3081\u3001\u3053\u308c\u3089\u3092\u542b\u3080\u5834\u5408\u306e A₂₆₀ \u304b\u3089\u6fc3\u5ea6\u3078\u306e\u7d50\u679c\u306f\u8fd1\u4f3c\u306b\u306a\u308a\u307e\u3059\u30022′ \u7cd6\u4fee\u98fe (OMe/F/MOE/cEt) \u306f\u5bfe\u5fdc\u3059\u308b\u5929\u7136\u5869\u57fa\u306e ε \u3092\u6d41\u7528\u3057\u307e\u3059\u304c\u3001\u3053\u308c\u306f\u6a19\u6e96\u7684\u3067\u975e\u5e38\u306b\u8fd1\u3044\u8fd1\u4f3c\u3067\u3059\u3002<b>ng/µL \u306e\u7d4c\u8def\u3068\u5206\u5b50\u91cf\u305d\u306e\u3082\u306e\u306f\u3001\u3069\u306e\u5834\u5408\u3067\u3082\u53b3\u5bc6\u3067\u3059\u3002</b>\u9396\u306b\u30ab\u30b9\u30bf\u30e0\u306a\u5316\u5b66\u4fee\u98fe\u304c\u3042\u308b\u5834\u5408\u306f ng/µL \u306e\u6e2c\u5b9a\u5024\u3092\u4f7f\u3046\u304b\u3001\u65e2\u77e5\u306e ε \u3092\u5165\u529b\u3059\u308b\u3068 A₂₆₀ \u306e\u7d50\u679c\u304c\u6700\u3082\u6b63\u78ba\u306b\u306a\u308a\u307e\u3059\u3002",
+  "faq.conc.04.a!":"\u901a\u5e38\u306e DNA \u307e\u305f\u306f RNA \u5869\u57fa\u304b\u3089\u306a\u308b\u4e00\u672c\u9396\u3067\u306f\u3001ε₂₆₀ \u306f\u6a19\u6e96\u7684\u306a\u6700\u8fd1\u63a5\u5869\u57fa\u5bfe\u30e2\u30c7\u30eb\u304b\u3089\u6c42\u3081\u307e\u3059\u3002\u3053\u306e\u30e2\u30c7\u30eb\u306f\u5869\u57fa\u3092 1 \u3064\u305a\u3064\u3067\u306f\u306a\u304f\u3001\u96a3\u308a\u5408\u3046 2 \u5869\u57fa\u306e\u7d44\u3054\u3068\u306b\u898b\u307e\u3059\u3002\u3053\u306e\u5024\u306f\u4fe1\u983c\u3067\u304d\u307e\u3059\u3002<b>\u4e8c\u672c\u9396\u3067\u306f\u5358\u306b 2 \u672c\u306e\u9396\u306e\u5024\u3092\u8db3\u3057\u5408\u308f\u305b\u305f\u3060\u3051</b>\u3067\u3042\u308a\u3001\u30a2\u30cb\u30fc\u30eb\u3057\u305f\u4e8c\u672c\u9396\u306f\u305d\u306e\u5408\u8a08\u3088\u308a\u5149\u306e\u5438\u53ce\u304c\u5c0f\u3055\u3044\u305f\u3081\u3001A₂₆₀ \u306e\u6e2c\u5b9a\u5024\u306f\u6fc3\u5ea6\u3092\u5b9f\u969b\u3088\u308a\u4f4e\u304f\u898b\u7a4d\u3082\u308a\u307e\u3059\u3002\u3069\u308c\u3060\u3051\u5c0f\u3055\u304f\u306a\u308b\u304b\u306f\u914d\u5217\u3001\u5869\u6fc3\u5ea6\u3001\u6e29\u5ea6\u306b\u3088\u3063\u3066\u6c7a\u307e\u308b\u305f\u3081\u3001\u3053\u306e\u8a08\u7b97\u30c4\u30fc\u30eb\u306f\u88dc\u6b63\u3092\u63a8\u6e2c\u3057\u307e\u305b\u3093\u3002\u4e8c\u672c\u9396\u306e\u5024\u3092\u6b63\u78ba\u306b\u6c42\u3081\u308b\u5fc5\u8981\u304c\u3042\u308b\u3068\u304d\u306f\u3001ng/µL \u306e\u7d4c\u8def\u3092\u4f7f\u3046\u304b\u3001\u5b9f\u6e2c\u3057\u305f ε₂₆₀ \u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044\u3002<b>\u6ce8\u610f\uff1a</b> <b>\u30ab\u30b9\u30bf\u30e0\u30e2\u30ce\u30de\u30fc\u3084\u30b3\u30f3\u30b8\u30e5\u30b2\u30fc\u30c8</b>\u3068 <b>3′ \u672b\u7aef\u306e\u9006\u4f4d\u5869\u57fa\u30ad\u30e3\u30c3\u30d7</b>\u306e\u30e2\u30eb\u5438\u5149\u5ea6\u306f\u3053\u306e\u8a08\u7b97\u30c4\u30fc\u30eb\u306b\u306f\u5206\u304b\u3089\u306a\u3044\u305f\u3081\u3001ε₂₆₀ \u304b\u3089\u306f<b>\u9664\u5916</b>\u3055\u308c\u307e\u3059\u3002\u305d\u306e\u305f\u3081\u3001\u3053\u308c\u3089\u3092\u542b\u3080\u5834\u5408\u306e A₂₆₀ \u304b\u3089\u6fc3\u5ea6\u3078\u306e\u7d50\u679c\u306f\u8fd1\u4f3c\u306b\u306a\u308a\u307e\u3059\u30022′ \u7cd6\u4fee\u98fe (OMe/F/MOE/cEt) \u306f\u5bfe\u5fdc\u3059\u308b\u5929\u7136\u5869\u57fa\u306e ε \u3092\u6d41\u7528\u3057\u307e\u3059\u304c\u3001\u3053\u308c\u306f\u6a19\u6e96\u7684\u3067\u975e\u5e38\u306b\u8fd1\u3044\u8fd1\u4f3c\u3067\u3059\u3002<b>ng/µL \u306e\u7d4c\u8def\u3068\u5206\u5b50\u91cf\u305d\u306e\u3082\u306e\u306f\u3001\u3069\u306e\u5834\u5408\u3067\u3082\u53b3\u5bc6\u3067\u3059\u3002</b>\u9396\u306b\u30ab\u30b9\u30bf\u30e0\u306a\u5316\u5b66\u4fee\u98fe\u304c\u3042\u308b\u5834\u5408\u306f ng/µL \u306e\u6e2c\u5b9a\u5024\u3092\u4f7f\u3046\u304b\u3001\u65e2\u77e5\u306e ε \u3092\u5165\u529b\u3059\u308b\u3068 A₂₆₀ \u306e\u7d50\u679c\u304c\u6700\u3082\u6b63\u78ba\u306b\u306a\u308a\u307e\u3059\u3002",
   "faq.conc.04.q":"ε₂₆₀ (A₂₆₀ \u306e\u7d4c\u8def) \u306f\u3069\u306e\u304f\u3089\u3044\u6b63\u78ba\u3067\u3059\u304b?",
   "faq.conc.05.a":"\u5927\u304d\u304f\u8868\u793a\u3055\u308c\u3066\u3044\u308b\u6570\u5024\u304c\u539f\u6db2\u6fc3\u5ea6\u3067\u3059\u3002\u305d\u306e\u6a2a\u306e\u5358\u4f4d\u306e\u30c9\u30ed\u30c3\u30d7\u30c0\u30a6\u30f3\u3067 nM / µM / mM / M \u3092\u5207\u308a\u66ff\u3048\u3089\u308c\u307e\u3059\u3002\u5024\u306f\u81ea\u52d5\u3067\u63db\u7b97\u3055\u308c\u3001\u9078\u3093\u3060\u5358\u4f4d\u306f\u6b21\u56de\u3082\u4fdd\u305f\u308c\u307e\u3059\u3002",
   "faq.conc.05.q":"\u539f\u6db2\u6fc3\u5ea6\u306e\u51fa\u529b\u3068\u5358\u4f4d",
@@ -4652,7 +4658,7 @@ var I18N = {
   "faq.mw.03.q":"DNA\u3001RNA\u3001\u30ad\u30e1\u30e9\u306e\u9055\u3044\u306f?",
   "faq.mw.04.a":"<b>PO</b> = \u30db\u30b9\u30db\u30b8\u30a8\u30b9\u30c6\u30eb (\u5929\u7136)\u3002<b>PS</b> = \u30db\u30b9\u30db\u30ed\u30c1\u30aa\u30a8\u30fc\u30c8 (\u7d50\u5408 1 \u3064\u3042\u305f\u308a O→S \u304c 1 \u3064\u3001+16.06 g/mol)\u3002<b>\u6df7\u5408</b>\u3067\u306f\u7d50\u5408\u3092 1 \u3064\u305a\u3064\u8a2d\u5b9a\u3067\u304d\u307e\u3059\u3002PS \u306b\u3057\u305f\u3044 2 \u3064\u306e\u5869\u57fa\u306e\u9593\u306b <code>s</code> \u3068\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044\u3002\u5165\u529b\u3057\u306a\u3051\u308c\u3070 PO \u306e\u307e\u307e\u3067\u3059\u3002<b>\u4f8b:</b> <code>AsCsGT</code> = PS\u3001PS\u3001PO\u3002\u6700\u5f8c\u306e\u5869\u57fa\u306e\u3042\u3068\u306b\u306f\u7d50\u5408\u304c\u306a\u3044\u3053\u3068\u306b\u3054\u6ce8\u610f\u304f\u3060\u3055\u3044 (\u904a\u96e2 3′-OH)\u3002",
   "faq.mw.04.q":"\u7d50\u5408: PO\u3001PS\u3001\u6df7\u5408",
-  "faq.mw.05.a":"<b>5′ \u672b\u7aef:</b> OH (\u65e2\u5b9a)\u30015′-\u30ea\u30f3\u9178\u3001\u307e\u305f\u306f DMT\u3002<b>3′ \u672b\u7aef:</b> OH\u30013′-\u30ea\u30f3\u9178\u3001\u307e\u305f\u306f\u9006\u4f4d\u5869\u57fa (\u9006\u4f4d dT/dA/dC/dG)\u3002\u3053\u308c\u3089\u306f\u914d\u5217\u4e2d\u306b\u524a\u9664\u3067\u304d\u306a\u3044\u30ed\u30c3\u30af\u3055\u308c\u305f\u30bf\u30b0 (<code>P</code>\u3001<code>idT</code> \u306a\u3069) \u3068\u3057\u3066\u8868\u793a\u3055\u308c\u3001\u30bf\u30b0\u3068\u30bf\u30b0\u306e\u9593\u306b\u5165\u529b\u3057\u3066\u5869\u57fa\u3092\u8db3\u3057\u307e\u3059\u3002<b>\u672b\u7aef\u306e\u30db\u30b9\u30db\u30ed\u30c1\u30aa\u30a8\u30fc\u30c8:</b> \u672b\u7aef\u57fa\u306e\u96a3\u306b <code>s</code> \u3092\u7f6e\u304f\u3068\u3001\u305d\u306e\u7d50\u5408\u304c PS (+16.06) \u306b\u306a\u308a\u307e\u3059\u3002<b>\u4f8b:</b> <code>ATCG s idT</code> = 3′ \u306e\u9006\u4f4d dT \u3078\u306e PS \u7d50\u5408\u30025′ \u306e <code>P s</code> = 5′-\u30db\u30b9\u30db\u30ed\u30c1\u30aa\u30a8\u30fc\u30c8\u3002\u9006\u4f4d\u5869\u57fa\u306f\u30cc\u30af\u30ec\u30aa\u30c1\u30c9\u3068\u3057\u3066\u6570\u3048\u3089\u308c (+1 nt)\u3001\u5358\u306a\u308b 3′-\u30ea\u30f3\u9178\u306f\u6570\u3048\u3089\u308c\u307e\u305b\u3093\u3002",
+  "faq.mw.05.a":"<b>5′ \u672b\u7aef:</b> OH (\u65e2\u5b9a)\u30015′-\u30ea\u30f3\u9178\u3001\u307e\u305f\u306f DMT\u3002<b>3′ \u672b\u7aef:</b> OH\u30013′-\u30ea\u30f3\u9178\u3001\u307e\u305f\u306f\u9006\u4f4d\u5869\u57fa (\u9006\u4f4d dT/dA/dC/dG)\u3002\u3053\u308c\u3089\u306f\u914d\u5217\u4e2d\u306b\u524a\u9664\u3067\u304d\u306a\u3044\u30ed\u30c3\u30af\u3055\u308c\u305f\u30bf\u30b0 (<code>P</code>\u3001<code>idT</code> \u306a\u3069) \u3068\u3057\u3066\u8868\u793a\u3055\u308c\u3001\u30bf\u30b0\u3068\u30bf\u30b0\u306e\u9593\u306b\u5165\u529b\u3057\u3066\u5869\u57fa\u3092\u8db3\u3057\u307e\u3059\u3002<b>\u672b\u7aef\u306e\u30db\u30b9\u30db\u30ed\u30c1\u30aa\u30a8\u30fc\u30c8\uff1a</b> \u672b\u7aef\u57fa\u306e\u96a3\u306b <code>s</code> \u3092\u7f6e\u304f\u3068\u3001\u305d\u306e\u7d50\u5408\u304c PS (+16.06) \u306b\u306a\u308a\u307e\u3059\u3002<b>\u4f8b:</b> <code>ATCG s idT</code> = 3′ \u306e\u9006\u4f4d dT \u3078\u306e PS \u7d50\u5408\u30025′ \u306e <code>P s</code> = 5′-\u30db\u30b9\u30db\u30ed\u30c1\u30aa\u30a8\u30fc\u30c8\u3002\u9006\u4f4d\u5869\u57fa\u306f\u30cc\u30af\u30ec\u30aa\u30c1\u30c9\u3068\u3057\u3066\u6570\u3048\u3089\u308c (+1 nt)\u3001\u5358\u306a\u308b 3′-\u30ea\u30f3\u9178\u306f\u6570\u3048\u3089\u308c\u307e\u305b\u3093\u3002",
   "faq.mw.05.q":"5′ \u672b\u7aef\u57fa\u3068 3′ \u672b\u7aef\u57fa (\u304a\u3088\u3073\u672b\u7aef\u306e PS)",
   "faq.mw.06.a":"PS \u306b\u3057\u305f\u3044\u7d50\u5408\u306e\u4f4d\u7f6e\u306b\u5c0f\u6587\u5b57\u306e <code>s</code> \u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044\u3002PS 1 \u3064\u306b\u3064\u304d PO \u3088\u308a +16.06 g/mol \u5897\u3048\u307e\u3059\u3002\u9396\u3092 <b>PS</b> \u306b\u8a2d\u5b9a\u3057\u3066\u3059\u3079\u3066\u306e\u7d50\u5408\u3092 PS \u306b\u3059\u308b\u304b\u3001<b>\u6df7\u5408</b>\u306b\u3057\u3066 <code>s</code> \u3092\u7f6e\u304d\u305f\u3044\u3068\u3053\u308d\u3060\u3051\u306b\u7f6e\u3044\u3066\u304f\u3060\u3055\u3044\u3002<b>\u4f8b:</b> <code>AsCsGT</code> = PS\u3001PS\u3001PO\u3002<code>s</code> \u306f\u672b\u7aef\u57fa\u3084\u30b3\u30f3\u30b8\u30e5\u30b2\u30fc\u30c8\u306e\u96a3\u3067\u3082\u50cd\u304d\u3001\u305d\u306e\u63a5\u5408\u90e8\u304c PS \u306b\u306a\u308a\u307e\u3059 (\u305f\u3068\u3048\u3070 <code>B</code> \u304c 5′ \u30b3\u30f3\u30b8\u30e5\u30b2\u30fc\u30c8\u306a\u3089 <code>BsAUCG</code>\u3001\u3042\u308b\u3044\u306f <code>ATCG s idT</code>)\u3002<code>s</code> \u304c\u306a\u3051\u308c\u3070 PO \u3067\u3059\u3002",
   "faq.mw.06.q":"\u30db\u30b9\u30db\u30ed\u30c1\u30aa\u30a8\u30fc\u30c8 (PS) \u7d50\u5408\u306f\u3069\u3046\u4f5c\u308a\u307e\u3059\u304b?",
@@ -4660,24 +4666,24 @@ var I18N = {
   "faq.mw.07.q":"\u9ad8\u5ea6\u306a\u4fee\u98fe: 2′ \u7cd6\u4fee\u98fe",
   "faq.mw.08.a":"\u9396\u3092\u3072\u3068\u76ee\u3067\u307e\u3068\u3081\u305f\u3082\u306e\u3067\u3059\u3002\u5168\u9577 (nt)\u3001PO \u3068 PS \u306e\u7d50\u5408\u6570\u3001\u672b\u7aef\u57fa\u3001\u30ab\u30b9\u30bf\u30e0\u30e2\u30ce\u30de\u30fc\u3001\u5404\u5869\u57fa (A/C/G/T/U) \u306e\u500b\u6570\u3092\u8868\u793a\u3057\u307e\u3059\u3002",
   "faq.mw.08.q":"\u7d50\u679c\u306e\u4e0b\u306e\u30c1\u30c3\u30d7\u306f\u4f55\u3092\u8868\u3057\u3066\u3044\u307e\u3059\u304b?",
-  "faq.mw.09.a!":"\u4fdd\u5b58\u3057\u305f\u914d\u5217\u3067 <b>\u30b3\u30d4\u30fc\u3092\u5171\u6709</b>\u3001\u8907\u6570\u306e\u5834\u5408\u306f <b>\u9078\u629e\u3057\u305f\u9805\u76ee\u306e\u30b3\u30d4\u30fc\u3092\u5171\u6709</b> \u3092\u4f7f\u3046\u3068\u30ea\u30f3\u30af\u3092\u4f5c\u308c\u307e\u3059\u3002\u958b\u3044\u305f\u4eba\u306f\u8aad\u307f\u53d6\u308a\u5c02\u7528\u306e <b>\u5171\u6709\u3055\u308c\u305f\u5185\u5bb9</b> \u753b\u9762\u3067\u305d\u306e\u914d\u5217\u3092\u898b\u3089\u308c\u3001\u81ea\u5206\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u4fdd\u5b58\u3067\u304d\u307e\u3059\u3002\u3069\u3061\u3089\u3082\u30a2\u30ab\u30a6\u30f3\u30c8\u306f\u4e0d\u8981\u3067\u3059\u3002<b>\u30d7\u30e9\u30a4\u30d0\u30b7\u30fc:</b> \u30ea\u30f3\u30af\u306b\u306f\u914d\u5217\u30c7\u30fc\u30bf\u305d\u306e\u3082\u306e\u304c\u542b\u307e\u308c\u308b\u305f\u3081\u3001\u30ea\u30f3\u30af\u3092\u77e5\u3063\u3066\u3044\u308b\u4eba\u306f\u8ab0\u3067\u3082\u898b\u3089\u308c\u307e\u3059\u3002\u6a5f\u5bc6\u3068\u8003\u3048\u308b\u914d\u5217\u306f\u5171\u6709\u3057\u306a\u3044\u3067\u304f\u3060\u3055\u3044\u3002\u7121\u6599\u306e\u5171\u6709\u306f 1 \u30ea\u30f3\u30af\u3042\u305f\u308a 10 \u4ef6\u307e\u3067\u3067\u3059\u3002",
+  "faq.mw.09.a!":"\u4fdd\u5b58\u3057\u305f\u914d\u5217\u3067 <b>\u30b3\u30d4\u30fc\u3092\u5171\u6709</b>\u3001\u8907\u6570\u306e\u5834\u5408\u306f <b>\u9078\u629e\u3057\u305f\u9805\u76ee\u306e\u30b3\u30d4\u30fc\u3092\u5171\u6709</b> \u3092\u4f7f\u3046\u3068\u30ea\u30f3\u30af\u3092\u4f5c\u308c\u307e\u3059\u3002\u958b\u3044\u305f\u4eba\u306f\u8aad\u307f\u53d6\u308a\u5c02\u7528\u306e <b>\u5171\u6709\u3055\u308c\u305f\u5185\u5bb9</b> \u753b\u9762\u3067\u305d\u306e\u914d\u5217\u3092\u898b\u3089\u308c\u3001\u81ea\u5206\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u4fdd\u5b58\u3067\u304d\u307e\u3059\u3002\u3069\u3061\u3089\u3082\u30a2\u30ab\u30a6\u30f3\u30c8\u306f\u4e0d\u8981\u3067\u3059\u3002<b>\u30d7\u30e9\u30a4\u30d0\u30b7\u30fc\uff1a</b> \u30ea\u30f3\u30af\u306b\u306f\u914d\u5217\u30c7\u30fc\u30bf\u305d\u306e\u3082\u306e\u304c\u542b\u307e\u308c\u308b\u305f\u3081\u3001\u30ea\u30f3\u30af\u3092\u77e5\u3063\u3066\u3044\u308b\u4eba\u306f\u8ab0\u3067\u3082\u898b\u3089\u308c\u307e\u3059\u3002\u6a5f\u5bc6\u3068\u8003\u3048\u308b\u914d\u5217\u306f\u5171\u6709\u3057\u306a\u3044\u3067\u304f\u3060\u3055\u3044\u3002\u7121\u6599\u306e\u5171\u6709\u306f 1 \u30ea\u30f3\u30af\u3042\u305f\u308a 10 \u4ef6\u307e\u3067\u3067\u3059\u3002",
   "faq.mw.09.q":"\u30ea\u30f3\u30af\u3067\u914d\u5217\u3092\u5171\u6709\u3059\u308b",
-  "faq.mw.10.a":"\u4e8c\u672c\u9396\u30aa\u30ea\u30b4 (siRNA\u3001ASO) \u306e\u5834\u5408\u306f\u3001\u914d\u5217\u306e\u898b\u51fa\u3057\u306e\u3059\u3050\u4e0b\u306b\u3042\u308b\u9396\u30e2\u30fc\u30c9\u306e\u30ab\u30fc\u30c9\u3067<b>\u4e8c\u672c\u9396</b>\u3092\u9078\u3093\u3067\u304f\u3060\u3055\u3044\u3002\u6b21\u306b<b>\u81ea\u52d5\u76f8\u88dc</b>\u3092\u9078\u3076\u3068\u3001\u5bfe\u5fdc\u3059\u308b\u9006\u76f8\u88dc\u306e\u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u9396\u304c\u751f\u6210\u3055\u308c\u307e\u3059 (A \u306f T/U \u3068\u3001G \u306f C \u3068\u5bfe\u306b\u306a\u308a\u307e\u3059)\u3002\u4fee\u98fe\u3055\u308c\u305f\u9396\u3001\u30df\u30b9\u30de\u30c3\u30c1\u306e\u3042\u308b\u9396\u3001\u7a81\u51fa\u306e\u3042\u308b\u9396\u306b\u3057\u305f\u3044\u5834\u5408\u306f<b>\u624b\u5165\u529b</b>\u3092\u9078\u3093\u3067\u304f\u3060\u3055\u3044\u3002\u30bb\u30f3\u30b9\u9396\u3092\u7de8\u96c6\u3059\u308b\u3068\u3001\u81ea\u52d5\u751f\u6210\u3055\u308c\u305f\u76f8\u88dc\u9396\u306f\u3059\u3050\u306b\u66f4\u65b0\u3055\u308c\u307e\u3059\u3002\u624b\u5165\u529b\u3057\u305f\u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u9396\u306b\u306f\u72ec\u81ea\u306e\u9396\u306e\u8a2d\u5b9a\u30b3\u30f3\u30c8\u30ed\u30fc\u30eb\u3068\u30af\u30a4\u30c3\u30af\u633f\u5165\u306e moremon \u304c\u4ed8\u304d\u307e\u3059\u3002<b>\u4f8b (\u81ea\u52d5\u76f8\u88dc):</b> \u30bb\u30f3\u30b9 <code>ATCGATCG</code> → \u30a2\u30f3\u30c1\u30bb\u30f3\u30b9 <code>CGATCGAT</code>\u3002\u4e8c\u672c\u9396\u306e\u5206\u5b50\u91cf = \u30bb\u30f3\u30b9 + \u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u3002<b>\u30d2\u30f3\u30c8:</b> \u4e8c\u672c\u9396\u304c\u6709\u52b9\u306a\u3068\u304d\u306f\u3001\u6fc3\u5ea6\u30bf\u30d6\u3067\u30bb\u30f3\u30b9\u9396\u3001\u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u9396\u3001\u4e8c\u672c\u9396\u5168\u4f53\u306e\u3069\u308c\u3092\u57fa\u6e96\u306b\u8a08\u7b97\u3059\u308b\u304b\u3092\u9078\u3079\u307e\u3059\u3002",
+  "faq.mw.10.a":"\u4e8c\u672c\u9396\u30aa\u30ea\u30b4 (siRNA\u3001ASO) \u306e\u5834\u5408\u306f\u3001\u914d\u5217\u306e\u898b\u51fa\u3057\u306e\u3059\u3050\u4e0b\u306b\u3042\u308b\u9396\u30e2\u30fc\u30c9\u306e\u30ab\u30fc\u30c9\u3067<b>\u4e8c\u672c\u9396</b>\u3092\u9078\u3093\u3067\u304f\u3060\u3055\u3044\u3002\u6b21\u306b<b>\u81ea\u52d5\u76f8\u88dc</b>\u3092\u9078\u3076\u3068\u3001\u5bfe\u5fdc\u3059\u308b\u9006\u76f8\u88dc\u306e\u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u9396\u304c\u751f\u6210\u3055\u308c\u307e\u3059 (A \u306f T/U \u3068\u3001G \u306f C \u3068\u5bfe\u306b\u306a\u308a\u307e\u3059)\u3002\u4fee\u98fe\u3055\u308c\u305f\u9396\u3001\u30df\u30b9\u30de\u30c3\u30c1\u306e\u3042\u308b\u9396\u3001\u7a81\u51fa\u306e\u3042\u308b\u9396\u306b\u3057\u305f\u3044\u5834\u5408\u306f<b>\u624b\u5165\u529b</b>\u3092\u9078\u3093\u3067\u304f\u3060\u3055\u3044\u3002\u30bb\u30f3\u30b9\u9396\u3092\u7de8\u96c6\u3059\u308b\u3068\u3001\u81ea\u52d5\u751f\u6210\u3055\u308c\u305f\u76f8\u88dc\u9396\u306f\u3059\u3050\u306b\u66f4\u65b0\u3055\u308c\u307e\u3059\u3002\u624b\u5165\u529b\u3057\u305f\u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u9396\u306b\u306f\u72ec\u81ea\u306e\u9396\u306e\u8a2d\u5b9a\u30b3\u30f3\u30c8\u30ed\u30fc\u30eb\u3068\u30af\u30a4\u30c3\u30af\u633f\u5165\u306e moremon \u304c\u4ed8\u304d\u307e\u3059\u3002<b>\u4f8b (\u81ea\u52d5\u76f8\u88dc)\uff1a</b> \u30bb\u30f3\u30b9 <code>ATCGATCG</code> → \u30a2\u30f3\u30c1\u30bb\u30f3\u30b9 <code>CGATCGAT</code>\u3002\u4e8c\u672c\u9396\u306e\u5206\u5b50\u91cf = \u30bb\u30f3\u30b9 + \u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u3002<b>\u30d2\u30f3\u30c8\uff1a</b> \u4e8c\u672c\u9396\u304c\u6709\u52b9\u306a\u3068\u304d\u306f\u3001\u6fc3\u5ea6\u30bf\u30d6\u3067\u30bb\u30f3\u30b9\u9396\u3001\u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u9396\u3001\u4e8c\u672c\u9396\u5168\u4f53\u306e\u3069\u308c\u3092\u57fa\u6e96\u306b\u8a08\u7b97\u3059\u308b\u304b\u3092\u9078\u3079\u307e\u3059\u3002",
   "faq.mw.10.q":"\u4e8c\u672c\u9396\u30e2\u30fc\u30c9 (\u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u3068\u4e8c\u672c\u9396\u306e\u5206\u5b50\u91cf)",
   "faq.mw.11.a":"\u9ad8\u5ea6\u306a\u4fee\u98fe\u306e\u30ab\u30b9\u30bf\u30e0\u30e2\u30ce\u30de\u30fc\u306e\u30ab\u30fc\u30c9\u3067<b>\u8ffd\u52a0</b>\u3092\u9078\u3076\u3068\u3001\u6a19\u6e96\u7684\u306a\u5869\u57fa\u3067\u306f\u306a\u3044\u3082\u306e\u3001\u3064\u307e\u308a\u73cd\u3057\u3044\u30cc\u30af\u30ec\u30aa\u30c1\u30c9\u3084\u3001\u30aa\u30ea\u30b4\u306b\u4ed8\u3051\u308b\u8272\u7d20\u30fb\u30bf\u30b0\u3092\u5b9a\u7fa9\u3067\u304d\u307e\u3059\u3002<b>\u540d\u524d</b>\u3001\u77ed\u3044<b>\u30b3\u30fc\u30c9</b>\u3001<b>\u8cea\u91cf</b>\u3092\u4e0e\u3048\u308b\u3068\u3001\u5165\u529b\u3067\u304d\u308b\u30b3\u30fc\u30c9\u306b\u306a\u308a\u3001moremon \u306e <b>Saved &amp; Custom</b> \u30b3\u30ec\u30af\u30b7\u30e7\u30f3\u306e\u30c8\u30fc\u30af\u30f3\u306b\u3082\u306a\u308a\u307e\u3059\u30021 \u6587\u5b57\u306e\u30b3\u30fc\u30c9\u306f\u305d\u306e\u307e\u307e\u5165\u529b\u3057 (<code>Y</code>)\u30012 \u6587\u5b57\u4ee5\u4e0a\u306e\u30b3\u30fc\u30c9\u306f\u62ec\u5f27\u3067\u56f2\u307f\u307e\u3059 (<code>(psU)</code>)\u3002\u5404\u9805\u76ee\u306f<b>\u9396\u5185\u5869\u57fa</b>\u304b<b>\u30b3\u30f3\u30b8\u30e5\u30b2\u30fc\u30c8</b>\u306e\u3069\u3061\u3089\u304b\u3067\u3059\u3002\u306a\u305c\u305d\u306e\u9078\u629e\u304c\u52b9\u3044\u3066\u304f\u308b\u304b\u306f\u6b21\u306e\u8cea\u554f\u3067\u8aac\u660e\u3057\u307e\u3059\u3002",
-  "faq.mw.11.q":"\u30ab\u30b9\u30bf\u30e0\u5869\u57fa\u3068\u30b3\u30f3\u30b8\u30e5\u30b2\u30fc\u30c8: \u305d\u308c\u305e\u308c\u4f55\u3067\u3059\u304b?",
+  "faq.mw.11.q":"\u30ab\u30b9\u30bf\u30e0\u5869\u57fa\u3068\u30b3\u30f3\u30b8\u30e5\u30b2\u30fc\u30c8\uff1a\u305d\u308c\u305e\u308c\u4f55\u3067\u3059\u304b?",
   "faq.mw.12.a":"<b>\u30ab\u30bf\u30ed\u30b0</b>\u3092\u958b\u304f\u3068\u3001<b>ChemGenes</b> \u3068 <b>Glen Research</b> \u306e\u4fee\u98fe\u30db\u30b9\u30db\u30ed\u30a2\u30df\u30c0\u30a4\u30c8\u3092\u898b\u3089\u308c\u307e\u3059 (Pro \u3067\u306f 351 \u4ef6\u306e\u30d9\u30f3\u30c0\u30fc\u63b2\u8f09\u306b\u308f\u305f\u308b 267 \u7a2e\u985e\u306e\u30e2\u30ce\u30de\u30fc)\u3002\u30d9\u30f3\u30c0\u30fc\u3092\u9078\u3073\u3001\u88fd\u54c1\u540d\u30fb\u30ab\u30bf\u30ed\u30b0\u756a\u53f7\u30fb\u30b3\u30fc\u30c9\u3067\u691c\u7d22\u3059\u308b\u304b\u3001\u30ab\u30c6\u30b4\u30ea\u30fc\u3067\u7d5e\u308a\u8fbc\u3093\u3067\u304f\u3060\u3055\u3044\u3002\u5404\u7d50\u679c\u306b\u306f\u30a8\u30f3\u30b8\u30f3\u306e <code>code</code>\u30011 \u4f4d\u7f6e\u3042\u305f\u308a\u306e\u6b63\u78ba\u306a\u5bc4\u4e0e\u3001\u691c\u8a3c\u306e\u8a73\u7d30\u3001\u53ef\u80fd\u306a\u5834\u5408\u306f\u30d9\u30f3\u30c0\u30fc\u306e\u51fa\u5178\u30ea\u30f3\u30af\u304c\u8868\u793a\u3055\u308c\u307e\u3059\u3002<b>\u633f\u5165</b>\u306f\u30bb\u30f3\u30b9\u9396\u307e\u305f\u306f\u624b\u5165\u529b\u306e\u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u914d\u5217\u306e\u3001\u4fdd\u5b58\u3055\u308c\u305f\u30ab\u30fc\u30bd\u30eb\u4f4d\u7f6e\u306b\u30b3\u30fc\u30c9\u3092\u5165\u308c\u307e\u3059\u3002<b>+ \u30e9\u30a4\u30d6\u30e9\u30ea</b>\u306f moremon \u306e <b>Saved &amp; Custom</b> \u30b3\u30ec\u30af\u30b7\u30e7\u30f3\u306b\u4fdd\u5b58\u3057\u307e\u3059\u3002\u95b2\u89a7\u3084\u633f\u5165\u3092\u3057\u3066\u3082\u30e9\u30a4\u30d6\u30e9\u30ea\u306f\u5909\u308f\u308a\u307e\u305b\u3093\u3002\u540c\u68b1\u306e Free-30 \u30ab\u30bf\u30ed\u30b0\u306f\u30aa\u30d5\u30e9\u30a4\u30f3\u3067\u52d5\u4f5c\u3057\u307e\u3059\u3002Pro \u306e\u30d5\u30eb\u30ab\u30bf\u30ed\u30b0\u306f Supabase \u3078\u306e\u63a5\u7d9a\u304c\u5fc5\u8981\u3067\u3059\u304c\u3001\u3059\u3067\u306b\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u4fdd\u5b58\u3057\u305f\u30e2\u30ce\u30de\u30fc\u306f\u30ed\u30fc\u30ab\u30eb\u3067\u5f15\u304d\u7d9a\u304d\u4f7f\u3048\u307e\u3059\u3002",
-  "faq.mw.12.q":"\u30d9\u30f3\u30c0\u30fc\u30ab\u30bf\u30ed\u30b0: \u5b9f\u5728\u3059\u308b\u30e2\u30ce\u30de\u30fc\u3092\u898b\u3066\u633f\u5165\u3059\u308b",
+  "faq.mw.12.q":"\u30d9\u30f3\u30c0\u30fc\u30ab\u30bf\u30ed\u30b0\uff1a\u5b9f\u5728\u3059\u308b\u30e2\u30ce\u30de\u30fc\u3092\u898b\u3066\u633f\u5165\u3059\u308b",
   "faq.mw.13.a!":"\u3053\u308c\u306f\u30ab\u30b9\u30bf\u30e0\u9805\u76ee\u3092\u8ffd\u52a0\u3059\u308b\u3068\u304d\u306e\u91cd\u8981\u306a\u9078\u629e\u3067\u3042\u308a\u3001\u7d50\u679c\u304c\u5909\u308f\u308a\u307e\u3059\u3002<br><br><b>\u9396\u5185\u5869\u57fa</b> = \u666e\u901a\u306e\u6587\u5b57\u3068\u540c\u3058\u3088\u3046\u306b\u3001\u9396\u306e<i>\u5185\u5074</i>\u306b\u5165\u308b\u69cb\u6210\u5358\u4f4d\u3067\u3059\u3002\u8a08\u7b97\u30c4\u30fc\u30eb\u304c\u3053\u308c\u3092\u3064\u306a\u3050\u305f\u3081\u306e<b>\u9aa8\u683c\u30ea\u30f3\u9178\u3092\u81ea\u52d5\u3067\u8ffd\u52a0</b>\u3057 (\u9396\u304c\u30db\u30b9\u30db\u30ed\u30c1\u30aa\u30a8\u30fc\u30c8\u306a\u3089 PS\u3001\u305d\u3046\u3067\u306a\u3051\u308c\u3070 PO)\u3001<b>\u9577\u3055\u306f +1 \u3068\u3057\u3066\u6570\u3048\u307e\u3059</b>\u3002\u30b7\u30e5\u30fc\u30c9\u30a6\u30ea\u30b8\u30f3\u306a\u3069\u3001\u73cd\u3057\u3044\u30cc\u30af\u30ec\u30aa\u30c1\u30c9\u306b\u306f\u3053\u3061\u3089\u3092\u4f7f\u3044\u307e\u3059\u3002<br><br><b>\u30b3\u30f3\u30b8\u30e5\u30b2\u30fc\u30c8</b> = \u8272\u7d20\u3084\u30bf\u30b0 (Cy3\u3001GalNAc\u3001\u30b3\u30ec\u30b9\u30c6\u30ed\u30fc\u30eb\u3001\u30d3\u30aa\u30c1\u30f3) \u306e\u3088\u3046\u306b\u3001\u9396\u304b\u3089<i>\u5916\u5074\u306b</i>\u3076\u3089\u4e0b\u304c\u308b\u3082\u306e\u3067\u3059\u3002\u8a08\u7b97\u30c4\u30fc\u30eb\u306f<b>\u5165\u529b\u3057\u305f\u8cea\u91cf\u3060\u3051\u3092\u8ffd\u52a0\u3057\u3001\u30ea\u30f3\u9178\u306f\u8ffd\u52a0\u3057\u307e\u305b\u3093</b>\u3002\u307e\u305f<b>\u9577\u3055\u306f\u5909\u308f\u308a\u307e\u305b\u3093</b>\u3002\u6a19\u8b58\u3084\u4ed8\u52a0\u7269\u306b\u306f\u3053\u3061\u3089\u3092\u4f7f\u3044\u307e\u3059\u3002<br><br><b>\u5177\u4f53\u4f8b\u3002</b><code>AUCG(Cy3)</code>: Cy3 \u3092<b>\u9396\u5185\u5869\u57fa</b>\u306b\u3059\u308b\u3068 Cy3 \u306e\u8cea\u91cf\u306b<b>\u30ea\u30f3\u9178 1 \u3064\u5206 (\u7d04 62 g/mol)</b>\u304c\u52a0\u308f\u308a\u3001\u9396\u306f 5 nt \u306b\u306a\u308a\u307e\u3059\u3002Cy3 \u3092<b>\u30b3\u30f3\u30b8\u30e5\u30b2\u30fc\u30c8</b>\u306b\u3059\u308b\u3068 <b>Cy3 \u306e\u8cea\u91cf\u3060\u3051</b>\u304c\u52a0\u308f\u308a\u3001\u30ea\u30f3\u9178\u306f\u52a0\u308f\u3089\u305a\u3001\u9396\u306f 4 nt \u306e\u307e\u307e\u3067\u3059\u3002\u3064\u307e\u308a\u4e21\u8005\u306f\u30ea\u30f3\u9178 1 \u3064\u5206\u3060\u3051\u9055\u3044\u307e\u3059\u3002\u306a\u305c\u81ea\u52d5\u3067\u306f\u306a\u3044\u306e\u304b\u3002\u8272\u7d20\u3084\u30ea\u30f3\u30ab\u30fc\u306e\u5316\u5b66\u306f\u69d8\u3005\u3067\u3001\u30ea\u30f3\u30ab\u30fc\u3092\u542b\u3093\u3060\u8cea\u91cf\u3092\u63d0\u793a\u3059\u308b\u30d9\u30f3\u30c0\u30fc\u3082\u591a\u3044\u305f\u3081\u3001\u3069\u3061\u3089\u306a\u306e\u304b\u306f\u3042\u306a\u305f\u304c\u8a08\u7b97\u30c4\u30fc\u30eb\u306b\u4f1d\u3048\u307e\u3059\u3002<b>\u3069\u3061\u3089\u3092\u9078\u3093\u3060\u304b\u5fd8\u308c\u305f\u3068\u304d\u306f\u3002</b>\u4e00\u89a7\u3067\u9805\u76ee\u306e\u6a2a\u306b\u3042\u308b <b>\u5869\u57fa / \u30b3\u30f3\u30b8\u30e5\u30b2\u30fc\u30c8</b> \u306e\u30d4\u30eb\u3092\u62bc\u3059\u3068\u3059\u3050\u306b\u5207\u308a\u66ff\u308f\u308a\u307e\u3059\u3002",
   "faq.mw.13.q":"\u9396\u5185\u5869\u57fa\u3068\u30b3\u30f3\u30b8\u30e5\u30b2\u30fc\u30c8\u306e\u9055\u3044\u306f? \u306a\u305c\u8cea\u91cf\u304c\u5909\u308f\u308b\u306e\u3067\u3059\u304b?",
   "faq.mw.14.a!":"\u3042\u306a\u305f\u304c\u4f5c\u3063\u305f\u3082\u306e\u306e\u5316\u5b66\u3092\u8a08\u7b97\u30c4\u30fc\u30eb\u306f\u77e5\u308a\u3048\u306a\u3044\u305f\u3081\u3001<b>\u3042\u306a\u305f</b>\u304c\u6b63\u3057\u304f\u8a2d\u5b9a\u3059\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059\u3002\u3053\u3053\u306e\u8a2d\u5b9a\u3092\u9593\u9055\u3048\u308b\u306e\u304c\u3001\u8cea\u91cf\u3092\u9593\u9055\u3048\u308b\u6700\u3082\u7c21\u5358\u306a\u9053\u3067\u3059\u30023 \u3064\u3092\u6b63\u3057\u304f\u3057\u3066\u304f\u3060\u3055\u3044\u3002<b>(1) \u7a2e\u5225\u3002</b><b>\u9396\u5185\u5869\u57fa</b>\u306f\u9396\u306e\u4e2d\u306b\u5165\u308a\u3001\u9aa8\u683c\u30ea\u30f3\u9178\u304c\u4ed8\u304d\u3001\u9577\u3055\u306b +1 nt \u3055\u308c\u307e\u3059\u3002<b>\u30b3\u30f3\u30b8\u30e5\u30b2\u30fc\u30c8</b>\u306f\u5916\u5074\u306b\u3076\u3089\u4e0b\u304c\u308b\u30bf\u30b0\u3067\u3001\u8cea\u91cf\u3060\u3051\u304c\u52a0\u308f\u308a\u3001\u30ea\u30f3\u9178\u3082\u9577\u3055\u3082\u5897\u3048\u307e\u305b\u3093\u3002<b>(2) \u8cea\u91cf\u306e\u57fa\u6e96</b> (\u9396\u5185\u5869\u57fa\u306e\u307f)\u3002\u5165\u529b\u3057\u305f\u306e\u306f<b>\u904a\u96e2\u30cc\u30af\u30ec\u30aa\u30b7\u30c9</b>\u306e\u8cea\u91cf (\u30ea\u30f3\u9178\u306a\u3057\u3002\u30a2\u30d7\u30ea\u304c\u8db3\u3057\u307e\u3059) \u3067\u3059\u304b\u3001\u305d\u308c\u3068\u3082<b>\u6b8b\u57fa</b>\u306e\u8cea\u91cf (\u30ea\u30f3\u9178\u3092\u542b\u3080) \u3067\u3059\u304b\u3002\u624b\u5143\u306e\u6570\u5024\u306b\u5408\u3046\u3088\u3046\u30c8\u30b0\u30eb\u3092\u8a2d\u5b9a\u3057\u3066\u304f\u3060\u3055\u3044\u3002\u30d7\u30ec\u30d3\u30e5\u30fc\u304c\u4f4d\u7f6e\u3054\u3068\u306e\u7d50\u679c\u3092\u305d\u306e\u5834\u3067\u793a\u3057\u3066\u78ba\u8a8d\u3067\u304d\u307e\u3059\u3002<b>(3)</b> \u8ffd\u52a0\u5f8c\u306b\u30d7\u30ec\u30d3\u30e5\u30fc\u3001\u9577\u3055\u3001\u30c1\u30c3\u30d7\u3092<b>\u898b\u3066\u78ba\u304b\u3081\u3066\u304f\u3060\u3055\u3044</b>\u3002\u7a2e\u5225\u3084\u57fa\u6e96\u304c\u9055\u3063\u3066\u3044\u308c\u3070\u3059\u3050\u306b\u5206\u304b\u308a\u307e\u3059\u3002\u4e00\u89a7\u306e <b>\u5869\u57fa / \u30b3\u30f3\u30b8\u30e5\u30b2\u30fc\u30c8</b> \u30d4\u30eb\u3092\u62bc\u305b\u3070\u7a2e\u5225\u306f\u3044\u3064\u3067\u3082\u5909\u3048\u3089\u308c\u3001\u30b3\u30f3\u30b8\u30e5\u30b2\u30fc\u30c8\u306e\u6a2a\u306b <code>s</code> \u3092\u7f6e\u304f\u3068\u305d\u306e\u63a5\u5408\u90e8\u304c PS (+16.06) \u306b\u306a\u308a\u307e\u3059\u3002\u8ff7\u3063\u305f\u3068\u304d\u306f\u3001\u307e\u305a\u65e2\u77e5\u306e\u30aa\u30ea\u30b4\u3067\u4fe1\u983c\u3067\u304d\u308b\u5024\u3068\u7167\u3089\u3057\u5408\u308f\u305b\u3066\u304f\u3060\u3055\u3044\u3002",
-  "faq.mw.14.q":"\u30ab\u30b9\u30bf\u30e0\u5869\u57fa: \u8cea\u91cf\u3092\u6b63\u3057\u304f\u5165\u308c\u308b",
+  "faq.mw.14.q":"\u30ab\u30b9\u30bf\u30e0\u5869\u57fa\uff1a\u8cea\u91cf\u3092\u6b63\u3057\u304f\u5165\u308c\u308b",
   "faq.mw.15.a":"<b>\u30cc\u30af\u30ec\u30aa\u30b7\u30c9\u30e2\u30fc\u30c9\u306e\u9396\u5185\u5869\u57fa</b>\u3067\u306f\u30ea\u30f3\u9178\u3092\u542b\u307e\u306a\u3044\u30e2\u30ce\u30de\u30fc\u8cea\u91cf\u3092\u5165\u529b\u3057\u3001\u8a08\u7b97\u30c4\u30fc\u30eb\u304c\u9aa8\u683c\u306e\u30ea\u30f3\u9178 (PO = 61.96) \u3092 1 \u3064\u81ea\u52d5\u3067\u8db3\u3059\u305f\u3081\u30011 \u4f4d\u7f6e\u3042\u305f\u308a\u306e\u6570\u5024\u304c\u7d04 62 \u5927\u304d\u304f\u306a\u308a\u307e\u3059\u3002<b>\u4f8b:</b> 244.20 \u3068\u5165\u529b\u3059\u308b\u3068\u3001\u4e00\u89a7\u306b\u306f 306.16/pos \u3068\u8868\u793a\u3055\u308c\u307e\u3059\u3002\u624b\u5143\u306e\u8cea\u91cf\u306b<i>\u3059\u3067\u306b\u30ea\u30f3\u9178\u304c\u542b\u307e\u308c\u3066\u3044\u308b</i>\u5834\u5408\u306f\u3001\u30c8\u30b0\u30eb\u3092 <b>+ \u30ea\u30f3\u9178</b> \u306b\u3059\u308b\u3068 1 \u4f4d\u7f6e\u3042\u305f\u308a\u306e\u5024\u304c\u5165\u529b\u3057\u305f\u6570\u5024\u3068\u6b63\u78ba\u306b\u4e00\u81f4\u3057\u307e\u3059\u3002(\u30b3\u30f3\u30b8\u30e5\u30b2\u30fc\u30c8\u306f\u3053\u3046\u306a\u308a\u307e\u305b\u3093\u3002\u5165\u529b\u3057\u305f\u8cea\u91cf\u3092\u305d\u306e\u307e\u307e\u8db3\u3057\u3001\u30ea\u30f3\u9178\u306f\u8db3\u3057\u307e\u305b\u3093\u3002)",
-  "faq.mw.15.q":"\u30ab\u30b9\u30bf\u30e0\u306e\u9396\u5185\u5869\u57fa: \u5165\u529b\u3057\u305f\u5206\u5b50\u91cf\u3088\u308a\u300cg/mol/pos\u300d\u304c\u5927\u304d\u3044\u306e\u306f\u306a\u305c?",
+  "faq.mw.15.q":"\u30ab\u30b9\u30bf\u30e0\u306e\u9396\u5185\u5869\u57fa\uff1a\u5165\u529b\u3057\u305f\u5206\u5b50\u91cf\u3088\u308a\u300cg/mol/pos\u300d\u304c\u5927\u304d\u3044\u306e\u306f\u306a\u305c?",
   "faq.mw.16.a!":"<b>\u8cea\u91cf\u5206\u6790</b>\u30bf\u30d6\u306f\u5206\u5b50\u91cf\u8a08\u7b97\u30c4\u30fc\u30eb\u304b\u3089\u914d\u5217\u3092\u8aad\u307f\u53d6\u308a\u3001\u88c5\u7f6e\u3067\u5fc5\u8981\u306a\u5024\u3092\u8868\u793a\u3057\u307e\u3059\u3002<b>\u5e73\u5747\u8cea\u91cf</b>\u306f\u30c7\u30b3\u30f3\u30dc\u30ea\u30e5\u30fc\u30b7\u30e7\u30f3\u5f8c\u306e\u30c7\u30fc\u30bf\u3084\u9577\u3081\u306e\u30aa\u30ea\u30b4\u306b\u9069\u3057\u3066\u304a\u308a\u3001<b>\u30e2\u30ce\u30a2\u30a4\u30bd\u30c8\u30d4\u30c3\u30af\u8cea\u91cf</b> (\u53b3\u5bc6\u306a\u5143\u7d20\u7d44\u6210\u5f0f\u304b\u3089\u6c42\u3081\u305f\u3082\u306e) \u306f\u3001\u77ed\u3081\u306e\u30aa\u30ea\u30b4\u306b\u3064\u3044\u3066\u9ad8\u5206\u89e3\u80fd\u88c5\u7f6e\u304c\u5831\u544a\u3059\u308b\u5024\u3067\u3059\u3002<b>m/z \u30e9\u30c0\u30fc</b>\u306f\u96fb\u8377\u72b6\u614b\u306e\u7cfb\u5217\u3092\u4e26\u3079\u308b\u306e\u3067\u3001\u30b9\u30da\u30af\u30c8\u30eb\u4e0a\u306e\u30d4\u30fc\u30af\u3068\u7167\u5408\u3067\u304d\u307e\u3059\u3002\u30aa\u30ea\u30b4\u306f<b>\u8ca0</b>\u30e2\u30fc\u30c9\u3067 [M−zH]<sup>z−</sup> \u3068\u3057\u3066\u691c\u51fa\u3055\u308c\u3001\u5f37\u8abf\u3055\u308c\u305f\u884c\u306f\u4e00\u822c\u7684\u306a ESI \u306e\u7bc4\u56f2 (m/z 500\u301c2000) \u306b\u5165\u308a\u307e\u3059\u3002<b>Na⁺/K⁺ \u4ed8\u52a0\u4f53</b>\u3092\u30aa\u30f3\u306b\u3059\u308b\u3068\u3001\u3088\u304f\u73fe\u308c\u308b\u5869\u306e\u885b\u661f\u30d4\u30fc\u30af\u3092\u898b\u3089\u308c\u307e\u3059\u3002\u30ab\u30b9\u30bf\u30e0\u5869\u57fa\u3084\u30b3\u30f3\u30b8\u30e5\u30b2\u30fc\u30c8\u306e\u30e2\u30ce\u30a2\u30a4\u30bd\u30c8\u30d4\u30c3\u30af\u8cea\u91cf\u306b\u306f\u5143\u7d20\u7d44\u6210\u5f0f\u304c\u5fc5\u8981\u3067\u3059\u3002\u30ab\u30b9\u30bf\u30e0\u30e2\u30ce\u30de\u30fc\u306e\u30d1\u30cd\u30eb\u3067\u904a\u96e2\u30cc\u30af\u30ec\u30aa\u30b7\u30c9\u306e\u7d44\u6210\u5f0f\u3092\u8ffd\u52a0\u3059\u308c\u3070\u3001\u9aa8\u683c\u306e\u30ea\u30f3\u9178\u306f\u81ea\u52d5\u3067\u52a0\u3048\u3089\u308c\u307e\u3059\u3002\u5e73\u5747\u8cea\u91cf\u3068\u30e9\u30c0\u30fc\u306f\u305d\u308c\u306a\u3057\u3067\u3082\u4f7f\u3048\u307e\u3059\u3002",
-  "faq.mw.16.q":"\u8cea\u91cf\u5206\u6790\u30bf\u30d6: \u30e2\u30ce\u30a2\u30a4\u30bd\u30c8\u30d4\u30c3\u30af\u8cea\u91cf\u3001m/z \u30e9\u30c0\u30fc\u3001\u4ed8\u52a0\u4f53",
+  "faq.mw.16.q":"\u8cea\u91cf\u5206\u6790\u30bf\u30d6\uff1a\u30e2\u30ce\u30a2\u30a4\u30bd\u30c8\u30d4\u30c3\u30af\u8cea\u91cf\u3001m/z \u30e9\u30c0\u30fc\u3001\u4ed8\u52a0\u4f53",
   "faq.mw.17.a":"<b>\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u4fdd\u5b58</b> \u306f\u73fe\u5728\u306e\u9396\u3092\u8a18\u9332\u3057\u307e\u3059\u3002<b>\u30e9\u30a4\u30d6\u30e9\u30ea</b>\u3092\u958b\u304f\u3068\u3001\u904e\u53bb\u306e\u914d\u5217\u3092\u8aad\u307f\u8fbc\u307f\u76f4\u3059\u3001\u540d\u524d\u3092\u5909\u3048\u308b\u3001\u540d\u524d\u3084\u914d\u5217\u3067\u691c\u7d22\u3059\u308b\u3001\u524a\u9664\u3059\u308b\u3001<b>CSV \u3092\u66f8\u304d\u51fa\u3059</b> (Excel \u3067\u958b\u3051\u307e\u3059) \u3067\u540d\u524d\u30fb\u914d\u5217\u30fb\u7a2e\u985e\u30fb\u7d50\u5408\u30fb\u672b\u7aef\u30fb\u9577\u3055\u30fb\u4fee\u98fe\u30fb\u5206\u5b50\u91cf\u3092\u51fa\u529b\u3059\u308b\u3001\u3068\u3044\u3063\u305f\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002",
-  "faq.mw.17.q":"\u4fdd\u5b58\u3057\u305f\u914d\u5217: \u540d\u524d\u3001\u691c\u7d22\u3001CSV",
+  "faq.mw.17.q":"\u4fdd\u5b58\u3057\u305f\u914d\u5217\uff1a\u540d\u524d\u3001\u691c\u7d22\u3001CSV",
   "faq.mw.title":"\u5206\u5b50\u91cf\u8a08\u7b97\u30c4\u30fc\u30eb",
   "lab.about.h":"\u3053\u306e\u30e9\u30dc",
   "lab.acc.author":"\u4f5c\u6210\u8005",
@@ -4914,8 +4920,8 @@ var I18N = {
   "lab.imp.own":"\u3053\u308c\u306f Oligo Calculator \u306e\u5b8c\u5168\u30ec\u30b3\u30fc\u30c9\u3067\u3059\u3002\u3059\u3079\u3066\u306e\u5217\u304c\u5bfe\u5fdc\u3057\u307e\u3057\u305f\u3002",
   "lab.imp.pick":"CSV \u307e\u305f\u306f Excel \u30d5\u30a1\u30a4\u30eb\u3092\u9078\u3076",
   "lab.imp.quota!":"\u3054\u5229\u7528\u306e\u30d7\u30e9\u30f3\u3067\u4fdd\u5b58\u3067\u304d\u308b\u914d\u5217\u306f {max} \u4ef6\u3067\u3001\u3059\u3067\u306b {used} \u4ef6\u3092\u4f7f\u3063\u3066\u3044\u307e\u3059\u3002\u3053\u306e {n} \u4ef6\u306e\u3046\u3061 {fit} \u4ef6\u304c\u5165\u308a\u307e\u3059\u3002",
-  "lab.imp.rowdate":"{n} \u884c\u76ee: \u65e5\u4ed8\u3092\u8aad\u307f\u53d6\u308c\u307e\u305b\u3093\u3067\u3057\u305f\u30022026-08-16 \u306e\u5f62\u5f0f\u3067\u3054\u8a18\u5165\u304f\u3060\u3055\u3044\u3002",
-  "lab.imp.rownoseq":"{n} \u884c\u76ee: \u914d\u5217\u304c\u3042\u308a\u307e\u305b\u3093",
+  "lab.imp.rowdate":"{n} \u884c\u76ee\uff1a\u65e5\u4ed8\u3092\u8aad\u307f\u53d6\u308c\u307e\u305b\u3093\u3067\u3057\u305f\u30022026-08-16 \u306e\u5f62\u5f0f\u3067\u3054\u8a18\u5165\u304f\u3060\u3055\u3044\u3002",
+  "lab.imp.rownoseq":"{n} \u884c\u76ee\uff1a\u914d\u5217\u304c\u3042\u308a\u307e\u305b\u3093",
   "lab.imp.rowseq":"{n} \u884c\u76ee: {why}",
   "lab.imp.sheet":"\u30b7\u30fc\u30c8",
   "lab.imp.sheeth":"\u3053\u306e\u30d5\u30a1\u30a4\u30eb\u306b\u306f\u30b7\u30fc\u30c8\u304c\u8907\u6570\u3042\u308a\u307e\u3059\u3002\u914d\u5217\u304c\u5165\u3063\u3066\u3044\u308b\u306e\u306f\u3069\u308c\u3067\u3059\u304b\u3002",
@@ -5501,7 +5507,7 @@ var I18N = {
   "mk.0375":"Oligo Calculator",
   "mk.0382":"\u8a08\u7b97\u3059\u308b\u914d\u5217\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044\u3002\u5165\u529b\u306b\u5fdc\u3058\u3066\u3053\u3053\u306b\u7d50\u679c\u304c\u8868\u793a\u3055\u308c\u307e\u3059\u3002",
   "mk.0383":"\u9396\u304c\u6709\u52b9\u306b\u306a\u308b\u307e\u3067\u6570\u5024\u306f\u8868\u793a\u3055\u308c\u307e\u305b\u3093\u3002",
-  "mk.0385":"ATCGATCGAT · DNA · all-PO · 5′-OH / 3′-OH",
+  "mk.0385":"ATCGATCGAT · DNA · \u5168 PO · 5′-OH / 3′-OH",
   "mk.0386":"\u5e73\u5747\u5206\u5b50\u91cf",
   "mk.0387":"\u5c0f\u6570\u7b2c 2 \u4f4d\u307e\u3067\u8a08\u7b97 · \u9396\u306e\u5909\u66f4\u306b\u8ffd\u5f93",
   "mk.0388":"\u6b63\u5473 −9",
@@ -5580,7 +5586,7 @@ var I18N = {
   "rk.0018":"RNA \u5316\u5b66\u306e\u535a\u58eb\u8ab2\u7a0b\u5b66\u751f\u3067\u3042\u308b Yu-Sheng Chen \u304c\u30cb\u30e5\u30fc\u30e8\u30fc\u30af\u3067\u81ea\u8cbb\u3067\u69cb\u7bc9\u30fb\u904b\u55b6\u3057\u3066\u3044\u307e\u3059\u3002<b>\u3053\u306e\u30b5\u30a4\u30c8\u306f\u72ec\u7acb\u3057\u3066\u304a\u308a\u3001\u3044\u304b\u306a\u308b\u5927\u5b66\u3068\u3082\u63d0\u643a\u3057\u3066\u304a\u3089\u305a\u3001\u8cc7\u91d1\u63d0\u4f9b\u3082\u63a8\u85a6\u3082\u53d7\u3051\u3066\u3044\u307e\u305b\u3093\u3002</b>\u30a2\u30ca\u30ea\u30c6\u30a3\u30af\u30b9\u3082\u30c8\u30e9\u30c3\u30ab\u30fc\u3082\u3042\u308a\u307e\u305b\u3093\u3002\u30d4\u30da\u30c3\u30c8\u3092\u53d6\u308b\u524d\u306b\u3001\u3059\u3079\u3066\u306e\u8cea\u91cf\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
   "rk.0019":"\u307e\u3060\u8a08\u7b97\u3067\u304d\u308b\u3082\u306e\u304c\u3042\u308a\u307e\u305b\u3093\u3002\u914d\u5217\u306e 5 \u756a\u76ee\u306b\u3001\u3053\u306e\u30a2\u30d7\u30ea\u304c\u77e5\u3089\u306a\u3044\u30b3\u30fc\u30c9 <b>“X”</b> \u304c\u3042\u308a\u307e\u3059\u3002\u53d6\u308a\u9664\u304f\u304b\u3001\u5b9f\u5728\u3059\u308b\u5869\u57fa (A\u3001C\u3001G\u3001T\u3001U \u306e\u3044\u305a\u308c\u304b) \u3092\u5165\u308c\u3066\u304f\u3060\u3055\u3044\u3002",
   "rk.0020":"\u914d\u5217\u3092\u5165\u529b\u4e2d\u3067\u3059\u3002<b>\u305d\u306e\u307e\u307e\u7d9a\u3051\u3066\u304f\u3060\u3055\u3044\u3002</b>\u9396\u304c\u5b8c\u6210\u3057\u3066\u6709\u52b9\u306b\u306a\u308b\u3068\u7d50\u679c\u304c\u8868\u793a\u3055\u308c\u307e\u3059\u3002",
-  "rk.0021":"<b>ATCGATCGAT</b> (10 nt · DNA · \u5168 PO · 5′-OH / 3′-OH) \u306e\u5834\u5408: \u904a\u96e2\u30cc\u30af\u30ec\u30aa\u30b7\u30c9\u306e Σ 2,469.36 + PO \u67b6\u6a4b 9 × 61.96 = 557.68 + \u672b\u7aef 0.00 = <b>3,027.04 g/mol</b>\u3002\u3053\u308c\u306f\u7d50\u679c\u30d1\u30cd\u30eb\u304c\u8868\u793a\u3059\u308b\u306e\u3068\u540c\u3058\u6570\u5024\u3067\u3059\u3002",
+  "rk.0021":"<b>ATCGATCGAT</b> (10 nt · DNA · \u5168 PO · 5′-OH / 3′-OH) \u306e\u5834\u5408\uff1a\u904a\u96e2\u30cc\u30af\u30ec\u30aa\u30b7\u30c9\u306e Σ 2,469.36 + PO \u67b6\u6a4b 9 × 61.96 = 557.68 + \u672b\u7aef 0.00 = <b>3,027.04 g/mol</b>\u3002\u3053\u308c\u306f\u7d50\u679c\u30d1\u30cd\u30eb\u304c\u8868\u793a\u3059\u308b\u306e\u3068\u540c\u3058\u6570\u5024\u3067\u3059\u3002",
   "rk.0022":"\u30db\u30b9\u30db\u30ed\u30c1\u30aa\u30a8\u30fc\u30c8\u306f\u7d50\u5408 1 \u3064\u3042\u305f\u308a <b>+16.06</b> g/mol \u5897\u3048\u307e\u3059\u3002\u30e2\u30ce\u30a2\u30a4\u30bd\u30c8\u30d4\u30c3\u30af\u8cea\u91cf\u306b\u306f\u3059\u3079\u3066\u306e\u5358\u4f4d\u306e\u5143\u7d20\u7d44\u6210\u5f0f\u304c\u5fc5\u8981\u3067\u3059\u3002ε₂₆₀ \u306f\u6700\u8fd1\u63a5\u5869\u57fa\u5bfe\u30e2\u30c7\u30eb\u3092\u4f7f\u3044\u307e\u3059\u3002",
   "rk.0023":"5′→3′ \u306e\u5411\u304d\u3067\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044\u3002\u5869\u57fa\u306f <code>A C G T U</code> \u3067\u3059\u3002DNA \u306f T \u3092\u3001RNA \u306f U \u3092\u4f7f\u3044\u3001\u9aa8\u683c\u304c DNA \u306e\u3068\u304d\u306b\u5165\u529b\u3057\u305f U \u306f T \u3068\u3057\u3066\u6570\u3048\u3089\u308c\u307e\u3059\u3002\u7a7a\u767d\u306f\u7121\u8996\u3055\u308c\u307e\u3059\u3002",
   "rk.0024":"<b>\u7cd6\u3068 2′ \u4fee\u98fe</b>\u306f\u5869\u57fa\u306e\u524d\u306b\u7f6e\u304d\u307e\u3059: <code>d</code>/<code>r</code> (DNA/RNA \u306e\u7cd6\u3002\u30ad\u30e1\u30e9\u30e2\u30fc\u30c9\u3067\u306f\u5fc5\u9808)\u3001<code>m</code> 2′-OMe\u3001<code>f</code> 2′-F\u3001<code>moe</code> 2′-MOE\u3001<code>cEt</code>\u3002\u305f\u3068\u3048\u3070 <code>mA</code>\u3001<code>fG</code>\u3001<code>moeC</code>\u3001<code>cEtA</code> \u306e\u3088\u3046\u306b\u66f8\u304d\u307e\u3059\u3002",
@@ -5594,7 +5600,7 @@ var I18N = {
   "tm.cmp.basis.omit!":"\u3069\u3061\u3089\u306e\u7d4c\u9a13\u5247\u3082\u6a19\u6e96\u7684\u306a\u5869\u57fa\u306e\u307f\u3092\u6570\u3048\u307e\u3059\u3002{total} \u500b\u306e\u6b8b\u57fa\u306e\u3046\u3061 {n} \u500b\u3092\u6570\u3048\u3001{omit} \u500b\u3092\u9664\u5916\u3057\u307e\u3057\u305f\u3002\u3069\u3061\u3089\u306e\u7d4c\u9a13\u5247\u3082\u7cd6\u3001\u7d50\u5408\u3001\u672b\u7aef\u57fa\u3001\u30b3\u30f3\u30b8\u30e5\u30b2\u30fc\u30c8\u3092\u898b\u3066\u3044\u307e\u305b\u3093\u3002\u3053\u306e 2 \u3064\u306e\u5024\u306f\u3001\u5165\u529b\u3057\u305f\u9396\u3067\u306f\u306a\u304f\u3001\u3088\u308a\u77ed\u3044\u672a\u4fee\u98fe\u306e\u9396\u3092\u8868\u3057\u3066\u3044\u307e\u3059\u3002",
   "tm.cmp.gc":"GC% \u6cd5",
   "tm.cmp.gc.range!":">13 nt\u3001\u6838\u9178\u6fc3\u5ea6 50 nM\u300150 mM Na⁺ \u3092\u4eee\u5b9a",
-  "tm.cmp.h!":"\u53c2\u8003: \u53e4\u3044\u7d4c\u9a13\u5247\u3068\u3001\u305d\u308c\u305e\u308c\u304c\u5b9f\u969b\u306b\u6e2c\u5b9a\u3055\u308c\u305f\u7bc4\u56f2",
+  "tm.cmp.h!":"\u53c2\u8003\uff1a\u53e4\u3044\u7d4c\u9a13\u5247\u3068\u3001\u305d\u308c\u305e\u308c\u304c\u5b9f\u969b\u306b\u6e2c\u5b9a\u3055\u308c\u305f\u7bc4\u56f2",
   "tm.cmp.oor!":": <b>{n} nt \u3067\u306f\u7bc4\u56f2\u5916</b>",
   "tm.cmp.wallace":"Wallace \u6cd5",
   "tm.cmp.wallace.range!":"11–17 nt\u3001\u30d5\u30a3\u30eb\u30bf\u30fc\u30cf\u30a4\u30d6\u30ea\u30c0\u30a4\u30bc\u30fc\u30b7\u30e7\u30f3\u30011.2 M Na⁺",
@@ -5648,7 +5654,7 @@ var I18N = {
   "tm.fold.leg.three":"<b>\u6a2a\u7dda 3 \u672c</b> G \u3068 C \u304c\u3064\u306a\u304c\u3063\u3066\u3044\u307e\u3059",
   "tm.fold.leg.two":"<b>\u6a2a\u7dda 2 \u672c</b> A \u3068 {p} \u304c\u3064\u306a\u304c\u3063\u3066\u3044\u307e\u3059",
   "tm.fold.limit!":"{note}(\u3053\u306e\u9396\u306f {n} nt \u3067\u3059)\u3002\u4e0a\u306e\u878d\u89e3\u6e29\u5ea6\u306f\u5f71\u97ff\u3092\u53d7\u3051\u307e\u305b\u3093\u3002\u305d\u306e\u8a08\u7b97\u306f\u9577\u3055\u306b\u5bfe\u3057\u3066\u7dda\u5f62\u3060\u304b\u3089\u3067\u3059\u3002",
-  "tm.fold.limit.note!":"{max} nt \u3092\u8d85\u3048\u308b\u3068\u8a08\u7b97\u3057\u307e\u305b\u3093\u3002\u69cb\u9020\u63a2\u7d22\u306f\u9577\u3055\u306e 3 \u4e57\u3067\u5897\u3048\u308b\u305f\u3081\u3001\u7e70\u308a\u8fd4\u3057\u914d\u5217\u3067\u306f\u30da\u30fc\u30b8\u304c\u5fdc\u7b54\u3057\u306a\u304f\u306a\u308a\u307e\u3059",
+  "tm.fold.limit.note!":"{max} nt \u3092\u8d85\u3048\u308b\u3068\u8a08\u7b97\u3057\u307e\u305b\u3093\u3002\u69cb\u9020\u63a2\u7d22\u306f\u9577\u3055\u306e 3 \u4e57\u306e\u30b3\u30b9\u30c8\u304c\u304b\u304b\u308b\u305f\u3081\u3001\u30da\u30fc\u30b8\u304c\u5fdc\u7b54\u3057\u306a\u304f\u306a\u308a\u307e\u3059",
   "tm.fold.loop":"{n} nt \u306e\u30eb\u30fc\u30d7",
   "tm.fold.mb.many":"\u30de\u30eb\u30c1\u30d6\u30e9\u30f3\u30c1\u30eb\u30fc\u30d7 {n} \u500b",
   "tm.fold.mb.one":"\u30de\u30eb\u30c1\u30d6\u30e9\u30f3\u30c1\u30eb\u30fc\u30d7 {n} \u500b",
@@ -5660,7 +5666,7 @@ var I18N = {
   "tm.fold.name.branched":"\u5206\u5c90\u69cb\u9020",
   "tm.fold.name.hairpin":"\u30d8\u30a2\u30d4\u30f3",
   "tm.fold.name.junction":"{n} \u5206\u5c90\u30b8\u30e3\u30f3\u30af\u30b7\u30e7\u30f3",
-  "tm.fold.nomodel!":"\u3053\u306e\u9396\u3067\u306f\u30e2\u30c7\u30eb\u5316\u3057\u3066\u3044\u307e\u305b\u3093: {note} ({why})\u3002\u30d8\u30a2\u30d4\u30f3\u3068\u30bb\u30eb\u30d5\u30c0\u30a4\u30de\u30fc\u306f\u3069\u3061\u3089\u3082\u30eb\u30fc\u30d7\u30d1\u30e9\u30e1\u30fc\u30bf\u3092\u5fc5\u8981\u3068\u3057\u307e\u3059\u3002",
+  "tm.fold.nomodel!":"\u3053\u306e\u9396\u3067\u306f\u30e2\u30c7\u30eb\u5316\u3057\u3066\u3044\u307e\u305b\u3093\uff1a{note} ({why})\u3002\u30d8\u30a2\u30d4\u30f3\u3068\u30bb\u30eb\u30d5\u30c0\u30a4\u30de\u30fc\u306f\u3069\u3061\u3089\u3082\u30eb\u30fc\u30d7\u30d1\u30e9\u30e1\u30fc\u30bf\u3092\u5fc5\u8981\u3068\u3057\u307e\u3059\u3002",
   "tm.fold.none":"\u306a\u3057",
   "tm.fold.nostruct":"\u5b89\u5b9a\u306a\u30d8\u30a2\u30d4\u30f3\u3084\u30bb\u30eb\u30d5\u30c0\u30a4\u30de\u30fc\u306f\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f\u3002",
   "tm.fold.note.dimer!":"\u30bb\u30eb\u30d5\u30c0\u30a4\u30de\u30fc\u306e\u884c\u306f\u3001\u30bb\u30eb\u30d5\u30c0\u30a4\u30de\u30fc\u306e\u81ea\u7531\u30a8\u30cd\u30eb\u30ae\u30fc\u6700\u5c0f\u5024\u3067\u306f\u306a\u304f\u3001\u9023\u7d9a\u3057\u305f\u6700\u826f\u306e\u30bb\u30eb\u30d5\u30c0\u30a4\u30de\u30fc\u30d8\u30ea\u30c3\u30af\u30b9\u3067\u3059\u3002\u96a3\u308a\u5408\u3046\u5869\u57fa\u5bfe\u306e\u9023\u306a\u308a 1 \u3064\u3060\u3051\u3092\u63a1\u70b9\u3057\u3001\u30d0\u30eb\u30b8\u3082\u5185\u90e8\u30eb\u30fc\u30d7\u3082\u542b\u307f\u307e\u305b\u3093\u3002\u975e\u5bfe\u79f0\u306a\u30db\u30e2\u30c0\u30a4\u30de\u30fc\u3067\u306f\u305d\u306e\u93e1\u50cf\u30d8\u30ea\u30c3\u30af\u30b9\u3082\u5f62\u6210\u3055\u308c\u307e\u3059\u304c\u3001\u6570\u3048\u3066\u3044\u307e\u305b\u3093\u3002",
@@ -5673,7 +5679,7 @@ var I18N = {
   "tm.fold.note.one!":"\u5b89\u5b9a\u306a\u30d8\u30a2\u30d4\u30f3\u306f\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f\u3002",
   "tm.fold.note.rna!":"\u30eb\u30fc\u30d7\u30d1\u30e9\u30e1\u30fc\u30bf: Turner 2004\u3001\u3059\u306a\u308f\u3061 Mathews 2004 (ΔG°₃₇) \u3068 Lu 2006 (ΔH) \u3092 Nearest Neighbor Database \u7d4c\u7531\u3067\u3002\u30b9\u30c6\u30e0\u306f Xia 1998\u3002\u30eb\u30fc\u30d7\u306e\u30a8\u30f3\u30bf\u30eb\u30d4\u30fc\u306f\u5b9f\u6e2c\u5024\u3067\u3042\u308a\u3001\u4eee\u5b9a\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002<b>\u3053\u306e\u30d5\u30a9\u30fc\u30eb\u30c9\u306e\u5869\u6fc3\u5ea6\u88dc\u6b63\u306f RNA \u306b\u30d5\u30a3\u30c3\u30c8\u3055\u308c\u305f\u3082\u306e\u3067\u3059\u3002</b>\u30b9\u30bf\u30c3\u30af\u3054\u3068\u306b\u3001Yao \u3068 Lorenz \u304c 2023 \u5e74\u306b\u767a\u8868\u3057\u305f\u30c7\u30d0\u30a4\u906e\u853d\u3068 Manning \u51dd\u7e2e\u306e\u9805\u3092\u9069\u7528\u3057\u307e\u3059\u3002Turner \u30d1\u30e9\u30e1\u30fc\u30bf\u81ea\u4f53\u304c\u6e2c\u5b9a\u3055\u308c\u305f 1.021 M \u30ca\u30c8\u30ea\u30a6\u30e0\u30a4\u30aa\u30f3\u3092\u57fa\u6e96\u3068\u3057\u3066\u3044\u308b\u305f\u3081\u3001\u81ea\u7531\u30a8\u30cd\u30eb\u30ae\u30fc\u3068\u30d5\u30a9\u30fc\u30eb\u30c9\u306e\u878d\u89e3\u6e29\u5ea6\u306f\u5165\u529b\u3057\u305f\u7de9\u885d\u6db2\u306b\u5fdc\u3058\u3066\u5909\u308f\u308a\u307e\u3059\u3002\u30a8\u30f3\u30bf\u30eb\u30d4\u30fc\u306f\u5909\u308f\u3089\u305a\u3001\u5869\u57fa\u5bfe\u3068\u30eb\u30fc\u30d7\u306e\u30ab\u30a6\u30f3\u30c8\u3082\u5909\u308f\u308a\u307e\u305b\u3093\u3002\u767a\u8868\u3055\u308c\u305f\u30e2\u30c7\u30eb\u306f\u30eb\u30fc\u30d7\u306e\u9759\u96fb\u76f8\u4e92\u4f5c\u7528\u3082\u88dc\u6b63\u3057\u307e\u3059\u304c\u3001\u672c\u30a8\u30f3\u30b8\u30f3\u306f\u88dc\u6b63\u3057\u3066\u304a\u3089\u305a\u3001\u3053\u308c\u307e\u3067\u3082\u88dc\u6b63\u3057\u3066\u3044\u307e\u305b\u3093\u3002\u4e8c\u672c\u9396\u306e\u878d\u89e3\u6e29\u5ea6\u306f\u4eca\u3082 Owczarzy 2004 \u3067\u88dc\u6b63\u3057\u3066\u304a\u308a\u3001\u3053\u308c\u306f DNA \u306b\u30d5\u30a3\u30c3\u30c8\u3055\u308c\u305f\u3082\u306e\u3067\u3059\u3002GU \u30a6\u30a9\u30d6\u30eb\u5bfe\u3082\u30b9\u30c6\u30e0\u306e\u5869\u57fa\u5bfe\u3068\u3057\u3066\u63a1\u70b9\u3057\u307e\u3059\u3002\u4e21\u5074\u306b\u305d\u308c\u305e\u308c 1 \u3064\u307e\u305f\u306f 2 \u3064\u306e\u975e\u5bfe\u5408\u5869\u57fa\u304c\u3042\u308b\u5185\u90e8\u30eb\u30fc\u30d7\u306b\u306f\u3001\u4e00\u822c\u306e\u30eb\u30fc\u30d7\u5f0f\u3067\u306f\u306a\u304f Turner \u304c\u6e2c\u5b9a\u3057\u305f\u5024\u3092\u7528\u3044\u307e\u3059\u3002",
   "tm.fold.note.tmm!":" ⚠ \u3053\u306e\u30eb\u30fc\u30d7\u306f GG/CG \u672b\u7aef\u30df\u30b9\u30de\u30c3\u30c1\u3092\u4f7f\u3044\u307e\u3059\u3002\u3053\u308c\u306f\u516c\u8868\u8868\u306e\u4e2d\u3067\u7570\u5e38\u5024\u3067\u3059\u304c\u3001\u305d\u306e\u307e\u307e\u4f7f\u3063\u3066\u3044\u307e\u3059\u3002",
-  "tm.fold.scope!":"\u3053\u306e\u9396\u306f {n} nt \u3067\u3059\u3002\u3053\u306e\u8a08\u7b97\u30c4\u30fc\u30eb\u304c\u60f3\u5b9a\u3057\u3066\u3044\u308b\u306e\u306f {max} nt \u307e\u3067\u306e\u30aa\u30ea\u30b4\u30cc\u30af\u30ec\u30aa\u30c1\u30c9\u3067\u3059\u3002\u3053\u306e\u9577\u3055\u3092\u8d85\u3048\u308b\u3068\u30013 \u3064\u4ee5\u4e0a\u306e\u30b9\u30c6\u30e0\u304c 1 \u3064\u306e\u30eb\u30fc\u30d7\u3067\u51fa\u4f1a\u3046\u30d5\u30a9\u30fc\u30eb\u30c9\u304c\u591a\u304f\u306a\u308a\u3001\u305d\u308c\u306f\u3053\u306e\u63a2\u7d22\u306e\u63a1\u70b9\u304c\u3082\u3063\u3068\u3082\u4e0d\u6b63\u78ba\u306b\u306a\u308b\u5f62\u3067\u3059\u3002\u4e0b\u306e\u69cb\u9020\u306f\u5f15\u304d\u7d9a\u304d\u8a08\u7b97\u3057\u307e\u3059\u3002\u8fd1\u4f3c\u3068\u3057\u3066\u304a\u8aad\u307f\u304f\u3060\u3055\u3044\u3002",
+  "tm.fold.scope!":"\u3053\u306e\u9396\u306f {n} nt \u3067\u3059\u3002\u3053\u306e\u8a08\u7b97\u30c4\u30fc\u30eb\u304c\u60f3\u5b9a\u3057\u3066\u3044\u308b\u306e\u306f {max} nt \u307e\u3067\u306e\u30aa\u30ea\u30b4\u30cc\u30af\u30ec\u30aa\u30c1\u30c9\u3067\u3059\u3002\u3053\u306e\u9577\u3055\u3092\u8d85\u3048\u308b\u3068\u30013 \u3064\u4ee5\u4e0a\u306e\u30b9\u30c6\u30e0\u304c 1 \u3064\u306e\u30eb\u30fc\u30d7\u3067\u51fa\u4f1a\u3046\u30d5\u30a9\u30fc\u30eb\u30c9\u304c\u591a\u304f\u306a\u308a\u3001\u305d\u308c\u306f\u3053\u306e\u63a2\u7d22\u304c\u3082\u3063\u3068\u3082\u82e6\u624b\u3068\u3059\u308b\u5f62\u3067\u3059\u3002\u4e0b\u306e\u69cb\u9020\u306f\u5f15\u304d\u7d9a\u304d\u8a08\u7b97\u3057\u307e\u3059\u3002\u8fd1\u4f3c\u3068\u3057\u3066\u304a\u8aad\u307f\u304f\u3060\u3055\u3044\u3002",
   "tm.fold.stem":"{n} bp \u306e\u30b9\u30c6\u30e0",
   "tm.fold.where":"\u6b8b\u57fa {a}–{b}",
   "tm.how.anti":"\u5165\u529b\u3057\u305f\u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u9396\u306b\u5bfe\u3057\u3066",
@@ -5682,7 +5688,7 @@ var I18N = {
   "tm.key.nopar!":"\u516c\u8868\u3055\u308c\u305f\u30d1\u30e9\u30e1\u30fc\u30bf\u306a\u3057",
   "tm.model.label":"DNA \u30d1\u30e9\u30e1\u30fc\u30bf",
   "tm.model.mixed":"\u516c\u8868\u30bb\u30c3\u30c8\u306e\u6df7\u5408",
-  "tm.model.unused":"DNA \u30d1\u30e9\u30e1\u30fc\u30bf: \u3053\u3053\u3067\u306f\u4f7f\u7528\u3057\u307e\u305b\u3093",
+  "tm.model.unused":"DNA \u30d1\u30e9\u30e1\u30fc\u30bf\uff1a\u3053\u3053\u3067\u306f\u4f7f\u7528\u3057\u307e\u305b\u3093",
   "tm.none.dangle!":"2 \u672c\u306e\u9396\u306e\u9577\u3055\u304c\u7570\u306a\u308b\u305f\u3081\u3001\u3053\u306e\u4e8c\u672c\u9396\u306b\u306f\u30c0\u30f3\u30b0\u30ea\u30f3\u30b0\u30a8\u30f3\u30c9\u304c\u3067\u304d\u307e\u3059\u304c\u3001\u3053\u306e\u30e2\u30c7\u30eb\u306b\u306f\u30c0\u30f3\u30b0\u30ea\u30f3\u30b0\u30a8\u30f3\u30c9\u306e\u30d1\u30e9\u30e1\u30fc\u30bf\u304c\u3042\u308a\u307e\u305b\u3093\u3002",
   "tm.none.head!":"\u3053\u306e\u6761\u4ef6\u3067\u306f\u878d\u89e3\u6e29\u5ea6\u3092\u6c42\u3081\u3089\u308c\u307e\u305b\u3093\u3002",
   "tm.none.mismatch!":"2 \u672c\u306e\u9396\u304c\u3059\u3079\u3066\u306e\u4f4d\u7f6e\u3067\u5869\u57fa\u5bfe\u3092\u5f62\u6210\u3057\u3066\u3044\u308b\u308f\u3051\u3067\u306f\u306a\u304f\u3001\u30df\u30b9\u30de\u30c3\u30c1\u306b\u306f\u516c\u8868\u3055\u308c\u305f\u6700\u8fd1\u63a5\u5869\u57fa\u5bfe\u30d1\u30e9\u30e1\u30fc\u30bf\u304c\u3042\u308a\u307e\u305b\u3093\u3002",
@@ -5698,7 +5704,7 @@ var I18N = {
   "tm.peek.parent":"\u672a\u4fee\u98fe {v} °C",
   "tm.persist.err!":"Tm \u306e\u6761\u4ef6\u306f\u6709\u52b9\u3067\u3059\u304c\u3001\u3053\u306e\u7aef\u672b\u306b\u4fdd\u5b58\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f\u3002",
   "tm.res.aria":"\u6b8b\u57fa\u3054\u3068\u306e\u30ab\u30d0\u30fc\u7387",
-  "tm.res.conj":"\u30b3\u30f3\u30b8\u30e5\u30b2\u30fc\u30c8: \u9664\u5916",
+  "tm.res.conj":"\u30b3\u30f3\u30b8\u30e5\u30b2\u30fc\u30c8\uff1a\u9664\u5916",
   "tm.res.struct":"\u4e88\u6e2c\u69cb\u9020",
   "tm.res.tm":"\u4e88\u6e2c Tm",
   "tm.salt.mono!":"Owczarzy 2004 (1 \u4fa1\u30a4\u30aa\u30f3)",
@@ -5747,6 +5753,8 @@ var I18N = {
   "ui.flash.sense":"⚠ \u5148\u306b\u914d\u5217\u306e\u30a8\u30e9\u30fc\u3092\u4fee\u6b63\u3057\u3066\u304f\u3060\u3055\u3044",
   "ui.fold.close":"\u9589\u3058\u308b",
   "ui.fold.data.gcpairs":"\u4e8c\u6b21\u69cb\u9020\u4e2d\u306eG:C\u5869\u57fa\u5bfe\u6570",
+  "ui.fold.dl":"\u8a08\u7b97\u65b9\u6cd5\u3092\u66f8\u304d\u51fa\u3059",
+  "ui.fold.dla":"\u8a08\u7b97\u65b9\u6cd5\u3001\u30d1\u30e9\u30e1\u30fc\u30bf\u3001\u69cb\u9020\u56f3\u3092\u30d5\u30a1\u30a4\u30eb\u3068\u3057\u3066\u4fdd\u5b58\u3059\u308b",
   "ui.fold.exp":"\u62e1\u5927",
   "ui.fold.expa":"\u69cb\u9020\u56f3\u3092\u5168\u753b\u9762\u3067\u958b\u304f",
   "ui.fold.mbc":"\u591a\u5206\u5c90\u30b8\u30e3\u30f3\u30af\u30b7\u30e7\u30f3\u3092\u542b\u3080\u6700\u3082\u5b89\u5b9a\u306a\u69cb\u9020\u3082\u8868\u793a\u3059\u308b",
@@ -8219,7 +8227,7 @@ if(/[?&]billing=/.test(window.__ocSearch)){
             <div class="tmgrid">
               <label class="tmf"><span data-i18n="mk.0125">Strand conc.</span><span class="tmin"><input type="number" data-tmc="ct" step="any" min="0" inputmode="decimal" aria-label="Total strand concentration in micromolar" data-i18n-attr="aria-label:ak.0057"><em>µM</em></span></label>
               <label class="tmf"><span>Na⁺</span><span class="tmin"><input type="number" data-tmc="na" step="any" min="0" inputmode="decimal" aria-label="Sodium concentration in millimolar" data-i18n-attr="aria-label:ak.0058"><em>mM</em></span></label>
-              <label class="tmf"><span data-i18n="mk.0126">Hybridises to</span><select data-tmc="target" aria-label="What this strand hybridises to" data-i18n-attr="aria-label:ak.0059"><option value="auto" data-i18n="mk.0127">Auto</option><option value="d" data-i18n="mk.0128">DNA target</option><option value="r" data-i18n="mk.0129">RNA target</option><option value="anti" data-i18n="mk.0130">Antisense as entered</option></select></label>
+              <label class="tmf"><span data-i18n="mk.0126">Hybridizes to</span><select data-tmc="target" aria-label="What this strand hybridizes to" data-i18n-attr="aria-label:ak.0059"><option value="auto" data-i18n="mk.0127">Auto</option><option value="d" data-i18n="mk.0128">DNA target</option><option value="r" data-i18n="mk.0129">RNA target</option><option value="anti" data-i18n="mk.0130">Antisense as entered</option></select></label>
               <label class="tmf tmf-wide" data-tmmodelf><span data-tmmodell data-i18n="mk.0131">DNA parameters</span><select data-tmc="model" aria-label="Which published DNA parameter set to use" data-i18n-attr="aria-label:ak.0060"><option value="dna98">SantaLucia 1998</option><option value="dna04" data-i18n="mk.0132">SantaLucia &amp; Hicks 2004</option></select></label>
             </div>
             <details class="tmpcr">
@@ -8300,7 +8308,7 @@ if(/[?&]billing=/.test(window.__ocSearch)){
             <tr class="hot"><td>5−</td><td>604.40</td><td>608.80</td><td>611.99</td></tr>
           </tbody>
         </table>
-        <div data-i18n-html="rk.0006" class="mscap" data-mscap>Rows marked <b>working range</b> land between 500 and 2000 m/z, which is what most ESI instruments are set to collect. Oligos ionise in negative mode, meaning they lose protons from the backbone rather than gain them. Which peak comes out tallest depends on your instrument and how it is tuned.</div>
+        <div data-i18n-html="rk.0006" class="mscap" data-mscap>Rows marked <b>working range</b> land between 500 and 2000 m/z, which is what most ESI instruments are set to collect. Oligos ionize in negative mode, meaning they lose protons from the backbone rather than gain them. Which peak comes out tallest depends on your instrument and how it is tuned.</div>
       </section>
 
       
@@ -9921,7 +9929,7 @@ const MOD_PRESETS = {
   "custom":{name:"", mass:0},                         
 };
 const MOD_PRESET_LABEL = { "":"None", "3p":"3′-Phosphate", "invdT":"Inverted dT (3′)", "invdA":"Inverted dA (3′)", "invdC":"Inverted dC (3′)", "invdG":"Inverted dG (3′)", "custom":"Custom…" };
-function modMassVal(){ return parseFloat(S.modMass)||0; }
+function modMassVal(){ return ocNumIn(S.modMass)||0; }
 
  
 
@@ -10907,13 +10915,76 @@ function pickInk(hex){
 
 function applyVars(el){ if(typeof shellTheme==='function') shellTheme(); }
 function dxMini(x){ const c=[`<span>${x.n} nt</span>`]; if(x.nPO) c.push(`<span>${x.nPO} PO</span>`); if(x.nPS) c.push(`<span>${x.nPS} PS</span>`); return c.join(""); }
+
+
+
+
+
+
+
+
+
+function ocNumLoc(){
+  try{ return (window.ocI18n && window.ocI18n.get) ? (window.ocI18n.get() || 'en') : 'en'; }
+  catch(_){ return 'en'; }
+}
+
+
+
+var _ocNumDecFor = null, _ocNumDecSep = '.';
+function ocNumDec(){
+  var L = ocNumLoc();
+  if(L === _ocNumDecFor) return _ocNumDecSep;
+  var sep = '.';
+  try{
+    var parts = new Intl.NumberFormat(L).formatToParts(1.5), i;
+    for(i = 0; i < parts.length; i++){ if(parts[i].type === 'decimal') sep = parts[i].value; }
+  }catch(_){ sep = '.'; }
+  _ocNumDecFor = L; _ocNumDecSep = sep;
+  return sep;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+function ocNumCanon(s){
+  s = String(s == null ? '' : s).trim();
+  if(ocNumDec() !== ',') return s;
+  s = s.replace(/[\u0020\u00a0\u202f]/g, '');
+  if(s.indexOf(',') >= 0){ s = s.split('.').join(''); }
+  return s.split(',').join('.');
+}
+
+
+
+function ocNumIn(v){
+  if(typeof v === 'number') return v;
+  var s = ocNumCanon(v);
+  return s ? parseFloat(s) : NaN;
+}
+ 
+function ocNumFmt(x, opts){
+  try{ return Number(x).toLocaleString(ocNumLoc(), opts || undefined); }
+  catch(_){ try{ return String(x); }catch(_e){ return ''; } }
+}
+window.ocNumLoc = ocNumLoc; window.ocNumDec = ocNumDec;
+window.ocNumIn = ocNumIn; window.ocNumFmt = ocNumFmt; window.ocNumCanon = ocNumCanon;
 function fmt(mw,n){
-  if(!n) return (0).toFixed(S.decimals);
+  if(!n) return ocNumFmt(0,{minimumFractionDigits:S.decimals,maximumFractionDigits:S.decimals});
   
 
 
   if(!isFinite(mw)) return '—';
-  return Number(mw.toFixed(S.decimals)).toLocaleString(undefined,{minimumFractionDigits:S.decimals,maximumFractionDigits:S.decimals});
+  return ocNumFmt(Number(mw.toFixed(S.decimals)),{minimumFractionDigits:S.decimals,maximumFractionDigits:S.decimals});
 }
 
 
@@ -10930,7 +11001,7 @@ function autoUnit(base, ladder){
   for(const [u,f] of ladder){ if(a>=f*0.999999) return {v:base/f,u}; }
   const L=ladder[ladder.length-1]; return {v:base/L[1],u:L[0]};
 }
-function nfmt(x){ if(!isFinite(x)) return "—"; const a=Math.abs(x); const d=a>=100?1:a>=1?2:3; return x.toLocaleString(undefined,{maximumFractionDigits:d}); }
+function nfmt(x){ if(!isFinite(x)) return "—"; const a=Math.abs(x); const d=a>=100?1:a>=1?2:3; return ocNumFmt(x,{maximumFractionDigits:d}); }
 function antiR(){
   if(S.duplexMode==='custom') return compute(S.antiSeq||'', S.antiType||S.type, S.antiLinkage||'PO', S.antiThree||'OH', 0);
   const a=antisense(S.seq,S.type,S.linkage); return a? a.r : compute('',S.type,S.linkage);
@@ -10944,7 +11015,7 @@ function srcStrand(){
   if(S.mwSource==='antisense') return {mw:anti.mw, eps:epsilon260(anti.tokens), n:anti.n, label:'antisense', tokens:anti.tokens};
   return {mw:sense.mw+anti.mw, eps:epsilon260(sense.tokens)+epsilon260(anti.tokens), n:sense.n+anti.n, label:'duplex', tokens:(sense.tokens||[]).concat(anti.tokens||[])};
 }
-function currentMW(){ if(S.useCustomMW){ const v=parseFloat(S.customMW); return isFinite(v)&&v>0?v:0; } return srcStrand().mw; }
+function currentMW(){ if(S.useCustomMW){ const v=ocNumIn(S.customMW); return isFinite(v)&&v>0?v:0; } return srcStrand().mw; }
 function setVal(input, v){ if(input && document.activeElement!==input) input.value=v; }
 function renderConc(el){ if(typeof renderConcShell==="function") renderConcShell(); }
 function hintLines(){
@@ -11598,8 +11669,8 @@ document.body.addEventListener("change", e=>{
 
       const _MW=currentMW(), _eps=srcStrand().eps;
       const _a260m=(S.readMode==='a260') && !S.useCustomMW && _eps>0;
-      const _pn=parseFloat(S.path), _path=(isFinite(_pn)&&_pn>0)?_pn:1;
-      const _C1=_a260m ? ((parseFloat(S.a260)||0)/(_eps*_path)) : (_MW>0 ? (parseFloat(S.nd)||0)*1e-3/_MW : 0);
+      const _pn=ocNumIn(S.path), _path=(isFinite(_pn)&&_pn>0)?_pn:1;
+      const _C1=_a260m ? ((ocNumIn(S.a260)||0)/(_eps*_path)) : (_MW>0 ? (ocNumIn(S.nd)||0)*1e-3/_MW : 0);
       if(_C1>0){ const a=autoUnit(_C1,C_UNITS); const u=['M','mM','µM','nM'].includes(a.u)?a.u:'µM';
         S.customStock=String(Math.round((_C1/uf(u,C_UNITS))*1000)/1000); S.customStockUnit=u; }
     }
@@ -13520,7 +13591,7 @@ W.oligoSync={ syncEnabled:syncEnabled, pullCloud:pullCloud, pushStrand:pushStran
 
 
 
-function fmt2(x){ return Number(x).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function fmt2(x){ return ocNumFmt(x,{minimumFractionDigits:2,maximumFractionDigits:2}); }
 function _q(sel){ return document.querySelector(sel); }
  
 var _annT=null;
@@ -13701,7 +13772,7 @@ function renderRowAnns(r, valid){
 
 
 
-  var _n2=function(v){ try{ return v.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }catch(_){ return v.toFixed(2); } };
+  var _n2=function(v){ try{ return ocNumFmt(v,{minimumFractionDigits:2,maximumFractionDigits:2}); }catch(_){ return v.toFixed(2); } };
   
 
 
@@ -13714,7 +13785,7 @@ function renderRowAnns(r, valid){
     var sm=row.querySelector('.cl small'); if(sm) sm.textContent=text;
   }
   var _nb=(valid && r.nBonds) ? r.nBonds : 0;
-  setSub('linkage', _nb ? (_nb.toLocaleString()+' bond'+(_nb===1?'':'s')) : 'Internucleotide bond');
+  setSub('linkage', _nb ? (ocNumFmt(_nb)+' bond'+(_nb===1?'':'s')) : 'Internucleotide bond');
   setAnn('linkage', _nb
      ? '<b>+'+_n2(bmass)+' Da</b>'
      : ('<span>PO +'+((typeof LINK!=='undefined')?LINK.PO.toFixed(2):'61.96')+'</span><span>PS +'+((typeof LINK!=='undefined')?LINK.PS.toFixed(2):'78.03')+' Da/bond</span>'));
@@ -13959,7 +14030,7 @@ function renderResultPanel(){
   var rows=document.querySelectorAll('#result .r-rows .r-row');
   if(rows.length>=3){
     setRow(rows[0], ms.mono!=null, ms.mono!=null? fmt2(ms.mono)+' Da':'');
-    var epsv=rows[1].querySelector('.rv'); if(epsv) epsv.textContent = (src.eps||eps)>0? (src.eps||eps).toLocaleString()+' M⁻¹cm⁻¹':'—';
+    var epsv=rows[1].querySelector('.rv'); if(epsv) epsv.textContent = (src.eps||eps)>0? ocNumFmt(src.eps||eps)+' M⁻¹cm⁻¹':'—';
     setRow(rows[2], !!ms.formulaStr, ms.formulaStr||'');
   }
 
@@ -14080,7 +14151,7 @@ function renderConcShell(){
   var customInput=document.getElementById('c-custommw');
   if(customInput && document.activeElement!==customInput) customInput.value=S.customMW||'';
   if(customInput){
-    var customRaw=String(S.customMW||'').trim(), customNum=parseFloat(customRaw);
+    var customRaw=String(S.customMW||'').trim(), customNum=ocNumIn(customRaw);
     var customBad=!!S.useCustomMW && !!customRaw && (!isFinite(customNum)||customNum<=0);
     var customBox=customInput.closest('.inp'); if(customBox) customBox.classList.toggle('err',customBad);
     if(customBad) customInput.setAttribute('aria-invalid','true'); else customInput.removeAttribute('aria-invalid');
@@ -14099,7 +14170,7 @@ function renderConcShell(){
 
   var _dupEps = (S.mwSource==='duplex' && S.duplexMode && S.duplexMode!=='off');
   if(epsn) epsn.innerHTML = S.useCustomMW?'A₂₆₀ unavailable with custom MW'
-    :(eps>0?('ε₂₆₀ '+eps.toLocaleString()+' M⁻¹cm⁻¹'+(_dupEps?' <b>· sum of both strands</b>':''))
+    :(eps>0?('ε₂₆₀ '+ocNumFmt(eps)+' M⁻¹cm⁻¹'+(_dupEps?' <b>· sum of both strands</b>':''))
            :'ε₂₆₀, enter a sequence');
   var _dn=document.getElementById('c-eps-dup');
   
@@ -14124,10 +14195,10 @@ function renderConcShell(){
   var cpath=document.getElementById('c-path');
   var pathRaw=(S.path!=null && S.path!=='')?S.path:'1.0';
   if(cpath && document.activeElement!==cpath) cpath.value=pathRaw;
-  var pathNum=parseFloat(S.path); var pathBad=(S.path!=null && String(S.path).trim()!=='' && (!isFinite(pathNum)||pathNum<=0));
+  var pathNum=ocNumIn(S.path); var pathBad=(S.path!=null && String(S.path).trim()!=='' && (!isFinite(pathNum)||pathNum<=0));
   _markInp('c-path', pathBad);    
   var a260mode=(S.readMode==='a260') && !S.useCustomMW && eps>0;
-  var nd=parseFloat(S.nd)||0, a260=parseFloat(S.a260)||0;
+  var nd=ocNumIn(S.nd)||0, a260=ocNumIn(S.a260)||0;
   var path=(isFinite(pathNum)&&pathNum>0)?pathNum:1;
   var C1 = a260mode ? (a260/(eps*path)) : (MW>0?(nd*1e-3)/MW:0);    
   var su=S.stockUnit||'µM';
@@ -14154,7 +14225,7 @@ function renderConcShell(){
   _cu('volUnit', S.volUnit||'µL');
   _cu('dilC2Unit', S.dilC2Unit||'µM');
   _cu('dilV2Unit', S.dilV2Unit||'µL');
-  var volL=(parseFloat(S.vol)||0)*uf(S.volUnit||'µL',V_UNITS);
+  var volL=(ocNumIn(S.vol)||0)*uf(S.volUnit||'µL',V_UNITS);
   var a1=autoUnit(C1*volL,MOL_UNITS), m1=autoUnit(C1*MW*volL,M_UNITS);
   
 
@@ -14180,7 +14251,7 @@ function renderConcShell(){
   var csInput=document.getElementById('d-customstock');
   if(csInput && document.activeElement!==csInput) csInput.value=S.customStock||'';
   var csUnitEl=_q('#panel-conc [data-cu="customStockUnit"]'); if(csUnitEl){ if(csUnitEl.tagName==='SELECT'){ if(csUnitEl.value!==csu) csUnitEl.value=csu; } else csUnitEl.textContent=csu; }
-  var csRaw=String(S.customStock||'').trim(), csNum=parseFloat(csRaw);
+  var csRaw=String(S.customStock||'').trim(), csNum=ocNumIn(csRaw);
   _markInp('d-customstock', !!S.useCustomStock && !!csRaw && !(csNum>0));         
   var C1dil = S.useCustomStock ? ((isFinite(csNum)&&csNum>0)?csNum*uf(csu,C_UNITS):0) : C1;
   var dsu   = S.useCustomStock ? csu : su;                                        
@@ -14198,7 +14269,7 @@ function renderConcShell(){
   if(dilnote) dilnote.textContent = C1dil>0
     ? (S.useCustomStock ? 'from your custom stock' : ('from '+nfmt(C1dil/uf(dsu,C_UNITS))+' '+dsu+' stock'))
     : (S.useCustomStock?'enter a custom stock':'using the stock above');
-  var C2raw=parseFloat(S.dilC2)||0, V2raw=parseFloat(S.dilV2)||0;
+  var C2raw=ocNumIn(S.dilC2)||0, V2raw=ocNumIn(S.dilV2)||0;
   var C2=C2raw*uf(S.dilC2Unit||'µM',C_UNITS);
   var V2=V2raw*uf(S.dilV2Unit||'µL',V_UNITS);
   var addel=document.getElementById('d-add'), watel=document.getElementById('d-water');
@@ -14240,10 +14311,10 @@ function renderConcShell(){
       if(host){ host.hidden=true; host.textContent=''; }
     }
   }
-  var readRaw=(S.readMode==='a260')?S.a260:S.nd, readNum=parseFloat(readRaw);
+  var readRaw=(S.readMode==='a260')?S.a260:S.nd, readNum=ocNumIn(readRaw);
   _markInp('c-read', readRaw!=null && readRaw!=='' && !(readNum>0),
            'Enter a number greater than zero. This is the reading from the instrument.');            
-  _markInp('c-vol',  S.vol!=null && S.vol!=='' && !((parseFloat(S.vol)||0)>0),
+  _markInp('c-vol',  S.vol!=null && S.vol!=='' && !((ocNumIn(S.vol)||0)>0),
            'Enter the volume you resuspended in, greater than zero.');
   _markInp('d-c2',   C2raw>0 && C1dil>0 && C2>C1dil*(1+1e-9),
            'The target is higher than the stock. Lower it, or concentrate the stock first.');                   
@@ -14288,8 +14359,8 @@ function renderMSShell(){
   var dec=S.decimals!=null?S.decimals:2;
   var cards=document.querySelectorAll('#panel-ms .mscard .mv');
   if(cards.length>=2){
-    cards[0].innerHTML = d.n? d.avg.toLocaleString(undefined,{minimumFractionDigits:dec,maximumFractionDigits:dec})+'<small>g/mol</small>':'—<small>g/mol</small>';
-    cards[1].innerHTML = monoOK? d.mono.toLocaleString(undefined,{minimumFractionDigits:dec,maximumFractionDigits:dec})+'<small>Da</small>':'<span class="ms-na">needs formula</span>';
+    cards[0].innerHTML = d.n? ocNumFmt(d.avg,{minimumFractionDigits:dec,maximumFractionDigits:dec})+'<small>g/mol</small>':'—<small>g/mol</small>';
+    cards[1].innerHTML = monoOK? ocNumFmt(d.mono,{minimumFractionDigits:dec,maximumFractionDigits:dec})+'<small>Da</small>':'<span class="ms-na">needs formula</span>';
   }
   var meta=document.querySelector('#panel-ms .msmeta');
   if(meta) meta.innerHTML=(d.formulaStr?'<span class="f">'+d.formulaStr+'</span>':'')+'<span>net charge <b>'+d.charge+'</b></span><span>'+d.n+' nt</span>';
@@ -16409,7 +16480,7 @@ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded'
 .lab-empty{padding:18px 2px 10px;text-align:center}
 .lab-empty h3{font-family:var(--font-head);font-weight:600;font-size:15px;margin:0 0 6px}
 .lab-empty p{color:var(--muted);font-size:12.5px;line-height:1.5;margin:0 auto 12px;max-width:44ch}
-.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;margin:0 0 14px}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;margin:0 0 14px} .fgrid-people + .fgrid-shared{border-top:1px solid var(--line-2);padding-top:14px}
 .fitem{position:relative;display:flex;align-items:center;gap:8px;padding:12px;border:1px solid var(--line-2);border-radius:12px;background:var(--surface-2);cursor:pointer;text-align:left}
 .fitem:hover{border-color:var(--accent)}
 
@@ -18108,7 +18179,7 @@ body[data-mode="dark"] #scanOv .scan-row-acts [data-scanlib]{color:var(--accent)
   color:var(--text); font-family:var(--font-head); font-size:12.5px;
   font-weight:600; cursor:pointer}
 .tm-exp:hover{border-color:var(--accent); color:var(--accent)}
-.tm-exp:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.tm-exp:focus-visible{outline:2px solid var(--accent); outline-offset:2px} .tm-exp.tm-exp-pri{background:var(--accent); border-color:transparent; color:var(--accent-ink)}.tm-exp.tm-exp-pri:hover{background:var(--accent); border-color:transparent; color:var(--accent-ink)}
 .tm-exp svg{display:block; flex:0 0 auto}
 
 
@@ -18935,7 +19006,7 @@ try{
     if(saved&&_syncOn()&&window.oligoSync&&oligoSync.pushStrand) try{ oligoSync.pushStrand(saved); }catch(_e){ ocFail('saveShared#2',_e); }
     return {ok:true,added:added,used:used};
   }
-  function fmtEps(e){ if(!e||!isFinite(e)) return '—'; return Math.round(e).toLocaleString()+' M⁻¹cm⁻¹'; }
+  function fmtEps(e){ if(!e||!isFinite(e)) return '—'; return ocNumFmt(Math.round(e))+' M⁻¹cm⁻¹'; }
   function renderRecipient(payload){
     function finish(){ try{ if(typeof rebuildCustom==='function') rebuildCustom(); }catch(_e){ ocFail('finish#1',_e); } try{ if(typeof applyAll==='function') applyAll(); }catch(_e){ ocFail('finish#2',_e); } try{ window.history.replaceState(null,'',location.pathname+location.search); }catch(_){   } }
     
@@ -19737,7 +19808,7 @@ try{
 
 
 
-  function failed(where,e){ ocFail(where,e); toast(t('lab.err.generic')); }
+  function failed(where,e){ ocFail(where,e); toast(t('lab.err.generic!')); }
 
   
 
@@ -21980,7 +22051,7 @@ try{
 
       var _searchable = _sibs.length || list.length;
       html+= !_searchable ? '' : ('<div class="lab-libbar"><input class="lab-find" data-ffind value="'+esc(_v.q||'')+'" placeholder="'+esc(_t('lab.tree.find'))+'" aria-label="'+esc(_t('lab.tree.find'))+'">'+'<input class="lab-find" data-frecfind value="'+esc(_rq||'')+'" placeholder="'+esc(_t('lab.find.rec'))+'" aria-label="'+esc(_t('lab.find.rec'))+'">'+'<button type="button" class="lab-btn" data-fsort="name"'+(_v.by==='name'?' aria-pressed="true"':'')+'>'+esc(_t('lab.tree.byname'))+'</button>'+'<button type="button" class="lab-btn" data-fsort="date"'+(_v.by==='date'?' aria-pressed="true"':'')+'>'+esc(_t('lab.tree.bydate'))+'</button></div>'+'<div class="lab-hint" style="padding:0 2px 8px">'+esc(_t('lab.tree.local!'))+'</div>'+((_v.q||_rq)?('<div class="lab-hint" style="padding:0 2px 8px">'+esc(_t('lab.find.scope!'))+'</div>'):''));
-      html+= _kids.length ? ('<div class="fgrid">'+_kids.map(function(f){ var cnt=fCountDeep(folders, list, f.id); var nm=fName(f), sp=fIsSpace(f); var _sm=sp&&fMine(f), _nmw=(sp&&!_sm)?fMemName(f):'', _sub=(sp&&!_sm&&!_nmw)?fWho(f):''; var _orph=fMaySweepSpace(f,labId); var _wh=(_v.q && String(f.parent_id||'')!==String(openF||''))?fWhere(folders,f):''; if(_wh) _sub=_t('lab.find.where',{path:_wh}); return '<div class="fitem"'+(sp?(' data-space="'+(_sm?'mine':'other')+'"'):'')+' data-drop="'+esc(f.id)+'">'+
+      var _tile = function(f){ var cnt=fCountDeep(folders, list, f.id); var nm=fName(f), sp=fIsSpace(f); var _sm=sp&&fMine(f), _nmw=(sp&&!_sm)?fMemName(f):'', _sub=(sp&&!_sm&&!_nmw)?fWho(f):''; var _orph=fMaySweepSpace(f,labId); var _wh=(_v.q && String(f.parent_id||'')!==String(openF||''))?fWhere(folders,f):''; if(_wh) _sub=_t('lab.find.where',{path:_wh}); return '<div class="fitem"'+(sp?(' data-space="'+(_sm?'mine':'other')+'"'):'')+' data-drop="'+esc(f.id)+'">'+
           '<button type="button" class="fopen" data-fopen="'+esc(f.id)+'" aria-label="'+esc(_t(cnt===1?'lab.fold.aria1':'lab.fold.ariaN',{name:nm,n:_n(cnt)}))+'"><span class="fic" aria-hidden="true"><svg class="i16"><use href="#i-'+(sp?'person':'folder')+'"/></svg></span><span class="fnmwrap"><span class="fnm">'+esc(nm)+'</span>'+(_sub?('<span class="fsub">'+esc(_sub)+'</span>'):'')+'</span><span class="fcount">'+_n(cnt)+'</span></button>'+
           
 
@@ -21999,7 +22070,24 @@ try{
 
 
           ((_orph||!(sp||!fMayOrganise(f,labId)))?('<button type="button" class="fmenu" data-fmenu="'+esc(f.id)+'" data-fname="'+esc(sp?nm:f.name)+'"'+(_orph?' data-forph="1"':'')+' title="'+esc(_t(_orph?'lab.orph.del':'lab.fold.menuT'))+'" aria-label="'+esc(_orph?_t('lab.orph.menu'):_t('lab.fold.menu',{name:f.name}))+'">⋯</button>'):'')+
-          '</div>'; }).join('')+'</div>') : '';
+          '</div>'; };
+      
+
+
+
+
+
+
+
+
+
+
+
+      var _sp = _kids.filter(function(f){ return fIsSpace(f); });
+      var _fo = _kids.filter(function(f){ return !fIsSpace(f); });
+      _sp.sort(function(a,b){ return (fMine(b)?1:0)-(fMine(a)?1:0); });
+      html+= _sp.length ? ('<div class="fgrid fgrid-people">'+_sp.map(_tile).join('')+'</div>') : '';
+      html+= _fo.length ? ('<div class="fgrid fgrid-shared">'+_fo.map(_tile).join('')+'</div>') : '';
       
 
 
@@ -23369,6 +23457,10 @@ try{
     
 
 
+    myLabs:labs, myLabsNow:function(){ return _labsOk?(_labs||[]):null; },
+    
+
+
 
 
 
@@ -23717,7 +23809,7 @@ try{
     }
     var rr; try{ rr=compute(full, r.type, r.linkage, r.three||'OH', 0); }catch(_){ rr=null; }
     if(!rr || !rr.n) return {ok:false,msg:_scT('ui.sv.sc.nocompute')};
-    var eps=''; try{ eps=Math.round(epsilon260(rr.tokens)).toLocaleString(); }catch(_e){ ocFail('computeRow#1',_e); }
+    var eps=''; try{ eps=ocNumFmt(Math.round(epsilon260(rr.tokens))); }catch(_e){ ocFail('computeRow#1',_e); }
     var mono=''; try{ var d=msData(full, r.type, r.linkage, r.three||'OH'); if(d&&d.mono!=null) mono=d.mono.toFixed(2); }catch(_e){ ocFail('computeRow#2',_e); }
     return {ok:true, full:full, rr:rr, mwStr:fmt(rr.mw,rr.n), n:rr.n, eps:eps, mono:mono};
   }
@@ -32499,8 +32591,25 @@ try{
 
 
               var _scale = _drawn.width > 0 ? Math.min(1, _fw / _drawn.width) : 1;
-              if ((_hid > 0 || _scale < 0.999)
-                  && window.ocFoldUI && window.ocFoldUI.ready) {
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              var _showExp = (_hid > 0 || _scale < 0.999)
+                  && window.ocFoldUI && window.ocFoldUI.ready;
+              if (_showExp) {
                 
 
 
@@ -32511,20 +32620,35 @@ try{
                                       res: hp, tokens: tokens, rna: !!hp.rna,
                                       hidden: _hid,
                                       marginal: !!(_drawn.band && _drawn.band.marginal) });
-                
-
-
-
-
-
-
-
-
-                _fig += '<div class="tm-drawbar"><button type="button" class="tm-exp" data-fold-exp aria-label="'
-                     + esc(t('ui.fold.expa')) + '" title="' + esc(t('ui.fold.expa')) + '">'
-                     + '<svg width="13" height="13" viewBox="0 0 13 13" aria-hidden="true" fill="none"><path d="M1 5V1h4M12 8v4H8M1 1l4.2 4.2M12 12L7.8 7.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>'
-                     + esc(t('ui.fold.exp')) + '</button></div>';
               }
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              _fig += '<div class="tm-drawbar">'
+                   + '<button type="button" class="tm-exp tm-exp-pri" data-fold-dl aria-label="'
+                   + esc(t('ui.fold.dla')) + '" title="' + esc(t('ui.fold.dla')) + '">'
+                   + '<svg width="13" height="13" viewBox="0 0 13 13" aria-hidden="true" fill="none"><path d="M6.5 1.5v6.5M3.6 5.6l2.9 2.9 2.9-2.9M1.5 11.2h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+                   + esc(t('ui.fold.dl')) + '</button>'
+                   + (_showExp
+                        ? '<button type="button" class="tm-exp" data-fold-exp aria-label="'
+                          + esc(t('ui.fold.expa')) + '" title="' + esc(t('ui.fold.expa')) + '">'
+                          + '<svg width="13" height="13" viewBox="0 0 13 13" aria-hidden="true" fill="none"><path d="M1 5V1h4M12 8v4H8M1 1l4.2 4.2M12 12L7.8 7.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>'
+                          + esc(t('ui.fold.exp')) + '</button>'
+                        : '')
+                   + '</div>';
             }
           }
         }
@@ -34661,7 +34785,7 @@ function num(v){ var x = parseFloat(v); return isFinite(x) ? x : 0; }
 function pctY(x){ return isFinite(x) ? (nfmt(x) + '%') : '\u2014'; }
 function pctC(x){
   if(!isFinite(x)) return '\u2014';
-  return x.toLocaleString(undefined, {minimumFractionDigits:1, maximumFractionDigits:1}) + '%';
+  return ocNumFmt(x, {minimumFractionDigits:1, maximumFractionDigits:1}) + '%';
 }
 
 
@@ -34681,6 +34805,10 @@ var RE_SCALE = /^([0-9]{1,3}(?:,[0-9]{3})+|[0-9]+)(?:\.([0-9]+))?\s*([A-Za-z\u00
 function parseScale(txt){
   var s = String(txt == null ? '' : txt).trim();
   if(!s) return null;
+  
+
+
+  if(typeof ocNumCanon === 'function'){ s = ocNumCanon(s); }
   var m = RE_SCALE.exec(s);
   if(!m) return null;
   
@@ -34702,7 +34830,7 @@ function hadUnit(txt){
 }
 
 function fmtInt(n){
-  try{ return n.toLocaleString(undefined, {maximumFractionDigits:0}); }catch(_){ return String(n); }
+  try{ return ocNumFmt(n, {maximumFractionDigits:0}); }catch(_){ return String(n); }
 }
 
 
@@ -34784,7 +34912,7 @@ function model(){
   
 
   var eps  = S.useCustomMW ? 0 : ((src && src.eps) || 0);
-  var pRaw = parseFloat(S.path);
+  var pRaw = ocNumIn(S.path);
   var path = (isFinite(pRaw) && pRaw > 0) ? pRaw : 1;
   var a260mode = (S.readMode === 'a260') && !S.useCustomMW && eps > 0;
   var C1   = a260mode ? (num(S.a260) / (eps * path)) : (mw > 0 ? (num(S.nd) * 1e-3) / mw : 0);
@@ -37760,8 +37888,213 @@ else mount();
   }
 
   W.ocMethodsDoc = { build: build, download: download, harvest: harvest, MAXFIG: MAXFIG };
+  
+
+
+
+  D.addEventListener('click', function (e) {
+    var b = e.target && e.target.closest ? e.target.closest('[data-fold-dl]') : null;
+    if (!b) return;
+    e.preventDefault();
+    try {
+      download({ when: new Date().toISOString().slice(0, 10) });
+    } catch (_e) {   }
+  }, false);
+
 
 }(window, document));
+</script>
+<script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(function (W, D) {
+  'use strict';
+  var THRU = false;                  
+  var SEL = '#result .r-actions .pa.prim';
+
+  function lib() { try { return W.oligoLabLib || null; } catch (e) { return null; } }
+  function labsNow() {
+    var L = lib();
+    try { return (L && L.myLabsNow) ? L.myLabsNow() : null; } catch (e) { return null; }
+  }
+  function prime() {
+    var L = lib();
+    try { if (L && L.myLabs) L.myLabs(); } catch (e) { }
+  }
+  function tr(k) {
+    try { return (typeof W.t === 'function') ? W.t(k) : k; } catch (e) { return k; }
+  }
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  
+
+
+  function isSaveTab() {
+    var t;
+    try { t = (D.body.dataset && D.body.dataset.tab) || 'mw'; } catch (e) { t = 'mw'; }
+    return t !== 'conc' && t !== 'ms';
+  }
+
+  
+
+  try { prime(); } catch (e) { }
+  D.addEventListener('pointerdown', function (ev) {
+    try {
+      var el = ev.target;
+      if (el && el.closest && el.closest(SEL)) prime();
+    } catch (e) { }
+  }, true);
+
+  function saveToLab(pa, labId) {
+    var entry = null;
+    try { entry = (typeof W.ocEntryForSave === 'function') ? W.ocEntryForSave() : null; }
+    catch (e) { entry = null; }
+    if (!entry) { flash(pa, tr('ui.flash.invalid')); return; }
+    
+
+    try {
+      if (W.ocPlan && W.ocPlan.gateSave
+          && !W.ocPlan.gateSave(1, { retry: function () { saveToLab(pa, labId); } })) return;
+    } catch (e) { }
+    
+
+
+
+    try {
+      var sync = W.oligoSync;
+      var cid = (sync && sync.uuid) ? sync.uuid() : ('id-' + String(Math.random()).slice(2));
+      var e2 = {}, k;
+      for (k in entry) { if (Object.prototype.hasOwnProperty.call(entry, k)) e2[k] = entry[k]; }
+      e2.id = cid;
+      var L = lib();
+      if (!L || !L.addToLab) { flash(pa, tr('lab.err.generic!')); return; }
+      L.addToLab(e2, labId).then(function () {
+        flash(pa, tr('ui.flash.saved'), 'ok');
+        try { if (L.renderLabList) L.renderLabList(); } catch (e) { }
+      })['catch'](function (err) {
+        
+
+        flash(pa, tr('lab.err.generic!'));
+      });
+    } catch (e) { flash(pa, tr('lab.err.generic!')); }
+  }
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  function flash(pa, txt, state) {
+    try {
+      if (typeof W.__oligoNotice === 'function') {
+        W.__oligoNotice('oligoSaveDest',
+          { kind: state === 'ok' ? '' : 'warn', dismissible: true, text: txt });
+        if (typeof W.__oligoRemoveNotice === 'function') {
+          W.setTimeout(function () {
+            try { W.__oligoRemoveNotice('oligoSaveDest'); } catch (e) { }
+          }, 5000);
+        }
+        return;
+      }
+      if (typeof W._flashBtn === 'function') W._flashBtn(pa, txt, state);
+    } catch (e) { }
+  }
+
+  function choose(pa, list) {
+    var sc = D.createElement('div'); sc.className = 'oshare-scrim';
+    var box = D.createElement('div'); box.className = 'oshare-box';
+    sc.appendChild(box); D.body.appendChild(sc);
+    var rec = null, closed = false;
+    function drop() { if (closed) return; closed = true; if (sc.parentNode) sc.parentNode.removeChild(sc); }
+    function close() { if (rec) { rec.close(); } else { drop(); } }
+    
+
+
+
+
+
+
+
+
+    var h = '<button type="button" class="oshare-btn oshare-x" aria-label="'
+          + esc(tr('lab.dlg.close'))
+          + '"><svg class="i16"><use href="#i-close"/></svg></button>'
+          + '<h3>' + esc(tr('ui.rp.saveA')) + '</h3>'
+          + '<div class="oshare-list">'
+          + '<div class="lab-pick"><span class="lc-n">' + esc(tr('ui.rc.save'))
+          + '</span><button type="button" class="lab-btn" data-dest="">'
+          + esc(tr('lab.mv.go')) + '</button></div>';
+    for (var i = 0; i < list.length; i++) {
+      var L = list[i];
+      h += '<div class="lab-pick"><span class="lc-n">' + esc(L.name)
+        + '</span><button type="button" class="lab-btn" data-dest="'
+        + esc(L.lab_id) + '">' + esc(tr('lab.mv.go')) + '</button></div>';
+    }
+    box.innerHTML = h + '</div>';
+    sc.addEventListener('click', function (ev) {
+      var x = ev.target.closest && ev.target.closest('.oshare-x');
+      if (x) { close(); return; }
+      var b = ev.target.closest && ev.target.closest('[data-dest]');
+      if (!b) { if (ev.target === sc) close(); return; }
+      var id = b.getAttribute('data-dest');
+      close();
+      if (!id) {
+         
+        THRU = true;
+        try { pa.click(); } finally { THRU = false; }
+        return;
+      }
+      saveToLab(pa, id);
+    });
+    if (typeof W.ocModalOpen === 'function') {
+      rec = W.ocModalOpen(sc, { label: tr('ui.rp.saveA'), initialFocus: 'none',
+                                onClose: drop });
+    } else {
+      box.setAttribute('role', 'dialog');
+      box.setAttribute('aria-modal', 'true');
+      box.setAttribute('aria-label', tr('ui.rp.saveA'));
+    }
+  }
+
+  D.addEventListener('click', function (ev) {
+    if (THRU) return;
+    var pa;
+    try { pa = ev.target.closest && ev.target.closest(SEL); } catch (e) { return; }
+    if (!pa || !isSaveTab()) return;
+    var list = labsNow();
+    
+
+    if (!list || !list.length) { if (!list) prime(); return; }
+    ev.preventDefault();
+    ev.stopPropagation();
+    choose(pa, list);
+  }, true);
+})(window, document);
 </script>
 </body>
 </html>
