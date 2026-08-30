@@ -758,7 +758,7 @@ var I18N = {
   "lab.shelf.err.notmember":"You are not a member of this lab, so you cannot change what is in its archive.",
   "lab.shelf.err.notmgr":"Only the person who saved this record, or a manager of this lab, can archive it, put it back, or delete it.",
   "lab.shelf.go":"Archive",
-  "lab.shelf.h":"Archive",
+  "lab.shelf.h":"Archived records",
   "lab.shelf.labwarn!":"Archiving a shared record takes it out of the library for the whole lab. The person who saved it and the lab’s managers can put it back.",
   "lab.shelf.purge":"Delete for good",
   "lab.shelf.purged":"Deleted for good.",
@@ -1287,12 +1287,13 @@ var I18N = {
   "tm.echo.lbl":"Strand",
   "tm.empty":"Enter a valid sequence in the Calculator to see a melting temperature.",
   "tm.err!":"The melting temperature could not be recalculated. The previous value was cleared.",
-  "tm.fold.band.h":"Confidence",
+  "tm.fold.band.aim":"lower is better here",
+  "tm.fold.band.h":"Secondary structure stability",
   "tm.fold.band.moderate":"Moderate",
   "tm.fold.band.note!":"These bands come from ΔG°₃₇. None of them is a probability.",
-  "tm.fold.band.rule!":"strong at {strong} kcal/mol or below, moderate above {strong} to {moderate}, weak above {moderate}, from ΔG°₃₇ alone",
-  "tm.fold.band.strong":"Strong",
-  "tm.fold.band.weak":"Weak",
+  "tm.fold.band.rule!":"high at {strong} kcal/mol or below, moderate above {strong} to {moderate}, low above {moderate}, from ΔG°₃₇ alone",
+  "tm.fold.band.strong":"High",
+  "tm.fold.band.weak":"Low",
   "tm.fold.below0!":"the best pairing found would melt below 0 °C. Nothing forms at any usable temperature",
   "tm.fold.bp":"{n} bp",
   "tm.fold.bulge.many":"{n} bulges",
@@ -1399,6 +1400,7 @@ var I18N = {
   "ui.catgate.pending":"<b>Signed in · Free plan.</b> Showing the free {n} amidites. The full catalog unlocks as soon as this account is on Pro.",
   "ui.catgate.pendingcta":"Pro status",
   "ui.catgate.pro":"★ <b>Pro: the full catalog.</b> {n} unique amidites unlocked from Supabase (ChemGenes &amp; Glen Research).",
+  "ui.conc.totals":"Total amount <b>{amt}</b><br>Total mass <b>{mass}</b>",
   "ui.flash.antisense":"⚠ Fix the antisense strand first",
   "ui.flash.dilution":"⚠ Complete the dilution first",
   "ui.flash.dupe":"Already in your library",
@@ -1406,9 +1408,11 @@ var I18N = {
   "ui.flash.saved":"✓ Sequence saved to library",
   "ui.flash.sense":"⚠ Fix the sequence error first",
   "ui.fold.close":"Close",
+  "ui.fold.data.gcpairs":"G:C pairs in this structure",
   "ui.fold.exp":"Expand",
   "ui.fold.expa":"Open the structure drawing full screen",
   "ui.fold.note.h":"How this was calculated",
+  "ui.fold.note.h2":"Where this does not apply",
   "ui.hist.armClear":"Confirm clear all?",
   "ui.hist.armDel":"Delete?",
   "ui.hist.restClear":"Clear all…",
@@ -2186,7 +2190,7 @@ var I18N = {
   "lab.shelf.err.notmember":"\u4f60\u4e0d\u662f\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u6210\u54e1\uff0c\u6240\u4ee5\u7121\u6cd5\u8b8a\u66f4\u5b83\u5c01\u5b58\u7684\u5167\u5bb9\u3002",
   "lab.shelf.err.notmgr":"\u53ea\u6709\u5132\u5b58\u9019\u7b46\u7d00\u9304\u7684\u4eba\uff0c\u6216\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u8ca0\u8cac\u4eba\uff0c\u53ef\u4ee5\u5c01\u5b58\u3001\u653e\u56de\u6216\u522a\u9664\u5b83\u3002",
   "lab.shelf.go":"\u5c01\u5b58",
-  "lab.shelf.h":"\u5c01\u5b58",
+  "lab.shelf.h":"\u5df2\u5c01\u5b58\u7684\u7d00\u9304",
   "lab.shelf.labwarn!":"\u5c01\u5b58\u5171\u7528\u7684\u7d00\u9304\uff0c\u6703\u8b93\u6574\u500b\u5be6\u9a57\u5ba4\u7684\u8cc7\u6599\u5eab\u90fd\u770b\u4e0d\u5230\u5b83\u3002\u5132\u5b58\u9019\u7b46\u7d00\u9304\u7684\u4eba\u548c\u5be6\u9a57\u5ba4\u8ca0\u8cac\u4eba\u53ef\u4ee5\u628a\u5b83\u653e\u56de\u53bb\u3002",
   "lab.shelf.purge":"\u6c38\u4e45\u522a\u9664",
   "lab.shelf.purged":"\u5df2\u6c38\u4e45\u522a\u9664\u3002",
@@ -2710,12 +2714,13 @@ var I18N = {
   "tm.echo.lbl":"\u6838\u9178\u80a1",
   "tm.empty":"\u8acb\u5728\u8a08\u7b97\u6a5f\u5206\u9801\u8f38\u5165\u6709\u6548\u7684\u5e8f\u5217\uff0c\u624d\u80fd\u7b97\u51fa\u7194\u89e3\u6eab\u5ea6\u3002",
   "tm.err!":"\u7121\u6cd5\u91cd\u65b0\u8a08\u7b97\u7194\u89e3\u6eab\u5ea6\uff0c\u5148\u524d\u7684\u6578\u503c\u5df2\u6e05\u9664\u3002",
-  "tm.fold.band.h":"\u53ef\u4fe1\u5ea6",
-  "tm.fold.band.moderate":"\u4e2d\u7b49",
+  "tm.fold.band.aim":"\u8d8a\u4f4e\u8d8a\u597d",
+  "tm.fold.band.h":"\u4e8c\u7d1a\u7d50\u69cb\u7a69\u5b9a\u6027",
+  "tm.fold.band.moderate":"\u4e2d",
   "tm.fold.band.note!":"\u9019\u4e9b\u7b49\u7d1a\u7531 ΔG°₃₇ \u5f97\u51fa\uff0c\u6c92\u6709\u4e00\u500b\u662f\u6a5f\u7387\u3002",
-  "tm.fold.band.rule!":"{strong} kcal/mol \u4ee5\u4e0b\u70ba\u5f37\uff0c\u9ad8\u65bc {strong} \u81f3 {moderate} \u70ba\u4e2d\u7b49\uff0c\u9ad8\u65bc {moderate} \u70ba\u5f31\uff0c\u50c5\u6839\u64da ΔG°₃₇ \u5224\u5b9a",
-  "tm.fold.band.strong":"\u5f37",
-  "tm.fold.band.weak":"\u5f31",
+  "tm.fold.band.rule!":"{strong} kcal/mol \u4ee5\u4e0b\u70ba\u9ad8\uff0c\u9ad8\u65bc {strong} \u81f3 {moderate} \u70ba\u4e2d\uff0c\u9ad8\u65bc {moderate} \u70ba\u4f4e\uff0c\u50c5\u6839\u64da ΔG°₃₇ \u5224\u5b9a",
+  "tm.fold.band.strong":"\u9ad8",
+  "tm.fold.band.weak":"\u4f4e",
   "tm.fold.below0!":"\u627e\u5230\u7684\u6700\u4f73\u914d\u5c0d\u5728 0 °C \u4ee5\u4e0b\u5c31\u6703\u7194\u89e3\u3002\u5728\u4efb\u4f55\u7528\u5f97\u4e0a\u7684\u6eab\u5ea6\u4e0b\u90fd\u4e0d\u6703\u5f62\u6210\u7d50\u69cb",
   "tm.fold.bp":"{n} bp",
   "tm.fold.bulge.many":"{n} \u500b\u51f8\u8d77",
@@ -2822,6 +2827,7 @@ var I18N = {
   "ui.catgate.pending":"<b>\u5df2\u767b\u5165 · Free \u65b9\u6848\u3002</b>\u76ee\u524d\u986f\u793a\u514d\u8cbb\u7684 {n} \u7a2e\u4e9e\u78f7\u91af\u80fa\u3002\u9019\u500b\u5e33\u6236\u63db\u6210 Pro \u4e4b\u5f8c\uff0c\u5b8c\u6574\u578b\u9304\u5c31\u6703\u89e3\u9396\u3002",
   "ui.catgate.pendingcta":"Pro \u72c0\u614b",
   "ui.catgate.pro":"★ <b>Pro\uff1a\u5b8c\u6574\u578b\u9304\u3002</b>\u5df2\u5f9e Supabase \u89e3\u9396 {n} \u7a2e\u4e9e\u78f7\u91af\u80fa\uff08ChemGenes \u8207 Glen Research\uff09\u3002",
+  "ui.conc.totals":"\u7e3d\u91cf <b>{amt}</b><br>\u7e3d\u8cea\u91cf <b>{mass}</b>",
   "ui.flash.antisense":"⚠ \u8acb\u5148\u4fee\u6b63\u53cd\u7fa9\u80a1",
   "ui.flash.dilution":"⚠ \u8acb\u5148\u5b8c\u6210\u7a00\u91cb\u914d\u65b9",
   "ui.flash.dupe":"\u5df2\u5728\u4f60\u7684\u8cc7\u6599\u5eab\u88e1",
@@ -2829,9 +2835,11 @@ var I18N = {
   "ui.flash.saved":"✓ \u5e8f\u5217\u5df2\u5b58\u9032\u8cc7\u6599\u5eab",
   "ui.flash.sense":"⚠ \u8acb\u5148\u4fee\u6b63\u5e8f\u5217\u932f\u8aa4",
   "ui.fold.close":"\u95dc\u9589",
+  "ui.fold.data.gcpairs":"\u4e8c\u7d1a\u7d50\u69cb G:C \u9e7c\u57fa\u5c0d\u6578",
   "ui.fold.exp":"\u653e\u5927",
   "ui.fold.expa":"\u4ee5\u5168\u87a2\u5e55\u958b\u555f\u7d50\u69cb\u5716",
   "ui.fold.note.h":"\u9019\u500b\u7d50\u679c\u5982\u4f55\u8a08\u7b97",
+  "ui.fold.note.h2":"\u4e0d\u9069\u7528\u7684\u60c5\u6cc1",
   "ui.hist.armClear":"\u78ba\u5b9a\u5168\u90e8\u6e05\u9664\uff1f",
   "ui.hist.armDel":"\u78ba\u5b9a\u522a\u9664\uff1f",
   "ui.hist.restClear":"\u5168\u90e8\u6e05\u9664…",
@@ -3608,7 +3616,7 @@ var I18N = {
   "lab.shelf.err.notmember":"\u4f60\u4e0d\u662f\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u6210\u5458\uff0c\u6240\u4ee5\u65e0\u6cd5\u53d8\u66f4\u5b83\u5f52\u6863\u7684\u5185\u5bb9\u3002",
   "lab.shelf.err.notmgr":"\u53ea\u6709\u4fdd\u5b58\u8fd9\u6761\u8bb0\u5f55\u7684\u4eba\uff0c\u6216\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u8d1f\u8d23\u4eba\uff0c\u53ef\u4ee5\u5f52\u6863\u3001\u653e\u56de\u6216\u5220\u9664\u5b83\u3002",
   "lab.shelf.go":"\u5f52\u6863",
-  "lab.shelf.h":"\u5f52\u6863",
+  "lab.shelf.h":"\u5df2\u5f52\u6863\u7684\u8bb0\u5f55",
   "lab.shelf.labwarn!":"\u5f52\u6863\u5171\u7528\u7684\u8bb0\u5f55\uff0c\u4f1a\u8ba9\u6574\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u6570\u636e\u5e93\u90fd\u770b\u4e0d\u5230\u5b83\u3002\u4fdd\u5b58\u8fd9\u6761\u8bb0\u5f55\u7684\u4eba\u548c\u5b9e\u9a8c\u5ba4\u8d1f\u8d23\u4eba\u53ef\u4ee5\u628a\u5b83\u653e\u56de\u53bb\u3002",
   "lab.shelf.purge":"\u6c38\u4e45\u5220\u9664",
   "lab.shelf.purged":"\u5df2\u6c38\u4e45\u5220\u9664\u3002",
@@ -4132,12 +4140,13 @@ var I18N = {
   "tm.echo.lbl":"\u94fe",
   "tm.empty":"\u8bf7\u5728\u8ba1\u7b97\u5668\u9009\u9879\u5361\u8f93\u5165\u6709\u6548\u7684\u5e8f\u5217\uff0c\u624d\u80fd\u7b97\u51fa\u89e3\u94fe\u6e29\u5ea6\u3002",
   "tm.err!":"\u65e0\u6cd5\u91cd\u65b0\u8ba1\u7b97\u89e3\u94fe\u6e29\u5ea6\uff0c\u5148\u524d\u7684\u6570\u503c\u5df2\u6e05\u9664\u3002",
-  "tm.fold.band.h":"\u53ef\u4fe1\u5ea6",
-  "tm.fold.band.moderate":"\u4e2d\u7b49",
+  "tm.fold.band.aim":"\u8d8a\u4f4e\u8d8a\u597d",
+  "tm.fold.band.h":"\u4e8c\u7ea7\u7ed3\u6784\u7a33\u5b9a\u6027",
+  "tm.fold.band.moderate":"\u4e2d",
   "tm.fold.band.note!":"\u8fd9\u4e9b\u7b49\u7ea7\u7531 ΔG°₃₇ \u5f97\u51fa\uff0c\u6ca1\u6709\u4e00\u4e2a\u662f\u6982\u7387\u3002",
-  "tm.fold.band.rule!":"{strong} kcal/mol \u4ee5\u4e0b\u4e3a\u5f3a\uff0c\u9ad8\u4e8e {strong} \u81f3 {moderate} \u4e3a\u4e2d\u7b49\uff0c\u9ad8\u4e8e {moderate} \u4e3a\u5f31\uff0c\u4ec5\u6839\u636e ΔG°₃₇ \u5224\u5b9a",
-  "tm.fold.band.strong":"\u5f3a",
-  "tm.fold.band.weak":"\u5f31",
+  "tm.fold.band.rule!":"{strong} kcal/mol \u4ee5\u4e0b\u4e3a\u9ad8\uff0c\u9ad8\u4e8e {strong} \u81f3 {moderate} \u4e3a\u4e2d\uff0c\u9ad8\u4e8e {moderate} \u4e3a\u4f4e\uff0c\u4ec5\u6839\u636e ΔG°₃₇ \u5224\u5b9a",
+  "tm.fold.band.strong":"\u9ad8",
+  "tm.fold.band.weak":"\u4f4e",
   "tm.fold.below0!":"\u627e\u5230\u7684\u6700\u4f73\u914d\u5bf9\u5728 0 °C \u4ee5\u4e0b\u5c31\u4f1a\u89e3\u94fe\u3002\u5728\u4efb\u4f55\u7528\u5f97\u4e0a\u7684\u6e29\u5ea6\u4e0b\u90fd\u4e0d\u4f1a\u5f62\u6210\u7ed3\u6784",
   "tm.fold.bp":"{n} bp",
   "tm.fold.bulge.many":"{n} \u4e2a\u51f8\u8d77",
@@ -4244,6 +4253,7 @@ var I18N = {
   "ui.catgate.pending":"<b>\u5df2\u767b\u5f55 · Free \u7248\u3002</b>\u5f53\u524d\u663e\u793a\u514d\u8d39\u7684 {n} \u79cd\u4e9a\u78f7\u9170\u80fa\u3002\u8fd9\u4e2a\u8d26\u6237\u6362\u6210 Pro \u4e4b\u540e\uff0c\u5b8c\u6574\u76ee\u5f55\u5c31\u4f1a\u89e3\u9501\u3002",
   "ui.catgate.pendingcta":"Pro \u72b6\u6001",
   "ui.catgate.pro":"★ <b>Pro\uff1a\u5b8c\u6574\u76ee\u5f55\u3002</b>\u5df2\u4ece Supabase \u89e3\u9501 {n} \u79cd\u4e9a\u78f7\u9170\u80fa\uff08ChemGenes \u4e0e Glen Research\uff09\u3002",
+  "ui.conc.totals":"\u603b\u91cf <b>{amt}</b><br>\u603b\u8d28\u91cf <b>{mass}</b>",
   "ui.flash.antisense":"⚠ \u8bf7\u5148\u4fee\u6b63\u53cd\u4e49\u94fe",
   "ui.flash.dilution":"⚠ \u8bf7\u5148\u5b8c\u6210\u7a00\u91ca\u914d\u65b9",
   "ui.flash.dupe":"\u5df2\u5728\u4f60\u7684\u6570\u636e\u5e93\u91cc",
@@ -4251,9 +4261,11 @@ var I18N = {
   "ui.flash.saved":"✓ \u5e8f\u5217\u5df2\u5b58\u8fdb\u6570\u636e\u5e93",
   "ui.flash.sense":"⚠ \u8bf7\u5148\u4fee\u6b63\u5e8f\u5217\u9519\u8bef",
   "ui.fold.close":"\u5173\u95ed",
+  "ui.fold.data.gcpairs":"\u4e8c\u7ea7\u7ed3\u6784 G:C \u78b1\u57fa\u5bf9\u6570",
   "ui.fold.exp":"\u653e\u5927",
   "ui.fold.expa":"\u4ee5\u5168\u5c4f\u6253\u5f00\u7ed3\u6784\u56fe",
   "ui.fold.note.h":"\u8fd9\u4e2a\u7ed3\u679c\u5982\u4f55\u8ba1\u7b97",
+  "ui.fold.note.h2":"\u4e0d\u9002\u7528\u7684\u60c5\u51b5",
   "ui.hist.armClear":"\u786e\u5b9a\u5168\u90e8\u6e05\u9664\uff1f",
   "ui.hist.armDel":"\u786e\u5b9a\u5220\u9664\uff1f",
   "ui.hist.restClear":"\u5168\u90e8\u6e05\u9664…",
@@ -5030,7 +5042,7 @@ var I18N = {
   "lab.shelf.err.notmember":"\u3042\u306a\u305f\u306f\u3053\u306e\u30e9\u30dc\u306e\u30e1\u30f3\u30d0\u30fc\u3067\u306f\u306a\u3044\u305f\u3081\u3001\u3053\u306e\u30e9\u30dc\u306e\u30a2\u30fc\u30ab\u30a4\u30d6\u3092\u5909\u66f4\u3067\u304d\u307e\u305b\u3093\u3002",
   "lab.shelf.err.notmgr":"\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u3092\u30a2\u30fc\u30ab\u30a4\u30d6\u3057\u305f\u308a\u3001\u623b\u3057\u305f\u308a\u3001\u524a\u9664\u3057\u305f\u308a\u3067\u304d\u308b\u306e\u306f\u3001\u4fdd\u5b58\u3057\u305f\u672c\u4eba\u3068\u3001\u3053\u306e\u30e9\u30dc\u306e\u7ba1\u7406\u8005\u3060\u3051\u3067\u3059\u3002",
   "lab.shelf.go":"\u30a2\u30fc\u30ab\u30a4\u30d6",
-  "lab.shelf.h":"\u30a2\u30fc\u30ab\u30a4\u30d6",
+  "lab.shelf.h":"\u30a2\u30fc\u30ab\u30a4\u30d6\u6e08\u307f\u306e\u30ec\u30b3\u30fc\u30c9",
   "lab.shelf.labwarn!":"\u5171\u6709\u30ec\u30b3\u30fc\u30c9\u3092\u30a2\u30fc\u30ab\u30a4\u30d6\u3059\u308b\u3068\u3001\u30e9\u30dc\u5168\u54e1\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u304b\u3089\u5916\u308c\u307e\u3059\u3002\u4fdd\u5b58\u3057\u305f\u672c\u4eba\u3068\u30e9\u30dc\u306e\u7ba1\u7406\u8005\u304c\u623b\u305b\u307e\u3059\u3002",
   "lab.shelf.purge":"\u5b8c\u5168\u306b\u524a\u9664",
   "lab.shelf.purged":"\u5b8c\u5168\u306b\u524a\u9664\u3057\u307e\u3057\u305f\u3002",
@@ -5554,12 +5566,13 @@ var I18N = {
   "tm.echo.lbl":"\u9396",
   "tm.empty":"\u878d\u89e3\u6e29\u5ea6\u3092\u8868\u793a\u3059\u308b\u306b\u306f\u3001\u8a08\u7b97\u30c4\u30fc\u30eb\u3067\u6709\u52b9\u306a\u914d\u5217\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
   "tm.err!":"\u878d\u89e3\u6e29\u5ea6\u3092\u518d\u8a08\u7b97\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f\u3002\u4ee5\u524d\u306e\u5024\u306f\u30af\u30ea\u30a2\u3057\u307e\u3057\u305f\u3002",
-  "tm.fold.band.h":"\u4fe1\u983c\u5ea6",
+  "tm.fold.band.aim":"\u4f4e\u3044\u307b\u3069\u826f\u3044",
+  "tm.fold.band.h":"\u4e8c\u6b21\u69cb\u9020\u306e\u5b89\u5b9a\u6027",
   "tm.fold.band.moderate":"\u4e2d\u7a0b\u5ea6",
   "tm.fold.band.note!":"\u3053\u308c\u3089\u306e\u533a\u5206\u306f ΔG°₃₇ \u304b\u3089\u6c42\u3081\u305f\u3082\u306e\u3067\u3059\u3002\u3044\u305a\u308c\u3082\u78ba\u7387\u3092\u8868\u3059\u3082\u306e\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002",
-  "tm.fold.band.rule!":"ΔG°₃₇ \u304c {strong} kcal/mol \u4ee5\u4e0b\u306a\u3089\u5f37\u3044\u3001{strong} \u3092\u8d85\u3048 {moderate} \u307e\u3067\u306a\u3089\u4e2d\u7a0b\u5ea6\u3001{moderate} \u3092\u8d85\u3048\u308b\u306a\u3089\u5f31\u3044\u3002\u3053\u306e\u5224\u5b9a\u306f ΔG°₃₇ \u306e\u307f\u306b\u57fa\u3065\u304d\u307e\u3059",
-  "tm.fold.band.strong":"\u5f37\u3044",
-  "tm.fold.band.weak":"\u5f31\u3044",
+  "tm.fold.band.rule!":"ΔG°₃₇ \u304c {strong} kcal/mol \u4ee5\u4e0b\u306a\u3089\u9ad8\u3044\u3001{strong} \u3092\u8d85\u3048 {moderate} \u307e\u3067\u306a\u3089\u4e2d\u7a0b\u5ea6\u3001{moderate} \u3092\u8d85\u3048\u308b\u306a\u3089\u4f4e\u3044\u3002\u3053\u306e\u5224\u5b9a\u306f ΔG°₃₇ \u306e\u307f\u306b\u57fa\u3065\u304d\u307e\u3059",
+  "tm.fold.band.strong":"\u9ad8\u3044",
+  "tm.fold.band.weak":"\u4f4e\u3044",
   "tm.fold.below0!":"\u898b\u3064\u304b\u3063\u305f\u4e2d\u3067\u6700\u3082\u826f\u3044\u5869\u57fa\u5bfe\u5f62\u6210\u3067\u3082 0 °C \u672a\u6e80\u3067\u878d\u89e3\u3057\u307e\u3059\u3002\u5b9f\u7528\u7684\u306a\u6e29\u5ea6\u3067\u306f\u4f55\u3082\u5f62\u6210\u3055\u308c\u307e\u305b\u3093",
   "tm.fold.bp":"{n} bp",
   "tm.fold.bulge.many":"\u30d0\u30eb\u30b8 {n} \u500b",
@@ -5666,6 +5679,7 @@ var I18N = {
   "ui.catgate.pending":"<b>\u30b5\u30a4\u30f3\u30a4\u30f3\u6e08\u307f · Free \u30d7\u30e9\u30f3\u3002</b>\u7121\u6599\u306e {n} \u7a2e\u985e\u306e\u30a2\u30df\u30c0\u30a4\u30c8\u3092\u8868\u793a\u3057\u3066\u3044\u307e\u3059\u3002\u3053\u306e\u30a2\u30ab\u30a6\u30f3\u30c8\u304c Pro \u306b\u306a\u308b\u3068\u3001\u30d5\u30eb\u30ab\u30bf\u30ed\u30b0\u304c\u4f7f\u3048\u308b\u3088\u3046\u306b\u306a\u308a\u307e\u3059\u3002",
   "ui.catgate.pendingcta":"Pro \u306e\u72b6\u614b",
   "ui.catgate.pro":"★ <b>Pro: \u30d5\u30eb\u30ab\u30bf\u30ed\u30b0\u3002</b>Supabase \u304b\u3089 {n} \u7a2e\u985e\u306e\u30a2\u30df\u30c0\u30a4\u30c8\u304c\u4f7f\u3048\u308b\u3088\u3046\u306b\u306a\u308a\u307e\u3057\u305f (ChemGenes \u3068 Glen Research)\u3002",
+  "ui.conc.totals":"\u7dcf\u91cf <b>{amt}</b><br>\u7dcf\u8cea\u91cf <b>{mass}</b>",
   "ui.flash.antisense":"⚠ \u5148\u306b\u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u9396\u3092\u4fee\u6b63\u3057\u3066\u304f\u3060\u3055\u3044",
   "ui.flash.dilution":"⚠ \u5148\u306b\u5e0c\u91c8\u306e\u30ec\u30b7\u30d4\u3092\u5b8c\u6210\u3055\u305b\u3066\u304f\u3060\u3055\u3044",
   "ui.flash.dupe":"\u3059\u3067\u306b\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u3042\u308a\u307e\u3059",
@@ -5673,9 +5687,11 @@ var I18N = {
   "ui.flash.saved":"✓ \u914d\u5217\u3092\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u4fdd\u5b58\u3057\u307e\u3057\u305f",
   "ui.flash.sense":"⚠ \u5148\u306b\u914d\u5217\u306e\u30a8\u30e9\u30fc\u3092\u4fee\u6b63\u3057\u3066\u304f\u3060\u3055\u3044",
   "ui.fold.close":"\u9589\u3058\u308b",
+  "ui.fold.data.gcpairs":"\u4e8c\u6b21\u69cb\u9020\u4e2d\u306eG:C\u5869\u57fa\u5bfe\u6570",
   "ui.fold.exp":"\u62e1\u5927",
   "ui.fold.expa":"\u69cb\u9020\u56f3\u3092\u5168\u753b\u9762\u3067\u958b\u304f",
   "ui.fold.note.h":"\u3053\u306e\u7d50\u679c\u306e\u8a08\u7b97\u65b9\u6cd5",
+  "ui.fold.note.h2":"\u5bfe\u8c61\u5916\u306e\u9805\u76ee",
   "ui.hist.armClear":"\u3059\u3079\u3066\u6d88\u53bb\u3057\u307e\u3059\u304b\uff1f",
   "ui.hist.armDel":"\u524a\u9664\u3057\u307e\u3059\u304b\uff1f",
   "ui.hist.restClear":"\u3059\u3079\u3066\u6d88\u53bb…",
@@ -6698,7 +6714,13 @@ body[data-conc="ng"] .fld-path{display:none}
 .big .bl{font-family:var(--font-head); font-size:12px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--emph-label)}
 .big .bv{font-family:var(--font-num); font-weight:600; font-size:38px; line-height:1; color:var(--emph-val)}
 .big .bu{font-family:var(--font-head); font-size:15px; font-weight:600; color:var(--emph-side)}
-.big .bside{margin-left:auto; text-align:right; font-family:var(--font-num); font-size:12px; color:var(--emph-side); line-height:1.6}
+
+
+
+
+
+
+.big .bside{margin-left:auto; text-align:right; font-family:var(--font-num); font-size:14px; color:var(--emph-side); line-height:1.6}
 .big .bside b{color:var(--emph-fg)}
 .dil{display:grid; grid-template-columns:1fr 1fr; gap:13px; margin-top:13px}
 .dcell{background:var(--surface); border:1px solid var(--line); border-radius:11px; padding:13px 15px}
@@ -14038,7 +14060,13 @@ function renderConcShell(){
   _cu('dilV2Unit', S.dilV2Unit||'µL');
   var volL=(parseFloat(S.vol)||0)*uf(S.volUnit||'µL',V_UNITS);
   var a1=autoUnit(C1*volL,MOL_UNITS), m1=autoUnit(C1*MW*volL,M_UNITS);
-  var side=document.getElementById('c-side'); if(side) side.innerHTML='Total amount <b>'+nfmt(a1.v)+' '+a1.u+'</b><br>Total mass <b>'+nfmt(m1.v)+' '+m1.u+'</b>';
+  
+
+
+
+
+
+  var side=document.getElementById('c-side'); if(side) side.innerHTML=window.t('ui.conc.totals',{amt:nfmt(a1.v)+' '+a1.u, mass:nfmt(m1.v)+' '+m1.u});
   
 
 
@@ -16196,6 +16224,22 @@ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded'
 .lab-card .lc-seq{font-family:var(--font-mono,ui-monospace,monospace);font-size:11.5px;color:var(--muted);word-break:break-all;margin:3px 0}
 .lab-card .lc-meta{font-size:11px;color:var(--muted)}
 .lab-card .lc-acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;align-items:center}
+
+
+
+
+
+
+
+
+
+.lab-card .lc-morep{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:6px;padding:8px;background:var(--surface-2);border:1px solid var(--line);border-radius:10px}
+.lab-card .lc-morep[hidden]{display:none}
+
+
+
+.lab-card .lc-msep{flex:1 0 100%;height:1px;background:var(--line);margin:2px 0;padding:0;border:0}
+.lab-card .lc-more[aria-expanded="true"]{background:var(--accent-soft);border-color:var(--line-2)}
 .lab-x2{font-family:var(--font-head);font-weight:600;font-size:11.5px;min-height:32px;padding:5px 11px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface-2);color:var(--text);cursor:pointer}
 .lab-x2[disabled]{opacity:.5;cursor:default}
 .lc-ro{font-size:11px;color:var(--muted)}
@@ -18104,6 +18148,22 @@ details.tm-foldwrap:not([open]) > .tm-foldnote{display:none}
 
 
 .tm-band-slot{display:inline-block; flex:0 0 auto; min-height:1px}
+
+
+
+
+
+
+
+
+.tm-band-aim{font-size:12px; line-height:1.6; color:var(--muted); flex:0 0 auto}
+
+
+
+
+.tm-foldnote-h{font-family:var(--font-head); font-size:11px; font-weight:700;
+  letter-spacing:.09em; text-transform:uppercase; color:var(--muted);
+  margin:10px 0 4px}
 .tm-band-rule{font-size:12px; line-height:1.6; color:var(--muted);
   flex:1 1 210px; min-width:0}
 .tm-band-note{flex:1 1 100%; font-size:12px; line-height:1.6; color:var(--muted)}
@@ -18141,9 +18201,35 @@ details.tm-foldwrap:not([open]) > .tm-foldnote{display:none}
 .fv-h{font-family:var(--font-head); font-size:11px; font-weight:700;
   letter-spacing:.09em; text-transform:uppercase; color:var(--muted);
   margin-bottom:7px}
-.fv-data dl{display:grid; grid-template-columns:auto 1fr; gap:4px 12px; margin:0}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.fv-data dl{display:grid; grid-template-columns:minmax(0,36%) 1fr; gap:4px 12px; margin:0}
 .fv-data dt{margin:0; font-family:var(--font-num); font-size:12px;
-  line-height:1.55; color:var(--muted); white-space:nowrap}
+  line-height:1.55; color:var(--muted); white-space:normal}
 .fv-data dd{margin:0; font-family:var(--font-num); font-size:12px;
   line-height:1.55; font-weight:600; color:var(--text); text-align:right}
 .fv-legend ul{list-style:none; margin:0; padding:0; display:grid; gap:7px}
@@ -21439,14 +21525,15 @@ try{
     
 
     var canEdit  = labId ? (isAuthor || _isMgr(labId) || _editors(e.__rowId)) : true;
-    var acts=((labId&&canEdit&&e.__rowId)?('<button type="button" class="lab-x2 lab-pri" data-lab-edit="'+esc(e.__rowId)+'">'+esc(_t('lab.card.editlab'))+'</button>'):'')
-      +'<button type="button" class="lab-x2" data-lab-load="'+esc(e.id)+'">'+esc(_t(labId?'lab.card.opencopy':'lab.card.open'))+'</button>';
+    var _b={};
+    var acts=(_b.edit=((labId&&canEdit&&e.__rowId)?('<button type="button" class="lab-x2 lab-pri" data-lab-edit="'+esc(e.__rowId)+'">'+esc(_t('lab.card.editlab'))+'</button>'):''))
+      +(_b.open='<button type="button" class="lab-x2" data-lab-load="'+esc(e.id)+'">'+esc(_t(labId?'lab.card.opencopy':'lab.card.open'))+'</button>');
     var shared = !labId && !!e.__labId;
-    if((isAuthor||_isMgr(labId)) && !shared) acts+='<button type="button" class="lab-x2" data-lab-move="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'">'+esc(_t('lab.fold.go'))+'</button>';
+    if((isAuthor||_isMgr(labId)) && !shared) acts+=(_b.file='<button type="button" class="lab-x2" data-lab-move="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'">'+esc(_t('lab.fold.go'))+'</button>');
     
 
 
-    if(labId){ acts+='<button type="button" class="lab-x2" data-lab-comments="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'" data-lab-lid="'+esc(labId||'')+'">'+esc(_t('lab.cmt.h'))+'</button>';
+    if(labId){ acts+=(_b.comments='<button type="button" class="lab-x2" data-lab-comments="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'" data-lab-lid="'+esc(labId||'')+'">'+esc(_t('lab.cmt.h'))+'</button>');
       
 
 
@@ -21455,7 +21542,7 @@ try{
 
 
 
-      acts+='<button type="button" class="lab-x2" data-lab-vers="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'">'+esc(_t('lab.ver.h'))+'</button>';
+      acts+=(_b.vers='<button type="button" class="lab-x2" data-lab-vers="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'">'+esc(_t('lab.ver.h'))+'</button>');
       
 
 
@@ -21476,7 +21563,7 @@ try{
 
 
 
-      acts+= isAuthor ? ('<button type="button" class="lab-x2" data-lab-access="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'" data-lab-au="'+esc(e.__author||'')+'" data-lab-uid="'+esc(e.__uid||'')+'" data-lab-fid="'+esc(e.__folderId||'')+'">'+esc(_t('lab.acc.h'))+'</button><button type="button" class="lab-x2" data-lab-rmlab="'+esc(e.id)+'">'+esc(_t('lab.card.rmlab'))+'</button>') : (_isMgr(labId) ? ('<button type="button" class="lab-x2 lab-mgrdel" data-lab-mgrdel="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'" aria-label="'+esc(_t('lab.card.mgrdel',{name:e.name||_t('lab.card.untitled')}))+'" title="'+esc(_t('lab.card.mgrdelT'))+'">'+esc(_t('lab.card.del'))+'</button>') : '');
+      acts+= isAuthor ? ((_b.access='<button type="button" class="lab-x2" data-lab-access="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'" data-lab-au="'+esc(e.__author||'')+'" data-lab-uid="'+esc(e.__uid||'')+'" data-lab-fid="'+esc(e.__folderId||'')+'">'+esc(_t('lab.acc.h'))+'</button>')+(_b.rm='<button type="button" class="lab-x2" data-lab-rmlab="'+esc(e.id)+'">'+esc(_t('lab.card.rmlab'))+'</button>')) : (_isMgr(labId) ? (_b.mgrdel='<button type="button" class="lab-x2 lab-mgrdel" data-lab-mgrdel="'+esc(e.__rowId||'')+'" data-lab-nm="'+esc(e.name||'')+'" aria-label="'+esc(_t('lab.card.mgrdel',{name:e.name||_t('lab.card.untitled')}))+'" title="'+esc(_t('lab.card.mgrdelT'))+'">'+esc(_t('lab.card.del'))+'</button>') : '');
       
 
 
@@ -21490,7 +21577,7 @@ try{
 
 
 
-      if((isAuthor||_isMgr(labId)) && e.__rowId) acts+='<button type="button" class="lab-x2" data-lab-shelve="'+esc(e.__rowId)+'">'+esc(_t('lab.shelf.go'))+'</button>';
+      if((isAuthor||_isMgr(labId)) && e.__rowId) acts+=(_b.shelve='<button type="button" class="lab-x2" data-lab-shelve="'+esc(e.__rowId)+'">'+esc(_t('lab.shelf.go'))+'</button>');
       
 
 
@@ -21512,8 +21599,50 @@ try{
 
 
       var _roC = canEdit ? '' : _roLabel();
-      acts+= '<span class="lc-cap'+(canEdit?' can':' lc-ro')+'" title="'+esc(_t(canEdit?'lab.acc.canwhy!':'lab.acc.viewwhy!'))+'">'+esc(canEdit?_t('lab.acc.can'):(_roC||_t('lab.acc.view')))+'</span>';
+      acts+= (_b.cap='<span class="lc-cap'+(canEdit?' can':' lc-ro')+'" title="'+esc(_t(canEdit?'lab.acc.canwhy!':'lab.acc.viewwhy!'))+'">'+esc(canEdit?_t('lab.acc.can'):(_roC||_t('lab.acc.view')))+'</span>');
     } else if(!shared) { acts+=(e.__rowId?('<button type="button" class="lab-x2" data-lab-shelve="'+esc(e.__rowId)+'">'+esc(_t('lab.shelf.go'))+'</button>'):'')+'<button type="button" class="lab-x2" data-pdel="'+esc(e.id)+'">'+esc(_t('lab.card.del'))+'</button>'; }
+    
+
+
+
+
+
+    var _mp='';
+    
+
+
+
+    if(labId){
+      var _rid=esc(e.__rowId||e.id||'');
+      
+
+
+      
+
+
+
+
+
+      var _rmGrp=(_b.shelve||'')+(_b.rm||'')+(_b.mgrdel||'');
+      _mp='<div class="lc-morep" id="lcm-'+_rid+'" hidden>'+(_b.open||'')+(_b.edit||'')+(_b.comments||'')+(_b.file||'')
+        +(_rmGrp?('<div class="lc-msep" role="separator"></div>'+_rmGrp):'')+'</div>';
+      
+
+
+
+
+
+
+
+
+
+
+      
+
+
+      acts=(_b.access||'')+(_b.vers||'')
+        +'<button type="button" class="lab-x2 lc-more" data-lcmore="'+_rid+'" aria-expanded="false" aria-controls="lcm-'+_rid+'" aria-label="'+esc(_t('ui.lib.amore',{name:e.name||_t('lab.card.untitled')}))+'">\u22ef</button>'+(_b.cap||'');
+    }
     return '<div class="lab-card"'+(isAuthor?' draggable="true"':'')+' data-rowid="'+esc(e.__rowId||'')+'"><div class="lab-card-h"><label class="lab-pick"><input type="checkbox" class="lab-pick-cb" data-labpick="'+esc(e.id)+'" aria-label="'+esc(_t('lab.card.sel',{name:e.name||_t('lab.dlg.aseq')}))+'"'+(_sel.has(e.id)?' checked':'')+'></label><span class="lc-n">'+esc(e.name||_t('lab.card.untitled'))+'</span><span class="lc-mw">'+esc(labMW(e))+' g/mol</span></div>'+
       '<div class="lc-seq">'+esc((typeof spaceSeq==='function')?spaceSeq(e.seq,e.type,e.linkage):e.seq||'')+'</div>'+
       (labId?('<div class="lc-meta">'+(e.__author?esc(_t('lab.card.by',{email:(e.__authorName||e.__author)})):esc(_t('lab.card.shared')))+(isAuthor?' · <b>'+esc(_t('lab.card.you'))+'</b>':'')+'</div>'):'')+
@@ -21536,7 +21665,7 @@ try{
 
 
       (window.oligoFromShareChip?window.oligoFromShareChip(e):'')+
-      '<div class="lc-acts">'+acts+'</div></div>';
+      '<div class="lc-acts">'+acts+'</div>'+_mp+'</div>';
   }
   
 
@@ -22790,6 +22919,18 @@ try{
     if((b=e.target.closest('[data-fsort]'))){ var v=_view(); v.by=b.getAttribute('data-fsort')||'name'; _setView(v); renderLabList(); return; }
     if((b=e.target.closest('[data-lablib-add]'))){ openPicker(); return; }
     if((b=e.target.closest('[data-lab-load]'))){ loadLabStrand(b.getAttribute('data-lab-load')); return; }
+    
+
+
+
+
+
+    if((b=e.target.closest('[data-lcmore]'))){
+      var _pnl=document.getElementById('lcm-'+(b.getAttribute('data-lcmore')||''));
+      if(_pnl){ var _wasOpen=b.getAttribute('aria-expanded')==='true';
+        b.setAttribute('aria-expanded',_wasOpen?'false':'true');
+        if(_wasOpen) _pnl.setAttribute('hidden',''); else _pnl.removeAttribute('hidden'); }
+      return; }
     if((b=e.target.closest('[data-lab-access]'))){ openAccess(b.getAttribute('data-lab-access'), b.getAttribute('data-lab-nm'), b.getAttribute('data-lab-au'), b.getAttribute('data-lab-fid'), b.getAttribute('data-lab-uid')); return; }
     
 
@@ -31889,6 +32030,14 @@ try{
                     ? t('tm.fold.note.mbrna!', { n: MB_LIMIT })
                     : t('tm.fold.note.mbdna!')))
             : t('tm.fold.note.one!'))
+         
+
+
+
+
+
+
+         + '<div class="tm-foldnote-h">' + esc(t('ui.fold.note.h2')) + '</div>'
          + t('tm.fold.note.dimer!')
          + (hp && hp.tmmAnomaly ? t('tm.fold.note.tmm!') : '')
          + '</div></details></div>';
@@ -36139,6 +36288,17 @@ else mount();
     o = o || {};
     var k = (kind === 'duplex') ? 'duplex' : 'hairpin';
     var B = FV.RULES.BAND[k];
+    
+
+
+
+
+
+
+
+
+
+    var AIM_KEY = { hairpin: 'tm.fold.band.aim', duplex: 'tm.fold.band.aim' };
     var b = FV.band(k, dG);
     var slot = FV.FOLD1_SLOT && FV.FOLD1_SLOT.minWidth;
     
@@ -36154,6 +36314,15 @@ else mount();
             + '</span>'
             + T(BAND_KEY[b.key] || BAND_KEY.weak)
             + '</span>'
+            
+
+
+
+
+
+            + (AIM_KEY[kind]
+                 ? '<span class="tm-band-aim">' + T(AIM_KEY[kind]) + '</span>'
+                 : '')
             + '<span class="tm-band-slot" data-fold1-slot'
             + ' style="min-width:' + slot + 'px"></span>'
             + '<span class="tm-band-rule">'
@@ -36178,9 +36347,35 @@ else mount();
 
 
 
+  
+
+
+
+
+
+
+
+  function gcPairCount(res, tokens) {
+    var FV = window.ocFoldView;
+    if (!FV || !FV.pairTable || !res || !res.structure) return null;
+    var db = res.structure;
+    if (!tokens || tokens.length !== db.length) return null;
+    var p = FV.pairTable(db), n = 0, i, a, b;
+    if (!p || p.length !== db.length) return null;
+    for (i = 0; i < p.length; i++) {
+      if (p[i] > i) {
+        a = tokens[i] ? tokens[i].base : null;
+        b = tokens[p[i]] ? tokens[p[i]].base : null;
+        if ((a === 'G' && b === 'C') || (a === 'C' && b === 'G')) n++;
+      }
+    }
+    return n;
+  }
+
   function data(res, tokens) {
     if (!res) return '';
     var g = gcCount(tokens);
+    var gp = gcPairCount(res, tokens);
     var rows = [
       [T('tm.fold.data.gc'),
        g.n ? (Math.round(1000 * g.gc / g.n) / 10).toFixed(1) + '%' : EMPTY],
@@ -36192,7 +36387,14 @@ else mount();
 
 
       [T('tm.fold.data.tm'),
-       (res.tm < 0) ? T('tm.fold.none') : num(res.tm, 1) + U_C]
+       (res.tm < 0) ? T('tm.fold.none') : num(res.tm, 1) + U_C],
+      
+
+
+
+
+      [T('ui.fold.data.gcpairs'),
+       (gp === null) ? EMPTY : String(gp)]
     ];
     var body = '', i;
     for (i = 0; i < rows.length; i++) {
