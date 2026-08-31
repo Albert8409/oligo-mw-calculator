@@ -12034,6 +12034,25 @@ async function proDoVerify(){
 
     S.catalogSource='supabase'; save();                  
     closeProAuth();
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    try{ if(window.ocPlan && typeof window.ocPlan.refresh==='function'){
+      var _entP=window.ocPlan.refresh(true);
+      if(_entP && typeof _entP.catch==='function') _entP.catch(function(_e){ ocFail('proDoVerify#ent',_e); });
+    } }catch(_e){ ocFail('proDoVerify#ent2',_e); }
     const cat=await loadCatalog(); catalogReady(cat); rebuildCustom(); applyAll(); renderCatalog();
   }catch(e){ proErr((window.ocPlan&&window.ocPlan.authMessage)?window.ocPlan.authMessage(e).text
                     :('Verification failed: '+e.message)); }
@@ -14858,8 +14877,37 @@ function renderHistToolbar(){
 function _syncCopyToLab(){
   try{
     var b=document.querySelector('.view-hist [data-hcopylab]'); if(!b) return;
-    var can=!!(window.oligoLabLib && window.oligoLabLib.copyToLab && typeof proIsPro!=='undefined' && proIsPro
-               && typeof proSession==='function' && proSession());
+    var _sess=(typeof proSession==='function') && !!proSession();
+    var _pro =(typeof proIsPro!=='undefined')   && !!proIsPro;
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    var _now=null;
+    try{ _now=(window.oligoLabLib && oligoLabLib.myLabsNow) ? oligoLabLib.myLabsNow() : null; }
+    catch(_e){ ocFail('_syncCopyToLab#2',_e); }
+    var _inLab=!!(_now && _now.length);
+    var can=!!(window.oligoLabLib && window.oligoLabLib.copyToLab && _sess && (_pro || _inLab));
     b.hidden=!can;
   }catch(_e){ ocFail('_syncCopyToLab#1',_e); }
 }
@@ -19524,8 +19572,25 @@ try{
       
 
 
-      mine=await callRpc('my_managed_labs',{}); if(!Array.isArray(mine)) mine=[];
-      all=await callRpc('my_labs',{});          if(!Array.isArray(all)) all=[];
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      var _rr=await Promise.all([callRpc('my_managed_labs',{}), callRpc('my_labs',{})]);
+      mine=_rr[0]; if(!Array.isArray(mine)) mine=[];
+      all =_rr[1]; if(!Array.isArray(all))  all =[];
     }catch(e){
       ocFail('lab#load',e);
       s.loading=false; s.error='load'; _st=s; return s;
