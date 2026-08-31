@@ -15204,7 +15204,12 @@ document.body.addEventListener('click', function(e){
         try{ if(typeof histSel!=='undefined' && histSel && histSel.clear) histSel.clear(); }catch(_e){}
         try{ if(window.oligoLabLib && window.oligoLabLib.clearSelected) window.oligoLabLib.clearSelected(); }catch(_e){}
         try{ if(typeof applyAll==='function') applyAll(); }catch(_e){}
-        try{ if(typeof setTab==='function') setTab('lab'); }catch(_e){}
+        
+
+
+
+        try{ if(typeof setTab==='function') setTab('hist'); }catch(_e){}
+        try{ if(window.oligoLabLib && window.oligoLabLib.openLab) window.oligoLabLib.openLab(); }catch(_e){}
       })
       .catch(function(err){
         
@@ -19840,7 +19845,14 @@ try{
   function menuItem(){
     var b=_q('[data-labmenu]'); if(!b) return;
     var s=_st||blankState();
-    b.hidden=!(s.signedIn && (s.managed.length || s.member.length || s.pro));
+    
+
+
+
+
+
+
+    b.hidden=!(s.signedIn && (s.managed.length || s.member.length || s.pro || s.loading));
   }
 
   async function refresh(){ await loadState(); paint(); }
