@@ -11911,8 +11911,23 @@ let proIsPro=false, proPending=false, _proEmail='';
 
 function proApplyPlan(pk){
   const signed=!!proSession();
+  const wasPro=proIsPro;
   proIsPro = signed && (pk==='pro'||pk==='lab'||pk==='owner');
   proPending = signed && !proIsPro;
+  
+
+
+
+
+
+
+  if(proIsPro && !wasPro){
+    try{ if(window.oligoLabLib){
+      if(oligoLabLib.invalidateLabs) oligoLabLib.invalidateLabs();
+      if(oligoLabLib.ensureScope) oligoLabLib.ensureScope();
+    } }catch(_e){}
+    try{ if(window.oligoSheetHost && oligoSheetHost.rerender) oligoSheetHost.rerender(); }catch(_e){}
+  }
 }
 function proSession(){ try{ return JSON.parse(localStorage.getItem(PRO_SESS_KEY)||'null'); }catch(_){ return null; } }
 function setProSession(s){ if(s) localStorage.setItem(PRO_SESS_KEY, JSON.stringify(s)); else localStorage.removeItem(PRO_SESS_KEY); }
@@ -15208,7 +15223,12 @@ document.body.addEventListener('click', function(e){
 
 
 
-        try{ if(typeof setTab==='function') setTab('hist'); }catch(_e){}
+        
+
+
+
+
+        try{ if(typeof setTab==='function' && (document.body.dataset.tab||'mw')!=='hist') setTab('hist'); }catch(_e){}
         try{ if(window.oligoLabLib && window.oligoLabLib.openLab) window.oligoLabLib.openLab(); }catch(_e){}
       })
       .catch(function(err){
@@ -20296,7 +20316,13 @@ try{
   function invalidateLabs(){ _labs=null; _labsAt=0; }
   async function labs(){
     if(_labs && (Date.now()-_labsAt < 30000)) return _labs;
-    if(!isPro()||!signedIn()){ _labs=[]; _labsOk=true; _labsAt=Date.now(); return _labs; }
+    
+
+
+
+
+
+    if(!isPro()||!signedIn()){ _labs=[]; _labsOk=true; _labsAt=0; return _labs; }
     
 
 
@@ -22301,7 +22327,14 @@ try{
         if(i>=ids.length){
           if(st) st.textContent=_t(badN?(proN?'lab.bulk.movepro':'lab.bulk.movepart'):'lab.bulk.moveok',{ok:_n(okN),bad:_n(badN),lab:labName(meta().labId)});
           _sel.clear();
-          setTimeout(function(){ mo.close(); renderLabList(); }, badN?2600:700);
+          
+
+
+
+
+          setTimeout(function(){ mo.close();
+            if(okN>0){ try{ setOpenFolder(dest); }catch(_e){ ocFail('bulkmove#nav',_e); } }
+            renderLabList(); }, badN?2600:700);
           return;
         }
         var id=ids[i++];
