@@ -15197,7 +15197,27 @@ document.body.addEventListener('click', function(e){
   if(shs){ var selS=window.oligoSheetHost.selected()||[]; if(!selS.length){ if(window.__oligoNotice){ window.__oligoNotice('oligoShareToast',{text:'Select one or more strands to share.',dismissible:true}); setTimeout(function(){ if(window.__oligoRemoveNotice) window.__oligoRemoveNotice('oligoShareToast'); },3400); } } else if(window.oligoShare){ window.oligoShare.shareStrands(selS); } return; }
   var clb=e.target.closest('.view-hist [data-hcopylab]');
    
-  if(clb){ var selL=window.oligoSheetHost.selected()||[]; if(!selL.length){ if(window.__oligoNotice){ window.__oligoNotice('oligoShareToast',{text:(typeof window.t==='function'?window.t('lab.mv.none'):''),dismissible:true}); setTimeout(function(){ if(window.__oligoRemoveNotice) window.__oligoRemoveNotice('oligoShareToast'); },5000); } return; } if(!(window.oligoLabLib&&window.oligoLabLib.copyToLab)){ if(window.__oligoNotice){ window.__oligoNotice('oligoShareToast',{text:(typeof window.t==='function'?window.t('lab.mv.signin'):''),dismissible:true}); } return; } clb.disabled=true; Promise.resolve(window.oligoLabLib.copyToLab(selL)).catch(function(){}).then(function(){ clb.disabled=false; }); return; }
+  if(clb){ var selL=window.oligoSheetHost.selected()||[]; if(!selL.length){ if(window.__oligoNotice){ window.__oligoNotice('oligoShareToast',{text:(typeof window.t==='function'?window.t('lab.mv.none'):''),dismissible:true}); setTimeout(function(){ if(window.__oligoRemoveNotice) window.__oligoRemoveNotice('oligoShareToast'); },5000); } return; } if(!(window.oligoLabLib&&window.oligoLabLib.copyToLab)){ if(window.__oligoNotice){ window.__oligoNotice('oligoShareToast',{text:(typeof window.t==='function'?window.t('lab.mv.signin'):''),dismissible:true}); } return; } clb.disabled=true;
+    Promise.resolve(window.oligoLabLib.copyToLab(selL))
+      .then(function(){
+         
+        try{ if(typeof histSel!=='undefined' && histSel && histSel.clear) histSel.clear(); }catch(_e){}
+        try{ if(window.oligoLabLib && window.oligoLabLib.clearSelected) window.oligoLabLib.clearSelected(); }catch(_e){}
+        try{ if(typeof applyAll==='function') applyAll(); }catch(_e){}
+        try{ if(typeof setTab==='function') setTab('lab'); }catch(_e){}
+      })
+      .catch(function(err){
+        
+
+        try{ if(typeof ocFail==='function') ocFail('hcopylab#1',err); }catch(_e){}
+        var _m=''; try{ _m=String((err&&err.message)||err||''); }catch(_e){}
+        if(!_m && typeof window.t==='function'){ try{ _m=window.t('lab.mv.pfail',{n:selL.length}); }catch(_e){} }
+        try{ if(window.__oligoNotice){ window.__oligoNotice('oligoShareToast',{text:_m,dismissible:true});
+          setTimeout(function(){ if(window.__oligoRemoveNotice) window.__oligoRemoveNotice('oligoShareToast'); },5000); }
+          else if(typeof toast==='function') toast(_m); }catch(_e){}
+      })
+      .then(function(){ clb.disabled=false; });
+    return; }
   var ca=e.target.closest('.view-hist [data-hclearall]');
   
 
@@ -19758,6 +19778,13 @@ try{
     if(state){ _st=state; paint(); return _st; }
     if(!_st) _st=blankState();
     _st.signedIn=signedIn(); _st.pro=isPro(); _st.email=myEmail();
+    
+
+
+
+
+
+    if(_st.signedIn && !_st.managed.length && !_st.member.length) _st.loading=true;
     paint();
     if(_st.signedIn) refresh();
     return _st;
