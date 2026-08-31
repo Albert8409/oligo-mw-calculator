@@ -416,7 +416,7 @@ var I18N = {
   "lab.card.mgrdel":"Delete {name} from the lab",
   "lab.card.mgrdelT":"You manage this lab. This deletes the record for everyone in the lab, including the person who saved it.",
   "lab.card.open":"Open",
-  "lab.card.opencopy":"Open a copy",
+  "lab.card.opencopy":"Load a copy",
   "lab.card.rmdone":"Removed from lab",
   "lab.card.rmlab":"Remove",
   "lab.card.sel":"Select {name}",
@@ -1865,7 +1865,7 @@ var I18N = {
   "lab.card.mgrdel":"\u5c07 {name} \u5f9e\u5be6\u9a57\u5ba4\u522a\u9664",
   "lab.card.mgrdelT":"\u4f60\u662f\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u8ca0\u8cac\u4eba\u3002\u9019\u500b\u52d5\u4f5c\u6703\u522a\u9664\u9019\u7b46\u7d00\u9304\uff0c\u5305\u62ec\u7576\u521d\u5132\u5b58\u5b83\u7684\u4eba\u5728\u5167\uff0c\u5be6\u9a57\u5ba4\u88e1\u7684\u6bcf\u500b\u4eba\u90fd\u6703\u5931\u53bb\u5b83\u3002",
   "lab.card.open":"\u958b\u555f",
-  "lab.card.opencopy":"\u958b\u555f\u526f\u672c",
+  "lab.card.opencopy":"\u8f09\u5165\u526f\u672c",
   "lab.card.rmdone":"\u5df2\u79fb\u51fa\u5be6\u9a57\u5ba4",
   "lab.card.rmlab":"\u79fb\u51fa",
   "lab.card.sel":"\u9078\u53d6 {name}",
@@ -3308,7 +3308,7 @@ var I18N = {
   "lab.card.mgrdel":"\u5c06 {name} \u4ece\u5b9e\u9a8c\u5ba4\u5220\u9664",
   "lab.card.mgrdelT":"\u4f60\u662f\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u8d1f\u8d23\u4eba\u3002\u8fd9\u4e2a\u64cd\u4f5c\u4f1a\u5220\u9664\u8fd9\u6761\u8bb0\u5f55\uff0c\u5305\u62ec\u5f53\u521d\u4fdd\u5b58\u5b83\u7684\u4eba\u5728\u5185\uff0c\u5b9e\u9a8c\u5ba4\u91cc\u7684\u6bcf\u4e2a\u4eba\u90fd\u4f1a\u5931\u53bb\u5b83\u3002",
   "lab.card.open":"\u6253\u5f00",
-  "lab.card.opencopy":"\u6253\u5f00\u526f\u672c",
+  "lab.card.opencopy":"\u52a0\u8f7d\u526f\u672c",
   "lab.card.rmdone":"\u5df2\u79fb\u51fa\u5b9e\u9a8c\u5ba4",
   "lab.card.rmlab":"\u79fb\u51fa",
   "lab.card.sel":"\u9009\u53d6 {name}",
@@ -4751,7 +4751,7 @@ var I18N = {
   "lab.card.mgrdel":"{name} \u3092\u30e9\u30dc\u304b\u3089\u524a\u9664",
   "lab.card.mgrdelT":"\u3042\u306a\u305f\u306f\u3053\u306e\u30e9\u30dc\u306e\u7ba1\u7406\u8005\u3067\u3059\u3002\u3053\u306e\u64cd\u4f5c\u3092\u884c\u3046\u3068\u3001\u4fdd\u5b58\u3057\u305f\u672c\u4eba\u3092\u542b\u3081\u3001\u30e9\u30dc\u306e\u5168\u54e1\u304c\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u3092\u5931\u3044\u307e\u3059\u3002",
   "lab.card.open":"\u958b\u304f",
-  "lab.card.opencopy":"\u30b3\u30d4\u30fc\u3092\u958b\u304f",
+  "lab.card.opencopy":"\u30b3\u30d4\u30fc\u3092\u8aad\u307f\u8fbc\u3080",
   "lab.card.rmdone":"\u30e9\u30dc\u304b\u3089\u5916\u3057\u307e\u3057\u305f",
   "lab.card.rmlab":"\u5916\u3059",
   "lab.card.sel":"{name} \u3092\u9078\u629e",
@@ -6878,6 +6878,11 @@ body[data-mode="dark"] .catcard .btn-ins{color:var(--accent)}
 .histbar .hb{font-family:var(--font-head); font-weight:600; font-size:12px; border-radius:999px; padding:8px 14px; min-height:40px; border:1px solid var(--line-2); background:var(--surface-2); color:var(--text)}
 .histbar .hb.sort{display:inline-flex; gap:6px; align-items:center}
 .histbar .danger{color:var(--err); border-color:color-mix(in srgb,var(--err) 40%,var(--line)); background:var(--err-soft)}
+
+
+
+
+.hact .hdel.armed,.hact .hdel[data-armed="1"]{color:var(--err); border-color:color-mix(in srgb,var(--err) 40%,var(--line)); background:var(--err-soft)}
 .htable{width:100%; border-collapse:collapse; font-size:13px; table-layout:fixed}
 .htable th:nth-child(1){width:30px}
 .htable th:nth-child(2){width:20%}
@@ -16423,6 +16428,22 @@ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded'
 .lc-cap.can{font-weight:600;color:var(--accent-2)}
 .lab-x2.lab-pri{background:var(--accent);color:var(--accent-ink);border-color:transparent} .lab-x2.armed{color:var(--err);border-color:color-mix(in srgb,var(--err) 40%,var(--line));background:var(--err-soft)}
 
+
+
+
+
+
+
+
+
+
+
+#scanOv .ctl-btn.armed,.lab-btn.armed,.ctl-btn.armed{color:var(--err);border-color:color-mix(in srgb,var(--err) 40%,var(--line));background:var(--err-soft)}
+
+
+
+.lab-x.danger.armed{background:var(--err);color:var(--err-ink,#fff);border-color:transparent}
+
 .labed{border:1px solid var(--accent-2);border-radius:12px;background:var(--surface);padding:10px 12px;margin:0 0 14px}
 .labed[hidden]{display:none}
 .labed .labed-t{font-family:var(--font-head);font-weight:600;font-size:13px}
@@ -21885,7 +21906,7 @@ try{
 
 
       var _rmGrp=(_b.shelve||'')+(_b.rm||'')+(_b.mgrdel||'');
-      _mp='<div class="lc-morep" id="lcm-'+_rid+'" hidden>'+(_b.open||'')+(_b.edit||'')+(_b.comments||'')+(_b.file||'')
+      _mp='<div class="lc-morep" id="lcm-'+_rid+'" hidden>'+(_b.vers||'')+(_b.edit||'')+(_b.comments||'')+(_b.file||'')
         +(_rmGrp?('<div class="lc-msep" role="separator"></div>'+_rmGrp):'')+'</div>';
       
 
@@ -21901,7 +21922,7 @@ try{
       
 
 
-      acts=(_b.access||'')+(_b.vers||'')
+      acts=(_b.access||'')+(_b.open||'')
         +'<button type="button" class="lab-x2 lc-more" data-lcmore="'+_rid+'" aria-expanded="false" aria-controls="lcm-'+_rid+'" aria-label="'+esc(_t('ui.lib.amore',{name:e.name||_t('lab.card.untitled')}))+'">\u22ef</button>'+(_b.cap||'');
     }
     return '<div class="lab-card"'+(isAuthor?' draggable="true"':'')+' data-rowid="'+esc(e.__rowId||'')+'"><div class="lab-card-h"><label class="lab-pick"><input type="checkbox" class="lab-pick-cb" data-labpick="'+esc(e.id)+'" aria-label="'+esc(_t('lab.card.sel',{name:e.name||_t('lab.dlg.aseq')}))+'"'+(_sel.has(e.id)?' checked':'')+'></label><span class="lc-n">'+esc(e.name||_t('lab.card.untitled'))+'</span><span class="lc-mw">'+esc(labMW(e))+' g/mol</span></div>'+
@@ -22442,7 +22463,16 @@ try{
           +'<div class="labed-a"><button type="button" class="lab-x2 lab-pri" data-acc-move>'+esc(_t('lab.mv.go'))+'</button></div>'):'')
         +'<div data-access-body><div class="lab-hint">'+esc(_t('lab.dlg.loading'))+'</div></div>';
       paint(); }
-    mo.box.addEventListener('click',function(e){ var g=e.target.closest('[data-acc-grant]'); if(g){ g.disabled=true; rpc('grant_strand_edit',{p_strand:rowId,p_email:g.getAttribute('data-acc-grant')}).then(paint).catch(function(err){ toast(err.message||_t('lab.err.grant')); g.disabled=false; }); return; } var rv=e.target.closest('[data-acc-revoke]'); if(rv){ rv.disabled=true; rpc('revoke_strand_edit',{p_strand:rowId,p_email:rv.getAttribute('data-acc-revoke')}).then(paint).catch(function(err){ toast(err.message||_t('lab.err.revoke')); rv.disabled=false; }); return; }
+    mo.box.addEventListener('click',function(e){ var g=e.target.closest('[data-acc-grant]'); if(g){ g.disabled=true; rpc('grant_strand_edit',{p_strand:rowId,p_email:g.getAttribute('data-acc-grant')}).then(paint).catch(function(err){ toast(err.message||_t('lab.err.grant')); g.disabled=false; }); return; } var rv=e.target.closest('[data-acc-revoke]'); if(rv){
+        
+
+        if(rv.dataset.armed!=='1'){ rv.dataset.armed='1'; rv.dataset.o=rv.textContent;
+          rv.textContent=_t('lab.mon.armrm'); rv.classList.add('armed');
+          clearTimeout(rv._t); rv._t=setTimeout(function(){ if(rv){ rv.dataset.armed='0';
+            rv.textContent=rv.dataset.o||rv.textContent; rv.classList.remove('armed'); } },3000);
+          return; }
+        clearTimeout(rv._t); rv.dataset.armed='0'; rv.classList.remove('armed');
+        rv.disabled=true; rpc('revoke_strand_edit',{p_strand:rowId,p_email:rv.getAttribute('data-acc-revoke')}).then(paint).catch(function(err){ toast(err.message||_t('lab.err.revoke')); rv.disabled=false; }); return; }
       var mv=e.target.closest('[data-acc-move]'); if(mv){ mv.disabled=true; Promise.resolve(strandMove(rowId,null)).then(function(){ toast(_t('lab.mv.done')); _inSpace=false; _f=null; shell(); try{ renderLabList(); }catch(_e){ ocFail('labacc#relist',_e); } }).catch(function(err){ toast((err&&err.message)||_t('lab.err.move')); mv.disabled=false; }); } });
     async function paint(){ var body=mo.box.querySelector('[data-access-body]'); if(!body) return; try{ var members=(await rpc('list_lab_members',{p_lab:labId}))||[]; var editors=(await rpc('list_strand_editors',{p_strand:rowId}))||[]; var eset={}; editors.forEach(function(x){ eset[String(x.email).toLowerCase()]=1; }); var mine=myEmail();
       
@@ -23093,7 +23123,15 @@ try{
     if((b=ev.target.closest('[data-ed-cancel]'))){ edLeave(true); return; }
   });
 
-  async function loadLabStrand(cid){ try{ var list=await fetchLabStrands(meta().labId); var e=list.filter(function(x){return x.id===cid;})[0]; if(e&&typeof loadSavedState==='function'){ loadSavedState(e); if(typeof setTab==='function') setTab('mw'); toast(_t('lab.lib.opened!')); } }catch(_){ toast(_t('lab.lib.failopen')); } }
+  async function loadLabStrand(cid){ try{ var _lid=meta().labId;
+    var _pick=function(l){ return (l||[]).filter(function(x){return x.id===cid;})[0]; };
+     
+    var e=_pick(await fetchStrandsScope(_lid));
+    if(!e) e=_pick(await fetchShelfScope(_lid));
+    if(e&&typeof loadSavedState==='function'){ loadSavedState(e); if(typeof setTab==='function') setTab('mw'); toast(_t('lab.lib.opened!')); return; }
+    
+
+    toast(_t('lab.lib.failopen')); }catch(_){ toast(_t('lab.lib.failopen')); } }
 
   document.addEventListener('click', function(e){
     var b;
@@ -23259,7 +23297,24 @@ try{
       try{ if(typeof applyAll==='function') applyAll(); }catch(_e){ ocFail('labed#apply4',_e); }
       if(typeof setTab==='function') setTab('mw');
       edPaint(); return; }
-    if((b=e.target.closest('[data-lab-rmlab]'))){ var cid=b.getAttribute('data-lab-rmlab'); var _rnm=b.getAttribute('data-lab-nm')||''; _rowBusy(b,true,_rnm); removeFromLab(cid).then(function(){ toast(_t('lab.card.rmdone')); renderLabList(); }).catch(function(err){ toast(err.message||_t('lab.err.remove')); _rowBusy(b,false,_rnm); }); return; }
+    if((b=e.target.closest('[data-lab-rmlab]'))){
+      
+
+
+
+
+
+
+
+      if(b.dataset.armed!=='1'){ b.dataset.armed='1'; b.dataset.o=b.textContent;
+        b.textContent=_t('lab.mon.armrm'); b.classList.add('armed');
+        var _rl0=b.getAttribute('aria-label'); if(_rl0) b.dataset.a0=_rl0;
+        clearTimeout(b._t); b._t=setTimeout(function(){ if(b){ b.dataset.armed='0';
+          b.textContent=b.dataset.o||_t('lab.card.rmlab'); b.classList.remove('armed');
+          if(b.dataset.a0) b.setAttribute('aria-label',b.dataset.a0); } },3000);
+        return; }
+      clearTimeout(b._t); b.dataset.armed='0'; b.classList.remove('armed');
+      var cid=b.getAttribute('data-lab-rmlab'); var _rnm=b.getAttribute('data-lab-nm')||''; _rowBusy(b,true,_rnm); removeFromLab(cid).then(function(){ toast(_t('lab.card.rmdone')); renderLabList(); }).catch(function(err){ toast(err.message||_t('lab.err.remove')); _rowBusy(b,false,_rnm); }); return; }
     if((b=e.target.closest('[data-lab-mgrdel]'))){
       
 
@@ -24363,7 +24418,26 @@ try{
     var src=e.target.closest('[data-scansrc]');
     if(src){ pickFrom(src.getAttribute('data-scansrc')); return; }
     var rm=e.target.closest('[data-scanrm]');
-    if(rm){ var ri=+rm.getAttribute('data-scanrm');
+    if(rm){
+      
+
+
+
+
+
+
+
+
+
+
+
+      if(rm.dataset.armed!=='1'){ rm.dataset.armed='1'; rm.dataset.o=rm.textContent;
+        rm.textContent='Remove?'; rm.classList.add('armed');
+        clearTimeout(rm._t); rm._t=setTimeout(function(){ if(rm){ rm.dataset.armed='0';
+          rm.textContent=rm.dataset.o||rm.textContent; rm.classList.remove('armed'); } },3000);
+        return; }
+      clearTimeout(rm._t); rm.dataset.armed='0'; rm.classList.remove('armed');
+      var ri=+rm.getAttribute('data-scanrm');
       
 
 
