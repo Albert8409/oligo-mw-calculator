@@ -379,6 +379,7 @@ var I18N = {
   "lab.add.go":"Add to lab",
   "lab.add.h":"Add people",
   "lab.add.hint!":"Adding an email address is what gives that person access to the lab. We email them to say so, and tell you here if that email could not be sent. They open Oligo Calculator, sign in with that exact address, and the seat attaches itself.",
+  "lab.add.nameA":"The name the lab will see for this person",
   "lab.add.nomail":"{email} can join now, but we could not email them. Ask them to sign in with that exact address.",
   "lab.add.ph":"teammate@email.com",
   "lab.add.several":"Add several at once",
@@ -639,6 +640,7 @@ var I18N = {
   "lab.mon.add":"+ Share one of my bases or monomers",
   "lab.mon.added":"Monomer saved to your Monomer Library",
   "lab.mon.amanager":"a lab manager",
+  "lab.mon.armdel":"Delete?",
   "lab.mon.armrm":"Remove?",
   "lab.mon.clash1":"{code} is shared more than once in this lab, with different definitions, so no molecular weight is shown for it. One of them needs a different code.",
   "lab.mon.clashN":"{n} codes are shared more than once in this lab, with different definitions, so no molecular weight is shown for them: {codes}. Each one needs a different code on one side.",
@@ -662,6 +664,7 @@ var I18N = {
   "lab.mon.inmineT":"This monomer is already in your Monomer Library.",
   "lab.mon.mgrdone":"Deleted from the lab.",
   "lab.mon.mgrrm":"Delete {code} from the lab",
+  "lab.mon.mgrrmL":"Delete from lab",
   "lab.mon.mgrrmT":"You manage this lab. This deletes the monomer for everyone, including the person who shared it.",
   "lab.mon.mine":"Save {code} to My Library",
   "lab.mon.mineT":"Save to My Library",
@@ -674,6 +677,7 @@ var I18N = {
   "lab.mon.pickh":"Add to Lab custom bases and monomers",
   "lab.mon.picksub":"Pick one of your custom bases or monomers to share with the lab. Everyone in the lab can then use its code. You can remove it again, and so can a lab manager. Pick a code the lab does not already have.",
   "lab.mon.rm":"Remove {code} from the lab",
+  "lab.mon.rmKeep":"Removes it from the lab. It stays in your own bases.",
   "lab.mon.rmT":"Remove from lab",
   "lab.mon.shared":"Monomer shared to lab",
   "lab.mon.skip1":"{n} lab monomer could not be read (no valid mass) and was skipped.",
@@ -824,6 +828,7 @@ var I18N = {
   "lab.ver.restore":"Restore this version",
   "lab.ver.vn":"Version {v}",
   "lab.ver.warn!":"Restoring writes a new version. Nothing is deleted: version {v} and everything saved after it stay in this list. Everyone in the lab sees the record change.",
+  "lab.who.member":"a lab member",
   "mk.0001":"Oligo Calculator | molecular weight, Tm, ε260 and concentration",
   "mk.0002":"Skip to main content",
   "mk.0003":"Oligonucleotide molecular weight, Tm, ε260 and concentration",
@@ -1446,7 +1451,7 @@ var I18N = {
   "ui.hist.armDel":"Delete?",
   "ui.hist.restClear":"Clear all…",
   "ui.lab.inv.adding":"Adding…",
-  "ui.lab.inv.aria":"Email addresses",
+  "ui.lab.inv.aria":"Names and email addresses",
   "ui.lab.inv.body":"Put in the addresses your lab signs in with. You can type them one at a time, or paste the lot.",
   "ui.lab.inv.body1":"Put in the addresses your lab signs in with. There is <b>1</b> seat open. You can type them one at a time, or paste the lot.",
   "ui.lab.inv.bodyn":"Put in the addresses your lab signs in with. There are <b>{n}</b> seats open. You can type them one at a time, or paste the lot.",
@@ -1463,7 +1468,7 @@ var I18N = {
   "ui.lab.inv.n.free1":"{n} seat open",
   "ui.lab.inv.n.over":"<b>{n} with no seat</b>",
   "ui.lab.inv.noros!":"We could not check who is already in <b>{name}</b>, so this does not show how many seats are open. You can still add addresses, and we will tell you here if there is no seat for one of them.",
-  "ui.lab.inv.ph":"name@university.edu, or paste a whole list",
+  "ui.lab.inv.ph":"Pat Chen <pat@university.edu>, or paste a whole list",
   "ui.lab.inv.r.add1":"<b>{n} address added.</b> {list}.",
   "ui.lab.inv.r.addn":"<b>{n} addresses added.</b> {list}.",
   "ui.lab.inv.r.back":"Back to work",
@@ -1478,7 +1483,7 @@ var I18N = {
   "ui.lab.inv.r.over":"<b>No seat for these:</b> {list}. Add seats under Plans and account, then add them.",
   "ui.lab.inv.r.title":"Added to {name}",
   "ui.lab.inv.sent":"Everyone added has been emailed. They get into the lab by signing in with the address you added.",
-  "ui.lab.inv.title":"Add your people",
+  "ui.lab.inv.title":"Add members",
   "ui.lab.inv.why.bad":"that does not look like an email address",
   "ui.lab.inv.why.dup":"already in the lab",
   "ui.lab.inv.why.over":"no seat left for this one",
@@ -1958,6 +1963,7 @@ var I18N = {
   "lab.add.go":"\u65b0\u589e\u5230\u5be6\u9a57\u5ba4",
   "lab.add.h":"\u65b0\u589e\u6210\u54e1",
   "lab.add.hint!":"\u65b0\u589e\u4e00\u500b\u96fb\u5b50\u90f5\u4ef6\u5730\u5740\uff0c\u5c31\u662f\u628a\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u5b58\u53d6\u6b0a\u7d66\u5c0d\u65b9\u3002\u6211\u5011\u6703\u5bc4\u96fb\u5b50\u90f5\u4ef6\u901a\u77e5\u5c0d\u65b9\uff0c\u82e5\u5bc4\u9001\u5931\u6557\u4e5f\u6703\u5728\u9019\u88e1\u544a\u8a34\u4f60\u3002\u5c0d\u65b9\u958b\u555f Oligo Calculator\uff0c\u7528\u540c\u4e00\u500b\u5730\u5740\u767b\u5165\uff0c\u5c31\u6703\u81ea\u52d5\u53d6\u5f97\u5e2d\u4f4d\u3002",
+  "lab.add.nameA":"\u5be6\u9a57\u5ba4\u6703\u770b\u5230\u7684\u9019\u500b\u4eba\u7684\u540d\u5b57",
   "lab.add.nomail":"{email} \u73fe\u5728\u53ef\u4ee5\u52a0\u5165\u4e86\uff0c\u4f46\u901a\u77e5\u4fe1\u5bc4\u9001\u5931\u6557\u3002\u8acb\u8f49\u544a\u5c0d\u65b9\u7528\u540c\u4e00\u500b\u96fb\u5b50\u90f5\u4ef6\u5730\u5740\u767b\u5165\u3002",
   "lab.add.ph":"teammate@email.com",
   "lab.add.several":"\u4e00\u6b21\u65b0\u589e\u591a\u4eba",
@@ -2218,6 +2224,7 @@ var I18N = {
   "lab.mon.add":"+ \u5206\u4eab\u6211\u7684\u9e7c\u57fa\u6216\u55ae\u9ad4",
   "lab.mon.added":"\u55ae\u9ad4\u5df2\u5b58\u5230\u4f60\u7684\u55ae\u9ad4\u8cc7\u6599\u5eab",
   "lab.mon.amanager":"\u5be6\u9a57\u5ba4\u8ca0\u8cac\u4eba",
+  "lab.mon.armdel":"\u78ba\u5b9a\u522a\u9664\uff1f",
   "lab.mon.armrm":"\u78ba\u5b9a\u79fb\u51fa\uff1f",
   "lab.mon.clash1":"{code} \u5728\u9019\u500b\u5be6\u9a57\u5ba4\u88e1\u88ab\u5206\u4eab\u4e86\u4e0d\u53ea\u4e00\u6b21\uff0c\u800c\u4e14\u5b9a\u7fa9\u4e0d\u540c\uff0c\u56e0\u6b64\u4e0d\u6703\u986f\u793a\u5b83\u7684\u5206\u5b50\u91cf\u3002\u5176\u4e2d\u4e00\u500b\u5fc5\u9808\u6539\u7528\u5225\u7684\u4ee3\u78bc\u3002",
   "lab.mon.clashN":"\u6709 {n} \u500b\u4ee3\u78bc\u5728\u9019\u500b\u5be6\u9a57\u5ba4\u88e1\u88ab\u5206\u4eab\u4e86\u4e0d\u53ea\u4e00\u6b21\uff0c\u800c\u4e14\u5b9a\u7fa9\u4e0d\u540c\uff0c\u56e0\u6b64\u4e0d\u6703\u986f\u793a\u5b83\u5011\u7684\u5206\u5b50\u91cf\uff1a{codes}\u3002\u6bcf\u4e00\u500b\u90fd\u8981\u6709\u4e00\u908a\u6539\u7528\u5225\u7684\u4ee3\u78bc\u3002",
@@ -2241,6 +2248,7 @@ var I18N = {
   "lab.mon.inmineT":"\u9019\u500b\u55ae\u9ad4\u5df2\u7d93\u5728\u4f60\u7684\u55ae\u9ad4\u8cc7\u6599\u5eab\u88e1\u3002",
   "lab.mon.mgrdone":"\u5df2\u5f9e\u5be6\u9a57\u5ba4\u522a\u9664\u3002",
   "lab.mon.mgrrm":"\u5c07 {code} \u5f9e\u5be6\u9a57\u5ba4\u522a\u9664",
+  "lab.mon.mgrrmL":"\u5f9e\u5be6\u9a57\u5ba4\u522a\u9664",
   "lab.mon.mgrrmT":"\u4f60\u662f\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u8ca0\u8cac\u4eba\u3002\u9019\u6703\u70ba\u6240\u6709\u4eba\u522a\u9664\u9019\u500b\u55ae\u9ad4\uff0c\u5305\u542b\u5206\u4eab\u5b83\u7684\u4eba\u3002",
   "lab.mon.mine":"\u5c07 {code} \u5b58\u5230\u6211\u7684\u8cc7\u6599\u5eab",
   "lab.mon.mineT":"\u5b58\u5230\u6211\u7684\u8cc7\u6599\u5eab",
@@ -2253,6 +2261,7 @@ var I18N = {
   "lab.mon.pickh":"\u65b0\u589e\u5230\u5be6\u9a57\u5ba4\u7684\u81ea\u8a02\u9e7c\u57fa\u8207\u55ae\u9ad4",
   "lab.mon.picksub":"\u9078\u4e00\u500b\u4f60\u7684\u81ea\u8a02\u9e7c\u57fa\u6216\u55ae\u9ad4\u8207\u5be6\u9a57\u5ba4\u5206\u4eab\u3002\u4e4b\u5f8c\u5be6\u9a57\u5ba4\u88e1\u7684\u6bcf\u500b\u4eba\u90fd\u53ef\u4ee5\u4f7f\u7528\u5b83\u7684\u4ee3\u78bc\u3002\u4f60\u53ef\u4ee5\u518d\u628a\u5b83\u79fb\u51fa\uff0c\u5be6\u9a57\u5ba4\u8ca0\u8cac\u4eba\u4e5f\u53ef\u4ee5\u3002\u8acb\u9078\u4e00\u500b\u5be6\u9a57\u5ba4\u9084\u6c92\u6709\u7684\u4ee3\u78bc\u3002",
   "lab.mon.rm":"\u5c07 {code} \u79fb\u51fa\u5be6\u9a57\u5ba4",
+  "lab.mon.rmKeep":"\u5c07\u5b83\u79fb\u51fa\u5be6\u9a57\u5ba4\u3002\u5b83\u4ecd\u7136\u7559\u5728\u4f60\u81ea\u5df1\u7684\u9e7c\u57fa\u88e1\u3002",
   "lab.mon.rmT":"\u79fb\u51fa\u5be6\u9a57\u5ba4",
   "lab.mon.shared":"\u55ae\u9ad4\u5df2\u5206\u4eab\u5230\u5be6\u9a57\u5ba4",
   "lab.mon.skip1":"\u6709 {n} \u500b\u5be6\u9a57\u5ba4\u55ae\u9ad4\u6c92\u6709\u6709\u6548\u8cea\u91cf\uff0c\u7121\u6cd5\u8b80\u53d6\uff0c\u5df2\u7565\u904e\u3002",
@@ -2403,6 +2412,7 @@ var I18N = {
   "lab.ver.restore":"\u9084\u539f\u5230\u9019\u500b\u7248\u672c",
   "lab.ver.vn":"\u7248\u672c {v}",
   "lab.ver.warn!":"\u9084\u539f\u6703\u5beb\u5165\u4e00\u500b\u65b0\u7684\u7248\u672c\u3002\u4e0d\u6703\u522a\u9664\u4efb\u4f55\u6771\u897f\uff1a\u7248\u672c {v} \u548c\u5b83\u4e4b\u5f8c\u5132\u5b58\u7684\u6bcf\u4e00\u500b\u7248\u672c\u90fd\u6703\u7559\u5728\u9019\u500b\u6e05\u55ae\u88e1\u3002\u5be6\u9a57\u5ba4\u4e2d\u7684\u6bcf\u500b\u4eba\u90fd\u6703\u770b\u5230\u9019\u4e00\u7b46\u6539\u8b8a\u3002",
+  "lab.who.member":"\u5be6\u9a57\u5ba4\u6210\u54e1",
   "mk.0001":"Oligo Calculator\uff1a\u5be1\u6838\u82f7\u9178\u7684\u5206\u5b50\u91cf\u3001Tm\u3001ε260 \u8207\u6fc3\u5ea6",
   "mk.0002":"\u8df3\u81f3\u4e3b\u8981\u5167\u5bb9",
   "mk.0003":"\u5be1\u6838\u82f7\u9178\u5206\u5b50\u91cf\u3001Tm\u3001ε260 \u8207\u6fc3\u5ea6",
@@ -3020,7 +3030,7 @@ var I18N = {
   "ui.hist.armDel":"\u78ba\u5b9a\u522a\u9664\uff1f",
   "ui.hist.restClear":"\u5168\u90e8\u6e05\u9664…",
   "ui.lab.inv.adding":"\u65b0\u589e\u4e2d…",
-  "ui.lab.inv.aria":"\u96fb\u5b50\u90f5\u4ef6\u5730\u5740",
+  "ui.lab.inv.aria":"\u59d3\u540d\u8207\u96fb\u5b50\u90f5\u4ef6\u5730\u5740",
   "ui.lab.inv.body":"\u8f38\u5165\u5be6\u9a57\u5ba4\u6210\u54e1\u7528\u4f86\u767b\u5165\u7684\u5730\u5740\u3002\u53ef\u4ee5\u4e00\u500b\u4e00\u500b\u8f38\u5165\uff0c\u4e5f\u53ef\u4ee5\u4e00\u6b21\u8cbc\u4e0a\u6574\u4efd\u540d\u55ae\u3002",
   "ui.lab.inv.body1":"\u8f38\u5165\u5be6\u9a57\u5ba4\u6210\u54e1\u7528\u4f86\u767b\u5165\u7684\u5730\u5740\u3002\u76ee\u524d\u9084\u6709 <b>1</b> \u5e2d\u3002\u53ef\u4ee5\u4e00\u500b\u4e00\u500b\u8f38\u5165\uff0c\u4e5f\u53ef\u4ee5\u4e00\u6b21\u8cbc\u4e0a\u6574\u4efd\u540d\u55ae\u3002",
   "ui.lab.inv.bodyn":"\u8f38\u5165\u5be6\u9a57\u5ba4\u6210\u54e1\u7528\u4f86\u767b\u5165\u7684\u5730\u5740\u3002\u76ee\u524d\u9084\u6709 <b>{n}</b> \u5e2d\u3002\u53ef\u4ee5\u4e00\u500b\u4e00\u500b\u8f38\u5165\uff0c\u4e5f\u53ef\u4ee5\u4e00\u6b21\u8cbc\u4e0a\u6574\u4efd\u540d\u55ae\u3002",
@@ -3037,7 +3047,7 @@ var I18N = {
   "ui.lab.inv.n.free1":"\u9084\u6709 {n} \u5e2d",
   "ui.lab.inv.n.over":"<b>{n} \u500b\u6c92\u6709\u5e2d\u4f4d</b>",
   "ui.lab.inv.noros!":"\u6211\u5011\u7121\u6cd5\u6aa2\u67e5\u8ab0\u5df2\u7d93\u5728<b>{name}</b>\u88e1\uff0c\u6240\u4ee5\u9019\u88e1\u4e0d\u6703\u986f\u793a\u9084\u6709\u5e7e\u5e2d\u3002\u4f60\u4ecd\u7136\u53ef\u4ee5\u65b0\u589e\u5730\u5740\uff0c\u5982\u679c\u5176\u4e2d\u6709\u4eba\u6c92\u6709\u5e2d\u4f4d\uff0c\u6211\u5011\u6703\u5728\u9019\u88e1\u544a\u8a34\u4f60\u3002",
-  "ui.lab.inv.ph":"name@university.edu\uff0c\u6216\u76f4\u63a5\u8cbc\u4e0a\u6574\u4efd\u540d\u55ae",
+  "ui.lab.inv.ph":"Pat Chen <pat@university.edu>\uff0c\u6216\u76f4\u63a5\u8cbc\u4e0a\u6574\u4efd\u540d\u55ae",
   "ui.lab.inv.r.add1":"<b>\u5df2\u65b0\u589e {n} \u500b\u5730\u5740\u3002</b>{list}\u3002",
   "ui.lab.inv.r.addn":"<b>\u5df2\u65b0\u589e {n} \u500b\u5730\u5740\u3002</b>{list}\u3002",
   "ui.lab.inv.r.back":"\u7e7c\u7e8c\u5de5\u4f5c",
@@ -3052,7 +3062,7 @@ var I18N = {
   "ui.lab.inv.r.over":"<b>\u9019\u4e9b\u5730\u5740\u6c92\u6709\u5e2d\u4f4d\uff1a</b>{list}\u3002\u8acb\u5230\u300c\u65b9\u6848\u8207\u5e33\u6236\u300d\u589e\u52a0\u5e2d\u4f4d\uff0c\u518d\u65b0\u589e\u4ed6\u5011\u3002",
   "ui.lab.inv.r.title":"\u5df2\u65b0\u589e\u5230 {name}",
   "ui.lab.inv.sent":"\u5df2\u7d93\u5bc4\u51fa\u96fb\u5b50\u90f5\u4ef6\u901a\u77e5\u6240\u6709\u65b0\u6210\u54e1\u3002\u4ed6\u5011\u7528\u5404\u81ea\u7684\u96fb\u5b50\u90f5\u4ef6\u5730\u5740\u767b\u5165\u5c31\u80fd\u9032\u5165\u5be6\u9a57\u5ba4\u3002",
-  "ui.lab.inv.title":"\u65b0\u589e\u4f60\u7684\u6210\u54e1",
+  "ui.lab.inv.title":"\u65b0\u589e\u6210\u54e1",
   "ui.lab.inv.why.bad":"\u9019\u4e0d\u50cf\u662f\u96fb\u5b50\u90f5\u4ef6\u5730\u5740",
   "ui.lab.inv.why.dup":"\u5df2\u7d93\u662f\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u6210\u54e1",
   "ui.lab.inv.why.over":"\u9019\u500b\u5730\u5740\u6c92\u6709\u5e2d\u4f4d",
@@ -3531,6 +3541,7 @@ var I18N = {
   "lab.add.go":"\u6dfb\u52a0\u5230\u5b9e\u9a8c\u5ba4",
   "lab.add.h":"\u6dfb\u52a0\u6210\u5458",
   "lab.add.hint!":"\u6dfb\u52a0\u4e00\u4e2a\u90ae\u7bb1\u5730\u5740\uff0c\u5c31\u662f\u628a\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u8bbf\u95ee\u6743\u9650\u7ed9\u5bf9\u65b9\u3002\u6211\u4eec\u4f1a\u53d1\u7535\u5b50\u90ae\u4ef6\u901a\u77e5\u5bf9\u65b9\uff0c\u82e5\u53d1\u9001\u5931\u8d25\u4e5f\u4f1a\u5728\u8fd9\u91cc\u544a\u8bc9\u4f60\u3002\u5bf9\u65b9\u6253\u5f00 Oligo Calculator\uff0c\u7528\u540c\u4e00\u4e2a\u5730\u5740\u767b\u5f55\uff0c\u5e2d\u4f4d\u5c31\u4f1a\u81ea\u52a8\u751f\u6548\u3002",
+  "lab.add.nameA":"\u5b9e\u9a8c\u5ba4\u4f1a\u770b\u5230\u7684\u8fd9\u4e2a\u4eba\u7684\u540d\u5b57",
   "lab.add.nomail":"{email} \u73b0\u5728\u53ef\u4ee5\u52a0\u5165\u4e86\uff0c\u4f46\u901a\u77e5\u90ae\u4ef6\u53d1\u9001\u5931\u8d25\u3002\u8bf7\u8f6c\u544a\u5bf9\u65b9\u7528\u540c\u4e00\u4e2a\u90ae\u7bb1\u5730\u5740\u767b\u5f55\u3002",
   "lab.add.ph":"teammate@email.com",
   "lab.add.several":"\u4e00\u6b21\u6dfb\u52a0\u591a\u4eba",
@@ -3791,6 +3802,7 @@ var I18N = {
   "lab.mon.add":"+ \u5206\u4eab\u6211\u7684\u78b1\u57fa\u6216\u5355\u4f53",
   "lab.mon.added":"\u5355\u4f53\u5df2\u5b58\u5230\u4f60\u7684\u5355\u4f53\u6570\u636e\u5e93",
   "lab.mon.amanager":"\u5b9e\u9a8c\u5ba4\u8d1f\u8d23\u4eba",
+  "lab.mon.armdel":"\u786e\u5b9a\u5220\u9664\uff1f",
   "lab.mon.armrm":"\u786e\u5b9a\u79fb\u51fa\uff1f",
   "lab.mon.clash1":"{code} \u5728\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u91cc\u88ab\u5206\u4eab\u4e86\u4e0d\u6b62\u4e00\u6b21\uff0c\u800c\u4e14\u5b9a\u4e49\u4e0d\u540c\uff0c\u56e0\u6b64\u4e0d\u4f1a\u663e\u793a\u5b83\u7684\u5206\u5b50\u91cf\u3002\u5176\u4e2d\u4e00\u4e2a\u5fc5\u987b\u6539\u7528\u522b\u7684\u4ee3\u7801\u3002",
   "lab.mon.clashN":"\u6709 {n} \u4e2a\u4ee3\u7801\u5728\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u91cc\u88ab\u5206\u4eab\u4e86\u4e0d\u6b62\u4e00\u6b21\uff0c\u800c\u4e14\u5b9a\u4e49\u4e0d\u540c\uff0c\u56e0\u6b64\u4e0d\u4f1a\u663e\u793a\u5b83\u4eec\u7684\u5206\u5b50\u91cf\uff1a{codes}\u3002\u6bcf\u4e00\u4e2a\u90fd\u8981\u6709\u4e00\u8fb9\u6539\u7528\u522b\u7684\u4ee3\u7801\u3002",
@@ -3814,6 +3826,7 @@ var I18N = {
   "lab.mon.inmineT":"\u8fd9\u4e2a\u5355\u4f53\u5df2\u7ecf\u5728\u4f60\u7684\u5355\u4f53\u6570\u636e\u5e93\u91cc\u3002",
   "lab.mon.mgrdone":"\u5df2\u4ece\u5b9e\u9a8c\u5ba4\u5220\u9664\u3002",
   "lab.mon.mgrrm":"\u5c06 {code} \u4ece\u5b9e\u9a8c\u5ba4\u5220\u9664",
+  "lab.mon.mgrrmL":"\u4ece\u5b9e\u9a8c\u5ba4\u5220\u9664",
   "lab.mon.mgrrmT":"\u4f60\u662f\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u8d1f\u8d23\u4eba\u3002\u8fd9\u4f1a\u4e3a\u6240\u6709\u4eba\u5220\u9664\u8fd9\u4e2a\u5355\u4f53\uff0c\u5305\u542b\u5206\u4eab\u5b83\u7684\u4eba\u3002",
   "lab.mon.mine":"\u5c06 {code} \u5b58\u5230\u6211\u7684\u6570\u636e\u5e93",
   "lab.mon.mineT":"\u5b58\u5230\u6211\u7684\u6570\u636e\u5e93",
@@ -3826,6 +3839,7 @@ var I18N = {
   "lab.mon.pickh":"\u6dfb\u52a0\u5230\u5b9e\u9a8c\u5ba4\u7684\u81ea\u5b9a\u4e49\u78b1\u57fa\u4e0e\u5355\u4f53",
   "lab.mon.picksub":"\u9009\u4e00\u4e2a\u4f60\u7684\u81ea\u5b9a\u4e49\u78b1\u57fa\u6216\u5355\u4f53\u4e0e\u5b9e\u9a8c\u5ba4\u5206\u4eab\u3002\u4e4b\u540e\u5b9e\u9a8c\u5ba4\u91cc\u7684\u6bcf\u4e2a\u4eba\u90fd\u53ef\u4ee5\u4f7f\u7528\u5b83\u7684\u4ee3\u7801\u3002\u4f60\u53ef\u4ee5\u518d\u628a\u5b83\u79fb\u51fa\uff0c\u5b9e\u9a8c\u5ba4\u8d1f\u8d23\u4eba\u4e5f\u53ef\u4ee5\u3002\u8bf7\u9009\u4e00\u4e2a\u5b9e\u9a8c\u5ba4\u8fd8\u6ca1\u6709\u7684\u4ee3\u7801\u3002",
   "lab.mon.rm":"\u5c06 {code} \u79fb\u51fa\u5b9e\u9a8c\u5ba4",
+  "lab.mon.rmKeep":"\u5c06\u5b83\u79fb\u51fa\u5b9e\u9a8c\u5ba4\u3002\u5b83\u4ecd\u7136\u7559\u5728\u4f60\u81ea\u5df1\u7684\u78b1\u57fa\u91cc\u3002",
   "lab.mon.rmT":"\u79fb\u51fa\u5b9e\u9a8c\u5ba4",
   "lab.mon.shared":"\u5355\u4f53\u5df2\u5206\u4eab\u5230\u5b9e\u9a8c\u5ba4",
   "lab.mon.skip1":"\u6709 {n} \u4e2a\u5b9e\u9a8c\u5ba4\u5355\u4f53\u6ca1\u6709\u6709\u6548\u8d28\u91cf\uff0c\u65e0\u6cd5\u8bfb\u53d6\uff0c\u5df2\u8df3\u8fc7\u3002",
@@ -3976,6 +3990,7 @@ var I18N = {
   "lab.ver.restore":"\u8fd8\u539f\u5230\u8fd9\u4e2a\u7248\u672c",
   "lab.ver.vn":"\u7248\u672c {v}",
   "lab.ver.warn!":"\u8fd8\u539f\u4f1a\u5199\u5165\u4e00\u4e2a\u65b0\u7684\u7248\u672c\u3002\u4e0d\u4f1a\u5220\u9664\u4efb\u4f55\u4e1c\u897f\uff1a\u7248\u672c {v} \u548c\u5b83\u4e4b\u540e\u4fdd\u5b58\u7684\u6bcf\u4e00\u4e2a\u7248\u672c\u90fd\u4f1a\u7559\u5728\u8fd9\u4e2a\u6e05\u5355\u91cc\u3002\u5b9e\u9a8c\u5ba4\u4e2d\u7684\u6bcf\u4e2a\u4eba\u90fd\u4f1a\u770b\u5230\u8fd9\u4e00\u6761\u6539\u53d8\u3002",
+  "lab.who.member":"\u5b9e\u9a8c\u5ba4\u6210\u5458",
   "mk.0001":"Oligo Calculator\uff1a\u5be1\u6838\u82f7\u9178\u7684\u5206\u5b50\u91cf\u3001Tm\u3001ε260 \u4e0e\u6d53\u5ea6",
   "mk.0002":"\u8df3\u81f3\u4e3b\u8981\u5185\u5bb9",
   "mk.0003":"\u5be1\u6838\u82f7\u9178\u5206\u5b50\u91cf\u3001Tm\u3001ε260 \u4e0e\u6d53\u5ea6",
@@ -4593,7 +4608,7 @@ var I18N = {
   "ui.hist.armDel":"\u786e\u5b9a\u5220\u9664\uff1f",
   "ui.hist.restClear":"\u5168\u90e8\u6e05\u9664…",
   "ui.lab.inv.adding":"\u6dfb\u52a0\u4e2d…",
-  "ui.lab.inv.aria":"\u7535\u5b50\u90ae\u4ef6\u5730\u5740",
+  "ui.lab.inv.aria":"\u59d3\u540d\u4e0e\u7535\u5b50\u90ae\u4ef6\u5730\u5740",
   "ui.lab.inv.body":"\u8f93\u5165\u5b9e\u9a8c\u5ba4\u6210\u5458\u7528\u6765\u767b\u5f55\u7684\u5730\u5740\u3002\u53ef\u4ee5\u4e00\u4e2a\u4e00\u4e2a\u8f93\u5165\uff0c\u4e5f\u53ef\u4ee5\u4e00\u6b21\u7c98\u8d34\u6574\u4efd\u540d\u5355\u3002",
   "ui.lab.inv.body1":"\u8f93\u5165\u5b9e\u9a8c\u5ba4\u6210\u5458\u7528\u6765\u767b\u5f55\u7684\u5730\u5740\u3002\u76ee\u524d\u8fd8\u6709 <b>1</b> \u5e2d\u3002\u53ef\u4ee5\u4e00\u4e2a\u4e00\u4e2a\u8f93\u5165\uff0c\u4e5f\u53ef\u4ee5\u4e00\u6b21\u7c98\u8d34\u6574\u4efd\u540d\u5355\u3002",
   "ui.lab.inv.bodyn":"\u8f93\u5165\u5b9e\u9a8c\u5ba4\u6210\u5458\u7528\u6765\u767b\u5f55\u7684\u5730\u5740\u3002\u76ee\u524d\u8fd8\u6709 <b>{n}</b> \u5e2d\u3002\u53ef\u4ee5\u4e00\u4e2a\u4e00\u4e2a\u8f93\u5165\uff0c\u4e5f\u53ef\u4ee5\u4e00\u6b21\u7c98\u8d34\u6574\u4efd\u540d\u5355\u3002",
@@ -4610,7 +4625,7 @@ var I18N = {
   "ui.lab.inv.n.free1":"\u8fd8\u6709 {n} \u5e2d",
   "ui.lab.inv.n.over":"<b>{n} \u4e2a\u6ca1\u6709\u5e2d\u4f4d</b>",
   "ui.lab.inv.noros!":"\u6211\u4eec\u65e0\u6cd5\u68c0\u67e5\u8c01\u5df2\u7ecf\u5728<b>{name}</b>\u91cc\uff0c\u6240\u4ee5\u8fd9\u91cc\u4e0d\u4f1a\u663e\u793a\u8fd8\u6709\u51e0\u5e2d\u3002\u4f60\u4ecd\u7136\u53ef\u4ee5\u6dfb\u52a0\u5730\u5740\uff0c\u5982\u679c\u5176\u4e2d\u6709\u4eba\u6ca1\u6709\u5e2d\u4f4d\uff0c\u6211\u4eec\u4f1a\u5728\u8fd9\u91cc\u544a\u8bc9\u4f60\u3002",
-  "ui.lab.inv.ph":"name@university.edu\uff0c\u6216\u76f4\u63a5\u7c98\u8d34\u6574\u4efd\u540d\u5355",
+  "ui.lab.inv.ph":"Pat Chen <pat@university.edu>\uff0c\u6216\u76f4\u63a5\u7c98\u8d34\u6574\u4efd\u540d\u5355",
   "ui.lab.inv.r.add1":"<b>\u5df2\u6dfb\u52a0 {n} \u4e2a\u5730\u5740\u3002</b>{list}\u3002",
   "ui.lab.inv.r.addn":"<b>\u5df2\u6dfb\u52a0 {n} \u4e2a\u5730\u5740\u3002</b>{list}\u3002",
   "ui.lab.inv.r.back":"\u7ee7\u7eed\u5de5\u4f5c",
@@ -4625,7 +4640,7 @@ var I18N = {
   "ui.lab.inv.r.over":"<b>\u8fd9\u4e9b\u5730\u5740\u6ca1\u6709\u5e2d\u4f4d\uff1a</b>{list}\u3002\u8bf7\u5230“\u65b9\u6848\u4e0e\u8d26\u6237”\u589e\u52a0\u5e2d\u4f4d\uff0c\u518d\u6dfb\u52a0\u4ed6\u4eec\u3002",
   "ui.lab.inv.r.title":"\u5df2\u6dfb\u52a0\u5230 {name}",
   "ui.lab.inv.sent":"\u5df2\u7ecf\u53d1\u51fa\u7535\u5b50\u90ae\u4ef6\u901a\u77e5\u6240\u6709\u65b0\u6210\u5458\u3002\u4ed6\u4eec\u7528\u5404\u81ea\u7684\u90ae\u7bb1\u5730\u5740\u767b\u5f55\u5c31\u80fd\u8fdb\u5165\u5b9e\u9a8c\u5ba4\u3002",
-  "ui.lab.inv.title":"\u6dfb\u52a0\u4f60\u7684\u6210\u5458",
+  "ui.lab.inv.title":"\u6dfb\u52a0\u6210\u5458",
   "ui.lab.inv.why.bad":"\u8fd9\u4e0d\u50cf\u662f\u7535\u5b50\u90ae\u4ef6\u5730\u5740",
   "ui.lab.inv.why.dup":"\u5df2\u7ecf\u662f\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u6210\u5458",
   "ui.lab.inv.why.over":"\u8fd9\u4e2a\u5730\u5740\u6ca1\u6709\u5e2d\u4f4d",
@@ -5104,6 +5119,7 @@ var I18N = {
   "lab.add.go":"\u30e9\u30dc\u306b\u8ffd\u52a0",
   "lab.add.h":"\u30e1\u30f3\u30d0\u30fc\u3092\u8ffd\u52a0",
   "lab.add.hint!":"\u30e1\u30fc\u30eb\u30a2\u30c9\u30ec\u30b9\u3092\u8ffd\u52a0\u3059\u308b\u3068\u3001\u305d\u306e\u65b9\u306b\u30e9\u30dc\u3078\u306e\u30a2\u30af\u30bb\u30b9\u6a29\u304c\u4ed8\u4e0e\u3055\u308c\u307e\u3059\u3002\u305d\u306e\u65b9\u306b\u306f\u30e1\u30fc\u30eb\u3067\u304a\u77e5\u3089\u305b\u3057\u3001\u9001\u4fe1\u306b\u5931\u6557\u3057\u305f\u5834\u5408\u306f\u3053\u3053\u3067\u304a\u4f1d\u3048\u3057\u307e\u3059\u3002\u305d\u306e\u65b9\u304c Oligo Calculator \u3092\u958b\u3044\u3066\u540c\u3058\u30a2\u30c9\u30ec\u30b9\u3067\u30b5\u30a4\u30f3\u30a4\u30f3\u3059\u308b\u3068\u3001\u30e9\u30a4\u30bb\u30f3\u30b9\u304c\u81ea\u52d5\u7684\u306b\u5272\u308a\u5f53\u3066\u3089\u308c\u307e\u3059\u3002",
+  "lab.add.nameA":"\u3053\u306e\u4eba\u306b\u3064\u3044\u3066\u30e9\u30dc\u306b\u8868\u793a\u3055\u308c\u308b\u540d\u524d",
   "lab.add.nomail":"{email} \u306f\u4eca\u3059\u3050\u53c2\u52a0\u3067\u304d\u307e\u3059\u304c\u3001\u3053\u306e\u30a2\u30c9\u30ec\u30b9\u5b9b\u306e\u30e1\u30fc\u30eb\u9001\u4fe1\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002\u304a\u624b\u6570\u3067\u3059\u304c\u3001\u305d\u306e\u30a2\u30c9\u30ec\u30b9\u3067\u30b5\u30a4\u30f3\u30a4\u30f3\u3059\u308b\u3088\u3046\u304a\u4f1d\u3048\u304f\u3060\u3055\u3044\u3002",
   "lab.add.ph":"teammate@email.com",
   "lab.add.several":"\u307e\u3068\u3081\u3066\u8ffd\u52a0",
@@ -5364,6 +5380,7 @@ var I18N = {
   "lab.mon.add":"+ \u81ea\u5206\u306e\u5869\u57fa\u307e\u305f\u306f\u30e2\u30ce\u30de\u30fc\u3092\u5171\u6709",
   "lab.mon.added":"\u30e2\u30ce\u30de\u30fc\u3092\u30e2\u30ce\u30de\u30fc\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u4fdd\u5b58\u3057\u307e\u3057\u305f",
   "lab.mon.amanager":"\u30e9\u30dc\u7ba1\u7406\u8005",
+  "lab.mon.armdel":"\u524a\u9664\u3057\u307e\u3059\u304b\uff1f",
   "lab.mon.armrm":"\u5916\u3057\u307e\u3059\u304b\uff1f",
   "lab.mon.clash1":"{code} \u306f\u3053\u306e\u30e9\u30dc\u3067\u8907\u6570\u56de\u3001\u7570\u306a\u308b\u5b9a\u7fa9\u3067\u5171\u6709\u3055\u308c\u3066\u3044\u307e\u3059\u3002\u305d\u306e\u305f\u3081\u5206\u5b50\u91cf\u306f\u8868\u793a\u3057\u307e\u305b\u3093\u3002\u3044\u305a\u308c\u304b\u306b\u5225\u306e\u30b3\u30fc\u30c9\u3092\u4ed8\u3051\u3066\u304f\u3060\u3055\u3044\u3002",
   "lab.mon.clashN":"{n} \u4ef6\u306e\u30b3\u30fc\u30c9\u304c\u3053\u306e\u30e9\u30dc\u3067\u8907\u6570\u56de\u3001\u7570\u306a\u308b\u5b9a\u7fa9\u3067\u5171\u6709\u3055\u308c\u3066\u3044\u307e\u3059\u3002\u305d\u306e\u305f\u3081\u5206\u5b50\u91cf\u306f\u8868\u793a\u3057\u307e\u305b\u3093\uff1a{codes}\u3002\u305d\u308c\u305e\u308c\u3001\u3044\u305a\u308c\u304b\u306b\u5225\u306e\u30b3\u30fc\u30c9\u3092\u4ed8\u3051\u3066\u304f\u3060\u3055\u3044\u3002",
@@ -5387,6 +5404,7 @@ var I18N = {
   "lab.mon.inmineT":"\u3053\u306e\u30e2\u30ce\u30de\u30fc\u306f\u3059\u3067\u306b\u30e2\u30ce\u30de\u30fc\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u3042\u308a\u307e\u3059\u3002",
   "lab.mon.mgrdone":"\u30e9\u30dc\u304b\u3089\u524a\u9664\u3057\u307e\u3057\u305f\u3002",
   "lab.mon.mgrrm":"{code} \u3092\u30e9\u30dc\u304b\u3089\u524a\u9664",
+  "lab.mon.mgrrmL":"\u30e9\u30dc\u304b\u3089\u524a\u9664",
   "lab.mon.mgrrmT":"\u3042\u306a\u305f\u306f\u3053\u306e\u30e9\u30dc\u306e\u7ba1\u7406\u8005\u3067\u3059\u3002\u5171\u6709\u3057\u305f\u672c\u4eba\u3092\u542b\u3080\u5168\u54e1\u304b\u3089\u30e2\u30ce\u30de\u30fc\u304c\u524a\u9664\u3055\u308c\u307e\u3059\u3002",
   "lab.mon.mine":"{code} \u3092\u30de\u30a4\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u4fdd\u5b58",
   "lab.mon.mineT":"\u30de\u30a4\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u4fdd\u5b58",
@@ -5399,6 +5417,7 @@ var I18N = {
   "lab.mon.pickh":"\u30e9\u30dc\u306e\u30ab\u30b9\u30bf\u30e0\u5869\u57fa\u3068\u30e2\u30ce\u30de\u30fc\u306b\u8ffd\u52a0",
   "lab.mon.picksub":"\u5171\u6709\u3059\u308b\u30ab\u30b9\u30bf\u30e0\u5869\u57fa\u307e\u305f\u306f\u30e2\u30ce\u30de\u30fc\u3092 1 \u3064\u9078\u3093\u3067\u304f\u3060\u3055\u3044\u3002\u30e9\u30dc\u306e\u5168\u54e1\u304c\u305d\u306e\u30b3\u30fc\u30c9\u3092\u4f7f\u3048\u308b\u3088\u3046\u306b\u306a\u308a\u307e\u3059\u3002\u5916\u305b\u308b\u306e\u306f\u3042\u306a\u305f\u3068\u30e9\u30dc\u7ba1\u7406\u8005\u3067\u3059\u3002\u30e9\u30dc\u306b\u307e\u3060\u306a\u3044\u30b3\u30fc\u30c9\u3092\u9078\u3093\u3067\u304f\u3060\u3055\u3044\u3002",
   "lab.mon.rm":"{code} \u3092\u30e9\u30dc\u304b\u3089\u5916\u3059",
+  "lab.mon.rmKeep":"\u30e9\u30dc\u304b\u3089\u5916\u3057\u307e\u3059\u3002\u3054\u81ea\u8eab\u306e\u5869\u57fa\u306b\u306f\u6b8b\u308a\u307e\u3059\u3002",
   "lab.mon.rmT":"\u30e9\u30dc\u304b\u3089\u5916\u3059",
   "lab.mon.shared":"\u30e2\u30ce\u30de\u30fc\u3092\u30e9\u30dc\u306b\u5171\u6709\u3057\u307e\u3057\u305f",
   "lab.mon.skip1":"\u30e9\u30dc\u306e\u30e2\u30ce\u30de\u30fc {n} \u4ef6\u306f\u6709\u52b9\u306a\u8cea\u91cf\u304c\u306a\u304f\u8aad\u307f\u53d6\u308c\u306a\u3044\u305f\u3081\u3001\u30b9\u30ad\u30c3\u30d7\u3057\u307e\u3057\u305f\u3002",
@@ -5549,6 +5568,7 @@ var I18N = {
   "lab.ver.restore":"\u3053\u306e\u30d0\u30fc\u30b8\u30e7\u30f3\u306b\u623b\u3059",
   "lab.ver.vn":"\u30d0\u30fc\u30b8\u30e7\u30f3 {v}",
   "lab.ver.warn!":"\u5143\u306b\u623b\u3059\u3068\u3001\u65b0\u3057\u3044\u30d0\u30fc\u30b8\u30e7\u30f3\u304c\u4f5c\u3089\u308c\u307e\u3059\u3002\u4f55\u3082\u524a\u9664\u3055\u308c\u307e\u305b\u3093\u3002\u30d0\u30fc\u30b8\u30e7\u30f3 {v} \u3082\u3001\u305d\u306e\u3042\u3068\u306b\u4fdd\u5b58\u3055\u308c\u305f\u3082\u306e\u3082\u3001\u3059\u3079\u3066\u3053\u306e\u4e00\u89a7\u306b\u6b8b\u308a\u307e\u3059\u3002\u30e9\u30dc\u306e\u5168\u54e1\u306b\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u306e\u5909\u66f4\u304c\u898b\u3048\u307e\u3059\u3002",
+  "lab.who.member":"\u30e9\u30dc\u306e\u30e1\u30f3\u30d0\u30fc",
   "mk.0001":"Oligo Calculator: \u30aa\u30ea\u30b4\u30cc\u30af\u30ec\u30aa\u30c1\u30c9\u306e\u5206\u5b50\u91cf\u3001Tm\u3001ε260\u3001\u6fc3\u5ea6",
   "mk.0002":"\u672c\u6587\u3078\u30b9\u30ad\u30c3\u30d7",
   "mk.0003":"\u30aa\u30ea\u30b4\u30cc\u30af\u30ec\u30aa\u30c1\u30c9\u306e\u5206\u5b50\u91cf\u3001Tm\u3001ε260\u3001\u6fc3\u5ea6",
@@ -6166,7 +6186,7 @@ var I18N = {
   "ui.hist.armDel":"\u524a\u9664\u3057\u307e\u3059\u304b\uff1f",
   "ui.hist.restClear":"\u3059\u3079\u3066\u6d88\u53bb…",
   "ui.lab.inv.adding":"\u8ffd\u52a0\u4e2d…",
-  "ui.lab.inv.aria":"\u30e1\u30fc\u30eb\u30a2\u30c9\u30ec\u30b9",
+  "ui.lab.inv.aria":"\u540d\u524d\u3068\u30e1\u30fc\u30eb\u30a2\u30c9\u30ec\u30b9",
   "ui.lab.inv.body":"\u30e9\u30dc\u306e\u30e1\u30f3\u30d0\u30fc\u304c\u30b5\u30a4\u30f3\u30a4\u30f3\u306b\u4f7f\u3046\u30a2\u30c9\u30ec\u30b9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044\u30021 \u4ef6\u305a\u3064\u5165\u529b\u3057\u3066\u3082\u3001\u307e\u3068\u3081\u3066\u8cbc\u308a\u4ed8\u3051\u3066\u3082\u304b\u307e\u3044\u307e\u305b\u3093\u3002",
   "ui.lab.inv.body1":"\u30e9\u30dc\u306e\u30e1\u30f3\u30d0\u30fc\u304c\u30b5\u30a4\u30f3\u30a4\u30f3\u306b\u4f7f\u3046\u30a2\u30c9\u30ec\u30b9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044\u3002\u7a7a\u304d\u306f <b>1</b> \u30e9\u30a4\u30bb\u30f3\u30b9\u3067\u3059\u30021 \u4ef6\u305a\u3064\u5165\u529b\u3057\u3066\u3082\u3001\u307e\u3068\u3081\u3066\u8cbc\u308a\u4ed8\u3051\u3066\u3082\u304b\u307e\u3044\u307e\u305b\u3093\u3002",
   "ui.lab.inv.bodyn":"\u30e9\u30dc\u306e\u30e1\u30f3\u30d0\u30fc\u304c\u30b5\u30a4\u30f3\u30a4\u30f3\u306b\u4f7f\u3046\u30a2\u30c9\u30ec\u30b9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044\u3002\u7a7a\u304d\u306f <b>{n}</b> \u30e9\u30a4\u30bb\u30f3\u30b9\u3067\u3059\u30021 \u4ef6\u305a\u3064\u5165\u529b\u3057\u3066\u3082\u3001\u307e\u3068\u3081\u3066\u8cbc\u308a\u4ed8\u3051\u3066\u3082\u304b\u307e\u3044\u307e\u305b\u3093\u3002",
@@ -6183,7 +6203,7 @@ var I18N = {
   "ui.lab.inv.n.free1":"\u7a7a\u304d\u30e9\u30a4\u30bb\u30f3\u30b9 {n}",
   "ui.lab.inv.n.over":"<b>\u5272\u308a\u5f53\u3066\u308b\u30e9\u30a4\u30bb\u30f3\u30b9\u304c\u306a\u3044\u65b9 {n} \u540d</b>",
   "ui.lab.inv.noros!":"<b>{name}</b> \u306b\u3059\u3067\u306b\u3044\u308b\u65b9\u3092\u78ba\u8a8d\u3067\u304d\u306a\u304b\u3063\u305f\u305f\u3081\u3001\u3053\u3053\u306b\u306f\u7a7a\u304d\u30e9\u30a4\u30bb\u30f3\u30b9\u6570\u3092\u8868\u793a\u3057\u3066\u3044\u307e\u305b\u3093\u3002\u30a2\u30c9\u30ec\u30b9\u306e\u8ffd\u52a0\u306f\u3067\u304d\u307e\u3059\u3002\u30e9\u30a4\u30bb\u30f3\u30b9\u304c\u8db3\u308a\u306a\u3044\u5834\u5408\u306f\u3053\u3053\u3067\u304a\u4f1d\u3048\u3057\u307e\u3059\u3002",
-  "ui.lab.inv.ph":"name@university.edu\u3001\u307e\u305f\u306f\u30ea\u30b9\u30c8\u3092\u4e00\u62ec\u3067\u8cbc\u308a\u4ed8\u3051",
+  "ui.lab.inv.ph":"Pat Chen <pat@university.edu>\u3001\u307e\u305f\u306f\u30ea\u30b9\u30c8\u3092\u4e00\u62ec\u3067\u8cbc\u308a\u4ed8\u3051",
   "ui.lab.inv.r.add1":"<b>{n} \u4ef6\u306e\u30a2\u30c9\u30ec\u30b9\u3092\u8ffd\u52a0\u3057\u307e\u3057\u305f\u3002</b>{list}",
   "ui.lab.inv.r.addn":"<b>{n} \u4ef6\u306e\u30a2\u30c9\u30ec\u30b9\u3092\u8ffd\u52a0\u3057\u307e\u3057\u305f\u3002</b>{list}",
   "ui.lab.inv.r.back":"\u4f5c\u696d\u306b\u623b\u308b",
@@ -6677,6 +6697,7 @@ var I18N = {
   "lab.add.go":"Ajouter au laboratoire",
   "lab.add.h":"Ajouter des personnes",
   "lab.add.hint!":"Ajouter une adresse e-mail est ce qui donne à cette personne l’accès au laboratoire. Nous lui envoyons un e-mail pour le lui dire, et nous vous indiquons ici si cet e-mail n’a pas pu être envoyé. Elle ouvre Oligo Calculator, se connecte avec cette adresse exacte, et la place s’y rattache d’elle-même.",
+  "lab.add.nameA":"Le nom que le laboratoire verra pour cette personne",
   "lab.add.nomail":"{email} peut rejoindre le laboratoire dès maintenant, mais nous n’avons pas pu lui envoyer d’e-mail. Demandez-lui de se connecter avec cette adresse exacte.",
   "lab.add.ph":"teammate@email.com",
   "lab.add.several":"Ajouter plusieurs personnes à la fois",
@@ -6937,6 +6958,7 @@ var I18N = {
   "lab.mon.add":"+ Partager une de mes bases ou un de mes monomères",
   "lab.mon.added":"Monomère enregistré dans votre bibliothèque de monomères",
   "lab.mon.amanager":"un gestionnaire du laboratoire",
+  "lab.mon.armdel":"Supprimer ?",
   "lab.mon.armrm":"Retirer ?",
   "lab.mon.clash1":"{code} est partagé plus d’une fois dans ce laboratoire, avec des définitions différentes, aucune masse moléculaire n’est donc affichée pour lui. Il faut donner un code différent à l’un d’eux.",
   "lab.mon.clashN":"{n} codes sont partagés plus d’une fois dans ce laboratoire, avec des définitions différentes, aucune masse moléculaire n’est donc affichée pour eux : {codes}. Chacun doit recevoir un code différent d’un côté ou de l’autre.",
@@ -6960,6 +6982,7 @@ var I18N = {
   "lab.mon.inmineT":"Ce monomère est déjà dans votre bibliothèque de monomères.",
   "lab.mon.mgrdone":"Supprimé du laboratoire.",
   "lab.mon.mgrrm":"Supprimer {code} du laboratoire",
+  "lab.mon.mgrrmL":"Supprimer du laboratoire",
   "lab.mon.mgrrmT":"Vous gérez ce laboratoire. Cette action supprime le monomère pour tout le monde, y compris pour la personne qui l’a partagé.",
   "lab.mon.mine":"Enregistrer {code} dans Ma bibliothèque",
   "lab.mon.mineT":"Enregistrer dans Ma bibliothèque",
@@ -6972,6 +6995,7 @@ var I18N = {
   "lab.mon.pickh":"Ajouter aux bases et monomères personnalisés du laboratoire",
   "lab.mon.picksub":"Choisissez une de vos bases ou un de vos monomères personnalisés à partager avec le laboratoire. Tout le monde dans le laboratoire pourra alors utiliser son code. Vous pouvez le retirer par la suite, et un gestionnaire du laboratoire aussi. Choisissez un code que le laboratoire n’a pas déjà.",
   "lab.mon.rm":"Retirer {code} du laboratoire",
+  "lab.mon.rmKeep":"Le retire du laboratoire. Il reste dans vos propres bases.",
   "lab.mon.rmT":"Retirer du laboratoire",
   "lab.mon.shared":"Monomère partagé avec le laboratoire",
   "lab.mon.skip1":"{n} monomère du laboratoire n’a pas pu être lu (masse non valide) et a été ignoré.",
@@ -7122,6 +7146,7 @@ var I18N = {
   "lab.ver.restore":"Restaurer cette version",
   "lab.ver.vn":"Version {v}",
   "lab.ver.warn!":"Restaurer écrit une nouvelle version. Rien n’est supprimé : la version {v} et tout ce qui a été enregistré après elle restent dans cette liste. Tout le monde dans le laboratoire voit la fiche changer.",
+  "lab.who.member":"un membre du laboratoire",
   "mk.0001":"Oligo Calculator | masse moléculaire, Tm, ε260 et concentration des oligonucléotides",
   "mk.0002":"Aller au contenu principal",
   "mk.0003":"Masse moléculaire, Tm, ε260 et concentration des oligonucléotides",
@@ -7739,7 +7764,7 @@ var I18N = {
   "ui.hist.armDel":"Supprimer ?",
   "ui.hist.restClear":"Tout effacer…",
   "ui.lab.inv.adding":"Ajout en cours…",
-  "ui.lab.inv.aria":"Adresses e-mail",
+  "ui.lab.inv.aria":"Noms et adresses e-mail",
   "ui.lab.inv.body":"Indiquez les adresses avec lesquelles les membres de votre laboratoire se connectent. Vous pouvez les saisir une par une, ou toutes les coller d’un coup.",
   "ui.lab.inv.body1":"Indiquez les adresses avec lesquelles les membres de votre laboratoire se connectent. Il reste <b>1</b> place disponible. Vous pouvez les saisir une par une, ou toutes les coller d’un coup.",
   "ui.lab.inv.bodyn":"Indiquez les adresses avec lesquelles les membres de votre laboratoire se connectent. Il reste <b>{n}</b> places disponibles. Vous pouvez les saisir une par une, ou toutes les coller d’un coup.",
@@ -7756,7 +7781,7 @@ var I18N = {
   "ui.lab.inv.n.free1":"{n} place disponible",
   "ui.lab.inv.n.over":"<b>{n} sans place</b>",
   "ui.lab.inv.noros!":"Nous n’avons pas pu vérifier qui se trouve déjà dans <b>{name}</b>, ceci n’indique donc pas combien de places sont disponibles. Vous pouvez tout de même ajouter des adresses, et nous vous dirons ici s’il n’y a pas de place pour l’une d’elles.",
-  "ui.lab.inv.ph":"name@university.edu, ou collez une liste entière",
+  "ui.lab.inv.ph":"Pat Chen <pat@university.edu>, ou collez une liste entière",
   "ui.lab.inv.r.add1":"<b>{n} adresse ajoutée.</b> {list}.",
   "ui.lab.inv.r.addn":"<b>{n} adresses ajoutées.</b> {list}.",
   "ui.lab.inv.r.back":"Retour au travail",
@@ -7771,7 +7796,7 @@ var I18N = {
   "ui.lab.inv.r.over":"<b>Aucune place pour celles-ci :</b> {list}. Ajoutez des places dans Forfaits & compte, puis ajoutez-les.",
   "ui.lab.inv.r.title":"Ajoutées à {name}",
   "ui.lab.inv.sent":"Toutes les personnes ajoutées ont reçu un e-mail. Elles accèdent au laboratoire en se connectant avec l’adresse que vous avez ajoutée.",
-  "ui.lab.inv.title":"Ajouter vos collaborateurs",
+  "ui.lab.inv.title":"Ajouter des membres",
   "ui.lab.inv.why.bad":"cela ne ressemble pas à une adresse e-mail",
   "ui.lab.inv.why.dup":"déjà dans le laboratoire",
   "ui.lab.inv.why.over":"plus aucune place pour celle-ci",
@@ -8250,6 +8275,7 @@ var I18N = {
   "lab.add.go":"Añadir al laboratorio",
   "lab.add.h":"Añadir personas",
   "lab.add.hint!":"Añadir una dirección de correo es lo que da a esa persona acceso al laboratorio. Le enviamos un correo para decírselo, y aquí te avisamos si ese correo no se ha podido enviar. Esa persona abre Oligo Calculator, inicia sesión con esa misma dirección y la licencia se le asigna sola.",
+  "lab.add.nameA":"El nombre que el laboratorio verá para esta persona",
   "lab.add.nomail":"{email} ya puede unirse, pero no hemos podido enviarle el correo. Pídele que inicie sesión con esa misma dirección.",
   "lab.add.ph":"teammate@email.com",
   "lab.add.several":"Añadir a varias personas a la vez",
@@ -8510,6 +8536,7 @@ var I18N = {
   "lab.mon.add":"+ Compartir una de mis bases o monómeros",
   "lab.mon.added":"Monómero guardado en tu biblioteca de monómeros",
   "lab.mon.amanager":"quien administra el laboratorio",
+  "lab.mon.armdel":"¿Eliminar?",
   "lab.mon.armrm":"¿Quitar?",
   "lab.mon.clash1":"{code} se ha compartido más de una vez en este laboratorio, con definiciones distintas, así que no se muestra ningún peso molecular para él. Uno de los dos necesita un código diferente.",
   "lab.mon.clashN":"{n} códigos se han compartido más de una vez en este laboratorio, con definiciones distintas, así que no se muestra ningún peso molecular para ellos: {codes}. Cada uno necesita un código diferente en uno de los dos lados.",
@@ -8533,6 +8560,7 @@ var I18N = {
   "lab.mon.inmineT":"Este monómero ya está en tu biblioteca de monómeros.",
   "lab.mon.mgrdone":"Eliminado del laboratorio.",
   "lab.mon.mgrrm":"Eliminar {code} del laboratorio",
+  "lab.mon.mgrrmL":"Eliminar del laboratorio",
   "lab.mon.mgrrmT":"Tú administras este laboratorio. Esto elimina el monómero para todo el mundo, incluida la persona que lo compartió.",
   "lab.mon.mine":"Guardar {code} en Mi biblioteca",
   "lab.mon.mineT":"Guardar en Mi biblioteca",
@@ -8545,6 +8573,7 @@ var I18N = {
   "lab.mon.pickh":"Añadir a las bases y monómeros personalizados del laboratorio",
   "lab.mon.picksub":"Elige una de tus bases o monómeros personalizados para compartirla con el laboratorio. A partir de ahí, todo el mundo en el laboratorio puede usar su código. Puedes volver a quitarla, y quien administra el laboratorio también. Elige un código que el laboratorio no tenga ya.",
   "lab.mon.rm":"Quitar {code} del laboratorio",
+  "lab.mon.rmKeep":"Lo quita del laboratorio. Sigue en tus propias bases.",
   "lab.mon.rmT":"Quitar del laboratorio",
   "lab.mon.shared":"Monómero compartido con el laboratorio",
   "lab.mon.skip1":"{n} monómero del laboratorio no se ha podido leer (no tiene una masa válida) y se ha omitido.",
@@ -8695,6 +8724,7 @@ var I18N = {
   "lab.ver.restore":"Restaurar esta versión",
   "lab.ver.vn":"Versión {v}",
   "lab.ver.warn!":"Restaurar escribe una versión nueva. No se elimina nada: la versión {v} y todo lo guardado después de ella siguen en esta lista. Todo el mundo en el laboratorio ve cambiar el registro.",
+  "lab.who.member":"un miembro del laboratorio",
   "mk.0001":"Oligo Calculator | peso molecular, Tm, ε260 y concentración",
   "mk.0002":"Saltar al contenido principal",
   "mk.0003":"Peso molecular, Tm, ε260 y concentración de oligonucleótidos",
@@ -9312,7 +9342,7 @@ var I18N = {
   "ui.hist.armDel":"¿Eliminar?",
   "ui.hist.restClear":"Eliminar todo…",
   "ui.lab.inv.adding":"Añadiendo…",
-  "ui.lab.inv.aria":"Direcciones de correo",
+  "ui.lab.inv.aria":"Nombres y direcciones de correo",
   "ui.lab.inv.body":"Pon las direcciones con las que inicia sesión tu laboratorio. Puedes escribirlas de una en una, o pegar la lista entera.",
   "ui.lab.inv.body1":"Pon las direcciones con las que inicia sesión tu laboratorio. Queda <b>1</b> licencia libre. Puedes escribirlas de una en una, o pegar la lista entera.",
   "ui.lab.inv.bodyn":"Pon las direcciones con las que inicia sesión tu laboratorio. Quedan <b>{n}</b> licencias libres. Puedes escribirlas de una en una, o pegar la lista entera.",
@@ -9329,7 +9359,7 @@ var I18N = {
   "ui.lab.inv.n.free1":"{n} licencia libre",
   "ui.lab.inv.n.over":"<b>{n} sin licencia</b>",
   "ui.lab.inv.noros!":"No hemos podido comprobar quién está ya en <b>{name}</b>, así que aquí no se muestra cuántas licencias quedan libres. Aun así puedes añadir direcciones, y te avisaremos aquí si alguna se queda sin licencia.",
-  "ui.lab.inv.ph":"name@university.edu, o pega una lista entera",
+  "ui.lab.inv.ph":"Pat Chen <pat@university.edu>, o pega una lista entera",
   "ui.lab.inv.r.add1":"<b>{n} dirección añadida.</b> {list}.",
   "ui.lab.inv.r.addn":"<b>{n} direcciones añadidas.</b> {list}.",
   "ui.lab.inv.r.back":"Volver al trabajo",
@@ -9344,7 +9374,7 @@ var I18N = {
   "ui.lab.inv.r.over":"<b>Sin licencia para estas:</b> {list}. Añade licencias en Planes y cuenta y luego añádelas.",
   "ui.lab.inv.r.title":"Añadidas a {name}",
   "ui.lab.inv.sent":"Hemos enviado un correo a todas las personas añadidas. Entran en el laboratorio iniciando sesión con la dirección que has añadido.",
-  "ui.lab.inv.title":"Añade a tu gente",
+  "ui.lab.inv.title":"Añadir miembros",
   "ui.lab.inv.why.bad":"esto no parece una dirección de correo",
   "ui.lab.inv.why.dup":"ya está en el laboratorio",
   "ui.lab.inv.why.over":"no queda licencia para esta",
@@ -9823,6 +9853,7 @@ var I18N = {
   "lab.add.go":"Zum Labor hinzufügen",
   "lab.add.h":"Personen hinzufügen",
   "lab.add.hint!":"Das Hinzufügen einer E-Mail-Adresse ist das, was dieser Person Zugang zum Labor gibt. Wir schicken ihr eine E-Mail darüber und sagen Ihnen hier Bescheid, falls diese E-Mail nicht zugestellt werden konnte. Sie öffnet Oligo Calculator, meldet sich mit genau dieser Adresse an, und die Lizenz wird automatisch zugeordnet.",
+  "lab.add.nameA":"Der Name, den das Labor für diese Person sieht",
   "lab.add.nomail":"{email} kann jetzt beitreten, aber wir konnten keine E-Mail an diese Adresse schicken. Bitten Sie die Person, sich mit genau dieser Adresse anzumelden.",
   "lab.add.ph":"teammate@email.com",
   "lab.add.several":"Mehrere auf einmal hinzufügen",
@@ -10083,6 +10114,7 @@ var I18N = {
   "lab.mon.add":"+ Eine meiner Basen oder Monomere teilen",
   "lab.mon.added":"Monomer in Ihrer Monomer-Bibliothek gespeichert",
   "lab.mon.amanager":"ein Manager des Labors",
+  "lab.mon.armdel":"Löschen?",
   "lab.mon.armrm":"Entfernen?",
   "lab.mon.clash1":"{code} wird in diesem Labor mehr als einmal geteilt, mit unterschiedlichen Definitionen, daher wird dafür kein Molekulargewicht angezeigt. Eines davon braucht ein anderes Kürzel.",
   "lab.mon.clashN":"{n} Kürzel werden in diesem Labor mehr als einmal geteilt, mit unterschiedlichen Definitionen, daher wird dafür kein Molekulargewicht angezeigt: {codes}. Bei jedem davon braucht eine Seite ein anderes Kürzel.",
@@ -10106,6 +10138,7 @@ var I18N = {
   "lab.mon.inmineT":"Dieses Monomer ist bereits in Ihrer Monomer-Bibliothek.",
   "lab.mon.mgrdone":"Aus dem Labor gelöscht.",
   "lab.mon.mgrrm":"{code} aus dem Labor löschen",
+  "lab.mon.mgrrmL":"Aus dem Labor löschen",
   "lab.mon.mgrrmT":"Sie verwalten dieses Labor. Damit wird das Monomer für alle gelöscht, auch für die Person, die es geteilt hat.",
   "lab.mon.mine":"{code} in Meiner Bibliothek speichern",
   "lab.mon.mineT":"In Meine Bibliothek speichern",
@@ -10118,6 +10151,7 @@ var I18N = {
   "lab.mon.pickh":"Zu den benutzerdefinierten Basen und Monomeren des Labors hinzufügen",
   "lab.mon.picksub":"Wählen Sie eine Ihrer benutzerdefinierten Basen oder eines Ihrer Monomere aus, um es mit dem Labor zu teilen. Alle im Labor können dann sein Kürzel verwenden. Sie können es wieder entfernen, ein Manager des Labors ebenfalls. Wählen Sie ein Kürzel, das das Labor noch nicht hat.",
   "lab.mon.rm":"{code} aus dem Labor entfernen",
+  "lab.mon.rmKeep":"Entfernt es aus dem Labor. Es bleibt in Ihren eigenen Basen.",
   "lab.mon.rmT":"Aus dem Labor entfernen",
   "lab.mon.shared":"Monomer mit dem Labor geteilt",
   "lab.mon.skip1":"{n} Labormonomer konnte nicht gelesen werden (keine gültige Masse) und wurde übersprungen.",
@@ -10268,6 +10302,7 @@ var I18N = {
   "lab.ver.restore":"Diese Version wiederherstellen",
   "lab.ver.vn":"Version {v}",
   "lab.ver.warn!":"Das Wiederherstellen schreibt eine neue Version. Nichts wird gelöscht: Version {v} und alles, was danach gespeichert wurde, bleiben in dieser Liste. Alle im Labor sehen die Änderung am Datensatz.",
+  "lab.who.member":"ein Mitglied des Labors",
   "mk.0001":"Oligo Calculator | Molekulargewicht, Tm, ε260 und Konzentration für Oligonukleotide",
   "mk.0002":"Zum Hauptinhalt springen",
   "mk.0003":"Molekulargewicht, Tm, ε260 und Konzentration von Oligonukleotiden",
@@ -10885,7 +10920,7 @@ var I18N = {
   "ui.hist.armDel":"Löschen?",
   "ui.hist.restClear":"Alle löschen…",
   "ui.lab.inv.adding":"Wird hinzugefügt…",
-  "ui.lab.inv.aria":"E-Mail-Adressen",
+  "ui.lab.inv.aria":"Namen und E-Mail-Adressen",
   "ui.lab.inv.body":"Tragen Sie die Adressen ein, mit denen sich Ihr Labor anmeldet. Sie können sie einzeln tippen oder die ganze Liste einfügen.",
   "ui.lab.inv.body1":"Tragen Sie die Adressen ein, mit denen sich Ihr Labor anmeldet. Es ist noch <b>1</b> Lizenz verfügbar. Sie können sie einzeln tippen oder die ganze Liste einfügen.",
   "ui.lab.inv.bodyn":"Tragen Sie die Adressen ein, mit denen sich Ihr Labor anmeldet. Es sind noch <b>{n}</b> Lizenzen verfügbar. Sie können sie einzeln tippen oder die ganze Liste einfügen.",
@@ -10902,7 +10937,7 @@ var I18N = {
   "ui.lab.inv.n.free1":"{n} Lizenz verfügbar",
   "ui.lab.inv.n.over":"<b>{n} ohne Lizenz</b>",
   "ui.lab.inv.noros!":"Wir konnten nicht prüfen, wer bereits in <b>{name}</b> ist, daher wird hier nicht angezeigt, wie viele Lizenzen verfügbar sind. Sie können trotzdem Adressen hinzufügen, und wir sagen Ihnen hier Bescheid, wenn für eine davon keine Lizenz verfügbar ist.",
-  "ui.lab.inv.ph":"name@university.edu, oder eine ganze Liste einfügen",
+  "ui.lab.inv.ph":"Pat Chen <pat@university.edu>, oder eine ganze Liste einfügen",
   "ui.lab.inv.r.add1":"<b>{n} Adresse hinzugefügt.</b> {list}.",
   "ui.lab.inv.r.addn":"<b>{n} Adressen hinzugefügt.</b> {list}.",
   "ui.lab.inv.r.back":"Zurück an die Arbeit",
@@ -10917,7 +10952,7 @@ var I18N = {
   "ui.lab.inv.r.over":"<b>Keine Lizenz für diese:</b> {list}. Fügen Sie unter Pläne und Konto Lizenzen hinzu und nehmen Sie diese Adressen dann auf.",
   "ui.lab.inv.r.title":"Zu {name} hinzugefügt",
   "ui.lab.inv.sent":"Alle hinzugefügten Personen haben eine E-Mail erhalten. Sie kommen ins Labor, indem sie sich mit der von Ihnen hinzugefügten Adresse anmelden.",
-  "ui.lab.inv.title":"Ihre Personen hinzufügen",
+  "ui.lab.inv.title":"Mitglieder hinzufügen",
   "ui.lab.inv.why.bad":"das sieht nicht wie eine E-Mail-Adresse aus",
   "ui.lab.inv.why.dup":"bereits im Labor",
   "ui.lab.inv.why.over":"für diese Adresse ist keine Lizenz verfügbar",
@@ -22003,6 +22038,7 @@ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded'
 .mon-chip .mc-acts{display:flex;gap:6px;align-items:center;flex:0 0 auto}
 .mon-chip .mc-done{font-family:var(--font-head);font-weight:600;font-size:11.5px;color:var(--good);white-space:nowrap}
 .mon-chip .mc-edited{font-size:10.5px;color:var(--muted);white-space:nowrap}
+.mon-chip .lab-rmw{white-space:nowrap;width:auto}
 .monedit-kind .oshare-btn[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent)}
 @media (max-width:767px){ .mon-chip{width:100%} .mon-chip .mc-name{max-width:none} }
 .frail{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 12px;align-items:center}
@@ -25195,12 +25231,16 @@ try{
         
 
 
-        var q = c.kind==='remove'  ? t('lab.rm.confirm!',{email:m.email})
-              : c.kind==='promote' ? t('lab.promote.confirm!',{email:m.email})
-              :                      t('lab.demote.confirm!',{email:m.email});
+        var q = c.kind==='remove'  ? t('lab.rm.confirm!',{email:whoOf(m,true)})
+              : c.kind==='promote' ? t('lab.promote.confirm!',{email:whoOf(m,true)})
+              :                      t('lab.demote.confirm!',{email:whoOf(m,true)});
         var go = c.kind==='remove' ? t('lab.rm.do')
                : c.kind==='promote'? t('lab.promote.do') : t('lab.demote.do');
         
+
+
+
+
 
 
 
@@ -25249,6 +25289,34 @@ try{
 
 
   function nmOf(m){ return (m && m.member_name) ? String(m.member_name) : ''; }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  var DESTRUCTIVE_BOTH=true;
+  function whoOf(m, both){
+    var n=nmOf(m).replace(/\s+/g,' ').trim(), e=String((m&&m.email)||'');
+    if(!n) return e;
+    return (both && DESTRUCTIVE_BOTH && e) ? (n+' ('+e+')') : n;
+  }
+  function whoByEmail(labId, email, both){
+    var rows=((_st&&_st.roster&&_st.roster[labId])||{}).rows||[], q=lc(email||'');
+    for(var i=0;i<rows.length;i++){ if(rows[i] && lc(rows[i].email)===q) return whoOf(rows[i], both); }
+    return String(email||'');
+  }
   function whoBlock(m){
     var nm=nmOf(m);
     return '<div class="lv-who">'+(nm?('<span class="lv-nm">'+esc(nm)+'</span>'):'')+
@@ -25401,10 +25469,16 @@ try{
     if(role==='manager'){
       var full=isFull(L);
       out+=sec('', t('lab.add.h'),
-        '<div class="lv-add"><input type="email" data-lab-newmail autocomplete="email" '+
+        '<div class="lv-add"><input type="text" data-lab-newmembername maxlength="60" autocomplete="off" '+
+          'placeholder="'+esc(t('lab.nm.ph'))+'" aria-label="'+esc(t('lab.add.nameA'))+'">'+
+          '<input type="email" data-lab-newmail autocomplete="email" '+
           'placeholder="'+esc(t('lab.add.ph'))+'" aria-label="'+esc(t('lab.add.aria'))+'">'+
           btn('data-lab-add', full?t('lab.add.full'):t('lab.add.go'), 'lv-prim', full||_st.busy)+'</div>'+
+        
+
+
         '<p class="lv-note">'+esc(t('lab.add.hint!'))+'</p>'+
+        '<p class="lv-note">'+esc(t('lab.nm.hintM!'))+'</p>'+
         '<div class="lv-acts">'+btn('data-lab-several', t('lab.add.several'))+'</div>');
     }
 
@@ -25489,7 +25563,14 @@ try{
         '<p class="lv-note">'+esc(t('lab.none.p'))+'</p>'+
         '<div class="lv-add"><input type="text" data-lab-newname maxlength="60" '+
           'placeholder="'+esc(t('lab.none.ph'))+'" aria-label="'+esc(t('lab.none.ph'))+'" value="'+esc((c&&c.newname)||'')+'">'+
-          btn('data-lab-create', t('lab.none.go'), 'lv-prim', s.busy)+'</div>');
+          
+
+
+
+          '<input type="text" data-lab-newmyname maxlength="60" autocomplete="name" '+
+          'placeholder="'+esc(t('lab.nm.ph'))+'" aria-label="'+esc(t('lab.nm.aria'))+'" value="'+esc((c&&c.newmyname)||'')+'">'+
+          btn('data-lab-create', t('lab.none.go'), 'lv-prim', s.busy)+'</div>'+
+        '<p class="lv-note">'+esc(t('lab.nm.hint!'))+'</p>');
     } else {
       
 
@@ -25622,13 +25703,13 @@ try{
 
 
 
-  async function labInvite(labId, email){
+  async function labInvite(labId, email, name){
     if(typeof sbBase!=='function' || !sbBase()) throw new Error('Supabase not configured');
     var tok=(typeof proAccessToken==='function') ? await proAccessToken() : null;
     var h=(typeof sbAuthHeaders==='function') ? sbAuthHeaders() : {'Content-Type':'application/json'};
     if(tok) h.Authorization='Bearer '+tok;
     var r=await window.oligoFetchT(sbBase()+'/functions/v1/lab-invite',
-      {method:'POST', headers:h, body:JSON.stringify({lab_id:labId, email:email})}, 20000);
+      {method:'POST', headers:h, body:JSON.stringify(name?{lab_id:labId, email:email, name:name}:{lab_id:labId, email:email})}, 20000);
     var txt=''; try{ txt=await r.text(); }catch(_e){ ocFail('labInvite#1',_e); }
     var j=null; try{ j=JSON.parse(txt); }catch(_e){ ocFail('labInvite#2',_e); }
     if(!r.ok || !j || !j.ok) throw new Error((j&&(j.error||j.code))||('lab-invite '+r.status));
@@ -25698,9 +25779,11 @@ try{
       if(kind==='remove'){
         act(function(){ return labRemove(c.lab,c.email); },'lab#remove').then(function(j){
           if(!j) return; _st.confirm=null;
+          
+
           toast(j.removed===false ? t('lab.rm.notmember',{email:c.email})
-              : j.notified        ? t('lab.rm.done',{email:c.email})
-                                  : t('lab.rm.nomail',{email:c.email}));
+              : j.notified        ? t('lab.rm.done',{email:c.who||c.email})
+                                  : t('lab.rm.nomail',{email:c.who||c.email}));
           refresh(); });
         return;
       }
@@ -25708,7 +25791,7 @@ try{
         act(function(){ return callRpc('promote_lab_member',
               {p_lab:c.lab,p_email:c.email,p_role:kind==='promote'?'manager':'member'}); },'lab#role')
           .then(function(ok){ if(!ok) return; _st.confirm=null;
-            toast(kind==='promote'?t('lab.promote.done',{email:c.email}):t('lab.demote.done',{email:c.email}));
+            toast(kind==='promote'?t('lab.promote.done',{email:c.who||c.email}):t('lab.demote.done',{email:c.who||c.email}));
             refresh(); });
         return;
       }
@@ -25799,15 +25882,20 @@ try{
 
 
       var inp=labEl&&_q('[data-lab-newmail]',labEl), em=((inp&&inp.value)||'').trim();
+      var nin=labEl&&_q('[data-lab-newmembername]',labEl), nm2=((nin&&nin.value)||'').replace(/\s+/g,' ').trim().slice(0,60);
       if(!em){ toast(t('lab.add.empty')); return; }
-      act(function(){ return labInvite(labId,em); },'lab#add').then(function(j){
+      act(function(){ return labInvite(labId,em,nm2); },'lab#add').then(function(j){
         if(!j) return;
         
 
 
 
-        toast(j.added===false ? t('lab.add.already',{email:em})
-             : j.notified     ? t('lab.add.done',{email:em})
+        
+
+
+
+        toast(j.added===false ? t('lab.add.already',{email:whoByEmail(labId,em)})
+             : j.notified     ? t('lab.add.done',{email:nm2||whoByEmail(labId,em)})
                               : t('lab.add.nomail',{email:em}));
         refresh(); });
       return;
@@ -25838,9 +25926,18 @@ try{
       toast(t('lab.bill.elsewhere')); return; }
     if((b=e.target.closest('[data-lab-create]'))){
       var ni=_q('[data-lab-newname]',host), nm=((ni&&ni.value)||'').trim();
+      var mi=_q('[data-lab-newmyname]',host), myn=((mi&&mi.value)||'').replace(/\s+/g,' ').trim().slice(0,60);
       if(!nm){ toast(t('lab.none.empty')); return; }
       act(function(){ return callRpc('create_lab',{p_name:nm}); },'lab#create').then(function(ok){
-        if(!ok) return; toast(t('lab.none.done')); refresh(); });
+        if(!ok) return;
+        
+
+
+
+        var _lid=(typeof ok==='string')?ok:'';
+        var _done=function(){ toast(t('lab.none.done')); refresh(); };
+        if(myn && _lid){ callRpc('set_my_member_name',{p_lab:_lid,p_name:myn}).then(_done, function(e){ ocFail('lab#createname',e); _done(); }); }
+        else _done(); });
       return;
     }
   });
@@ -26492,7 +26589,7 @@ try{
     function body(){ return mo.box.querySelector('[data-ver-body]'); }
     function cardHTML(r){
       var isOpen=!!_open[r.v], armed=(_arm!==''&&_arm===String(r.v));
-      var meta=r.who ? _t('lab.ver.byat',{who:r.who, when:_edWhen(r.when)})
+      var meta=r.who ? _t('lab.ver.byat',{who:_whoName(r.who), when:_edWhen(r.when)})
                      : _t('lab.ver.at',{when:_edWhen(r.when)});
       var h='<div class="lab-ver"><div class="lab-ver-h">'
         +'<span class="lab-ver-v">'+esc(_t('lab.ver.vn',{v:r.v}))+'</span>'
@@ -26722,7 +26819,7 @@ try{
         text:_t(_monClash.length===1?'lab.mon.clash1':'lab.mon.clashN',{code:_monClash[0],n:_n(_monClash.length),codes:_monClash.join(', ')})});
       else if(window.__oligoRemoveNotice) window.__oligoRemoveNotice('oligoMonClash');
       if(_monDiff.length && window.__oligoNotice) window.__oligoNotice('oligoMonDiff',{kind:'warn',dismissible:true,
-        text:_t(_monDiff.length===1?'lab.mon.diff1':'lab.mon.diffN',{code:_monDiff[0].code,mine:_n(_monDiff[0].mine),them:_n(_monDiff[0].them),who:_monDiff[0].who,n:_n(_monDiff.length),codes:_monDiff.map(function(d){return d.code;}).join(', ')})});
+        text:_t(_monDiff.length===1?'lab.mon.diff1':'lab.mon.diffN',{code:_monDiff[0].code,mine:_n(_monDiff[0].mine),them:_n(_monDiff[0].them),who:_whoName(_monDiff[0].who),n:_n(_monDiff.length),codes:_monDiff.map(function(d){return d.code;}).join(', ')})});
       else if(window.__oligoRemoveNotice) window.__oligoRemoveNotice('oligoMonDiff');
     }catch(_e){ ocFail('mergeMonInto#notice',_e); }
   }
@@ -26789,7 +26886,7 @@ try{
     var _have=null; try{ _have=await fetchLabMonomers(labId); }catch(_){ _have=null; }
     if(_have) for(var _i=0;_i<_have.length;_i++){ var _r=_have[_i];
       if(_r && String(_r.code)===String(cb.code) && _r.user_id!==uid)
-        throw new Error(_t('lab.mon.clashshare',{code:cb.code,who:((_r.data&&_r.data.authorEmail)||_r.user_id||'')})); }
+        throw new Error(_t('lab.mon.clashshare',{code:cb.code,who:_whoName((_r.data&&_r.data.authorEmail)||_r.user_id||'')})); }
     var _d=Object.assign({}, cb, {authorEmail:myEmail()}); var row={ user_id:uid, code:cb.code, name:cb.name||'', data:_d, lab_id:labId }; await rest('POST','custom_bases?on_conflict=user_id,code',[row],{Prefer:'resolution=merge-duplicates,return=minimal'}); }
   
 
@@ -26916,7 +27013,15 @@ try{
         ? '<span class="mc-done" title="'+esc(_t('lab.mon.inmineT'))+'">'+esc(_t('lab.mon.inmine'))+'</span>'
         : '<button type="button" class="lab-x2 lab-pri" data-labmon-mine="'+o.i+'" aria-label="'+esc(_t('lab.mon.mine',{code:c.code}))+'" title="'+esc(_t('lab.mon.mineT'))+'">'+esc(_t('lab.mon.mineT'))+'</button>';
       if(o.canEdit) acts+='<button type="button" class="lab-x2" data-labmon-edit="'+o.i+'" aria-label="'+esc(_t('lab.mon.editA',{code:c.code}))+'">'+esc(_t('lab.mon.edit'))+'</button>';
-      if(o.canRm) acts+='<button type="button" class="lab-x danger" data-labmon-rm="'+esc(o.rmId||'')+'" data-labmon-code="'+esc(c.code)+'" data-labmon-own="'+(o.own?'1':'')+'" aria-label="'+esc(_t(o.own?'lab.mon.rm':'lab.mon.mgrrm',{code:c.code}))+'" title="'+esc(_t(o.own?'lab.mon.rmT':'lab.mon.mgrrmT'))+'">\u2715</button>';
+      
+
+
+
+
+
+
+      if(o.canRm){ var _rl=_t(o.own?'lab.mon.rmT':'lab.mon.mgrrmL');
+        acts+='<button type="button" class="lab-x danger lab-rmw" data-labmon-rm="'+esc(o.rmId||'')+'" data-labmon-code="'+esc(c.code)+'" data-labmon-own="'+(o.own?'1':'')+'" data-o="'+esc(_rl)+'" aria-label="'+esc(_t(o.own?'lab.mon.rm':'lab.mon.mgrrm',{code:c.code}))+'" title="'+esc(_t(o.own?'lab.mon.rmKeep':'lab.mon.mgrrmT'))+'">'+esc(_rl)+'</button>'; }
     } else {
       acts+='<button type="button" class="lab-x2" data-monedit="'+o.i+'" aria-label="'+esc(_t('ui.lib.mon.editA',{code:c.code}))+'">'+esc(_t('ui.lib.mon.edit'))+'</button>';
     }
@@ -27358,6 +27463,24 @@ try{
 
 
   var _myUidSync=null;
+  var _memNmByEmail=null;
+  
+
+
+
+
+
+  function _whoName(x){
+    try{
+      x=String(x==null?'':x).trim(); if(!x) return '';
+      var lx=x.toLowerCase();
+      if(_memNmByEmail && _memNmByEmail[lx]) return _memNmByEmail[lx];
+      if(x.indexOf('@')>0) return x;
+      if(/^[0-9a-f]{8}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{12}$/i.test(x)){
+        return (_memNmByUid&&_memNmByUid[x])||(_memByUid&&_memByUid[x])||_t('lab.who.member'); }
+      return x;
+    }catch(_){ return String(x||''); }
+  }
   function fMine(f){ return !!(f && f.created_by && _myUidSync && f.created_by===_myUidSync); }
   
 
@@ -27394,7 +27517,7 @@ try{
   var _memByUid=null, _memNmByUid=null, _memMapLab=null, _memMapOk=false, _memNmOk=false;
   async function ensureMemberMap(labId, epoch){
     if(_memMapLab===labId && _memByUid) return _memByUid;
-    var map=Object.create(null), nmap=Object.create(null), ok=false, named=false;
+    var map=Object.create(null), nmap=Object.create(null), emap=Object.create(null), ok=false, named=false;
     if(labId){
       try{
         
@@ -27416,7 +27539,10 @@ try{
         try{ rows=await rest('GET', _sel0+',member_name'); named=true; }
         catch(_nc){ rows=await rest('GET', _sel0); named=false; }
         (rows||[]).forEach(function(r){ if(r && r.user_id && r.email){ map[r.user_id]=r.email;
-          if(r.member_name) nmap[r.user_id]=String(r.member_name); } });
+          if(r.member_name) nmap[r.user_id]=String(r.member_name); }
+          
+
+          if(r && r.email && r.member_name){ var _nn=String(r.member_name).replace(/\s+/g,' ').trim(); if(_nn) emap[String(r.email).toLowerCase()]=_nn; } });
         
 
         ok=true;
@@ -27429,7 +27555,7 @@ try{
     if(epoch!==undefined && epoch!==_epoch) return map;
     
 
-    _memByUid=map; _memNmByUid=nmap; _memMapLab=labId; _memMapOk=ok;
+    _memByUid=map; _memNmByUid=nmap; _memNmByEmail=emap; _memMapLab=labId; _memMapOk=ok;
     _memNmOk=(ok&&named); return map;
   }
   function fWho(f){
@@ -28615,7 +28741,7 @@ try{
 
 
     var m=(sh.vn!=='' && sh.vn!=null && sh.led)
-      ? _t('lab.ed.meta',{v:sh.vn, who:sh.led, when:_edWhen(sh.ver)})
+      ? _t('lab.ed.meta',{v:sh.vn, who:_whoName(sh.led), when:_edWhen(sh.ver)})
       : _t('lab.ed.metat',{when:_edWhen(sh.ver)});
     b.hidden=false;
     b.innerHTML='<div class="labed-t">'+esc(_t('lab.ed.band',{name:sh.name||_t('lab.card.untitled'), lab:labName(sh.labId)}))+'</div>'
@@ -28871,7 +28997,7 @@ try{
 
 
 
-      var head = (why==='conflict') ? _t('lab.ed.clash!',{who:who})
+      var head = (why==='conflict') ? _t('lab.ed.clash!',{who:_whoName(who)})
                : (why==='closed') ? _t('lab.ed.closed!',{lab:labName(sh.labId)})
                : (why==='gone') ? _t('lab.ed.gone!') : _t('lab.ed.norights!');
       
@@ -29332,7 +29458,7 @@ try{
     if((b=e.target.closest('[data-labmon-mine]'))){ var _lm=_labMon[+b.getAttribute('data-labmon-mine')]; if(_lm){ addLabMonomerToMine(Object.assign({},_lm.data||{},{code:_lm.code})); } return; }
     if((b=e.target.closest('[data-labmon-rm]'))){
        
-      if(b.dataset.armed!=='1'){ b.dataset.armed='1'; b.textContent=_t('lab.mon.armrm'); b.classList.add('armed');
+      if(b.dataset.armed!=='1'){ b.dataset.armed='1'; b.textContent=_t(b.getAttribute('data-labmon-own')==='1'?'lab.mon.armrm':'lab.mon.armdel'); b.classList.add('armed');
         
 
 
@@ -29345,7 +29471,7 @@ try{
         var _a0=b.getAttribute('aria-label')||'', _an=_t('ui.arm.confirm',{label:_a0});
         b.dataset.a0=_a0; if(_an) b.setAttribute('aria-label',_an);
         if(window.oligoAnnounce) window.oligoAnnounce(_an||_a0);
-        setTimeout(function(){ if(b&&b.dataset.armed==='1'){ b.dataset.armed='0'; b.textContent='\u2715'; b.classList.remove('armed'); if(b.dataset.a0) b.setAttribute('aria-label',b.dataset.a0); } },3000); return; }
+        setTimeout(function(){ if(b&&b.dataset.armed==='1'){ b.dataset.armed='0'; b.textContent=b.dataset.o||'\u2715'; b.classList.remove('armed'); if(b.dataset.a0) b.setAttribute('aria-label',b.dataset.a0); } },3000); return; }
       
 
 
@@ -29491,7 +29617,7 @@ try{
 
 
 
-  window.oligoLabLib={ renderMonLib:renderMonLib, memberMapMode:function(){ return _memMapOk?(_memNmOk?'named':'legacy'):'failed'; },
+  window.oligoLabLib={ renderMonLib:renderMonLib, _whoName:_whoName, memberMapMode:function(){ return _memMapOk?(_memNmOk?'named':'legacy'):'failed'; },
     ensureScope:ensureScope, openLab:openLab, renderLabList:renderLabList, addToLab:addToLab, fetchLabStrands:fetchLabStrands, _openAccess:openAccess, _openPicker:openPicker,
     invalidateLabs:invalidateLabs, isForeignLab:isForeignLab, isForeignLabNow:isForeignLabNow,
     
@@ -34273,6 +34399,7 @@ try{
 
 
 
+  var _nameByAddr={};    
   function harvest(text){
     
 
@@ -34284,14 +34411,20 @@ try{
       var e=parts[i].replace(/^\s+|\s+$/g,'');
       if(!e) continue;
       var m=e.match(/[^\s,;:<>"'()\[\]]+@[^\s,;:<>"'()\[\]]+/g);
-      if(m){ for(j=0;j<m.length;j++) out.push(m[j].replace(/[.,;:]+$/,'').toLowerCase()); }
+      if(m){ for(j=0;j<m.length;j++){ var _ad=m[j].replace(/[.,;:]+$/,'').toLowerCase(); out.push(_ad);
+          
+
+          if(m.length===1 && e.indexOf('<')>0){ var _lt=e.split('<')[0].replace(/[",]+\s*$/,'').replace(/\s+/g,' ').trim();
+            if(_lt && _lt.indexOf('@')<0) _nameByAddr[_ad]=_lt.slice(0,60); } } }
       else { out.push(e.replace(/[<>"']/g,'').replace(/\s+/g,' ').toLowerCase()); }
     }
     return out;
   }
   
 
-  function typed(text){ return String(text==null?'':text).trim().toLowerCase(); }
+  
+
+  function typed(text){ return String(text==null?'':text).trim(); }
 
   
 
@@ -34396,7 +34529,7 @@ try{
       if(!t) return false;
       
 
-      add(/[\s,;]/.test(t) ? harvest(t) : [t]);
+      add(/[\s,;]/.test(t) ? harvest(t) : [t.toLowerCase()]);
       inp.value='';
       return true;
     }
@@ -34514,7 +34647,7 @@ try{
     var res=[];
     for(var j=0;j<list.length;j++){
       var a=list[j];
-      try{ var g=await fn('lab-invite',{lab_id:labId, email:a});
+      try{ var _nm=_nameByAddr[a]||''; var g=await fn('lab-invite', _nm?{lab_id:labId, email:a, name:_nm}:{lab_id:labId, email:a});
            res.push({email:a, ok:true, added:(g.added!==false), notified:!!g.notified}); }
       catch(e){ res.push({email:a, ok:false, msg:String((e&&e.message)||'refused')}); }
     }
