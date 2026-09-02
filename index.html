@@ -291,7 +291,7 @@ var I18N = {
   "faq.about.01.q":"About this tool & who built it",
   "faq.about.02.a":"As a PhD oligonucleotide chemist, I got tired of bouncing between a dozen different websites and home-made Excel sheets just to confirm one set of numbers: molecular weight in one place, extinction coefficient in another, a dilution calculator somewhere else, modified-base and phosphorothioate masses buried in a vendor PDF. Every value lived somewhere different, and none of the tools talked to each other.<br><br>This is the one-stop shop I always wanted: molecular weight, ε<sub>260</sub>, concentration, dilution, modified bases, phosphorothioate &amp; mixed backbones, 5′ and 3′ end groups, custom monomers and conjugates, and full duplexes (siRNA / ASO), all in a single, consistent workflow. Enter your sequence once and everything flows from it.<br><br>It's built for the whole biochemistry community, from students designing their first primers, to biologists quantifying their PCR products, to biochemists designing siRNA and ASO therapeutics. It saves time and cuts the everyday math of oligonucleotide work down to one screen.",
   "faq.about.02.q":"Why build this?",
-  "faq.about.03.a!":"The calculator runs in your browser. If you are not signed in, your saved sequences and custom monomers stay only on <b>this device</b> and are never sent anywhere.<br><br>If you sign in (Pro), your library is saved to your own private account on <b>Supabase</b> so you can reach it from any device. Only you can see it while signed in. It is <b>not</b> encrypted end to end, which means I (the person who runs the site) and Supabase can technically open the stored rows if needed for support or upkeep. So please do not save anything you would not write in a shared lab notebook, like confidential or unpublished work.<br><br>Signing in uses a one-time email code, so there is no password to store. You can clear the data on your device anytime from your browser, and signing out clears the copy on this device once everything has reached your account. If anything has not synced yet, it is kept and we tell you, so removing it stays a separate deliberate step.",
+  "faq.about.03.a!":"The calculator runs in your browser. If you are not signed in, your saved sequences and custom monomers stay only on <b>this device</b> and are never sent anywhere.<br><br>If you sign in (Pro), your library is saved to your own private account on <b>Supabase</b> so you can reach it from any device. Only you can see it while signed in. It is <b>not</b> encrypted end to end, which means I (the person who runs the site) and Supabase can technically open the stored rows if needed for support or upkeep. So please do not save anything you would not write in a shared lab notebook, like confidential or unpublished work.<br><br>Signing in uses a one-time email code, so there is no password to store. You can clear the data on your device anytime from your browser, and signing out clears the copy on this device once everything has reached your account, in every tab of this browser that has the calculator open. If anything has not synced yet, it is kept and we tell you, so removing it stays a separate deliberate step.",
   "faq.about.03.q":"Your data &amp; privacy",
   "faq.about.title":"About",
   "faq.conc.01.a":"It turns a Nanodrop reading into the molar concentration of your dissolved oligo, and helps you dilute it to a target. It uses the molecular weight from the MW Calculator tab automatically.",
@@ -1707,6 +1707,9 @@ var I18N = {
   "ui.seatrel.h":"Who leaves at your next renewal",
   "ui.seatrel.note!":"They keep working until the renewal date, and we email them now so it is not a surprise. Anything they saved comes back to them as their own.",
   "ui.seatrel.pick":"choose {need}, chosen {picked}",
+  "ui.sess.noclear":"This browser blocked clearing the saved session. You are signed out in this tab; close other tabs and clear this site's browser data before leaving this device.",
+  "ui.sess.nosave":"This browser could not save your sign-in. Keep this tab open; closing it will sign you out.",
+  "ui.sess.remote":"Signed out from another tab.",
   "ui.sh.cf.go":"I understand, make the link",
   "ui.sh.cf.h":"Anyone who gets this link can read these sequences",
   "ui.sh.copied":"Copied ✓",
@@ -1721,6 +1724,11 @@ var I18N = {
   "ui.sh.native":"More ways to share",
   "ui.sh.priv!":"The link carries the sequence data itself, the name you gave each sequence, and the name, mass and formula of every custom monomer they use. It is not stored on a server, so once you have sent it you cannot withdraw or delete it. Send it only to people you mean to give the data to, and do not send sequences you consider confidential.",
   "ui.sh.title":"Share link",
+  "ui.stor.download":"Download unreadable data",
+  "ui.stor.remotewipe":"This browser was cleared from another tab. It no longer holds your library.",
+  "ui.stor.reset":"Reset browser data",
+  "ui.stor.resetarm":"Press again to reset",
+  "ui.stor.unreadable":"This browser data could not be read. It has not been overwritten. Download the unreadable data or reset it after you have saved a copy.",
   "ui.strand.sense":"Sense / Passenger Strand",
   "ui.strand.single":"Sequence",
   "ui.sv.anti":"Antisense strand: {why}",
@@ -1875,7 +1883,7 @@ var I18N = {
   "faq.about.01.q":"\u95dc\u65bc\u9019\u500b\u5de5\u5177\u8207\u5b83\u7684\u4f5c\u8005",
   "faq.about.02.a":"\u8eab\u70ba\u4e00\u500b\u5be1\u6838\u82f7\u9178\u5316\u5b78\u7684\u535a\u58eb\uff0c\u6211\u53d7\u5920\u4e86\u70ba\u4e86\u78ba\u8a8d\u540c\u4e00\u7d44\u6578\u5b57\uff0c\u8981\u5728\u5341\u5e7e\u500b\u4e0d\u540c\u7684\u7db2\u7ad9\u548c\u81ea\u5df1\u505a\u7684 Excel \u8868\u4e4b\u9593\u8df3\u4f86\u8df3\u53bb\uff1a\u5206\u5b50\u91cf\u5728\u4e00\u500b\u5730\u65b9\uff0c\u6d88\u5149\u4fc2\u6578\u5728\u53e6\u4e00\u500b\u5730\u65b9\uff0c\u7a00\u91cb\u8a08\u7b97\u6a5f\u53c8\u5728\u5225\u7684\u5730\u65b9\uff0c\u4fee\u98fe\u9e7c\u57fa\u8207\u786b\u4ee3\u78f7\u9178\u916f\u7684\u8cea\u91cf\u5247\u57cb\u5728\u5ee0\u5546\u7684 PDF \u88e1\u3002\u6bcf\u500b\u6578\u503c\u90fd\u4f4f\u5728\u4e0d\u540c\u7684\u5730\u65b9\uff0c\u800c\u9019\u4e9b\u5de5\u5177\u5f7c\u6b64\u4e4b\u9593\u53c8\u4e0d\u8b1b\u8a71\u3002<br><br>\u9019\u5c31\u662f\u6211\u4e00\u76f4\u60f3\u8981\u7684\u4e00\u7ad9\u5f0f\u5de5\u5177\uff1a\u5206\u5b50\u91cf\u3001ε<sub>260</sub>\u3001\u6fc3\u5ea6\u3001\u7a00\u91cb\u3001\u4fee\u98fe\u9e7c\u57fa\u3001\u786b\u4ee3\u78f7\u9178\u916f\u8207\u6df7\u5408\u9aa8\u67b6\u30015′ \u8207 3′ \u7aef\u57fa\u3001\u81ea\u8a02\u55ae\u9ad4\u8207\u63a5\u5408\u7269\uff0c\u4ee5\u53ca\u5b8c\u6574\u7684\u96d9\u80a1\uff08siRNA\uff0fASO\uff09\uff0c\u5168\u90e8\u5728\u4e00\u5957\u4e00\u81f4\u7684\u6d41\u7a0b\u88e1\u3002\u5e8f\u5217\u53ea\u8981\u8f38\u5165\u4e00\u6b21\uff0c\u5176\u4ed6\u6bcf\u4e00\u9805\u90fd\u5f9e\u5b83\u6d41\u51fa\u4f86\u3002<br><br>\u5b83\u662f\u70ba\u6574\u500b\u751f\u5316\u793e\u7fa4\u505a\u7684\uff0c\u5f9e\u7b2c\u4e00\u6b21\u8a2d\u8a08\u5f15\u5b50\u7684\u5b78\u751f\uff0c\u5230\u8981\u5b9a\u91cf PCR \u7522\u7269\u7684\u751f\u7269\u5b78\u5bb6\uff0c\u518d\u5230\u8a2d\u8a08 siRNA \u8207 ASO \u7642\u6cd5\u7684\u751f\u5316\u5b78\u5bb6\u3002\u5b83\u7701\u4e0b\u6642\u9593\uff0c\u628a\u5be1\u6838\u82f7\u9178\u5de5\u4f5c\u88e1\u6bcf\u5929\u90fd\u8981\u505a\u7684\u8a08\u7b97\u6536\u9032\u540c\u4e00\u500b\u756b\u9762\u3002",
   "faq.about.02.q":"\u70ba\u4ec0\u9ebc\u8981\u505a\u9019\u500b\uff1f",
-  "faq.about.03.a!":"\u9019\u500b\u8a08\u7b97\u6a5f\u5728\u4f60\u7684\u700f\u89bd\u5668\u88e1\u57f7\u884c\u3002\u5982\u679c\u4f60\u6c92\u6709\u767b\u5165\uff0c\u4f60\u5df2\u5132\u5b58\u7684\u5e8f\u5217\u8207\u81ea\u8a02\u55ae\u9ad4\u53ea\u6703\u7559\u5728<b>\u9019\u53f0\u88dd\u7f6e</b>\u4e0a\uff0c\u4e0d\u6703\u88ab\u9001\u5230\u4efb\u4f55\u5730\u65b9\u3002<br><br>\u5982\u679c\u4f60\u767b\u5165\uff08Pro\uff09\uff0c\u4f60\u7684\u8cc7\u6599\u5eab\u6703\u5b58\u5230\u4f60\u81ea\u5df1\u5728 <b>Supabase</b> \u4e0a\u7684\u79c1\u4eba\u5e33\u6236\uff0c\u9019\u6a23\u4f60\u5728\u4efb\u4f55\u88dd\u7f6e\u4e0a\u90fd\u62ff\u5f97\u5230\u3002\u767b\u5165\u72c0\u614b\u4e0b\u53ea\u6709\u4f60\u770b\u5f97\u5230\u5b83\u3002\u5b83<b>\u6c92\u6709</b>\u7aef\u5c0d\u7aef\u52a0\u5bc6\uff0c\u4e5f\u5c31\u662f\u8aaa\uff0c\u6211\uff08\u4e5f\u5c31\u662f\u71df\u904b\u9019\u500b\u7db2\u7ad9\u7684\u4eba\uff09\u548c Supabase \u5728\u9700\u8981\u652f\u63f4\u6216\u7dad\u8b77\u6642\uff0c\u6280\u8853\u4e0a\u662f\u53ef\u4ee5\u6253\u958b\u90a3\u4e9b\u5b58\u8d77\u4f86\u7684\u8cc7\u6599\u5217\u7684\u3002\u6240\u4ee5\u8acb\u4e0d\u8981\u5b58\u4efb\u4f55\u4f60\u4e0d\u6703\u5beb\u9032\u5171\u7528\u5be6\u9a57\u8a18\u9304\u7c3f\u7684\u6771\u897f\uff0c\u4f8b\u5982\u6a5f\u5bc6\u6216\u5c1a\u672a\u767c\u8868\u7684\u5de5\u4f5c\u3002<br><br>\u767b\u5165\u7528\u7684\u662f\u4e00\u6b21\u6027\u7684\u96fb\u5b50\u90f5\u4ef6\u9a57\u8b49\u78bc\uff0c\u6240\u4ee5\u6c92\u6709\u5bc6\u78bc\u9700\u8981\u4fdd\u5b58\u3002\u4f60\u96a8\u6642\u53ef\u4ee5\u5f9e\u700f\u89bd\u5668\u6e05\u6389\u9019\u53f0\u88dd\u7f6e\u4e0a\u7684\u8cc7\u6599\uff0c\u800c\u5728\u6240\u6709\u6771\u897f\u90fd\u5df2\u7d93\u9001\u5230\u4f60\u7684\u5e33\u865f\u4e4b\u5f8c\uff0c\u767b\u51fa\u6703\u6e05\u6389\u9019\u53f0\u88dd\u7f6e\u4e0a\u7684\u526f\u672c\u3002\u5982\u679c\u9084\u6709\u6c92\u540c\u6b65\u7684\u6771\u897f\uff0c\u6211\u5011\u6703\u4fdd\u7559\u4e26\u544a\u8a34\u4f60\uff0c\u628a\u79fb\u9664\u7559\u6210\u53e6\u4e00\u500b\u660e\u78ba\u7684\u52d5\u4f5c\u3002",
+  "faq.about.03.a!":"\u9019\u500b\u8a08\u7b97\u6a5f\u5728\u4f60\u7684\u700f\u89bd\u5668\u88e1\u57f7\u884c\u3002\u5982\u679c\u4f60\u6c92\u6709\u767b\u5165\uff0c\u4f60\u5df2\u5132\u5b58\u7684\u5e8f\u5217\u8207\u81ea\u8a02\u55ae\u9ad4\u53ea\u6703\u7559\u5728<b>\u9019\u53f0\u88dd\u7f6e</b>\u4e0a\uff0c\u4e0d\u6703\u88ab\u9001\u5230\u4efb\u4f55\u5730\u65b9\u3002<br><br>\u5982\u679c\u4f60\u767b\u5165\uff08Pro\uff09\uff0c\u4f60\u7684\u8cc7\u6599\u5eab\u6703\u5b58\u5230\u4f60\u81ea\u5df1\u5728 <b>Supabase</b> \u4e0a\u7684\u79c1\u4eba\u5e33\u6236\uff0c\u9019\u6a23\u4f60\u5728\u4efb\u4f55\u88dd\u7f6e\u4e0a\u90fd\u62ff\u5f97\u5230\u3002\u767b\u5165\u72c0\u614b\u4e0b\u53ea\u6709\u4f60\u770b\u5f97\u5230\u5b83\u3002\u5b83<b>\u6c92\u6709</b>\u7aef\u5c0d\u7aef\u52a0\u5bc6\uff0c\u4e5f\u5c31\u662f\u8aaa\uff0c\u6211\uff08\u4e5f\u5c31\u662f\u71df\u904b\u9019\u500b\u7db2\u7ad9\u7684\u4eba\uff09\u548c Supabase \u5728\u9700\u8981\u652f\u63f4\u6216\u7dad\u8b77\u6642\uff0c\u6280\u8853\u4e0a\u662f\u53ef\u4ee5\u6253\u958b\u90a3\u4e9b\u5b58\u8d77\u4f86\u7684\u8cc7\u6599\u5217\u7684\u3002\u6240\u4ee5\u8acb\u4e0d\u8981\u5b58\u4efb\u4f55\u4f60\u4e0d\u6703\u5beb\u9032\u5171\u7528\u5be6\u9a57\u8a18\u9304\u7c3f\u7684\u6771\u897f\uff0c\u4f8b\u5982\u6a5f\u5bc6\u6216\u5c1a\u672a\u767c\u8868\u7684\u5de5\u4f5c\u3002<br><br>\u767b\u5165\u7528\u7684\u662f\u4e00\u6b21\u6027\u7684\u96fb\u5b50\u90f5\u4ef6\u9a57\u8b49\u78bc\uff0c\u6240\u4ee5\u6c92\u6709\u5bc6\u78bc\u9700\u8981\u4fdd\u5b58\u3002\u4f60\u96a8\u6642\u53ef\u4ee5\u5f9e\u700f\u89bd\u5668\u6e05\u6389\u9019\u53f0\u88dd\u7f6e\u4e0a\u7684\u8cc7\u6599\uff0c\u800c\u5728\u6240\u6709\u6771\u897f\u90fd\u5df2\u7d93\u9001\u5230\u4f60\u7684\u5e33\u865f\u4e4b\u5f8c\uff0c\u767b\u51fa\u6703\u6e05\u6389\u9019\u53f0\u88dd\u7f6e\u4e0a\u7684\u526f\u672c\uff0c\u5305\u62ec\u9019\u500b\u700f\u89bd\u5668\u88e1\u6bcf\u4e00\u500b\u958b\u8457\u8a08\u7b97\u6a5f\u7684\u5206\u9801\u3002\u5982\u679c\u9084\u6709\u6c92\u540c\u6b65\u7684\u6771\u897f\uff0c\u6211\u5011\u6703\u4fdd\u7559\u4e26\u544a\u8a34\u4f60\uff0c\u628a\u79fb\u9664\u7559\u6210\u53e6\u4e00\u500b\u660e\u78ba\u7684\u52d5\u4f5c\u3002",
   "faq.about.03.q":"\u4f60\u7684\u8cc7\u6599\u8207\u96b1\u79c1",
   "faq.about.title":"\u95dc\u65bc",
   "faq.conc.01.a":"\u5b83\u628a Nanodrop \u7684\u8b80\u503c\u63db\u7b97\u6210\u4f60\u6eb6\u597d\u7684\u5be1\u6838\u82f7\u9178\u7684\u83ab\u8033\u6fc3\u5ea6\uff0c\u4e5f\u5e6b\u4f60\u7a00\u91cb\u5230\u76ee\u6a19\u6fc3\u5ea6\u3002\u5206\u5b50\u91cf\u6703\u81ea\u52d5\u53d6\u81ea\u5206\u5b50\u91cf\u8a08\u7b97\u6a5f\u5206\u9801\u3002",
@@ -3285,6 +3293,9 @@ var I18N = {
   "ui.seatrel.h":"\u4e0b\u6b21\u7e8c\u7d04\u6642\u5c07\u96e2\u958b\u7684\u6210\u54e1",
   "ui.seatrel.note!":"\u4ed6\u5011\u5230\u7e8c\u7d04\u65e5\u70ba\u6b62\u90fd\u80fd\u7167\u5e38\u4f7f\u7528\uff0c\u6211\u5011\u6703\u7acb\u5373\u5bc4\u96fb\u5b50\u90f5\u4ef6\u901a\u77e5\u4ed6\u5011\uff0c\u4e0d\u6703\u8b93\u4ed6\u5011\u63aa\u624b\u4e0d\u53ca\u3002\u4ed6\u5011\u5132\u5b58\u7684\u5167\u5bb9\u90fd\u6b78\u4ed6\u5011\u500b\u4eba\u6240\u6709\u3002",
   "ui.seatrel.pick":"\u5171\u9700\u9078 {need} \u4eba\uff0c\u5df2\u9078 {picked} \u4eba",
+  "ui.sess.noclear":"\u9019\u500b\u700f\u89bd\u5668\u963b\u6b62\u4e86\u6e05\u9664\u5df2\u4fdd\u5b58\u7684\u767b\u5165\u72c0\u614b\u3002\u4f60\u5728\u9019\u500b\u5206\u9801\u5df2\u7d93\u767b\u51fa\uff1b\u96e2\u958b\u9019\u53f0\u88dd\u7f6e\u4e4b\u524d\uff0c\u8acb\u95dc\u6389\u5176\u4ed6\u5206\u9801\uff0c\u4e26\u6e05\u9664\u9019\u500b\u7db2\u7ad9\u7684\u700f\u89bd\u5668\u8cc7\u6599\u3002",
+  "ui.sess.nosave":"\u9019\u500b\u700f\u89bd\u5668\u6c92\u80fd\u4fdd\u5b58\u4f60\u7684\u767b\u5165\u72c0\u614b\u3002\u8acb\u8b93\u9019\u500b\u5206\u9801\u4fdd\u6301\u958b\u555f\uff1b\u95dc\u6389\u5b83\u5c31\u6703\u767b\u51fa\u3002",
+  "ui.sess.remote":"\u5df2\u5f9e\u53e6\u4e00\u500b\u5206\u9801\u767b\u51fa\u3002",
   "ui.sh.cf.go":"\u6211\u4e86\u89e3\uff0c\u7522\u751f\u9023\u7d50",
   "ui.sh.cf.h":"\u4efb\u4f55\u62ff\u5230\u9019\u500b\u9023\u7d50\u7684\u4eba\u90fd\u80fd\u8b80\u5230\u9019\u4e9b\u5e8f\u5217",
   "ui.sh.copied":"\u5df2\u8907\u88fd ✓",
@@ -3299,6 +3310,11 @@ var I18N = {
   "ui.sh.native":"\u5176\u4ed6\u5206\u4eab\u65b9\u5f0f",
   "ui.sh.priv!":"\u9023\u7d50\u672c\u8eab\u5c31\u5e36\u8457\u5e8f\u5217\u8cc7\u6599\u3001\u4f60\u70ba\u6bcf\u4e00\u7b46\u5e8f\u5217\u53d6\u7684\u540d\u7a31\uff0c\u4ee5\u53ca\u5b83\u5011\u7528\u5230\u7684\u6bcf\u4e00\u500b\u81ea\u8a02\u55ae\u9ad4\u7684\u540d\u7a31\u3001\u8cea\u91cf\u8207\u7d44\u6210\u5f0f\u3002\u5b83\u6c92\u6709\u5b58\u5728\u4f3a\u670d\u5668\u4e0a\uff0c\u6240\u4ee5\u4e00\u65e6\u9001\u51fa\u53bb\uff0c\u5c31\u7121\u6cd5\u6536\u56de\uff0c\u4e5f\u7121\u6cd5\u522a\u9664\u3002\u8acb\u53ea\u5bc4\u7d66\u4f60\u78ba\u5be6\u9858\u610f\u628a\u8cc7\u6599\u4ea4\u7d66\u4ed6\u7684\u4eba\uff0c\u4f60\u8a8d\u70ba\u6a5f\u5bc6\u7684\u5e8f\u5217\u8acb\u4e0d\u8981\u5bc4\u51fa\u3002",
   "ui.sh.title":"\u5206\u4eab\u9023\u7d50",
+  "ui.stor.download":"\u4e0b\u8f09\u7121\u6cd5\u8b80\u53d6\u7684\u8cc7\u6599",
+  "ui.stor.remotewipe":"\u9019\u500b\u700f\u89bd\u5668\u5df2\u5f9e\u53e6\u4e00\u500b\u5206\u9801\u6e05\u7a7a\uff0c\u4e0d\u518d\u4fdd\u5b58\u4f60\u7684\u8cc7\u6599\u5eab\u3002",
+  "ui.stor.reset":"\u91cd\u8a2d\u700f\u89bd\u5668\u8cc7\u6599",
+  "ui.stor.resetarm":"\u518d\u6309\u4e00\u6b21\u4ee5\u91cd\u8a2d",
+  "ui.stor.unreadable":"\u9019\u500b\u700f\u89bd\u5668\u88e1\u7684\u8cc7\u6599\u7121\u6cd5\u8b80\u53d6\u3002\u5b83\u6c92\u6709\u88ab\u8986\u5beb\u3002\u8acb\u4e0b\u8f09\u9019\u4efd\u7121\u6cd5\u8b80\u53d6\u7684\u8cc7\u6599\uff0c\u6216\u5728\u5b58\u597d\u4e00\u4efd\u526f\u672c\u4e4b\u5f8c\u518d\u91cd\u8a2d\u5b83\u3002",
   "ui.strand.sense":"\u6b63\u7fa9\u80a1 / \u96a8\u5f9e\u80a1",
   "ui.strand.single":"\u5e8f\u5217",
   "ui.sv.anti":"\u53cd\u7fa9\u80a1\uff1a{why}",
@@ -3453,7 +3469,7 @@ var I18N = {
   "faq.about.01.q":"\u5173\u4e8e\u8fd9\u4e2a\u5de5\u5177\u4e0e\u5b83\u7684\u4f5c\u8005",
   "faq.about.02.a":"\u8eab\u4e3a\u4e00\u4e2a\u5be1\u6838\u82f7\u9178\u5316\u5b66\u7684\u535a\u58eb\uff0c\u6211\u53d7\u591f\u4e86\u4e3a\u4e86\u786e\u8ba4\u540c\u4e00\u7ec4\u6570\u5b57\uff0c\u8981\u5728\u5341\u51e0\u4e2a\u4e0d\u540c\u7684\u7f51\u7ad9\u548c\u81ea\u5df1\u505a\u7684 Excel \u8868\u4e4b\u95f4\u8df3\u6765\u8df3\u53bb\uff1a\u5206\u5b50\u91cf\u5728\u4e00\u4e2a\u5730\u65b9\uff0c\u6d88\u5149\u7cfb\u6570\u5728\u53e6\u4e00\u4e2a\u5730\u65b9\uff0c\u7a00\u91ca\u8ba1\u7b97\u5668\u53c8\u5728\u522b\u7684\u5730\u65b9\uff0c\u4fee\u9970\u78b1\u57fa\u4e0e\u786b\u4ee3\u78f7\u9178\u916f\u7684\u8d28\u91cf\u5219\u57cb\u5728\u5382\u5546\u7684 PDF \u91cc\u3002\u6bcf\u4e2a\u6570\u503c\u90fd\u4f4f\u5728\u4e0d\u540c\u7684\u5730\u65b9\uff0c\u800c\u8fd9\u4e9b\u5de5\u5177\u5f7c\u6b64\u4e4b\u95f4\u53c8\u4e0d\u8bb2\u8bdd\u3002<br><br>\u8fd9\u5c31\u662f\u6211\u4e00\u76f4\u60f3\u8981\u7684\u4e00\u7ad9\u5f0f\u5de5\u5177\uff1a\u5206\u5b50\u91cf\u3001ε<sub>260</sub>\u3001\u6d53\u5ea6\u3001\u7a00\u91ca\u3001\u4fee\u9970\u78b1\u57fa\u3001\u786b\u4ee3\u78f7\u9178\u916f\u4e0e\u6df7\u5408\u9aa8\u67b6\u30015′ \u4e0e 3′ \u7aef\u57fa\u3001\u81ea\u5b9a\u4e49\u5355\u4f53\u4e0e\u5076\u8054\u7269\uff0c\u4ee5\u53ca\u5b8c\u6574\u7684\u53cc\u94fe\uff08siRNA\uff0fASO\uff09\uff0c\u5168\u90e8\u5728\u4e00\u5957\u4e00\u81f4\u7684\u6d41\u7a0b\u91cc\u3002\u5e8f\u5217\u53ea\u8981\u8f93\u5165\u4e00\u6b21\uff0c\u5176\u4ed6\u6bcf\u4e00\u9879\u90fd\u4ece\u5b83\u6d41\u51fa\u6765\u3002<br><br>\u5b83\u662f\u4e3a\u6574\u4e2a\u751f\u5316\u754c\u505a\u7684\uff0c\u4ece\u7b2c\u4e00\u6b21\u8bbe\u8ba1\u5f15\u7269\u7684\u5b66\u751f\uff0c\u5230\u8981\u5b9a\u91cf PCR \u4ea7\u7269\u7684\u751f\u7269\u5b66\u5bb6\uff0c\u518d\u5230\u8bbe\u8ba1 siRNA \u4e0e ASO \u7597\u6cd5\u7684\u751f\u5316\u5b66\u5bb6\u3002\u5b83\u7701\u4e0b\u65f6\u95f4\uff0c\u628a\u5be1\u6838\u82f7\u9178\u5de5\u4f5c\u91cc\u6bcf\u5929\u90fd\u8981\u505a\u7684\u8ba1\u7b97\u6536\u8fdb\u540c\u4e00\u4e2a\u9875\u9762\u3002",
   "faq.about.02.q":"\u4e3a\u4ec0\u4e48\u8981\u505a\u8fd9\u4e2a\uff1f",
-  "faq.about.03.a!":"\u8fd9\u4e2a\u8ba1\u7b97\u5668\u5728\u4f60\u7684\u6d4f\u89c8\u5668\u91cc\u8fd0\u884c\u3002\u5982\u679c\u4f60\u6ca1\u6709\u767b\u5f55\uff0c\u4f60\u5df2\u4fdd\u5b58\u7684\u5e8f\u5217\u4e0e\u81ea\u5b9a\u4e49\u5355\u4f53\u53ea\u4f1a\u7559\u5728<b>\u8fd9\u53f0\u8bbe\u5907</b>\u4e0a\uff0c\u4e0d\u4f1a\u88ab\u9001\u5230\u4efb\u4f55\u5730\u65b9\u3002<br><br>\u5982\u679c\u4f60\u767b\u5f55\uff08Pro\uff09\uff0c\u4f60\u7684\u6570\u636e\u5e93\u4f1a\u5b58\u5230\u4f60\u81ea\u5df1\u5728 <b>Supabase</b> \u4e0a\u7684\u79c1\u4eba\u8d26\u6237\uff0c\u8fd9\u6837\u4f60\u5728\u4efb\u4f55\u8bbe\u5907\u4e0a\u90fd\u62ff\u5f97\u5230\u3002\u767b\u5f55\u72b6\u6001\u4e0b\u53ea\u6709\u4f60\u770b\u5f97\u5230\u5b83\u3002\u5b83<b>\u6ca1\u6709</b>\u7aef\u5230\u7aef\u52a0\u5bc6\uff0c\u4e5f\u5c31\u662f\u8bf4\uff0c\u6211\uff08\u4e5f\u5c31\u662f\u8fd0\u8425\u8fd9\u4e2a\u7f51\u7ad9\u7684\u4eba\uff09\u548c Supabase \u5728\u9700\u8981\u652f\u6301\u6216\u7ef4\u62a4\u65f6\uff0c\u6280\u672f\u4e0a\u662f\u53ef\u4ee5\u6253\u5f00\u90a3\u4e9b\u5b58\u8d77\u6765\u7684\u6570\u636e\u884c\u7684\u3002\u6240\u4ee5\u8bf7\u4e0d\u8981\u5b58\u4efb\u4f55\u4f60\u4e0d\u4f1a\u5199\u8fdb\u5171\u7528\u5b9e\u9a8c\u8bb0\u5f55\u672c\u7684\u4e1c\u897f\uff0c\u4f8b\u5982\u673a\u5bc6\u6216\u5c1a\u672a\u53d1\u8868\u7684\u5de5\u4f5c\u3002<br><br>\u767b\u5f55\u7528\u7684\u662f\u4e00\u6b21\u6027\u7684\u7535\u5b50\u90ae\u4ef6\u9a8c\u8bc1\u7801\uff0c\u6240\u4ee5\u6ca1\u6709\u5bc6\u7801\u9700\u8981\u4fdd\u5b58\u3002\u4f60\u968f\u65f6\u53ef\u4ee5\u4ece\u6d4f\u89c8\u5668\u6e05\u6389\u8fd9\u53f0\u8bbe\u5907\u4e0a\u7684\u6570\u636e\uff0c\u800c\u5728\u6240\u6709\u4e1c\u897f\u90fd\u5df2\u7ecf\u9001\u5230\u4f60\u7684\u8d26\u53f7\u4e4b\u540e\uff0c\u9000\u51fa\u767b\u5f55\u4f1a\u6e05\u6389\u8fd9\u53f0\u8bbe\u5907\u4e0a\u7684\u526f\u672c\u3002\u5982\u679c\u8fd8\u6709\u6ca1\u540c\u6b65\u7684\u4e1c\u897f\uff0c\u6211\u4eec\u4f1a\u4fdd\u7559\u5e76\u544a\u8bc9\u4f60\uff0c\u628a\u79fb\u9664\u7559\u6210\u53e6\u4e00\u4e2a\u660e\u786e\u7684\u52a8\u4f5c\u3002",
+  "faq.about.03.a!":"\u8fd9\u4e2a\u8ba1\u7b97\u5668\u5728\u4f60\u7684\u6d4f\u89c8\u5668\u91cc\u8fd0\u884c\u3002\u5982\u679c\u4f60\u6ca1\u6709\u767b\u5f55\uff0c\u4f60\u5df2\u4fdd\u5b58\u7684\u5e8f\u5217\u4e0e\u81ea\u5b9a\u4e49\u5355\u4f53\u53ea\u4f1a\u7559\u5728<b>\u8fd9\u53f0\u8bbe\u5907</b>\u4e0a\uff0c\u4e0d\u4f1a\u88ab\u9001\u5230\u4efb\u4f55\u5730\u65b9\u3002<br><br>\u5982\u679c\u4f60\u767b\u5f55\uff08Pro\uff09\uff0c\u4f60\u7684\u6570\u636e\u5e93\u4f1a\u5b58\u5230\u4f60\u81ea\u5df1\u5728 <b>Supabase</b> \u4e0a\u7684\u79c1\u4eba\u8d26\u6237\uff0c\u8fd9\u6837\u4f60\u5728\u4efb\u4f55\u8bbe\u5907\u4e0a\u90fd\u62ff\u5f97\u5230\u3002\u767b\u5f55\u72b6\u6001\u4e0b\u53ea\u6709\u4f60\u770b\u5f97\u5230\u5b83\u3002\u5b83<b>\u6ca1\u6709</b>\u7aef\u5230\u7aef\u52a0\u5bc6\uff0c\u4e5f\u5c31\u662f\u8bf4\uff0c\u6211\uff08\u4e5f\u5c31\u662f\u8fd0\u8425\u8fd9\u4e2a\u7f51\u7ad9\u7684\u4eba\uff09\u548c Supabase \u5728\u9700\u8981\u652f\u6301\u6216\u7ef4\u62a4\u65f6\uff0c\u6280\u672f\u4e0a\u662f\u53ef\u4ee5\u6253\u5f00\u90a3\u4e9b\u5b58\u8d77\u6765\u7684\u6570\u636e\u884c\u7684\u3002\u6240\u4ee5\u8bf7\u4e0d\u8981\u5b58\u4efb\u4f55\u4f60\u4e0d\u4f1a\u5199\u8fdb\u5171\u7528\u5b9e\u9a8c\u8bb0\u5f55\u672c\u7684\u4e1c\u897f\uff0c\u4f8b\u5982\u673a\u5bc6\u6216\u5c1a\u672a\u53d1\u8868\u7684\u5de5\u4f5c\u3002<br><br>\u767b\u5f55\u7528\u7684\u662f\u4e00\u6b21\u6027\u7684\u7535\u5b50\u90ae\u4ef6\u9a8c\u8bc1\u7801\uff0c\u6240\u4ee5\u6ca1\u6709\u5bc6\u7801\u9700\u8981\u4fdd\u5b58\u3002\u4f60\u968f\u65f6\u53ef\u4ee5\u4ece\u6d4f\u89c8\u5668\u6e05\u6389\u8fd9\u53f0\u8bbe\u5907\u4e0a\u7684\u6570\u636e\uff0c\u800c\u5728\u6240\u6709\u4e1c\u897f\u90fd\u5df2\u7ecf\u9001\u5230\u4f60\u7684\u8d26\u53f7\u4e4b\u540e\uff0c\u9000\u51fa\u767b\u5f55\u4f1a\u6e05\u6389\u8fd9\u53f0\u8bbe\u5907\u4e0a\u7684\u526f\u672c\uff0c\u5305\u62ec\u8fd9\u4e2a\u6d4f\u89c8\u5668\u91cc\u6bcf\u4e00\u4e2a\u5f00\u7740\u8ba1\u7b97\u5668\u7684\u9009\u9879\u5361\u3002\u5982\u679c\u8fd8\u6709\u6ca1\u540c\u6b65\u7684\u4e1c\u897f\uff0c\u6211\u4eec\u4f1a\u4fdd\u7559\u5e76\u544a\u8bc9\u4f60\uff0c\u628a\u79fb\u9664\u7559\u6210\u53e6\u4e00\u4e2a\u660e\u786e\u7684\u52a8\u4f5c\u3002",
   "faq.about.03.q":"\u4f60\u7684\u6570\u636e\u4e0e\u9690\u79c1",
   "faq.about.title":"\u5173\u4e8e",
   "faq.conc.01.a":"\u5b83\u628a Nanodrop \u7684\u8bfb\u6570\u6362\u7b97\u6210\u4f60\u6eb6\u597d\u7684\u5be1\u6838\u82f7\u9178\u7684\u6469\u5c14\u6d53\u5ea6\uff0c\u4e5f\u5e2e\u4f60\u7a00\u91ca\u5230\u76ee\u6807\u6d53\u5ea6\u3002\u5206\u5b50\u91cf\u4f1a\u81ea\u52a8\u53d6\u81ea\u5206\u5b50\u91cf\u8ba1\u7b97\u5668\u9009\u9879\u5361\u3002",
@@ -4863,6 +4879,9 @@ var I18N = {
   "ui.seatrel.h":"\u4e0b\u6b21\u7eed\u8ba2\u65f6\u5c06\u79bb\u5f00\u7684\u6210\u5458",
   "ui.seatrel.note!":"\u4ed6\u4eec\u5230\u7eed\u8ba2\u65e5\u4e3a\u6b62\u90fd\u80fd\u7167\u5e38\u4f7f\u7528\uff0c\u6211\u4eec\u4f1a\u7acb\u5373\u53d1\u7535\u5b50\u90ae\u4ef6\u901a\u77e5\u4ed6\u4eec\uff0c\u4e0d\u4f1a\u8ba9\u4ed6\u4eec\u63aa\u624b\u4e0d\u53ca\u3002\u4ed6\u4eec\u4fdd\u5b58\u7684\u5185\u5bb9\u90fd\u5f52\u4ed6\u4eec\u4e2a\u4eba\u6240\u6709\u3002",
   "ui.seatrel.pick":"\u5171\u9700\u9009 {need} \u4eba\uff0c\u5df2\u9009 {picked} \u4eba",
+  "ui.sess.noclear":"\u8fd9\u4e2a\u6d4f\u89c8\u5668\u963b\u6b62\u4e86\u6e05\u9664\u5df2\u4fdd\u5b58\u7684\u767b\u5f55\u72b6\u6001\u3002\u4f60\u5728\u8fd9\u4e2a\u9009\u9879\u5361\u5df2\u7ecf\u9000\u51fa\u767b\u5f55\uff1b\u79bb\u5f00\u8fd9\u53f0\u8bbe\u5907\u4e4b\u524d\uff0c\u8bf7\u5173\u6389\u5176\u4ed6\u9009\u9879\u5361\uff0c\u5e76\u6e05\u9664\u8fd9\u4e2a\u7f51\u7ad9\u7684\u6d4f\u89c8\u5668\u6570\u636e\u3002",
+  "ui.sess.nosave":"\u8fd9\u4e2a\u6d4f\u89c8\u5668\u6ca1\u80fd\u4fdd\u5b58\u4f60\u7684\u767b\u5f55\u72b6\u6001\u3002\u8bf7\u8ba9\u8fd9\u4e2a\u9009\u9879\u5361\u4fdd\u6301\u6253\u5f00\uff1b\u5173\u6389\u5b83\u5c31\u4f1a\u9000\u51fa\u767b\u5f55\u3002",
+  "ui.sess.remote":"\u5df2\u4ece\u53e6\u4e00\u4e2a\u9009\u9879\u5361\u9000\u51fa\u767b\u5f55\u3002",
   "ui.sh.cf.go":"\u6211\u660e\u767d\uff0c\u751f\u6210\u94fe\u63a5",
   "ui.sh.cf.h":"\u4efb\u4f55\u62ff\u5230\u8fd9\u4e2a\u94fe\u63a5\u7684\u4eba\u90fd\u80fd\u8bfb\u5230\u8fd9\u4e9b\u5e8f\u5217",
   "ui.sh.copied":"\u5df2\u590d\u5236 ✓",
@@ -4877,6 +4896,11 @@ var I18N = {
   "ui.sh.native":"\u5176\u4ed6\u5206\u4eab\u65b9\u5f0f",
   "ui.sh.priv!":"\u94fe\u63a5\u672c\u8eab\u5c31\u5e26\u7740\u5e8f\u5217\u6570\u636e\u3001\u4f60\u4e3a\u6bcf\u6761\u5e8f\u5217\u53d6\u7684\u540d\u79f0\uff0c\u4ee5\u53ca\u5b83\u4eec\u7528\u5230\u7684\u6bcf\u4e00\u4e2a\u81ea\u5b9a\u4e49\u5355\u4f53\u7684\u540d\u79f0\u3001\u8d28\u91cf\u4e0e\u7ec4\u6210\u5f0f\u3002\u5b83\u6ca1\u6709\u5b58\u5728\u670d\u52a1\u5668\u4e0a\uff0c\u6240\u4ee5\u4e00\u65e6\u53d1\u51fa\u53bb\uff0c\u5c31\u65e0\u6cd5\u6536\u56de\uff0c\u4e5f\u65e0\u6cd5\u5220\u9664\u3002\u8bf7\u53ea\u53d1\u7ed9\u4f60\u786e\u5b9e\u613f\u610f\u628a\u6570\u636e\u4ea4\u7ed9\u4ed6\u7684\u4eba\uff0c\u4f60\u8ba4\u4e3a\u673a\u5bc6\u7684\u5e8f\u5217\u8bf7\u4e0d\u8981\u53d1\u51fa\u3002",
   "ui.sh.title":"\u5206\u4eab\u94fe\u63a5",
+  "ui.stor.download":"\u4e0b\u8f7d\u65e0\u6cd5\u8bfb\u53d6\u7684\u6570\u636e",
+  "ui.stor.remotewipe":"\u8fd9\u4e2a\u6d4f\u89c8\u5668\u5df2\u4ece\u53e6\u4e00\u4e2a\u9009\u9879\u5361\u6e05\u7a7a\uff0c\u4e0d\u518d\u4fdd\u5b58\u4f60\u7684\u6570\u636e\u5e93\u3002",
+  "ui.stor.reset":"\u91cd\u7f6e\u6d4f\u89c8\u5668\u6570\u636e",
+  "ui.stor.resetarm":"\u518d\u6309\u4e00\u6b21\u4ee5\u91cd\u7f6e",
+  "ui.stor.unreadable":"\u8fd9\u4e2a\u6d4f\u89c8\u5668\u91cc\u7684\u6570\u636e\u65e0\u6cd5\u8bfb\u53d6\u3002\u5b83\u6ca1\u6709\u88ab\u8986\u76d6\u3002\u8bf7\u4e0b\u8f7d\u8fd9\u4efd\u65e0\u6cd5\u8bfb\u53d6\u7684\u6570\u636e\uff0c\u6216\u5728\u5b58\u597d\u4e00\u4efd\u526f\u672c\u4e4b\u540e\u518d\u91cd\u7f6e\u5b83\u3002",
   "ui.strand.sense":"\u6b63\u4e49\u94fe / \u8fc7\u5ba2\u94fe",
   "ui.strand.single":"\u5e8f\u5217",
   "ui.sv.anti":"\u53cd\u4e49\u94fe\uff1a{why}",
@@ -5031,7 +5055,7 @@ var I18N = {
   "faq.about.01.q":"\u3053\u306e\u30c4\u30fc\u30eb\u306b\u3064\u3044\u3066\u3068\u3001\u4f5c\u3063\u305f\u4eba",
   "faq.about.02.a":"\u30aa\u30ea\u30b4\u30cc\u30af\u30ec\u30aa\u30c1\u30c9\u5316\u5b66\u306e\u535a\u58eb\u3068\u3057\u3066\u3001\u305f\u3063\u305f\u4e00\u7d44\u306e\u6570\u5024\u3092\u78ba\u304b\u3081\u308b\u305f\u3081\u306b\u5341\u3044\u304f\u3064\u3082\u306e\u30a6\u30a7\u30d6\u30b5\u30a4\u30c8\u3068\u81ea\u4f5c\u306e Excel \u30b7\u30fc\u30c8\u3092\u884c\u304d\u6765\u3059\u308b\u306e\u306b\u5acc\u6c17\u304c\u3055\u3057\u307e\u3057\u305f\u3002\u5206\u5b50\u91cf\u306f\u3053\u3053\u3001\u30e2\u30eb\u5438\u5149\u4fc2\u6570\u306f\u3042\u3061\u3089\u3001\u5e0c\u91c8\u306e\u8a08\u7b97\u306f\u307e\u305f\u5225\u306e\u5834\u6240\u3001\u4fee\u98fe\u5869\u57fa\u3068\u30db\u30b9\u30db\u30ed\u30c1\u30aa\u30a8\u30fc\u30c8\u306e\u8cea\u91cf\u306f\u30d9\u30f3\u30c0\u30fc\u306e PDF \u306e\u5965\u6df1\u304f\u3002\u5024\u306f\u305d\u308c\u305e\u308c\u5225\u306e\u5834\u6240\u306b\u3042\u308a\u3001\u3069\u306e\u30c4\u30fc\u30eb\u3082\u4e92\u3044\u306b\u8a71\u304c\u901a\u3058\u307e\u305b\u3093\u3067\u3057\u305f\u3002<br><br>\u3053\u308c\u306f\u79c1\u304c\u305a\u3063\u3068\u6b32\u3057\u304b\u3063\u305f\u4e00\u304b\u6240\u3067\u6e08\u3080\u9053\u5177\u3067\u3059\u3002\u5206\u5b50\u91cf\u3001ε<sub>260</sub>\u3001\u6fc3\u5ea6\u3001\u5e0c\u91c8\u3001\u4fee\u98fe\u5869\u57fa\u3001\u30db\u30b9\u30db\u30ed\u30c1\u30aa\u30a8\u30fc\u30c8\u3068\u6df7\u5408\u9aa8\u683c\u30015′ \u3068 3′ \u306e\u672b\u7aef\u57fa\u3001\u30ab\u30b9\u30bf\u30e0\u30e2\u30ce\u30de\u30fc\u3068\u30b3\u30f3\u30b8\u30e5\u30b2\u30fc\u30c8\u3001\u305d\u3057\u3066\u5b8c\u5168\u306a\u4e8c\u672c\u9396 (siRNA / ASO) \u304c\u3001\u4e00\u3064\u306e\u4e00\u8cab\u3057\u305f\u6d41\u308c\u306e\u4e2d\u306b\u3042\u308a\u307e\u3059\u3002\u914d\u5217\u3092\u4e00\u5ea6\u5165\u529b\u3059\u308c\u3070\u3001\u3042\u3068\u306f\u3059\u3079\u3066\u305d\u3053\u304b\u3089\u6d41\u308c\u3066\u3044\u304d\u307e\u3059\u3002<br><br>\u4f5c\u3063\u305f\u306e\u306f\u751f\u5316\u5b66\u306e\u30b3\u30df\u30e5\u30cb\u30c6\u30a3\u5168\u4f53\u306e\u305f\u3081\u3067\u3059\u3002\u521d\u3081\u3066\u306e\u30d7\u30e9\u30a4\u30de\u30fc\u3092\u8a2d\u8a08\u3059\u308b\u5b66\u751f\u304b\u3089\u3001PCR \u7523\u7269\u3092\u5b9a\u91cf\u3059\u308b\u751f\u7269\u5b66\u8005\u3001siRNA \u3084 ASO \u306e\u533b\u85ac\u3092\u8a2d\u8a08\u3059\u308b\u751f\u5316\u5b66\u8005\u307e\u3067\u3002\u6642\u9593\u3092\u7bc0\u7d04\u3057\u3001\u30aa\u30ea\u30b4\u30cc\u30af\u30ec\u30aa\u30c1\u30c9\u306e\u4ed5\u4e8b\u306e\u65e5\u3005\u306e\u8a08\u7b97\u3092\u4e00\u753b\u9762\u306b\u53ce\u3081\u307e\u3059\u3002",
   "faq.about.02.q":"\u306a\u305c\u4f5c\u3063\u305f\u306e\u304b",
-  "faq.about.03.a!":"\u3053\u306e\u8a08\u7b97\u30c4\u30fc\u30eb\u306f\u30d6\u30e9\u30a6\u30b6\u5185\u3067\u52d5\u4f5c\u3057\u307e\u3059\u3002\u30b5\u30a4\u30f3\u30a4\u30f3\u3057\u3066\u3044\u306a\u3044\u5834\u5408\u3001\u4fdd\u5b58\u3057\u305f\u914d\u5217\u3068\u30ab\u30b9\u30bf\u30e0\u30e2\u30ce\u30de\u30fc\u306f <b>\u3053\u306e\u7aef\u672b</b> \u306b\u3060\u3051\u6b8b\u308a\u3001\u3069\u3053\u306b\u3082\u9001\u4fe1\u3055\u308c\u307e\u305b\u3093\u3002<br><br>\u30b5\u30a4\u30f3\u30a4\u30f3 (Pro) \u3059\u308b\u3068\u3001\u30e9\u30a4\u30d6\u30e9\u30ea\u306f <b>Supabase</b> \u4e0a\u306e\u3042\u306a\u305f\u5c02\u7528\u306e\u975e\u516c\u958b\u30a2\u30ab\u30a6\u30f3\u30c8\u306b\u4fdd\u5b58\u3055\u308c\u3001\u3069\u306e\u7aef\u672b\u304b\u3089\u3067\u3082\u958b\u3051\u307e\u3059\u3002\u30b5\u30a4\u30f3\u30a4\u30f3\u4e2d\u306f\u3042\u306a\u305f\u3060\u3051\u304c\u898b\u3089\u308c\u307e\u3059\u3002\u30a8\u30f3\u30c9\u30c4\u30fc\u30a8\u30f3\u30c9\u306e\u6697\u53f7\u5316\u306f<b>\u3055\u308c\u3066\u3044\u307e\u305b\u3093</b>\u3002\u3064\u307e\u308a\u3001\u30b5\u30dd\u30fc\u30c8\u3084\u4fdd\u5b88\u306e\u305f\u3081\u306b\u5fc5\u8981\u306a\u5834\u5408\u306f\u3001\u79c1 (\u3053\u306e\u30b5\u30a4\u30c8\u306e\u904b\u55b6\u8005) \u3068 Supabase \u306f\u6280\u8853\u7684\u306b\u306f\u4fdd\u5b58\u3055\u308c\u305f\u884c\u3092\u958b\u3051\u307e\u3059\u3002\u5171\u6709\u306e\u5b9f\u9a13\u30ce\u30fc\u30c8\u306b\u306f\u66f8\u304b\u306a\u3044\u3088\u3046\u306a\u5185\u5bb9\u3001\u305f\u3068\u3048\u3070\u6a5f\u5bc6\u60c5\u5831\u3084\u672a\u767a\u8868\u306e\u7814\u7a76\u306f\u4fdd\u5b58\u3057\u306a\u3044\u3067\u304f\u3060\u3055\u3044\u3002<br><br>\u30b5\u30a4\u30f3\u30a4\u30f3\u306b\u306f\u4f7f\u3044\u6368\u3066\u306e\u30e1\u30fc\u30eb\u30b3\u30fc\u30c9\u3092\u4f7f\u3046\u305f\u3081\u3001\u4fdd\u5b58\u3055\u308c\u308b\u30d1\u30b9\u30ef\u30fc\u30c9\u306f\u3042\u308a\u307e\u305b\u3093\u3002\u7aef\u672b\u4e0a\u306e\u30c7\u30fc\u30bf\u306f\u30d6\u30e9\u30a6\u30b6\u304b\u3089\u3044\u3064\u3067\u3082\u6d88\u53bb\u3067\u304d\u3001\u3059\u3079\u3066\u304c\u30a2\u30ab\u30a6\u30f3\u30c8\u306b\u5c4a\u3044\u305f\u3042\u3068\u306b\u30b5\u30a4\u30f3\u30a2\u30a6\u30c8\u3059\u308b\u3068\u3001\u3053\u306e\u7aef\u672b\u4e0a\u306e\u30b3\u30d4\u30fc\u306f\u6d88\u53bb\u3055\u308c\u307e\u3059\u3002\u307e\u3060\u540c\u671f\u3055\u308c\u3066\u3044\u306a\u3044\u3082\u306e\u304c\u3042\u308b\u5834\u5408\u306f\u4fdd\u6301\u3057\u305f\u3046\u3048\u3067\u304a\u77e5\u3089\u305b\u3057\u3001\u524a\u9664\u306f\u5225\u306e\u660e\u78ba\u306a\u64cd\u4f5c\u3068\u3057\u3066\u6b8b\u3057\u307e\u3059\u3002",
+  "faq.about.03.a!":"\u3053\u306e\u8a08\u7b97\u30c4\u30fc\u30eb\u306f\u30d6\u30e9\u30a6\u30b6\u5185\u3067\u52d5\u4f5c\u3057\u307e\u3059\u3002\u30b5\u30a4\u30f3\u30a4\u30f3\u3057\u3066\u3044\u306a\u3044\u5834\u5408\u3001\u4fdd\u5b58\u3057\u305f\u914d\u5217\u3068\u30ab\u30b9\u30bf\u30e0\u30e2\u30ce\u30de\u30fc\u306f <b>\u3053\u306e\u7aef\u672b</b> \u306b\u3060\u3051\u6b8b\u308a\u3001\u3069\u3053\u306b\u3082\u9001\u4fe1\u3055\u308c\u307e\u305b\u3093\u3002<br><br>\u30b5\u30a4\u30f3\u30a4\u30f3 (Pro) \u3059\u308b\u3068\u3001\u30e9\u30a4\u30d6\u30e9\u30ea\u306f <b>Supabase</b> \u4e0a\u306e\u3042\u306a\u305f\u5c02\u7528\u306e\u975e\u516c\u958b\u30a2\u30ab\u30a6\u30f3\u30c8\u306b\u4fdd\u5b58\u3055\u308c\u3001\u3069\u306e\u7aef\u672b\u304b\u3089\u3067\u3082\u958b\u3051\u307e\u3059\u3002\u30b5\u30a4\u30f3\u30a4\u30f3\u4e2d\u306f\u3042\u306a\u305f\u3060\u3051\u304c\u898b\u3089\u308c\u307e\u3059\u3002\u30a8\u30f3\u30c9\u30c4\u30fc\u30a8\u30f3\u30c9\u306e\u6697\u53f7\u5316\u306f<b>\u3055\u308c\u3066\u3044\u307e\u305b\u3093</b>\u3002\u3064\u307e\u308a\u3001\u30b5\u30dd\u30fc\u30c8\u3084\u4fdd\u5b88\u306e\u305f\u3081\u306b\u5fc5\u8981\u306a\u5834\u5408\u306f\u3001\u79c1 (\u3053\u306e\u30b5\u30a4\u30c8\u306e\u904b\u55b6\u8005) \u3068 Supabase \u306f\u6280\u8853\u7684\u306b\u306f\u4fdd\u5b58\u3055\u308c\u305f\u884c\u3092\u958b\u3051\u307e\u3059\u3002\u5171\u6709\u306e\u5b9f\u9a13\u30ce\u30fc\u30c8\u306b\u306f\u66f8\u304b\u306a\u3044\u3088\u3046\u306a\u5185\u5bb9\u3001\u305f\u3068\u3048\u3070\u6a5f\u5bc6\u60c5\u5831\u3084\u672a\u767a\u8868\u306e\u7814\u7a76\u306f\u4fdd\u5b58\u3057\u306a\u3044\u3067\u304f\u3060\u3055\u3044\u3002<br><br>\u30b5\u30a4\u30f3\u30a4\u30f3\u306b\u306f\u4f7f\u3044\u6368\u3066\u306e\u30e1\u30fc\u30eb\u30b3\u30fc\u30c9\u3092\u4f7f\u3046\u305f\u3081\u3001\u4fdd\u5b58\u3055\u308c\u308b\u30d1\u30b9\u30ef\u30fc\u30c9\u306f\u3042\u308a\u307e\u305b\u3093\u3002\u7aef\u672b\u4e0a\u306e\u30c7\u30fc\u30bf\u306f\u30d6\u30e9\u30a6\u30b6\u304b\u3089\u3044\u3064\u3067\u3082\u6d88\u53bb\u3067\u304d\u3001\u3059\u3079\u3066\u304c\u30a2\u30ab\u30a6\u30f3\u30c8\u306b\u5c4a\u3044\u305f\u3042\u3068\u306b\u30b5\u30a4\u30f3\u30a2\u30a6\u30c8\u3059\u308b\u3068\u3001\u3053\u306e\u7aef\u672b\u4e0a\u306e\u30b3\u30d4\u30fc\u306f\u6d88\u53bb\u3055\u308c\u307e\u3059\u3002\u8a08\u7b97\u30c4\u30fc\u30eb\u3092\u958b\u3044\u3066\u3044\u308b\u3053\u306e\u30d6\u30e9\u30a6\u30b6\u306e\u30bf\u30d6\u3059\u3079\u3066\u304c\u5bfe\u8c61\u3067\u3059\u3002\u307e\u3060\u540c\u671f\u3055\u308c\u3066\u3044\u306a\u3044\u3082\u306e\u304c\u3042\u308b\u5834\u5408\u306f\u4fdd\u6301\u3057\u305f\u3046\u3048\u3067\u304a\u77e5\u3089\u305b\u3057\u3001\u524a\u9664\u306f\u5225\u306e\u660e\u78ba\u306a\u64cd\u4f5c\u3068\u3057\u3066\u6b8b\u3057\u307e\u3059\u3002",
   "faq.about.03.q":"\u30c7\u30fc\u30bf\u3068\u30d7\u30e9\u30a4\u30d0\u30b7\u30fc",
   "faq.about.title":"\u6982\u8981",
   "faq.conc.01.a":"Nanodrop \u306e\u6e2c\u5b9a\u5024\u3092\u3001\u6eb6\u304b\u3057\u305f\u30aa\u30ea\u30b4\u306e\u30e2\u30eb\u6fc3\u5ea6\u306b\u5909\u63db\u3057\u3001\u76ee\u6a19\u6fc3\u5ea6\u3078\u306e\u5e0c\u91c8\u3092\u52a9\u3051\u307e\u3059\u3002\u5206\u5b50\u91cf\u306f\u5206\u5b50\u91cf\u8a08\u7b97\u30c4\u30fc\u30eb\u306e\u30bf\u30d6\u304b\u3089\u81ea\u52d5\u3067\u53d6\u308a\u307e\u3059\u3002",
@@ -6441,6 +6465,9 @@ var I18N = {
   "ui.seatrel.h":"\u6b21\u56de\u306e\u66f4\u65b0\u65e5\u3067\u5916\u308c\u308b\u65b9",
   "ui.seatrel.note!":"\u5bfe\u8c61\u306e\u65b9\u306f\u66f4\u65b0\u65e5\u307e\u3067\u4eca\u307e\u3067\u3069\u304a\u308a\u3054\u5229\u7528\u3044\u305f\u3060\u3051\u307e\u3059\u3002\u66f4\u65b0\u65e5\u3092\u5f85\u305f\u305a\u306b\u3001\u3044\u307e\u5bfe\u8c61\u306e\u65b9\u306b\u30e1\u30fc\u30eb\u3067\u304a\u77e5\u3089\u305b\u3057\u307e\u3059\u3002\u305d\u306e\u65b9\u304c\u4fdd\u5b58\u3057\u305f\u30c7\u30fc\u30bf\u306f\u3001\u3059\u3079\u3066\u3054\u672c\u4eba\u306e\u3082\u306e\u306b\u306a\u308a\u307e\u3059\u3002",
   "ui.seatrel.pick":"{need} \u4eba\u3092\u9078\u629e\u3001{picked} \u4eba\u9078\u629e\u6e08\u307f",
+  "ui.sess.noclear":"\u3053\u306e\u30d6\u30e9\u30a6\u30b6\u306f\u4fdd\u5b58\u3055\u308c\u305f\u30b5\u30a4\u30f3\u30a4\u30f3\u72b6\u614b\u306e\u6d88\u53bb\u3092\u30d6\u30ed\u30c3\u30af\u3057\u307e\u3057\u305f\u3002\u3053\u306e\u30bf\u30d6\u3067\u306f\u30b5\u30a4\u30f3\u30a2\u30a6\u30c8\u3057\u3066\u3044\u307e\u3059\u3002\u3053\u306e\u7aef\u672b\u3092\u96e2\u308c\u308b\u524d\u306b\u3001\u307b\u304b\u306e\u30bf\u30d6\u3092\u9589\u3058\u3001\u3053\u306e\u30b5\u30a4\u30c8\u306e\u30d6\u30e9\u30a6\u30b6\u30c7\u30fc\u30bf\u3092\u6d88\u53bb\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
+  "ui.sess.nosave":"\u3053\u306e\u30d6\u30e9\u30a6\u30b6\u306f\u30b5\u30a4\u30f3\u30a4\u30f3\u72b6\u614b\u3092\u4fdd\u5b58\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f\u3002\u3053\u306e\u30bf\u30d6\u3092\u958b\u3044\u305f\u307e\u307e\u306b\u3057\u3066\u304f\u3060\u3055\u3044\u3002\u9589\u3058\u308b\u3068\u30b5\u30a4\u30f3\u30a2\u30a6\u30c8\u3055\u308c\u307e\u3059\u3002",
+  "ui.sess.remote":"\u5225\u306e\u30bf\u30d6\u304b\u3089\u30b5\u30a4\u30f3\u30a2\u30a6\u30c8\u3057\u307e\u3057\u305f\u3002",
   "ui.sh.cf.go":"\u4e86\u89e3\u3057\u307e\u3057\u305f\u3002\u30ea\u30f3\u30af\u3092\u4f5c\u6210",
   "ui.sh.cf.h":"\u30ea\u30f3\u30af\u304c\u6e21\u3063\u305f\u76f8\u624b\u306b\u306f\u3001\u3053\u308c\u3089\u306e\u914d\u5217\u304c\u3059\u3079\u3066\u898b\u3048\u3066\u3057\u307e\u3044\u307e\u3059",
   "ui.sh.copied":"\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f ✓",
@@ -6455,6 +6482,11 @@ var I18N = {
   "ui.sh.native":"\u307b\u304b\u306e\u65b9\u6cd5\u3067\u5171\u6709",
   "ui.sh.priv!":"\u30ea\u30f3\u30af\u306b\u306f\u914d\u5217\u30c7\u30fc\u30bf\u305d\u306e\u3082\u306e\u3001\u5404\u914d\u5217\u306b\u4ed8\u3051\u305f\u540d\u524d\u3001\u305d\u3057\u3066\u4f7f\u7528\u3057\u3066\u3044\u308b\u30ab\u30b9\u30bf\u30e0\u30e2\u30ce\u30de\u30fc\u306e\u540d\u524d\u30fb\u8cea\u91cf\u30fb\u7d44\u6210\u5f0f\u304c\u542b\u307e\u308c\u307e\u3059\u3002\u30b5\u30fc\u30d0\u30fc\u306b\u4fdd\u5b58\u3055\u308c\u306a\u3044\u305f\u3081\u3001\u3044\u3063\u305f\u3093\u9001\u3063\u3066\u3057\u307e\u3046\u3068\u53d6\u308a\u6d88\u3059\u3053\u3068\u3082\u524a\u9664\u3059\u308b\u3053\u3068\u3082\u3067\u304d\u307e\u305b\u3093\u3002\u672c\u5f53\u306b\u30c7\u30fc\u30bf\u3092\u6e21\u3057\u3066\u3088\u3044\u76f8\u624b\u3060\u3051\u306b\u9001\u308a\u3001\u6a5f\u5bc6\u3068\u8003\u3048\u308b\u914d\u5217\u306f\u9001\u3089\u306a\u3044\u3067\u304f\u3060\u3055\u3044\u3002",
   "ui.sh.title":"\u5171\u6709\u30ea\u30f3\u30af",
+  "ui.stor.download":"\u8aad\u307f\u53d6\u308c\u306a\u3044\u30c7\u30fc\u30bf\u3092\u30c0\u30a6\u30f3\u30ed\u30fc\u30c9",
+  "ui.stor.remotewipe":"\u3053\u306e\u30d6\u30e9\u30a6\u30b6\u306f\u5225\u306e\u30bf\u30d6\u304b\u3089\u6d88\u53bb\u3055\u308c\u307e\u3057\u305f\u3002\u30e9\u30a4\u30d6\u30e9\u30ea\u306f\u3082\u3046\u6b8b\u3063\u3066\u3044\u307e\u305b\u3093\u3002",
+  "ui.stor.reset":"\u30d6\u30e9\u30a6\u30b6\u306e\u30c7\u30fc\u30bf\u3092\u30ea\u30bb\u30c3\u30c8",
+  "ui.stor.resetarm":"\u3082\u3046\u4e00\u5ea6\u62bc\u3059\u3068\u30ea\u30bb\u30c3\u30c8\u3057\u307e\u3059",
+  "ui.stor.unreadable":"\u3053\u306e\u30d6\u30e9\u30a6\u30b6\u306b\u4fdd\u5b58\u3055\u308c\u305f\u30c7\u30fc\u30bf\u3092\u8aad\u307f\u53d6\u308c\u307e\u305b\u3093\u3067\u3057\u305f\u3002\u4e0a\u66f8\u304d\u306f\u3057\u3066\u3044\u307e\u305b\u3093\u3002\u8aad\u307f\u53d6\u308c\u306a\u3044\u30c7\u30fc\u30bf\u3092\u30c0\u30a6\u30f3\u30ed\u30fc\u30c9\u3059\u308b\u304b\u3001\u30b3\u30d4\u30fc\u3092\u4fdd\u5b58\u3057\u3066\u304b\u3089\u30ea\u30bb\u30c3\u30c8\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
   "ui.strand.sense":"\u30bb\u30f3\u30b9\u9396 / \u30d1\u30c3\u30bb\u30f3\u30b8\u30e3\u30fc\u9396",
   "ui.strand.single":"\u914d\u5217",
   "ui.sv.anti":"\u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u9396: {why}",
@@ -6609,7 +6641,7 @@ var I18N = {
   "faq.about.01.q":"À propos de cet outil et de son auteur",
   "faq.about.02.a":"Chimiste des oligonucléotides et titulaire d’un doctorat, j’en avais assez de passer d’un site web à l’autre et de bricoler des feuilles Excel pour confirmer une seule série de valeurs : la masse moléculaire à un endroit, le coefficient d’extinction à un autre, un calculateur de dilution ailleurs encore, les masses des bases modifiées et des phosphorothioates enfouies dans un PDF de fournisseur. Chaque valeur vivait ailleurs, et aucun de ces outils ne parlait aux autres.<br><br>Voici le guichet unique que j’ai toujours voulu : masse moléculaire, ε<sub>260</sub>, concentration, dilution, bases modifiées, squelettes phosphorothioate &amp; mixtes, groupes terminaux 5′ et 3′, monomères personnalisés et conjugués, et duplex complets (siRNA / ASO), le tout dans un flux de travail unique et cohérent. Saisissez votre séquence une fois et tout en découle.<br><br>Il est conçu pour toute la communauté de la biochimie, de l’étudiant qui conçoit ses premières amorces au biologiste qui quantifie ses produits de PCR, jusqu’au biochimiste qui conçoit des thérapeutiques siRNA et ASO. Il fait gagner du temps et ramène les calculs quotidiens du travail sur oligonucléotides à un seul écran.",
   "faq.about.02.q":"Pourquoi avoir créé cet outil ?",
-  "faq.about.03.a!":"Le calculateur fonctionne dans votre navigateur. Si vous n’êtes pas connecté, vos séquences enregistrées et vos monomères personnalisés restent uniquement sur <b>cet appareil</b> et ne sont jamais envoyés ailleurs.<br><br>Si vous vous connectez (Pro), votre bibliothèque est enregistrée dans votre propre compte privé sur <b>Supabase</b>, ce qui vous permet d’y accéder depuis n’importe quel appareil. Vous seul pouvez la voir tant que vous êtes connecté. Elle n’est <b>pas</b> chiffrée de bout en bout, ce qui signifie que moi (la personne qui fait tourner le site) et Supabase pouvons techniquement ouvrir les lignes stockées en cas de besoin, pour l’assistance ou la maintenance. N’enregistrez donc rien que vous n’écririez pas dans un cahier de laboratoire partagé, comme des travaux confidentiels ou non publiés.<br><br>La connexion se fait par un code envoyé une seule fois par e-mail, il n’y a donc aucun mot de passe à conserver. Vous pouvez effacer les données de votre appareil à tout moment depuis votre navigateur, et la déconnexion efface la copie présente sur cet appareil une fois que tout a été transmis à votre compte. Si quelque chose n’a pas encore été synchronisé, nous le conservons et vous en informons, de sorte que sa suppression reste une étape distincte et délibérée.",
+  "faq.about.03.a!":"Le calculateur fonctionne dans votre navigateur. Si vous n’êtes pas connecté, vos séquences enregistrées et vos monomères personnalisés restent uniquement sur <b>cet appareil</b> et ne sont jamais envoyés ailleurs.<br><br>Si vous vous connectez (Pro), votre bibliothèque est enregistrée dans votre propre compte privé sur <b>Supabase</b>, ce qui vous permet d’y accéder depuis n’importe quel appareil. Vous seul pouvez la voir tant que vous êtes connecté. Elle n’est <b>pas</b> chiffrée de bout en bout, ce qui signifie que moi (la personne qui fait tourner le site) et Supabase pouvons techniquement ouvrir les lignes stockées en cas de besoin, pour l’assistance ou la maintenance. N’enregistrez donc rien que vous n’écririez pas dans un cahier de laboratoire partagé, comme des travaux confidentiels ou non publiés.<br><br>La connexion se fait par un code envoyé une seule fois par e-mail, il n’y a donc aucun mot de passe à conserver. Vous pouvez effacer les données de votre appareil à tout moment depuis votre navigateur, et la déconnexion efface la copie présente sur cet appareil une fois que tout a été transmis à votre compte, dans chaque onglet de ce navigateur où le calculateur est ouvert. Si quelque chose n’a pas encore été synchronisé, nous le conservons et vous en informons, de sorte que sa suppression reste une étape distincte et délibérée.",
   "faq.about.03.q":"Vos données &amp; votre confidentialité",
   "faq.about.title":"À propos",
   "faq.conc.01.a":"Il convertit une lecture Nanodrop en concentration molaire de votre oligonucléotide dissous, et vous aide à le diluer jusqu’à une cible. Il reprend automatiquement la masse moléculaire de l’onglet Calculateur MW.",
@@ -8019,6 +8051,9 @@ var I18N = {
   "ui.seatrel.h":"Qui part au prochain renouvellement",
   "ui.seatrel.note!":"Ces personnes continuent de travailler jusqu’à la date de renouvellement, et nous leur écrivons dès maintenant pour que ce ne soit pas une surprise. Tout ce qu’elles ont enregistré leur revient et devient leur propriété.",
   "ui.seatrel.pick":"{need} à choisir, {picked} choisis",
+  "ui.sess.noclear":"Ce navigateur a bloqué l’effacement de la session enregistrée. Vous êtes déconnecté dans cet onglet ; fermez les autres onglets et effacez les données de ce site dans le navigateur avant de quitter cet appareil.",
+  "ui.sess.nosave":"Ce navigateur n’a pas pu enregistrer votre connexion. Gardez cet onglet ouvert ; le fermer vous déconnectera.",
+  "ui.sess.remote":"Déconnecté depuis un autre onglet.",
   "ui.sh.cf.go":"J’ai compris, créer le lien",
   "ui.sh.cf.h":"Toute personne qui reçoit ce lien peut lire ces séquences",
   "ui.sh.copied":"Copié ✓",
@@ -8033,6 +8068,11 @@ var I18N = {
   "ui.sh.native":"Autres façons de partager",
   "ui.sh.priv!":"Le lien contient les données de la séquence elle-même, le nom que vous avez donné à chaque séquence, ainsi que le nom, la masse et la formule de chaque monomère personnalisé qu’elles utilisent. Il n’est pas stocké sur un serveur, une fois envoyé vous ne pouvez donc plus le retirer ni le supprimer. Ne l’envoyez qu’aux personnes à qui vous voulez vraiment donner ces données, et n’envoyez pas de séquences que vous jugez confidentielles.",
   "ui.sh.title":"Lien de partage",
+  "ui.stor.download":"Télécharger les données illisibles",
+  "ui.stor.remotewipe":"Ce navigateur a été vidé depuis un autre onglet. Il ne contient plus votre bibliothèque.",
+  "ui.stor.reset":"Réinitialiser les données du navigateur",
+  "ui.stor.resetarm":"Appuyez de nouveau pour réinitialiser",
+  "ui.stor.unreadable":"Les données de ce navigateur n’ont pas pu être lues. Elles n’ont pas été écrasées. Téléchargez les données illisibles, ou réinitialisez-les après en avoir enregistré une copie.",
   "ui.strand.sense":"Brin sens / brin passager",
   "ui.strand.single":"Séquence",
   "ui.sv.anti":"Brin antisens : {why}",
@@ -8187,7 +8227,7 @@ var I18N = {
   "faq.about.01.q":"Acerca de esta herramienta y quién la hizo",
   "faq.about.02.a":"Como químico de oligonucleótidos con un doctorado, me cansé de ir y venir entre una docena de páginas web y hojas de Excel caseras solo para confirmar un mismo conjunto de números: el peso molecular en un sitio, el coeficiente de extinción en otro, una calculadora de diluciones en otro más, y las masas de bases modificadas y de fosforotioatos enterradas en el PDF de un proveedor. Cada valor vivía en un lugar distinto, y ninguna de esas herramientas se hablaba con las demás.<br><br>Esta es la herramienta única que siempre quise: peso molecular, ε<sub>260</sub>, concentración, dilución, bases modificadas, esqueletos de fosforotioato y mixtos, grupos terminales 5′ y 3′, monómeros y conjugados personalizados, y dúplex completos (siRNA / ASO), todo en un único flujo de trabajo coherente. Introduce tu secuencia una vez y todo lo demás sale de ahí.<br><br>Está hecha para toda la comunidad bioquímica: desde estudiantes que diseñan sus primeros cebadores, hasta biólogos que cuantifican sus productos de PCR, hasta bioquímicos que diseñan terapias de siRNA y ASO. Ahorra tiempo y reduce las cuentas de cada día del trabajo con oligonucleótidos a una sola pantalla.",
   "faq.about.02.q":"¿Por qué hacer esto?",
-  "faq.about.03.a!":"La calculadora funciona en tu navegador. Si no has iniciado sesión, tus secuencias guardadas y tus monómeros personalizados se quedan solo en <b>este dispositivo</b> y no se envían a ninguna parte.<br><br>Si inicias sesión (Pro), tu biblioteca se guarda en tu propia cuenta privada de <b>Supabase</b>, así que puedes llegar a ella desde cualquier dispositivo. Mientras tienes la sesión iniciada, solo tú la ves. <b>No</b> está cifrada de extremo a extremo, lo que significa que yo (la persona que lleva el sitio) y Supabase podemos técnicamente abrir las filas guardadas si hace falta para asistencia o mantenimiento. Así que no guardes nada que no escribirías en un cuaderno de laboratorio compartido, como trabajo confidencial o sin publicar.<br><br>Para iniciar sesión se usa un código de un solo uso enviado por correo, así que no hay contraseña que guardar. Puedes borrar los datos de tu dispositivo cuando quieras desde el navegador, y al cerrar sesión se borra la copia de este dispositivo una vez que todo ha llegado a tu cuenta. Si queda algo sin sincronizar, se conserva y te lo decimos, de modo que quitarlo sigue siendo un paso aparte y deliberado.",
+  "faq.about.03.a!":"La calculadora funciona en tu navegador. Si no has iniciado sesión, tus secuencias guardadas y tus monómeros personalizados se quedan solo en <b>este dispositivo</b> y no se envían a ninguna parte.<br><br>Si inicias sesión (Pro), tu biblioteca se guarda en tu propia cuenta privada de <b>Supabase</b>, así que puedes llegar a ella desde cualquier dispositivo. Mientras tienes la sesión iniciada, solo tú la ves. <b>No</b> está cifrada de extremo a extremo, lo que significa que yo (la persona que lleva el sitio) y Supabase podemos técnicamente abrir las filas guardadas si hace falta para asistencia o mantenimiento. Así que no guardes nada que no escribirías en un cuaderno de laboratorio compartido, como trabajo confidencial o sin publicar.<br><br>Para iniciar sesión se usa un código de un solo uso enviado por correo, así que no hay contraseña que guardar. Puedes borrar los datos de tu dispositivo cuando quieras desde el navegador, y al cerrar sesión se borra la copia de este dispositivo una vez que todo ha llegado a tu cuenta, en todas las pestañas de este navegador que tengan la calculadora abierta. Si queda algo sin sincronizar, se conserva y te lo decimos, de modo que quitarlo sigue siendo un paso aparte y deliberado.",
   "faq.about.03.q":"Tus datos y privacidad",
   "faq.about.title":"Acerca de",
   "faq.conc.01.a":"Convierte una lectura de Nanodrop en la concentración molar del oligo que has disuelto, y te ayuda a diluirlo hasta la concentración final que necesites. Toma el peso molecular de la pestaña Calculadora de MW automáticamente.",
@@ -9597,6 +9637,9 @@ var I18N = {
   "ui.seatrel.h":"Quién sale en tu próxima renovación",
   "ui.seatrel.note!":"Siguen trabajando hasta la fecha de renovación, y les avisamos ahora por correo para que no sea una sorpresa. Todo lo que hayan guardado vuelve a ser suyo.",
   "ui.seatrel.pick":"elige {need}, {picked} elegidos",
+  "ui.sess.noclear":"Este navegador ha bloqueado el borrado de la sesión guardada. Has cerrado sesión en esta pestaña; cierra las demás pestañas y borra los datos de este sitio en el navegador antes de dejar este dispositivo.",
+  "ui.sess.nosave":"Este navegador no ha podido guardar tu inicio de sesión. Mantén esta pestaña abierta; si la cierras, se cerrará la sesión.",
+  "ui.sess.remote":"Sesión cerrada desde otra pestaña.",
   "ui.sh.cf.go":"Lo entiendo, crear el enlace",
   "ui.sh.cf.h":"Cualquiera que reciba este enlace puede leer estas secuencias",
   "ui.sh.copied":"Copiado ✓",
@@ -9611,6 +9654,11 @@ var I18N = {
   "ui.sh.native":"Más formas de compartir",
   "ui.sh.priv!":"El enlace lleva dentro los datos de la secuencia, el nombre que le has dado a cada secuencia, y el nombre, la masa y la fórmula de cada monómero personalizado que usan. No se guarda en ningún servidor, así que una vez enviado no puedes retirarlo ni eliminarlo. Envíalo solo a quien de verdad quieras dar los datos, y no envíes secuencias que consideres confidenciales.",
   "ui.sh.title":"Enlace para compartir",
+  "ui.stor.download":"Descargar los datos ilegibles",
+  "ui.stor.remotewipe":"Este navegador se ha vaciado desde otra pestaña. Ya no contiene tu biblioteca.",
+  "ui.stor.reset":"Restablecer los datos del navegador",
+  "ui.stor.resetarm":"Pulsa otra vez para restablecer",
+  "ui.stor.unreadable":"No se han podido leer los datos de este navegador. No se han sobrescrito. Descarga los datos ilegibles o restablécelos después de guardar una copia.",
   "ui.strand.sense":"Cadena sentido / cadena pasajera",
   "ui.strand.single":"Secuencia",
   "ui.sv.anti":"Cadena antisentido: {why}",
@@ -9765,7 +9813,7 @@ var I18N = {
   "faq.about.01.q":"Über dieses Werkzeug und wer es gebaut hat",
   "faq.about.02.a":"Als promovierter Oligonukleotidchemiker hatte ich es satt, für die Bestätigung eines einzigen Satzes von Zahlen zwischen einem Dutzend verschiedener Websites und selbst gebauter Excel-Tabellen hin und her zu springen: das Molekulargewicht an einer Stelle, der Extinktionskoeffizient an einer anderen, ein Verdünnungsrechner wieder woanders, die Massen modifizierter Basen und von Phosphorothioaten vergraben in einem PDF des Herstellers. Jeder Wert wohnte an einem anderen Ort, und keines dieser Werkzeuge sprach mit den anderen.<br><br>Das hier ist die Komplettlösung, die ich mir immer gewünscht habe: Molekulargewicht, ε<sub>260</sub>, Konzentration, Verdünnung, modifizierte Basen, Phosphorothioat- und gemischte Rückgrate, 5′- und 3′-Endgruppen, benutzerdefinierte Monomere und Konjugate sowie vollständige Duplexe (siRNA / ASO), alles in einem einzigen, durchgängigen Arbeitsablauf. Geben Sie Ihre Sequenz einmal ein, und alles Weitere ergibt sich daraus.<br><br>Gebaut ist es für die gesamte biochemische Gemeinschaft: von Studierenden, die ihre ersten Primer entwerfen, über Biologen, die ihre PCR-Produkte quantifizieren, bis zu Biochemikern, die siRNA- und ASO-Therapeutika entwickeln. Es spart Zeit und schrumpft die tägliche Rechnerei der Oligonukleotidarbeit auf einen einzigen Bildschirm.",
   "faq.about.02.q":"Warum wurde es gebaut?",
-  "faq.about.03.a!":"Der Rechner läuft in Ihrem Browser. Wenn Sie nicht angemeldet sind, bleiben Ihre gespeicherten Sequenzen und benutzerdefinierten Monomere ausschließlich auf <b>diesem Gerät</b> und werden nirgendwohin gesendet.<br><br>Wenn Sie sich anmelden (Pro), wird Ihre Bibliothek in Ihrem eigenen privaten Konto bei <b>Supabase</b> gespeichert, sodass Sie sie von jedem Gerät aus erreichen. Solange Sie angemeldet sind, können nur Sie sie sehen. Sie ist <b>nicht</b> Ende-zu-Ende-verschlüsselt; das heißt, ich (die Person, die diese Website betreibt) und Supabase können die gespeicherten Datensätze technisch öffnen, wenn das für Support oder Wartung nötig ist. Speichern Sie deshalb bitte nichts, was Sie nicht auch in ein gemeinsam genutztes Laborbuch schreiben würden, etwa vertrauliche oder unveröffentlichte Arbeiten.<br><br>Die Anmeldung erfolgt über einen einmaligen Code per E-Mail, es wird also kein Passwort gespeichert. Sie können die Daten auf Ihrem Gerät jederzeit über Ihren Browser löschen, und beim Abmelden wird die Kopie auf diesem Gerät entfernt, sobald alles in Ihrem Konto angekommen ist. Ist etwas noch nicht synchronisiert, behalten wir es und sagen Ihnen Bescheid, sodass das Entfernen ein eigener, bewusster Schritt bleibt.",
+  "faq.about.03.a!":"Der Rechner läuft in Ihrem Browser. Wenn Sie nicht angemeldet sind, bleiben Ihre gespeicherten Sequenzen und benutzerdefinierten Monomere ausschließlich auf <b>diesem Gerät</b> und werden nirgendwohin gesendet.<br><br>Wenn Sie sich anmelden (Pro), wird Ihre Bibliothek in Ihrem eigenen privaten Konto bei <b>Supabase</b> gespeichert, sodass Sie sie von jedem Gerät aus erreichen. Solange Sie angemeldet sind, können nur Sie sie sehen. Sie ist <b>nicht</b> Ende-zu-Ende-verschlüsselt; das heißt, ich (die Person, die diese Website betreibt) und Supabase können die gespeicherten Datensätze technisch öffnen, wenn das für Support oder Wartung nötig ist. Speichern Sie deshalb bitte nichts, was Sie nicht auch in ein gemeinsam genutztes Laborbuch schreiben würden, etwa vertrauliche oder unveröffentlichte Arbeiten.<br><br>Die Anmeldung erfolgt über einen einmaligen Code per E-Mail, es wird also kein Passwort gespeichert. Sie können die Daten auf Ihrem Gerät jederzeit über Ihren Browser löschen, und beim Abmelden wird die Kopie auf diesem Gerät entfernt, sobald alles in Ihrem Konto angekommen ist, und zwar in jedem Tab dieses Browsers, in dem der Rechner geöffnet ist. Ist etwas noch nicht synchronisiert, behalten wir es und sagen Ihnen Bescheid, sodass das Entfernen ein eigener, bewusster Schritt bleibt.",
   "faq.about.03.q":"Ihre Daten und Ihre Privatsphäre",
   "faq.about.title":"Über",
   "faq.conc.01.a":"Er wandelt eine Nanodrop-Ablesung in die molare Konzentration Ihres gelösten Oligos um und hilft Ihnen, es auf eine Zielkonzentration zu verdünnen. Das Molekulargewicht übernimmt er automatisch aus dem Tab MW-Rechner.",
@@ -11175,6 +11223,9 @@ var I18N = {
   "ui.seatrel.h":"Wer bei Ihrer nächsten Verlängerung ausscheidet",
   "ui.seatrel.note!":"Sie können bis zum Verlängerungsdatum weiterarbeiten, und wir schicken ihnen jetzt eine E-Mail, damit es keine Überraschung wird. Alles, was sie gespeichert haben, kommt als ihr eigenes zu ihnen zurück.",
   "ui.seatrel.pick":"{need} auswählen, {picked} ausgewählt",
+  "ui.sess.noclear":"Dieser Browser hat das Löschen der gespeicherten Sitzung blockiert. In diesem Tab sind Sie abgemeldet; schließen Sie die anderen Tabs und löschen Sie die Browserdaten dieser Website, bevor Sie dieses Gerät verlassen.",
+  "ui.sess.nosave":"Dieser Browser konnte Ihre Anmeldung nicht speichern. Lassen Sie diesen Tab geöffnet; wenn Sie ihn schließen, werden Sie abgemeldet.",
+  "ui.sess.remote":"Von einem anderen Tab aus abgemeldet.",
   "ui.sh.cf.go":"Ich verstehe, Link erzeugen",
   "ui.sh.cf.h":"Jeder, der diesen Link bekommt, kann diese Sequenzen lesen",
   "ui.sh.copied":"Kopiert ✓",
@@ -11189,6 +11240,11 @@ var I18N = {
   "ui.sh.native":"Weitere Wege zum Teilen",
   "ui.sh.priv!":"Der Link enthält die Sequenzdaten selbst, den Namen, den Sie jeder Sequenz gegeben haben, sowie Namen, Masse und Summenformel jedes benutzerdefinierten Monomers, das sie verwenden. Er wird nicht auf einem Server gespeichert, Sie können ihn nach dem Versenden also weder zurückziehen noch löschen. Schicken Sie ihn nur an Personen, denen Sie die Daten wirklich geben wollen, und schicken Sie keine Sequenzen, die Sie als vertraulich betrachten.",
   "ui.sh.title":"Freigabelink",
+  "ui.stor.download":"Unlesbare Daten herunterladen",
+  "ui.stor.remotewipe":"Dieser Browser wurde von einem anderen Tab aus geleert. Er enthält Ihre Bibliothek nicht mehr.",
+  "ui.stor.reset":"Browserdaten zurücksetzen",
+  "ui.stor.resetarm":"Zum Zurücksetzen erneut drücken",
+  "ui.stor.unreadable":"Die Daten in diesem Browser konnten nicht gelesen werden. Sie wurden nicht überschrieben. Laden Sie die unlesbaren Daten herunter, oder setzen Sie sie zurück, nachdem Sie eine Kopie gespeichert haben.",
   "ui.strand.sense":"Sense- / Passagierstrang",
   "ui.strand.single":"Sequenz",
   "ui.sv.anti":"Antisense-Strang: {why}",
@@ -11268,9 +11324,33 @@ function readStored(){
 
 
 function bootPersist(l){
-  try{ var o=JSON.parse(localStorage.getItem(STORE)||'{}'); o.lang=l;
+  
+
+
+
+
+
+
+  try{ var raw=localStorage.getItem(STORE), o={};
+       if(raw!==null){ try{ o=JSON.parse(raw); }catch(_){ return; }
+         if(!ocKitShape(o)) return; }
+       o.lang=l;
        localStorage.setItem(STORE, JSON.stringify(o)); }catch(_){   }
 }
+
+
+
+
+
+
+function ocKitShape(v){
+  if(!v || typeof v!=='object' || Array.isArray(v)) return false;
+  if(v.customBases!=null && !Array.isArray(v.customBases)) return false;
+  if(v.seq!=null && typeof v.seq!=='string') return false;
+  if(v.antiSeq!=null && typeof v.antiSeq!=='string') return false;
+  return true;
+}
+window.ocKitShape=ocKitShape;
 var _persist = bootPersist;
 
 function t(key, vars){
@@ -15342,6 +15422,18 @@ function normalizeSeqCase(str){
   var out='', i=0;
   var MULTI=['moe','cEt','MOE','CET','Moe','cet','CEt'];
   while(i<s.length){
+    
+
+
+
+
+
+
+
+
+    if(s[i]==='('){ var pe=s.indexOf(')',i+1);
+      if(pe>i){ out+=s.slice(i,pe+1); i=pe+1; continue; }
+      out+=s[i]; i++; continue; }
     var matched=false;
     for(var k=0;k<MULTI.length;k++){
       var m=MULTI[k];
@@ -16143,6 +16235,70 @@ const DEFAULTS = {
  
 const BUILD_VERSION = 34;
 const APPEARANCE_KEYS = ["platform","theme","accent","fontUI","fontHead","fontNum","fsBase","fsResult","radius","border","density","shadow","btn","keypad","resultpos","align","showChips","showFormula","decimals","catalogEnabled","catalogSource","catalogSupabaseUrl","catalogSupabaseAnonKey"];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const _ocQuar = Object.create(null);
+const _ocLift = [];
+function _isPlainObj(v){ return !!v && typeof v==='object' && !Array.isArray(v); }
+
+
+
+function validKitState(v){
+  if(typeof window.ocKitShape==='function') return window.ocKitShape(v);
+  if(!_isPlainObj(v)) return false;
+  if(v.customBases!=null && !Array.isArray(v.customBases)) return false;
+  if(v.seq!=null && typeof v.seq!=='string') return false;
+  if(v.antiSeq!=null && typeof v.antiSeq!=='string') return false;
+  return true;
+}
+function validHistState(v){
+  if(!Array.isArray(v)) return false;
+  for(var i=0;i<v.length;i++){ if(v[i]===null) continue; if(!_isPlainObj(v[i])) return false; }
+  return true;
+}
+function _ocLifted(key){ for(var i=0;i<_ocLift.length;i++){ try{ _ocLift[i](key); }catch(_){   } } }
+function readJsonState(key, fallback, validator){
+  var raw=null;
+  try{ raw=localStorage.getItem(key); }
+  catch(e){ return {status:'missing', value:fallback, raw:null, error:e}; }
+  if(raw===null){ if(_ocQuar[key]){ delete _ocQuar[key]; _ocLifted(key); } return {status:'missing', value:fallback, raw:null}; }
+  var v;
+  try{ v=JSON.parse(raw); }
+  catch(e){ _ocQuar[key]={raw:raw, at:Date.now(), why:'parse'}; return {status:'corrupt', value:fallback, raw:raw, error:e}; }
+  if(typeof validator==='function' && !validator(v)){ _ocQuar[key]={raw:raw, at:Date.now(), why:'shape'}; return {status:'corrupt', value:fallback, raw:raw}; }
+  if(_ocQuar[key]){ delete _ocQuar[key]; _ocLifted(key); }
+  return {status:'ok', value:v, raw:raw};
+}
+window.oligoState={
+  read: readJsonState,
+  quarantined: function(){ return Object.keys(_ocQuar); },
+  isQuarantined: function(k){ return !!_ocQuar[k]; },
+  raw: function(k){ return _ocQuar[k] ? _ocQuar[k].raw : null; },
+  why: function(k){ return _ocQuar[k] ? _ocQuar[k].why : null; },
+   
+  reset: function(k){ if(!_ocQuar[k]) return false; try{ localStorage.removeItem(k); }catch(_){ return false; } delete _ocQuar[k]; _ocLifted(k); return true; },
+   
+  recheck: function(k){ if(!_ocQuar[k]) return 'clear'; var r=readJsonState(k, null, k==='oligoHistoryApp'?validHistState:validKitState); return r.status; },
+  onLift: function(fn){ if(typeof fn==='function') _ocLift.push(fn); },
+  held: function(){ return (window.__oligoPersistHold|0)>0; }
+};
 let S = load();
 history = loadHist();
 let drawerOpen = false;
@@ -16164,8 +16320,18 @@ function histSelToggle(i, on){ var k=_histId(i); if(on===undefined) on=!histSel.
 function histSelected(){ try{ return (history||[]).filter(function(e){ return e && histSel.has(e.id); }); }catch(_){ return []; } }
 let savedSig = null;
 function currentSig(){ return JSON.stringify([S.seq,S.type,S.linkage,S.five,S.fiveThio,S.three,S.duplexMode,S.antiSeq]); }
-function load(){ try{
-    const s={...DEFAULTS, ...JSON.parse(localStorage.getItem("oligoKitApp")||"{}")};
+function load(){
+  
+
+
+  
+
+
+  try{ window.__oligoEpochAtLoad=parseInt(localStorage.getItem('oligoPrivacyEpoch')||'0',10)||0; }catch(_){ window.__oligoEpochAtLoad=0; }
+  const r=readJsonState("oligoKitApp", null, validKitState);
+  if(r.status==='corrupt') return {...DEFAULTS, __vNext:BUILD_VERSION};
+  try{
+    const s={...DEFAULTS, ...(r.value||{})};
     if(s.theme!=='paper'&&s.theme!=='slate') s.theme='paper';
     if(s.__vNext !== BUILD_VERSION){
        
@@ -16175,6 +16341,12 @@ function load(){ try{
     }
     return s;
   }catch(e){ return {...DEFAULTS, __vNext:BUILD_VERSION}; } }
+
+
+
+
+
+
 
 
 
@@ -16191,9 +16363,24 @@ function _storeFail(key, e){
     else console.warn('[storage] '+key+': '+msg);
   }catch(_){ try{ console.warn('[storage] '+key); }catch(_){   } }
 }
-function save(){ try{ localStorage.setItem("oligoKitApp", JSON.stringify(S)); }catch(e){ _storeFail('oligoKitApp', e); } }
-function loadHist(){ try{ return JSON.parse(localStorage.getItem("oligoHistoryApp")||"[]"); }catch(e){ return []; } }
-function saveHist(){ try{ localStorage.setItem("oligoHistoryApp", JSON.stringify(history)); }catch(e){ _storeFail('oligoHistoryApp', e); } }
+
+
+
+
+
+
+function save(){
+  if(_ocQuar["oligoKitApp"] || (window.__oligoPersistHold|0)>0) return false;
+  try{ localStorage.setItem("oligoKitApp", JSON.stringify(S)); return true; }catch(e){ _storeFail('oligoKitApp', e); return false; } }
+
+
+
+
+
+function loadHist(){ const r=readJsonState("oligoHistoryApp", [], validHistState); return (r.status==='ok') ? r.value.filter(function(e){ return e!==null; }) : []; }
+function saveHist(){
+  if(_ocQuar["oligoHistoryApp"] || (window.__oligoPersistHold|0)>0) return false;
+  try{ localStorage.setItem("oligoHistoryApp", JSON.stringify(history)); return true; }catch(e){ _storeFail('oligoHistoryApp', e); return false; } }
 
 
 
@@ -16458,7 +16645,11 @@ function renderCalc(el){
 function updateSelFoot(el){ if(typeof updateSelFootShell==="function") updateSelFootShell(); }
 function drawerListHTML(){ return (typeof histListHTML==="function")? histListHTML() : ""; }
 
-function applyAll(){ calcs.forEach(function(c){ renderCalc(c); }); save(); }
+
+
+
+function renderAll(){ calcs.forEach(function(c){ renderCalc(c); }); }
+function applyAll(){ renderAll(); save(); }
  
 document.addEventListener('blur', function(e){ if(e.target && (e.target.id==='seq'||e.target.id==='antiseq')){ if(typeof renderResultPanel==='function') renderResultPanel(); } }, true);
 
@@ -17261,8 +17452,51 @@ function proApplyPlan(pk){
     try{ if(window.oligoSheetHost && oligoSheetHost.rerender) oligoSheetHost.rerender(); }catch(_e){}
   }
 }
-function proSession(){ try{ return JSON.parse(localStorage.getItem(PRO_SESS_KEY)||'null'); }catch(_){ return null; } }
-function setProSession(s){ if(s) localStorage.setItem(PRO_SESS_KEY, JSON.stringify(s)); else localStorage.removeItem(PRO_SESS_KEY); }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let _proMem=null, _proTomb=false;
+function _sessTell(key){
+  try{ var msg=(typeof window.t==='function')?window.t(key):key;
+       if(window.__oligoNotice) window.__oligoNotice('oligoSessFail',{text:msg, kind:'warn', dismissible:true}); }
+  catch(_){   }
+}
+function proSession(){
+  if(_proTomb) return null;
+  var raw;
+  try{ raw=localStorage.getItem(PRO_SESS_KEY); }catch(_){ return _proMem; }
+  if(raw===null) return _proMem;
+  try{ var s=JSON.parse(raw); return (s&&typeof s==='object')?s:null; }catch(_){ return _proMem; }
+}
+function setProSession(s){
+  if(s){
+    _proTomb=false; _proMem=s;
+    try{ localStorage.setItem(PRO_SESS_KEY, JSON.stringify(s)); }
+    catch(e){ _sessTell('ui.sess.nosave'); return false; }    
+    return true;
+  }
+  _proMem=null; _proTomb=true;                                  
+  try{ localStorage.removeItem(PRO_SESS_KEY); }
+  catch(e){ _sessTell('ui.sess.noclear'); return false; }
+  return true;
+}
+window.oligoSess={
+  tombstone: function(){ _proMem=null; _proTomb=true; },
+  restore:   function(){ _proTomb=false; },
+  held:      function(){ return _proTomb; },
+  set:       function(s){ return setProSession(s); }    
+};
 function sbBase(){ return (S.catalogSupabaseUrl||'').replace(/\/+$/,''); }
 function sbAuthHeaders(){ return { apikey:(S.catalogSupabaseAnonKey||'').trim(), 'Content-Type':'application/json' }; }
 
@@ -17714,6 +17948,7 @@ function closeCatGate(){ calcs.forEach(c=>{ const g=c.querySelector("[data-catga
   alphabetLabel: [function(){ return alphabetLabel; }, function(v){ alphabetLabel = v; }],
   antisense: [function(){ return antisense; }, function(v){ antisense = v; }],
   applyAll: [function(){ return applyAll; }, function(v){ applyAll = v; }],
+  renderAll: [function(){ return renderAll; }, function(v){ renderAll = v; }],
   applySeqEdit: [function(){ return applySeqEdit; }, function(v){ applySeqEdit = v; }],
   autoUnit: [function(){ return autoUnit; }, function(v){ autoUnit = v; }],
   calcs: [function(){ return calcs; }, function(){ ocFail('export:calcs', new Error('calcs is a constant of this block and cannot be reassigned from outside it')); }],
@@ -18984,19 +19219,41 @@ function syncLockHeld(){
 }
 function takeSyncLock(){ try{ var m=syncMeta(); m.lock={tab:_tabId, t:Date.now()}; setSyncMeta(m); }catch(_e){ ocFail('takeSyncLock#1',_e); } }
 function dropSyncLock(){ try{ var m=syncMeta(); if(m.lock&&m.lock.tab===_tabId){ delete m.lock; setSyncMeta(m); } }catch(_e){ ocFail('dropSyncLock#1',_e); } }
+
+
+
+function _rerender(){
+  W.__oligoPersistHold=(W.__oligoPersistHold|0)+1;
+  try{ if(typeof applyAll==='function') applyAll(); }
+  finally{ W.__oligoPersistHold=Math.max(0,(W.__oligoPersistHold|0)-1); }
+}
 try{
   W.addEventListener('storage', function(ev){
     if(!ev || !ev.key) return;
     if(ev.key==='oligoHistoryApp'){
       
 
+
+
+
+
+
+
+
+
+
+
+
+
+      try{ if(W.oligoState&&W.oligoState.isQuarantined('oligoHistoryApp')) W.oligoState.recheck('oligoHistoryApp'); }catch(_e){ ocFail('dropSyncLock#2a',_e); }
       try{ var fresh=JSON.parse(ev.newValue||'[]');
         if(Array.isArray(fresh)){ history.splice(0, history.length); Array.prototype.push.apply(history, fresh);
-          if(typeof applyAll==='function') applyAll(); } }catch(_e){ ocFail('dropSyncLock#2',_e); }
+          _rerender(); } }catch(_e){ ocFail('dropSyncLock#2',_e); }
     } else if(ev.key==='oligoKitApp'){
+      try{ if(W.oligoState&&W.oligoState.isQuarantined('oligoKitApp')) W.oligoState.recheck('oligoKitApp'); }catch(_e){ ocFail('dropSyncLock#3a',_e); }
       try{ var s=JSON.parse(ev.newValue||'null');
         if(s && Array.isArray(s.customBases)){ S.customBases=s.customBases; rebuildCustom();
-          if(typeof applyAll==='function') applyAll(); } }catch(_e){ ocFail('dropSyncLock#3',_e); }
+          _rerender(); } }catch(_e){ ocFail('dropSyncLock#3',_e); }
     }
   });
 }catch(_e){ ocFail('dropSyncLock#4',_e); }
@@ -33542,6 +33799,9 @@ try{
 
     + '<p><b>How to clear it.</b> <b>Signing out</b> clears your saved library from this browser, '
     +   'and the sequence in the box with it. Your theme, text size and language stay. '
+    
+
+    +   'It reaches every tab of this browser that has the calculator open, not only the one you signed out from. '
     +   '<b>One thing it deliberately does not do:</b> if anything you saved never reached your '
     +   'account, because you were offline or because a plan limit refused it, signing out '
     +   '<b>keeps</b> that work here and asks you separately before removing it. Losing something '
@@ -33941,6 +34201,14 @@ try{
 
     delMsg('Your account is deleted. Signing this browser out…','good');
     try{
+      
+
+
+
+
+
+      try{ if(W.oligoSess) W.oligoSess.tombstone(); }catch(_e){ ocFail('doDelete#tomb',_e); }
+      try{ if(W.oligoPrivacy&&W.oligoPrivacy.wipeLocal) W.oligoPrivacy.wipeLocal(); }catch(_e){ ocFail('doDelete#wipe',_e); }
       ['oligoProSession','oligoEnt','oligoSyncMeta','oligoLabMeta','oligoHistoryApp','oligoUnsynced','oligoBatchPartial','oligoPrePlan','oligoNudgeSeen','oligoGateRefused']
         .forEach(function(k){ try{ localStorage.removeItem(k); }catch(_){   } });
       try{ sessionStorage.removeItem('oligoBillLive'); sessionStorage.removeItem('oligoPrePlan'); }catch(_){   }
@@ -34204,7 +34472,9 @@ try{
   var CONTENT_KEYS=['oligoHistoryApp','oligoSyncMeta','oligoLabMeta','oligoComposerMeta',
                     'oligoUnsynced','oligoBatchPartial','oligoNudgeSeen','oligoGateRefused'];
    
-  var KEEP_KEYS=['oligoUiVersion','oligoUiBarDismissed','oligoPwaMeta'];
+  var KEEP_KEYS=['oligoUiVersion','oligoUiBarDismissed','oligoPwaMeta',
+                  
+                 'oligoPrivacyEpoch'];
 
   function n(v){ return (typeof v==='number'&&isFinite(v))?v:0; }
 
@@ -34233,13 +34503,11 @@ try{
 
 
 
-  function wipeLocal(){
-    var removed=0;
-    
+  
 
 
 
-
+  function wipeMemory(){
     try{ if(typeof history!=='undefined'&&history&&history.splice) history.splice(0,history.length); }catch(_e){ ocFail('privacy.wipe#1',_e); }
     try{
       if(typeof S!=='undefined'&&S){
@@ -34249,13 +34517,37 @@ try{
       }
     }catch(_e){ ocFail('privacy.wipe#2',_e); }
     try{ if(typeof rebuildCustom==='function') rebuildCustom(); }catch(_e){ ocFail('privacy.wipe#3',_e); }
+    
+
+
+
+
+
+    try{ var fs=document.querySelectorAll('[data-seq],[data-antiseq]'); for(var f=0;f<fs.length;f++) fs[f].value=''; }catch(_e){ ocFail('privacy.wipe#9',_e); }
+  }
+  function _isQuar(k){ try{ return !!(W.oligoState&&W.oligoState.isQuarantined(k)); }catch(_e){ return false; } }
+  function wipeLocal(){
+    var removed=0, kept=0;
+    
+
+
+
+
+    wipeMemory();
     try{ if(typeof save==='function') save(); }catch(_e){ ocFail('privacy.wipe#4',_e); }
     try{ if(typeof saveHist==='function') saveHist(); }catch(_e){ ocFail('privacy.wipe#5',_e); }
 
     
 
 
+    
+
+
+
+
+
     for(var i=0;i<CONTENT_KEYS.length;i++){
+      if(_isQuar(CONTENT_KEYS[i])){ kept++; continue; }
       try{ if(localStorage.getItem(CONTENT_KEYS[i])!==null){ localStorage.removeItem(CONTENT_KEYS[i]); removed++; } }
       catch(_e){ ocFail('privacy.wipe#6',_e); }
     }
@@ -34270,11 +34562,18 @@ try{
       }
     }catch(_e){ ocFail('privacy.wipe#7',_e); }
     try{ sessionStorage.removeItem('oligoBillLive'); sessionStorage.removeItem('oligoPrePlan'); }catch(_e){ ocFail('privacy.wipe#8',_e); }
+     
+    bumpEpoch();
+    wipeLocal.kept=kept;
     return removed;
   }
 
   function repaint(){
-    try{ if(typeof applyAll==='function') applyAll(); }catch(_e){ ocFail('privacy.repaint#1',_e); }
+    
+
+
+
+    try{ hold(function(){ if(typeof applyAll==='function') applyAll(); }); }catch(_e){ ocFail('privacy.repaint#1',_e); }
     try{ if(typeof renderHistShell==='function') renderHistShell(); }catch(_e){ ocFail('privacy.repaint#2',_e); }
   }
 
@@ -34344,6 +34643,147 @@ try{
   
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  var EPOCH_KEY='oligoPrivacyEpoch', CH_NAME='oligo-privacy';
+  var _seen=(W.__oligoEpochAtLoad|0);
+  var _ch=null;
+  function T(k,v){ try{ if(typeof W.t==='function') return W.t(k,v); }catch(_e){   } return k; }
+  function readEpoch(){ try{ var n=parseInt(localStorage.getItem(EPOCH_KEY)||'0',10); return (n>0)?n:0; }catch(_e){ return 0; } }
+  function bumpEpoch(){
+    var n=Math.max(readEpoch(), _seen)+1;
+    _seen=n;
+    try{ localStorage.setItem(EPOCH_KEY, String(n)); }catch(_e){ ocFail('privacy.epoch#1',_e); }
+    try{ if(_ch) _ch.postMessage({type:'signed-out-and-wiped', epoch:n}); }catch(_e){ ocFail('privacy.epoch#2',_e); }
+    return n;
+  }
+  
+
+  function hold(fn){
+    W.__oligoPersistHold=(W.__oligoPersistHold|0)+1;
+    try{ fn(); } finally{ W.__oligoPersistHold=Math.max(0,(W.__oligoPersistHold|0)-1); }
+  }
+  
+
+
+
+  function remoteSignOut(){
+    try{ if(W.oligoSess&&W.oligoSess.held()) return false; }catch(_e){   }
+    hold(function(){
+      try{ if(W.oligoSess) W.oligoSess.tombstone(); }catch(_e){ ocFail('privacy.remote#1',_e); }
+      try{ if(typeof ocSignOutEverywhere==='function') ocSignOutEverywhere(); }catch(_e){ ocFail('privacy.remote#2',_e); }
+    });
+    say(T('ui.sess.remote'));
+    return true;
+  }
+  function remoteWipe(n){
+    n=+n||0;
+    if(!(n>_seen)) return false;
+    _seen=n;
+    hold(function(){
+      try{ if(W.oligoSess) W.oligoSess.tombstone(); }catch(_e){ ocFail('privacy.remote#3',_e); }
+      wipeMemory();
+      try{ if(typeof ocSignOutEverywhere==='function') ocSignOutEverywhere(); }catch(_e){ ocFail('privacy.remote#4',_e); }
+      repaint();
+    });
+    
+
+
+
+
+    try{
+      if(!_isQuar('oligoKitApp')){
+        var raw=localStorage.getItem('oligoKitApp');
+        if(raw){ var o=JSON.parse(raw)||{};
+          if((o.customBases&&o.customBases.length)||o.seq||o.antiSeq){ o.customBases=[]; o.seq=''; o.antiSeq=''; localStorage.setItem('oligoKitApp', JSON.stringify(o)); } }
+      }
+    }catch(_e){ ocFail('privacy.remote#5',_e); }
+    try{ if(!_isQuar('oligoHistoryApp')){ var hr=localStorage.getItem('oligoHistoryApp'); if(hr!==null && hr!=='[]') localStorage.removeItem('oligoHistoryApp'); } }catch(_e){ ocFail('privacy.remote#6',_e); }
+    say(T('ui.stor.remotewipe'));
+    return true;
+  }
+  try{
+    W.addEventListener('storage', function(ev){
+      try{
+        if(!ev||!ev.key) return;
+        if(ev.key===EPOCH_KEY){ remoteWipe(parseInt(ev.newValue||'0',10)); }
+        else if(ev.key==='oligoProSession'){
+          if(ev.newValue===null) remoteSignOut();
+          else { try{ if(W.oligoSess) W.oligoSess.restore(); }catch(_e2){ ocFail('privacy.listen#2',_e2); } }
+        }
+      }catch(_e){ ocFail('privacy.listen#1',_e); }
+    });
+  }catch(_e){ ocFail('privacy.listen#0',_e); }
+  try{
+    if(typeof W.BroadcastChannel==='function'){
+      _ch=new W.BroadcastChannel(CH_NAME);
+      _ch.onmessage=function(m){ try{ var d=m&&m.data; if(d&&d.type==='signed-out-and-wiped') remoteWipe(d.epoch); }catch(_e){ ocFail('privacy.channel#1',_e); } };
+    }
+  }catch(_e){ _ch=null; ocFail('privacy.channel#0',_e); }
+  
+
+  try{ var _cur=readEpoch(); if(_cur>_seen) remoteWipe(_cur); }catch(_e){ ocFail('privacy.epoch#3',_e); }
+
+  
+
+
+
+
+
+
+
+
+
+  function _stamp(){ var d=new Date(); function p(n){ return (n<10?'0':'')+n; } return ''+d.getFullYear()+p(d.getMonth()+1)+p(d.getDate())+'-'+p(d.getHours())+p(d.getMinutes()); }
+  function downloadRaw(key){
+    var st=W.oligoState, raw=st?st.raw(key):null;
+    if(typeof raw!=='string') return false;
+    try{
+      var b=new Blob([raw],{type:'application/octet-stream'});
+      var u=URL.createObjectURL(b), a=document.createElement('a');
+      a.href=u; a.download='oligo-unreadable-'+key+'-'+_stamp()+'.txt';
+      document.body.appendChild(a); a.click(); a.remove();
+      ocDefer('quar-url-'+key, function(){ try{ URL.revokeObjectURL(u); }catch(_e){   } }, 60000);
+      return true;
+    }catch(_e){ ocFail('privacy.quar#dl',_e); return false; }
+  }
+  function quarantineNotice(key){
+    var st=W.oligoState; if(!st||!st.isQuarantined(key)||typeof showNotice!=='function') return false;
+    var id='oligoQuarantine-'+key;
+    var render=function(armed){
+      if(!st.isQuarantined(key)){ try{ removeNotice(id); }catch(_e){   } return; }
+      var el=showNotice(id,{ text:T('ui.stor.unreadable'), kind:'warn', dismissible:false,
+        action:T('ui.stor.download'), onAction:function(){ downloadRaw(key); },
+        action2:armed?T('ui.stor.resetarm'):T('ui.stor.reset'),
+        onAction2:function(){
+          if(!armed){ render(true); ocDefer('quar-arm-'+key, function(){ render(false); }, 4000); return; }
+          if(st.reset(key)){ try{ removeNotice(id); }catch(_e){   } }
+        } });
+      try{ var b2=el&&el.querySelector('.act.alt'); if(b2) b2.setAttribute('aria-label', armed?T('ui.arm.confirm',{label:T('ui.stor.reset')}):T('ui.stor.reset')); }catch(_e){   }
+    };
+    render(false);
+    return true;
+  }
+  function showQuarantineNotices(){ var st=W.oligoState; if(!st) return 0; var ks=st.quarantined(); for(var i=0;i<ks.length;i++) quarantineNotice(ks[i]); return ks.length; }
+  try{ if(W.oligoState&&W.oligoState.onLift) W.oligoState.onLift(function(key){ try{ removeNotice('oligoQuarantine-'+key); }catch(_e){   } }); }catch(_e){ ocFail('privacy.quar#lift',_e); }
+  try{ showQuarantineNotices(); }catch(_e){ ocFail('privacy.quar#boot',_e); }
+
+  
+
+
   document.addEventListener('click', function(e){
     try{
       var t=e.target&&e.target.closest?e.target.closest('[data-prosignout],[data-axsignout],[data-signout]'):null;
@@ -34355,7 +34795,12 @@ try{
 
   W.oligoPrivacy={ signOutClearing:signOutClearing, clearBrowser:clearBrowser,
                    unsyncedCount:unsyncedCount, wipeLocal:wipeLocal,
-                   CONTENT_KEYS:CONTENT_KEYS, KEEP_KEYS:KEEP_KEYS };
+                   CONTENT_KEYS:CONTENT_KEYS, KEEP_KEYS:KEEP_KEYS,
+                    
+                   epoch:readEpoch, seen:function(){ return _seen; },
+                   remoteWipe:remoteWipe, remoteSignOut:remoteSignOut,
+                   wipeMemory:wipeMemory, quarantineNotices:showQuarantineNotices,
+                   downloadRaw:downloadRaw };
 })();
 </script>
 
