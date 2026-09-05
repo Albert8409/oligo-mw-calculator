@@ -27,7 +27,7 @@
    exactly why it would have survived. It also evicts the previous release's
    root cache, whose name differs from this one. Restore a prefix guard if this
    origin ever serves a second application. */
-var CACHE = 'oligo-root-d9764fda68cc';
+var CACHE = 'oligo-root-ee62a1c8e540';
 var LEGACY_CACHE = 'oligo-mw-v12';
 var SHELL = ['./', './index.html'];                       // required — install fails if the shell can't be cached
 var ICONS = ['./icons/icon-192.png', './icons/icon-512.png', './icons/icon-maskable-512.png'];
