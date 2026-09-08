@@ -412,6 +412,8 @@ var I18N = {
   "lab.cap.members":"{n} members",
   "lab.cap.seat":"{used} / {seats} seat",
   "lab.cap.seats":"{used} / {seats} seats",
+  "lab.card.aname":"Strand name",
+  "lab.card.aren":"Rename strand. The current name is {name}",
   "lab.card.armdel":"Delete?",
   "lab.card.by":"shared by {email}",
   "lab.card.del":"Delete",
@@ -421,6 +423,7 @@ var I18N = {
   "lab.card.mgrdelT":"You manage this lab. This deletes the record for everyone in the lab, including the person who saved it.",
   "lab.card.open":"Open",
   "lab.card.opencopy":"Load a copy",
+  "lab.card.renfail!":"Renaming the strand failed. The name on screen is still the previous one.",
   "lab.card.rmdone":"Removed from lab",
   "lab.card.rmlab":"Remove",
   "lab.card.sel":"Select {name}",
@@ -1312,12 +1315,12 @@ var I18N = {
   "tm.deep.error!":"The additional search could not run in a background worker. No new result was accepted. Review the request to try again.",
   "tm.deep.input":"{n} nt · {chem}",
   "tm.deep.limit!":"Time limit: {n} seconds.",
-  "tm.deep.method!":"The ordinary search result has the lowest free energy found by that search, not a proven global minimum. The finite search ranks candidates with a cheaper energy model, then scores a selected subset with the full model. It includes stacks, bulges and internal loops",
+  "tm.deep.method!":"The ordinary search result has the lowest free energy found by that search, not a proven global minimum. That bounded search ranks candidates with a cheaper energy model, then scores a selected subset with the full model. The full model includes stacks, hairpin loops, bulges and internal loops",
   "tm.deep.notnow":"Not now",
   "tm.deep.ordinary":"Ordinary search result",
   "tm.deep.reference!":"{n}-nt {chem} reference only. This is not a measured time for the current length.",
   "tm.deep.retry":"Review and retry",
-  "tm.deep.scope!":"Start runs an ordinary search that includes multi-arm junctions and a separate search requiring a junction. These finite searches can miss lower-energy structures.",
+  "tm.deep.scope!":"Start runs two searches: an ordinary one whose structures may contain multi-arm junctions, and a second one restricted to structures that contain at least one. These bounded searches can miss lower-energy structures.",
   "tm.deep.search":"Search multi-arm junctions",
   "tm.deep.selected":"Selected alternative",
   "tm.deep.start":"Start search",
@@ -1382,8 +1385,9 @@ var I18N = {
   "tm.fold.note.mb!":", and multibranch loops. Inside a multibranch loop we score dangling ends and flush coaxial stacking, and on the free tails we score one dangling end or a terminal mismatch at the end of the outermost helix, whichever the published model makes more stable; <b>mismatch-mediated coaxial stacking is not scored</b>. That omitted term is stabilizing in the Turner model. That is a statement about the model and not an experimental error bound. ",
   "tm.fold.note.mbc!":"A structure with a multi-arm junction is found by searching again with that requirement in force. The second search keeps the best junction-containing fold for every region it examines, so it reaches structures the unrestricted search discards along the way. That is why this result is occasionally more stable than the one above it.",
   "tm.fold.note.mbdna!":", and multibranch loops. Inside a multibranch loop we score dangling ends and flush coaxial stacking, and on the free tails we score one dangling end at the end of the outermost helix; <b>mismatch-mediated coaxial stacking and terminal mismatches are not scored</b>. Both omitted terms are stabilizing in the SantaLucia model. That is a statement about the model and not an experimental error bound. The dangling-end values are the tabulated DNA set: several closing pairs carry one value for every dangling base, and the two G-T rows are taken from the Watson-Crick pairs they most resemble. ",
-  "tm.fold.note.mbrna!":". <b>Multibranch structure is not searched above {n} nt.</b> The limit bounds the search cost. Separate exterior domains are still considered, but junctions within them are not. The finite search can miss lower-energy structures. ",
-  "tm.fold.note.mfe!":"The structure is the lowest-free-energy structure this search found, and not a proven global minimum: the search ranks with a cheaper energy model, then scores only its best {k} candidates exactly. It is shown in dot-bracket: stacks, bulges and internal loops",
+  "tm.fold.note.mbrna!":". <b>Multibranch structures are not searched for when the sequence is longer than {n} nt.</b> The limit bounds the search cost. Stems branching separately from the exterior loop are still considered, but junctions within them are not. The bounded search can miss lower-energy structures. ",
+  "tm.fold.note.mfe!":"The structure is the lowest-free-energy structure this search found, and not a proven global minimum: the search ranks candidates with a cheaper energy model, then scores {k} distinct structures with the full model. It is shown in dot-bracket notation. The full model covers stacks, hairpin loops, bulges and internal loops",
+  "tm.fold.note.mfe.one!":"The structure is the lowest-free-energy structure this search found, and not a proven global minimum: the search ranks candidates with a cheaper energy model, then scores only the top candidate with the full model. It is shown in dot-bracket notation. The full model covers stacks, hairpin loops, bulges and internal loops",
   "tm.fold.note.one!":"No stable hairpin found.",
   "tm.fold.note.rna!":"Loop parameters: Turner 2004, which is Mathews 2004 (ΔG°₃₇) and Lu 2006 (ΔH), via the Nearest Neighbor Database; stem from Xia 1998. Real loop enthalpies, not an assumption. <b>The salt correction for this fold is fitted to RNA.</b> Each stack carries the Debye screening and Manning condensation term Yao and Lorenz published in 2023, referenced to the 1.021 M sodium the Turner parameters themselves were measured in, so the free energy and the folding temperature respond to the buffer you entered. The enthalpy does not, and neither do the base-pair and loop counts. That published model also corrects the electrostatics of loops; this engine does not, and never has. The duplex melting temperature is still corrected with Owczarzy 2004, which is fitted to DNA. GU wobble pairs are scored as stem pairs, and internal loops with one or two unpaired bases on each side use the value Turner measured for that exact loop rather than the general loop equation.",
   "tm.fold.note.tmm!":" ⚠ This loop uses the GG/CG terminal mismatch, which is anomalous in the published table and is carried unaltered.",
@@ -1476,8 +1480,8 @@ var I18N = {
   "ui.auth.offline":"Couldn’t reach the server. Check your connection and try again.",
   "ui.auth.rate":"Too many requests just now. Give it a minute, then try again.",
   "ui.auth.rate.wait":"One code at a time. You can ask for another in {n} seconds. Check your spam folder while you wait.",
-  "ui.batch.partial.many!":"Saved {n} sequences. {dropped} more would not fit in your plan’s library, so they are still listed here.",
-  "ui.batch.partial.one!":"Saved {n} sequence. {dropped} more would not fit in your plan’s library, so they are still listed here.",
+  "ui.batch.partial.many!":"Saved {n} sequences. {dropped} more would not fit in your plan’s library and could not be saved; everything not saved is still listed here.",
+  "ui.batch.partial.one!":"Saved {n} sequence. {dropped} more would not fit in your plan’s library and could not be saved; everything not saved is still listed here.",
   "ui.bill.addpeople":"Add your people",
   "ui.bill.buy.title":"Buy seats for {lab}",
   "ui.bill.cancelled":"Checkout canceled. Nothing was charged.",
@@ -1711,7 +1715,7 @@ var I18N = {
   "ui.lib.adel":"Delete {name}",
   "ui.lib.amore":"More actions for {name}",
   "ui.lib.aname":"Strand name",
-  "ui.lib.aren":"Rename {name}",
+  "ui.lib.aren":"Rename strand. The current name is {name}",
   "ui.lib.ashare":"Share a copy of {name}",
   "ui.lib.copyname":"{name} (copy)",
   "ui.lib.counted":"single strands and duplexes",
@@ -2367,6 +2371,8 @@ var I18N = {
   "lab.cap.members":"{n} \u4f4d\u6210\u54e1",
   "lab.cap.seat":"{used} / {seats} \u5e2d",
   "lab.cap.seats":"{used} / {seats} \u5e2d",
+  "lab.card.aname":"\u5e8f\u5217\u540d\u7a31",
+  "lab.card.aren":"\u91cd\u65b0\u547d\u540d\u5e8f\u5217\u3002\u76ee\u524d\u540d\u7a31\uff1a{name}",
   "lab.card.armdel":"\u78ba\u5b9a\u522a\u9664\uff1f",
   "lab.card.by":"\u7531 {email} \u5206\u4eab",
   "lab.card.del":"\u522a\u9664",
@@ -2376,6 +2382,7 @@ var I18N = {
   "lab.card.mgrdelT":"\u4f60\u662f\u9019\u500b\u5be6\u9a57\u5ba4\u7684\u8ca0\u8cac\u4eba\u3002\u9019\u500b\u52d5\u4f5c\u6703\u522a\u9664\u9019\u7b46\u7d00\u9304\uff0c\u5305\u62ec\u7576\u521d\u5132\u5b58\u5b83\u7684\u4eba\u5728\u5167\uff0c\u5be6\u9a57\u5ba4\u88e1\u7684\u6bcf\u500b\u4eba\u90fd\u6703\u5931\u53bb\u5b83\u3002",
   "lab.card.open":"\u958b\u555f",
   "lab.card.opencopy":"\u8f09\u5165\u526f\u672c",
+  "lab.card.renfail!":"\u5e8f\u5217\u91cd\u65b0\u547d\u540d\u5931\u6557\u3002\u756b\u9762\u4e0a\u4ecd\u986f\u793a\u5148\u524d\u7684\u540d\u7a31\u3002",
   "lab.card.rmdone":"\u5df2\u79fb\u51fa\u5be6\u9a57\u5ba4",
   "lab.card.rmlab":"\u79fb\u51fa",
   "lab.card.sel":"\u9078\u53d6 {name}",
@@ -3256,24 +3263,24 @@ var I18N = {
   "tm.count.residue.one":"{n} \u500b\u6b98\u57fa",
   "tm.cov.ok!":"\u9019\u80a1\u7684\u6bcf\u4e00\u500b\u6b98\u57fa\u8207\u6bcf\u4e00\u500b\u9023\u7d50\uff0c\u90fd\u6709\u5df2\u767c\u8868\u7684\u53c3\u6578\u7d44\u6db5\u84cb\u3002",
   "tm.deep.default":"\u4f7f\u7528\u9810\u8a2d\u641c\u5c0b",
-  "tm.deep.defaultstatus!":"\u984d\u5916\u641c\u5c0b\u5df2\u95dc\u9589\u3002\u6b63\u5728\u986f\u793a\u6216\u8a08\u7b97\u9019\u7d44\u8f38\u5165\u7684\u9810\u8a2d\u641c\u5c0b\u7d50\u679c\u3002",
+  "tm.deep.defaultstatus!":"\u984d\u5916\u641c\u5c0b\u5df2\u95dc\u9589\u3002\u9019\u7d44\u8f38\u5165\u4f7f\u7528\u9810\u8a2d\u641c\u5c0b\uff1b\u7d50\u679c\u5df2\u986f\u793a\uff0c\u6216\u6b63\u5728\u8a08\u7b97\u3002",
   "tm.deep.device!":"\u4f60\u7684\u5e8f\u5217\u8207\u88dd\u7f6e\u53ef\u80fd\u9700\u8981\u66f4\u4e45\u3002\u9019\u4e9b\u662f\u5728\u684c\u4e0a\u578b\u96fb\u8166\u91cf\u6e2c\u7684\u6642\u9593\uff0c\u4e0d\u662f\u6642\u9593\u4e0a\u9650\u3002",
   "tm.deep.done!":"\u984d\u5916\u641c\u5c0b\u5df2\u5b8c\u6210\u3002",
-  "tm.deep.error!":"\u984d\u5916\u641c\u5c0b\u7121\u6cd5\u5728\u80cc\u666f\u5de5\u4f5c\u57f7\u884c\u7dd2\u4e2d\u57f7\u884c\u3002\u672a\u63a5\u53d7\u4efb\u4f55\u65b0\u7d50\u679c\u3002\u8acb\u5148\u78ba\u8a8d\u641c\u5c0b\u8981\u6c42\uff0c\u518d\u91cd\u8a66\u3002",
+  "tm.deep.error!":"\u984d\u5916\u641c\u5c0b\u672a\u80fd\u5728\u80cc\u666f\u57f7\u884c\u3002\u6c92\u6709\u63a1\u7528\u4efb\u4f55\u65b0\u7d50\u679c\u3002\u8acb\u5148\u78ba\u8a8d\u641c\u5c0b\u8981\u6c42\uff0c\u518d\u91cd\u8a66\u3002",
   "tm.deep.input":"{n} nt · {chem}",
   "tm.deep.limit!":"\u6642\u9593\u4e0a\u9650\uff1a{n} \u79d2\u3002",
-  "tm.deep.method!":"\u4e00\u822c\u641c\u5c0b\u7684\u7d50\u679c\u662f\u8a72\u6b21\u641c\u5c0b\u627e\u5230\u7684\u6700\u4f4e\u81ea\u7531\u80fd\u7d50\u69cb\uff0c\u4e26\u4e0d\u662f\u5df2\u8b49\u660e\u7684\u5168\u57df\u6700\u5c0f\u503c\u3002\u9019\u500b\u6709\u9650\u7684\u641c\u5c0b\u5148\u4ee5\u8a08\u7b97\u6210\u672c\u8f03\u4f4e\u7684\u80fd\u91cf\u6a21\u578b\u5c0d\u5019\u9078\u7d50\u69cb\u6392\u5e8f\uff0c\u518d\u4ee5\u5b8c\u6574\u6a21\u578b\u5c0d\u9078\u51fa\u7684\u90e8\u5206\u5019\u9078\u7d50\u69cb\u8a08\u5206\u3002\u8a08\u7b97\u5305\u542b\u5806\u758a\u3001\u51f8\u8d77\u8207\u5167\u90e8\u74b0",
+  "tm.deep.method!":"\u4e00\u822c\u641c\u5c0b\u7684\u7d50\u679c\u662f\u8a72\u6b21\u641c\u5c0b\u627e\u5230\u7684\u6700\u4f4e\u81ea\u7531\u80fd\u7d50\u69cb\uff0c\u4e26\u4e0d\u662f\u5df2\u8b49\u660e\u7684\u5168\u57df\u6700\u5c0f\u503c\u3002\u9019\u500b\u7bc4\u570d\u6709\u9650\u7684\u641c\u5c0b\u5148\u4ee5\u8a08\u7b97\u6210\u672c\u8f03\u4f4e\u7684\u80fd\u91cf\u6a21\u578b\u5c0d\u5019\u9078\u7d50\u69cb\u6392\u5e8f\uff0c\u518d\u4ee5\u5b8c\u6574\u6a21\u578b\u5c0d\u9078\u51fa\u7684\u90e8\u5206\u5019\u9078\u7d50\u69cb\u8a08\u5206\u3002\u5b8c\u6574\u6a21\u578b\u7684\u8a08\u7b97\u5305\u542b\u5806\u758a\u3001\u9aee\u593e\u74b0\u3001\u51f8\u8d77\u8207\u5167\u90e8\u74b0",
   "tm.deep.notnow":"\u66ab\u6642\u4e0d\u8981",
   "tm.deep.ordinary":"\u4e00\u822c\u641c\u5c0b\u7d50\u679c",
   "tm.deep.reference!":"\u50c5\u4f9b\u53c3\u8003\uff1a{n} nt \u7684 {chem}\u3002\u9019\u4e0d\u662f\u91dd\u5c0d\u76ee\u524d\u9577\u5ea6\u91cf\u6e2c\u7684\u6642\u9593\u3002",
   "tm.deep.retry":"\u78ba\u8a8d\u5f8c\u91cd\u8a66",
-  "tm.deep.scope!":"\u6309\u300c\u958b\u59cb\u641c\u5c0b\u300d\u6703\u57f7\u884c\u5305\u542b\u591a\u5411\u4ea4\u532f\u7684\u4e00\u822c\u641c\u5c0b\uff0c\u4e26\u53e6\u5916\u57f7\u884c\u8981\u6c42\u7d50\u69cb\u5fc5\u9808\u542b\u4ea4\u532f\u7684\u641c\u5c0b\u3002\u9019\u4e9b\u6709\u9650\u7684\u641c\u5c0b\u53ef\u80fd\u6f0f\u6389\u80fd\u91cf\u66f4\u4f4e\u7684\u7d50\u69cb\u3002",
+  "tm.deep.scope!":"\u6309\u300c\u958b\u59cb\u641c\u5c0b\u300d\u6703\u57f7\u884c\u5169\u7a2e\u641c\u5c0b\uff1a\u4e00\u822c\u641c\u5c0b\uff0c\u5176\u7d50\u69cb\u53ef\u4ee5\u542b\u6709\u591a\u5411\u4ea4\u532f\uff1b\u4ee5\u53ca\u53e6\u4e00\u7a2e\u53ea\u9650\u542b\u591a\u5411\u4ea4\u532f\u7d50\u69cb\u7684\u641c\u5c0b\u3002\u9019\u5169\u7a2e\u641c\u5c0b\u7684\u7bc4\u570d\u90fd\u6709\u9650\uff0c\u53ef\u80fd\u6f0f\u6389\u80fd\u91cf\u66f4\u4f4e\u7684\u7d50\u69cb\u3002",
   "tm.deep.search":"\u641c\u5c0b\u591a\u5411\u4ea4\u532f",
   "tm.deep.selected":"\u5df2\u9078\u53d6\u7684\u66ff\u4ee3\u7d50\u69cb",
   "tm.deep.start":"\u958b\u59cb\u641c\u5c0b",
   "tm.deep.stop":"\u505c\u6b62\u641c\u5c0b",
-  "tm.deep.time!":"\u5728\u6e2c\u8a66\u96fb\u8166\u4e0a\uff0c\u8acb\u9810\u7559\u7d04 {n} \u79d2\u3002",
-  "tm.deep.timeout!":"\u984d\u5916\u641c\u5c0b\u5df2\u9054\u6642\u9593\u4e0a\u9650\u4e26\u5df2\u505c\u6b62\u3002\u672a\u63a5\u53d7\u4efb\u4f55\u65b0\u7d50\u679c\u3002",
+  "tm.deep.time!":"\u5728\u6e2c\u8a66\u96fb\u8166\u4e0a\uff0c\u9810\u8a08\u7d04\u9700 {n} \u79d2\u3002",
+  "tm.deep.timeout!":"\u984d\u5916\u641c\u5c0b\u5df2\u9054\u6642\u9593\u4e0a\u9650\u4e26\u5df2\u505c\u6b62\u3002\u6c92\u6709\u63a5\u53d7\u4efb\u4f55\u65b0\u7d50\u679c\u3002",
   "tm.dir.higher!":"\u771f\u6b63\u7684 Tm \u6703\u6bd4\u9019\u500b\u6578\u503c<b>\u66f4\u9ad8</b>\u3002",
   "tm.dir.lower!":"\u771f\u6b63\u7684 Tm \u6703\u6bd4\u9019\u500b\u6578\u503c<b>\u66f4\u4f4e</b>\u3002",
   "tm.dir.unknown!":"\u9019\u80a1\u540c\u6642\u5e36\u6709\u4f7f\u7d50\u69cb\u66f4\u7a69\u5b9a\u8207\u66f4\u4e0d\u7a69\u5b9a\u7684\u4fee\u98fe\uff0c\u6240\u4ee5<b>\u8aa4\u5dee\u7684\u65b9\u5411\u7121\u6cd5\u5f97\u77e5</b>\u3002",
@@ -3319,7 +3326,7 @@ var I18N = {
   "tm.fold.mbc.better!":"\u7a69\u5b9a\u5ea6\u6bd4\u4e0d\u52a0\u9019\u9805\u8981\u6c42\u6642\u627e\u5230\u7684\u6700\u4f73\u7d50\u69cb\u9ad8 {v} kcal/mol",
   "tm.fold.mbc.name":"\u5fc5\u9808\u542b\u591a\u5411\u4ea4\u532f\u7684\u66ff\u4ee3\u7d50\u69cb",
   "tm.fold.mbc.none!":"\u9019\u6b21\u641c\u5c0b\u672a\u627e\u5230\u542b\u591a\u5411\u4ea4\u532f\u7684\u7d50\u69cb\u3002",
-  "tm.fold.mbc.same!":"\u4e00\u822c\u641c\u5c0b\u7684\u7d50\u679c\u5df2\u542b\u6709\u591a\u5411\u4ea4\u532f\u3002\u8981\u6c42\u5fc5\u9808\u542b\u4ea4\u532f\u7684\u641c\u5c0b\u50b3\u56de\u4e86\u76f8\u540c\u7d50\u69cb\u3002",
+  "tm.fold.mbc.same!":"\u4e00\u822c\u641c\u5c0b\u7684\u7d50\u679c\u5df2\u542b\u6709\u591a\u5411\u4ea4\u532f\u3002\u8981\u6c42\u5fc5\u9808\u542b\u591a\u5411\u4ea4\u532f\u7684\u641c\u5c0b\u50b3\u56de\u4e86\u76f8\u540c\u7d50\u69cb\u3002",
   "tm.fold.mbc.tied!":"\u9810\u6e2c\u80fd\u91cf\u5dee\u56db\u6368\u4e94\u5165\u5f8c\u70ba 0.00 kcal/mol\u3002",
   "tm.fold.name.branched":"\u5206\u652f\u647a\u758a",
   "tm.fold.name.hairpin":"\u9aee\u593e",
@@ -3332,8 +3339,9 @@ var I18N = {
   "tm.fold.note.mb!":"\uff0c\u4ee5\u53ca\u591a\u5206\u652f\u74b0\u3002\u5728\u591a\u5206\u652f\u74b0\u5167\u6211\u5011\u6703\u8a08\u5165\u61f8\u5782\u672b\u7aef\u8207\u9f4a\u5e73\u7684\u5171\u8ef8\u5806\u758a\uff1b\u5728\u6e38\u96e2\u5c3e\u7aef\u4e0a\uff0c\u6211\u5011\u6703\u8a08\u5165\u6700\u5916\u5074\u87ba\u65cb\u672b\u7aef\u7684\u4e00\u500b\u61f8\u5782\u672b\u7aef\u6216\u4e00\u500b\u672b\u7aef\u932f\u914d\uff0c\u5169\u8005\u53d6\u5728\u5df2\u767c\u8868\u6a21\u578b\u4e2d\u8f03\u7a69\u5b9a\u7684\u4e00\u9805\uff1b<b>\u932f\u914d\u4ecb\u5c0e\u7684\u5171\u8ef8\u5806\u758a\u4e0d\u8a08\u5165</b>\u3002\u9019\u500b\u88ab\u7565\u904e\u7684\u80fd\u91cf\u9805\u5728 Turner \u6a21\u578b\u4e2d\u662f\u4f7f\u7d50\u69cb\u66f4\u7a69\u5b9a\u7684\u3002\u9019\u662f\u95dc\u65bc\u6a21\u578b\u672c\u8eab\u7684\u9673\u8ff0\uff0c\u4e0d\u662f\u5be6\u9a57\u8aa4\u5dee\u7bc4\u570d\u3002 ",
   "tm.fold.note.mbc!":"\u542b\u591a\u5411\u4ea4\u532f\u7684\u7d50\u69cb\uff0c\u662f\u5728\u8981\u6c42\u7d50\u69cb\u5fc5\u9808\u542b\u6709\u591a\u5411\u4ea4\u532f\u4e4b\u5f8c\u91cd\u65b0\u641c\u5c0b\u5f97\u5230\u7684\u3002\u7b2c\u4e8c\u6b21\u641c\u5c0b\u6703\u5728\u6bcf\u500b\u6aa2\u67e5\u904e\u7684\u5340\u6bb5\u4e0a\u4fdd\u7559\u542b\u4ea4\u532f\u7684\u6700\u4f73\u7d50\u69cb\uff0c\u56e0\u6b64\u80fd\u627e\u5230\u4e0d\u52a0\u9019\u9805\u8981\u6c42\u6642\u641c\u5c0b\u5728\u4e2d\u9014\u6368\u68c4\u7684\u7d50\u69cb\u3002\u9019\u5c31\u662f\u70ba\u4ec0\u9ebc\u9019\u500b\u7d50\u679c\u5076\u723e\u6703\u6bd4\u4e0a\u65b9\u7684\u7d50\u69cb\u66f4\u7a69\u5b9a\u3002",
   "tm.fold.note.mbdna!":"\uff0c\u4ee5\u53ca\u591a\u5206\u652f\u74b0\u3002\u5728\u591a\u5206\u652f\u74b0\u5167\u6211\u5011\u6703\u8a08\u5165\u61f8\u5782\u672b\u7aef\u8207\u9f4a\u5e73\u7684\u5171\u8ef8\u5806\u758a\uff1b\u5728\u6e38\u96e2\u5c3e\u7aef\u4e0a\uff0c\u6211\u5011\u6703\u8a08\u5165\u6700\u5916\u5074\u87ba\u65cb\u672b\u7aef\u7684\u4e00\u500b\u61f8\u5782\u672b\u7aef\uff1b<b>\u932f\u914d\u4ecb\u5c0e\u7684\u5171\u8ef8\u5806\u758a\u4ee5\u53ca\u672b\u7aef\u932f\u914d\u90fd\u4e0d\u8a08\u5165</b>\u3002\u9019\u5169\u9805\u88ab\u7565\u904e\u7684\u80fd\u91cf\u9805\u5728 SantaLucia \u6a21\u578b\u4e2d\u90fd\u662f\u4f7f\u7d50\u69cb\u66f4\u7a69\u5b9a\u7684\u3002\u9019\u662f\u95dc\u65bc\u6a21\u578b\u672c\u8eab\u7684\u9673\u8ff0\uff0c\u4e0d\u662f\u5be6\u9a57\u8aa4\u5dee\u7bc4\u570d\u3002\u61f8\u5782\u672b\u7aef\u63a1\u7528\u5df2\u88fd\u8868\u7684 DNA \u6578\u503c\uff1a\u5176\u4e2d\u6709\u5e7e\u500b\u9589\u5408\u9e7c\u57fa\u5c0d\uff0c\u56db\u7a2e\u61f8\u5782\u9e7c\u57fa\u5171\u7528\u540c\u4e00\u500b\u503c\uff0c\u800c\u5169\u5217 G-T \u5247\u6cbf\u7528\u8207\u5176\u6700\u76f8\u8fd1\u7684\u83ef\u751f-\u514b\u91cc\u514b\u9e7c\u57fa\u5c0d\u7684\u6578\u503c\u3002 ",
-  "tm.fold.note.mbrna!":"\u3002<b>\u8d85\u904e {n} nt \u5c31\u4e0d\u641c\u5c0b\u591a\u5206\u652f\u7d50\u69cb\u3002</b>\u9019\u500b\u4e0a\u9650\u7528\u4f86\u9650\u5236\u641c\u5c0b\u6210\u672c\u3002\u4ecd\u6703\u8003\u616e\u5f7c\u6b64\u5206\u958b\u7684\u5916\u90e8\u7d50\u69cb\u57df\uff0c\u4f46\u4e0d\u641c\u5c0b\u7d50\u69cb\u57df\u5167\u7684\u4ea4\u6703\u9ede\u3002\u6709\u9650\u7684\u641c\u5c0b\u53ef\u80fd\u6f0f\u6389\u80fd\u91cf\u66f4\u4f4e\u7684\u7d50\u69cb\u3002",
-  "tm.fold.note.mfe!":"\u9019\u500b\u7d50\u69cb\u662f\u9019\u6b21\u641c\u5c0b\u627e\u5230\u7684\u6700\u4f4e\u81ea\u7531\u80fd\u7d50\u69cb\uff0c\u4e26\u4e0d\u662f\u5df2\u8b49\u660e\u7684\u5168\u57df\u6700\u5c0f\u503c\uff1a\u641c\u5c0b\u5148\u7528\u8f03\u4fbf\u5b9c\u7684\u80fd\u91cf\u6a21\u578b\u6392\u5e8f\uff0c\u518d\u53ea\u5c0d\u524d {k} \u500b\u5019\u9078\u7d50\u69cb\u505a\u7cbe\u78ba\u8a08\u5206\u3002\u7d50\u679c\u4ee5\u9ede\u62ec\u865f\u8868\u793a\uff1a\u5305\u542b\u5806\u758a\u3001\u51f8\u8d77\u8207\u5167\u90e8\u74b0",
+  "tm.fold.note.mbrna!":"\u3002<b>\u5e8f\u5217\u9577\u5ea6\u8d85\u904e {n} nt \u6642\uff0c\u4e0d\u641c\u5c0b\u591a\u5206\u652f\u7d50\u69cb\u3002</b>\u9019\u500b\u4e0a\u9650\u7528\u4f86\u9650\u5236\u641c\u5c0b\u6210\u672c\u3002\u5f9e\u5916\u90e8\u74b0\u5206\u51fa\u7684\u5404\u500b\u8396\u4ecd\u6703\u7d0d\u5165\u8003\u616e\uff0c\u4f46\u4e0d\u641c\u5c0b\u9019\u4e9b\u8396\u5167\u90e8\u7684\u591a\u5206\u652f\u74b0\u3002\u9019\u7a2e\u7bc4\u570d\u6709\u9650\u7684\u641c\u5c0b\u53ef\u80fd\u6f0f\u6389\u80fd\u91cf\u66f4\u4f4e\u7684\u7d50\u69cb\u3002",
+  "tm.fold.note.mfe!":"\u9019\u500b\u7d50\u69cb\u662f\u9019\u6b21\u641c\u5c0b\u627e\u5230\u7684\u6700\u4f4e\u81ea\u7531\u80fd\u7d50\u69cb\uff0c\u4e26\u4e0d\u662f\u5df2\u8b49\u660e\u7684\u5168\u57df\u6700\u5c0f\u503c\uff1a\u641c\u5c0b\u5148\u7528\u8a08\u7b97\u6210\u672c\u8f03\u4f4e\u7684\u80fd\u91cf\u6a21\u578b\u5c0d\u5019\u9078\u7d50\u69cb\u6392\u5e8f\uff0c\u518d\u4ee5\u5b8c\u6574\u6a21\u578b\u5c0d {k} \u500b\u4e0d\u540c\u7684\u7d50\u69cb\u8a08\u5206\u3002\u7d50\u69cb\u4ee5\u9ede\u62ec\u865f\u8868\u793a\u3002\u5b8c\u6574\u6a21\u578b\u6db5\u84cb\u5806\u758a\u3001\u9aee\u593e\u74b0\u3001\u51f8\u8d77\u8207\u5167\u90e8\u74b0",
+  "tm.fold.note.mfe.one!":"\u9019\u500b\u7d50\u69cb\u662f\u9019\u6b21\u641c\u5c0b\u627e\u5230\u7684\u6700\u4f4e\u81ea\u7531\u80fd\u7d50\u69cb\uff0c\u4e26\u4e0d\u662f\u5df2\u8b49\u660e\u7684\u5168\u57df\u6700\u5c0f\u503c\uff1a\u641c\u5c0b\u5148\u7528\u8a08\u7b97\u6210\u672c\u8f03\u4f4e\u7684\u80fd\u91cf\u6a21\u578b\u5c0d\u5019\u9078\u7d50\u69cb\u6392\u5e8f\uff0c\u518d\u4ee5\u5b8c\u6574\u6a21\u578b\u5c0d 1 \u500b\u7d50\u69cb\u8a08\u5206\u3002\u7d50\u69cb\u4ee5\u9ede\u62ec\u865f\u8868\u793a\u3002\u5b8c\u6574\u6a21\u578b\u6db5\u84cb\u5806\u758a\u3001\u9aee\u593e\u74b0\u3001\u51f8\u8d77\u8207\u5167\u90e8\u74b0",
   "tm.fold.note.one!":"\u627e\u4e0d\u5230\u7a69\u5b9a\u7684\u9aee\u593e\u3002",
   "tm.fold.note.rna!":"\u74b0\u53c3\u6578\uff1aTurner 2004\uff0c\u4e5f\u5c31\u662f\u53d6\u81ea Nearest Neighbor Database \u7684 Mathews 2004\uff08ΔG°₃₇\uff09\u8207 Lu 2006\uff08ΔH\uff09\uff1b\u8396\u4f86\u81ea Xia 1998\u3002\u9019\u662f\u771f\u6b63\u91cf\u6e2c\u7684\u74b0\u7113\u503c\uff0c\u4e0d\u662f\u5047\u8a2d\u3002<b>\u9019\u500b\u647a\u758a\u7684\u9e7d\u6821\u6b63\u662f\u91dd\u5c0d RNA \u64ec\u5408\u7684\u3002</b>\u6bcf\u4e00\u500b\u5806\u758a\u90fd\u5e36\u6709 Yao \u8207 Lorenz \u5728 2023 \u5e74\u767c\u8868\u7684\u5fb7\u62dc\u5c4f\u853d\u8207 Manning \u51dd\u805a\u9805\uff0c\u4e26\u4ee5 Turner \u53c3\u6578\u672c\u8eab\u7684\u91cf\u6e2c\u689d\u4ef6 1.021 M \u9209\u96e2\u5b50\u70ba\u57fa\u6e96\uff0c\u56e0\u6b64\u81ea\u7531\u80fd\u8207\u647a\u758a\u7684\u7194\u89e3\u6eab\u5ea6\u6703\u96a8\u4f60\u8f38\u5165\u7684\u7de9\u885d\u6db2\u800c\u8b8a\u3002\u7113\u503c\u4e0d\u6703\uff0c\u9e7c\u57fa\u5c0d\u8207\u74b0\u7684\u8a08\u6578\u4e5f\u4e0d\u6703\u3002\u90a3\u7bc7\u767c\u8868\u7684\u6a21\u578b\u540c\u6642\u4e5f\u6821\u6b63\u74b0\u7684\u975c\u96fb\u4f5c\u7528\uff0c\u672c\u5f15\u64ce\u6c92\u6709\uff0c\u904e\u53bb\u4e5f\u4e0d\u66fe\u6709\u3002\u96d9\u80a1\u7684\u7194\u89e3\u6eab\u5ea6\u4ecd\u7136\u4ee5 Owczarzy 2004 \u6821\u6b63\uff0c\u800c\u90a3\u662f\u5c0d DNA \u64ec\u5408\u7684\u3002GU \u6416\u64fa\u914d\u5c0d\u8a08\u70ba\u8396\u914d\u5c0d\uff1b\u5169\u5074\u5404\u6709\u4e00\u5230\u5169\u500b\u672a\u914d\u5c0d\u9e7c\u57fa\u7684\u5167\u90e8\u74b0\uff0c\u63a1\u7528 Turner \u5c0d\u8a72\u74b0\u7684\u5be6\u6e2c\u503c\uff0c\u800c\u4e0d\u662f\u901a\u7528\u7684\u74b0\u65b9\u7a0b\u5f0f\u3002",
   "tm.fold.note.tmm!":" ⚠ \u9019\u500b\u74b0\u7528\u5230 GG/CG \u672b\u7aef\u932f\u914d\u3002\u5b83\u5728\u5df2\u767c\u8868\u7684\u8868\u683c\u4e2d\u662f\u7570\u5e38\u503c\uff0c\u6211\u5011\u539f\u6a23\u6cbf\u7528\uff0c\u6c92\u6709\u4fee\u6539\u3002",
@@ -3388,7 +3396,7 @@ var I18N = {
   "tm.why.fold.note.mod!":"\u4fee\u98fe\u5316\u5b78\u6c92\u6709\u4efb\u4f55\u5df2\u767c\u8868\u7684\u74b0\u53c3\u6578",
   "tm.why.fold.sugar":"\u4fee\u98fe\u904e\u7684\u91a3",
   "tm.why.lna.both!":"\u5169\u80a1\u7686\u542b LNA\uff1a\u5df2\u767c\u8868\u7684\u53c3\u6578\u96c6\u4f86\u81ea\u50c5\u4e00\u80a1\u542b LNA \u7684\u6e2c\u91cf\u3002\u672c\u8a08\u7b97\u5c07\u76f8\u5c0d\u5169\u80a1\u4e0a\u7684 LNA \u6b98\u57fa\u8996\u70ba\u5f7c\u6b64\u7368\u7acb\u7684\u5c40\u90e8\u589e\u91cf\u3002\u6240\u5f15\u7528\u7684\u6e2c\u91cf\u5c1a\u672a\u9a57\u8b49\u9019\u7a2e\u540c\u6642\u7528\u65bc\u5169\u80a1\u7684\u65b9\u5f0f\u3002",
-  "tm.why.lna.frac!":"LNA \u8d85\u904e 40%\uff08\u4f5c\u8005\u5728\u90a3\u88e1\u81ea\u5df1\u8072\u660e\u6700\u9130\u8fd1\u6a21\u578b\u4e0d\u9069\u7528\uff09",
+  "tm.why.lna.frac!":"LNA \u8d85\u904e 40%\uff08\u4f5c\u8005\u81ea\u5df1\u8072\u660e\u6700\u9130\u8fd1\u6a21\u578b\u5728\u6b64\u7bc4\u570d\u4e0d\u9069\u7528\uff09",
   "tm.why.lna.rna!":"LNA \u5c0d\u4e0a RNA \u6a19\u7684\uff08\u6c92\u6709\u5df2\u767c\u8868\u7684\u53c3\u6578\u7d44\uff09",
   "tm.why.lna.term!":"\u672b\u7aef\u7684 LNA\uff08\u53c3\u6578\u53ea\u5c0d\u5167\u90e8\u7684 LNA \u64ec\u5408\uff09",
   "tm.why.ome.dna!":"2′-OMe \u5c0d\u4e0a DNA \u6a19\u7684\uff08\u6c92\u6709\u4efb\u4f55\u5df2\u767c\u8868\u7684\u53c3\u6578\u7d44\uff09",
@@ -3426,8 +3434,8 @@ var I18N = {
   "ui.auth.offline":"\u9023\u4e0d\u4e0a\u4f3a\u670d\u5668\u3002\u8acb\u6aa2\u67e5\u4f60\u7684\u9023\u7dda\uff0c\u7136\u5f8c\u518d\u8a66\u4e00\u6b21\u3002",
   "ui.auth.rate":"\u64cd\u4f5c\u592a\u983b\u7e41\u4e86\u3002\u8acb\u7b49\u4e00\u5206\u9418\u518d\u8a66\u4e00\u6b21\u3002",
   "ui.auth.rate.wait":"\u4e00\u6b21\u53ea\u80fd\u8981\u4e00\u7d44\u9a57\u8b49\u78bc\u3002\u518d\u904e {n} \u79d2\u5c31\u53ef\u4ee5\u8981\u65b0\u7684\u3002\u7b49\u7684\u6642\u5019\u53ef\u4ee5\u5148\u770b\u4e00\u4e0b\u5783\u573e\u90f5\u4ef6\u5323\u3002",
-  "ui.batch.partial.many!":"\u5df2\u5132\u5b58 {n} \u689d\u5e8f\u5217\u3002\u53e6\u6709 {dropped} \u689d\u8d85\u904e\u4f60\u65b9\u6848\u7684\u8cc7\u6599\u5eab\u5bb9\u91cf\uff0c\u56e0\u6b64\u4ecd\u5217\u5728\u9019\u88e1\u3002",
-  "ui.batch.partial.one!":"\u5df2\u5132\u5b58 {n} \u689d\u5e8f\u5217\u3002\u53e6\u6709 {dropped} \u689d\u8d85\u904e\u4f60\u65b9\u6848\u7684\u8cc7\u6599\u5eab\u5bb9\u91cf\uff0c\u56e0\u6b64\u4ecd\u5217\u5728\u9019\u88e1\u3002",
+  "ui.batch.partial.many!":"\u5df2\u5132\u5b58 {n} \u689d\u5e8f\u5217\u3002\u53e6\u6709 {dropped} \u689d\u8d85\u904e\u4f60\u65b9\u6848\u7684\u8cc7\u6599\u5eab\u5bb9\u91cf\uff0c\u4e26\u672a\u5132\u5b58\uff0c\u56e0\u6b64\u4ecd\u5217\u5728\u9019\u88e1\u3002",
+  "ui.batch.partial.one!":"\u5df2\u5132\u5b58 {n} \u689d\u5e8f\u5217\u3002\u53e6\u6709 {dropped} \u689d\u8d85\u904e\u4f60\u65b9\u6848\u7684\u8cc7\u6599\u5eab\u5bb9\u91cf\uff0c\u4e26\u672a\u5132\u5b58\uff0c\u56e0\u6b64\u4ecd\u5217\u5728\u9019\u88e1\u3002",
   "ui.bill.addpeople":"\u65b0\u589e\u6210\u54e1",
   "ui.bill.buy.title":"\u70ba {lab} \u8cfc\u8cb7\u5e2d\u4f4d",
   "ui.bill.cancelled":"\u7d50\u5e33\u5df2\u53d6\u6d88\u3002\u6c92\u6709\u6536\u53d6\u4efb\u4f55\u8cbb\u7528\u3002",
@@ -3661,7 +3669,7 @@ var I18N = {
   "ui.lib.adel":"\u522a\u9664 {name}",
   "ui.lib.amore":"{name} \u7684\u66f4\u591a\u64cd\u4f5c",
   "ui.lib.aname":"\u5e8f\u5217\u540d\u7a31",
-  "ui.lib.aren":"\u91cd\u65b0\u547d\u540d {name}",
+  "ui.lib.aren":"\u91cd\u65b0\u547d\u540d\u5e8f\u5217\u3002\u76ee\u524d\u540d\u7a31\uff1a{name}",
   "ui.lib.ashare":"\u5206\u4eab {name} \u7684\u526f\u672c",
   "ui.lib.copyname":"{name}\uff08\u526f\u672c\uff09",
   "ui.lib.counted":"\u55ae\u80a1\u8207\u96d9\u80a1",
@@ -3694,11 +3702,11 @@ var I18N = {
   "ui.monomer.insert.anti":"\u5df2\u5c07 {code} \u63d2\u5165\u53cd\u7fa9\u80a1\u3002",
   "ui.monomer.insert.aria":"\u63d2\u5165 {name}\uff08{code}\uff09",
   "ui.monomer.insert.sense":"\u5df2\u5c07 {code} \u63d2\u5165\u6b63\u7fa9\u80a1\u3002",
-  "ui.monomer.pin":"\u5c07 {code} \u91d8\u9078\u5230 Quick Insert",
+  "ui.monomer.pin":"\u5c07 {code} \u91d8\u9078\u5230\u5feb\u901f\u63d2\u5165",
   "ui.monomer.show.all":"\u986f\u793a\u6240\u6709\u9e7c\u57fa",
   "ui.monomer.show.fewer":"\u986f\u793a\u8f03\u5c11\u9e7c\u57fa",
   "ui.monomer.thymine":"\u80f8\u817a\u5627\u5576",
-  "ui.monomer.unpin":"\u5c07 {code} \u5f9e Quick Insert \u53d6\u6d88\u91d8\u9078",
+  "ui.monomer.unpin":"\u5f9e\u5feb\u901f\u63d2\u5165\u53d6\u6d88\u91d8\u9078 {code}",
   "ui.monomer.uracil":"\u5c3f\u5627\u5576",
   "ui.notation.dna":"DNA",
   "ui.notation.rna":"RNA",
@@ -4030,7 +4038,7 @@ var I18N = {
   "ui.wall.moved.bodyN":"\u4f60\u539f\u672c\u5728\u9019\u500b\u700f\u89bd\u5668\u88e1\u7684 <b>{n} \u7b46\u5e8f\u5217</b>\u73fe\u5728\u5df2\u7d93\u5728\u4f60\u7684\u5e33\u6236\u88e1\u3002\u7528\u624b\u6a5f\u6253\u958b\u8a08\u7b97\u6a5f\u5c31\u770b\u5f97\u5230\u3002",
   "ui.wall.moved.foot":"\u4f60\u7684\u5e33\u6236\u662f\u90a3\u4efd\u53ef\u4ee5\u8de8\u88dd\u7f6e\u4f7f\u7528\u7684\u526f\u672c\uff1b\u9019\u500b\u700f\u89bd\u5668\u53e6\u5916\u4fdd\u7559\u4e00\u4efd\u96e2\u7dda\u526f\u672c\uff0c\u6240\u4ee5\u6c92\u6709\u7db2\u8def\u6642\u8a08\u7b97\u6a5f\u9084\u662f\u80fd\u7528\u3002",
   "ui.wall.moved.title":"\u4f60\u7684\u8cc7\u6599\u5eab\u5df2\u7d93\u5728\u5e33\u6236\u88e1",
-  "ui.wall.ok":"\u597d",
+  "ui.wall.ok":"\u78ba\u5b9a",
   "ui.wall.ready.body":"\u5f9e\u73fe\u5728\u958b\u59cb\u4f60\u5132\u5b58\u7684\u6771\u897f\u90fd\u6703\u5b58\u5728\u5e33\u6236\u88e1\uff0c\u800c\u4e14\u5728\u4f60\u767b\u5165\u7684\u6bcf\u4e00\u53f0\u88dd\u7f6e\u4e0a\u90fd\u770b\u5f97\u5230\u3002\u9019\u500b\u700f\u89bd\u5668\u6703\u4fdd\u7559\u4e00\u4efd\u96e2\u7dda\u526f\u672c\uff0c\u6240\u4ee5\u96e2\u7dda\u6642\u8a08\u7b97\u6a5f\u9084\u662f\u80fd\u7528\u3002",
   "ui.wall.ready.title":"\u4f60\u7684\u5e33\u6236\u5df2\u7d93\u6e96\u5099\u597d\u4e86",
   "ui.wall.retry":"\u91cd\u8a66\u540c\u6b65",
@@ -4316,6 +4324,8 @@ var I18N = {
   "lab.cap.members":"{n} \u4f4d\u6210\u5458",
   "lab.cap.seat":"{used} / {seats} \u5e2d",
   "lab.cap.seats":"{used} / {seats} \u5e2d",
+  "lab.card.aname":"\u5e8f\u5217\u540d\u79f0",
+  "lab.card.aren":"\u91cd\u547d\u540d\u5e8f\u5217\u3002\u5f53\u524d\u540d\u79f0\u662f {name}",
   "lab.card.armdel":"\u786e\u5b9a\u5220\u9664\uff1f",
   "lab.card.by":"\u7531 {email} \u5206\u4eab",
   "lab.card.del":"\u5220\u9664",
@@ -4325,6 +4335,7 @@ var I18N = {
   "lab.card.mgrdelT":"\u4f60\u662f\u8fd9\u4e2a\u5b9e\u9a8c\u5ba4\u7684\u8d1f\u8d23\u4eba\u3002\u8fd9\u4e2a\u64cd\u4f5c\u4f1a\u5220\u9664\u8fd9\u6761\u8bb0\u5f55\uff0c\u5305\u62ec\u5f53\u521d\u4fdd\u5b58\u5b83\u7684\u4eba\u5728\u5185\uff0c\u5b9e\u9a8c\u5ba4\u91cc\u7684\u6bcf\u4e2a\u4eba\u90fd\u4f1a\u5931\u53bb\u5b83\u3002",
   "lab.card.open":"\u6253\u5f00",
   "lab.card.opencopy":"\u52a0\u8f7d\u526f\u672c",
+  "lab.card.renfail!":"\u5e8f\u5217\u91cd\u547d\u540d\u5931\u8d25\u3002\u5c4f\u5e55\u4e0a\u4ecd\u663e\u793a\u539f\u6765\u7684\u540d\u79f0\u3002",
   "lab.card.rmdone":"\u5df2\u79fb\u51fa\u5b9e\u9a8c\u5ba4",
   "lab.card.rmlab":"\u79fb\u51fa",
   "lab.card.sel":"\u9009\u53d6 {name}",
@@ -5208,21 +5219,21 @@ var I18N = {
   "tm.deep.defaultstatus!":"\u989d\u5916\u641c\u7d22\u5df2\u5173\u95ed\u3002\u6b63\u5728\u663e\u793a\u6216\u8ba1\u7b97\u8fd9\u7ec4\u8f93\u5165\u7684\u9ed8\u8ba4\u641c\u7d22\u7ed3\u679c\u3002",
   "tm.deep.device!":"\u4f60\u7684\u5e8f\u5217\u548c\u8bbe\u5907\u53ef\u80fd\u9700\u8981\u66f4\u4e45\u3002\u8fd9\u4e9b\u662f\u5728\u53f0\u5f0f\u7535\u8111\u4e0a\u6d4b\u5f97\u7684\u65f6\u95f4\uff0c\u4e0d\u662f\u65f6\u95f4\u4e0a\u9650\u3002",
   "tm.deep.done!":"\u989d\u5916\u641c\u7d22\u5df2\u5b8c\u6210\u3002",
-  "tm.deep.error!":"\u989d\u5916\u641c\u7d22\u65e0\u6cd5\u5728\u540e\u53f0\u5de5\u4f5c\u7ebf\u7a0b\u4e2d\u8fd0\u884c\u3002\u672a\u63a5\u53d7\u4efb\u4f55\u65b0\u7ed3\u679c\u3002\u8bf7\u5148\u786e\u8ba4\u641c\u7d22\u8981\u6c42\uff0c\u518d\u91cd\u8bd5\u3002",
+  "tm.deep.error!":"\u989d\u5916\u641c\u7d22\u672a\u80fd\u5728\u540e\u53f0\u8fd0\u884c\u3002\u6ca1\u6709\u91c7\u7528\u4efb\u4f55\u65b0\u7ed3\u679c\u3002\u8bf7\u5148\u786e\u8ba4\u641c\u7d22\u8981\u6c42\uff0c\u518d\u91cd\u8bd5\u3002",
   "tm.deep.input":"{n} nt · {chem}",
   "tm.deep.limit!":"\u65f6\u95f4\u4e0a\u9650\uff1a{n} \u79d2\u3002",
-  "tm.deep.method!":"\u666e\u901a\u641c\u7d22\u7684\u7ed3\u679c\u662f\u8be5\u6b21\u641c\u7d22\u627e\u5230\u7684\u6700\u4f4e\u81ea\u7531\u80fd\u7ed3\u6784\uff0c\u5e76\u4e0d\u662f\u5df2\u8bc1\u660e\u7684\u5168\u5c40\u6700\u5c0f\u503c\u3002\u8fd9\u4e2a\u6709\u9650\u7684\u641c\u7d22\u5148\u7528\u8ba1\u7b97\u6210\u672c\u8f83\u4f4e\u7684\u80fd\u91cf\u6a21\u578b\u5bf9\u5019\u9009\u7ed3\u6784\u6392\u5e8f\uff0c\u518d\u7528\u5b8c\u6574\u6a21\u578b\u5bf9\u9009\u51fa\u7684\u90e8\u5206\u5019\u9009\u7ed3\u6784\u8ba1\u5206\u3002\u8ba1\u7b97\u5305\u542b\u5806\u53e0\u3001\u51f8\u8d77\u4e0e\u5185\u90e8\u73af",
+  "tm.deep.method!":"\u666e\u901a\u641c\u7d22\u7684\u7ed3\u679c\u662f\u8be5\u6b21\u641c\u7d22\u627e\u5230\u7684\u6700\u4f4e\u81ea\u7531\u80fd\u7ed3\u6784\uff0c\u5e76\u4e0d\u662f\u5df2\u8bc1\u660e\u7684\u5168\u5c40\u6700\u5c0f\u503c\u3002\u8fd9\u4e2a\u8303\u56f4\u6709\u9650\u7684\u641c\u7d22\u5148\u7528\u8ba1\u7b97\u6210\u672c\u8f83\u4f4e\u7684\u80fd\u91cf\u6a21\u578b\u5bf9\u5019\u9009\u7ed3\u6784\u6392\u5e8f\uff0c\u518d\u7528\u5b8c\u6574\u6a21\u578b\u5bf9\u9009\u51fa\u7684\u90e8\u5206\u5019\u9009\u7ed3\u6784\u8ba1\u5206\u3002\u5b8c\u6574\u6a21\u578b\u7684\u8ba1\u7b97\u5305\u542b\u5806\u53e0\u3001\u53d1\u5939\u73af\u3001\u51f8\u8d77\u4e0e\u5185\u90e8\u73af",
   "tm.deep.notnow":"\u6682\u65f6\u4e0d\u8981",
   "tm.deep.ordinary":"\u666e\u901a\u641c\u7d22\u7ed3\u679c",
   "tm.deep.reference!":"\u4ec5\u4f9b\u53c2\u8003\uff1a{n} nt \u7684 {chem}\u3002\u8fd9\u4e0d\u662f\u9488\u5bf9\u5f53\u524d\u957f\u5ea6\u6d4b\u5f97\u7684\u65f6\u95f4\u3002",
   "tm.deep.retry":"\u786e\u8ba4\u540e\u91cd\u8bd5",
-  "tm.deep.scope!":"\u70b9\u51fb“\u5f00\u59cb\u641c\u7d22”\u4f1a\u6267\u884c\u5305\u542b\u591a\u5411\u4ea4\u6c47\u7684\u666e\u901a\u641c\u7d22\uff0c\u5e76\u53e6\u5916\u6267\u884c\u8981\u6c42\u7ed3\u6784\u5fc5\u987b\u542b\u4ea4\u6c47\u7684\u641c\u7d22\u3002\u8fd9\u4e9b\u6709\u9650\u7684\u641c\u7d22\u53ef\u80fd\u9057\u6f0f\u80fd\u91cf\u66f4\u4f4e\u7684\u7ed3\u6784\u3002",
+  "tm.deep.scope!":"\u70b9\u51fb“\u5f00\u59cb\u641c\u7d22”\u4f1a\u6267\u884c\u4e24\u79cd\u641c\u7d22\uff1a\u666e\u901a\u641c\u7d22\uff0c\u5176\u7ed3\u6784\u53ef\u4ee5\u542b\u6709\u591a\u5411\u4ea4\u6c47\uff1b\u4ee5\u53ca\u53e6\u4e00\u79cd\u53ea\u9650\u542b\u591a\u5411\u4ea4\u6c47\u7ed3\u6784\u7684\u641c\u7d22\u3002\u8fd9\u4e24\u79cd\u641c\u7d22\u7684\u8303\u56f4\u90fd\u6709\u9650\uff0c\u53ef\u80fd\u9057\u6f0f\u80fd\u91cf\u66f4\u4f4e\u7684\u7ed3\u6784\u3002",
   "tm.deep.search":"\u641c\u7d22\u591a\u5411\u4ea4\u6c47",
   "tm.deep.selected":"\u5df2\u9009\u4e2d\u7684\u5907\u9009\u7ed3\u6784",
   "tm.deep.start":"\u5f00\u59cb\u641c\u7d22",
   "tm.deep.stop":"\u505c\u6b62\u641c\u7d22",
   "tm.deep.time!":"\u5728\u6d4b\u8bd5\u7535\u8111\u4e0a\uff0c\u8bf7\u9884\u7559\u7ea6 {n} \u79d2\u3002",
-  "tm.deep.timeout!":"\u989d\u5916\u641c\u7d22\u5df2\u8fbe\u65f6\u95f4\u4e0a\u9650\u5e76\u5df2\u505c\u6b62\u3002\u672a\u63a5\u53d7\u4efb\u4f55\u65b0\u7ed3\u679c\u3002",
+  "tm.deep.timeout!":"\u989d\u5916\u641c\u7d22\u5df2\u8fbe\u65f6\u95f4\u4e0a\u9650\u5e76\u5df2\u505c\u6b62\u3002\u6ca1\u6709\u63a5\u53d7\u4efb\u4f55\u65b0\u7ed3\u679c\u3002",
   "tm.dir.higher!":"\u771f\u6b63\u7684 Tm \u4f1a\u6bd4\u8fd9\u4e2a\u6570\u503c<b>\u66f4\u9ad8</b>\u3002",
   "tm.dir.lower!":"\u771f\u6b63\u7684 Tm \u4f1a\u6bd4\u8fd9\u4e2a\u6570\u503c<b>\u66f4\u4f4e</b>\u3002",
   "tm.dir.unknown!":"\u8fd9\u6761\u94fe\u540c\u65f6\u5e26\u6709\u4f7f\u7ed3\u6784\u66f4\u7a33\u5b9a\u4e0e\u66f4\u4e0d\u7a33\u5b9a\u7684\u4fee\u9970\uff0c\u6240\u4ee5<b>\u8bef\u5dee\u7684\u65b9\u5411\u65e0\u6cd5\u5f97\u77e5</b>\u3002",
@@ -5281,8 +5292,9 @@ var I18N = {
   "tm.fold.note.mb!":"\uff0c\u4ee5\u53ca\u591a\u5206\u652f\u73af\u3002\u5728\u591a\u5206\u652f\u73af\u5185\u6211\u4eec\u4f1a\u8ba1\u5165\u60ac\u5782\u672b\u7aef\u4e0e\u9f50\u5e73\u7684\u5171\u8f74\u5806\u53e0\uff1b\u5728\u6e38\u79bb\u5c3e\u7aef\u4e0a\uff0c\u6211\u4eec\u4f1a\u8ba1\u5165\u6700\u5916\u4fa7\u87ba\u65cb\u672b\u7aef\u7684\u4e00\u4e2a\u60ac\u5782\u672b\u7aef\u6216\u4e00\u4e2a\u672b\u7aef\u9519\u914d\uff0c\u4e24\u8005\u53d6\u5728\u5df2\u53d1\u8868\u6a21\u578b\u4e2d\u8f83\u7a33\u5b9a\u7684\u4e00\u9879\uff1b<b>\u9519\u914d\u4ecb\u5bfc\u7684\u5171\u8f74\u5806\u53e0\u4e0d\u8ba1\u5165</b>\u3002\u8fd9\u4e2a\u88ab\u7565\u8fc7\u7684\u80fd\u91cf\u9879\u5728 Turner \u6a21\u578b\u4e2d\u662f\u4f7f\u7ed3\u6784\u66f4\u7a33\u5b9a\u7684\u3002\u8fd9\u662f\u5173\u4e8e\u6a21\u578b\u672c\u8eab\u7684\u9648\u8ff0\uff0c\u4e0d\u662f\u5b9e\u9a8c\u8bef\u5dee\u8303\u56f4\u3002",
   "tm.fold.note.mbc!":"\u542b\u591a\u5411\u4ea4\u6c47\u7684\u7ed3\u6784\uff0c\u662f\u5728\u8981\u6c42\u7ed3\u6784\u5fc5\u987b\u542b\u6709\u591a\u5411\u4ea4\u6c47\u4e4b\u540e\u91cd\u65b0\u641c\u7d22\u5f97\u5230\u7684\u3002\u7b2c\u4e8c\u6b21\u641c\u7d22\u4f1a\u5728\u6bcf\u4e2a\u68c0\u67e5\u8fc7\u7684\u533a\u6bb5\u4e0a\u4fdd\u7559\u542b\u4ea4\u6c47\u7684\u6700\u4f73\u7ed3\u6784\uff0c\u56e0\u6b64\u80fd\u627e\u5230\u4e0d\u52a0\u8fd9\u9879\u8981\u6c42\u65f6\u641c\u7d22\u5728\u4e2d\u9014\u820d\u5f03\u7684\u7ed3\u6784\u3002\u8fd9\u5c31\u662f\u4e3a\u4ec0\u4e48\u8fd9\u4e2a\u7ed3\u679c\u5076\u5c14\u4f1a\u6bd4\u4e0a\u65b9\u7684\u7ed3\u6784\u66f4\u7a33\u5b9a\u3002",
   "tm.fold.note.mbdna!":"\uff0c\u4ee5\u53ca\u591a\u5206\u652f\u73af\u3002\u5728\u591a\u5206\u652f\u73af\u5185\u6211\u4eec\u4f1a\u8ba1\u5165\u60ac\u5782\u672b\u7aef\u4e0e\u9f50\u5e73\u7684\u5171\u8f74\u5806\u53e0\uff1b\u5728\u6e38\u79bb\u5c3e\u7aef\u4e0a\uff0c\u6211\u4eec\u4f1a\u8ba1\u5165\u6700\u5916\u4fa7\u87ba\u65cb\u672b\u7aef\u7684\u4e00\u4e2a\u60ac\u5782\u672b\u7aef\uff1b<b>\u9519\u914d\u4ecb\u5bfc\u7684\u5171\u8f74\u5806\u53e0\u4ee5\u53ca\u672b\u7aef\u9519\u914d\u90fd\u4e0d\u8ba1\u5165</b>\u3002\u8fd9\u4e24\u9879\u88ab\u7565\u8fc7\u7684\u80fd\u91cf\u9879\u5728 SantaLucia \u6a21\u578b\u4e2d\u90fd\u662f\u4f7f\u7ed3\u6784\u66f4\u7a33\u5b9a\u7684\u3002\u8fd9\u662f\u5173\u4e8e\u6a21\u578b\u672c\u8eab\u7684\u9648\u8ff0\uff0c\u4e0d\u662f\u5b9e\u9a8c\u8bef\u5dee\u8303\u56f4\u3002\u60ac\u5782\u672b\u7aef\u91c7\u7528\u5df2\u5236\u8868\u7684 DNA \u6570\u503c\uff1a\u5176\u4e2d\u6709\u51e0\u4e2a\u95ed\u5408\u78b1\u57fa\u5bf9\uff0c\u56db\u79cd\u60ac\u5782\u78b1\u57fa\u5171\u7528\u540c\u4e00\u4e2a\u503c\uff0c\u800c\u4e24\u884c G-T \u5219\u6cbf\u7528\u4e0e\u5176\u6700\u76f8\u8fd1\u7684\u6c83\u68ee-\u514b\u91cc\u514b\u78b1\u57fa\u5bf9\u7684\u6570\u503c\u3002",
-  "tm.fold.note.mbrna!":"\u3002<b>\u8d85\u8fc7 {n} nt \u5c31\u4e0d\u641c\u7d22\u591a\u5206\u652f\u7ed3\u6784\u3002</b>\u8fd9\u4e00\u4e0a\u9650\u7528\u4e8e\u9650\u5236\u641c\u7d22\u6210\u672c\u3002\u4ecd\u4f1a\u8003\u8651\u5f7c\u6b64\u5206\u5f00\u7684\u5916\u90e8\u7ed3\u6784\u57df\uff0c\u4f46\u4e0d\u641c\u7d22\u7ed3\u6784\u57df\u5185\u7684\u4ea4\u6c47\u70b9\u3002\u6709\u9650\u7684\u641c\u7d22\u53ef\u80fd\u9057\u6f0f\u80fd\u91cf\u66f4\u4f4e\u7684\u7ed3\u6784\u3002",
-  "tm.fold.note.mfe!":"\u8fd9\u4e2a\u7ed3\u6784\u662f\u8fd9\u6b21\u641c\u7d22\u627e\u5230\u7684\u6700\u4f4e\u81ea\u7531\u80fd\u7ed3\u6784\uff0c\u5e76\u4e0d\u662f\u5df2\u8bc1\u660e\u7684\u5168\u5c40\u6700\u5c0f\u503c\uff1a\u641c\u7d22\u5148\u7528\u8f83\u4fbf\u5b9c\u7684\u80fd\u91cf\u6a21\u578b\u6392\u5e8f\uff0c\u518d\u53ea\u5bf9\u524d {k} \u4e2a\u5019\u9009\u7ed3\u6784\u505a\u7cbe\u786e\u8ba1\u5206\u3002\u7ed3\u679c\u4ee5\u70b9\u62ec\u53f7\u8868\u793a\uff1a\u5305\u542b\u5806\u53e0\u3001\u51f8\u8d77\u4e0e\u5185\u90e8\u73af",
+  "tm.fold.note.mbrna!":"\u3002<b>\u5e8f\u5217\u957f\u5ea6\u8d85\u8fc7 {n} nt \u65f6\uff0c\u4e0d\u641c\u7d22\u591a\u5206\u652f\u7ed3\u6784\u3002</b>\u8fd9\u4e00\u4e0a\u9650\u7528\u4e8e\u9650\u5236\u641c\u7d22\u6210\u672c\u3002\u4ece\u5916\u90e8\u73af\u5206\u51fa\u7684\u5404\u4e2a\u830e\u4ecd\u4f1a\u7eb3\u5165\u8003\u8651\uff0c\u4f46\u4e0d\u641c\u7d22\u8fd9\u4e9b\u830e\u5185\u90e8\u7684\u591a\u5206\u652f\u73af\u3002\u8fd9\u79cd\u8303\u56f4\u6709\u9650\u7684\u641c\u7d22\u53ef\u80fd\u9057\u6f0f\u80fd\u91cf\u66f4\u4f4e\u7684\u7ed3\u6784\u3002",
+  "tm.fold.note.mfe!":"\u8fd9\u4e2a\u7ed3\u6784\u662f\u8fd9\u6b21\u641c\u7d22\u627e\u5230\u7684\u6700\u4f4e\u81ea\u7531\u80fd\u7ed3\u6784\uff0c\u5e76\u4e0d\u662f\u5df2\u8bc1\u660e\u7684\u5168\u5c40\u6700\u5c0f\u503c\uff1a\u641c\u7d22\u5148\u7528\u8ba1\u7b97\u6210\u672c\u8f83\u4f4e\u7684\u80fd\u91cf\u6a21\u578b\u5bf9\u5019\u9009\u7ed3\u6784\u6392\u5e8f\uff0c\u518d\u7528\u5b8c\u6574\u6a21\u578b\u5bf9 {k} \u4e2a\u4e0d\u540c\u7684\u7ed3\u6784\u8ba1\u5206\u3002\u7ed3\u6784\u4ee5\u70b9\u62ec\u53f7\u8868\u793a\u3002\u5b8c\u6574\u6a21\u578b\u6db5\u76d6\u5806\u53e0\u3001\u53d1\u5939\u73af\u3001\u51f8\u8d77\u4e0e\u5185\u90e8\u73af",
+  "tm.fold.note.mfe.one!":"\u8fd9\u4e2a\u7ed3\u6784\u662f\u8fd9\u6b21\u641c\u7d22\u627e\u5230\u7684\u6700\u4f4e\u81ea\u7531\u80fd\u7ed3\u6784\uff0c\u5e76\u4e0d\u662f\u5df2\u8bc1\u660e\u7684\u5168\u5c40\u6700\u5c0f\u503c\uff1a\u641c\u7d22\u5148\u7528\u8ba1\u7b97\u6210\u672c\u8f83\u4f4e\u7684\u80fd\u91cf\u6a21\u578b\u5bf9\u5019\u9009\u7ed3\u6784\u6392\u5e8f\uff0c\u518d\u7528\u5b8c\u6574\u6a21\u578b\u5bf9 1 \u4e2a\u7ed3\u6784\u8ba1\u5206\u3002\u7ed3\u6784\u4ee5\u70b9\u62ec\u53f7\u8868\u793a\u3002\u5b8c\u6574\u6a21\u578b\u6db5\u76d6\u5806\u53e0\u3001\u53d1\u5939\u73af\u3001\u51f8\u8d77\u4e0e\u5185\u90e8\u73af",
   "tm.fold.note.one!":"\u627e\u4e0d\u5230\u7a33\u5b9a\u7684\u53d1\u5939\u3002",
   "tm.fold.note.rna!":"\u73af\u53c2\u6570\uff1aTurner 2004\uff0c\u4e5f\u5c31\u662f\u53d6\u81ea Nearest Neighbor Database \u7684 Mathews 2004\uff08ΔG°₃₇\uff09\u4e0e Lu 2006\uff08ΔH\uff09\uff1b\u830e\u6765\u81ea Xia 1998\u3002\u8fd9\u662f\u771f\u6b63\u6d4b\u91cf\u7684\u73af\u7113\u503c\uff0c\u4e0d\u662f\u5047\u8bbe\u3002<b>\u8fd9\u4e2a\u6298\u53e0\u7684\u76d0\u6821\u6b63\u662f\u9488\u5bf9 RNA \u62df\u5408\u7684\u3002</b>\u6bcf\u4e00\u4e2a\u5806\u53e0\u90fd\u5e26\u6709 Yao \u4e0e Lorenz \u5728 2023 \u5e74\u53d1\u8868\u7684\u5fb7\u62dc\u5c4f\u853d\u4e0e Manning \u51dd\u805a\u9879\uff0c\u5e76\u4ee5 Turner \u53c2\u6570\u672c\u8eab\u7684\u6d4b\u91cf\u6761\u4ef6 1.021 M \u94a0\u79bb\u5b50\u4e3a\u57fa\u51c6\uff0c\u56e0\u6b64\u81ea\u7531\u80fd\u4e0e\u6298\u53e0\u7684\u89e3\u94fe\u6e29\u5ea6\u4f1a\u968f\u4f60\u8f93\u5165\u7684\u7f13\u51b2\u6db2\u800c\u53d8\u3002\u7113\u503c\u4e0d\u4f1a\uff0c\u78b1\u57fa\u5bf9\u4e0e\u73af\u7684\u8ba1\u6570\u4e5f\u4e0d\u4f1a\u3002\u90a3\u7bc7\u53d1\u8868\u7684\u6a21\u578b\u540c\u65f6\u4e5f\u6821\u6b63\u73af\u7684\u9759\u7535\u4f5c\u7528\uff0c\u672c\u5f15\u64ce\u6ca1\u6709\uff0c\u8fc7\u53bb\u4e5f\u4e0d\u66fe\u6709\u3002\u53cc\u94fe\u7684\u89e3\u94fe\u6e29\u5ea6\u4ecd\u7136\u4ee5 Owczarzy 2004 \u6821\u6b63\uff0c\u800c\u90a3\u662f\u5bf9 DNA \u62df\u5408\u7684\u3002GU \u6447\u6446\u914d\u5bf9\u8ba1\u4e3a\u830e\u914d\u5bf9\uff1b\u4e24\u4fa7\u5404\u6709\u4e00\u5230\u4e24\u4e2a\u672a\u914d\u5bf9\u78b1\u57fa\u7684\u5185\u90e8\u73af\uff0c\u91c7\u7528 Turner \u5bf9\u8be5\u73af\u7684\u5b9e\u6d4b\u503c\uff0c\u800c\u4e0d\u662f\u901a\u7528\u7684\u73af\u65b9\u7a0b\u3002",
   "tm.fold.note.tmm!":"⚠ \u8fd9\u4e2a\u73af\u7528\u5230 GG/CG \u672b\u7aef\u9519\u914d\u3002\u5b83\u5728\u5df2\u53d1\u8868\u7684\u8868\u683c\u4e2d\u662f\u5f02\u5e38\u503c\uff0c\u6211\u4eec\u539f\u6837\u6cbf\u7528\uff0c\u6ca1\u6709\u4fee\u6539\u3002",
@@ -5337,7 +5349,7 @@ var I18N = {
   "tm.why.fold.note.mod!":"\u4fee\u9970\u5316\u5b66\u6ca1\u6709\u4efb\u4f55\u5df2\u53d1\u8868\u7684\u73af\u53c2\u6570",
   "tm.why.fold.sugar":"\u4fee\u9970\u8fc7\u7684\u7cd6",
   "tm.why.lna.both!":"\u4e24\u6761\u94fe\u5747\u542b LNA\uff1a\u5df2\u53d1\u8868\u7684\u53c2\u6570\u96c6\u6765\u81ea\u4ec5\u4e00\u6761\u94fe\u542b LNA \u7684\u6d4b\u91cf\u3002\u672c\u8ba1\u7b97\u5c06\u76f8\u5bf9\u4e24\u6761\u94fe\u4e0a\u7684 LNA \u6b8b\u57fa\u89c6\u4e3a\u5f7c\u6b64\u72ec\u7acb\u7684\u5c40\u90e8\u589e\u91cf\u3002\u6240\u5f15\u7528\u7684\u6d4b\u91cf\u5c1a\u672a\u9a8c\u8bc1\u8fd9\u79cd\u540c\u65f6\u7528\u4e8e\u4e24\u6761\u94fe\u7684\u65b9\u5f0f\u3002",
-  "tm.why.lna.frac!":"LNA \u8d85\u8fc7 40%\uff08\u4f5c\u8005\u5728\u90a3\u91cc\u81ea\u5df1\u58f0\u660e\u6700\u8fd1\u90bb\u6a21\u578b\u4e0d\u9002\u7528\uff09",
+  "tm.why.lna.frac!":"LNA \u8d85\u8fc7 40%\uff08\u4f5c\u8005\u81ea\u5df1\u58f0\u660e\u6700\u8fd1\u90bb\u6a21\u578b\u5728\u6b64\u6bd4\u4f8b\u4e4b\u4e0a\u4e0d\u9002\u7528\uff09",
   "tm.why.lna.rna!":"LNA \u5bf9\u4e0a RNA \u9776\u6807\uff08\u6ca1\u6709\u5df2\u53d1\u8868\u7684\u53c2\u6570\u7ec4\uff09",
   "tm.why.lna.term!":"\u672b\u7aef\u7684 LNA\uff08\u53c2\u6570\u53ea\u5bf9\u5185\u90e8\u7684 LNA \u62df\u5408\uff09",
   "tm.why.ome.dna!":"2′-OMe \u5bf9\u4e0a DNA \u9776\u6807\uff08\u6ca1\u6709\u4efb\u4f55\u5df2\u53d1\u8868\u7684\u53c2\u6570\u7ec4\uff09",
@@ -5375,8 +5387,8 @@ var I18N = {
   "ui.auth.offline":"\u8fde\u4e0d\u4e0a\u670d\u52a1\u5668\u3002\u8bf7\u68c0\u67e5\u4f60\u7684\u7f51\u7edc\uff0c\u7136\u540e\u518d\u8bd5\u4e00\u6b21\u3002",
   "ui.auth.rate":"\u73b0\u5728\u8bf7\u6c42\u592a\u591a\u4e86\u3002\u7b49\u4e00\u5206\u949f\u518d\u8bd5\u4e00\u6b21\u3002",
   "ui.auth.rate.wait":"\u4e00\u6b21\u53ea\u80fd\u83b7\u53d6\u4e00\u4e2a\u9a8c\u8bc1\u7801\u3002{n} \u79d2\u540e\u53ef\u4ee5\u91cd\u65b0\u83b7\u53d6\u3002\u7b49\u5f85\u671f\u95f4\u53ef\u4ee5\u5148\u770b\u770b\u5783\u573e\u90ae\u4ef6\u6587\u4ef6\u5939\u3002",
-  "ui.batch.partial.many!":"\u5df2\u4fdd\u5b58 {n} \u6761\u5e8f\u5217\u3002\u53e6\u6709 {dropped} \u6761\u8d85\u51fa\u4f60\u65b9\u6848\u7684\u6570\u636e\u5e93\u5bb9\u91cf\uff0c\u56e0\u6b64\u4ecd\u5217\u5728\u8fd9\u91cc\u3002",
-  "ui.batch.partial.one!":"\u5df2\u4fdd\u5b58 {n} \u6761\u5e8f\u5217\u3002\u53e6\u6709 {dropped} \u6761\u8d85\u51fa\u4f60\u65b9\u6848\u7684\u6570\u636e\u5e93\u5bb9\u91cf\uff0c\u56e0\u6b64\u4ecd\u5217\u5728\u8fd9\u91cc\u3002",
+  "ui.batch.partial.many!":"\u5df2\u4fdd\u5b58 {n} \u6761\u5e8f\u5217\u3002\u53e6\u6709 {dropped} \u6761\u8d85\u51fa\u4e86\u4f60\u7684\u65b9\u6848\u7684\u6570\u636e\u5e93\u5bb9\u91cf\uff0c\u5e76\u672a\u4fdd\u5b58\uff0c\u56e0\u6b64\u4ecd\u5217\u5728\u8fd9\u91cc\u3002",
+  "ui.batch.partial.one!":"\u5df2\u4fdd\u5b58 {n} \u6761\u5e8f\u5217\u3002\u53e6\u6709 {dropped} \u6761\u8d85\u51fa\u4e86\u4f60\u7684\u65b9\u6848\u7684\u6570\u636e\u5e93\u5bb9\u91cf\uff0c\u5e76\u672a\u4fdd\u5b58\uff0c\u56e0\u6b64\u4ecd\u5217\u5728\u8fd9\u91cc\u3002",
   "ui.bill.addpeople":"\u6dfb\u52a0\u6210\u5458",
   "ui.bill.buy.title":"\u4e3a {lab} \u8d2d\u4e70\u5e2d\u4f4d",
   "ui.bill.cancelled":"\u7ed3\u8d26\u5df2\u53d6\u6d88\u3002\u6ca1\u6709\u6536\u53d6\u4efb\u4f55\u8d39\u7528\u3002",
@@ -5610,7 +5622,7 @@ var I18N = {
   "ui.lib.adel":"\u5220\u9664 {name}",
   "ui.lib.amore":"{name} \u7684\u66f4\u591a\u64cd\u4f5c",
   "ui.lib.aname":"\u5e8f\u5217\u540d\u79f0",
-  "ui.lib.aren":"\u91cd\u547d\u540d {name}",
+  "ui.lib.aren":"\u91cd\u547d\u540d\u5e8f\u5217\u3002\u5f53\u524d\u540d\u79f0\u662f {name}",
   "ui.lib.ashare":"\u5206\u4eab {name} \u7684\u526f\u672c",
   "ui.lib.copyname":"{name}\uff08\u526f\u672c\uff09",
   "ui.lib.counted":"\u5355\u94fe\u4e0e\u53cc\u94fe",
@@ -5643,11 +5655,11 @@ var I18N = {
   "ui.monomer.insert.anti":"\u5df2\u5c06 {code} \u63d2\u5165\u53cd\u4e49\u94fe\u3002",
   "ui.monomer.insert.aria":"\u63d2\u5165 {name}\uff08{code}\uff09",
   "ui.monomer.insert.sense":"\u5df2\u5c06 {code} \u63d2\u5165\u6b63\u4e49\u94fe\u3002",
-  "ui.monomer.pin":"\u5c06 {code} \u56fa\u5b9a\u5230 Quick Insert",
+  "ui.monomer.pin":"\u5c06 {code} \u56fa\u5b9a\u5230\u5feb\u901f\u63d2\u5165",
   "ui.monomer.show.all":"\u663e\u793a\u6240\u6709\u78b1\u57fa",
   "ui.monomer.show.fewer":"\u663e\u793a\u8f83\u5c11\u78b1\u57fa",
   "ui.monomer.thymine":"\u80f8\u817a\u5627\u5576",
-  "ui.monomer.unpin":"\u5c06 {code} \u4ece Quick Insert \u53d6\u6d88\u56fa\u5b9a",
+  "ui.monomer.unpin":"\u4ece\u5feb\u901f\u63d2\u5165\u4e2d\u53d6\u6d88\u56fa\u5b9a {code}",
   "ui.monomer.uracil":"\u5c3f\u5627\u5576",
   "ui.notation.dna":"DNA",
   "ui.notation.rna":"RNA",
@@ -5979,7 +5991,7 @@ var I18N = {
   "ui.wall.moved.bodyN":"\u4f60\u539f\u672c\u4fdd\u5b58\u5728\u8fd9\u4e2a\u6d4f\u89c8\u5668\u91cc\u7684 <b>{n} \u6761\u5e8f\u5217</b>\u73b0\u5728\u5df2\u5728\u4f60\u7684\u8d26\u6237\u91cc\u3002\u7528\u624b\u673a\u6253\u5f00\u8ba1\u7b97\u5668\u5c31\u80fd\u770b\u5230\u3002",
   "ui.wall.moved.foot":"\u8d26\u6237\u91cc\u4fdd\u5b58\u7684\u662f\u53ef\u8de8\u8bbe\u5907\u4f7f\u7528\u7684\u90a3\u4e00\u4efd\uff1b\u8fd9\u4e2a\u6d4f\u89c8\u5668\u4f1a\u53e6\u5916\u4fdd\u7559\u4e00\u4efd\u79bb\u7ebf\u526f\u672c\uff0c\u6240\u4ee5\u6ca1\u6709\u7f51\u7edc\u65f6\u8ba1\u7b97\u5668\u4ecd\u7136\u53ef\u7528\u3002",
   "ui.wall.moved.title":"\u4f60\u7684\u6570\u636e\u5e93\u5df2\u7ecf\u5728\u8d26\u6237\u91cc",
-  "ui.wall.ok":"\u597d",
+  "ui.wall.ok":"\u786e\u5b9a",
   "ui.wall.ready.body":"\u4ece\u73b0\u5728\u5f00\u59cb\uff0c\u4f60\u4fdd\u5b58\u7684\u5185\u5bb9\u90fd\u4f1a\u5b58\u5165\u8d26\u6237\uff0c\u5728\u4f60\u767b\u5f55\u7684\u6bcf\u4e00\u53f0\u8bbe\u5907\u4e0a\u90fd\u80fd\u770b\u5230\u3002\u8fd9\u4e2a\u6d4f\u89c8\u5668\u4f1a\u4fdd\u7559\u4e00\u4efd\u79bb\u7ebf\u526f\u672c\uff0c\u6240\u4ee5\u79bb\u7ebf\u65f6\u8ba1\u7b97\u5668\u4ecd\u7136\u53ef\u7528\u3002",
   "ui.wall.ready.title":"\u4f60\u7684\u8d26\u6237\u5df2\u7ecf\u51c6\u5907\u597d\u4e86",
   "ui.wall.retry":"\u91cd\u8bd5\u540c\u6b65",
@@ -6265,6 +6277,8 @@ var I18N = {
   "lab.cap.members":"\u30e1\u30f3\u30d0\u30fc {n} \u4eba",
   "lab.cap.seat":"{seats} \u30e9\u30a4\u30bb\u30f3\u30b9\u4e2d {used} \u4f7f\u7528",
   "lab.cap.seats":"{seats} \u30e9\u30a4\u30bb\u30f3\u30b9\u4e2d {used} \u4f7f\u7528",
+  "lab.card.aname":"\u914d\u5217\u306e\u540d\u524d",
+  "lab.card.aren":"\u914d\u5217\u306e\u540d\u524d\u3092\u5909\u66f4\u3002\u73fe\u5728\u306e\u540d\u524d\u306f {name} \u3067\u3059\u3002",
   "lab.card.armdel":"\u524a\u9664\u3057\u307e\u3059\u304b\uff1f",
   "lab.card.by":"\u5171\u6709\u5143: {email}",
   "lab.card.del":"\u524a\u9664",
@@ -6274,6 +6288,7 @@ var I18N = {
   "lab.card.mgrdelT":"\u3042\u306a\u305f\u306f\u3053\u306e\u30e9\u30dc\u306e\u7ba1\u7406\u8005\u3067\u3059\u3002\u3053\u306e\u64cd\u4f5c\u3092\u884c\u3046\u3068\u3001\u4fdd\u5b58\u3057\u305f\u672c\u4eba\u3092\u542b\u3081\u3001\u30e9\u30dc\u306e\u5168\u54e1\u304c\u3053\u306e\u30ec\u30b3\u30fc\u30c9\u3092\u5931\u3044\u307e\u3059\u3002",
   "lab.card.open":"\u958b\u304f",
   "lab.card.opencopy":"\u30b3\u30d4\u30fc\u3092\u8aad\u307f\u8fbc\u3080",
+  "lab.card.renfail!":"\u914d\u5217\u306e\u540d\u524d\u306e\u5909\u66f4\u306b\u5931\u6557\u3057\u307e\u3057\u305f\u3002\u753b\u9762\u306b\u306f\u524d\u306e\u540d\u524d\u304c\u305d\u306e\u307e\u307e\u51fa\u3066\u3044\u307e\u3059\u3002",
   "lab.card.rmdone":"\u30e9\u30dc\u304b\u3089\u5916\u3057\u307e\u3057\u305f",
   "lab.card.rmlab":"\u5916\u3059",
   "lab.card.sel":"{name} \u3092\u9078\u629e",
@@ -7153,19 +7168,19 @@ var I18N = {
   "tm.count.residue.many":"\u6b8b\u57fa {n} \u500b",
   "tm.count.residue.one":"\u6b8b\u57fa {n} \u500b",
   "tm.cov.ok!":"\u3053\u306e\u9396\u306e\u3059\u3079\u3066\u306e\u6b8b\u57fa\u3068\u7d50\u5408\u306f\u3001\u516c\u8868\u3055\u308c\u305f\u30d1\u30e9\u30e1\u30fc\u30bf\u30bb\u30c3\u30c8\u3067\u30ab\u30d0\u30fc\u3055\u308c\u3066\u3044\u307e\u3059\u3002",
-  "tm.deep.default":"\u65e2\u5b9a\u306e\u63a2\u7d22\u3092\u4f7f\u7528",
-  "tm.deep.defaultstatus!":"\u8ffd\u52a0\u306e\u63a2\u7d22\u306f\u30aa\u30d5\u3067\u3059\u3002\u3053\u306e\u5165\u529b\u306b\u5bfe\u3059\u308b\u65e2\u5b9a\u306e\u63a2\u7d22\u7d50\u679c\u3092\u8868\u793a\u4e2d\u3001\u307e\u305f\u306f\u8a08\u7b97\u4e2d\u3067\u3059\u3002",
+  "tm.deep.default":"\u6a19\u6e96\u306e\u63a2\u7d22\u3092\u4f7f\u7528",
+  "tm.deep.defaultstatus!":"\u8ffd\u52a0\u306e\u63a2\u7d22\u306f\u30aa\u30d5\u3067\u3059\u3002\u3053\u306e\u5165\u529b\u306b\u5bfe\u3059\u308b\u6a19\u6e96\u306e\u63a2\u7d22\u7d50\u679c\u3092\u8868\u793a\u4e2d\u3001\u307e\u305f\u306f\u8a08\u7b97\u4e2d\u3067\u3059\u3002",
   "tm.deep.device!":"\u914d\u5217\u3084\u7aef\u672b\u306b\u3088\u3063\u3066\u306f\u3001\u3055\u3089\u306b\u6642\u9593\u304c\u304b\u304b\u308a\u307e\u3059\u3002\u3053\u308c\u3089\u306f\u30c7\u30b9\u30af\u30c8\u30c3\u30d7\u3067\u306e\u6e2c\u5b9a\u5024\u3067\u3042\u308a\u3001\u5236\u9650\u6642\u9593\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002",
   "tm.deep.done!":"\u8ffd\u52a0\u306e\u63a2\u7d22\u304c\u5b8c\u4e86\u3057\u307e\u3057\u305f\u3002",
   "tm.deep.error!":"\u8ffd\u52a0\u306e\u63a2\u7d22\u3092\u30d0\u30c3\u30af\u30b0\u30e9\u30a6\u30f3\u30c9\u306e\u30ef\u30fc\u30ab\u30fc\u3067\u5b9f\u884c\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f\u3002\u65b0\u3057\u3044\u7d50\u679c\u306f\u53d7\u3051\u4ed8\u3051\u3066\u3044\u307e\u305b\u3093\u3002\u5b9f\u884c\u5185\u5bb9\u3092\u78ba\u8a8d\u3057\u3066\u304b\u3089\u518d\u8a66\u884c\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
   "tm.deep.input":"{n} nt · {chem}",
   "tm.deep.limit!":"\u5236\u9650\u6642\u9593\uff1a{n} \u79d2\u3002",
-  "tm.deep.method!":"\u901a\u5e38\u306e\u63a2\u7d22\u7d50\u679c\u306f\u3001\u305d\u306e\u63a2\u7d22\u3067\u898b\u3064\u304b\u3063\u305f\u81ea\u7531\u30a8\u30cd\u30eb\u30ae\u30fc\u6700\u5c0f\u306e\u69cb\u9020\u3067\u3042\u308a\u3001\u5927\u57df\u7684\u306a\u6700\u5c0f\u5024\u3067\u3042\u308b\u3068\u8a3c\u660e\u3055\u308c\u3066\u3044\u308b\u308f\u3051\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002\u3053\u306e\u6709\u9650\u306e\u63a2\u7d22\u306f\u3001\u8a08\u7b97\u30b3\u30b9\u30c8\u306e\u4f4e\u3044\u30a8\u30cd\u30eb\u30ae\u30fc\u30e2\u30c7\u30eb\u3067\u5019\u88dc\u3092\u9806\u4f4d\u4ed8\u3051\u3057\u3001\u9078\u3093\u3060\u4e00\u90e8\u306e\u5019\u88dc\u3092\u5b8c\u5168\u306a\u30e2\u30c7\u30eb\u3067\u63a1\u70b9\u3057\u307e\u3059\u3002\u8a08\u7b97\u306b\u542b\u307e\u308c\u308b\u306e\u306f\u3001\u30b9\u30bf\u30c3\u30af\u3001\u30d0\u30eb\u30b8\u3001\u5185\u90e8\u30eb\u30fc\u30d7",
+  "tm.deep.method!":"\u901a\u5e38\u306e\u63a2\u7d22\u7d50\u679c\u306f\u3001\u305d\u306e\u63a2\u7d22\u3067\u898b\u3064\u304b\u3063\u305f\u81ea\u7531\u30a8\u30cd\u30eb\u30ae\u30fc\u6700\u5c0f\u306e\u69cb\u9020\u3067\u3042\u308a\u3001\u5927\u57df\u7684\u306a\u6700\u5c0f\u5024\u3067\u3042\u308b\u3068\u8a3c\u660e\u3055\u308c\u3066\u3044\u308b\u308f\u3051\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002\u3053\u306e\u63a2\u7d22\u306f\u7bc4\u56f2\u3092\u9650\u3063\u305f\u3082\u306e\u3067\u3001\u8a08\u7b97\u30b3\u30b9\u30c8\u306e\u4f4e\u3044\u30a8\u30cd\u30eb\u30ae\u30fc\u30e2\u30c7\u30eb\u3067\u5019\u88dc\u3092\u9806\u4f4d\u4ed8\u3051\u3057\u3001\u9078\u3093\u3060\u4e00\u90e8\u306e\u5019\u88dc\u3092\u5b8c\u5168\u306a\u30e2\u30c7\u30eb\u3067\u63a1\u70b9\u3057\u307e\u3059\u3002\u5b8c\u5168\u306a\u30e2\u30c7\u30eb\u306e\u8a08\u7b97\u306b\u542b\u307e\u308c\u308b\u306e\u306f\u3001\u30b9\u30bf\u30c3\u30af\u3001\u30d8\u30a2\u30d4\u30f3\u30eb\u30fc\u30d7\u3001\u30d0\u30eb\u30b8\u3001\u5185\u90e8\u30eb\u30fc\u30d7",
   "tm.deep.notnow":"\u4eca\u306f\u3057\u306a\u3044",
   "tm.deep.ordinary":"\u901a\u5e38\u306e\u63a2\u7d22\u7d50\u679c",
   "tm.deep.reference!":"{n} nt \u306e {chem} \u3067\u306e\u53c2\u8003\u5024\u3067\u3059\u3002\u73fe\u5728\u306e\u9577\u3055\u3067\u6e2c\u5b9a\u3057\u305f\u6642\u9593\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002",
   "tm.deep.retry":"\u78ba\u8a8d\u3057\u3066\u518d\u8a66\u884c",
-  "tm.deep.scope!":"\u300c\u63a2\u7d22\u3092\u958b\u59cb\u300d\u3092\u62bc\u3059\u3068\u3001\u591a\u5206\u5c90\u30b8\u30e3\u30f3\u30af\u30b7\u30e7\u30f3\u3092\u542b\u3081\u305f\u901a\u5e38\u306e\u63a2\u7d22\u3068\u3001\u30b8\u30e3\u30f3\u30af\u30b7\u30e7\u30f3\u3092\u5fc5\u9808\u3068\u3059\u308b\u5225\u306e\u63a2\u7d22\u3092\u5b9f\u884c\u3057\u307e\u3059\u3002\u3053\u308c\u3089\u306e\u6709\u9650\u306e\u63a2\u7d22\u3067\u306f\u3001\u3088\u308a\u4f4e\u3044\u30a8\u30cd\u30eb\u30ae\u30fc\u306e\u69cb\u9020\u3092\u898b\u9003\u3059\u3053\u3068\u304c\u3042\u308a\u307e\u3059\u3002",
+  "tm.deep.scope!":"\u300c\u63a2\u7d22\u3092\u958b\u59cb\u300d\u3092\u62bc\u3059\u3068\u3001\u4e8c\u3064\u306e\u63a2\u7d22\u3092\u5b9f\u884c\u3057\u307e\u3059\u3002\u591a\u5206\u5c90\u30b8\u30e3\u30f3\u30af\u30b7\u30e7\u30f3\u3092\u542b\u307f\u5f97\u308b\u901a\u5e38\u306e\u63a2\u7d22\u3068\u3001\u591a\u5206\u5c90\u30b8\u30e3\u30f3\u30af\u30b7\u30e7\u30f3\u3092\u542b\u3080\u69cb\u9020\u306b\u9650\u3063\u305f\u63a2\u7d22\u3067\u3059\u3002\u3053\u306e\u4e8c\u3064\u306e\u63a2\u7d22\u306f\u3044\u305a\u308c\u3082\u7bc4\u56f2\u3092\u9650\u3063\u305f\u3082\u306e\u306a\u306e\u3067\u3001\u3088\u308a\u4f4e\u3044\u30a8\u30cd\u30eb\u30ae\u30fc\u306e\u69cb\u9020\u3092\u898b\u9003\u3059\u3053\u3068\u304c\u3042\u308a\u307e\u3059\u3002",
   "tm.deep.search":"\u591a\u5206\u5c90\u30b8\u30e3\u30f3\u30af\u30b7\u30e7\u30f3\u3092\u63a2\u7d22",
   "tm.deep.selected":"\u9078\u629e\u3057\u305f\u5225\u306e\u69cb\u9020",
   "tm.deep.start":"\u63a2\u7d22\u3092\u958b\u59cb",
@@ -7230,8 +7245,9 @@ var I18N = {
   "tm.fold.note.mb!":"\u3001\u304a\u3088\u3073\u30de\u30eb\u30c1\u30d6\u30e9\u30f3\u30c1\u30eb\u30fc\u30d7\u3067\u3059\u3002\u30de\u30eb\u30c1\u30d6\u30e9\u30f3\u30c1\u30eb\u30fc\u30d7\u306e\u5185\u5074\u3067\u306f\u30c0\u30f3\u30b0\u30ea\u30f3\u30b0\u30a8\u30f3\u30c9\u3068\u540c\u8ef8\u30b9\u30bf\u30c3\u30ad\u30f3\u30b0\u3092\u63a1\u70b9\u3057\u3001\u81ea\u7531\u306a\u5c3e\u90e8\u3067\u306f\u6700\u3082\u5916\u5074\u306e\u30d8\u30ea\u30c3\u30af\u30b9\u306e\u672b\u7aef\u306b\u3042\u308b\u30c0\u30f3\u30b0\u30ea\u30f3\u30b0\u30a8\u30f3\u30c9 1 \u3064\u307e\u305f\u306f\u672b\u7aef\u30df\u30b9\u30de\u30c3\u30c1 1 \u3064\u306e\u3046\u3061\u3001\u516c\u8868\u3055\u308c\u305f\u30e2\u30c7\u30eb\u3067\u3088\u308a\u5b89\u5b9a\u306b\u306a\u308b\u65b9\u3092\u63a1\u70b9\u3057\u307e\u3059\u3002<b>\u30df\u30b9\u30de\u30c3\u30c1\u3092\u4ecb\u3057\u305f\u540c\u8ef8\u30b9\u30bf\u30c3\u30ad\u30f3\u30b0\u306f\u63a1\u70b9\u3057\u307e\u305b\u3093</b>\u3002\u7701\u3044\u305f\u3053\u306e\u9805\u306f Turner \u30e2\u30c7\u30eb\u3067\u306f\u5b89\u5b9a\u5316\u9805\u3067\u3059\u3002\u3053\u308c\u306f\u30e2\u30c7\u30eb\u306b\u3064\u3044\u3066\u306e\u8a18\u8ff0\u3067\u3042\u308a\u3001\u5b9f\u9a13\u8aa4\u5dee\u306e\u7bc4\u56f2\u3092\u793a\u3059\u3082\u306e\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002 ",
   "tm.fold.note.mbc!":"\u591a\u5206\u5c90\u30b8\u30e3\u30f3\u30af\u30b7\u30e7\u30f3\u3092\u542b\u3080\u69cb\u9020\u306f\u3001\u305d\u306e\u6761\u4ef6\u3092\u8ab2\u3057\u305f\u3046\u3048\u3067\u63a2\u7d22\u3092\u3084\u308a\u76f4\u3057\u3066\u6c42\u3081\u307e\u3059\u3002\u4e8c\u5ea6\u76ee\u306e\u63a2\u7d22\u306f\u3001\u8abf\u3079\u308b\u9818\u57df\u3054\u3068\u306b\u30b8\u30e3\u30f3\u30af\u30b7\u30e7\u30f3\u3092\u542b\u3080\u6700\u826f\u306e\u69cb\u9020\u3092\u4fdd\u6301\u3059\u308b\u305f\u3081\u3001\u6761\u4ef6\u306a\u3057\u306e\u63a2\u7d22\u304c\u9014\u4e2d\u3067\u6368\u3066\u308b\u69cb\u9020\u306b\u3082\u5230\u9054\u3057\u307e\u3059\u3002\u305d\u306e\u305f\u3081\u3001\u3053\u306e\u7d50\u679c\u304c\u4e0a\u306e\u69cb\u9020\u3088\u308a\u5b89\u5b9a\u306b\u306a\u308b\u3053\u3068\u304c\u307e\u308c\u306b\u3042\u308a\u307e\u3059\u3002",
   "tm.fold.note.mbdna!":"\u3001\u304a\u3088\u3073\u30de\u30eb\u30c1\u30d6\u30e9\u30f3\u30c1\u30eb\u30fc\u30d7\u3067\u3059\u3002\u30de\u30eb\u30c1\u30d6\u30e9\u30f3\u30c1\u30eb\u30fc\u30d7\u306e\u5185\u5074\u3067\u306f\u30c0\u30f3\u30b0\u30ea\u30f3\u30b0\u30a8\u30f3\u30c9\u3068\u540c\u8ef8\u30b9\u30bf\u30c3\u30ad\u30f3\u30b0\u3092\u63a1\u70b9\u3057\u3001\u81ea\u7531\u306a\u5c3e\u90e8\u3067\u306f\u6700\u3082\u5916\u5074\u306e\u30d8\u30ea\u30c3\u30af\u30b9\u306e\u672b\u7aef\u306b\u3042\u308b\u30c0\u30f3\u30b0\u30ea\u30f3\u30b0\u30a8\u30f3\u30c9 1 \u3064\u3092\u63a1\u70b9\u3057\u307e\u3059\u3002<b>\u30df\u30b9\u30de\u30c3\u30c1\u3092\u4ecb\u3057\u305f\u540c\u8ef8\u30b9\u30bf\u30c3\u30ad\u30f3\u30b0\u3068\u672b\u7aef\u30df\u30b9\u30de\u30c3\u30c1\u306f\u63a1\u70b9\u3057\u307e\u305b\u3093</b>\u3002\u7701\u3044\u305f\u3053\u306e 2 \u9805\u306f SantaLucia \u30e2\u30c7\u30eb\u3067\u306f\u3069\u3061\u3089\u3082\u5b89\u5b9a\u5316\u9805\u3067\u3059\u3002\u3053\u308c\u306f\u30e2\u30c7\u30eb\u306b\u3064\u3044\u3066\u306e\u8a18\u8ff0\u3067\u3042\u308a\u3001\u5b9f\u9a13\u8aa4\u5dee\u306e\u7bc4\u56f2\u3092\u793a\u3059\u3082\u306e\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002\u30c0\u30f3\u30b0\u30ea\u30f3\u30b0\u30a8\u30f3\u30c9\u306b\u306f\u8868\u5316\u3055\u308c\u305f DNA \u306e\u5024\u3092\u7528\u3044\u3066\u3044\u307e\u3059\u3002\u3044\u304f\u3064\u304b\u306e\u9589\u3058\u5869\u57fa\u5bfe\u3067\u306f 4 \u7a2e\u985e\u306e\u30c0\u30f3\u30b0\u30ea\u30f3\u30b0\u5869\u57fa\u304c\u540c\u3058\u5024\u3092\u5171\u6709\u3057\u3001G-T \u306e 2 \u884c\u306f\u6700\u3082\u8fd1\u3044\u30ef\u30c8\u30bd\u30f3\u30fb\u30af\u30ea\u30c3\u30af\u5869\u57fa\u5bfe\u306e\u5024\u3092\u6d41\u7528\u3057\u3066\u3044\u307e\u3059\u3002 ",
-  "tm.fold.note.mbrna!":"\u3002<b>{n} nt \u3092\u8d85\u3048\u308b\u5834\u5408\u306f\u591a\u5206\u5c90\u69cb\u9020\u3092\u63a2\u7d22\u3057\u307e\u305b\u3093\u3002</b>\u3053\u306e\u4e0a\u9650\u3067\u63a2\u7d22\u306e\u8a08\u7b97\u91cf\u3092\u5236\u9650\u3057\u307e\u3059\u3002\u4e92\u3044\u306b\u5206\u304b\u308c\u305f\u5916\u90e8\u30c9\u30e1\u30a4\u30f3\u306f\u5f15\u304d\u7d9a\u304d\u8003\u616e\u3057\u307e\u3059\u304c\u3001\u305d\u306e\u5185\u90e8\u306e\u5206\u5c90\u70b9\u306f\u63a2\u7d22\u3057\u307e\u305b\u3093\u3002\u6709\u9650\u306e\u63a2\u7d22\u3067\u306f\u3001\u30a8\u30cd\u30eb\u30ae\u30fc\u304c\u3055\u3089\u306b\u4f4e\u3044\u69cb\u9020\u3092\u898b\u9003\u3059\u3053\u3068\u304c\u3042\u308a\u307e\u3059\u3002",
-  "tm.fold.note.mfe!":"\u3053\u306e\u69cb\u9020\u306f\u4eca\u56de\u306e\u63a2\u7d22\u3067\u898b\u3064\u304b\u3063\u305f\u81ea\u7531\u30a8\u30cd\u30eb\u30ae\u30fc\u6700\u5c0f\u306e\u69cb\u9020\u3067\u3042\u308a\u3001\u5927\u57df\u7684\u306a\u6700\u5c0f\u5024\u3067\u3042\u308b\u3053\u3068\u304c\u8a3c\u660e\u3055\u308c\u3066\u3044\u308b\u308f\u3051\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002\u63a2\u7d22\u306f\u307e\u305a\u7c21\u6613\u306a\u30a8\u30cd\u30eb\u30ae\u30fc\u30e2\u30c7\u30eb\u3067\u9806\u4f4d\u4ed8\u3051\u3057\u3001\u4e0a\u4f4d {k} \u5019\u88dc\u3060\u3051\u3092\u53b3\u5bc6\u306b\u63a1\u70b9\u3057\u307e\u3059\u3002\u8868\u8a18\u306f\u30c9\u30c3\u30c8\u30d6\u30e9\u30b1\u30c3\u30c8\u3067\u3059\u3002\u30b9\u30bf\u30c3\u30af\u3001\u30d0\u30eb\u30b8\u3001\u5185\u90e8\u30eb\u30fc\u30d7",
+  "tm.fold.note.mbrna!":"\u3067\u3059\u3002<b>\u914d\u5217\u306e\u9577\u3055\u304c {n} nt \u3092\u8d85\u3048\u308b\u5834\u5408\u306f\u591a\u5206\u5c90\u69cb\u9020\u3092\u63a2\u7d22\u3057\u307e\u305b\u3093\u3002</b>\u3053\u306e\u4e0a\u9650\u3067\u63a2\u7d22\u306e\u8a08\u7b97\u91cf\u3092\u5236\u9650\u3057\u307e\u3059\u3002\u5916\u90e8\u30eb\u30fc\u30d7\u304b\u3089\u5225\u3005\u306b\u5206\u5c90\u3059\u308b\u30b9\u30c6\u30e0\u306f\u5f15\u304d\u7d9a\u304d\u8003\u616e\u3057\u307e\u3059\u304c\u3001\u305d\u306e\u5185\u90e8\u306e\u5206\u5c90\u70b9\u306f\u63a2\u7d22\u3057\u307e\u305b\u3093\u3002\u3053\u306e\u7bc4\u56f2\u3092\u9650\u3063\u305f\u63a2\u7d22\u3067\u306f\u3001\u30a8\u30cd\u30eb\u30ae\u30fc\u304c\u3055\u3089\u306b\u4f4e\u3044\u69cb\u9020\u3092\u898b\u9003\u3059\u3053\u3068\u304c\u3042\u308a\u307e\u3059\u3002",
+  "tm.fold.note.mfe!":"\u3053\u306e\u69cb\u9020\u306f\u4eca\u56de\u306e\u63a2\u7d22\u3067\u898b\u3064\u304b\u3063\u305f\u81ea\u7531\u30a8\u30cd\u30eb\u30ae\u30fc\u6700\u5c0f\u306e\u69cb\u9020\u3067\u3042\u308a\u3001\u5927\u57df\u7684\u306a\u6700\u5c0f\u5024\u3067\u3042\u308b\u3053\u3068\u304c\u8a3c\u660e\u3055\u308c\u3066\u3044\u308b\u308f\u3051\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002\u63a2\u7d22\u306f\u307e\u305a\u7c21\u6613\u306a\u30a8\u30cd\u30eb\u30ae\u30fc\u30e2\u30c7\u30eb\u3067\u5019\u88dc\u3092\u9806\u4f4d\u4ed8\u3051\u3057\u3001{k} \u500b\u306e\u7570\u306a\u308b\u69cb\u9020\u3092\u5b8c\u5168\u306a\u30e2\u30c7\u30eb\u3067\u63a1\u70b9\u3057\u307e\u3059\u3002\u69cb\u9020\u306f\u30c9\u30c3\u30c8\u30d6\u30e9\u30b1\u30c3\u30c8\u8868\u8a18\u3067\u793a\u3057\u307e\u3059\u3002\u5b8c\u5168\u306a\u30e2\u30c7\u30eb\u304c\u6271\u3046\u306e\u306f\u3001\u30b9\u30bf\u30c3\u30af\u3001\u30d8\u30a2\u30d4\u30f3\u30eb\u30fc\u30d7\u3001\u30d0\u30eb\u30b8\u3001\u5185\u90e8\u30eb\u30fc\u30d7",
+  "tm.fold.note.mfe.one!":"\u3053\u306e\u69cb\u9020\u306f\u4eca\u56de\u306e\u63a2\u7d22\u3067\u898b\u3064\u304b\u3063\u305f\u81ea\u7531\u30a8\u30cd\u30eb\u30ae\u30fc\u6700\u5c0f\u306e\u69cb\u9020\u3067\u3042\u308a\u3001\u5927\u57df\u7684\u306a\u6700\u5c0f\u5024\u3067\u3042\u308b\u3053\u3068\u304c\u8a3c\u660e\u3055\u308c\u3066\u3044\u308b\u308f\u3051\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002\u63a2\u7d22\u306f\u307e\u305a\u7c21\u6613\u306a\u30a8\u30cd\u30eb\u30ae\u30fc\u30e2\u30c7\u30eb\u3067\u5019\u88dc\u3092\u9806\u4f4d\u4ed8\u3051\u3057\u30011 \u500b\u306e\u69cb\u9020\u3092\u5b8c\u5168\u306a\u30e2\u30c7\u30eb\u3067\u63a1\u70b9\u3057\u307e\u3059\u3002\u69cb\u9020\u306f\u30c9\u30c3\u30c8\u30d6\u30e9\u30b1\u30c3\u30c8\u8868\u8a18\u3067\u793a\u3057\u307e\u3059\u3002\u5b8c\u5168\u306a\u30e2\u30c7\u30eb\u304c\u6271\u3046\u306e\u306f\u3001\u30b9\u30bf\u30c3\u30af\u3001\u30d8\u30a2\u30d4\u30f3\u30eb\u30fc\u30d7\u3001\u30d0\u30eb\u30b8\u3001\u5185\u90e8\u30eb\u30fc\u30d7",
   "tm.fold.note.one!":"\u5b89\u5b9a\u306a\u30d8\u30a2\u30d4\u30f3\u306f\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f\u3002",
   "tm.fold.note.rna!":"\u30eb\u30fc\u30d7\u30d1\u30e9\u30e1\u30fc\u30bf: Turner 2004\u3001\u3059\u306a\u308f\u3061 Mathews 2004 (ΔG°₃₇) \u3068 Lu 2006 (ΔH) \u3092 Nearest Neighbor Database \u7d4c\u7531\u3067\u3002\u30b9\u30c6\u30e0\u306f Xia 1998\u3002\u30eb\u30fc\u30d7\u306e\u30a8\u30f3\u30bf\u30eb\u30d4\u30fc\u306f\u5b9f\u6e2c\u5024\u3067\u3042\u308a\u3001\u4eee\u5b9a\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002<b>\u3053\u306e\u30d5\u30a9\u30fc\u30eb\u30c9\u306e\u5869\u6fc3\u5ea6\u88dc\u6b63\u306f RNA \u306b\u30d5\u30a3\u30c3\u30c8\u3055\u308c\u305f\u3082\u306e\u3067\u3059\u3002</b>\u30b9\u30bf\u30c3\u30af\u3054\u3068\u306b\u3001Yao \u3068 Lorenz \u304c 2023 \u5e74\u306b\u767a\u8868\u3057\u305f\u30c7\u30d0\u30a4\u906e\u853d\u3068 Manning \u51dd\u7e2e\u306e\u9805\u3092\u9069\u7528\u3057\u307e\u3059\u3002Turner \u30d1\u30e9\u30e1\u30fc\u30bf\u81ea\u4f53\u304c\u6e2c\u5b9a\u3055\u308c\u305f 1.021 M \u30ca\u30c8\u30ea\u30a6\u30e0\u30a4\u30aa\u30f3\u3092\u57fa\u6e96\u3068\u3057\u3066\u3044\u308b\u305f\u3081\u3001\u81ea\u7531\u30a8\u30cd\u30eb\u30ae\u30fc\u3068\u30d5\u30a9\u30fc\u30eb\u30c9\u306e\u878d\u89e3\u6e29\u5ea6\u306f\u5165\u529b\u3057\u305f\u7de9\u885d\u6db2\u306b\u5fdc\u3058\u3066\u5909\u308f\u308a\u307e\u3059\u3002\u30a8\u30f3\u30bf\u30eb\u30d4\u30fc\u306f\u5909\u308f\u3089\u305a\u3001\u5869\u57fa\u5bfe\u3068\u30eb\u30fc\u30d7\u306e\u30ab\u30a6\u30f3\u30c8\u3082\u5909\u308f\u308a\u307e\u305b\u3093\u3002\u767a\u8868\u3055\u308c\u305f\u30e2\u30c7\u30eb\u306f\u30eb\u30fc\u30d7\u306e\u9759\u96fb\u76f8\u4e92\u4f5c\u7528\u3082\u88dc\u6b63\u3057\u307e\u3059\u304c\u3001\u672c\u30a8\u30f3\u30b8\u30f3\u306f\u88dc\u6b63\u3057\u3066\u304a\u3089\u305a\u3001\u3053\u308c\u307e\u3067\u3082\u88dc\u6b63\u3057\u3066\u3044\u307e\u305b\u3093\u3002\u4e8c\u672c\u9396\u306e\u878d\u89e3\u6e29\u5ea6\u306f\u4eca\u3082 Owczarzy 2004 \u3067\u88dc\u6b63\u3057\u3066\u304a\u308a\u3001\u3053\u308c\u306f DNA \u306b\u30d5\u30a3\u30c3\u30c8\u3055\u308c\u305f\u3082\u306e\u3067\u3059\u3002GU \u30a6\u30a9\u30d6\u30eb\u5bfe\u3082\u30b9\u30c6\u30e0\u306e\u5869\u57fa\u5bfe\u3068\u3057\u3066\u63a1\u70b9\u3057\u307e\u3059\u3002\u4e21\u5074\u306b\u305d\u308c\u305e\u308c 1 \u3064\u307e\u305f\u306f 2 \u3064\u306e\u975e\u5bfe\u5408\u5869\u57fa\u304c\u3042\u308b\u5185\u90e8\u30eb\u30fc\u30d7\u306b\u306f\u3001\u4e00\u822c\u306e\u30eb\u30fc\u30d7\u5f0f\u3067\u306f\u306a\u304f Turner \u304c\u6e2c\u5b9a\u3057\u305f\u5024\u3092\u7528\u3044\u307e\u3059\u3002",
   "tm.fold.note.tmm!":" ⚠ \u3053\u306e\u30eb\u30fc\u30d7\u306f GG/CG \u672b\u7aef\u30df\u30b9\u30de\u30c3\u30c1\u3092\u4f7f\u3044\u307e\u3059\u3002\u3053\u308c\u306f\u516c\u8868\u8868\u306e\u4e2d\u3067\u7570\u5e38\u5024\u3067\u3059\u304c\u3001\u305d\u306e\u307e\u307e\u4f7f\u3063\u3066\u3044\u307e\u3059\u3002",
@@ -7324,8 +7340,8 @@ var I18N = {
   "ui.auth.offline":"\u30b5\u30fc\u30d0\u30fc\u306b\u63a5\u7d9a\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f\u3002\u63a5\u7d9a\u3092\u78ba\u8a8d\u3057\u3066\u3001\u3082\u3046\u4e00\u5ea6\u304a\u8a66\u3057\u304f\u3060\u3055\u3044\u3002",
   "ui.auth.rate":"\u73fe\u5728\u30ea\u30af\u30a8\u30b9\u30c8\u304c\u591a\u3059\u304e\u307e\u3059\u30021 \u5206\u307b\u3069\u5f85\u3063\u3066\u304b\u3089\u3001\u3082\u3046\u4e00\u5ea6\u304a\u8a66\u3057\u304f\u3060\u3055\u3044\u3002",
   "ui.auth.rate.wait":"\u30b3\u30fc\u30c9\u306f\u4e00\u5ea6\u306b\u4e00\u3064\u3060\u3051\u3067\u3059\u3002\u3042\u3068 {n} \u79d2\u3067\u6b21\u306e\u30b3\u30fc\u30c9\u3092\u53d6\u5f97\u3067\u304d\u307e\u3059\u3002\u304a\u5f85\u3061\u306e\u3042\u3044\u3060\u306b\u8ff7\u60d1\u30e1\u30fc\u30eb\u30d5\u30a9\u30eb\u30c0\u30fc\u3082\u3054\u78ba\u8a8d\u304f\u3060\u3055\u3044\u3002",
-  "ui.batch.partial.many!":"{n} \u4ef6\u306e\u914d\u5217\u3092\u4fdd\u5b58\u3057\u307e\u3057\u305f\u3002\u6b8b\u308a\u306e {dropped} \u4ef6\u306f\u30d7\u30e9\u30f3\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u5bb9\u91cf\u3092\u8d85\u3048\u308b\u305f\u3081\u3001\u3053\u3053\u306b\u6b8b\u3057\u3066\u3044\u307e\u3059\u3002",
-  "ui.batch.partial.one!":"{n} \u4ef6\u306e\u914d\u5217\u3092\u4fdd\u5b58\u3057\u307e\u3057\u305f\u3002\u6b8b\u308a\u306e {dropped} \u4ef6\u306f\u30d7\u30e9\u30f3\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u5bb9\u91cf\u3092\u8d85\u3048\u308b\u305f\u3081\u3001\u3053\u3053\u306b\u6b8b\u3057\u3066\u3044\u307e\u3059\u3002",
+  "ui.batch.partial.many!":"{n} \u4ef6\u306e\u914d\u5217\u3092\u4fdd\u5b58\u3057\u307e\u3057\u305f\u3002\u6b8b\u308a\u306e {dropped} \u4ef6\u306f\u30d7\u30e9\u30f3\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u5bb9\u91cf\u3092\u8d85\u3048\u308b\u305f\u3081\u4fdd\u5b58\u3055\u308c\u3066\u304a\u3089\u305a\u3001\u3053\u3053\u306b\u6b8b\u3063\u3066\u3044\u307e\u3059\u3002",
+  "ui.batch.partial.one!":"{n} \u4ef6\u306e\u914d\u5217\u3092\u4fdd\u5b58\u3057\u307e\u3057\u305f\u3002\u6b8b\u308a\u306e {dropped} \u4ef6\u306f\u30d7\u30e9\u30f3\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u5bb9\u91cf\u3092\u8d85\u3048\u308b\u305f\u3081\u4fdd\u5b58\u3055\u308c\u3066\u304a\u3089\u305a\u3001\u3053\u3053\u306b\u6b8b\u3063\u3066\u3044\u307e\u3059\u3002",
   "ui.bill.addpeople":"\u30e1\u30f3\u30d0\u30fc\u3092\u8ffd\u52a0",
   "ui.bill.buy.title":"{lab} \u306e\u30e9\u30a4\u30bb\u30f3\u30b9\u3092\u8cfc\u5165",
   "ui.bill.cancelled":"\u6c7a\u6e08\u3092\u30ad\u30e3\u30f3\u30bb\u30eb\u3057\u307e\u3057\u305f\u3002\u6599\u91d1\u306f\u767a\u751f\u3057\u3066\u3044\u307e\u305b\u3093\u3002",
@@ -7559,7 +7575,7 @@ var I18N = {
   "ui.lib.adel":"{name} \u3092\u524a\u9664",
   "ui.lib.amore":"{name} \u306e\u305d\u306e\u4ed6\u306e\u64cd\u4f5c",
   "ui.lib.aname":"\u914d\u5217\u306e\u540d\u524d",
-  "ui.lib.aren":"{name} \u306e\u540d\u524d\u3092\u5909\u66f4",
+  "ui.lib.aren":"\u914d\u5217\u306e\u540d\u524d\u3092\u5909\u66f4\u3002\u73fe\u5728\u306e\u540d\u524d\u306f {name} \u3067\u3059\u3002",
   "ui.lib.ashare":"{name} \u306e\u30b3\u30d4\u30fc\u3092\u5171\u6709",
   "ui.lib.copyname":"{name}\uff08\u30b3\u30d4\u30fc\uff09",
   "ui.lib.counted":"\u4e00\u672c\u9396\u3068\u4e8c\u672c\u9396",
@@ -7592,11 +7608,11 @@ var I18N = {
   "ui.monomer.insert.anti":"{code} \u3092\u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u9396\u306b\u633f\u5165\u3057\u307e\u3057\u305f\u3002",
   "ui.monomer.insert.aria":"{name}\uff08{code}\uff09\u3092\u633f\u5165",
   "ui.monomer.insert.sense":"{code} \u3092\u30bb\u30f3\u30b9\u9396\u306b\u633f\u5165\u3057\u307e\u3057\u305f\u3002",
-  "ui.monomer.pin":"{code} \u3092 Quick Insert \u306b\u56fa\u5b9a",
+  "ui.monomer.pin":"{code} \u3092\u30af\u30a4\u30c3\u30af\u633f\u5165\u306b\u56fa\u5b9a",
   "ui.monomer.show.all":"\u3059\u3079\u3066\u306e\u5869\u57fa\u3092\u8868\u793a",
   "ui.monomer.show.fewer":"\u8868\u793a\u3059\u308b\u5869\u57fa\u3092\u6e1b\u3089\u3059",
   "ui.monomer.thymine":"\u30c1\u30df\u30f3",
-  "ui.monomer.unpin":"{code} \u3092 Quick Insert \u304b\u3089\u56fa\u5b9a\u89e3\u9664",
+  "ui.monomer.unpin":"{code} \u3092\u30af\u30a4\u30c3\u30af\u633f\u5165\u304b\u3089\u5916\u3059",
   "ui.monomer.uracil":"\u30a6\u30e9\u30b7\u30eb",
   "ui.notation.dna":"DNA",
   "ui.notation.rna":"RNA",
@@ -8214,6 +8230,8 @@ var I18N = {
   "lab.cap.members":"{n} membres",
   "lab.cap.seat":"{used} / {seats} place",
   "lab.cap.seats":"{used} / {seats} places",
+  "lab.card.aname":"Nom de la séquence",
+  "lab.card.aren":"Renommer la séquence. Nom actuel : {name}",
   "lab.card.armdel":"Supprimer ?",
   "lab.card.by":"partagé par {email}",
   "lab.card.del":"Supprimer",
@@ -8223,6 +8241,7 @@ var I18N = {
   "lab.card.mgrdelT":"Vous gérez ce laboratoire. Cette action supprime la fiche pour tout le monde dans le laboratoire, y compris pour la personne qui l’a enregistrée.",
   "lab.card.open":"Ouvrir",
   "lab.card.opencopy":"Charger une copie",
+  "lab.card.renfail!":"Le renommage de la séquence a échoué. Le nom affiché est encore le précédent.",
   "lab.card.rmdone":"Retiré du laboratoire",
   "lab.card.rmlab":"Retirer",
   "lab.card.sel":"Sélectionner {name}",
@@ -9109,12 +9128,12 @@ var I18N = {
   "tm.deep.error!":"La recherche supplémentaire n’a pas pu s’exécuter dans un worker en arrière-plan. Aucun nouveau résultat n’a été accepté. Vérifiez la demande avant de réessayer.",
   "tm.deep.input":"{n} nt · {chem}",
   "tm.deep.limit!":"Durée limite : {n} secondes.",
-  "tm.deep.method!":"Le résultat de la recherche ordinaire possède l’énergie libre la plus basse trouvée par cette recherche, sans être un minimum global démontré. Cette recherche finie classe les candidats avec un modèle énergétique moins coûteux en calcul, puis évalue une sélection de candidats avec le modèle complet. Le calcul inclut les empilements, les renflements et les boucles internes",
+  "tm.deep.method!":"Le résultat de la recherche ordinaire possède l’énergie libre la plus basse trouvée par cette recherche, sans être un minimum global démontré. Cette recherche bornée classe les candidats avec un modèle énergétique moins coûteux en calcul, puis évalue une sélection de candidats avec le modèle complet. Le modèle complet inclut les empilements, les boucles en épingle à cheveux, les renflements et les boucles internes",
   "tm.deep.notnow":"Pas maintenant",
   "tm.deep.ordinary":"Résultat de la recherche ordinaire",
   "tm.deep.reference!":"Référence uniquement pour {n} nt de {chem}. Ce n’est pas une durée mesurée pour la longueur actuelle.",
   "tm.deep.retry":"Vérifier et réessayer",
-  "tm.deep.scope!":"« Lancer la recherche » exécute une recherche ordinaire incluant les jonctions à plusieurs branches et une recherche distincte qui impose une jonction. Ces recherches finies peuvent manquer des structures d’énergie plus basse.",
+  "tm.deep.scope!":"« Lancer la recherche » exécute deux recherches : une recherche ordinaire dont les structures peuvent contenir des jonctions à plusieurs branches, et une seconde limitée aux structures qui en contiennent au moins une. Ces recherches bornées peuvent manquer des structures d’énergie plus basse.",
   "tm.deep.search":"Rechercher des jonctions à plusieurs branches",
   "tm.deep.selected":"Alternative sélectionnée",
   "tm.deep.start":"Lancer la recherche",
@@ -9162,12 +9181,12 @@ var I18N = {
   "tm.fold.loop":"boucle de {n} nt",
   "tm.fold.mb.many":"{n} boucles multiples",
   "tm.fold.mb.one":"{n} boucle multiple",
-  "tm.fold.mbc.behind!":"{v} kcal/mol moins stable que la meilleure structure trouvée sans cette contrainte",
+  "tm.fold.mbc.behind!":"Moins stable de {v} kcal/mol que la meilleure structure trouvée sans cette contrainte",
   "tm.fold.mbc.better!":"{v} kcal/mol plus stable que la meilleure structure trouvée sans cette contrainte",
   "tm.fold.mbc.name":"Alternative avec jonction à plusieurs branches imposée",
   "tm.fold.mbc.none!":"Cette recherche n’a trouvé aucune structure avec une jonction à plusieurs branches.",
   "tm.fold.mbc.same!":"Le résultat de la recherche ordinaire contient déjà une jonction à plusieurs branches. La recherche imposant une jonction a renvoyé la même structure.",
-  "tm.fold.mbc.tied!":"La différence entre les énergies prédites s’arrondit à 0.00 kcal/mol.",
+  "tm.fold.mbc.tied!":"La différence entre les énergies prédites s’arrondit à 0,00 kcal/mol.",
   "tm.fold.name.branched":"Repliement ramifié",
   "tm.fold.name.hairpin":"Épingle à cheveux",
   "tm.fold.name.junction":"Jonction à {n} branches",
@@ -9179,8 +9198,9 @@ var I18N = {
   "tm.fold.note.mb!":", et les boucles multiples. À l’intérieur d’une boucle multiple, nous évaluons les extrémités pendantes et l’empilement coaxial bout à bout, et sur les queues libres nous évaluons une extrémité pendante ou un mésappariement terminal à l’extrémité de l’hélice la plus externe, selon ce que le modèle publié rend le plus stable ; <b>l’empilement coaxial médié par un mésappariement n’est pas évalué</b>. Ce terme omis est stabilisant dans le modèle Turner. C’est une affirmation sur le modèle, et non une borne d’erreur expérimentale. ",
   "tm.fold.note.mbc!":"Une structure avec une jonction à plusieurs branches est trouvée en relançant la recherche avec cette contrainte. La seconde recherche conserve, pour chaque région qu’elle examine, le meilleur repliement contenant une jonction, ce qui lui permet d’atteindre des structures que la recherche sans contrainte écarte en chemin. C’est pourquoi ce résultat est parfois plus stable que celui qui le précède.",
   "tm.fold.note.mbdna!":", et les boucles multiples. À l’intérieur d’une boucle multiple, nous évaluons les extrémités pendantes et l’empilement coaxial bout à bout, et sur les queues libres nous évaluons une extrémité pendante à l’extrémité de l’hélice la plus externe ; <b>l’empilement coaxial médié par un mésappariement et les mésappariements terminaux ne sont pas évalués</b>. Les deux termes omis sont stabilisants dans le modèle SantaLucia. C’est une affirmation sur le modèle, et non une borne d’erreur expérimentale. Les valeurs d’extrémité pendante proviennent du jeu ADN tabulé : plusieurs paires fermantes portent une seule valeur pour toutes les bases pendantes, et les deux lignes G-T sont reprises des paires Watson-Crick dont elles se rapprochent le plus. ",
-  "tm.fold.note.mbrna!":". <b>Les structures multibranches ne sont pas recherchées au-delà de {n} nt.</b> Cette limite borne le coût du calcul. Des domaines extérieurs séparés sont toujours considérés, mais pas les jonctions à l’intérieur de ces domaines. La recherche finie peut manquer des structures d’énergie plus basse. ",
-  "tm.fold.note.mfe!":"La structure est celle d’énergie libre la plus basse que cette recherche a trouvée, et non un minimum global démontré : la recherche classe avec un modèle énergétique moins coûteux, puis n’évalue exactement que ses {k} meilleurs candidats. Elle est présentée en notation parenthésée : empilements, renflements et boucles internes",
+  "tm.fold.note.mbrna!":". <b>Les structures multibranches ne sont pas recherchées lorsque la séquence dépasse {n} nt.</b> Cette limite borne le coût du calcul. Les tiges qui se ramifient séparément depuis la boucle extérieure restent prises en compte, mais pas les jonctions à l’intérieur de ces tiges. Cette recherche bornée peut manquer des structures d’énergie plus basse. ",
+  "tm.fold.note.mfe!":"La structure est celle d’énergie libre la plus basse que cette recherche a trouvée, et non un minimum global démontré : la recherche classe les candidats avec un modèle énergétique moins coûteux, puis évalue {k} structures distinctes avec le modèle complet. La structure est présentée en notation parenthésée. Le modèle complet couvre les empilements, les boucles en épingle à cheveux, les renflements et les boucles internes",
+  "tm.fold.note.mfe.one!":"La structure est celle d’énergie libre la plus basse que cette recherche a trouvée, et non un minimum global démontré : la recherche classe les candidats avec un modèle énergétique moins coûteux, puis n’évalue que le meilleur candidat avec le modèle complet. La structure est présentée en notation parenthésée. Le modèle complet couvre les empilements, les boucles en épingle à cheveux, les renflements et les boucles internes",
   "tm.fold.note.one!":"Aucune épingle à cheveux stable trouvée.",
   "tm.fold.note.rna!":"Paramètres de boucle : Turner 2004, c’est-à-dire Mathews 2004 (ΔG°₃₇) et Lu 2006 (ΔH), via la base Nearest Neighbor Database ; tige d’après Xia 1998. Enthalpies de boucle réelles, et non une hypothèse. <b>La correction pour les sels de ce repliement est ajustée sur l’ARN.</b> Chaque empilement porte le terme d’écrantage de Debye et de condensation de Manning publié par Yao et Lorenz en 2023, rapporté aux 1,021 M de sodium dans lesquels les paramètres Turner ont eux-mêmes été mesurés, de sorte que l’énergie libre et la température de repliement répondent au tampon que vous avez saisi. Ce n’est pas le cas de l’enthalpie, ni des nombres de paires de bases et de boucles. Ce modèle publié corrige aussi l’électrostatique des boucles ; ce moteur ne le fait pas, et ne l’a jamais fait. La température de fusion du duplex reste corrigée avec Owczarzy 2004, qui est ajusté sur l’ADN. Les appariements bancals GU sont comptés comme des paires de tige, et les boucles internes comportant une ou deux bases non appariées de chaque côté utilisent la valeur que Turner a mesurée pour cette boucle exacte plutôt que l’équation générale des boucles.",
   "tm.fold.note.tmm!":" ⚠ Cette boucle utilise le mésappariement terminal GG/CG, qui est anormal dans la table publiée et est repris tel quel.",
@@ -9225,7 +9245,7 @@ var I18N = {
   "tm.tabs.h":"Structures possibles",
   "tm.tabs.more":"+{n} de plus",
   "tm.tabs.unit":"kcal/mol",
-  "tm.thermo.ome.ref!":"ΔH° et ΔS° se rapportent à 0.1 M de Na⁺ ; elles ne sont pas corrigées selon les conditions salines saisies.",
+  "tm.thermo.ome.ref!":"ΔH° et ΔS° se rapportent à 0,1 M de Na⁺ ; elles ne sont pas corrigées selon les conditions salines saisies.",
   "tm.thermo.ref!":"ΔH° et ΔS° correspondent à l’état de référence du modèle des plus proches voisins, à {salt} M de sel monovalent. Tm est corrigée séparément selon les conditions saisies.",
   "tm.uni!":" · <b>unimoléculaire, cela ne change donc pas avec la concentration</b>",
   "tm.verdict.fold!":"Ce brin se replie sur lui-même au lieu de s’apparier avec sa cible.",
@@ -9273,8 +9293,8 @@ var I18N = {
   "ui.auth.offline":"Impossible de joindre le serveur. Vérifiez votre connexion et réessayez.",
   "ui.auth.rate":"Trop de demandes en ce moment. Attendez une minute, puis réessayez.",
   "ui.auth.rate.wait":"Un code à la fois. Vous pourrez en demander un autre dans {n} secondes. Regardez dans vos indésirables en attendant.",
-  "ui.batch.partial.many!":"{n} séquences enregistrées. Le reste ({dropped}) dépasserait la capacité de la bibliothèque de votre forfait et reste donc affiché ici.",
-  "ui.batch.partial.one!":"{n} séquence enregistrée. Le reste ({dropped}) dépasserait la capacité de la bibliothèque de votre forfait et reste donc affiché ici.",
+  "ui.batch.partial.many!":"{n} séquences enregistrées. Le reste ({dropped}) dépasserait la capacité de la bibliothèque de votre forfait : il n’a pas été enregistré et demeure affiché ici.",
+  "ui.batch.partial.one!":"{n} séquence enregistrée. Le reste ({dropped}) dépasserait la capacité de la bibliothèque de votre forfait : il n’a pas été enregistré et demeure affiché ici.",
   "ui.bill.addpeople":"Ajoutez vos collaborateurs",
   "ui.bill.buy.title":"Acheter des places pour {lab}",
   "ui.bill.cancelled":"Paiement annulé. Rien n’a été facturé.",
@@ -9508,7 +9528,7 @@ var I18N = {
   "ui.lib.adel":"Supprimer {name}",
   "ui.lib.amore":"Autres actions pour {name}",
   "ui.lib.aname":"Nom de la séquence",
-  "ui.lib.aren":"Renommer {name}",
+  "ui.lib.aren":"Renommer la séquence. Nom actuel : {name}",
   "ui.lib.ashare":"Partager une copie de {name}",
   "ui.lib.copyname":"{name} (copie)",
   "ui.lib.counted":"simples brins et duplex",
@@ -9541,11 +9561,11 @@ var I18N = {
   "ui.monomer.insert.anti":"{code} inséré dans le brin antisens.",
   "ui.monomer.insert.aria":"Insérer {name} ({code})",
   "ui.monomer.insert.sense":"{code} inséré dans le brin sens.",
-  "ui.monomer.pin":"Épingler {code} dans Quick Insert",
+  "ui.monomer.pin":"Épingler {code} dans le panneau Insertion rapide",
   "ui.monomer.show.all":"Afficher toutes les bases",
   "ui.monomer.show.fewer":"Afficher moins de bases",
   "ui.monomer.thymine":"Thymine",
-  "ui.monomer.unpin":"Désépingler {code} de Quick Insert",
+  "ui.monomer.unpin":"Désépingler {code} du panneau Insertion rapide",
   "ui.monomer.uracil":"Uracile",
   "ui.notation.dna":"ADN",
   "ui.notation.rna":"ARN",
@@ -10163,6 +10183,8 @@ var I18N = {
   "lab.cap.members":"{n} miembros",
   "lab.cap.seat":"{used} / {seats} licencia",
   "lab.cap.seats":"{used} / {seats} licencias",
+  "lab.card.aname":"Nombre de la secuencia",
+  "lab.card.aren":"Cambiar el nombre de la secuencia. Nombre actual: {name}",
   "lab.card.armdel":"¿Eliminar?",
   "lab.card.by":"compartido por {email}",
   "lab.card.del":"Eliminar",
@@ -10172,6 +10194,7 @@ var I18N = {
   "lab.card.mgrdelT":"Tú administras este laboratorio. Esto elimina el registro para todo el mundo en el laboratorio, incluida la persona que lo guardó.",
   "lab.card.open":"Abrir",
   "lab.card.opencopy":"Cargar una copia",
+  "lab.card.renfail!":"Error al cambiar el nombre: no se ha podido confirmar si se guardó. En la pantalla sigue el nombre anterior.",
   "lab.card.rmdone":"Quitado del laboratorio",
   "lab.card.rmlab":"Quitar",
   "lab.card.sel":"Seleccionar {name}",
@@ -11052,23 +11075,23 @@ var I18N = {
   "tm.count.residue.one":"{n} residuo",
   "tm.cov.ok!":"Todos los residuos y enlaces de esta cadena están cubiertos por un conjunto de parámetros publicado.",
   "tm.deep.default":"Usar búsqueda predeterminada",
-  "tm.deep.defaultstatus!":"La búsqueda adicional está desactivada. Se muestra o se calcula el resultado de la búsqueda predeterminada para esta entrada.",
+  "tm.deep.defaultstatus!":"La búsqueda adicional está desactivada. Para esta entrada se usa la búsqueda predeterminada: el resultado ya se muestra o todavía se está calculando.",
   "tm.deep.device!":"Tu secuencia y tu dispositivo pueden necesitar más tiempo. Son mediciones en un equipo de escritorio, no un límite de tiempo.",
   "tm.deep.done!":"La búsqueda adicional ha terminado.",
-  "tm.deep.error!":"La búsqueda adicional no pudo ejecutarse en un worker en segundo plano. No se aceptó ningún resultado nuevo. Revisa la solicitud antes de volver a intentarlo.",
+  "tm.deep.error!":"La búsqueda adicional no ha podido ejecutarse en segundo plano. No se ha aceptado ningún resultado nuevo. Revisa la solicitud antes de volver a intentarlo.",
   "tm.deep.input":"{n} nt · {chem}",
   "tm.deep.limit!":"Límite de tiempo: {n} segundos.",
-  "tm.deep.method!":"El resultado de la búsqueda ordinaria tiene la menor energía libre encontrada por esa búsqueda, pero no es un mínimo global demostrado. Esta búsqueda finita ordena las candidatas con un modelo de energía de menor coste de cálculo y después puntúa una selección de candidatas con el modelo completo. Incluye apilamientos, protuberancias y bucles internos",
+  "tm.deep.method!":"El resultado de la búsqueda ordinaria tiene la menor energía libre encontrada por esa búsqueda, pero no es un mínimo global demostrado. Esa búsqueda acotada ordena las estructuras candidatas con un modelo de energía de menor coste de cálculo y después puntúa una selección de candidatas con el modelo completo. El modelo completo incluye apilamientos, bucles en horquilla, protuberancias y bucles internos",
   "tm.deep.notnow":"Ahora no",
   "tm.deep.ordinary":"Resultado de la búsqueda ordinaria",
   "tm.deep.reference!":"Solo como referencia para {n} nt de {chem}. No es un tiempo medido para la longitud actual.",
   "tm.deep.retry":"Revisar y reintentar",
-  "tm.deep.scope!":"«Iniciar búsqueda» ejecuta una búsqueda ordinaria que incluye uniones de varios brazos y otra búsqueda que exige una unión. Estas búsquedas finitas pueden omitir estructuras de menor energía.",
+  "tm.deep.scope!":"«Iniciar búsqueda» ejecuta dos búsquedas: una ordinaria cuyas estructuras pueden contener uniones de varios brazos, y una segunda restringida a estructuras que contienen al menos una. Estas búsquedas acotadas pueden pasar por alto estructuras de menor energía.",
   "tm.deep.search":"Buscar uniones de varios brazos",
   "tm.deep.selected":"Alternativa seleccionada",
   "tm.deep.start":"Iniciar búsqueda",
   "tm.deep.stop":"Detener búsqueda",
-  "tm.deep.time!":"En el equipo de prueba, prevé unos {n} segundos.",
+  "tm.deep.time!":"En el ordenador de prueba cabe esperar unos {n} segundos.",
   "tm.deep.timeout!":"La búsqueda adicional alcanzó su límite de tiempo y se detuvo. No se aceptó ningún resultado nuevo.",
   "tm.dir.higher!":"La Tm real será <b>más alta</b> que esta.",
   "tm.dir.lower!":"La Tm real será <b>más baja</b> que esta.",
@@ -11111,12 +11134,12 @@ var I18N = {
   "tm.fold.loop":"bucle de {n} nt",
   "tm.fold.mb.many":"{n} bucles múltiples",
   "tm.fold.mb.one":"{n} bucle múltiple",
-  "tm.fold.mbc.behind!":"{v} kcal/mol menos estable que la mejor estructura encontrada sin esta condición",
+  "tm.fold.mbc.behind!":"{v} kcal/mol menos estable que la mejor estructura encontrada sin esta restricción",
   "tm.fold.mbc.better!":"{v} kcal/mol más estable que la mejor estructura encontrada sin esta condición",
   "tm.fold.mbc.name":"Alternativa con unión de varios brazos obligatoria",
   "tm.fold.mbc.none!":"Esta búsqueda no encontró ninguna estructura con unión de varios brazos.",
   "tm.fold.mbc.same!":"El resultado de la búsqueda ordinaria ya contiene una unión de varios brazos. La búsqueda que exige una unión devolvió la misma estructura.",
-  "tm.fold.mbc.tied!":"La diferencia de energía predicha se redondea a 0.00 kcal/mol.",
+  "tm.fold.mbc.tied!":"La diferencia de energía predicha se redondea a 0,00 kcal/mol.",
   "tm.fold.name.branched":"Plegamiento ramificado",
   "tm.fold.name.hairpin":"Horquilla",
   "tm.fold.name.junction":"Unión de {n} brazos",
@@ -11128,8 +11151,9 @@ var I18N = {
   "tm.fold.note.mb!":", y bucles múltiples. Dentro de un bucle múltiple puntuamos los extremos colgantes y el apilamiento coaxial directo, y en las colas libres puntuamos un extremo colgante o un desapareamiento terminal en el extremo de la hélice más externa, el que el modelo publicado haga más estable; <b>el apilamiento coaxial mediado por desapareamiento no se puntúa</b>. Ese término omitido es estabilizante en el modelo de Turner. Es una afirmación sobre el modelo, no un margen de error experimental. ",
   "tm.fold.note.mbc!":"Una estructura con unión de varios brazos se encuentra buscando otra vez con esa condición en vigor. La segunda búsqueda conserva el mejor plegamiento con unión para cada región que examina, así que llega a estructuras que la búsqueda sin restricción descarta por el camino. Por eso este resultado es a veces más estable que el de arriba.",
   "tm.fold.note.mbdna!":", y bucles múltiples. Dentro de un bucle múltiple puntuamos los extremos colgantes y el apilamiento coaxial directo, y en las colas libres puntuamos un extremo colgante en el extremo de la hélice más externa; <b>el apilamiento coaxial mediado por desapareamiento y los desapareamientos terminales no se puntúan</b>. Los dos términos omitidos son estabilizantes en el modelo de SantaLucia. Es una afirmación sobre el modelo, no un margen de error experimental. Los valores de extremo colgante son el conjunto tabulado para ADN: varios pares de cierre llevan un mismo valor para cada base colgante, y las dos filas G-T se toman de los pares Watson-Crick a los que más se parecen. ",
-  "tm.fold.note.mbrna!":". <b>No se buscan estructuras multirramificadas por encima de {n} nt.</b> Este límite acota el coste de la búsqueda. Se siguen considerando dominios exteriores separados, pero no las uniones dentro de ellos. La búsqueda finita puede omitir estructuras de menor energía. ",
-  "tm.fold.note.mfe!":"La estructura es la de menor energía libre que ha encontrado esta búsqueda, no un mínimo global demostrado: la búsqueda ordena con un modelo de energía más barato y después puntúa con exactitud solo sus {k} mejores candidatas. Se muestra en notación de puntos y paréntesis: apilamientos, protuberancias y bucles internos",
+  "tm.fold.note.mbrna!":". <b>No se buscan estructuras multirramificadas cuando la secuencia supera los {n} nt.</b> Este límite acota el coste de la búsqueda. Los tallos que se ramifican por separado desde el bucle exterior se siguen considerando, pero no las uniones dentro de ellos. Esta búsqueda acotada puede pasar por alto estructuras de menor energía. ",
+  "tm.fold.note.mfe!":"La estructura es la de menor energía libre que ha encontrado esta búsqueda, no un mínimo global demostrado: la búsqueda ordena las estructuras candidatas con un modelo de energía de menor coste de cálculo y después puntúa {k} estructuras distintas con el modelo completo. Se muestra en notación de puntos y paréntesis. El modelo completo cubre apilamientos, bucles en horquilla, protuberancias y bucles internos",
+  "tm.fold.note.mfe.one!":"La estructura es la de menor energía libre que ha encontrado esta búsqueda, no un mínimo global demostrado: la búsqueda ordena las estructuras candidatas con un modelo de energía de menor coste de cálculo y después puntúa solo la mejor candidata con el modelo completo. Se muestra en notación de puntos y paréntesis. El modelo completo cubre apilamientos, bucles en horquilla, protuberancias y bucles internos",
   "tm.fold.note.one!":"No se ha encontrado ninguna horquilla estable.",
   "tm.fold.note.rna!":"Parámetros de bucle: Turner 2004, es decir, Mathews 2004 (ΔG°₃₇) y Lu 2006 (ΔH), a través de la Nearest Neighbor Database; el tallo, de Xia 1998. Entalpías de bucle reales, no una suposición. <b>La corrección salina de este plegamiento está ajustada al ARN.</b> Cada apilamiento lleva el término de apantallamiento de Debye y de condensación de Manning que Yao y Lorenz publicaron en 2023, referido a los 1,021 M de sodio en los que se midieron los propios parámetros de Turner, así que la energía libre y la temperatura de plegamiento responden al tampón que has introducido. La entalpía no, y tampoco los recuentos de pares de bases y de bucles. Ese modelo publicado corrige además la electrostática de los bucles; este motor no lo hace, ni lo ha hecho nunca. La temperatura de fusión del dúplex se sigue corrigiendo con Owczarzy 2004, que está ajustada al ADN. Los pares GU por balanceo se puntúan como pares del tallo, y los bucles internos con una o dos bases sin aparear a cada lado usan el valor que Turner midió para ese bucle exacto, en lugar de la ecuación general de bucles.",
   "tm.fold.note.tmm!":" ⚠ Este bucle usa el desapareamiento terminal GG/CG, que es anómalo en la tabla publicada y se conserva sin alterar.",
@@ -11174,7 +11198,7 @@ var I18N = {
   "tm.tabs.h":"Estructuras posibles",
   "tm.tabs.more":"+{n} más",
   "tm.tabs.unit":"kcal/mol",
-  "tm.thermo.ome.ref!":"ΔH° y ΔS° se refieren a 0.1 M de Na⁺; no se corrigen para las condiciones salinas introducidas.",
+  "tm.thermo.ome.ref!":"ΔH° y ΔS° están referidos a 0,1 M de Na⁺; no se corrigen según las condiciones salinas introducidas.",
   "tm.thermo.ref!":"ΔH° y ΔS° corresponden al estado de referencia del modelo del vecino más cercano, con {salt} M de sal monovalente. Tm se corrige por separado para las condiciones introducidas.",
   "tm.uni!":" · <b>unimolecular, así que esto no cambia con la concentración</b>",
   "tm.verdict.fold!":"Esta cadena se pliega sobre sí misma en lugar de emparejarse con su diana.",
@@ -11222,8 +11246,8 @@ var I18N = {
   "ui.auth.offline":"No se ha podido conectar con el servidor. Revisa tu conexión y vuelve a intentarlo.",
   "ui.auth.rate":"Demasiados intentos seguidos. Espera un minuto y vuelve a intentarlo.",
   "ui.auth.rate.wait":"Solo un código a la vez. Podrás pedir otro en {n} segundos. Mientras tanto, revisa la carpeta de spam.",
-  "ui.batch.partial.many!":"Se han guardado {n} secuencias. El resto ({dropped}) superaría la capacidad de la biblioteca de tu plan y sigue aquí.",
-  "ui.batch.partial.one!":"Se ha guardado {n} secuencia. El resto ({dropped}) superaría la capacidad de la biblioteca de tu plan y sigue aquí.",
+  "ui.batch.partial.many!":"Se han guardado {n} secuencias. El resto ({dropped}) superaría la capacidad de la biblioteca de tu plan: no se ha guardado y sigue aquí.",
+  "ui.batch.partial.one!":"Se ha guardado {n} secuencia. El resto ({dropped}) superaría la capacidad de la biblioteca de tu plan: no se ha guardado y sigue aquí.",
   "ui.bill.addpeople":"Añade a tu equipo",
   "ui.bill.buy.title":"Comprar licencias para {lab}",
   "ui.bill.cancelled":"Pago cancelado. No se ha cobrado nada.",
@@ -11457,7 +11481,7 @@ var I18N = {
   "ui.lib.adel":"Eliminar {name}",
   "ui.lib.amore":"Más acciones para {name}",
   "ui.lib.aname":"Nombre de la secuencia",
-  "ui.lib.aren":"Cambiar el nombre de {name}",
+  "ui.lib.aren":"Cambiar el nombre de la secuencia. Nombre actual: {name}",
   "ui.lib.ashare":"Compartir una copia de {name}",
   "ui.lib.copyname":"{name} (copia)",
   "ui.lib.counted":"secuencias monocatenarias y dúplex",
@@ -11490,11 +11514,11 @@ var I18N = {
   "ui.monomer.insert.anti":"Se ha insertado {code} en la cadena antisentido.",
   "ui.monomer.insert.aria":"Insertar {name} ({code})",
   "ui.monomer.insert.sense":"Se ha insertado {code} en la cadena sentido.",
-  "ui.monomer.pin":"Fijar {code} en Quick Insert",
+  "ui.monomer.pin":"Anclar {code} en Inserción rápida",
   "ui.monomer.show.all":"Mostrar todas las bases",
   "ui.monomer.show.fewer":"Mostrar menos bases",
   "ui.monomer.thymine":"Timina",
-  "ui.monomer.unpin":"Desfijar {code} de Quick Insert",
+  "ui.monomer.unpin":"Desanclar {code} de Inserción rápida",
   "ui.monomer.uracil":"Uracilo",
   "ui.notation.dna":"ADN",
   "ui.notation.rna":"ARN",
@@ -12112,6 +12136,8 @@ var I18N = {
   "lab.cap.members":"{n} Mitglieder",
   "lab.cap.seat":"{used} / {seats} Lizenz",
   "lab.cap.seats":"{used} / {seats} Lizenzen",
+  "lab.card.aname":"Sequenzname",
+  "lab.card.aren":"Sequenz umbenennen. Aktueller Name: {name}",
   "lab.card.armdel":"Löschen?",
   "lab.card.by":"geteilt von {email}",
   "lab.card.del":"Löschen",
@@ -12121,6 +12147,7 @@ var I18N = {
   "lab.card.mgrdelT":"Sie verwalten dieses Labor. Damit wird der Datensatz für alle im Labor gelöscht, auch für die Person, die ihn gespeichert hat.",
   "lab.card.open":"Öffnen",
   "lab.card.opencopy":"Kopie laden",
+  "lab.card.renfail!":"Die Sequenz konnte nicht umbenannt werden. Auf dem Bildschirm steht weiterhin der bisherige Name.",
   "lab.card.rmdone":"Aus dem Labor entfernt",
   "lab.card.rmlab":"Entfernen",
   "lab.card.sel":"{name} auswählen",
@@ -13001,23 +13028,23 @@ var I18N = {
   "tm.count.residue.one":"{n} Rest",
   "tm.cov.ok!":"Jeder Rest und jede Bindung in diesem Strang ist durch einen veröffentlichten Parametersatz abgedeckt.",
   "tm.deep.default":"Standardsuche verwenden",
-  "tm.deep.defaultstatus!":"Die zusätzliche Suche ist ausgeschaltet. Das Ergebnis der Standardsuche für diese Eingabe wird angezeigt oder berechnet.",
-  "tm.deep.device!":"Deine Sequenz und dein Gerät können mehr Zeit benötigen. Dies sind Messungen auf einem Desktoprechner, kein Zeitlimit.",
+  "tm.deep.defaultstatus!":"Die zusätzliche Suche ist ausgeschaltet. Für diese Eingabe gilt die Standardsuche; ihr Ergebnis wird angezeigt oder gerade berechnet.",
+  "tm.deep.device!":"Bei Ihrer Sequenz und auf Ihrem Gerät kann es länger dauern. Dies sind Messungen auf einem Desktoprechner, kein Zeitlimit.",
   "tm.deep.done!":"Die zusätzliche Suche ist abgeschlossen.",
-  "tm.deep.error!":"Die zusätzliche Suche konnte nicht in einem Hintergrund-Worker ausgeführt werden. Kein neues Ergebnis wurde übernommen. Prüfe die Anfrage, bevor du es erneut versuchst.",
+  "tm.deep.error!":"Die zusätzliche Suche im Hintergrund ist fehlgeschlagen. Es wurde kein neues Ergebnis übernommen. Prüfen Sie die Eingabe, und versuchen Sie es dann erneut.",
   "tm.deep.input":"{n} nt · {chem}",
   "tm.deep.limit!":"Zeitlimit: {n} Sekunden.",
-  "tm.deep.method!":"Das Ergebnis der regulären Suche hat die niedrigste freie Energie, die diese Suche gefunden hat, ist aber kein bewiesenes globales Minimum. Diese endliche Suche sortiert Kandidaten mit einem weniger rechenaufwendigen Energiemodell und bewertet dann eine Auswahl mit dem vollständigen Modell. Berücksichtigt werden Stapel, Ausbuchtungen und innere Schleifen",
+  "tm.deep.method!":"Das Ergebnis der regulären Suche hat die niedrigste freie Energie, die diese Suche gefunden hat, ist aber kein bewiesenes globales Minimum. Diese begrenzte Suche sortiert Kandidaten mit einem weniger rechenaufwendigen Energiemodell und bewertet dann eine Auswahl mit dem vollständigen Modell. Das vollständige Modell berücksichtigt Basenstapel, Haarnadelschleifen, Ausbuchtungen und innere Schleifen",
   "tm.deep.notnow":"Jetzt nicht",
   "tm.deep.ordinary":"Ergebnis der regulären Suche",
   "tm.deep.reference!":"Nur als Referenz für {n} nt {chem}. Dies ist keine gemessene Zeit für die aktuelle Länge.",
   "tm.deep.retry":"Prüfen und erneut versuchen",
-  "tm.deep.scope!":"„Suche starten“ führt eine reguläre Suche einschließlich mehrarmiger Verzweigungen und eine separate Suche mit vorgeschriebener Verzweigung aus. Diese endlichen Suchen können Strukturen mit niedrigerer Energie übersehen.",
+  "tm.deep.scope!":"„Suche starten“ führt zwei Suchen aus: eine reguläre, deren Strukturen Mehrfachverzweigungen enthalten dürfen, und eine zweite, die auf Strukturen mit mindestens einer Mehrfachverzweigung beschränkt ist. Diese begrenzten Suchen können Strukturen mit niedrigerer Energie übersehen.",
   "tm.deep.search":"Mehrarmige Verzweigungen suchen",
   "tm.deep.selected":"Ausgewählte Alternative",
   "tm.deep.start":"Suche starten",
   "tm.deep.stop":"Suche stoppen",
-  "tm.deep.time!":"Rechne auf dem Testrechner mit etwa {n} Sekunden.",
+  "tm.deep.time!":"Auf dem Testrechner sind etwa {n} Sekunden zu erwarten.",
   "tm.deep.timeout!":"Die zusätzliche Suche hat ihr Zeitlimit erreicht und wurde gestoppt. Kein neues Ergebnis wurde übernommen.",
   "tm.dir.higher!":"Der echte Tm-Wert wird <b>höher</b> sein als dieser.",
   "tm.dir.lower!":"Der echte Tm-Wert wird <b>niedriger</b> sein als dieser.",
@@ -13060,12 +13087,12 @@ var I18N = {
   "tm.fold.loop":"Schleife mit {n} nt",
   "tm.fold.mb.many":"{n} Multiloops",
   "tm.fold.mb.one":"{n} Multiloop",
-  "tm.fold.mbc.behind!":"{v} kcal/mol weniger stabil als die beste Struktur, die ohne diese Anforderung gefunden wurde",
+  "tm.fold.mbc.behind!":"Um {v} kcal/mol weniger stabil als die beste Struktur, die ohne diese Vorgabe gefunden wurde",
   "tm.fold.mbc.better!":"{v} kcal/mol stabiler als die beste Struktur, die ohne diese Anforderung gefunden wurde",
   "tm.fold.mbc.name":"Alternative mit vorgeschriebener mehrarmiger Verzweigung",
   "tm.fold.mbc.none!":"Diese Suche hat keine Struktur mit mehrarmiger Verzweigung gefunden.",
   "tm.fold.mbc.same!":"Das Ergebnis der regulären Suche enthält bereits eine mehrarmige Verzweigung. Die Suche mit vorgeschriebener Verzweigung hat dieselbe Struktur zurückgegeben.",
-  "tm.fold.mbc.tied!":"Die vorhergesagte Energiedifferenz wird auf 0.00 kcal/mol gerundet.",
+  "tm.fold.mbc.tied!":"Die vorhergesagte Energiedifferenz beträgt gerundet 0,00 kcal/mol.",
   "tm.fold.name.branched":"Verzweigte Faltung",
   "tm.fold.name.hairpin":"Haarnadel",
   "tm.fold.name.junction":"{n}-Wege-Verzweigung",
@@ -13077,8 +13104,9 @@ var I18N = {
   "tm.fold.note.mb!":", und Multiloops. Innerhalb eines Multiloops bewerten wir Dangling Ends und bündige koaxiale Stapelung, und an den freien Enden bewerten wir ein Dangling End oder eine terminale Fehlpaarung am Ende der äußersten Helix, je nachdem, welches von beiden nach dem veröffentlichten Modell stabiler ist; <b>fehlpaarungsvermittelte koaxiale Stapelung wird nicht bewertet</b>. Dieser ausgelassene Term ist im Turner-Modell stabilisierend. Das ist eine Aussage über das Modell und keine experimentelle Fehlergrenze. ",
   "tm.fold.note.mbc!":"Eine Struktur mit mehrarmiger Verzweigung wird gefunden, indem mit dieser Anforderung erneut gesucht wird. Die zweite Suche behält für jeden untersuchten Bereich die beste Faltung mit Verzweigung, sie erreicht daher Strukturen, die die uneingeschränkte Suche unterwegs verwirft. Deshalb ist dieses Ergebnis gelegentlich stabiler als das darüber.",
   "tm.fold.note.mbdna!":", und Multiloops. Innerhalb eines Multiloops bewerten wir Dangling Ends und bündige koaxiale Stapelung, und an den freien Enden bewerten wir ein Dangling End am Ende der äußersten Helix; <b>fehlpaarungsvermittelte koaxiale Stapelung und terminale Fehlpaarungen werden nicht bewertet</b>. Beide ausgelassenen Terme sind im SantaLucia-Modell stabilisierend. Das ist eine Aussage über das Modell und keine experimentelle Fehlergrenze. Die Dangling-End-Werte sind der tabellierte DNA-Satz: Mehrere schließende Paare tragen einen einzigen Wert für jede Dangling-End-Base, und die beiden G-T-Zeilen sind von den Watson-Crick-Paaren übernommen, denen sie am ähnlichsten sind. ",
-  "tm.fold.note.mbrna!":". <b>Oberhalb von {n} nt wird nicht nach Mehrfachverzweigungen gesucht.</b> Diese Grenze beschränkt den Rechenaufwand. Getrennte äußere Domänen werden weiterhin berücksichtigt, Verzweigungen innerhalb dieser Domänen jedoch nicht. Die endliche Suche kann Strukturen mit niedrigerer Energie übersehen. ",
-  "tm.fold.note.mfe!":"Die Struktur ist die Struktur mit der niedrigsten freien Energie, die diese Suche gefunden hat, und kein bewiesenes globales Minimum: Die Suche sortiert mit einem billigeren Energiemodell und bewertet dann nur ihre besten {k} Kandidaten exakt. Sie wird in Dot-Bracket-Notation gezeigt: Stapel, Ausbuchtungen und innere Schleifen",
+  "tm.fold.note.mbrna!":". <b>Ist die Sequenz länger als {n} nt, wird nicht nach Mehrfachverzweigungen gesucht.</b> Diese Grenze beschränkt den Rechenaufwand. Stämme, die jeweils einzeln von der äußeren Schleife abzweigen, werden weiterhin berücksichtigt, Verzweigungen innerhalb dieser Stämme jedoch nicht. Diese begrenzte Suche kann Strukturen mit niedrigerer Energie übersehen. ",
+  "tm.fold.note.mfe!":"Die Struktur ist die Struktur mit der niedrigsten freien Energie, die diese Suche gefunden hat, und kein bewiesenes globales Minimum: Die Suche sortiert Kandidaten mit einem weniger rechenaufwendigen Energiemodell und bewertet dann {k} verschiedene Strukturen mit dem vollständigen Modell. Die Struktur wird in Dot-Bracket-Notation dargestellt. Das vollständige Modell umfasst Basenstapel, Haarnadelschleifen, Ausbuchtungen und innere Schleifen",
+  "tm.fold.note.mfe.one!":"Die Struktur ist die Struktur mit der niedrigsten freien Energie, die diese Suche gefunden hat, und kein bewiesenes globales Minimum: Die Suche sortiert Kandidaten mit einem weniger rechenaufwendigen Energiemodell und bewertet dann nur diesen einen besten Kandidaten mit dem vollständigen Modell. Die Struktur wird in Dot-Bracket-Notation dargestellt. Das vollständige Modell umfasst Basenstapel, Haarnadelschleifen, Ausbuchtungen und innere Schleifen",
   "tm.fold.note.one!":"Keine stabile Haarnadel gefunden.",
   "tm.fold.note.rna!":"Schleifenparameter: Turner 2004, also Mathews 2004 (ΔG°₃₇) und Lu 2006 (ΔH) über die Nearest Neighbor Database; für den Stamm: Xia 1998. Echte gemessene Schleifenenthalpien, keine Annahme. <b>Die Salzkorrektur für diese Faltung ist auf RNA angepasst.</b> Jede Stapelung trägt den Debye-Abschirmungs- und Manning-Kondensationsterm, den Yao und Lorenz 2023 veröffentlicht haben, bezogen auf die 1,021 M Natrium, in denen die Turner-Parameter selbst gemessen wurden, sodass die freie Energie und die Faltungstemperatur auf den von Ihnen eingegebenen Puffer reagieren. Die Enthalpie tut das nicht, und die Zählungen der Basenpaare und der Schleifen ebenfalls nicht. Jenes veröffentlichte Modell korrigiert auch die Elektrostatik von Schleifen; diese Engine tut das nicht und hat es nie getan. Die Schmelztemperatur des Duplex wird weiterhin mit Owczarzy 2004 korrigiert, und das ist auf DNA angepasst. GU-Wobble-Paarungen werden als Stammpaare gewertet, und innere Schleifen mit ein oder zwei ungepaarten Basen auf jeder Seite verwenden den Wert, den Turner für genau diese Schleife gemessen hat, statt der allgemeinen Schleifengleichung.",
   "tm.fold.note.tmm!":" ⚠ Diese Schleife verwendet die terminale Fehlpaarung GG/CG, die in der veröffentlichten Tabelle anomal ist und unverändert übernommen wird.",
@@ -13123,7 +13151,7 @@ var I18N = {
   "tm.tabs.h":"Mögliche Strukturen",
   "tm.tabs.more":"+{n} weitere",
   "tm.tabs.unit":"kcal/mol",
-  "tm.thermo.ome.ref!":"ΔH° und ΔS° beziehen sich auf 0.1 M Na⁺; sie werden nicht für die eingegebenen Salzbedingungen korrigiert.",
+  "tm.thermo.ome.ref!":"ΔH° und ΔS° gelten für 0,1 M Na⁺; sie werden nicht für die eingegebenen Salzbedingungen korrigiert.",
   "tm.thermo.ref!":"ΔH° und ΔS° beziehen sich auf den Referenzzustand des Nearest-Neighbor-Modells bei {salt} M einwertigem Salz. Tm wird für die eingegebenen Bedingungen separat korrigiert.",
   "tm.uni!":" · <b>unimolekular, das ändert sich also nicht mit der Konzentration</b>",
   "tm.verdict.fold!":"Dieser Strang faltet sich auf sich selbst, statt sich mit seiner Zielsequenz zu paaren.",
@@ -13406,7 +13434,7 @@ var I18N = {
   "ui.lib.adel":"{name} löschen",
   "ui.lib.amore":"Weitere Aktionen für {name}",
   "ui.lib.aname":"Sequenzname",
-  "ui.lib.aren":"{name} umbenennen",
+  "ui.lib.aren":"Sequenz umbenennen. Aktueller Name: {name}",
   "ui.lib.ashare":"Eine Kopie von {name} teilen",
   "ui.lib.copyname":"{name} (Kopie)",
   "ui.lib.counted":"Einzelstränge und Duplexe",
@@ -13439,11 +13467,11 @@ var I18N = {
   "ui.monomer.insert.anti":"{code} in den Antisense-Strang eingefügt.",
   "ui.monomer.insert.aria":"{name} ({code}) einfügen",
   "ui.monomer.insert.sense":"{code} in den Sense-Strang eingefügt.",
-  "ui.monomer.pin":"{code} in Quick Insert anheften",
+  "ui.monomer.pin":"{code} an Schnelleinfügen anheften",
   "ui.monomer.show.all":"Alle Basen anzeigen",
   "ui.monomer.show.fewer":"Weniger Basen anzeigen",
   "ui.monomer.thymine":"Thymin",
-  "ui.monomer.unpin":"{code} aus Quick Insert lösen",
+  "ui.monomer.unpin":"{code} aus Schnelleinfügen entfernen",
   "ui.monomer.uracil":"Uracil",
   "ui.notation.dna":"DNA",
   "ui.notation.rna":"RNA",
@@ -19772,8 +19800,22 @@ function ocNumFmt(x, opts){
   try{ return Number(x).toLocaleString(ocNumLoc(), opts || undefined); }
   catch(_){ try{ return String(x); }catch(_e){ return ''; } }
 }
+
+
+
+
+
+
+
+
+function ocPctFmt(x, digits){
+  var d = (digits == null) ? 1 : digits;
+  try{ return (Number(x) / 100).toLocaleString(ocNumLoc(), { style: 'percent', minimumFractionDigits: d, maximumFractionDigits: d }); }
+  catch(_){ try{ return ocNumFmt(x, { minimumFractionDigits: d, maximumFractionDigits: d }) + '%'; }catch(_e){ return String(x) + '%'; } }
+}
 window.ocNumLoc = ocNumLoc; window.ocNumDec = ocNumDec;
 window.ocNumIn = ocNumIn; window.ocNumFmt = ocNumFmt; window.ocNumCanon = ocNumCanon;
+window.ocPctFmt = ocPctFmt;
 
 
 
@@ -30076,6 +30118,31 @@ try{
 
 
 
+  
+
+
+
+
+
+
+
+
+
+
+  async function renameLabStrand(entry, name){
+    var _lq=entry.__labId?('&lab_id=eq.'+encodeURIComponent(entry.__labId)):'';
+    var qs='strands?id='+'eq.'+encodeURIComponent(entry.__rowId)
+         + '&version=eq.'+encodeURIComponent(entry.__vn)+_lq;
+    var rows=await rest('PATCH',qs,{name:name},{Prefer:'return=representation'});
+    if(rows && rows.length) return rowToEntry(rows[0]);
+    var sh={rowId:entry.__rowId, labId:entry.__labId, name:entry.name||'', vn:entry.__vn, ver:entry.__ver};
+    var _out=await edOutcome(sh);
+    
+
+    if(_out==='stale') toast(_t('lab.ed.again!'));
+    return null;
+  }
+
   async function deleteLabStrandAsManager(rowId){
     var uid=null; try{ uid=await myUid(); }catch(_e){ ocFail('mgrDelStrand#1',_e); }
     if(!uid) throw new Error(_t('lab.err.signin'));
@@ -31828,7 +31895,18 @@ try{
       acts=(_b.access||'')+(_b.open||'')
         +'<button type="button" class="lab-x2 lc-more" data-lcmore="'+_rid+'" aria-expanded="false" aria-controls="lcm-'+_rid+'" aria-label="'+esc(_t('ui.lib.amore',{name:e.name||_t('lab.card.untitled')}))+'">\u22ef</button>'+(_b.cap||'');
     }
-    return '<div class="lab-card"'+(isAuthor?' draggable="true"':'')+' data-rowid="'+esc(e.__rowId||'')+'"><div class="lab-card-h"><label class="lab-pick"><input type="checkbox" class="lab-pick-cb" data-labpick="'+esc(e.id)+'" aria-label="'+esc(_t('lab.card.sel',{name:e.name||_t('lab.dlg.aseq')}))+'"'+(_sel.has(e.id)?' checked':'')+'></label><span class="lc-n">'+esc(e.name||_t('lab.card.untitled'))+'</span><span class="lc-mw">'+esc(labMW(e))+' g/mol</span></div>'+
+    return '<div class="lab-card"'+(isAuthor?' draggable="true"':'')+' data-rowid="'+esc(e.__rowId||'')+'"><div class="lab-card-h"><label class="lab-pick"><input type="checkbox" class="lab-pick-cb" data-labpick="'+esc(e.id)+'" aria-label="'+esc(_t('lab.card.sel',{name:e.name||_t('lab.dlg.aseq')}))+'"'+(_sel.has(e.id)?' checked':'')+'></label>'
+      
+
+
+
+
+      +((labId&&canEdit&&e.__rowId)
+        ? ('<button type="button" class="lc-n hn-edit" data-lab-rename="'+esc(e.__rowId)
+           +'" aria-label="'+esc(_t('lab.card.aren',{name:e.name||_t('lab.card.untitled')}))+'">'
+           +esc(e.name||_t('lab.card.untitled'))+'</button>')
+        : ('<span class="lc-n">'+esc(e.name||_t('lab.card.untitled'))+'</span>'))
+      +'<span class="lc-mw">'+esc(labMW(e))+' g/mol</span></div>'+
       '<div class="lc-seq">'+esc((typeof spaceSeq==='function')?spaceSeq(e.seq,e.type,e.linkage):e.seq||'')+'</div>'+
       (labId?('<div class="lc-meta">'+(e.__author?esc(_t('lab.card.by',{email:(e.__authorName||e.__author)})):esc(_t('lab.card.shared')))+(isAuthor?' · <b>'+esc(_t('lab.card.you'))+'</b>':'')+'</div>'):'')+
       
@@ -33207,6 +33285,42 @@ try{
       try{ if(typeof applyAll==='function') applyAll(); }catch(_e){ ocFail('labed#apply4',_e); }
       if(typeof setTab==='function') setTab('mw');
       edPaint(); return; }
+    
+
+
+
+
+    if((b=e.target.closest('[data-lab-rename]'))){
+      
+
+
+      var _nbtn=b;
+      var _nrid=b.getAttribute('data-lab-rename');
+      var _ne=(_lastList||[]).filter(function(x){ return x && x.__rowId===_nrid; })[0];
+      if(!_ne){ toast(_t('lab.lib.failopen')); return; }
+      var _nin=document.createElement('input'); _nin.className='hn-input'; _nin.value=_ne.name||''; _nin.maxLength=120;
+      try{ _nin.setAttribute('aria-label',_t('lab.card.aname')); }catch(_e){ ocFail('labren#aname',_e); }
+      _nbtn.replaceWith(_nin);
+      try{ _nin.focus(); _nin.select(); }catch(_e){   }
+      var _ndone=false;
+      var _ncommit=function(){
+        if(_ndone) return; _ndone=true;
+        var _nm=(_nin.value||'').trim().slice(0,120);
+        if(_nm===(_ne.name||'')){ _nin.replaceWith(_nbtn); return; }
+        renameLabStrand(_ne,_nm).then(function(){ renderLabList(); })
+          
+
+
+
+
+
+
+
+          .catch(function(_err){ ocFail('labren#patch',_err); _nin.replaceWith(_nbtn); toast(_t('lab.card.renfail!')); });
+      };
+      _nin.addEventListener('keydown', function(ev){ if(ev.key==='Enter'){ ev.preventDefault(); _ncommit(); } else if(ev.key==='Escape'){ ev.preventDefault(); _ndone=true; _nin.replaceWith(_nbtn); } });
+      _nin.addEventListener('blur', _ncommit);
+      return; }
     if((b=e.target.closest('[data-lab-rmlab]'))){
       
 
@@ -42845,7 +42959,20 @@ try{
   var esc = function (s) { return (typeof ocEsc === 'function') ? ocEsc(s) : String(s == null ? '' : s); };
   function q(s) { return document.querySelector(s); }
   function num(x, d) { var v = parseFloat(x); return isFinite(v) ? v : d; }
-  function fmtT(t) { return (Math.round(t * 10) / 10).toFixed(1); }
+  
+
+
+
+
+
+
+  function ocFixed(x, d) {
+    var s = Number(x).toFixed(d), f = window.ocNumFmt;
+    if (!f) return s;
+    try { return f(Number(s), { minimumFractionDigits: d, maximumFractionDigits: d, useGrouping: false }); }
+    catch (_e) { return s; }
+  }
+  function fmtT(t) { return ocFixed(Math.round(t * 10) / 10, 1); }
   function plural(n, base) { return t(base + (n === 1 ? '.one' : '.many'), { n: n }); }
 
   
@@ -43040,6 +43167,36 @@ try{
     return bits.join(' · ');
   }
 
+  
+
+
+
+
+
+
+
+
+
+  function patchInto(el, html) {
+    var tpl = document.createElement('template');
+    if (!tpl.content) { el.innerHTML = html; return; }
+    tpl.innerHTML = html;
+    var next = tpl.content.firstChild, ref = el.firstChild, probe, hit, n;
+    while (next) {
+      n = next; next = next.nextSibling;
+      hit = null;
+      for (probe = ref; probe; probe = probe.nextSibling) {
+        if (probe.isEqualNode(n)) { hit = probe; break; }
+      }
+      if (hit) {
+        while (ref !== hit) { probe = ref; ref = ref.nextSibling; el.removeChild(probe); }
+        ref = hit.nextSibling;
+      } else {
+        el.insertBefore(n, ref);
+      }
+    }
+    while (ref) { probe = ref; ref = ref.nextSibling; el.removeChild(probe); }
+  }
   function render() {
     var g = gather(); syncFoldInput(g);
     var host = q('[data-tmout]'); if (!host) return;
@@ -43125,8 +43282,8 @@ try{
              + (qual && qual.qualificationOnly
                ? '<div class="tm-cov tm-warn" data-tmlna-both>' + esc(whyList(qual.reasons)) + '</div>'
                : '<div class="tm-cov tm-ok">' + t('tm.cov.ok!') + '</div>')
-             + '<div class="tm-thermo"><span>ΔH° ' + r.dH.toFixed(1) + ' kcal/mol</span>'
-             + '<span>ΔS° ' + r.dS.toFixed(1) + ' cal/mol·K</span></div>'
+             + '<div class="tm-thermo"><span>ΔH° ' + ocFixed(r.dH, 1) + ' kcal/mol</span>'
+             + '<span>ΔS° ' + ocFixed(r.dS, 1) + ' cal/mol·K</span></div>'
              + '<div class="tm-cond" data-thermoref>' + window.t('tm.thermo.ref!', { salt: 1 }) + '</div>';
       }
     } else {
@@ -43197,7 +43354,7 @@ try{
           + esc(eseq) + '</code>'
         : '';
     }
-    host.innerHTML = html;
+    patchInto(host, html);
     
 
 
@@ -43224,17 +43381,31 @@ try{
       else { mf.removeAttribute('data-inactive'); ml.textContent = t('tm.model.label'); }
       var sel = mf.querySelector('select'); if (sel) sel.disabled = inactive;
     }
-    if (peek) peek.textContent = peekTxt;
+    if (peek && peek.textContent !== peekTxt) peek.textContent = peekTxt;
     
 
 
     if (cmp) {
       var focusAction = document.activeElement && document.activeElement.getAttribute('data-fold-deep');
+      
+
+
+
+
+      var focusOct = document.activeElement && document.activeElement.getAttribute('data-oct');
+      var focusExp = !!(document.activeElement && document.activeElement.hasAttribute
+                        && document.activeElement.hasAttribute('data-fold-exp'));
       var foldMarkup = foldBlock(g.sense, opt);
-      cmp.innerHTML = deepControls(g.sense) + foldMarkup + compare(g.sense, g.total);
+      patchInto(cmp, deepControls(g.sense) + foldMarkup + compare(g.sense, g.total));
       if (focusAction) {
         var focusNext = cmp.querySelector('[data-fold-deep="' + focusAction + '"]') || cmp.querySelector('[data-fold-deep]');
         if (focusNext) focusNext.focus();
+      } else if (focusOct !== null && focusOct !== undefined) {
+        var focusTab = cmp.querySelector('[data-oct="' + focusOct + '"]');
+        if (focusTab && document.activeElement !== focusTab) focusTab.focus();
+      } else if (focusExp) {
+        var focusExpand = cmp.querySelector('[data-fold-exp]');
+        if (focusExpand && document.activeElement !== focusExpand) focusExpand.focus();
       }
     }
   }
@@ -43566,7 +43737,7 @@ try{
 
     var dgTxt = function (r) {
       return t(r.saltExtrapolated ? 'tm.fold.dg.extrap!' : 'tm.fold.dg!',
-               { v: r.dG37.toFixed(2) });
+               { v: ocFixed(r.dG37, 2) });
     };
     
 
@@ -43670,7 +43841,7 @@ try{
 
 
 
-          var _tsingleIdx = -1, _tframe = 0, _tframeH = 0;
+          var _tsingleIdx = -1, _tframe = 0, _tframeH = 0, _tselfH = 0;
           var _tpH = function (w, h) { return h * Math.min(1, _fw / Math.max(1, w)); };
           if (_mdl && _TB && hp.alts && hp.alts.length > 1) {
             var _tg = _TB.gate(hp.alts, _TB.THRESHOLD);
@@ -43940,7 +44111,8 @@ try{
 
               if (_tset) {
                 if (_drawn.width > _tframe) _tframe = _drawn.width;
-                if (_tpH(_drawn.width, _drawn.height) > _tframeH) _tframeH = _tpH(_drawn.width, _drawn.height);
+                _tselfH = _tpH(_drawn.width, _drawn.height);
+                if (_tselfH > _tframeH) _tframeH = _tselfH;
               }
               _drawnW = _tset ? _tframe : _drawn.width; _hidTotal = _hid;
               _marg = !!(_drawn.band && _drawn.band.marginal);
@@ -43986,7 +44158,14 @@ try{
 
 
 
-                   + (_tset && _tframeH > 0 && _fw >= 600 ? ';min-height:' + Math.ceil(_tframeH) + 'px' : '') + '">'
+                   + (_tset && _tframeH > 0 && _fw >= 600 ? ';min-height:' + Math.ceil(Math.min(_tframeH, _tselfH + _bh * 0.25)) + 'px' : '') + '">'
+                   
+
+
+
+
+
+
                    
 
 
@@ -44172,8 +44351,8 @@ try{
           cparts.push(Number(Math.abs(_c.behind).toFixed(2)) === 0
             ? window.t('tm.fold.mbc.tied!')
             : _c.behind >= 0
-            ? t('tm.fold.mbc.behind!', { v: _c.behind.toFixed(2) })
-            : t('tm.fold.mbc.better!', { v: (-_c.behind).toFixed(2) }));
+            ? t('tm.fold.mbc.behind!', { v: ocFixed(_c.behind, 2) })
+            : t('tm.fold.mbc.better!', { v: ocFixed(-_c.behind, 2) }));
           out += '<div class="tm-cr"><span class="tm-cn">' + t('tm.fold.mbc.name')
                + '</span>' + say(_c)
                + detail(_c, cparts.join(' · ') + t('tm.uni!')) + '</div>';
@@ -44265,7 +44444,7 @@ try{
 
          + '<div class="tm-foldnote-p">'
          + (hp && hp.structure
-            ? (opt.deepMultibranch === true ? window.t('tm.deep.method!') : window.t('tm.fold.note.mfe!', { k: hp.search ? hp.search.distinctAccepted : 0 }))
+            ? (opt.deepMultibranch === true ? window.t('tm.deep.method!') : window.t(hp.search && hp.search.distinctAccepted === 1 ? 'tm.fold.note.mfe.one!' : 'tm.fold.note.mfe!', { k: hp.search ? hp.search.distinctAccepted : 0 }))
               
 
 
@@ -44333,12 +44512,12 @@ try{
 
   function dgBlock(dg) {
     return '<div class="tm-hero tm-dg"><span class="tm-lbl">' + t('tm.res.dg') + '</span>'
-         + '<span class="tm-val">' + dg.dG37.toFixed(2) + '</span>'
+         + '<span class="tm-val">' + ocFixed(dg.dG37, 2) + '</span>'
          + '<span class="tm-u">' + KCAL + '</span></div>'
          + '<div class="tm-cond">' + esc(dg.model + ' · ' + dg.saltM + ' M Na⁺') + '</div>'
          + '<div class="tm-cov tm-ok">' + t('tm.ome.dg.why!') + '</div>'
-         + '<div class="tm-thermo"><span>ΔH° ' + dg.dH.toFixed(1) + ' kcal/mol</span>'
-         + '<span>ΔS° ' + dg.dS.toFixed(1) + ' cal/mol·K</span></div>'
+         + '<div class="tm-thermo"><span>ΔH° ' + ocFixed(dg.dH, 1) + ' kcal/mol</span>'
+         + '<span>ΔS° ' + ocFixed(dg.dS, 1) + ' cal/mol·K</span></div>'
          + '<div class="tm-cond" data-thermoref>' + window.t('tm.thermo.ome.ref!') + '</div>';
   }
 
@@ -46257,10 +46436,13 @@ function num(v){ var x = parseFloat(v); return isFinite(x) ? x : 0; }
 
 
 
-function pctY(x){ return isFinite(x) ? (nfmt(x) + '%') : '\u2014'; }
+
+
+
+function pctY(x){ if(!isFinite(x)) return '\u2014'; var s = nfmt(x), i = s.search(/[.,]/); return ocPctFmt(x, i < 0 ? 0 : s.length - i - 1); }
 function pctC(x){
   if(!isFinite(x)) return '\u2014';
-  return ocNumFmt(x, {minimumFractionDigits:1, maximumFractionDigits:1}) + '%';
+  return ocPctFmt(x, 1);
 }
 
 
@@ -47053,7 +47235,19 @@ else mount();
     align(out);
     
 
-    if (m.loop && m.loop.length > o.LOOP_MAX) {
+
+
+
+
+
+
+
+
+
+
+
+
+    if (m.loop && m.loop.length - 2 * Math.floor(o.LOOP_MAX / 2) >= o.COIL_COLS) {
       var keep = Math.floor(o.LOOP_MAX / 2);
       out.loop = m.loop.slice(0, keep)
         .concat([{ coil: true, hidden: m.loop.length - 2 * keep,
@@ -48370,7 +48564,14 @@ else mount();
     if (CP && CP.plan) {
       CM = CP.kind === 'junction' ? window.ocFoldJunction : window.ocFoldMulti;
       try {
-        var cd = CM && CM.draw ? CM.draw(FV, FP, CP.plan, { dG: cur.dG }, bw, bh) : null;
+        
+
+
+
+
+
+
+        var cd = CM && CM.draw ? CM.draw(FV, FP, CP.plan, { dG: cur.dG, expand: true }, bw, bh) : null;
         if (cd && cd.drawn) { drawn = cd.drawn; axis = cd.axis; shownAll = cd.shown; }
       } catch (e) { drawn = null; }
       if (!drawn) return false;
@@ -48622,8 +48823,15 @@ else mount();
     weak: 'tm.fold.band.weak'
   };
 
+  
+
+
   function num(x, d) {
-    return (x === null || x === undefined || !isFinite(x)) ? EMPTY : Number(x).toFixed(d);
+    if (x === null || x === undefined || !isFinite(x)) return EMPTY;
+    var s = Number(x).toFixed(d), f = window.ocNumFmt;
+    if (!f) return s;
+    try { return f(Number(s), { minimumFractionDigits: d, maximumFractionDigits: d, useGrouping: false }); }
+    catch (_e) { return s; }
   }
 
   
@@ -48721,8 +48929,8 @@ else mount();
             + '<span class="tm-band-slot" data-fold1-slot'
             + ' style="min-width:' + slot + 'px"></span>'
             + '<span class="tm-band-rule">'
-            + T('tm.fold.band.rule!', { strong: B.strong.toFixed(1),
-                                        moderate: B.moderate.toFixed(1) })
+            + T('tm.fold.band.rule!', { strong: num(B.strong, 1),
+                                        moderate: num(B.moderate, 1) })
             + '</span>';
     
 
@@ -48773,7 +48981,8 @@ else mount();
     var gp = gcPairCount(res, tokens);
     var rows = [
       [T('tm.fold.data.gc'),
-       g.n ? (Math.round(1000 * g.gc / g.n) / 10).toFixed(1) + '%' : EMPTY],
+        
+       g.n ? (window.ocPctFmt ? window.ocPctFmt(Math.round(1000 * g.gc / g.n) / 10, 1) : num(Math.round(1000 * g.gc / g.n) / 10, 1) + '%') : EMPTY],
       [N_DG, num(res.dG37, 2) + U_KCAL],
       [N_DH, num(res.dH, 1) + U_KCAL],
       [N_DS, num(res.dS, 1) + U_ENTROPY],
@@ -49042,15 +49251,25 @@ else mount();
   function lockAxis(proj, members, boxW, boxH, cap) {
     if (!proj || !proj.choose) return null;
     cap = cap || 1;
-    var worstX = Infinity, worstY = Infinity, votes = { x: 0, y: 0 }, i, c;
+    var worstX = Infinity, worstY = Infinity, votes = { x: 0, y: 0 }, i, c, T = null;
     for (i = 0; i < members.length; i++) {
       c = proj.choose(members[i].model, { dG: members[i].dG }, boxW, boxH, cap);
       if (!c) return null;
       votes[c.axis === 'y' ? 'y' : 'x']++;
       if (c.scaleX < worstX) worstX = c.scaleX;
       if (c.scaleY < worstY) worstY = c.scaleY;
+      
+
+
+
+
+
+
+
+      if (c.why && typeof c.why.threshold === 'number') T = c.why.threshold;
     }
-    return { axis: worstY > worstX ? 'y' : 'x', votes: votes,
+    var pickY = T === null ? worstY > worstX : (worstX < T && worstY > worstX);
+    return { axis: pickY ? 'y' : 'x', votes: votes, threshold: T,
              perTabFlip: votes.x > 0 && votes.y > 0 };
   }
 
@@ -49110,8 +49329,11 @@ else mount();
     digits = typeof digits === 'number' ? digits : 1;
     var out = [], i, s;
     for (i = 0; i < set.length; i++) {
+      
+
       s = set[i].dG37.toFixed(digits);
-      if (/^-0(\.0*)?$/.test(s)) s = s.slice(1);
+      if (window.ocNumFmt) { try { s = window.ocNumFmt(Number(s), { minimumFractionDigits: digits, maximumFractionDigits: digits, useGrouping: false }); } catch (_e) {   } }
+      if (/^-0([.,]0*)?$/.test(s)) s = s.slice(1);
       out.push({ ord: String(i + 1), dg: s });
     }
     return out;
@@ -49270,9 +49492,51 @@ else mount();
       .split('"').join(AMP + 'quot;');
   }
 
-  function txt(el) {
-    return el && el.textContent ? el.textContent.replace(/\s+/g, ' ').trim() : '';
+  
+
+
+
+
+
+
+
+
+  function isCJK(c) {
+    if (!c) return false;
+    var o = c.charCodeAt(0);
+    return (o >= 0x3000 && o <= 0x303F) || (o >= 0x3040 && o <= 0x30FF)
+        || (o >= 0x3400 && o <= 0x4DBF) || (o >= 0x4E00 && o <= 0x9FFF)
+        || (o >= 0xAC00 && o <= 0xD7AF) || (o >= 0xFF01 && o <= 0xFF60);
   }
+  var HUGS_LEFT = ',.;:!?%)]}\u2019\u201d\u00bb\u203a\uff0c\u3002\uff1a\uff1b\uff09';
+  var HUGS_RIGHT = '([{\u2018\u201c\u00ab\u2039\uff08';
+
+  function flat(el) {
+    if (!el) return '';
+    var buf = '';
+    function push(s) {
+      if (!s) return;
+      var last = buf.slice(-1), first = s.charAt(0);
+      if (buf && !/\s/.test(last) && !/\s/.test(first)
+          && !isCJK(last) && !isCJK(first)
+          && HUGS_LEFT.indexOf(first) < 0 && HUGS_RIGHT.indexOf(last) < 0) buf += ' ';
+      buf += s;
+    }
+    function walk(n) {
+      var i, kids;
+      if (n.nodeType === 3) { push(String(n.nodeValue).replace(/\s+/g, ' ')); return; }
+      if (n.nodeType !== 1) return;
+      kids = n.childNodes;
+      for (i = 0; i < kids.length; i++) {
+        if (kids[i].nodeType === 1 && i > 0) push('');
+        walk(kids[i]);
+      }
+    }
+    walk(el);
+    return buf.replace(/\s+/g, ' ').trim();
+  }
+
+  function txt(el) { return flat(el); }
 
    
 
@@ -49322,9 +49586,22 @@ else mount();
     for (i = 0; i < nodes.length && out.figures.length < MAXFIG; i++) {
       if (nodes[i].closest && nodes[i].closest('button')) continue;
       var owner = nodes[i].closest('.tm-fx, .tm-ovl-x2'), caption = owner && owner.querySelector('.tm-figure-owner');
-      var values = owner && owner.querySelector('.tm-fx-side, .tm-ovl-side');
+      
+
+
+
+
+
+
+      var side = owner && owner.querySelector('.tm-fx-side, .tm-ovl-side');
+      var leg = side && side.querySelector('[data-fold-legend]');
+      var dat = side && side.querySelector('[data-fold-data]');
+      var extra = '';
+      if (leg) extra += '<div class="leg">' + leg.innerHTML + '</div>';
+      if (dat) extra += '<div class="num">' + dat.innerHTML + '</div>';
+      if (!extra && side) extra = '<p>' + esc(txt(side)) + '</p>';
       out.figures.push((caption ? '<figcaption>' + esc(txt(caption)) + '</figcaption>' : '')
-        + nodes[i].outerHTML + (values ? '<p>' + esc(txt(values)) + '</p>' : ''));
+        + nodes[i].outerHTML + extra);
     }
 
     nodes = r.querySelectorAll('.tm-foldnote');
@@ -49357,6 +49634,14 @@ else mount();
     + 'border-width:1px;border-style:solid;border-color:rgba(36,29,19,.28);'
     + 'border-radius:8px;overflow-x:auto}'
     + 'figure>svg{display:block;height:auto;margin-left:auto;margin-right:auto}'
+    + 'figcaption{font-weight:600;margin-bottom:6px}'
+    + '.leg ul{list-style-type:none;margin-top:6px;margin-bottom:0;padding-left:0}'
+    + '.leg li{display:flex;align-items:flex-start;gap:9px;margin-bottom:4px;font-size:12.5px}'
+    + '.leg svg{flex-shrink:0}'
+    + '.num dl{display:grid;grid-template-columns:auto 1fr;gap:3px 14px;margin-top:6px;margin-bottom:0}'
+    + '.num dt{margin-left:0;font-size:12.5px;color:#444}'
+    + '.num dd{margin-left:0;font-size:12.5px}'
+    + '.leg .fv-h,.num .fv-h{font-weight:600;font-size:12.5px;margin-top:10px}'
     + '@media' + ' print{@page{size:A4;margin:16mm}'
     + 'body{padding:0;max-width:none;font-size:10.5pt}'
     + 'h1{font-size:15pt}h2{font-size:11pt;page-break-after:avoid}'
@@ -49974,11 +50259,19 @@ else mount();
     
 
 
-    if (TB && TB.lockAll && boxW > 0 && boxH > 0) {
+    
+
+
+
+    var expand = !!(opt && opt.expand), ax = null;
+    if (!expand && TB && TB.lockAll && boxW > 0 && boxH > 0) {
       try { lock = TB.lockAll(FV, FP, members, boxW, boxH); } catch (e) { lock = null; }
     }
+    if (expand && TB && TB.lockAxis && boxW > 0 && boxH > 0) {
+      try { ax = TB.lockAxis(FP, members, boxW, boxH, 1); } catch (e) { ax = null; }
+    }
     var shownModels = lock ? lock.models : pl.models;
-    var axis = lock ? lock.axis : 'x';
+    var axis = lock ? lock.axis : (ax ? ax.axis : 'x');
     var keep = lock ? lock.keep : null;
     var parts = [], r;
     for (i = 0; i < k; i++) {
@@ -50540,9 +50833,16 @@ else mount();
 
   
 
-  function ringCells(FV, seq, idx) {
+
+
+
+
+
+  function ringCells(FV, seq, idx, expand) {
     var max = (FV.RULES && typeof FV.RULES.LOOP_MAX === 'number') ? FV.RULES.LOOP_MAX : 6, i, out = [];
-    if (idx.length > max) {
+    var cols = (FV.RULES && typeof FV.RULES.COIL_COLS === 'number') ? FV.RULES.COIL_COLS : 3;
+     
+    if (!expand && idx.length - 2 * Math.floor(max / 2) >= cols) {
       var keep = Math.floor(max / 2);
       for (i = 0; i < keep; i++) out.push({ i: idx[i], base: String(seq[idx[i]] || '?').toUpperCase() });
       out.push({ coil: true, hidden: idx.length - 2 * keep, from: idx[keep], to: idx[idx.length - keep - 1] });
@@ -50631,7 +50931,7 @@ else mount();
      
     var rings = [], cells, cost = [];
     for (i = 0; i < L.linkers.length; i++) {
-      cells = ringCells(FV, L.seq, L.linkers[i]);
+      cells = ringCells(FV, L.seq, L.linkers[i], !!(opt && opt.expand));
       rings.push(cells);
       var c = 0, q;
       for (q = 0; q < cells.length; q++) c += cells[q].coil ? 2 : 1;
@@ -50711,7 +51011,10 @@ else mount();
     if (!I || !I.arc || !I.cell || !I.springSplit || !FP || !FP.render) return null;
     var base = L.models, members = [], lock = null;
     for (i = 0; i < base.length; i++) members.push({ model: base[i], dG: opt && opt.dG });
-    if (TB && TB.lockCollapse && FV.collapse && boxW > 0) {
+    
+
+
+    if (!(opt && opt.expand) && TB && TB.lockCollapse && FV.collapse && boxW > 0) {
       try { lock = TB.lockCollapse(FV, members, boxW); } catch (e) { lock = null; }
     }
     var bw = boxW > 0 ? boxW : 1e9, floor = (typeof FV.MIN_GLYPH === 'number') ? FV.MIN_GLYPH : 11;
@@ -50826,7 +51129,9 @@ else mount();
     
 
 
-    if (TB && TB.lockCollapse && FV.collapse && boxW > 0) {
+
+
+    if (!(opt && opt.expand) && TB && TB.lockCollapse && FV.collapse && boxW > 0) {
       try { lock = TB.lockCollapse(FV, members, boxW); } catch (e) { lock = null; }
     }
     
