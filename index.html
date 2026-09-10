@@ -1284,6 +1284,31 @@ var I18N = {
   "rk.0027":"<b>Custom monomers</b> from the catalog go in brackets, like <code>(GalNAc)</code>. Single-letter modifier keys stay bare.",
   "seq.end3":"3′ end",
   "seq.end5":"5′ end",
+  "tm.aa.ala":"alanine",
+  "tm.aa.arg":"arginine",
+  "tm.aa.asn":"asparagine",
+  "tm.aa.asp":"aspartic acid",
+  "tm.aa.cys":"cysteine",
+  "tm.aa.gln":"glutamine",
+  "tm.aa.glu":"glutamic acid",
+  "tm.aa.gly":"glycine",
+  "tm.aa.his":"histidine",
+  "tm.aa.ile":"isoleucine",
+  "tm.aa.leu":"leucine",
+  "tm.aa.lys":"lysine",
+  "tm.aa.met":"methionine",
+  "tm.aa.phe":"phenylalanine",
+  "tm.aa.pro":"proline",
+  "tm.aa.ser":"serine",
+  "tm.aa.stop":"stop codon",
+  "tm.aa.thr":"threonine",
+  "tm.aa.trp":"tryptophan",
+  "tm.aa.tyr":"tyrosine",
+  "tm.aa.val":"valine",
+  "tm.anti.leg":"<b>Outlined</b> the anticodon, the three bases that read the codon",
+  "tm.anti.name":"{full} ({code})",
+  "tm.anti.or":" or ",
+  "tm.anti.row":"Anticodon 5′-{a}-3′ · reads codon {c} · {aa}",
   "tm.bi!":" · bimolecular, so it moves with strand concentration",
   "tm.cmp.basis!":"Both rules count canonical bases only. All {n} residues here were counted; neither rule sees sugar, linkage, end groups or conjugates.",
   "tm.cmp.basis.omit!":"Both rules count canonical bases only. {n} of {total} residues were counted and {omit} left out; neither rule sees sugar, linkage, end groups or conjugates. These two numbers describe a shorter unmodified strand, not the one you entered.",
@@ -1333,6 +1358,8 @@ var I18N = {
   "tm.echo.lbl":"Strand",
   "tm.empty":"Enter a valid sequence in the Calculator to see a melting temperature.",
   "tm.err!":"The melting temperature could not be recalculated. The previous value was cleared.",
+  "tm.fold.ann.many":"Self-structure found: {name}, with {n} base pairs.",
+  "tm.fold.ann.one":"Self-structure found: {name}, with {n} base pair.",
   "tm.fold.band.aim":"lower is better here",
   "tm.fold.band.h":"Secondary structure stability",
   "tm.fold.band.moderate":"Moderate",
@@ -1392,8 +1419,31 @@ var I18N = {
   "tm.fold.note.rna!":"Loop parameters: Turner 2004, which is Mathews 2004 (ΔG°₃₇) and Lu 2006 (ΔH), via the Nearest Neighbor Database; stem from Xia 1998. Real loop enthalpies, not an assumption. <b>The salt correction for this fold is fitted to RNA.</b> Each stack carries the Debye screening and Manning condensation term Yao and Lorenz published in 2023, referenced to the 1.021 M sodium the Turner parameters themselves were measured in, so the free energy and the folding temperature respond to the buffer you entered. The enthalpy does not, and neither do the base-pair and loop counts. That published model also corrects the electrostatics of loops; this engine does not, and never has. The duplex melting temperature is still corrected with Owczarzy 2004, which is fitted to DNA. GU wobble pairs are scored as stem pairs, and internal loops with one or two unpaired bases on each side use the value Turner measured for that exact loop rather than the general loop equation.",
   "tm.fold.note.tmm!":" ⚠ This loop uses the GG/CG terminal mismatch, which is anomalous in the published table and is carried unaltered.",
   "tm.fold.scope!":"This strand is {n} nt, and this calculator is built for oligos up to {max} nt. Above that length, folds with three or more stems meeting at one loop become common, and those are the folds this search handles least well. The structure below is still computed. Read it as approximate.",
+  "tm.fold.sr.h":"Full structure",
+  "tm.fold.sr.pairs":"Paired bases",
   "tm.fold.stem":"{n} bp stem",
   "tm.fold.where":"residues {a}–{b}",
+  "tm.fold3d.mark":"Schematic",
+  "tm.fold3d.mode":"Fold view",
+  "tm.fold3d.scope!":"Stems use ideal reference helices; dashed loops and junctions are arranged schematically, so this view does not predict the molecule’s 3D shape.",
+  "tm.helix.aref":"A-form reference: generic RNA geometry derived from an A-DNA fiber model.",
+  "tm.helix.bref":"B-form reference: historical idealized DNA geometry.",
+  "tm.helix.copies":"Two copies of the sense strand. Only the paired run used for the self-dimer result is drawn as a helix.",
+  "tm.helix.counts":"Base pairs: {pairs}. Unpaired residues: {unpaired}. Full strand sequences and paired residue indices are below.",
+  "tm.helix.flanks":"Unpaired residues outside the paired run: {n}",
+  "tm.helix.help":"Drag horizontally to turn in 3D. Use the sliders with a keyboard. Vertical touch gestures scroll the page.",
+  "tm.helix.intended":"Sense/antisense duplex view",
+  "tm.helix.legend":"Two lines: A·T or A·U. Three lines: G·C. Dashed traces: unpaired extensions. Lines and traces are schematic, not atomic coordinates.",
+  "tm.helix.mode":"Duplex view mode",
+  "tm.helix.pairs":"Strands and paired residue indices",
+  "tm.helix.pending":"The result is not ready. This view does not start a calculation.",
+  "tm.helix.qualified":"This A-form reference does not model the structural effects of the hybrid or modifications.",
+  "tm.helix.reset":"Reset view",
+  "tm.helix.scope":"An idealized helix from reference geometry. This is not a measured or predicted structure of your molecule.",
+  "tm.helix.self":"Self-dimer view",
+  "tm.helix.tilt":"Tilt",
+  "tm.helix.turn":"Turn left or right",
+  "tm.helix.unavailable":"Reference geometry is not available for this result. The existing calculation and its qualifications are unchanged.",
   "tm.how.anti":"against the antisense strand you entered",
   "tm.how.anti.other":"against the entered antisense strand (mixed or modified chemistry)",
   "tm.how.comp":"against its perfect complement ({target} target)",
@@ -1425,7 +1475,7 @@ var I18N = {
   "tm.res.conj":"conjugate: excluded",
   "tm.res.dg":"Predicted ΔG°₃₇",
   "tm.res.struct":"Predicted structure",
-  "tm.res.tm":"Predicted Tm",
+  "tm.res.tm":"Duplex Tm",
   "tm.salt.mono!":"Owczarzy 2004 (monovalent)",
   "tm.selfdimer":"Self-dimer",
   "tm.selfwarn!":"⚠ <b>This strand's hairpin melts {d} °C above the duplex</b> ({hp} °C vs {dup} °C). At any temperature where the duplex would form, the strand is already folded on itself, so it will hybridize poorly. See Self-structure below.",
@@ -3238,6 +3288,31 @@ var I18N = {
   "rk.0027":"\u578b\u9304\u88e1\u7684<b>\u81ea\u8a02\u55ae\u9ad4</b>\u8981\u52a0\u62ec\u865f\uff0c\u4f8b\u5982 <code>(GalNAc)</code>\u3002\u55ae\u4e00\u5b57\u6bcd\u7684\u4fee\u98fe\u9375\u5247\u4e0d\u7528\u52a0\u3002",
   "seq.end3":"3′ \u7aef",
   "seq.end5":"5′ \u7aef",
+  "tm.aa.ala":"\u4e19\u80fa\u9178",
+  "tm.aa.arg":"\u7cbe\u80fa\u9178",
+  "tm.aa.asn":"\u5929\u9580\u51ac\u91af\u80fa",
+  "tm.aa.asp":"\u5929\u9580\u51ac\u80fa\u9178",
+  "tm.aa.cys":"\u534a\u80f1\u80fa\u9178",
+  "tm.aa.gln":"\u9ea9\u91af\u80fa",
+  "tm.aa.glu":"\u9ea9\u80fa\u9178",
+  "tm.aa.gly":"\u7518\u80fa\u9178",
+  "tm.aa.his":"\u7d44\u80fa\u9178",
+  "tm.aa.ile":"\u7570\u767d\u80fa\u9178",
+  "tm.aa.leu":"\u767d\u80fa\u9178",
+  "tm.aa.lys":"\u96e2\u80fa\u9178",
+  "tm.aa.met":"\u7532\u786b\u80fa\u9178",
+  "tm.aa.phe":"\u82ef\u4e19\u80fa\u9178",
+  "tm.aa.pro":"\u812f\u80fa\u9178",
+  "tm.aa.ser":"\u7d72\u80fa\u9178",
+  "tm.aa.stop":"\u7d42\u6b62",
+  "tm.aa.thr":"\u8607\u80fa\u9178",
+  "tm.aa.trp":"\u8272\u80fa\u9178",
+  "tm.aa.tyr":"\u916a\u80fa\u9178",
+  "tm.aa.val":"\u7e88\u80fa\u9178",
+  "tm.anti.leg":"<b>\u7c97\u5916\u6846</b> \u53cd\u5bc6\u78bc\u5b50\uff0c\u9019\u4e09\u500b\u9e7c\u57fa\u8ca0\u8cac\u8b80\u53d6\u5bc6\u78bc\u5b50",
+  "tm.anti.name":"{full}\uff08{code}\uff09",
+  "tm.anti.or":" \u6216 ",
+  "tm.anti.row":"\u53cd\u5bc6\u78bc\u5b50 5′-{a}-3′ · \u5c0d\u61c9\u5bc6\u78bc\u5b50 {c} · {aa}",
   "tm.bi!":" · \u96d9\u5206\u5b50\u53cd\u61c9\uff0c\u6240\u4ee5\u6703\u96a8\u6838\u9178\u80a1\u6fc3\u5ea6\u6539\u8b8a",
   "tm.cmp.basis!":"\u9019\u5169\u689d\u898f\u5247\u53ea\u8a08\u7b97\u6a19\u6e96\u9e7c\u57fa\u3002\u9019\u88e1\u7684 {n} \u500b\u6b98\u57fa\u5168\u90e8\u90fd\u8a08\u5165\u4e86\uff0c\u4f46\u5169\u689d\u898f\u5247\u90fd\u770b\u4e0d\u5230\u91a3\u3001\u9023\u7d50\u3001\u7aef\u57fa\u6216\u63a5\u5408\u7269\u3002",
   "tm.cmp.basis.omit!":"\u9019\u5169\u689d\u898f\u5247\u53ea\u8a08\u7b97\u6a19\u6e96\u9e7c\u57fa\u3002\u9019\u88e1 {total} \u500b\u6b98\u57fa\u4e2d\u53ea\u8a08\u5165\u4e86 {n} \u500b\uff0c\u6709 {omit} \u500b\u88ab\u7565\u904e\uff1b\u5169\u689d\u898f\u5247\u4e5f\u90fd\u770b\u4e0d\u5230\u91a3\u3001\u9023\u7d50\u3001\u7aef\u57fa\u6216\u63a5\u5408\u7269\u3002\u6240\u4ee5\u9019\u5169\u500b\u6578\u5b57\u63cf\u8ff0\u7684\u662f\u4e00\u689d\u8f03\u77ed\u7684\u672a\u4fee\u98fe\u6838\u9178\u80a1\uff0c\u4e0d\u662f\u4f60\u8f38\u5165\u7684\u90a3\u4e00\u689d\u3002",
@@ -3287,6 +3362,8 @@ var I18N = {
   "tm.echo.lbl":"\u6838\u9178\u80a1",
   "tm.empty":"\u8acb\u5728\u8a08\u7b97\u6a5f\u5206\u9801\u8f38\u5165\u6709\u6548\u7684\u5e8f\u5217\uff0c\u624d\u80fd\u7b97\u51fa\u7194\u89e3\u6eab\u5ea6\u3002",
   "tm.err!":"\u7121\u6cd5\u91cd\u65b0\u8a08\u7b97\u7194\u89e3\u6eab\u5ea6\uff0c\u5148\u524d\u7684\u6578\u503c\u5df2\u6e05\u9664\u3002",
+  "tm.fold.ann.many":"\u5df2\u627e\u5230\u647a\u758a\u7d50\u69cb\uff1a{name}\uff0c\u5171 {n} \u500b\u9e7c\u57fa\u5c0d\u3002",
+  "tm.fold.ann.one":"\u5df2\u627e\u5230\u647a\u758a\u7d50\u69cb\uff1a{name}\uff0c\u5171 {n} \u500b\u9e7c\u57fa\u5c0d\u3002",
   "tm.fold.band.aim":"\u8d8a\u4f4e\u8d8a\u597d",
   "tm.fold.band.h":"\u4e8c\u7d1a\u7d50\u69cb\u7a69\u5b9a\u6027",
   "tm.fold.band.moderate":"\u4e2d",
@@ -3346,8 +3423,31 @@ var I18N = {
   "tm.fold.note.rna!":"\u74b0\u53c3\u6578\uff1aTurner 2004\uff0c\u4e5f\u5c31\u662f\u53d6\u81ea Nearest Neighbor Database \u7684 Mathews 2004\uff08ΔG°₃₇\uff09\u8207 Lu 2006\uff08ΔH\uff09\uff1b\u8396\u4f86\u81ea Xia 1998\u3002\u9019\u662f\u771f\u6b63\u91cf\u6e2c\u7684\u74b0\u7113\u503c\uff0c\u4e0d\u662f\u5047\u8a2d\u3002<b>\u9019\u500b\u647a\u758a\u7684\u9e7d\u6821\u6b63\u662f\u91dd\u5c0d RNA \u64ec\u5408\u7684\u3002</b>\u6bcf\u4e00\u500b\u5806\u758a\u90fd\u5e36\u6709 Yao \u8207 Lorenz \u5728 2023 \u5e74\u767c\u8868\u7684\u5fb7\u62dc\u5c4f\u853d\u8207 Manning \u51dd\u805a\u9805\uff0c\u4e26\u4ee5 Turner \u53c3\u6578\u672c\u8eab\u7684\u91cf\u6e2c\u689d\u4ef6 1.021 M \u9209\u96e2\u5b50\u70ba\u57fa\u6e96\uff0c\u56e0\u6b64\u81ea\u7531\u80fd\u8207\u647a\u758a\u7684\u7194\u89e3\u6eab\u5ea6\u6703\u96a8\u4f60\u8f38\u5165\u7684\u7de9\u885d\u6db2\u800c\u8b8a\u3002\u7113\u503c\u4e0d\u6703\uff0c\u9e7c\u57fa\u5c0d\u8207\u74b0\u7684\u8a08\u6578\u4e5f\u4e0d\u6703\u3002\u90a3\u7bc7\u767c\u8868\u7684\u6a21\u578b\u540c\u6642\u4e5f\u6821\u6b63\u74b0\u7684\u975c\u96fb\u4f5c\u7528\uff0c\u672c\u5f15\u64ce\u6c92\u6709\uff0c\u904e\u53bb\u4e5f\u4e0d\u66fe\u6709\u3002\u96d9\u80a1\u7684\u7194\u89e3\u6eab\u5ea6\u4ecd\u7136\u4ee5 Owczarzy 2004 \u6821\u6b63\uff0c\u800c\u90a3\u662f\u5c0d DNA \u64ec\u5408\u7684\u3002GU \u6416\u64fa\u914d\u5c0d\u8a08\u70ba\u8396\u914d\u5c0d\uff1b\u5169\u5074\u5404\u6709\u4e00\u5230\u5169\u500b\u672a\u914d\u5c0d\u9e7c\u57fa\u7684\u5167\u90e8\u74b0\uff0c\u63a1\u7528 Turner \u5c0d\u8a72\u74b0\u7684\u5be6\u6e2c\u503c\uff0c\u800c\u4e0d\u662f\u901a\u7528\u7684\u74b0\u65b9\u7a0b\u5f0f\u3002",
   "tm.fold.note.tmm!":" ⚠ \u9019\u500b\u74b0\u7528\u5230 GG/CG \u672b\u7aef\u932f\u914d\u3002\u5b83\u5728\u5df2\u767c\u8868\u7684\u8868\u683c\u4e2d\u662f\u7570\u5e38\u503c\uff0c\u6211\u5011\u539f\u6a23\u6cbf\u7528\uff0c\u6c92\u6709\u4fee\u6539\u3002",
   "tm.fold.scope!":"\u9019\u80a1\u6709 {n} nt\uff0c\u800c\u9019\u500b\u8a08\u7b97\u5de5\u5177\u7684\u8a2d\u8a08\u7bc4\u570d\u662f {max} nt \u4ee5\u5167\u7684\u5be1\u6838\u82f7\u9178\u3002\u8d85\u904e\u9019\u500b\u9577\u5ea6\u4e4b\u5f8c\uff0c\u4e09\u500b\u4ee5\u4e0a\u7684\u8396\u4ea4\u6703\u65bc\u540c\u4e00\u500b\u74b0\u7684\u647a\u758a\u6703\u8b8a\u5f97\u5e38\u898b\uff0c\u800c\u90a3\u6b63\u662f\u9019\u500b\u641c\u5c0b\u6700\u4e0d\u64c5\u9577\u8655\u7406\u7684\u4e00\u985e\u3002\u4e0b\u9762\u7684\u7d50\u69cb\u4ecd\u7136\u6703\u8a08\u7b97\u51fa\u4f86\u3002\u8acb\u7576\u6210\u8fd1\u4f3c\u503c\u4f86\u770b\u3002",
+  "tm.fold.sr.h":"\u5b8c\u6574\u7d50\u69cb",
+  "tm.fold.sr.pairs":"\u9e7c\u57fa\u5c0d",
   "tm.fold.stem":"{n} bp \u7684\u8396",
   "tm.fold.where":"\u7b2c {a} \u5230 {b} \u500b\u6b98\u57fa",
+  "tm.fold3d.mark":"\u793a\u610f\u5716",
+  "tm.fold3d.mode":"\u647a\u758a\u8996\u5716",
+  "tm.fold3d.scope!":"\u8396\u90e8\u63a1\u7528\u7406\u60f3\u5316\u7684\u53c3\u8003\u87ba\u65cb\uff1b\u865b\u7dda\u8868\u793a\u7684\u74b0\u8207\u4ea4\u6703\u8655\u53ea\u662f\u793a\u610f\u914d\u7f6e\uff0c\u56e0\u6b64\u6b64\u8996\u5716\u4e26\u4e0d\u9810\u6e2c\u5206\u5b50\u7684 3D \u5f62\u72c0\u3002",
+  "tm.helix.aref":"A \u578b\u53c3\u8003\uff1a\u7531 A \u578b DNA \u7e96\u7dad\u6a21\u578b\u884d\u751f\u7684 RNA \u5e7e\u4f55\u5f62\u72c0\u3002",
+  "tm.helix.bref":"B \u578b\u53c3\u8003\uff1a\u6b77\u53f2\u6a21\u578b\u4e2d\u7406\u60f3\u5316\u7684 DNA \u5e7e\u4f55\u5f62\u72c0\u3002",
+  "tm.helix.copies":"\u6b63\u7fa9\u80a1\u7684\u5169\u500b\u526f\u672c\u3002\u53ea\u6709\u81ea\u8eab\u4e8c\u805a\u9ad4\u7d50\u679c\u6240\u63a1\u7528\u7684\u9023\u7e8c\u914d\u5c0d\u5340\u6bb5\u6703\u7e6a\u88fd\u6210\u87ba\u65cb\u3002",
+  "tm.helix.counts":"\u9e7c\u57fa\u5c0d\u6578\uff1a{pairs}\u3002\u672a\u914d\u5c0d\u6b98\u57fa\u6578\uff1a{unpaired}\u3002\u5b8c\u6574\u7684\u80a1\u5e8f\u5217\u8207\u5404\u914d\u5c0d\u6b98\u57fa\u5728\u5e8f\u5217\u4e2d\u7684\u4f4d\u7f6e\u7de8\u865f\u5982\u4e0b\u3002",
+  "tm.helix.flanks":"\u914d\u5c0d\u5340\u6bb5\u5916\u7684\u672a\u914d\u5c0d\u6b98\u57fa\u6578\uff1a{n}",
+  "tm.helix.help":"\u6c34\u5e73\u62d6\u66f3\u5373\u53ef\u65cb\u8f49 3D \u8996\u5716\u3002\u53ef\u7528\u9375\u76e4\u64cd\u4f5c\u6ed1\u687f\u3002\u5782\u76f4\u89f8\u63a7\u624b\u52e2\u6703\u6372\u52d5\u9801\u9762\u3002",
+  "tm.helix.intended":"\u6b63\u7fa9\u80a1\u8207\u53cd\u7fa9\u80a1\u7684\u96d9\u80a1\u8996\u5716",
+  "tm.helix.legend":"\u5169\u689d\u7dda\uff1aA·T \u6216 A·U\u3002\u4e09\u689d\u7dda\uff1aG·C\u3002\u865b\u7dda\u8ecc\u8de1\uff1a\u672a\u914d\u5c0d\u7684\u5ef6\u4f38\u90e8\u5206\u3002\u7dda\u689d\u8207\u8ecc\u8de1\u50c5\u70ba\u793a\u610f\uff0c\u4e26\u975e\u539f\u5b50\u5ea7\u6a19\u3002",
+  "tm.helix.mode":"\u96d9\u80a1\u6aa2\u8996\u6a21\u5f0f",
+  "tm.helix.pairs":"\u80a1\u5e8f\u5217\u8207\u914d\u5c0d\u6b98\u57fa\u7684\u4f4d\u7f6e\u7de8\u865f",
+  "tm.helix.pending":"\u7d50\u679c\u5c1a\u672a\u5c31\u7dd2\u3002\u6b64\u8996\u5716\u4e0d\u6703\u555f\u52d5\u8a08\u7b97\u3002",
+  "tm.helix.qualified":"\u6b64 A \u578b\u53c3\u8003\u672a\u6a21\u64ec\u96dc\u5408\u96d9\u80a1\u6216\u4fee\u98fe\u5c0d\u7d50\u69cb\u7684\u5f71\u97ff\u3002",
+  "tm.helix.reset":"\u91cd\u8a2d\u8996\u5716",
+  "tm.helix.scope":"\u4f9d\u53c3\u8003\u5e7e\u4f55\u5f62\u72c0\u7e6a\u88fd\u7684\u7406\u60f3\u5316\u87ba\u65cb\u3002\u9019\u4e0d\u662f\u4f60\u7684\u5206\u5b50\u7684\u5be6\u6e2c\u7d50\u69cb\uff0c\u4e5f\u4e0d\u662f\u9810\u6e2c\u7d50\u69cb\u3002",
+  "tm.helix.self":"\u81ea\u8eab\u4e8c\u805a\u9ad4\u8996\u5716",
+  "tm.helix.tilt":"\u50be\u659c",
+  "tm.helix.turn":"\u5411\u5de6\u6216\u5411\u53f3\u65cb\u8f49",
+  "tm.helix.unavailable":"\u6b64\u7d50\u679c\u7121\u53ef\u7528\u7684\u53c3\u8003\u5e7e\u4f55\u5f62\u72c0\u3002\u65e2\u6709\u8a08\u7b97\u8207\u5176\u9069\u7528\u689d\u4ef6\u8aaa\u660e\u7dad\u6301\u4e0d\u8b8a\u3002",
   "tm.how.anti":"\u5c0d\u4e0a\u4f60\u8f38\u5165\u7684\u53cd\u7fa9\u80a1",
   "tm.how.anti.other":"\u5c0d\u4e0a\u4f60\u8f38\u5165\u7684\u53cd\u7fa9\u80a1\uff08\u542b\u6df7\u5408\u6216\u4fee\u98fe\u5316\u5b78\u7d50\u69cb\uff09",
   "tm.how.comp":"\u5c0d\u4e0a\u5b83\u7684\u5b8c\u5168\u4e92\u88dc\u80a1\uff08{target} \u6a19\u7684\uff09",
@@ -3379,7 +3479,7 @@ var I18N = {
   "tm.res.conj":"\u63a5\u5408\u7269\uff1a\u5df2\u6392\u9664",
   "tm.res.dg":"\u9810\u6e2c ΔG°₃₇",
   "tm.res.struct":"\u9810\u6e2c\u7d50\u69cb",
-  "tm.res.tm":"\u9810\u6e2c Tm",
+  "tm.res.tm":"\u96d9\u80a1 Tm",
   "tm.salt.mono!":"Owczarzy 2004\uff08\u55ae\u50f9\u967d\u96e2\u5b50\uff09",
   "tm.selfdimer":"\u81ea\u8eab\u4e8c\u805a\u9ad4",
   "tm.selfwarn!":"⚠ <b>\u9019\u80a1\u7684\u9aee\u593e\u6bd4\u96d9\u80a1\u9ad8 {d} °C \u624d\u7194\u89e3</b>\uff08{hp} °C \u5c0d {dup} °C\uff09\u3002\u5728\u4efb\u4f55\u8db3\u4ee5\u5f62\u6210\u96d9\u80a1\u7684\u6eab\u5ea6\u4e0b\uff0c\u8a72\u80a1\u90fd\u5df2\u7d93\u81ea\u5df1\u6298\u758a\u8d77\u4f86\uff0c\u56e0\u6b64\u96dc\u4ea4\u6548\u679c\u6703\u5f88\u5dee\u3002\u8acb\u770b\u4e0b\u65b9\u7684\u81ea\u8eab\u7d50\u69cb\u3002",
@@ -5191,6 +5291,31 @@ var I18N = {
   "rk.0027":"\u76ee\u5f55\u91cc\u7684<b>\u81ea\u5b9a\u4e49\u5355\u4f53</b>\u8981\u52a0\u62ec\u53f7\uff0c\u4f8b\u5982 <code>(GalNAc)</code>\u3002\u5355\u4e00\u5b57\u6bcd\u7684\u4fee\u9970\u952e\u5219\u4e0d\u7528\u52a0\u3002",
   "seq.end3":"3′ \u7aef",
   "seq.end5":"5′ \u7aef",
+  "tm.aa.ala":"\u4e19\u6c28\u9178",
+  "tm.aa.arg":"\u7cbe\u6c28\u9178",
+  "tm.aa.asn":"\u5929\u51ac\u9170\u80fa",
+  "tm.aa.asp":"\u5929\u51ac\u6c28\u9178",
+  "tm.aa.cys":"\u534a\u80f1\u6c28\u9178",
+  "tm.aa.gln":"\u8c37\u6c28\u9170\u80fa",
+  "tm.aa.glu":"\u8c37\u6c28\u9178",
+  "tm.aa.gly":"\u7518\u6c28\u9178",
+  "tm.aa.his":"\u7ec4\u6c28\u9178",
+  "tm.aa.ile":"\u5f02\u4eae\u6c28\u9178",
+  "tm.aa.leu":"\u4eae\u6c28\u9178",
+  "tm.aa.lys":"\u8d56\u6c28\u9178",
+  "tm.aa.met":"\u7532\u786b\u6c28\u9178",
+  "tm.aa.phe":"\u82ef\u4e19\u6c28\u9178",
+  "tm.aa.pro":"\u812f\u6c28\u9178",
+  "tm.aa.ser":"\u4e1d\u6c28\u9178",
+  "tm.aa.stop":"\u7ec8\u6b62",
+  "tm.aa.thr":"\u82cf\u6c28\u9178",
+  "tm.aa.trp":"\u8272\u6c28\u9178",
+  "tm.aa.tyr":"\u916a\u6c28\u9178",
+  "tm.aa.val":"\u7f2c\u6c28\u9178",
+  "tm.anti.leg":"<b>\u7c97\u6846</b> \u53cd\u5bc6\u7801\u5b50\uff0c\u5373\u4e0e\u5bc6\u7801\u5b50\u914d\u5bf9\u7684\u4e09\u4e2a\u78b1\u57fa",
+  "tm.anti.name":"{full}\uff08{code}\uff09",
+  "tm.anti.or":" \u6216 ",
+  "tm.anti.row":"\u53cd\u5bc6\u7801\u5b50 5′-{a}-3′ · \u5bf9\u5e94\u5bc6\u7801\u5b50 {c} · {aa}",
   "tm.bi!":"· \u53cc\u5206\u5b50\u53cd\u5e94\uff0c\u6240\u4ee5\u4f1a\u968f\u94fe\u6d53\u5ea6\u6539\u53d8",
   "tm.cmp.basis!":"\u8fd9\u4e24\u6761\u89c4\u5219\u53ea\u8ba1\u7b97\u6807\u51c6\u78b1\u57fa\u3002\u8fd9\u91cc\u7684 {n} \u4e2a\u6b8b\u57fa\u5168\u90e8\u90fd\u8ba1\u5165\u4e86\uff0c\u4f46\u4e24\u6761\u89c4\u5219\u90fd\u770b\u4e0d\u5230\u7cd6\u3001\u8fde\u63a5\u3001\u7aef\u57fa\u6216\u5076\u8054\u7269\u3002",
   "tm.cmp.basis.omit!":"\u8fd9\u4e24\u6761\u89c4\u5219\u53ea\u8ba1\u7b97\u6807\u51c6\u78b1\u57fa\u3002\u8fd9\u91cc {total} \u4e2a\u6b8b\u57fa\u4e2d\u53ea\u8ba1\u5165\u4e86 {n} \u4e2a\uff0c\u6709 {omit} \u4e2a\u88ab\u7565\u8fc7\uff1b\u4e24\u6761\u89c4\u5219\u4e5f\u90fd\u770b\u4e0d\u5230\u7cd6\u3001\u8fde\u63a5\u3001\u7aef\u57fa\u6216\u5076\u8054\u7269\u3002\u6240\u4ee5\u8fd9\u4e24\u4e2a\u6570\u5b57\u63cf\u8ff0\u7684\u662f\u4e00\u6761\u8f83\u77ed\u7684\u672a\u4fee\u9970\u94fe\uff0c\u4e0d\u662f\u4f60\u8f93\u5165\u7684\u90a3\u4e00\u6761\u3002",
@@ -5240,6 +5365,8 @@ var I18N = {
   "tm.echo.lbl":"\u94fe",
   "tm.empty":"\u8bf7\u5728\u8ba1\u7b97\u5668\u9009\u9879\u5361\u8f93\u5165\u6709\u6548\u7684\u5e8f\u5217\uff0c\u624d\u80fd\u7b97\u51fa\u89e3\u94fe\u6e29\u5ea6\u3002",
   "tm.err!":"\u65e0\u6cd5\u91cd\u65b0\u8ba1\u7b97\u89e3\u94fe\u6e29\u5ea6\uff0c\u5148\u524d\u7684\u6570\u503c\u5df2\u6e05\u9664\u3002",
+  "tm.fold.ann.many":"\u68c0\u6d4b\u5230\u4e8c\u7ea7\u7ed3\u6784\uff1a{name}\uff0c\u5171 {n} \u4e2a\u78b1\u57fa\u5bf9\u3002",
+  "tm.fold.ann.one":"\u68c0\u6d4b\u5230\u4e8c\u7ea7\u7ed3\u6784\uff1a{name}\uff0c\u5171 {n} \u4e2a\u78b1\u57fa\u5bf9\u3002",
   "tm.fold.band.aim":"\u8d8a\u4f4e\u8d8a\u597d",
   "tm.fold.band.h":"\u4e8c\u7ea7\u7ed3\u6784\u7a33\u5b9a\u6027",
   "tm.fold.band.moderate":"\u4e2d",
@@ -5299,8 +5426,31 @@ var I18N = {
   "tm.fold.note.rna!":"\u73af\u53c2\u6570\uff1aTurner 2004\uff0c\u4e5f\u5c31\u662f\u53d6\u81ea Nearest Neighbor Database \u7684 Mathews 2004\uff08ΔG°₃₇\uff09\u4e0e Lu 2006\uff08ΔH\uff09\uff1b\u830e\u6765\u81ea Xia 1998\u3002\u8fd9\u662f\u771f\u6b63\u6d4b\u91cf\u7684\u73af\u7113\u503c\uff0c\u4e0d\u662f\u5047\u8bbe\u3002<b>\u8fd9\u4e2a\u6298\u53e0\u7684\u76d0\u6821\u6b63\u662f\u9488\u5bf9 RNA \u62df\u5408\u7684\u3002</b>\u6bcf\u4e00\u4e2a\u5806\u53e0\u90fd\u5e26\u6709 Yao \u4e0e Lorenz \u5728 2023 \u5e74\u53d1\u8868\u7684\u5fb7\u62dc\u5c4f\u853d\u4e0e Manning \u51dd\u805a\u9879\uff0c\u5e76\u4ee5 Turner \u53c2\u6570\u672c\u8eab\u7684\u6d4b\u91cf\u6761\u4ef6 1.021 M \u94a0\u79bb\u5b50\u4e3a\u57fa\u51c6\uff0c\u56e0\u6b64\u81ea\u7531\u80fd\u4e0e\u6298\u53e0\u7684\u89e3\u94fe\u6e29\u5ea6\u4f1a\u968f\u4f60\u8f93\u5165\u7684\u7f13\u51b2\u6db2\u800c\u53d8\u3002\u7113\u503c\u4e0d\u4f1a\uff0c\u78b1\u57fa\u5bf9\u4e0e\u73af\u7684\u8ba1\u6570\u4e5f\u4e0d\u4f1a\u3002\u90a3\u7bc7\u53d1\u8868\u7684\u6a21\u578b\u540c\u65f6\u4e5f\u6821\u6b63\u73af\u7684\u9759\u7535\u4f5c\u7528\uff0c\u672c\u5f15\u64ce\u6ca1\u6709\uff0c\u8fc7\u53bb\u4e5f\u4e0d\u66fe\u6709\u3002\u53cc\u94fe\u7684\u89e3\u94fe\u6e29\u5ea6\u4ecd\u7136\u4ee5 Owczarzy 2004 \u6821\u6b63\uff0c\u800c\u90a3\u662f\u5bf9 DNA \u62df\u5408\u7684\u3002GU \u6447\u6446\u914d\u5bf9\u8ba1\u4e3a\u830e\u914d\u5bf9\uff1b\u4e24\u4fa7\u5404\u6709\u4e00\u5230\u4e24\u4e2a\u672a\u914d\u5bf9\u78b1\u57fa\u7684\u5185\u90e8\u73af\uff0c\u91c7\u7528 Turner \u5bf9\u8be5\u73af\u7684\u5b9e\u6d4b\u503c\uff0c\u800c\u4e0d\u662f\u901a\u7528\u7684\u73af\u65b9\u7a0b\u3002",
   "tm.fold.note.tmm!":"⚠ \u8fd9\u4e2a\u73af\u7528\u5230 GG/CG \u672b\u7aef\u9519\u914d\u3002\u5b83\u5728\u5df2\u53d1\u8868\u7684\u8868\u683c\u4e2d\u662f\u5f02\u5e38\u503c\uff0c\u6211\u4eec\u539f\u6837\u6cbf\u7528\uff0c\u6ca1\u6709\u4fee\u6539\u3002",
   "tm.fold.scope!":"\u8fd9\u6761\u94fe\u6709 {n} nt\uff0c\u800c\u8fd9\u4e2a\u8ba1\u7b97\u5de5\u5177\u7684\u8bbe\u8ba1\u8303\u56f4\u662f {max} nt \u4ee5\u5185\u7684\u5be1\u6838\u82f7\u9178\u3002\u8d85\u8fc7\u8fd9\u4e2a\u957f\u5ea6\u4e4b\u540e\uff0c\u4e09\u4e2a\u4ee5\u4e0a\u7684\u830e\u4ea4\u4f1a\u4e8e\u540c\u4e00\u4e2a\u73af\u7684\u6298\u53e0\u4f1a\u53d8\u5f97\u5e38\u89c1\uff0c\u800c\u90a3\u6b63\u662f\u8fd9\u4e2a\u641c\u7d22\u6700\u4e0d\u64c5\u957f\u5904\u7406\u7684\u4e00\u7c7b\u3002\u4e0b\u9762\u7684\u7ed3\u6784\u4ecd\u7136\u4f1a\u8ba1\u7b97\u51fa\u6765\u3002\u8bf7\u5f53\u6210\u8fd1\u4f3c\u503c\u6765\u770b\u3002",
+  "tm.fold.sr.h":"\u5b8c\u6574\u7ed3\u6784",
+  "tm.fold.sr.pairs":"\u78b1\u57fa\u5bf9",
   "tm.fold.stem":"{n} bp \u7684\u830e",
   "tm.fold.where":"\u7b2c {a} \u5230 {b} \u4e2a\u6b8b\u57fa",
+  "tm.fold3d.mark":"\u793a\u610f\u56fe",
+  "tm.fold3d.mode":"\u6298\u53e0\u89c6\u56fe",
+  "tm.fold3d.scope!":"\u830e\u90e8\u91c7\u7528\u7406\u60f3\u5316\u7684\u53c2\u8003\u87ba\u65cb\uff1b\u865a\u7ebf\u8868\u793a\u7684\u73af\u4e0e\u4ea4\u6c47\u5904\u53ea\u662f\u793a\u610f\u5e03\u5c40\uff0c\u56e0\u6b64\u6b64\u89c6\u56fe\u5e76\u4e0d\u9884\u6d4b\u5206\u5b50\u7684 3D \u5f62\u72b6\u3002",
+  "tm.helix.aref":"A \u578b\u53c2\u8003\uff1a\u7531 A \u578b DNA \u7ea4\u7ef4\u6a21\u578b\u884d\u751f\u7684 RNA \u51e0\u4f55\u5f62\u72b6\u3002",
+  "tm.helix.bref":"B \u578b\u53c2\u8003\uff1a\u5386\u53f2\u6a21\u578b\u4e2d\u7406\u60f3\u5316\u7684 DNA \u51e0\u4f55\u5f62\u72b6\u3002",
+  "tm.helix.copies":"\u6b63\u4e49\u94fe\u7684\u4e24\u4e2a\u526f\u672c\u3002\u53ea\u6709\u81ea\u8eab\u4e8c\u805a\u4f53\u7ed3\u679c\u6240\u91c7\u7528\u7684\u8fde\u7eed\u914d\u5bf9\u533a\u6bb5\u4f1a\u7ed8\u5236\u6210\u87ba\u65cb\u3002",
+  "tm.helix.counts":"\u78b1\u57fa\u5bf9\u6570\uff1a{pairs}\u3002\u672a\u914d\u5bf9\u6b8b\u57fa\u6570\uff1a{unpaired}\u3002\u5b8c\u6574\u7684\u94fe\u5e8f\u5217\u4e0e\u5404\u914d\u5bf9\u6b8b\u57fa\u5728\u5e8f\u5217\u4e2d\u7684\u4f4d\u7f6e\u7f16\u53f7\u5982\u4e0b\u3002",
+  "tm.helix.flanks":"\u914d\u5bf9\u533a\u6bb5\u5916\u7684\u672a\u914d\u5bf9\u6b8b\u57fa\u6570\uff1a{n}",
+  "tm.helix.help":"\u6c34\u5e73\u62d6\u52a8\u5373\u53ef\u65cb\u8f6c 3D \u89c6\u56fe\u3002\u53ef\u7528\u952e\u76d8\u64cd\u4f5c\u6ed1\u5757\u3002\u5782\u76f4\u89e6\u63a7\u624b\u52bf\u4f1a\u6eda\u52a8\u9875\u9762\u3002",
+  "tm.helix.intended":"\u6b63\u4e49\u94fe\u4e0e\u53cd\u4e49\u94fe\u7684\u53cc\u94fe\u89c6\u56fe",
+  "tm.helix.legend":"\u4e24\u6761\u7ebf\uff1aA·T \u6216 A·U\u3002\u4e09\u6761\u7ebf\uff1aG·C\u3002\u865a\u7ebf\u8f68\u8ff9\uff1a\u672a\u914d\u5bf9\u7684\u5ef6\u4f38\u90e8\u5206\u3002\u7ebf\u6761\u4e0e\u8f68\u8ff9\u4ec5\u4e3a\u793a\u610f\uff0c\u5e76\u975e\u539f\u5b50\u5750\u6807\u3002",
+  "tm.helix.mode":"\u53cc\u94fe\u67e5\u770b\u6a21\u5f0f",
+  "tm.helix.pairs":"\u94fe\u5e8f\u5217\u4e0e\u914d\u5bf9\u6b8b\u57fa\u7684\u4f4d\u7f6e\u7f16\u53f7",
+  "tm.helix.pending":"\u7ed3\u679c\u5c1a\u672a\u5c31\u7eea\u3002\u6b64\u89c6\u56fe\u4e0d\u4f1a\u542f\u52a8\u8ba1\u7b97\u3002",
+  "tm.helix.qualified":"\u6b64 A \u578b\u53c2\u8003\u672a\u6a21\u62df\u6742\u5408\u53cc\u94fe\u6216\u4fee\u9970\u5bf9\u7ed3\u6784\u7684\u5f71\u54cd\u3002",
+  "tm.helix.reset":"\u91cd\u7f6e\u89c6\u56fe",
+  "tm.helix.scope":"\u4f9d\u636e\u53c2\u8003\u51e0\u4f55\u5f62\u72b6\u7ed8\u5236\u7684\u7406\u60f3\u5316\u87ba\u65cb\u3002\u8fd9\u4e0d\u662f\u4f60\u7684\u5206\u5b50\u7684\u5b9e\u6d4b\u7ed3\u6784\uff0c\u4e5f\u4e0d\u662f\u9884\u6d4b\u7ed3\u6784\u3002",
+  "tm.helix.self":"\u81ea\u8eab\u4e8c\u805a\u4f53\u89c6\u56fe",
+  "tm.helix.tilt":"\u503e\u659c",
+  "tm.helix.turn":"\u5411\u5de6\u6216\u5411\u53f3\u65cb\u8f6c",
+  "tm.helix.unavailable":"\u6b64\u7ed3\u679c\u65e0\u53ef\u7528\u7684\u53c2\u8003\u51e0\u4f55\u5f62\u72b6\u3002\u73b0\u6709\u8ba1\u7b97\u4e0e\u5176\u9002\u7528\u6761\u4ef6\u8bf4\u660e\u4fdd\u6301\u4e0d\u53d8\u3002",
   "tm.how.anti":"\u5bf9\u4e0a\u4f60\u8f93\u5165\u7684\u53cd\u4e49\u94fe",
   "tm.how.anti.other":"\u4e0e\u8f93\u5165\u7684\u53cd\u4e49\u94fe\u914d\u5bf9\uff08\u542b\u6df7\u5408\u6216\u4fee\u9970\u5316\u5b66\u7ed3\u6784\uff09",
   "tm.how.comp":"\u5bf9\u4e0a\u5b83\u7684\u5b8c\u5168\u4e92\u8865\u94fe\uff08{target} \u9776\u6807\uff09",
@@ -5332,7 +5482,7 @@ var I18N = {
   "tm.res.conj":"\u5076\u8054\u7269\uff1a\u5df2\u6392\u9664",
   "tm.res.dg":"\u9884\u6d4b ΔG°₃₇",
   "tm.res.struct":"\u9884\u6d4b\u7ed3\u6784",
-  "tm.res.tm":"\u9884\u6d4b Tm",
+  "tm.res.tm":"\u53cc\u94fe Tm",
   "tm.salt.mono!":"Owczarzy 2004\uff08\u5355\u4ef7\u9633\u79bb\u5b50\uff09",
   "tm.selfdimer":"\u81ea\u8eab\u4e8c\u805a\u4f53",
   "tm.selfwarn!":"⚠ <b>\u8fd9\u6761\u94fe\u7684\u53d1\u5939\u6bd4\u53cc\u94fe\u9ad8 {d} °C \u624d\u7194\u89e3</b>\uff08{hp} °C \u5bf9 {dup} °C\uff09\u3002\u5728\u4efb\u4f55\u8db3\u4ee5\u5f62\u6210\u53cc\u94fe\u7684\u6e29\u5ea6\u4e0b\uff0c\u94fe\u90fd\u5df2\u7ecf\u81ea\u5df1\u6298\u53e0\u8d77\u6765\uff0c\u56e0\u6b64\u6742\u4ea4\u6548\u679c\u4f1a\u5f88\u5dee\u3002\u8bf7\u770b\u4e0b\u65b9\u7684\u81ea\u8eab\u7ed3\u6784\u3002",
@@ -7144,6 +7294,31 @@ var I18N = {
   "rk.0027":"\u30ab\u30bf\u30ed\u30b0\u304b\u3089\u306e<b>\u30ab\u30b9\u30bf\u30e0\u30e2\u30ce\u30de\u30fc</b>\u306f <code>(GalNAc)</code> \u306e\u3088\u3046\u306b\u62ec\u5f27\u306b\u5165\u308c\u307e\u3059\u30021 \u6587\u5b57\u306e\u4fee\u98fe\u30ad\u30fc\u306f\u305d\u306e\u307e\u307e\u3067\u3059\u3002",
   "seq.end3":"3′ \u672b\u7aef",
   "seq.end5":"5′ \u672b\u7aef",
+  "tm.aa.ala":"\u30a2\u30e9\u30cb\u30f3",
+  "tm.aa.arg":"\u30a2\u30eb\u30ae\u30cb\u30f3",
+  "tm.aa.asn":"\u30a2\u30b9\u30d1\u30e9\u30ae\u30f3",
+  "tm.aa.asp":"\u30a2\u30b9\u30d1\u30e9\u30ae\u30f3\u9178",
+  "tm.aa.cys":"\u30b7\u30b9\u30c6\u30a4\u30f3",
+  "tm.aa.gln":"\u30b0\u30eb\u30bf\u30df\u30f3",
+  "tm.aa.glu":"\u30b0\u30eb\u30bf\u30df\u30f3\u9178",
+  "tm.aa.gly":"\u30b0\u30ea\u30b7\u30f3",
+  "tm.aa.his":"\u30d2\u30b9\u30c1\u30b8\u30f3",
+  "tm.aa.ile":"\u30a4\u30bd\u30ed\u30a4\u30b7\u30f3",
+  "tm.aa.leu":"\u30ed\u30a4\u30b7\u30f3",
+  "tm.aa.lys":"\u30ea\u30b7\u30f3",
+  "tm.aa.met":"\u30e1\u30c1\u30aa\u30cb\u30f3",
+  "tm.aa.phe":"\u30d5\u30a7\u30cb\u30eb\u30a2\u30e9\u30cb\u30f3",
+  "tm.aa.pro":"\u30d7\u30ed\u30ea\u30f3",
+  "tm.aa.ser":"\u30bb\u30ea\u30f3",
+  "tm.aa.stop":"\u7d42\u6b62",
+  "tm.aa.thr":"\u30c8\u30ec\u30aa\u30cb\u30f3",
+  "tm.aa.trp":"\u30c8\u30ea\u30d7\u30c8\u30d5\u30a1\u30f3",
+  "tm.aa.tyr":"\u30c1\u30ed\u30b7\u30f3",
+  "tm.aa.val":"\u30d0\u30ea\u30f3",
+  "tm.anti.leg":"<b>\u592a\u3044\u67a0</b> \u30a2\u30f3\u30c1\u30b3\u30c9\u30f3\u3002\u30b3\u30c9\u30f3\u3068\u5bfe\u5408\u3059\u308b 3 \u5869\u57fa",
+  "tm.anti.name":"{full}\uff08{code}\uff09",
+  "tm.anti.or":" \u307e\u305f\u306f ",
+  "tm.anti.row":"\u30a2\u30f3\u30c1\u30b3\u30c9\u30f3 5′-{a}-3′ · \u5bfe\u5fdc\u3059\u308b\u30b3\u30c9\u30f3 {c} · {aa}",
   "tm.bi!":" · \u5206\u5b50\u9593\u306e\u4f1a\u5408\u306a\u306e\u3067\u3001\u6838\u9178\u6fc3\u5ea6\u306b\u5fdc\u3058\u3066\u5909\u308f\u308a\u307e\u3059",
   "tm.cmp.basis!":"\u3069\u3061\u3089\u306e\u7d4c\u9a13\u5247\u3082\u6a19\u6e96\u7684\u306a\u5869\u57fa\u306e\u307f\u3092\u6570\u3048\u307e\u3059\u3002\u3053\u3053\u3067\u306f {n} \u500b\u306e\u6b8b\u57fa\u3059\u3079\u3066\u304c\u6570\u3048\u3089\u308c\u307e\u3057\u305f\u3002\u3069\u3061\u3089\u306e\u7d4c\u9a13\u5247\u3082\u7cd6\u3001\u7d50\u5408\u3001\u672b\u7aef\u57fa\u3001\u30b3\u30f3\u30b8\u30e5\u30b2\u30fc\u30c8\u3092\u898b\u3066\u3044\u307e\u305b\u3093\u3002",
   "tm.cmp.basis.omit!":"\u3069\u3061\u3089\u306e\u7d4c\u9a13\u5247\u3082\u6a19\u6e96\u7684\u306a\u5869\u57fa\u306e\u307f\u3092\u6570\u3048\u307e\u3059\u3002{total} \u500b\u306e\u6b8b\u57fa\u306e\u3046\u3061 {n} \u500b\u3092\u6570\u3048\u3001{omit} \u500b\u3092\u9664\u5916\u3057\u307e\u3057\u305f\u3002\u3069\u3061\u3089\u306e\u7d4c\u9a13\u5247\u3082\u7cd6\u3001\u7d50\u5408\u3001\u672b\u7aef\u57fa\u3001\u30b3\u30f3\u30b8\u30e5\u30b2\u30fc\u30c8\u3092\u898b\u3066\u3044\u307e\u305b\u3093\u3002\u3053\u306e 2 \u3064\u306e\u5024\u306f\u3001\u5165\u529b\u3057\u305f\u9396\u3067\u306f\u306a\u304f\u3001\u3088\u308a\u77ed\u3044\u672a\u4fee\u98fe\u306e\u9396\u3092\u8868\u3057\u3066\u3044\u307e\u3059\u3002",
@@ -7193,6 +7368,8 @@ var I18N = {
   "tm.echo.lbl":"\u9396",
   "tm.empty":"\u878d\u89e3\u6e29\u5ea6\u3092\u8868\u793a\u3059\u308b\u306b\u306f\u3001\u8a08\u7b97\u30c4\u30fc\u30eb\u3067\u6709\u52b9\u306a\u914d\u5217\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
   "tm.err!":"\u878d\u89e3\u6e29\u5ea6\u3092\u518d\u8a08\u7b97\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f\u3002\u4ee5\u524d\u306e\u5024\u306f\u30af\u30ea\u30a2\u3057\u307e\u3057\u305f\u3002",
+  "tm.fold.ann.many":"\u4e8c\u6b21\u69cb\u9020\u304c\u898b\u3064\u304b\u308a\u307e\u3057\u305f\u3002{name}\u3001{n} \u5869\u57fa\u5bfe\u3067\u3059\u3002",
+  "tm.fold.ann.one":"\u4e8c\u6b21\u69cb\u9020\u304c\u898b\u3064\u304b\u308a\u307e\u3057\u305f\u3002{name}\u3001{n} \u5869\u57fa\u5bfe\u3067\u3059\u3002",
   "tm.fold.band.aim":"\u4f4e\u3044\u307b\u3069\u826f\u3044",
   "tm.fold.band.h":"\u4e8c\u6b21\u69cb\u9020\u306e\u5b89\u5b9a\u6027",
   "tm.fold.band.moderate":"\u4e2d\u7a0b\u5ea6",
@@ -7252,8 +7429,31 @@ var I18N = {
   "tm.fold.note.rna!":"\u30eb\u30fc\u30d7\u30d1\u30e9\u30e1\u30fc\u30bf: Turner 2004\u3001\u3059\u306a\u308f\u3061 Mathews 2004 (ΔG°₃₇) \u3068 Lu 2006 (ΔH) \u3092 Nearest Neighbor Database \u7d4c\u7531\u3067\u3002\u30b9\u30c6\u30e0\u306f Xia 1998\u3002\u30eb\u30fc\u30d7\u306e\u30a8\u30f3\u30bf\u30eb\u30d4\u30fc\u306f\u5b9f\u6e2c\u5024\u3067\u3042\u308a\u3001\u4eee\u5b9a\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002<b>\u3053\u306e\u30d5\u30a9\u30fc\u30eb\u30c9\u306e\u5869\u6fc3\u5ea6\u88dc\u6b63\u306f RNA \u306b\u30d5\u30a3\u30c3\u30c8\u3055\u308c\u305f\u3082\u306e\u3067\u3059\u3002</b>\u30b9\u30bf\u30c3\u30af\u3054\u3068\u306b\u3001Yao \u3068 Lorenz \u304c 2023 \u5e74\u306b\u767a\u8868\u3057\u305f\u30c7\u30d0\u30a4\u906e\u853d\u3068 Manning \u51dd\u7e2e\u306e\u9805\u3092\u9069\u7528\u3057\u307e\u3059\u3002Turner \u30d1\u30e9\u30e1\u30fc\u30bf\u81ea\u4f53\u304c\u6e2c\u5b9a\u3055\u308c\u305f 1.021 M \u30ca\u30c8\u30ea\u30a6\u30e0\u30a4\u30aa\u30f3\u3092\u57fa\u6e96\u3068\u3057\u3066\u3044\u308b\u305f\u3081\u3001\u81ea\u7531\u30a8\u30cd\u30eb\u30ae\u30fc\u3068\u30d5\u30a9\u30fc\u30eb\u30c9\u306e\u878d\u89e3\u6e29\u5ea6\u306f\u5165\u529b\u3057\u305f\u7de9\u885d\u6db2\u306b\u5fdc\u3058\u3066\u5909\u308f\u308a\u307e\u3059\u3002\u30a8\u30f3\u30bf\u30eb\u30d4\u30fc\u306f\u5909\u308f\u3089\u305a\u3001\u5869\u57fa\u5bfe\u3068\u30eb\u30fc\u30d7\u306e\u30ab\u30a6\u30f3\u30c8\u3082\u5909\u308f\u308a\u307e\u305b\u3093\u3002\u767a\u8868\u3055\u308c\u305f\u30e2\u30c7\u30eb\u306f\u30eb\u30fc\u30d7\u306e\u9759\u96fb\u76f8\u4e92\u4f5c\u7528\u3082\u88dc\u6b63\u3057\u307e\u3059\u304c\u3001\u672c\u30a8\u30f3\u30b8\u30f3\u306f\u88dc\u6b63\u3057\u3066\u304a\u3089\u305a\u3001\u3053\u308c\u307e\u3067\u3082\u88dc\u6b63\u3057\u3066\u3044\u307e\u305b\u3093\u3002\u4e8c\u672c\u9396\u306e\u878d\u89e3\u6e29\u5ea6\u306f\u4eca\u3082 Owczarzy 2004 \u3067\u88dc\u6b63\u3057\u3066\u304a\u308a\u3001\u3053\u308c\u306f DNA \u306b\u30d5\u30a3\u30c3\u30c8\u3055\u308c\u305f\u3082\u306e\u3067\u3059\u3002GU \u30a6\u30a9\u30d6\u30eb\u5bfe\u3082\u30b9\u30c6\u30e0\u306e\u5869\u57fa\u5bfe\u3068\u3057\u3066\u63a1\u70b9\u3057\u307e\u3059\u3002\u4e21\u5074\u306b\u305d\u308c\u305e\u308c 1 \u3064\u307e\u305f\u306f 2 \u3064\u306e\u975e\u5bfe\u5408\u5869\u57fa\u304c\u3042\u308b\u5185\u90e8\u30eb\u30fc\u30d7\u306b\u306f\u3001\u4e00\u822c\u306e\u30eb\u30fc\u30d7\u5f0f\u3067\u306f\u306a\u304f Turner \u304c\u6e2c\u5b9a\u3057\u305f\u5024\u3092\u7528\u3044\u307e\u3059\u3002",
   "tm.fold.note.tmm!":" ⚠ \u3053\u306e\u30eb\u30fc\u30d7\u306f GG/CG \u672b\u7aef\u30df\u30b9\u30de\u30c3\u30c1\u3092\u4f7f\u3044\u307e\u3059\u3002\u3053\u308c\u306f\u516c\u8868\u8868\u306e\u4e2d\u3067\u7570\u5e38\u5024\u3067\u3059\u304c\u3001\u305d\u306e\u307e\u307e\u4f7f\u3063\u3066\u3044\u307e\u3059\u3002",
   "tm.fold.scope!":"\u3053\u306e\u9396\u306f {n} nt \u3067\u3059\u3002\u3053\u306e\u8a08\u7b97\u30c4\u30fc\u30eb\u304c\u60f3\u5b9a\u3057\u3066\u3044\u308b\u306e\u306f {max} nt \u307e\u3067\u306e\u30aa\u30ea\u30b4\u30cc\u30af\u30ec\u30aa\u30c1\u30c9\u3067\u3059\u3002\u3053\u306e\u9577\u3055\u3092\u8d85\u3048\u308b\u3068\u30013 \u3064\u4ee5\u4e0a\u306e\u30b9\u30c6\u30e0\u304c 1 \u3064\u306e\u30eb\u30fc\u30d7\u3067\u51fa\u4f1a\u3046\u30d5\u30a9\u30fc\u30eb\u30c9\u304c\u591a\u304f\u306a\u308a\u3001\u305d\u308c\u306f\u3053\u306e\u63a2\u7d22\u304c\u3082\u3063\u3068\u3082\u82e6\u624b\u3068\u3059\u308b\u5f62\u3067\u3059\u3002\u4e0b\u306e\u69cb\u9020\u306f\u5f15\u304d\u7d9a\u304d\u8a08\u7b97\u3057\u307e\u3059\u3002\u8fd1\u4f3c\u3068\u3057\u3066\u304a\u8aad\u307f\u304f\u3060\u3055\u3044\u3002",
+  "tm.fold.sr.h":"\u69cb\u9020\u5168\u4f53",
+  "tm.fold.sr.pairs":"\u5869\u57fa\u5bfe",
   "tm.fold.stem":"{n} bp \u306e\u30b9\u30c6\u30e0",
   "tm.fold.where":"\u6b8b\u57fa {a}–{b}",
+  "tm.fold3d.mark":"\u6a21\u5f0f\u56f3",
+  "tm.fold3d.mode":"\u6298\u308a\u305f\u305f\u307f\u69cb\u9020\u306e\u8868\u793a",
+  "tm.fold3d.scope!":"\u30b9\u30c6\u30e0\u306b\u306f\u7406\u60f3\u5316\u3057\u305f\u53c2\u7167\u3089\u305b\u3093\u3092\u4f7f\u3044\u3001\u7834\u7dda\u306e\u30eb\u30fc\u30d7\u3068\u5206\u5c90\u90e8\u306f\u6a21\u5f0f\u7684\u306b\u914d\u7f6e\u3057\u3066\u3044\u308b\u305f\u3081\u3001\u3053\u306e\u8868\u793a\u306f\u5206\u5b50\u306e 3D \u5f62\u72b6\u3092\u4e88\u6e2c\u3059\u308b\u3082\u306e\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002",
+  "tm.helix.aref":"A \u578b\u306e\u53c2\u7167\u5f62\u72b6\uff1aA \u578b DNA \u306e\u7e4a\u7dad\u30e2\u30c7\u30eb\u304b\u3089\u4f5c\u6210\u3055\u308c\u305f RNA \u306e\u5e7e\u4f55\u5f62\u72b6\u3002",
+  "tm.helix.bref":"B \u578b\u306e\u53c2\u7167\u5f62\u72b6\uff1a\u6b74\u53f2\u7684\u306a\u30e2\u30c7\u30eb\u306b\u304a\u3051\u308b\u7406\u60f3\u5316\u3055\u308c\u305f DNA \u306e\u5e7e\u4f55\u5f62\u72b6\u3002",
+  "tm.helix.copies":"\u30bb\u30f3\u30b9\u9396\u306e\u30b3\u30d4\u30fc\u30922\u672c\u8868\u793a\u3057\u307e\u3059\u3002\u81ea\u5df1\u4e8c\u91cf\u4f53\u306e\u7d50\u679c\u306b\u7528\u3044\u305f\u9023\u7d9a\u3059\u308b\u5869\u57fa\u5bfe\u306e\u533a\u9593\u3060\u3051\u3092\u3089\u305b\u3093\u3068\u3057\u3066\u63cf\u753b\u3057\u307e\u3059\u3002",
+  "tm.helix.counts":"\u5869\u57fa\u5bfe\u6570\uff1a{pairs}\u3002\u975e\u5bfe\u5408\u6b8b\u57fa\u6570\uff1a{unpaired}\u3002\u5404\u9396\u306e\u5168\u9577\u914d\u5217\u3068\u3001\u5bfe\u3092\u5f62\u6210\u3059\u308b\u5404\u6b8b\u57fa\u306e\u914d\u5217\u5185\u306e\u4f4d\u7f6e\u756a\u53f7\u3092\u4e0b\u306b\u793a\u3057\u307e\u3059\u3002",
+  "tm.helix.flanks":"\u5bfe\u3092\u5f62\u6210\u3059\u308b\u533a\u9593\u306e\u5916\u306b\u3042\u308b\u975e\u5bfe\u5408\u6b8b\u57fa\u6570\uff1a{n}",
+  "tm.helix.help":"\u6c34\u5e73\u65b9\u5411\u306b\u30c9\u30e9\u30c3\u30b0\u3059\u308b\u3068 3D \u8868\u793a\u3092\u56de\u8ee2\u3067\u304d\u307e\u3059\u3002\u30b9\u30e9\u30a4\u30c0\u30fc\u306f\u30ad\u30fc\u30dc\u30fc\u30c9\u3067\u3082\u64cd\u4f5c\u3067\u304d\u307e\u3059\u3002\u7e26\u65b9\u5411\u306e\u30bf\u30c3\u30c1\u64cd\u4f5c\u3067\u306f\u30da\u30fc\u30b8\u304c\u30b9\u30af\u30ed\u30fc\u30eb\u3057\u307e\u3059\u3002",
+  "tm.helix.intended":"\u30bb\u30f3\u30b9\u9396\u30fb\u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u9396\u306e\u4e8c\u672c\u9396\u8868\u793a",
+  "tm.helix.legend":"\u7dda2\u672c\uff1aA·T \u307e\u305f\u306f A·U\u3002\u7dda3\u672c\uff1aG·C\u3002\u7834\u7dda\u306e\u8ecc\u8de1\uff1a\u5869\u57fa\u5bfe\u3092\u5f62\u6210\u3057\u306a\u3044\u5ef6\u9577\u90e8\u5206\u3002\u7dda\u3068\u8ecc\u8de1\u306f\u6a21\u5f0f\u7684\u306a\u3082\u306e\u3067\u3001\u539f\u5b50\u5ea7\u6a19\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002",
+  "tm.helix.mode":"\u4e8c\u672c\u9396\u306e\u8868\u793a\u30e2\u30fc\u30c9",
+  "tm.helix.pairs":"\u9396\u306e\u914d\u5217\u30fb\u5bfe\u5408\u6b8b\u57fa\u306e\u4f4d\u7f6e\u756a\u53f7",
+  "tm.helix.pending":"\u7d50\u679c\u306f\u307e\u3060\u6e96\u5099\u3067\u304d\u3066\u3044\u307e\u305b\u3093\u3002\u3053\u306e\u8868\u793a\u304b\u3089\u8a08\u7b97\u306f\u958b\u59cb\u3055\u308c\u307e\u305b\u3093\u3002",
+  "tm.helix.qualified":"\u3053\u306e A \u578b\u306e\u53c2\u7167\u5f62\u72b6\u306f\u3001\u30cf\u30a4\u30d6\u30ea\u30c3\u30c9\u3084\u4fee\u98fe\u304c\u69cb\u9020\u306b\u53ca\u307c\u3059\u5f71\u97ff\u3092\u30e2\u30c7\u30eb\u5316\u3057\u3066\u3044\u307e\u305b\u3093\u3002",
+  "tm.helix.reset":"\u8868\u793a\u3092\u30ea\u30bb\u30c3\u30c8",
+  "tm.helix.scope":"\u53c2\u7167\u7528\u306e\u5e7e\u4f55\u5f62\u72b6\u306b\u57fa\u3065\u304f\u7406\u60f3\u5316\u3055\u308c\u305f\u3089\u305b\u3093\u3067\u3059\u3002\u3042\u306a\u305f\u306e\u5206\u5b50\u306e\u5b9f\u6e2c\u69cb\u9020\u3067\u3082\u4e88\u6e2c\u69cb\u9020\u3067\u3082\u3042\u308a\u307e\u305b\u3093\u3002",
+  "tm.helix.self":"\u81ea\u5df1\u4e8c\u91cf\u4f53\u306e\u8868\u793a",
+  "tm.helix.tilt":"\u50be\u304d",
+  "tm.helix.turn":"\u5de6\u53f3\u306b\u56de\u8ee2",
+  "tm.helix.unavailable":"\u3053\u306e\u7d50\u679c\u306b\u4f7f\u7528\u3067\u304d\u308b\u53c2\u7167\u5f62\u72b6\u306f\u3042\u308a\u307e\u305b\u3093\u3002\u65e2\u5b58\u306e\u8a08\u7b97\u3068\u305d\u306e\u9069\u7528\u6761\u4ef6\u306e\u8aac\u660e\u306f\u5909\u308f\u308a\u307e\u305b\u3093\u3002",
   "tm.how.anti":"\u5165\u529b\u3057\u305f\u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u9396\u306b\u5bfe\u3057\u3066",
   "tm.how.anti.other":"\u5165\u529b\u3057\u305f\u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u9396\u3068\u306e\u5bfe\u5408\uff08\u6df7\u5408\u307e\u305f\u306f\u4fee\u98fe\u3055\u308c\u305f\u5316\u5b66\u69cb\u9020\uff09",
   "tm.how.comp":"\u5b8c\u5168\u76f8\u88dc\u9396\u306b\u5bfe\u3057\u3066 ({target} \u6a19\u7684)",
@@ -7285,7 +7485,7 @@ var I18N = {
   "tm.res.conj":"\u30b3\u30f3\u30b8\u30e5\u30b2\u30fc\u30c8\uff1a\u9664\u5916",
   "tm.res.dg":"\u4e88\u6e2c ΔG°₃₇",
   "tm.res.struct":"\u4e88\u6e2c\u69cb\u9020",
-  "tm.res.tm":"\u4e88\u6e2c Tm",
+  "tm.res.tm":"\u4e8c\u672c\u9396\u306e Tm",
   "tm.salt.mono!":"Owczarzy 2004 (1 \u4fa1\u30a4\u30aa\u30f3)",
   "tm.selfdimer":"\u30bb\u30eb\u30d5\u30c0\u30a4\u30de\u30fc",
   "tm.selfwarn!":"⚠ <b>\u3053\u306e\u9396\u306e\u30d8\u30a2\u30d4\u30f3\u306f\u4e8c\u672c\u9396\u3088\u308a {d} °C \u9ad8\u3044\u6e29\u5ea6\u3067\u878d\u89e3\u3057\u307e\u3059</b>({hp} °C \u5bfe {dup} °C)\u3002\u4e8c\u672c\u9396\u304c\u5f62\u6210\u3055\u308c\u308b\u6e29\u5ea6\u3067\u306f\u3059\u3067\u306b\u9396\u304c\u81ea\u5206\u81ea\u8eab\u306b\u6298\u308a\u305f\u305f\u307e\u308c\u3066\u3044\u308b\u305f\u3081\u3001\u30cf\u30a4\u30d6\u30ea\u30c0\u30a4\u30bc\u30fc\u30b7\u30e7\u30f3\u306f\u3046\u307e\u304f\u9032\u307f\u307e\u305b\u3093\u3002\u4e0b\u306e\u300c\u81ea\u5df1\u69cb\u9020\u300d\u3092\u3054\u89a7\u304f\u3060\u3055\u3044\u3002",
@@ -9097,6 +9297,31 @@ var I18N = {
   "rk.0027":"Les <b>monomères personnalisés</b> du catalogue se mettent entre parenthèses, comme <code>(GalNAc)</code>. Les touches de modification à une seule lettre s’écrivent telles quelles.",
   "seq.end3":"Extrémité 3′",
   "seq.end5":"Extrémité 5′",
+  "tm.aa.ala":"alanine",
+  "tm.aa.arg":"arginine",
+  "tm.aa.asn":"asparagine",
+  "tm.aa.asp":"acide aspartique",
+  "tm.aa.cys":"cystéine",
+  "tm.aa.gln":"glutamine",
+  "tm.aa.glu":"acide glutamique",
+  "tm.aa.gly":"glycine",
+  "tm.aa.his":"histidine",
+  "tm.aa.ile":"isoleucine",
+  "tm.aa.leu":"leucine",
+  "tm.aa.lys":"lysine",
+  "tm.aa.met":"méthionine",
+  "tm.aa.phe":"phénylalanine",
+  "tm.aa.pro":"proline",
+  "tm.aa.ser":"sérine",
+  "tm.aa.stop":"codon stop",
+  "tm.aa.thr":"thréonine",
+  "tm.aa.trp":"tryptophane",
+  "tm.aa.tyr":"tyrosine",
+  "tm.aa.val":"valine",
+  "tm.anti.leg":"<b>Contour épais</b> l’anticodon, les trois bases qui lisent le codon",
+  "tm.anti.name":"{full} ({code})",
+  "tm.anti.or":" ou ",
+  "tm.anti.row":"Anticodon 5′-{a}-3′ · lit le codon {c} · {aa}",
   "tm.bi!":" · bimoléculaire, il varie donc avec la concentration du brin",
   "tm.cmp.basis!":"Les deux règles ne comptent que les bases canoniques. Les {n} résidus présents ici ont tous été comptés ; ni l’une ni l’autre ne voit le sucre, la liaison, les groupes terminaux ou les conjugués.",
   "tm.cmp.basis.omit!":"Les deux règles ne comptent que les bases canoniques. {n} résidus sur {total} ont été comptés et {omit} laissés de côté ; ni l’une ni l’autre ne voit le sucre, la liaison, les groupes terminaux ou les conjugués. Ces deux valeurs décrivent un brin non modifié plus court, pas celui que vous avez saisi.",
@@ -9146,6 +9371,8 @@ var I18N = {
   "tm.echo.lbl":"Brin",
   "tm.empty":"Saisissez une séquence valide dans le Calculateur pour voir une température de fusion.",
   "tm.err!":"La température de fusion n’a pas pu être recalculée. La valeur précédente a été effacée.",
+  "tm.fold.ann.many":"Structure interne détectée : {name}, {n} paires de bases.",
+  "tm.fold.ann.one":"Structure interne détectée : {name}, {n} paire de bases.",
   "tm.fold.band.aim":"ici, plus c’est bas, mieux c’est",
   "tm.fold.band.h":"Stabilité de la structure secondaire",
   "tm.fold.band.moderate":"Modérée",
@@ -9205,8 +9432,31 @@ var I18N = {
   "tm.fold.note.rna!":"Paramètres de boucle : Turner 2004, c’est-à-dire Mathews 2004 (ΔG°₃₇) et Lu 2006 (ΔH), via la base Nearest Neighbor Database ; tige d’après Xia 1998. Enthalpies de boucle réelles, et non une hypothèse. <b>La correction pour les sels de ce repliement est ajustée sur l’ARN.</b> Chaque empilement porte le terme d’écrantage de Debye et de condensation de Manning publié par Yao et Lorenz en 2023, rapporté aux 1,021 M de sodium dans lesquels les paramètres Turner ont eux-mêmes été mesurés, de sorte que l’énergie libre et la température de repliement répondent au tampon que vous avez saisi. Ce n’est pas le cas de l’enthalpie, ni des nombres de paires de bases et de boucles. Ce modèle publié corrige aussi l’électrostatique des boucles ; ce moteur ne le fait pas, et ne l’a jamais fait. La température de fusion du duplex reste corrigée avec Owczarzy 2004, qui est ajusté sur l’ADN. Les appariements bancals GU sont comptés comme des paires de tige, et les boucles internes comportant une ou deux bases non appariées de chaque côté utilisent la valeur que Turner a mesurée pour cette boucle exacte plutôt que l’équation générale des boucles.",
   "tm.fold.note.tmm!":" ⚠ Cette boucle utilise le mésappariement terminal GG/CG, qui est anormal dans la table publiée et est repris tel quel.",
   "tm.fold.scope!":"Ce brin fait {n} nt, et ce calculateur est conçu pour des oligonucléotides allant jusqu’à {max} nt. Au-delà de cette longueur, les repliements où trois tiges ou plus se rejoignent sur une même boucle deviennent courants, et ce sont les repliements que cette recherche traite le moins bien. La structure ci-dessous est tout de même calculée. Lisez-la comme approximative.",
+  "tm.fold.sr.h":"Structure complète",
+  "tm.fold.sr.pairs":"Bases appariées",
   "tm.fold.stem":"tige de {n} pb",
   "tm.fold.where":"résidus {a}–{b}",
+  "tm.fold3d.mark":"Schéma",
+  "tm.fold3d.mode":"Vue du repliement",
+  "tm.fold3d.scope!":"Pour les tiges, cette vue utilise des hélices de référence idéalisées ; les boucles et jonctions en pointillés sont disposées schématiquement, cette vue ne prédit donc pas la forme 3D de la molécule.",
+  "tm.helix.aref":"Référence de forme A : géométrie d’un modèle générique d’ARN dérivé d’un modèle de fibre d’ADN de forme A.",
+  "tm.helix.bref":"Référence de forme B : géométrie idéalisée de l’ADN issue d’un modèle historique.",
+  "tm.helix.copies":"Deux copies du brin sens. Seule la région d’appariement continu utilisée pour le résultat de l’autodimère est dessinée en hélice.",
+  "tm.helix.counts":"Paires de bases : {pairs}. Résidus non appariés : {unpaired}. Les séquences complètes des brins et les indices des résidus appariés figurent ci-dessous.",
+  "tm.helix.flanks":"Résidus non appariés hors de la région appariée : {n}",
+  "tm.helix.help":"Faites glisser horizontalement pour tourner la vue 3D. Les curseurs s’utilisent aussi au clavier. Les gestes tactiles verticaux font défiler la page.",
+  "tm.helix.intended":"Vue du duplex sens/antisens",
+  "tm.helix.legend":"Deux traits : A·T ou A·U. Trois traits : G·C. Tracés en pointillés : prolongements non appariés. Les traits et les tracés sont schématiques et ne sont pas des coordonnées atomiques.",
+  "tm.helix.mode":"Mode d’affichage du duplex",
+  "tm.helix.pairs":"Brins et indices des résidus appariés",
+  "tm.helix.pending":"Le résultat n’est pas encore prêt. Cette vue ne lance aucun calcul.",
+  "tm.helix.qualified":"Cette référence de forme A ne modélise pas les effets de l’hybride ou des modifications sur la structure.",
+  "tm.helix.reset":"Réinitialiser la vue",
+  "tm.helix.scope":"Une hélice idéalisée à partir d’une géométrie de référence. Il ne s’agit ni d’une structure mesurée ni d’une structure prédite de votre molécule.",
+  "tm.helix.self":"Vue de l’autodimère",
+  "tm.helix.tilt":"Inclinaison",
+  "tm.helix.turn":"Tourner à gauche ou à droite",
+  "tm.helix.unavailable":"Aucune géométrie de référence n’est disponible pour ce résultat. Le calcul existant et ses réserves restent inchangés.",
   "tm.how.anti":"face au brin antisens que vous avez saisi",
   "tm.how.anti.other":"avec le brin antisens saisi (chimie mixte ou modifiée)",
   "tm.how.comp":"face à son brin parfaitement complémentaire (cible {target})",
@@ -9238,7 +9488,7 @@ var I18N = {
   "tm.res.conj":"conjugué : exclu",
   "tm.res.dg":"ΔG°₃₇ prédit",
   "tm.res.struct":"Structure prédite",
-  "tm.res.tm":"Tm prédite",
+  "tm.res.tm":"Tm du duplex",
   "tm.salt.mono!":"Owczarzy 2004 (monovalent)",
   "tm.selfdimer":"Auto-dimère",
   "tm.selfwarn!":"⚠ <b>Ce brin a une épingle à cheveux qui fond {d} °C au-dessus du duplex</b> ({hp} °C contre {dup} °C). À toute température où le duplex se formerait, le brin est déjà replié sur lui-même, il s’hybridera donc mal. Voir Structure secondaire ci-dessous.",
@@ -11050,6 +11300,31 @@ var I18N = {
   "rk.0027":"Los <b>monómeros personalizados</b> del catálogo van entre paréntesis, como <code>(GalNAc)</code>. Los códigos de modificación de una sola letra van sueltos.",
   "seq.end3":"extremo 3′",
   "seq.end5":"extremo 5′",
+  "tm.aa.ala":"alanina",
+  "tm.aa.arg":"arginina",
+  "tm.aa.asn":"asparagina",
+  "tm.aa.asp":"ácido aspártico",
+  "tm.aa.cys":"cisteína",
+  "tm.aa.gln":"glutamina",
+  "tm.aa.glu":"ácido glutámico",
+  "tm.aa.gly":"glicina",
+  "tm.aa.his":"histidina",
+  "tm.aa.ile":"isoleucina",
+  "tm.aa.leu":"leucina",
+  "tm.aa.lys":"lisina",
+  "tm.aa.met":"metionina",
+  "tm.aa.phe":"fenilalanina",
+  "tm.aa.pro":"prolina",
+  "tm.aa.ser":"serina",
+  "tm.aa.stop":"codón de terminación",
+  "tm.aa.thr":"treonina",
+  "tm.aa.trp":"triptófano",
+  "tm.aa.tyr":"tirosina",
+  "tm.aa.val":"valina",
+  "tm.anti.leg":"<b>Contorno grueso</b> el anticodón, las tres bases que leen el codón",
+  "tm.anti.name":"{full} ({code})",
+  "tm.anti.or":" o ",
+  "tm.anti.row":"Anticodón 5′-{a}-3′ · lee el codón {c} · {aa}",
   "tm.bi!":" · bimolecular, así que varía con la concentración de la cadena",
   "tm.cmp.basis!":"Las dos reglas solo cuentan bases canónicas. Aquí se han contado los {n} residuos; ninguna de las dos ve el azúcar, el enlace, los grupos terminales ni los conjugados.",
   "tm.cmp.basis.omit!":"Las dos reglas solo cuentan bases canónicas. Se han contado {n} de {total} residuos y se han dejado fuera {omit}; ninguna de las dos ve el azúcar, el enlace, los grupos terminales ni los conjugados. Estos dos números describen una cadena más corta y sin modificar, no la que has introducido.",
@@ -11099,6 +11374,8 @@ var I18N = {
   "tm.echo.lbl":"Cadena",
   "tm.empty":"Introduce una secuencia válida en la Calculadora para ver una temperatura de fusión.",
   "tm.err!":"No se ha podido recalcular la temperatura de fusión. El valor anterior se ha borrado.",
+  "tm.fold.ann.many":"Se ha encontrado una estructura interna: {name}, con {n} pares de bases.",
+  "tm.fold.ann.one":"Se ha encontrado una estructura interna: {name}, con {n} par de bases.",
   "tm.fold.band.aim":"aquí, cuanto más bajo, mejor",
   "tm.fold.band.h":"Estabilidad de la estructura secundaria",
   "tm.fold.band.moderate":"Moderada",
@@ -11158,8 +11435,31 @@ var I18N = {
   "tm.fold.note.rna!":"Parámetros de bucle: Turner 2004, es decir, Mathews 2004 (ΔG°₃₇) y Lu 2006 (ΔH), a través de la Nearest Neighbor Database; el tallo, de Xia 1998. Entalpías de bucle reales, no una suposición. <b>La corrección salina de este plegamiento está ajustada al ARN.</b> Cada apilamiento lleva el término de apantallamiento de Debye y de condensación de Manning que Yao y Lorenz publicaron en 2023, referido a los 1,021 M de sodio en los que se midieron los propios parámetros de Turner, así que la energía libre y la temperatura de plegamiento responden al tampón que has introducido. La entalpía no, y tampoco los recuentos de pares de bases y de bucles. Ese modelo publicado corrige además la electrostática de los bucles; este motor no lo hace, ni lo ha hecho nunca. La temperatura de fusión del dúplex se sigue corrigiendo con Owczarzy 2004, que está ajustada al ADN. Los pares GU por balanceo se puntúan como pares del tallo, y los bucles internos con una o dos bases sin aparear a cada lado usan el valor que Turner midió para ese bucle exacto, en lugar de la ecuación general de bucles.",
   "tm.fold.note.tmm!":" ⚠ Este bucle usa el desapareamiento terminal GG/CG, que es anómalo en la tabla publicada y se conserva sin alterar.",
   "tm.fold.scope!":"Esta cadena tiene {n} nt, y esta calculadora está pensada para oligos de hasta {max} nt. Por encima de esa longitud se vuelven comunes los plegamientos con tres o más tallos que se encuentran en un mismo bucle, y esos son los plegamientos que peor resuelve esta búsqueda. La estructura de abajo se sigue calculando. Léela como una aproximación.",
+  "tm.fold.sr.h":"Estructura completa",
+  "tm.fold.sr.pairs":"Bases apareadas",
   "tm.fold.stem":"tallo de {n} pb",
   "tm.fold.where":"residuos {a}–{b}",
+  "tm.fold3d.mark":"Esquema",
+  "tm.fold3d.mode":"Vista del plegamiento",
+  "tm.fold3d.scope!":"Los tallos usan hélices de referencia idealizadas; los bucles y las uniones de ramificación en líneas discontinuas se disponen de forma esquemática, por lo que esta vista no predice la forma 3D de la molécula.",
+  "tm.helix.aref":"Referencia de forma A: geometría de un modelo genérico de ARN derivado de un modelo de fibra de ADN de forma A.",
+  "tm.helix.bref":"Referencia de forma B: geometría idealizada del ADN procedente de un modelo histórico.",
+  "tm.helix.copies":"Dos copias de la cadena sentido. Solo se dibuja como hélice el tramo de apareamiento continuo utilizado para el resultado del autodímero.",
+  "tm.helix.counts":"Pares de bases: {pairs}. Residuos no apareados: {unpaired}. Las secuencias completas de las cadenas y los índices de los residuos apareados se muestran a continuación.",
+  "tm.helix.flanks":"Residuos no apareados fuera del tramo apareado: {n}",
+  "tm.helix.help":"Arrastra horizontalmente para girar la vista 3D. También puedes usar los controles deslizantes con el teclado. Los gestos táctiles verticales desplazan la página.",
+  "tm.helix.intended":"Vista del dúplex sentido/antisentido",
+  "tm.helix.legend":"Dos líneas: A·T o A·U. Tres líneas: G·C. Trazos discontinuos: extensiones no apareadas. Las líneas y los trazos son esquemáticos, no coordenadas atómicas.",
+  "tm.helix.mode":"Modo de vista del dúplex",
+  "tm.helix.pairs":"Cadenas e índices de los residuos apareados",
+  "tm.helix.pending":"El resultado aún no está listo. Esta vista no inicia ningún cálculo.",
+  "tm.helix.qualified":"Esta referencia de forma A no modela los efectos del híbrido o de las modificaciones sobre la estructura.",
+  "tm.helix.reset":"Restablecer vista",
+  "tm.helix.scope":"Una hélice idealizada a partir de una geometría de referencia. No es una estructura medida ni predicha de tu molécula.",
+  "tm.helix.self":"Vista del autodímero",
+  "tm.helix.tilt":"Inclinación",
+  "tm.helix.turn":"Girar a la izquierda o a la derecha",
+  "tm.helix.unavailable":"No hay una geometría de referencia disponible para este resultado. El cálculo existente y sus salvedades no cambian.",
   "tm.how.anti":"frente a la cadena antisentido que has introducido",
   "tm.how.anti.other":"con la cadena antisentido introducida (química mixta o modificada)",
   "tm.how.comp":"frente a su cadena perfectamente complementaria ({target} diana)",
@@ -11191,7 +11491,7 @@ var I18N = {
   "tm.res.conj":"conjugado: excluido",
   "tm.res.dg":"ΔG°₃₇ predicho",
   "tm.res.struct":"Estructura predicha",
-  "tm.res.tm":"Tm predicha",
+  "tm.res.tm":"Tm del dúplex",
   "tm.salt.mono!":"Owczarzy 2004 (monovalente)",
   "tm.selfdimer":"Autodímero",
   "tm.selfwarn!":"⚠ <b>La horquilla de esta cadena se funde {d} °C por encima del dúplex</b> ({hp} °C frente a {dup} °C). A cualquier temperatura a la que se formaría el dúplex, la cadena ya está plegada sobre sí misma, así que hibridará mal. Mira Estructura propia más abajo.",
@@ -13003,6 +13303,31 @@ var I18N = {
   "rk.0027":"<b>Benutzerdefinierte Monomere</b> aus dem Katalog stehen in Klammern, wie <code>(GalNAc)</code>. Einbuchstabige Kürzel bleiben ohne Klammern.",
   "seq.end3":"3′-Ende",
   "seq.end5":"5′-Ende",
+  "tm.aa.ala":"Alanin",
+  "tm.aa.arg":"Arginin",
+  "tm.aa.asn":"Asparagin",
+  "tm.aa.asp":"Asparaginsäure",
+  "tm.aa.cys":"Cystein",
+  "tm.aa.gln":"Glutamin",
+  "tm.aa.glu":"Glutaminsäure",
+  "tm.aa.gly":"Glycin",
+  "tm.aa.his":"Histidin",
+  "tm.aa.ile":"Isoleucin",
+  "tm.aa.leu":"Leucin",
+  "tm.aa.lys":"Lysin",
+  "tm.aa.met":"Methionin",
+  "tm.aa.phe":"Phenylalanin",
+  "tm.aa.pro":"Prolin",
+  "tm.aa.ser":"Serin",
+  "tm.aa.stop":"Stopp-Codon",
+  "tm.aa.thr":"Threonin",
+  "tm.aa.trp":"Tryptophan",
+  "tm.aa.tyr":"Tyrosin",
+  "tm.aa.val":"Valin",
+  "tm.anti.leg":"<b>Dicke Umrandung</b> das Anticodon, die drei Basen, die das Codon lesen",
+  "tm.anti.name":"{full} ({code})",
+  "tm.anti.or":" oder ",
+  "tm.anti.row":"Anticodon 5′-{a}-3′ · liest Codon {c} · {aa}",
   "tm.bi!":" · bimolekular, es ändert sich also mit der Strangkonzentration",
   "tm.cmp.basis!":"Beide Regeln zählen nur kanonische Basen. Alle {n} Reste hier wurden gezählt; keine der beiden Regeln sieht Zucker, Bindung, Endgruppen oder Konjugate.",
   "tm.cmp.basis.omit!":"Beide Regeln zählen nur kanonische Basen. {n} von {total} Resten wurden gezählt und {omit} ausgelassen; keine der beiden Regeln sieht Zucker, Bindung, Endgruppen oder Konjugate. Diese beiden Zahlen beschreiben einen kürzeren, unmodifizierten Strang, nicht den, den Sie eingegeben haben.",
@@ -13052,6 +13377,8 @@ var I18N = {
   "tm.echo.lbl":"Strang",
   "tm.empty":"Geben Sie im Rechner eine gültige Sequenz ein, um eine Schmelztemperatur zu sehen.",
   "tm.err!":"Die Schmelztemperatur konnte nicht neu berechnet werden. Der vorherige Wert wurde gelöscht.",
+  "tm.fold.ann.many":"Sekundärstruktur gefunden: {name} mit {n} Basenpaaren.",
+  "tm.fold.ann.one":"Sekundärstruktur gefunden: {name} mit {n} Basenpaar.",
   "tm.fold.band.aim":"hier ist niedriger besser",
   "tm.fold.band.h":"Stabilität der Sekundärstruktur",
   "tm.fold.band.moderate":"Mittel",
@@ -13111,8 +13438,31 @@ var I18N = {
   "tm.fold.note.rna!":"Schleifenparameter: Turner 2004, also Mathews 2004 (ΔG°₃₇) und Lu 2006 (ΔH) über die Nearest Neighbor Database; für den Stamm: Xia 1998. Echte gemessene Schleifenenthalpien, keine Annahme. <b>Die Salzkorrektur für diese Faltung ist auf RNA angepasst.</b> Jede Stapelung trägt den Debye-Abschirmungs- und Manning-Kondensationsterm, den Yao und Lorenz 2023 veröffentlicht haben, bezogen auf die 1,021 M Natrium, in denen die Turner-Parameter selbst gemessen wurden, sodass die freie Energie und die Faltungstemperatur auf den von Ihnen eingegebenen Puffer reagieren. Die Enthalpie tut das nicht, und die Zählungen der Basenpaare und der Schleifen ebenfalls nicht. Jenes veröffentlichte Modell korrigiert auch die Elektrostatik von Schleifen; diese Engine tut das nicht und hat es nie getan. Die Schmelztemperatur des Duplex wird weiterhin mit Owczarzy 2004 korrigiert, und das ist auf DNA angepasst. GU-Wobble-Paarungen werden als Stammpaare gewertet, und innere Schleifen mit ein oder zwei ungepaarten Basen auf jeder Seite verwenden den Wert, den Turner für genau diese Schleife gemessen hat, statt der allgemeinen Schleifengleichung.",
   "tm.fold.note.tmm!":" ⚠ Diese Schleife verwendet die terminale Fehlpaarung GG/CG, die in der veröffentlichten Tabelle anomal ist und unverändert übernommen wird.",
   "tm.fold.scope!":"Dieser Strang hat {n} nt, und dieser Rechner ist für Oligos bis {max} nt gebaut. Oberhalb dieser Länge werden Faltungen häufig, bei denen drei oder mehr Stämme an einer Schleife zusammentreffen, und genau die behandelt diese Suche am schlechtesten. Die Struktur unten wird trotzdem berechnet. Lesen Sie sie als Näherung.",
+  "tm.fold.sr.h":"Vollständige Struktur",
+  "tm.fold.sr.pairs":"Basenpaare",
   "tm.fold.stem":"Stamm mit {n} bp",
   "tm.fold.where":"Reste {a}–{b}",
+  "tm.fold3d.mark":"Schema",
+  "tm.fold3d.mode":"Faltungsansicht",
+  "tm.fold3d.scope!":"Die Stämme werden mit idealisierten Referenzhelices dargestellt; gestrichelte Schleifen und Verzweigungen sind schematisch angeordnet, daher sagt diese Ansicht die 3D-Form des Moleküls nicht voraus.",
+  "tm.helix.aref":"A-Form-Referenz: Geometrie eines generischen RNA-Modells, abgeleitet von einem A-DNA-Fasermodell.",
+  "tm.helix.bref":"B-Form-Referenz: idealisierte DNA-Geometrie aus einem historischen Modell.",
+  "tm.helix.copies":"Zwei Kopien des Sense-Strangs. Nur der zusammenhängende gepaarte Abschnitt, der dem Selbstdimer-Ergebnis zugrunde liegt, wird als Helix gezeichnet.",
+  "tm.helix.counts":"Basenpaare: {pairs}. Ungepaarte Reste: {unpaired}. Die vollständigen Strangsequenzen und die Indizes der gepaarten Reste stehen unten.",
+  "tm.helix.flanks":"Ungepaarte Reste außerhalb des gepaarten Abschnitts: {n}",
+  "tm.helix.help":"Ziehen Sie horizontal, um die 3D-Ansicht zu drehen. Die Schieberegler lassen sich auch mit der Tastatur bedienen. Vertikale Touchgesten scrollen die Seite.",
+  "tm.helix.intended":"Ansicht des Sense/Antisense-Duplexes",
+  "tm.helix.legend":"Zwei Linien: A·T oder A·U. Drei Linien: G·C. Gestrichelte Verläufe: ungepaarte Verlängerungen. Linien und Verläufe sind schematisch und keine Atomkoordinaten.",
+  "tm.helix.mode":"Anzeigemodus des Duplexes",
+  "tm.helix.pairs":"Stränge und Indizes der gepaarten Reste",
+  "tm.helix.pending":"Das Ergebnis liegt noch nicht vor. Diese Ansicht startet keine Berechnung.",
+  "tm.helix.qualified":"Diese A-Form-Referenz modelliert nicht die Auswirkungen des Hybrids oder der Modifikationen auf die Struktur.",
+  "tm.helix.reset":"Ansicht zurücksetzen",
+  "tm.helix.scope":"Eine idealisierte Helix auf Grundlage einer Referenzgeometrie. Dies ist weder eine gemessene noch eine vorhergesagte Struktur Ihres Moleküls.",
+  "tm.helix.self":"Ansicht des Selbstdimers",
+  "tm.helix.tilt":"Neigung",
+  "tm.helix.turn":"Nach links oder rechts drehen",
+  "tm.helix.unavailable":"Für dieses Ergebnis ist keine Referenzgeometrie verfügbar. Die vorhandene Berechnung und ihre Einschränkungen bleiben unverändert.",
   "tm.how.anti":"gegen den Antisense-Strang, den Sie eingegeben haben",
   "tm.how.anti.other":"mit dem eingegebenen Antisense-Strang (gemischte oder modifizierte Chemie)",
   "tm.how.comp":"gegen den perfekt komplementären Strang ({target}-Zielsequenz)",
@@ -13144,7 +13494,7 @@ var I18N = {
   "tm.res.conj":"Konjugat: ausgeschlossen",
   "tm.res.dg":"ΔG°₃₇ (vorhergesagt)",
   "tm.res.struct":"Vorhergesagte Struktur",
-  "tm.res.tm":"Tm (vorhergesagt)",
+  "tm.res.tm":"Duplex-Tm",
   "tm.salt.mono!":"Owczarzy 2004 (einwertig)",
   "tm.selfdimer":"Selbstdimer",
   "tm.selfwarn!":"⚠ <b>Die Haarnadel dieses Strangs schmilzt {d} °C über dem Duplex</b> ({hp} °C gegenüber {dup} °C). Bei jeder Temperatur, bei der sich der Duplex bilden würde, ist der Strang bereits auf sich selbst gefaltet, er wird daher schlecht hybridisieren. Siehe Sekundärstruktur unten.",
@@ -27493,7 +27843,7 @@ body[data-mode="dark"] #scanOv .scan-row-acts [data-scanlib]{color:var(--accent)
    measurement could say so.
    ⇒ --fv-ink pins the letter colour, and .tm-draw sets `color` so
    currentColor inside the SVG resolves to it in BOTH themes. */
-:root{--fv-cell:#f7f2e8; --fv-bond:#b45309; --fv-ink:#241d13}
+:root{--fv-cell:#f7f2e8; --fv-bond:#b45309; --fv-ink:#241d13; --fv-anti:#5b21b6}
 .tm-fold{margin-top:11px;padding-top:9px;border-top:1px solid var(--line)}
 
 
@@ -27532,7 +27882,7 @@ body[data-mode="dark"] #scanOv .scan-row-acts [data-scanlib]{color:var(--accent)
 
 
 
-.tm-draw{--fv-cell:#f7f2e8; --fv-bond:#b45309; --fv-ink:#241d13;
+.tm-draw{--fv-cell:#f7f2e8; --fv-bond:#b45309; --fv-ink:#241d13; --fv-anti:#5b21b6;
   background:#f7f2e8; border:1px solid rgba(36,29,19,.28);
   border-radius:10px; padding:8px;
   
@@ -27660,7 +28010,7 @@ details.tm-foldwrap:not([open]) > .tm-foldnote{display:none}
 
 
 
-.tm-ovl-fig{--fv-cell:#f7f2e8; --fv-bond:#b45309; --fv-ink:#241d13;
+.tm-ovl-fig{--fv-cell:#f7f2e8; --fv-bond:#b45309; --fv-ink:#241d13; --fv-anti:#5b21b6;
   background:#f7f2e8; border:1px solid rgba(36,29,19,.28); border-radius:10px;
   padding:8px; color:#241d13; font-family:var(--font-num, ui-monospace, monospace);
   overflow-x:auto}
@@ -27755,6 +28105,39 @@ details.tm-foldwrap:not([open]) > .tm-foldnote{display:none}
 
 
 
+.tm-fx[data-split="0"] > .tm-fx-side{display:block; position:absolute;
+  width:1px; height:1px; min-width:0; padding:0; margin:-1px; overflow:hidden;
+  clip:rect(0 0 0 0); white-space:nowrap; border:0}
+
+
+
+.fv-struct p{margin:0 0 6px}
+
+.tm-anti{font-size:12px; line-height:1.6; color:var(--muted);
+  margin:6px 0 0; text-align:center}
+
+
+.tm-anti:empty{min-height:19.2px}
+.fv-struct code{font-family:var(--font-num); font-size:11.5px; line-height:1.6;
+  letter-spacing:.02em; word-break:break-all; display:block}
+.fv-struct .fv-pairs{font-size:11px; line-height:1.65; color:var(--muted);
+  word-break:break-word}
+.fv-h2{font-family:var(--font-head); font-size:10px; font-weight:700;
+  letter-spacing:.08em; text-transform:uppercase; color:var(--muted);
+  margin:8px 0 3px}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .fv-box{border:1px solid var(--line); border-radius:11px; padding:10px 12px;
@@ -27810,7 +28193,7 @@ details.tm-foldwrap:not([open]) > .tm-foldnote{display:none}
 .fv-leg-m{flex:0 0 auto; display:inline-flex; align-items:center;
   justify-content:center; width:42px; height:30px; border-radius:8px;
   border:1px solid rgba(36,29,19,.28); background:#f7f2e8; color:#241d13;
-  --fv-cell:#f7f2e8; --fv-bond:#b45309; --fv-ink:#241d13}
+  --fv-cell:#f7f2e8; --fv-bond:#b45309; --fv-ink:#241d13; --fv-anti:#5b21b6}
 .fv-leg-m svg{display:block}
 
 
@@ -28177,6 +28560,51 @@ html[data-lab-live="1"] body:not([data-tab="lab"]) .tabnav #tab-lab .ic{color:va
 .tm-deep-button{font:inherit;font-size:13px;line-height:1.3;min-height:44px;padding:10px 14px;max-width:100%;white-space:normal;border:1px solid currentColor;border-radius:8px;background:transparent;color:inherit;cursor:pointer}
 .tm-deep-button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 
+
+
+.r1-view{margin-top:12px;margin-bottom:12px;border-width:1px;border-style:solid;border-color:var(--line);border-radius:12px;padding:10px 12px;color:var(--text);}
+.r1-view[hidden]{display:none;}
+.r1-view>summary{cursor:pointer;font-weight:700;line-height:1.5;}
+.r1-content{padding-top:8px;}
+.r1-content p{font-size:12px;line-height:1.65;margin-top:8px;margin-bottom:8px;}
+.r1-mode{border-width:0;padding:0;display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+.r1-mode legend{font-size:12px;font-weight:700;padding:0;margin-bottom:5px;}
+.r1-mode label{min-height:40px;display:flex;align-items:center;gap:6px;padding-left:12px;padding-right:12px;border-width:1px;border-style:solid;border-color:var(--line);border-radius:8px;cursor:pointer;}
+.r1-mode input{accent-color:#b45309;}
+.r1-svg{display:block;width:100%;height:300px;margin-top:8px;background-color:#f7f2e8;border-width:1px;border-style:solid;border-color:#c8bfb0;border-radius:10px;touch-action:pan-y;}
+.r1-svg path{fill:none;stroke-linecap:round;}
+.r1-backbone{stroke:#516579;stroke-width:3;}
+.r1-flank{stroke:#516579;stroke-width:2;stroke-dasharray:4 3;}
+.r1-pair{stroke:#b45309;stroke-width:1.1;}
+.r1-badge{fill:#f7f2e8;stroke:#516579;stroke-width:1;}
+.r1-letter,.r1-end{fill:#241d13;font-family:monospace;font-size:12px;text-anchor:middle;}
+.r1-letter{font-weight:700;}
+.r1-end{font-size:11px;}
+.r1-rotation{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:10px;min-height:66px;}
+.r1-rotation[hidden]{display:none;}
+.r1-rotation label{flex:1;min-width:100px;font-size:12px;font-weight:700;}
+.r1-rotation input{display:block;width:100%;min-height:40px;margin-left:0;margin-right:0;box-sizing:border-box;accent-color:#b45309;}
+.r1-rotation button{min-height:40px;padding:7px 12px;background-color:transparent;color:inherit;border-width:1px;border-style:solid;border-color:var(--line);border-radius:8px;cursor:pointer;}
+.r1-view :focus-visible{outline:2px solid #b45309;outline-offset:3px;}
+.r1-sequence{font-family:monospace;overflow-wrap:anywhere;}
+.r1-pairtext{border-top-width:1px;border-top-style:solid;border-top-color:var(--line);padding-top:8px;margin-top:10px;}
+.r1-pairtext summary{cursor:pointer;font-weight:700;font-size:12px;line-height:1.5;}
+.r1-pairtext p{overflow-wrap:anywhere;}
+
+.r1-view[data-r1-mode="3d"] .r1-svg,.r2-view .r1-svg{height:360px;box-sizing:border-box;}
+.r2-view{width:100%;min-width:0;margin-top:8px;margin-bottom:8px;color:var(--text);}
+.r2-view p{font-size:12px;line-height:1.65;margin-top:8px;margin-bottom:8px;overflow-wrap:anywhere;}
+.r2-picture{position:relative;}
+.r2-mark{position:absolute;left:10px;top:10px;padding:3px 8px;border:1px solid #516579;border-radius:5px;background:#f7f2e8;color:#241d13;font-size:12px;font-weight:700;line-height:1.5;pointer-events:none;}
+.r2-view :focus-visible{outline:2px solid #b45309;outline-offset:3px;}
+.r2-view .r1-mode label,.r2-view button,.r2-view input[type="range"]{min-height:44px;}
+.r2-anti{fill:none;stroke:#166534;stroke-width:2;}
+.r2-junction{fill:none;stroke:#516579;stroke-width:1.5;stroke-dasharray:5 4;}
+.r2-pane[hidden],.tm-draw[hidden],.tm-drawbar[hidden],.tm-ovl-fig[hidden]{display:none;}
+@media(min-width:600px){.r1-view[data-r1-mode="3d"] .r1-svg,.r2-view .r1-svg{height:440px;}}
+@media(min-width:1100px){.r1-view[data-r1-mode="3d"] .r1-svg,.r2-view .r1-svg{height:520px;}}
+#ocFoldOvl .r2-view .r1-svg{height:clamp(360px,65dvh,620px);}
+@media(max-height:500px){.r1-view[data-r1-mode="3d"] .r1-svg,.r2-view .r1-svg,#ocFoldOvl .r2-view .r1-svg{height:300px;}}
 </style>
 <script id="oligo-share-js">
 
@@ -43068,6 +43496,7 @@ try{
         how = t('tm.how.anti');
       }
     }
+    var rung1Manual = !!anti, rung1ParsedAnti = ap || ap2;
     if (!anti) {
       
 
@@ -43105,7 +43534,8 @@ try{
 
 
     return { sense: sense, anti: anti, marks: p.marks || [], how: how, cfg: cfg,
-             target: resolved, total: (p.tokens || []).length };
+             target: resolved, total: (p.tokens || []).length, rung1Manual: rung1Manual,
+             rung1Anti: rung1Manual ? { bad: !!(rung1ParsedAnti.bad && rung1ParsedAnti.bad.length), marks: rung1ParsedAnti.marks || [], total: rung1ParsedAnti.tokens.length } : null };
   }
 
   function conditions(cfg) {
@@ -43197,13 +43627,18 @@ try{
     }
     while (ref) { probe = ref; ref = ref.nextSibling; el.removeChild(probe); }
   }
+  var rung1Self = null, rung2Fold = null;
   function render() {
+    rung1Self = { status: 'unavailable', result: null };
+    rung2Fold = null;
+    var rung2Focus = window.ocDuplex3D && window.ocDuplex3D.focusFold();
     var g = gather(); syncFoldInput(g);
     var host = q('[data-tmout]'); if (!host) return;
     var cmp = q('[data-tmcmp]'), peek = q('[data-tmpeek]');
     if (!g) {
       host.innerHTML = '<div class="tm-none">' + t('tm.empty') + '</div>';
       if (cmp) cmp.innerHTML = ''; if (peek) peek.textContent = '—';
+      if (window.ocDuplex3D) window.ocDuplex3D.commit(null);
       return;
     }
     var cfg = g.cfg, opt = foldOptions(conditions(cfg));
@@ -43408,6 +43843,8 @@ try{
         if (focusExpand && document.activeElement !== focusExpand) focusExpand.focus();
       }
     }
+    if (window.ocDuplex3D) window.ocDuplex3D.commit({ sense: g.sense, anti: g.anti, result: r0, qualification: qual, self: rung1Self, fold: rung2Fold, marks: g.marks, total: g.total, linkage: S.linkage, manual: g.rung1Manual, antiFacts: g.rung1Anti, antiLinkage: S.antiLinkage, manualRequested: g.cfg.target === 'anti' || g.cfg.target === 'auto' && S.duplexMode === 'custom', how: g.how, input: FD.input, generation: FD.generation });
+    if (rung2Focus && window.ocDuplex3D) window.ocDuplex3D.restoreFoldFocus(rung2Focus);
   }
 
   
@@ -43654,10 +44091,12 @@ try{
 
 
     if (hp && hp.pending) {
+      rung1Self = { status: 'pending', result: null };
       return '<div class="tm-fold"><div class="tm-cmp-h">' + t('tm.fold.h') + '</div>'
            + '<div class="tm-none">' + t('tm.fold.calc') + '</div></div>';
     }
     var sd = Fo.selfDimer(tokens, opt);
+    rung1Self = { status: sd ? 'accepted' : 'unavailable', result: sd };
     if (!hp && !sd) {
       return '<div class="tm-fold"><div class="tm-cmp-h">' + t('tm.fold.h') + '</div>'
            + '<div class="tm-none">' + t('tm.fold.nostruct') + '</div></div>';
@@ -43785,6 +44224,11 @@ try{
 
 
       var _drawnW = 0, _figInset = 0, _hidTotal = 0, _marg = false, _figRes = hp;
+      
+
+
+
+      var _anti = null, _antiMarked = 0;
       try {
         var _FV = window.ocFoldView, _FP = window.ocFoldProj;
         if (_FV && _FV.modelHairpin && _FV.render && hp.structure) {
@@ -44026,7 +44470,16 @@ try{
 
 
             if (!_drawn && _MLp && window.ocFoldJunction && window.ocFoldJunction.draw) {
-              var _mld = window.ocFoldJunction.draw(_FV, _FP, _MLp, { dG: _figRes.dG37 }, _fw, _bh);
+              
+
+
+
+
+              if (window.ocFoldJunction.anticodon) {
+                _anti = window.ocFoldJunction.anticodon(_MLp, !!hp.rna);
+              }
+              var _mld = window.ocFoldJunction.draw(_FV, _FP, _MLp, { dG: _figRes.dG37, anti: _anti }, _fw, _bh);
+              if (_mld && _mld.antiMarked) _antiMarked = _mld.antiMarked;
               if (_mld && _mld.drawn) {
                 _drawn = _mld.drawn; _shown = _mld.shown;
                 _axis = _mld.axis; _keep = _mld.keep;
@@ -44206,7 +44659,7 @@ try{
 
               var _showExp = (_hid > 0 || _scale < 0.999)
                   && window.ocFoldUI && window.ocFoldUI.ready;
-              if (_showExp) {
+              if (_showExp || tokens.length <= 150 && window.ocFoldUI && window.ocFoldUI.ready) {
                 
 
 
@@ -44221,6 +44674,7 @@ try{
                                       res: _figRes, label: _ownerLabel, tokens: tokens, rna: !!hp.rna,
                                       hidden: _hid,
                                       marginal: !!(_drawn.band && _drawn.band.marginal) });
+                rung2Fold = { res: _figRes, anticodon: _anti && _anti.idx || [], snapshot: window.ocFoldUI.current() };
               }
               
 
@@ -44254,9 +44708,58 @@ try{
           }
         }
       } catch (_e) { _fig = ''; }
+      
+
+
+
+
+
+
+      
+
+
+      var _sideCarries = false;
       out += '<div class="tm-cr"><span class="tm-cn">' + (opt.deepMultibranch === true ? esc(window.t('tm.deep.ordinary')) : foldName(hp)) + '</span>'
            + say(hp)
-           + detail(hp, parts.join(' · ') + t('tm.uni!')) + '</div>';
+           + detail(hp, parts.join(' · ') + t('tm.uni!'))
+           + '</div>'
+           
+
+
+
+
+
+
+           + (_sideCarries || !window.ocFoldSide || !window.ocFoldSide.structure
+                ? ''
+                : window.ocFoldSide.structure(_figRes, tokens,
+                    { sr: true, dotShown: !!(_figRes.structure === hp.structure && hp.structure && hp.structure.length <= DOT_MAX) }));
+      
+
+
+
+
+
+
+
+
+
+
+
+
+      if (FD.state === 'off' && hp.structure) {
+        
+
+
+
+
+
+
+        announceFold(window.t('tm.fold.ann' + (hp.bp === 1 ? '.one' : '.many'), {
+          name: (opt.deepMultibranch === true ? window.t('tm.deep.ordinary') : foldName(hp)),
+          n: hp.bp
+        }));
+      }
       
 
 
@@ -44278,22 +44781,40 @@ try{
 
 
 
+      
+
+
+      
+
+
+
+
+
+
+
+
+      var _antiRow = (_anti && _SD && _SD.antiRow) ? _SD.antiRow(_anti)
+                   : (_tset ? '<div class="tm-anti" data-fold-anti></div>' : '');
       if (_SD && _fig && _drawnW > 0 && _SD.fits(_fw, _drawnW)) {
         out += '<div class="tm-fx" data-split="1"'
              + ' data-inset="' + _figInset + '">'
              + '<div class="tm-fx-fig" style="flex:0 0 '
-             + (Math.ceil(_drawnW) + _figInset) + 'px">' + _fig + '</div>'
+             + (Math.ceil(_drawnW) + _figInset) + 'px">' + _fig + _antiRow + '</div>'
              + '<div class="tm-fx-side">'
              + _SD.column(_figRes, tokens, { rna: !!hp.rna, hidden: _hidTotal,
-                                        marginal: _marg }) + '</div></div>';
+                                        marginal: _marg, anti: _antiMarked === 3,
+                                        dotShown: !!(_figRes.structure && _figRes.structure.length <= DOT_MAX) })
+             + '</div></div>';
       } else if (_SD && _fig) {
         out += '<div class="tm-fx" data-split="0" data-inset="' + _figInset + '">'
-             + '<div class="tm-fx-fig">' + _fig + '</div>'
+             + '<div class="tm-fx-fig">' + _fig + _antiRow + '</div>'
              + '<div class="tm-fx-side">'
              + _SD.column(_figRes, tokens, { rna: !!hp.rna, hidden: _hidTotal,
-                                        marginal: _marg }) + '</div></div>';
+                                        marginal: _marg, anti: _antiMarked === 3,
+                                        dotShown: !!(_figRes.structure && _figRes.structure.length <= DOT_MAX) })
+             + '</div></div>';
       } else {
-        out += _fig;
+        out += _fig + _antiRow;
       }
     }
     
@@ -48544,7 +49065,7 @@ else mount();
       if (side) {
         side.innerHTML = cur.res
           ? SD.column(cur.res, cur.tokens, { rna: !!cur.rna, hidden: cur.hidden,
-                                             marginal: !!cur.marginal,
+                                             marginal: !!cur.marginal, inDialog: true,
                                              kind: cur.kind, dG: cur.dG })
           : '';
       }
@@ -48595,6 +49116,7 @@ else mount();
     var w = Math.min(bw, Math.ceil(drawn.width * EXP_CAP));
     fig.style.maxWidth = w + 'px';
     fig.innerHTML = (cur.label ? '<div class="tm-figure-owner">' + esc(cur.label) + '</div>' : '') + drawn.svg;
+    if (window.ocDuplex3D) window.ocDuplex3D.mountFoldDialog();
     return true;
   }
 
@@ -49041,6 +49563,10 @@ else mount();
 
 
   var DASH_LINE = '<line x1="17" y1="3" x2="17" y2="21" stroke="var(--fv-bond, #b45309)" stroke-width="1.9" stroke-dasharray="2.6 2.6" stroke-linecap="round"/>';
+  
+
+
+  var CELL_ANTI = '<rect x="6.5" y="2.5" width="21" height="19" rx="4.5" fill="var(--fv-cell,#fff)" stroke="var(--fv-anti,#5b21b6)" stroke-width="2.4"/>';
 
   function rung(n) {
     var s = '', i, x;
@@ -49062,6 +49588,43 @@ else mount();
   function dashed() {
     return SVG_OPEN + DASH_LINE + '</svg>';
   }
+  function antiSw() {
+    return SVG_OPEN + CELL_ANTI + '</svg>';
+  }
+
+  
+
+
+
+
+
+
+
+
+
+  function antiRow(a) {
+    if (!a || !a.anticodon || !a.aa || !a.aa.length) return '';
+    
+
+
+
+
+    var i, one, full, names = [], seen = {}, or = T('tm.anti.or');
+    for (i = 0; i < a.aa.length; i++) {
+      
+
+      full = T('tm.aa.' + (a.aa[i] === 'Ter' ? 'stop' : String(a.aa[i]).toLowerCase()));
+      if (!full) return '';
+      one = T('tm.anti.name', { full: full, code: a.aa[i] });
+      if (seen[one]) continue;
+      seen[one] = 1;
+      names.push(one);
+    }
+    return '<div class="tm-anti" data-fold-anti>'
+         + T('tm.anti.row', { a: a.anticodon, c: a.codons.join(or),
+                              aa: names.join(or) })
+         + '</div>';
+  }
 
   function legend(o) {
     o = o || {};
@@ -49074,6 +49637,11 @@ else mount();
     ];
     if (o.hidden > 0) rows.push([spring(), T('tm.fold.leg.coil')]);
     if (o.marginal) rows.push([dashed(), T('tm.fold.leg.dash!')]);
+    
+
+
+
+    if (o.anti) rows.push([antiSw(), T('tm.anti.leg')]);
     var li = '', i;
     for (i = 0; i < rows.length; i++) {
       li += '<li>'
@@ -49094,8 +49662,71 @@ else mount();
 
 
 
+  
+
+
+
+
+
+
+
+
+
+
+
+  function esc2(v) {
+    return String(v == null ? '' : v)
+      .split('&').join('&amp;').split('<').join('&lt;').split('>').join('&gt;');
+  }
+  function structure(res, tokens, o) {
+    var FV = window.ocFoldView;
+    if (!res || !res.structure) return '';
+    var db = res.structure, p = (FV && FV.pairTable) ? FV.pairTable(db) : null;
+    var i, list = [], DASH = String.fromCharCode(0x2013);
+    if (p && p.length === db.length) {
+      for (i = 0; i < p.length; i++) {
+        if (p[i] > i) list.push((i + 1) + DASH + (p[i] + 1));
+      }
+    }
+    
+
+
+
+
+
+
+
+    var showDot = !(o && o.dotShown);
+    if (!showDot && !list.length) return '';
+    return '<div class="fv-box fv-struct' + (o && o.sr ? ' sr-only' : '') + '"'
+         + ' data-fold-struct>'
+         + '<div class="fv-h">' + T('tm.fold.sr.h') + '</div>'
+         + (showDot ? '<p><code>' + esc2(db) + '</code></p>' : '')
+         + (list.length
+              ? '<div class="fv-h2">' + T('tm.fold.sr.pairs') + '</div>'
+                + '<p class="fv-pairs">' + esc2(list.join(', ')) + '</p>'
+              : '')
+         + '</div>';
+  }
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
   function column(res, tokens, o) {
-    return legend(o) + data(res, tokens);
+    return legend(o)
+         + ((o && o.inDialog) ? structure(res, tokens, o) : '')
+         + data(res, tokens);
   }
 
   
@@ -49141,7 +49772,8 @@ else mount();
     VERSION: 'r97a6',
     SIDE_MIN: SIDE_MIN, SIDE_GAP: SIDE_GAP,
     gcCount: gcCount, fits: fits, panelFigWidth: panelFigWidth,
-    band: band, data: data, legend: legend, column: column, sync: sync
+    band: band, data: data, legend: legend, structure: structure,
+    antiRow: antiRow, column: column, sync: sync
   };
 
   
@@ -49397,6 +50029,40 @@ else mount();
     }
   }, false);
 
+  
+
+
+
+
+
+
+
+
+
+
+  document.addEventListener('keydown', function (e) {
+    var cur = e.target && e.target.closest ? e.target.closest('.octabs-strip [data-oct]') : null;
+    if (!cur) return;
+    var strip = cur.closest('.octabs-strip');
+    var tabs = strip ? Array.prototype.slice.call(strip.querySelectorAll('[data-oct]')) : [];
+    var i = tabs.indexOf(cur), ni = -1;
+    if (i < 0 || tabs.length < 2) return;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') ni = (i + 1) % tabs.length;
+    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') ni = (i - 1 + tabs.length) % tabs.length;
+    else if (e.key === 'Home') ni = 0;
+    else if (e.key === 'End') ni = tabs.length - 1;
+    else return;
+    e.preventDefault();
+    if (window.ocFoldUI && window.ocFoldUI.setTab) window.ocFoldUI.setTab(ni);
+    if (window.ocTmPanel && typeof window.ocTmPanel.render === 'function') {
+      window.ocTmPanel.render();
+    }
+    try {
+      var again = document.querySelector('.octabs-strip [data-oct="' + ni + '"]');
+      if (again) again.focus();
+    } catch (_e) {   }
+  }, false);
+
   var pending = 0;
   window.addEventListener('resize', function () {
     if (pending) return;
@@ -49582,9 +50248,10 @@ else mount();
 
 
 
+
     nodes = r.querySelectorAll('.tm-fx-fig svg, .tm-draw svg, .tm-ovl-fig svg');
     for (i = 0; i < nodes.length && out.figures.length < MAXFIG; i++) {
-      if (nodes[i].closest && nodes[i].closest('button')) continue;
+      if (nodes[i].closest && nodes[i].closest('button, .r2-view')) continue;
       var owner = nodes[i].closest('.tm-fx, .tm-ovl-x2'), caption = owner && owner.querySelector('.tm-figure-owner');
       
 
@@ -49596,8 +50263,19 @@ else mount();
       var side = owner && owner.querySelector('.tm-fx-side, .tm-ovl-side');
       var leg = side && side.querySelector('[data-fold-legend]');
       var dat = side && side.querySelector('[data-fold-data]');
+      
+
+
+
+
+      var str = side && side.querySelector('[data-fold-struct]');
+      
+
+      var ant = owner && owner.querySelector('[data-fold-anti]');
       var extra = '';
       if (leg) extra += '<div class="leg">' + leg.innerHTML + '</div>';
+      if (ant) extra += '<div class="anti">' + ant.innerHTML + '</div>';
+      if (str) extra += '<div class="str">' + str.innerHTML + '</div>';
       if (dat) extra += '<div class="num">' + dat.innerHTML + '</div>';
       if (!extra && side) extra = '<p>' + esc(txt(side)) + '</p>';
       out.figures.push((caption ? '<figcaption>' + esc(txt(caption)) + '</figcaption>' : '')
@@ -50760,6 +51438,123 @@ else mount();
 
 
 
+
+  
+
+
+
+
+
+
+
+
+
+
+  var ANTI_RC = { A: 'U', U: 'A', G: 'C', C: 'G' };
+  var ANTI_CODE = (function () {
+    var B = ['U', 'C', 'A', 'G'], S = 'FFLLSSSSYY**CC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG';
+    var out = {}, x, y, z, k = 0;
+    for (x = 0; x < 4; x++) for (y = 0; y < 4; y++) for (z = 0; z < 4; z++) {
+      out[B[x] + B[y] + B[z]] = S.charAt(k++);
+    }
+    return out;
+  })();
+  
+
+
+
+
+
+
+
+
+
+
+
+  var ANTI_AA1 = 'FLSYCWPHQRIMTNKVADEG*';
+  var ANTI_AA3 = 'PheLeuSerTyrCysTrpProHisGlnArgIleMetThrAsnLysValAlaAspGluGlyTer';
+  function antiName(one) {
+    var i = ANTI_AA1.indexOf(one);
+    return i < 0 ? '?' : ANTI_AA3.substr(i * 3, 3);
+  }
+
+  function antiCodon(anti) {                   
+    var i, out = '';
+    for (i = anti.length - 1; i >= 0; i--) out += (ANTI_RC[anti.charAt(i)] || '?');
+    return out;
+  }
+  
+
+
+  function antiWobble(anti) {
+    var base = antiCodon(anti), third = { G: ['C', 'U'], U: ['A', 'G'] }[anti.charAt(0)], i, out = [];
+    if (!third) return [base];
+    for (i = 0; i < third.length; i++) out.push(base.slice(0, 2) + third[i]);
+    return out;
+  }
+  function anticodon(pl, rna) {
+    if (!rna || !pl || !pl.leaf || pl.leaf.kind !== '4-way') return null;
+    var arms = pl.leaf.arms || [], hits = [], i, k, loop, ok;
+    for (i = 0; i < arms.length; i++) {
+      loop = arms[i].loop || [];
+      if (loop.length !== 7) continue;
+      ok = true;
+      for (k = 0; k < loop.length; k++) if (loop[k].coil) { ok = false; break; }
+      if (!ok) continue;
+      if (String(loop[1].base).toUpperCase() !== 'U') continue;
+      hits.push(loop);
+    }
+    if (hits.length !== 1) return null;
+    loop = hits[0];
+    var anti = '', idx = [];
+    for (k = 2; k < 5; k++) { anti += String(loop[k].base).toUpperCase(); idx.push(loop[k].i); }
+    var codons = antiWobble(anti), aa = [];
+    for (k = 0; k < codons.length; k++) aa.push(antiName(ANTI_CODE[codons[k]]));
+    return { anticodon: anti, idx: idx, codons: codons, aa: aa };
+  }
+
+  
+
+
+
+
+
+
+
+
+
+
+  function loopXY(r, m, G, axis) {
+    var g = r && r.geom, n = r ? (r.loopDrawn || 0) : 0, out = {}, k, th, cx, cy;
+    if (!g || !n || !m.loop || m.loop.length !== n) return out;
+    var a0 = Math.PI / (n + 2), th0 = Math.PI - a0;
+    var step = -(2 * Math.PI - 2 * a0) / (n + 1);
+    for (k = 0; k < n; k++) {
+      if (m.loop[k].coil || typeof m.loop[k].i !== 'number') continue;
+      th = th0 + (k + 1) * step;
+      if (axis === 'y') {
+        cx = g.xMid - g.R * Math.sin(th);
+        cy = (g.y0 + (r.cols - 1) * G.PITCH) + g.dd + g.R * Math.cos(th);
+      } else {
+        cx = (g.x0 + (r.cols - 1) * G.PITCH) + g.dd + g.R * Math.cos(th);
+        cy = g.yMid - g.R * Math.sin(th);
+      }
+      out[m.loop[k].i] = [cx, cy];
+    }
+    return out;
+  }
+
+  
+
+
+
+
+
+  function antiMark(I, G, x, y, ch) {
+    return '<g class="fv-anti" style="color:var(--fv-anti,#5b21b6)" stroke-width="2.4">'
+         + I.cell(x, y, ch, false, G) + '</g>';
+  }
+
   var LEAF_RESERVE = 26;    
 
   function copyModel(m) {
@@ -50859,16 +51654,22 @@ else mount();
     var g = r.geom, rowY = function (c) { return g.y0 + c * G.PITCH; };
     var tc = role === 'stem' ? lastCol(m.top) : firstCol(m.top);
     var bc = role === 'stem' ? lastCol(m.bottom) : firstCol(m.bottom);
-    return { role: role, W: r.width, H: r.height, body: inner(r.svg), p5: [g.xL, rowY(tc)], p3: [g.xR, rowY(bc)] };
+    return { role: role, W: r.width, H: r.height, body: inner(r.svg),
+             xy: loopXY(r, m, G, 'y'),
+             p5: [g.xL, rowY(tc)], p3: [g.xR, rowY(bc)] };
   }
   function unitRight(r, m, G) {
     var g = r.geom, colX = function (c) { return g.x0 + c * G.PITCH; };
+    
+
+
     return { role: 'right', W: r.width, H: r.height, body: inner(r.svg),
+             xy: loopXY(r, m, G, 'x'),
              p5: [colX(firstCol(m.bottom)), g.yBot], p3: [colX(firstCol(m.top)), g.yTop] };
   }
   function unitLeft(r, m, G, I) {
     var g = r.geom, colX = function (c) { return g.x0 + c * G.PITCH; };
-    var loop = m.leafLoop || [], n = loop.length, extraL = 0, extraY = 0, b = [];
+    var loop = m.leafLoop || [], n = loop.length, extraL = 0, extraY = 0, b = [], xy = {};
     if (n) {
       
 
@@ -50881,6 +51682,12 @@ else mount();
       for (k = 0; k < n; k++) {
         th = th0 + (k + 1) * step;
         px = cx - R * Math.cos(th); py = g.yMid - R * Math.sin(th);
+        
+
+
+        if (!loop[k].coil && typeof loop[k].i === 'number') {
+          xy[loop[k].i] = [px + extraL, py + extraY];
+        }
         b.push(loop[k].coil ? I.springSplit(px - 22, px + 22, py, loop[k].hidden, G)
                             : I.cell(px, py, loop[k].base, true, G));
       }
@@ -50890,8 +51697,16 @@ else mount();
       for (k = 0; k < n; k++) if (loop[k].coil) reach = Math.max(reach, 22 + I.lblW(loop[k].hidden + ' nt') / 2);
       extraL = Math.max(0, dd + R + reach - x1);
       extraY = Math.max(0, R + G.CELL_RY - g.yMid);
+      
+
+
+      for (k = 0; k < n; k++) {
+        if (loop[k] && typeof loop[k].i === 'number' && xy[loop[k].i]) {
+          xy[loop[k].i] = [xy[loop[k].i][0] + extraL, xy[loop[k].i][1] + extraY];
+        }
+      }
     }
-    return { role: 'left', W: r.width + extraL, H: r.height + 2 * extraY,
+    return { role: 'left', xy: xy, W: r.width + extraL, H: r.height + 2 * extraY,
              body: '<g transform="translate(' + f(extraL) + ',' + f(extraY) + ')">' + inner(r.svg) + b.join('') + '</g>',
              p5: [colX(lastCol(m.top)) + extraL, g.yTop + extraY],
              p3: [colX(lastCol(m.bottom)) + extraL, g.yBot + extraY] };
@@ -51003,7 +51818,33 @@ else mount();
         ringShown.push(cells[q2]);
       }
     }
-    return { W: W, H: H, body: b.join(''), ring: ringShown, radius: Rr, slots: slots };
+    
+
+
+
+
+
+
+
+    var marked = 0;
+    if (opt && opt.anti && opt.anti.idx) {
+      var mk = [], q3, u3, xy3, at3;
+      for (q3 = 0; q3 < opt.anti.idx.length; q3++) {
+        for (i = 0; i < placed.length; i++) {
+          u3 = placed[i]; xy3 = u3.u.xy;
+          at3 = xy3 ? xy3[opt.anti.idx[q3]] : null;
+          if (!at3) continue;
+          mk.push(antiMark(I, G, at3[0] + u3.tx + ox, at3[1] + u3.ty + oy,
+                           opt.anti.anticodon.charAt(q3)));
+          marked++;
+          break;
+        }
+      }
+      if (marked === opt.anti.idx.length) b.push(mk.join(''));
+      else marked = 0;
+    }
+    return { W: W, H: H, body: b.join(''), ring: ringShown, radius: Rr,
+             slots: slots, antiMarked: marked };
   }
 
   function drawLeaf(FV, FP, pl, opt, boxW, boxH) {
@@ -51057,7 +51898,8 @@ else mount();
                marginal: first ? first.marginal : false, claim: first ? first.claim : '',
                cols: 0, hidden: 0, geom: null },
       shown: shown, axis: 'x', keep: best.keep, junctions: pl.junctions, bands: base.length,
-      leaf: L.kind, fitted: best.fitted, fit: { sx: best.sx, sy: best.sy, threshold: best.threshold }
+      leaf: L.kind, fitted: best.fitted, antiMarked: best.antiMarked || 0,
+      fit: { sx: best.sx, sy: best.sy, threshold: best.threshold }
     };
   }
 
@@ -51181,10 +52023,601 @@ else mount();
     };
   }
 
-  root.ocFoldJunction = { VERSION: VERSION, pairs: pairs, kids: kids, junctionCount: junctionCount,
+  root.ocFoldJunction = { VERSION: VERSION, anticodon: anticodon,
+    pairs: pairs, kids: kids, junctionCount: junctionCount,
                           cut: cut, plan: plan, draw: draw,
                           leafPlan: leafPlan, drawLeaf: drawLeaf, swapTracks: swapTracks, mirrorCols: mirrorCols };
 })(window);
+</script>
+<script id="oligo-duplex3d-js">
+
+
+
+
+
+
+
+(function (W, D) {
+  'use strict';
+  var CODE = 'rung1-duplex-1', NS = 'http://www.w3.org/2000/svg';
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  var FORMS = { B: { h: 3.4, twist: 36, radius: 10, phase: 141 },
+                A: { h: 2.548, twist: 32.7, radius: 8.59, phase: 221 } };
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  var FLANK_OUT = 4.8, FLANK_ALONG = 5.2;
+  var CUE = { backbone: 3, flank: 2, pair: 1.1 };
+  var BAND = [[0.68, 0.78], [0.84, 0.89], [1, 1]];
+  
+
+
+
+
+
+
+
+  var VIEW0 = { yaw: -25, pitch: 15 };
+  var views = {}, latest = null, revision = 0;
+  var POLICY = { qualifiedA: true };
+  function tr(k, p) { return window.t('tm.helix.' + k, p); }
+  function esc(s) { return W.ocEsc(String(s)); }
+  function freeze(x) { if (x && typeof x === 'object') { Object.keys(x).forEach(function (k) { freeze(x[k]); }); Object.freeze(x); } return x; }
+  function residue(t) {
+    var l = W.ocTm && W.ocTm._limits.LNA_CODE[t.code];
+    return { base: t.custom ? l || null : t.base, sugar: l ? 'l' : t.sugar,
+      label: t.custom ? t.code : t.sugar + t.base, original: t };
+  }
+  function canonical(a, b) { return a === 'G' && b === 'C' || a === 'C' && b === 'G' ? 3 : a === 'A' && (b === 'T' || b === 'U') || b === 'A' && (a === 'T' || a === 'U') ? 2 : 0; }
+  function owner(input, self) {
+    var x = { owner: self ? 'self' : 'intended', status: 'empty', A: [], B: [], pairs: [], form: null, qualified: false, result: null };
+    if (!input) return x;
+    x.A = input.sense.map(residue); x.B = (self ? input.sense : input.anti).map(residue);
+    x.result = self ? input.self.result : input.result;
+    x.status = self ? input.self.status : x.result ? 'accepted' : 'unavailable';
+    if (x.status !== 'accepted' || !x.result) return x;
+    if (input.linkage !== 'PO' || input.marks.some(Boolean) || input.total !== input.sense.length) { x.status = 'unavailable'; return x; }
+    if (!self && (input.manualRequested && !input.manual || input.manual && (input.antiLinkage !== 'PO' || input.antiFacts.bad || input.antiFacts.marks.some(Boolean) || input.antiFacts.total !== input.anti.length))) { x.status = 'unavailable'; return x; }
+    if (!self && input.qualification && !input.qualification.qualificationOnly) { x.status = 'unavailable'; return x; }
+    var all = x.A.concat(x.B), pureD = all.every(function (a) { return a.sugar === 'd'; });
+    var pureR = all.every(function (a) { return a.sugar === 'r'; });
+    x.qualified = !pureD && !pureR;
+    if (x.qualified && !POLICY.qualifiedA) { x.status = 'unavailable'; return x; }
+    if (all.some(function (a) { return !a.base || !/^[drl]$/.test(a.sugar); })) { x.status = 'unavailable'; return x; }
+    x.form = pureD ? 'B' : 'A';
+    var n = x.A.length, from = self ? x.result.from : 0, to = self ? x.result.to : n - 1, offset = self ? x.result.offset : 0;
+    if (x.B.length !== n || n < 2 || n > W.ocFold._limits.MAX_FOLD_NT || !Number.isInteger(from) || !Number.isInteger(to) || !Number.isInteger(offset) || from < 0 || to >= n || to < from || self && to - from + 1 !== x.result.bp || !self && x.result.n !== n) { x.status = 'unavailable'; return x; }
+    for (var a = from; a <= to; a++) {
+      var b = n - 1 - a + offset;
+      if (b < 0 || b >= n || !canonical(x.A[a].base, x.B[b].base)) { x.status = 'unavailable'; x.pairs = []; return x; }
+      x.pairs.push({ a: a, b: b, bonds: canonical(x.A[a].base, x.B[b].base) });
+    }
+    x.from = from; x.to = to; x.offset = offset;
+    return x;
+  }
+  function geometry(x) {
+    if (x.status !== 'accepted') return null;
+    var f = FORMS[x.form], n = x.pairs.length, points = [[], []], segments = [], badges = [], angle = f.twist * Math.PI / 180;
+    var phase = f.phase * Math.PI / 180;
+    function helix(k, side) { var a = k * angle + side * phase; return [f.radius * Math.cos(a), f.radius * Math.sin(a), (k - (n - 1) / 2) * f.h]; }
+    x.pairs.forEach(function (pair, k) {
+      var p = helix(k, 0), q = helix(k, 1); points[0][pair.a] = p; points[1][pair.b] = q;
+      segments.push({ a: p, b: q, kind: 'pair', bonds: pair.bonds });
+    });
+    [x.A, x.B].forEach(function (chain, side) {
+      var first = points[side].findIndex(function (p) { return !!p; }), last = points[side].length - 1;
+      for (var i = 0; i < chain.length; i++) {
+        var paired = !!points[side][i];
+        if (!paired) {
+          var anchor = i < first ? first : last, step = i < first ? first - i : i - last;
+          var v = points[side][anchor], dz = (i < first ? -1 : 1) * (side ? -1 : 1);
+          points[side][i] = [v[0] + (side ? -1 : 1) * step * FLANK_OUT, v[1], v[2] + dz * step * FLANK_ALONG];
+        }
+        badges.push({ p: points[side][i], side: side, index: i, base: chain[i].base, label: chain[i].label, paired: paired });
+      }
+      for (var j = 1; j < chain.length; j++) {
+        var a = points[side][j - 1], b = points[side][j];
+        var pa = x.pairs.some(function (p) { return (side ? p.b : p.a) === j - 1; });
+        var pb = x.pairs.some(function (p) { return (side ? p.b : p.a) === j; });
+        segments.push({ a: a, b: b, kind: pa && pb ? 'backbone' : 'flank', bonds: 1 });
+      }
+    });
+    var pieces=[];
+    segments.forEach(function(s){var divisions=n>64?(s.kind==='pair'?2:1):(s.kind==='pair'?10:5);
+      for(var i=0;i<divisions;i++)pieces.push({a:s.a.map(function(p,k){return p+(s.b[k]-p)*i/divisions;}),b:s.a.map(function(p,k){return p+(s.b[k]-p)*(i+1)/divisions;}),kind:s.kind,bonds:s.bonds});
+    });
+    return { points: points, segments: segments, pieces: pieces, badges: badges, form: f };
+  }
+  function svgEl(tag, attrs, text) { var e = D.createElementNS(NS, tag); Object.keys(attrs || {}).forEach(function (k) { e.setAttribute(k, attrs[k]); }); if (text !== undefined) e.textContent = text; return e; }
+  function paint(v) {
+    if (!v.svg || !v.geometry || !v.el.open) return;
+    v.el.setAttribute('data-r1-mode', v.mode);
+    var svg = v.svg, x = v.data, geo = v.geometry, width = Math.max(160, svg.clientWidth), height = v.mode === '3d' ? Math.max(160, svg.clientHeight) : 300;
+    var yaw = v.yaw * Math.PI / 180, pitch = v.pitch * Math.PI / 180;
+    var distance = Math.max(600, 3 * Math.max.apply(null, geo.badges.map(function(b){return Math.hypot(b.p[0],b.p[1],b.p[2]);})));
+    function rotate(p) {
+      var a = p[0] * Math.cos(yaw) + p[1] * Math.sin(yaw), b = -p[0] * Math.sin(yaw) + p[1] * Math.cos(yaw);
+      return [a, b * Math.cos(pitch) - p[2] * Math.sin(pitch), b * Math.sin(pitch) + p[2] * Math.cos(pitch)];
+    }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function camera(p) { var a = rotate(p); return [a[0], a[2], -a[1]]; }
+    var points = geo.badges.map(function (b) { return camera(b.p); }), extentX = 0, extentY = 0;
+    points.forEach(function (p) { var z = distance / (distance - p[2]); extentX = Math.max(extentX, Math.abs(p[0] * z)); extentY = Math.max(extentY, Math.abs(p[1] * z)); });
+    var scale = Math.min(6, (width - 78) / Math.max(1, extentX * 2), (height - 62) / Math.max(1, extentY * 2));
+    function project(p) { var c = camera(p), z = distance / (distance - c[2]); return [width / 2 + c[0] * z * scale, height / 2 - c[1] * z * scale, c[2]]; }
+    svg.setAttribute('viewBox', '0 0 ' + width + ' ' + height); svg.replaceChildren();
+    if (v.mode === '2d') {
+      var count = x.pairs.length, lo=Math.min(0,x.offset),hi=Math.max(x.A.length-1,x.B.length-1+x.offset);
+      var step=Math.min(28,(width-90)/Math.max(1,hi-lo)),left=(width-step*(hi-lo))/2;
+      
+
+
+
+
+      var y0 = 116, y1 = 185, small = step < 18;
+      function column(i,s){return left+((s?x.B.length-1-i+x.offset:i)-lo)*step;}
+      [x.A,x.B].forEach(function(chain,s){chain.forEach(function(r,i){var cx=column(i,s),y=s?y1:y0;
+        if(i){var pa=x.pairs.some(function(p){return(s?p.b:p.a)===i-1;}),pb=x.pairs.some(function(p){return(s?p.b:p.a)===i;});svg.appendChild(svgEl('path',{d:'M'+column(i-1,s)+' '+y+'H'+cx,'class':pa&&pb?'r1-backbone':'r1-flank'}));}
+        if(!small){svg.appendChild(svgEl('circle',{cx:cx,cy:y,r:8,'class':'r1-badge'}));svg.appendChild(svgEl('text',{x:cx,y:y+4,'class':'r1-letter'},r.base));}
+      });svg.appendChild(svgEl('text',{x:column(0,s),y:(s?y1:y0)+(s?26:-23),'class':'r1-end'},(s?'B ':'A ')+'5\u2032'));svg.appendChild(svgEl('text',{x:column(chain.length-1,s),y:(s?y1:y0)+(s?26:-23),'class':'r1-end'},'3\u2032'));});
+      x.pairs.forEach(function (p, i) { var a = column(p.a,0);
+        for (var b = 0; b < p.bonds; b++) svg.appendChild(svgEl('path', { d: 'M' + (a + (b - (p.bonds - 1) / 2) * 2.5) + ' ' + (y0+12) + 'V' + (y1-12), 'class': 'r1-pair' }));
+      });
+      var unpaired = x.A.length + x.B.length - 2 * count;
+      if (unpaired) svg.appendChild(svgEl('text', { x: width/2, y: 242, 'class': 'r1-end' }, tr('flanks', { n: unpaired })));
+    } else {
+      var pieces = geo.pieces.map(function(s){var a=project(s.a),b=project(s.b);return {a:a,b:b,kind:s.kind,bonds:s.bonds,poly:s.poly?s.poly.map(project):null,depth:(a[2]+b[2])/2};});
+      pieces.sort(function (a,b) { return a.depth-b.depth; });
+       
+      
+
+
+
+
+
+
+
+
+
+      var lo=pieces.length?pieces[0].depth:0,hi2=pieces.length?pieces[pieces.length-1].depth:1,dspan=(hi2-lo)||1;
+      var run=null,runs=[];
+      pieces.forEach(function(s){var band=Math.max(0,Math.min(2,Math.floor((s.depth-lo)/dspan*3)));
+        if(!run||run.kind!==s.kind||run.band!==band){run={kind:s.kind,band:band,parts:[]};runs.push(run);}
+        
+
+
+
+
+
+        if(s.poly){run.parts.push(s.poly.map(function(p,i){return(i?'L':'M')+p[0]+' '+p[1];}).join(''));return;}
+        var rdx=s.b[0]-s.a[0],rdy=s.b[1]-s.a[1],rlen=Math.hypot(rdx,rdy)||1;
+        for(var b=0;b<(s.kind==='pair'?s.bonds:1);b++){var d=(b-(s.bonds-1)/2)*1.5,ox=-rdy/rlen*d,oy=rdx/rlen*d;
+          run.parts.push('M'+(s.a[0]+ox)+' '+(s.a[1]+oy)+'L'+(s.b[0]+ox)+' '+(s.b[1]+oy));}});
+      runs.forEach(function(r){var pe=svgEl('path',{d:r.parts.join(''),'class':'r1-'+r.kind});
+        pe.style.strokeWidth=String(CUE[r.kind]*BAND[r.band][0]);pe.style.opacity=String(BAND[r.band][1]);
+        svg.appendChild(pe);});
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      var kept=[];
+      geo.badges.map(function(b){return {b:b,p:project(b.p)};}).sort(function(a,b){return b.p[2]-a.p[2];}).forEach(function(q){
+        if(q.p[2]<0)return;
+        for(var i=0;i<kept.length;i++)if(Math.hypot(kept[i][0]-q.p[0],kept[i][1]-q.p[1])<16)return;
+        kept.push([q.p[0],q.p[1],q.b.base]);
+      });
+      kept.reverse().forEach(function(k){svg.appendChild(svgEl('circle',{cx:k[0],cy:k[1],r:8,'class':'r1-badge'}));svg.appendChild(svgEl('text',{x:k[0],y:k[1]+4,'class':'r1-letter'},k[2]));});
+      
+
+
+
+
+
+
+
+
+      var barw=20*scale;
+      if(!geo.schematic&&barw>18&&barw<width-130){
+        svg.appendChild(svgEl('path',{d:'M14 '+(height-16)+'h'+barw.toFixed(1)+'M14 '+(height-21)+'v10M'+(14+barw).toFixed(1)+' '+(height-21)+'v10','class':'r1-badge','data-r1-scale':''}));
+        svg.appendChild(svgEl('text',{x:(14+barw/2).toFixed(1),y:height-25,'class':'r1-end','data-r1-scale':''},'20 \u00c5'));
+      }
+      geo.points.forEach(function(chain,s){[0,chain.length-1].forEach(function(i){var p=project(chain[i]);svg.appendChild(svgEl('text',{x:p[0]+(s?-17:17),y:p[1]+(p[1]<height/2?-15:20),'class':'r1-end'},(geo.schematic?'':s?'B ':'A ')+(i===0?'5\u2032':'3\u2032')));});});
+      if(geo.schematic)geo.badges.filter(function(b){return b.anticodon;}).forEach(function(b){var p=project(b.p);svg.appendChild(svgEl('circle',{cx:p[0],cy:p[1],r:10,'class':'r2-anti','data-r2-anti':b.index}));});
+      if(geo.junctions)geo.junctions.forEach(function(poly){svg.appendChild(svgEl('path',{d:poly.map(function(p,i){var q=project(p);return(i?'L':'M')+q[0]+' '+q[1];}).join('')+'Z','class':'r2-junction','data-r2-junction':''}));});
+      v.depths=pieces.map(function(p){return p.depth;});
+    }
+    v.el.querySelector('[data-r1-rotation]').hidden=v.mode!=='3d';
+    v.paints++;
+  }
+  function markup(v) {
+    var x=v.data, name=tr(x.owner==='self'?'self':'intended'), id='r1-'+x.owner;
+    var out='<summary>'+esc(name)+'</summary><div class="r1-content">';
+    if(x.status!=='accepted')return out+'<p>'+esc(tr(x.status==='pending'?'pending':'unavailable'))+'</p></div>';
+    out+='<p class="r1-scope">'+esc(tr('scope'))+'</p>';
+    if(x.owner==='self')out+='<p>'+esc(tr('copies'))+'</p>';
+    else if(latest.how)out+='<p>'+esc(latest.how)+'</p>';
+    out+='<p class="r1-reference">'+esc(tr(x.form==='B'?'bref':'aref'))+(x.qualified?' '+esc(tr('qualified')):'')+'</p>';
+    out+='<fieldset class="r1-mode"><legend>'+esc(name)+' · '+esc(tr('mode'))+'</legend>';
+    ['2d','3d'].forEach(function(m){out+='<label><input type="radio" name="'+id+'-mode" data-r1-mode="'+m+'" value="'+m+'"'+(v.mode===m?' checked':'')+'>'+m.toUpperCase()+'</label>';});
+    out+='</fieldset><svg class="r1-svg" aria-hidden="true" focusable="false"></svg>';
+    out+='<div class="r1-rotation" data-r1-rotation'+(v.mode==='3d'?'':' hidden')+'><label>'+esc(tr('turn'))+'<input data-r1-axis="yaw" type="range" min="-180" max="180" value="'+v.yaw+'"></label><label>'+esc(tr('tilt'))+'<input data-r1-axis="pitch" type="range" min="-70" max="70" value="'+v.pitch+'"></label><button type="button" data-r1-reset>'+esc(tr('reset'))+'</button></div>';
+    out+='<p class="r1-help">'+esc(tr('help'))+'</p><p class="r1-legend">'+esc(tr('legend'))+'</p>';
+    out+='<p>'+esc(tr('counts',{pairs:x.pairs.length,unpaired:x.A.length+x.B.length-2*x.pairs.length}))+'</p>';
+    out+='<details class="r1-pairtext"><summary>'+esc(tr('pairs'))+'</summary><p class="r1-sequence">A 5\u2032-'+esc(x.A.map(function(a){return a.label;}).join(' '))+'-3\u2032</p><p class="r1-sequence">B 5\u2032-'+esc(x.B.map(function(a){return a.label;}).join(' '))+'-3\u2032</p><p>'+x.pairs.map(function(p){return 'A'+(p.a+1)+' '+esc(x.A[p.a].label)+' \u2194 B'+(p.b+1)+' '+esc(x.B[p.b].label);}).join('; ')+'</p></details></div>';
+    return out;
+  }
+  function update(v,x) {
+    var identity=JSON.stringify(x), language=D.documentElement.lang;
+    var changed=v.identity!==identity;
+    v.data=x;
+    if(changed){v.identity=identity;v.yaw=VIEW0.yaw;v.pitch=VIEW0.pitch;v.geometry=geometry(x);}
+    if(changed||v.language!==language||v.how!==latest?.how){
+      var pairOpen=v.el.querySelector('.r1-pairtext')?.open,focused=D.activeElement,focusSelector=null;
+      if(v.el.contains(focused)){['data-r1-mode','data-r1-axis','data-r1-reset'].some(function(k){if(focused.hasAttribute(k)){focusSelector='['+k+(focused.getAttribute(k)?'="'+focused.getAttribute(k)+'"':'')+']';return true;}});if(!focusSelector&&focused.tagName==='SUMMARY')focusSelector=focused.parentElement===v.el?'summary':'.r1-pairtext summary';}
+      v.language=language;v.how=latest?.how;v.el.innerHTML=markup(v);v.svg=v.el.querySelector('svg');
+      if(pairOpen&&v.el.querySelector('.r1-pairtext'))v.el.querySelector('.r1-pairtext').open=true;
+      if(focusSelector&&v.el.querySelector(focusSelector))v.el.querySelector(focusSelector).focus();
+    }
+    v.el.hidden=x.status==='empty';paint(v);
+  }
+  function mount(key,host) {
+    if(!host)return null;
+    var v=views[key];if(v&&v.el.isConnected)return v;
+    var el=D.createElement('details');el.className='r1-view';el.id='r1-'+key;el.dataset.r1Owner=key;host.insertAdjacentElement('afterend',el);
+    v=views[key]={el:el,mode:'2d',yaw:VIEW0.yaw,pitch:VIEW0.pitch,paints:0,identity:null};
+    el.addEventListener('toggle',function(e){if(e.target===el)paint(v);});
+    el.addEventListener('change',function(e){var m=e.target.getAttribute('data-r1-mode');if(m){v.mode=m;paint(v);}});
+    el.addEventListener('input',function(e){var axis=e.target.getAttribute('data-r1-axis');if(axis){v[axis]=Number(e.target.value);paint(v);}});
+    el.addEventListener('click',function(e){if(e.target.closest('[data-r1-reset]')){v.yaw=VIEW0.yaw;v.pitch=VIEW0.pitch;el.querySelector('[data-r1-axis="yaw"]').value=v.yaw;el.querySelector('[data-r1-axis="pitch"]').value=v.pitch;paint(v);}});
+    var drag=null;
+    el.addEventListener('pointerdown',function(e){if(v.mode!=='3d'||e.target.closest('svg')!==v.svg)return;drag={x:e.clientX,y:e.clientY,yaw:v.yaw,active:false};});
+    el.addEventListener('pointermove',function(e){if(!drag)return;var dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(!drag.active){if(Math.abs(dy)>Math.abs(dx)+4){drag=null;return;}if(Math.abs(dx)<6)return;drag.active=true;try{v.svg.setPointerCapture(e.pointerId);}catch(err){ }}v.yaw=Math.max(-180,Math.min(180,drag.yaw+dx*.6));el.querySelector('[data-r1-axis="yaw"]').value=v.yaw;paint(v);});
+    ['pointerup','pointercancel','lostpointercapture'].forEach(function(k){el.addEventListener(k,function(){drag=null;});});
+    if(W.ResizeObserver){v.resize=new ResizeObserver(function(entries){var w=entries[0].contentRect.width;if(w!==v.width){v.width=w;paint(v);}});v.resize.observe(el);}
+    return v;
+  }
+  function commit(input) {
+    latest=input?freeze(JSON.parse(JSON.stringify(input))):null;revision++;
+    var a=mount('intended',D.querySelector('[data-tmout]')),b=mount('self',D.querySelector('[data-tmcmp]'));
+    if(a)update(a,freeze(owner(latest,false)));if(b)update(b,freeze(owner(latest,true)));
+    commitFold(latest);
+  }
+  
+
+
+  function exportSTL(key) {
+    if(key!=='intended'&&key!=='self')return null;
+    var v=views[key],g=v&&v.geometry;if(!g||v.data.status!=='accepted')return null;
+    var lines=[['solid','rung1_'+key].join(' ')],facets=8;
+    function sub(a,b){return a.map(function(x,i){return x-b[i];});}
+    function cross(a,b){return[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];}
+    function unit(a){var n=Math.hypot(a[0],a[1],a[2]);return n?a.map(function(x){return x/n;}):null;}
+    function numbers(a){return a.map(function(x){return Number(x.toFixed(7));}).join(' ');}
+    function triangle(a,b,c){var n=unit(cross(sub(b,a),sub(c,a)));if(!n)return;lines.push(['facet','normal',numbers(n)].join(' '),['outer','loop'].join(' '),'vertex '+numbers(a),'vertex '+numbers(b),'vertex '+numbers(c),'endloop','endfacet');}
+    g.segments.forEach(function(s){var w=unit(sub(s.b,s.a));if(!w)return;var u=unit(cross(w,Math.abs(w[2])<.9?[0,0,1]:[0,1,0])),v2=cross(w,u),radius=s.kind==='pair'?.65:.9,rings=[[],[]];
+      [s.a,s.b].forEach(function(p,end){for(var i=0;i<facets;i++){var t=i*2*Math.PI/facets;rings[end].push(p.map(function(x,k){return x+radius*(u[k]*Math.cos(t)+v2[k]*Math.sin(t));}));}});
+      for(var j=0;j<facets;j++){var k=(j+1)%facets;triangle(rings[0][j],rings[1][j],rings[1][k]);triangle(rings[0][j],rings[1][k],rings[0][k]);triangle(s.a,rings[0][k],rings[0][j]);triangle(s.b,rings[1][j],rings[1][k]);}
+    });
+    lines.push(['endsolid','rung1_'+key].join(' '));return lines.join('\n')+'\n';
+  }
+   
+  var FOLD_SLOTS = {"0":[],"1":[35],"2":[-55,65],"3":[-85,-35,55],"4":[-130,-38,53,145],"5":[-130,-61,8,76,145],"6":[-130,-75,-20,35,90,145],"7":[-130,-84,-38,8,53,99,145],"8":[-130,-91,-51,-12,27,66,106,145],"9":[-130,-96,-61,-27,8,42,76,111,145],"10":[-130,-99,-69,-38,-8,23,53,84,114,145],"11":[-130,-102,-75,-48,-20,8,35,62,90,118,145],"12":[-130,-105,-80,-55,-30,-5,20,45,70,95,120,145],"13":[-130,-107,-84,-61,-38,-15,8,30,53,76,99,122,145],"14":[-130,-109,-88,-67,-45,-24,-3,18,39,60,82,103,124,145],"15":[-130,-110,-91,-71,-51,-32,-12,8,27,47,66,86,106,125,145],"16":[-130,-112,-93,-75,-57,-38,-20,-2,17,35,53,72,90,108,127,145],"17":[-130,-113,-96,-78,-61,-44,-27,-10,8,25,42,59,76,93,111,128,145],"18":[-130,-114,-98,-81,-65,-49,-33,-17,-1,16,32,48,64,80,96,113,129,145],"19":[-130,-115,-99,-84,-69,-54,-38,-23,-8,8,23,38,53,69,84,99,114,130,145],"20":[-130,-116,-101,-87,-72,-58,-43,-29,-14,5,15,29,44,58,73,87,102,116,131,145],"21":[-130,-116,-102,-89,-75,-61,-48,-34,-20,-6,8,21,35,49,62,76,90,104,118,131,145],"22":[-130,-117,-104,-91,-78,-65,-51,-38,-25,-12,1,14,27,40,53,66,80,93,106,119,132,145],"23":[-130,-118,-105,-92,-80,-68,-55,-42,-30,-18,-5,8,20,32,45,58,70,82,95,108,120,132,145],"24":[-130,-118,-106,-94,-82,-70,-58,-46,-34,-22,-10,2,13,25,37,49,61,73,85,97,109,121,133,145],"25":[-130,-119,-107,-96,-84,-73,-61,-50,-38,-27,-15,-4,8,19,30,42,53,65,76,88,99,111,122,134,145],"26":[-130,-119,-108,-97,-86,-75,-64,-53,-42,-31,-20,-9,2,13,24,35,46,57,68,79,90,101,112,123,134,145],"27":[-130,-119,-109,-98,-88,-77,-67,-56,-45,-35,-24,-14,-3,8,18,29,39,50,60,71,82,92,103,113,124,134,145],"28":[-130,-120,-110,-99,-89,-79,-69,-59,-49,-38,-28,-18,-8,2,13,23,33,43,53,64,74,84,94,104,114,125,135,145],"29":[-130,-120,-110,-101,-91,-81,-71,-61,-51,-42,-32,-22,-12,-2,8,17,27,37,47,57,66,76,86,96,106,116,125,135,145]};
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  var FOLD_STEP={B:Math.hypot(2*FORMS.B.radius*Math.sin(FORMS.B.twist*Math.PI/360),FORMS.B.h),A:Math.hypot(2*FORMS.A.radius*Math.sin(FORMS.A.twist*Math.PI/360),FORMS.A.h)};
+  function loopArc(points,first,last,left,right,hint,step){
+    var count=last-first+1,e=[right[0]-left[0],right[1]-left[1],right[2]-left[2]],c=Math.hypot(e[0],e[1],e[2])||1e-9;
+    var eh=[e[0]/c,e[1]/c,e[2]/c],nrm=null,tries=[hint,[0,0,1],[1,0,0],[0,1,0]],j,u;
+    for(var t=0;t<tries.length&&!nrm;t++){var d=tries[t],dot=d[0]*eh[0]+d[1]*eh[1]+d[2]*eh[2],v=[d[0]-dot*eh[0],d[1]-dot*eh[1],d[2]-dot*eh[2]],m=Math.hypot(v[0],v[1],v[2]);if(m>1e-6)nrm=[v[0]/m,v[1]/m,v[2]/m];}
+    var ratio=(count+1)*step/c;
+    if(ratio<=1){for(j=first;j<=last;j++){u=(j-first+1)/(count+1);points[j]=[left[0]+e[0]*u,left[1]+e[1]*u,left[2]+e[2]*u];}return;}
+    var lo=1e-9,hi=Math.PI-1e-9,phi;for(var it=0;it<60;it++){phi=(lo+hi)/2;if(phi/Math.sin(phi)<ratio)lo=phi;else hi=phi;}phi=(lo+hi)/2;
+    var R=c/(2*Math.sin(phi)),k=R*Math.cos(phi),cen=[(left[0]+right[0])/2-nrm[0]*k,(left[1]+right[1])/2-nrm[1]*k,(left[2]+right[2])/2-nrm[2]*k];
+    for(j=first;j<=last;j++){var th=-phi+2*phi*(j-first+1)/(count+1),s=R*Math.sin(th),q=R*Math.cos(th);points[j]=[cen[0]+s*eh[0]+q*nrm[0],cen[1]+s*eh[1]+q*nrm[1],cen[2]+s*eh[2]+q*nrm[2]];}
+  }
+  
+
+
+
+
+
+
+
+
+
+  var FOLD_YAW=60;
+  var foldViews = {}, foldCurrent = null;
+  function ft(k) { return W.t('tm.fold3d.' + k); }
+  function foldOwner(input) {
+    var f = input && input.fold;
+    if (!f || !f.res || !f.res.structure || !input.sense || input.sense.length > 150 ||
+        input.linkage !== 'PO' || input.marks.some(Boolean) || input.total !== input.sense.length) return null;
+    var chain = input.sense.map(residue), n = chain.length, db = f.res.structure;
+    var form = chain.every(function(r){return r.sugar === 'd';}) ? 'B'
+      : chain.every(function(r){return r.sugar === 'r';}) ? 'A' : null;
+    if (!form || !n || db.length !== n || chain.some(function(r){return !r.base || !/^[ACGTU]$/.test(r.base);})) return null;
+    var stack = [], pairs = [], mate = Array(n).fill(-1), valid = true;
+    for (var i = 0; i < n; i++) {
+      if (db[i] === '(') stack.push(i);
+      else if (db[i] === ')') {
+        if (!stack.length) return null;
+        var a = stack.pop(), bonds = canonical(chain[a].base, chain[i].base);
+        if (!bonds && form === 'A' && (chain[a].base === 'G' && chain[i].base === 'U' || chain[a].base === 'U' && chain[i].base === 'G')) bonds = 2;
+        if (!bonds || i - a < 4) valid = false;
+        pairs.push({a:a,b:i,bonds:bonds}); mate[a] = i; mate[i] = a;
+      } else if (db[i] !== '.') return null;
+    }
+    if (!valid || stack.length || !pairs.length || pairs.length !== f.res.bp) return null;
+    pairs.sort(function(a,b){return a.a-b.a;});
+    return {owner:'fold',status:'accepted',A:chain,pairs:pairs,mate:mate,form:form,
+      structure:db,anticodon:f.anticodon || [],result:f.res,input:input.input,generation:input.generation};
+  }
+  function foldGeometry(x) {
+    if (!x || x.status !== 'accepted') return null;
+    var points = Array(x.A.length), stemAt = Array(x.A.length).fill(-1), stems = [], roots = [], byLeft = {}, junctions=[];
+    x.pairs.forEach(function(p){byLeft[p.a] = p;});
+    function scan(lo,hi,parent) {
+      for (var i=lo;i<=hi;i++) {
+        if (x.mate[i] <= i) continue;
+        var outer=i, end=x.mate[i], run=[];
+        while (byLeft[i] && x.mate[i]===end) {run.push(byLeft[i]);i++;end--;}
+        var s={id:stems.length,pairs:run,children:[],angle:0,origin:null,parent:parent?parent.id:-1};stems.push(s);
+        (parent ? parent.children : roots).push(s);scan(i,end,s);i=x.mate[outer];
+      }
+    }
+    scan(0,x.A.length-1,null);
+    function weight(s){s.weight=Math.max(1,s.children.reduce(function(n,c){return n+weight(c);},0));return s.weight;}
+    roots.forEach(weight);
+    function place(s,cx,cz,angle) {
+      var count=s.pairs.length, a=angle*Math.PI/180, f=FORMS[x.form];s.angle=a;s.origin=[cx,0,cz];
+       
+      function move(p){var z=p[2]+(count-1)*f.h/2;return[cx+p[0]*Math.cos(a)+z*Math.sin(a),p[1],cz-p[0]*Math.sin(a)+z*Math.cos(a)];}
+      var local={status:'accepted',form:x.form,A:s.pairs.map(function(p){return x.A[p.a];}),
+        B:s.pairs.slice().reverse().map(function(p){return x.A[p.b];}),
+        pairs:s.pairs.map(function(p,k){return {a:k,b:count-1-k,bonds:p.bonds};})};
+      var g=geometry(local);
+      
+
+
+
+
+
+
+
+
+
+
+      var psi=-((count-1)*f.twist+f.phase/2+90)*Math.PI/180,cs=Math.cos(psi),sn=Math.sin(psi);
+      function spin(p){return[p[0]*cs-p[1]*sn,p[0]*sn+p[1]*cs,p[2]];}
+      s.pairs.forEach(function(p,k){points[p.a]=move(spin(g.points[0][k]));points[p.b]=move(spin(g.points[1][count-1-k]));stemAt[p.a]=stemAt[p.b]=s.id;});
+      var tip=[cx+(count-1)*f.h*Math.sin(a),cz+(count-1)*f.h*Math.cos(a)];
+      var slots=FOLD_SLOTS[s.children.length] || [];
+      var total=s.children.reduce(function(n,c){return n+c.weight;},0), cursor=-total/2;
+      
+
+
+
+
+
+
+
+
+      function fr(ox,oz){return[tip[0]+ox*Math.cos(a)+oz*Math.sin(a),0,tip[1]-ox*Math.sin(a)+oz*Math.cos(a)];}
+      if(s.children.length>1){var w=Math.max(18,total*17);junctions.push([fr(-w,18),fr(0,9),fr(w,18),fr(0,30)]);}
+      s.children.forEach(function(c,k){var column=cursor+c.weight/2;cursor+=c.weight;
+        var direction=angle+slots[k],rel=slots[k]*Math.PI/180,gap=s.children.length===1?16:34;
+        var o=fr(column*54+Math.sin(rel)*gap,gap+Math.max(0,-Math.cos(rel))*(c.pairs.length-1)*f.h);
+        place(c,o[0],o[2],direction);});
+    }
+    var total=roots.reduce(function(n,s){return n+s.weight;},0), cursor=-total/2;
+    roots.forEach(function(s){place(s,(cursor+s.weight/2)*100,0,0);cursor+=s.weight;});
+     
+     
+    for(var i=0;i<points.length;i++) {
+      if(points[i]) continue;
+      var first=i;while(i<points.length&&!points[i])i++;var last=i-1, count=last-first+1;
+      var left=first>0?points[first-1]:null,right=i<points.length?points[i]:null;
+      if(!left||!right){var anchor=left||right;for(var j=first;j<=last;j++){var step=left?j-first+1:last-j+1;points[j]=[anchor[0]+(left?1:-1)*step*FLANK_OUT,anchor[1],anchor[2]-step*FLANK_ALONG];}continue;}
+      
+
+
+
+
+      var L=first-1,enc=x.mate[L]>L?stemAt[L]:stems[stemAt[L]].parent;
+      loopArc(points,first,last,left,right,enc>=0?[Math.sin(stems[enc].angle),0,Math.cos(stems[enc].angle)]:[0,0,1],FOLD_STEP[x.form]);
+    }
+     
+    var centre=[0,1,2].map(function(k){var a=points.map(function(p){return p[k];});return(Math.min.apply(null,a)+Math.max.apply(null,a))/2;});
+    points=points.map(function(p){return p.map(function(v,k){return v-centre[k];});});
+    var segments=x.pairs.map(function(p){return{a:points[p.a],b:points[p.b],kind:'pair',bonds:p.bonds};});
+    for(var i=1;i<points.length;i++)segments.push({a:points[i-1],b:points[i],kind:stemAt[i]>=0&&stemAt[i]===stemAt[i-1]?'backbone':'flank',bonds:1});
+    var pieces=[];segments.forEach(function(s){if(s.kind==='flank')return;var divisions=s.kind==='pair'?10:5;
+      for(var k=0;k<divisions;k++)pieces.push({a:s.a.map(function(v,j){return v+(s.b[j]-v)*k/divisions;}),b:s.a.map(function(v,j){return v+(s.b[j]-v)*(k+1)/divisions;}),kind:s.kind,bonds:s.bonds});});
+     
+    var run=[];function endRun(){if(run.length>1)pieces.push({a:run[0],b:run[run.length-1],poly:run,kind:'flank',bonds:1});run=[];}
+    segments.filter(function(s){return s.kind!=='pair';}).forEach(function(s){if(s.kind==='flank'){if(!run.length)run.push(s.a);run.push(s.b);}else endRun();});endRun();
+    return{points:[points],segments:segments,pieces:pieces,form:FORMS[x.form],schematic:true,
+      junctions:junctions.map(function(poly){return poly.map(function(p){return p.map(function(v,k){return v-centre[k];});});}),
+      badges:points.map(function(p,i){return{p:p,side:0,index:i,base:x.A[i].base,label:x.A[i].label,paired:x.mate[i]>=0,anticodon:x.anticodon.indexOf(i)>=0};})};
+  }
+  function foldFocus(el) {
+    var a=D.activeElement;if(!a||!el||!el.contains(a))return null;
+    var keys=['data-r2-mode','data-r1-axis','data-r1-reset','data-r2-expand'];
+    for(var i=0;i<keys.length;i++)if(a.hasAttribute(keys[i]))return '['+keys[i]+(a.getAttribute(keys[i])?'="'+a.getAttribute(keys[i])+'"':'')+']';
+    return null;
+  }
+  function foldMarkup(v) {
+    var name='r2-'+v.key, out='<fieldset class="r1-mode"><legend>'+esc(ft('mode'))+'</legend>';
+    ['2d','3d'].forEach(function(m){out+='<label><input type="radio" name="'+name+'" data-r2-mode="'+m+'" value="'+m+'"'+(m===v.mode?' checked':'')+'>'+m.toUpperCase()+'</label>';});
+    out+='</fieldset><span class="sr-only" role="status" aria-live="polite" data-r2-status></span><div class="r2-pane" data-r2-pane><div class="r2-picture"><svg class="r1-svg" aria-hidden="true" focusable="false"></svg><span class="r2-mark">'+esc(ft('mark'))+'</span></div>';
+    out+='<p class="r2-scope">'+esc(W.t('tm.fold3d.scope!'))+'</p><p>'+esc(tr(v.data.form==='B'?'bref':'aref'))+'</p>';
+    out+='<div class="r1-rotation" data-r1-rotation><label>'+esc(tr('turn'))+'<input data-r1-axis="yaw" type="range" min="'+(-FOLD_YAW)+'" max="'+FOLD_YAW+'" value="'+v.yaw+'"></label><label>'+esc(tr('tilt'))+'<input data-r1-axis="pitch" type="range" min="-70" max="70" value="'+v.pitch+'"></label><button type="button" data-r1-reset>'+esc(tr('reset'))+'</button></div><p>'+esc(tr('help'))+'</p>';
+    if(v.key==='main')out+='<button type="button" class="tm-exp" data-r2-expand>'+esc(W.t('ui.fold.exp'))+'</button>';
+    return out+'</div>';
+  }
+  function showFold(v) {
+    if(!v.el.isConnected)return;
+    v.el.dataset.r2Mode=v.mode;
+    v.el.querySelector('[data-r2-pane]').hidden=v.mode!=='3d';
+    if(v.twoD)v.twoD.hidden=v.mode==='3d';
+     
+     
+    if(v.bar)v.bar.hidden=v.mode==='3d';
+    if(v.mode==='3d')paint(v);
+  }
+  function foldEvents(v) {
+    var el=v.el;
+    function cameraChanged(){paint(v);Object.keys(foldViews).forEach(function(k){var other=foldViews[k];if(other===v||other.identity!==v.identity)return;other.yaw=v.yaw;other.pitch=v.pitch;['yaw','pitch'].forEach(function(a){var node=other.el.querySelector('[data-r1-axis="'+a+'"]');if(node)node.value=other[a];});if(other.mode==='3d')paint(other);});}
+    el.addEventListener('change',function(e){var mode=e.target.getAttribute('data-r2-mode');if(mode){v.mode=mode;showFold(v);el.querySelector('[data-r2-status]').textContent=ft('mode')+': '+mode.toUpperCase();}});
+    el.addEventListener('input',function(e){var axis=e.target.getAttribute('data-r1-axis');if(axis){v[axis]=Number(e.target.value);cameraChanged();}});
+    el.addEventListener('click',function(e){if(e.target.closest('[data-r1-reset]')){v.yaw=VIEW0.yaw;v.pitch=VIEW0.pitch;['yaw','pitch'].forEach(function(a){el.querySelector('[data-r1-axis="'+a+'"]').value=v[a];});cameraChanged();}
+      if(e.target.closest('[data-r2-expand]')&&foldCurrent&&W.ocFoldUI){W.ocFoldUI.set(foldCurrent.snapshot);W.ocFoldUI.open(e.target.closest('[data-r2-expand]'));}});
+    var drag=null;
+    el.addEventListener('pointerdown',function(e){if(v.mode!=='3d'||e.target.closest('svg')!==v.svg)return;drag={x:e.clientX,y:e.clientY,yaw:v.yaw,active:false};});
+    el.addEventListener('pointermove',function(e){if(!drag)return;var dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(!drag.active){if(Math.abs(dy)>Math.abs(dx)+4){drag=null;return;}if(Math.abs(dx)<6)return;drag.active=true;try{v.svg.setPointerCapture(e.pointerId);}catch(err){ }}v.yaw=Math.max(-FOLD_YAW,Math.min(FOLD_YAW,drag.yaw+dx*.6));el.querySelector('[data-r1-axis="yaw"]').value=v.yaw;cameraChanged();});
+    ['pointerup','pointercancel','lostpointercapture'].forEach(function(k){el.addEventListener(k,function(){drag=null;});});
+  }
+  function mountFold(key,host,twoD,bar) {
+    if(!foldCurrent||!host)return;
+    var old=foldViews[key], identity=foldCurrent.identity, changed=!old||old.identity!==identity;
+    var focus=old&&foldFocus(old.el),v=old||{key:key,mode:'2d',yaw:VIEW0.yaw,pitch:VIEW0.pitch,paints:0};
+    if(key==='expand'&&(!old||!old.el.isConnected)){var main=foldViews.main;v.mode=main?main.mode:'2d';v.yaw=main?main.yaw:VIEW0.yaw;v.pitch=main?main.pitch:VIEW0.pitch;}
+    if(changed){var cameraSource=key==='expand'&&foldViews.main;v.yaw=cameraSource?cameraSource.yaw:VIEW0.yaw;v.pitch=cameraSource?cameraSource.pitch:VIEW0.pitch;v.geometry=foldCurrent.geometry;}
+    v.identity=identity;v.data=foldCurrent.data;v.twoD=twoD;v.bar=bar;
+    if(!v.el||!v.el.isConnected){if(v.resize)v.resize.disconnect();v.el=D.createElement('div');v.el.className='r2-view';v.el.dataset.r2Owner=key;host.insertBefore(v.el,twoD);foldEvents(v);}
+     
+    v.el.open=true;v.el.innerHTML=foldMarkup(v);v.svg=v.el.querySelector('svg');
+    if(v.resize){v.resize.disconnect();v.resize.observe(v.svg);}
+    else if(W.ResizeObserver){v.resize=new W.ResizeObserver(function(){if(v.mode==='3d')paint(v);});v.resize.observe(v.svg);}
+    foldViews[key]=v;showFold(v);if(focus&&v.el.querySelector(focus))v.el.querySelector(focus).focus();
+  }
+  function commitFold(input) {
+    var data=foldOwner(input),old=foldCurrent;
+    if(!data){var owned=foldViews.expand&&foldViews.expand.el.isConnected;foldCurrent=null;Object.keys(foldViews).forEach(function(k){var v=foldViews[k];if(v.resize)v.resize.disconnect();if(v.twoD)v.twoD.hidden=false;if(v.bar)v.bar.hidden=false;v.el.remove();});foldViews={};if(owned&&W.ocFoldUI&&W.ocFoldUI.isOpen())W.ocFoldUI.close();return;}
+    var identity=JSON.stringify(data);
+    foldCurrent={data:data,identity:identity,geometry:old&&old.identity===identity?old.geometry:foldGeometry(data),snapshot:input.fold.snapshot};
+    var twoD=D.querySelector('[data-tmcmp] .tm-fx-fig .tm-draw');
+    if(twoD)mountFold('main',twoD.parentElement,twoD,twoD.parentElement.querySelector('.tm-drawbar'));
+    if(W.ocFoldUI&&W.ocFoldUI.isOpen()){W.ocFoldUI.set(foldCurrent.snapshot);W.ocFoldUI.repaint();}
+  }
+  function mountFoldDialog() {
+    if(!foldCurrent)return;
+    var twoD=D.querySelector('#ocFoldOvl .tm-ovl-fig');
+    if(twoD)mountFold('expand',twoD.parentElement,twoD,null);
+  }
+
+  W.ocDuplex3D={code:CODE,commit:commit,geometry:geometry,
+    exportSTL:exportSTL,
+    mountFoldDialog:mountFoldDialog,
+    focusFold:function(){return foldViews.main && foldFocus(foldViews.main.el);},
+    restoreFoldFocus:function(selector){var v=foldViews.main,node=v&&v.el.querySelector(selector);if(node)node.focus();},
+    foldState:function(){var out={};Object.keys(foldViews).forEach(function(k){var v=foldViews[k];out[k]={mode:v.mode,yaw:v.yaw,pitch:v.pitch,paints:v.paints,structure:v.data.structure,form:v.data.form,nt:v.data.A.length,pairs:v.data.pairs.length};});return out;},
+    snapshot:function(){return freeze(JSON.parse(JSON.stringify({revision:revision,input:latest,owners:{intended:views.intended&&views.intended.data,self:views.self&&views.self.data}})));},
+    state:function(){var out={};Object.keys(views).forEach(function(k){var v=views[k];out[k]={mode:v.mode,yaw:v.yaw,pitch:v.pitch,open:v.el.open,paints:v.paints};});return out;}
+  };
+})(window,document);
+
 </script>
 </body>
 </html>
