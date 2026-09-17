@@ -1252,6 +1252,9 @@ var I18N = {
   "mk.0443":"Continue",
   "mk.0444":"Oligo Calculator Pro",
   "ms.adducts":"Na⁺ / K⁺ adducts",
+  "ms.env.method!":"The isotope envelope groups the formula's isotopologues by nominal mass and plots each group's centroid m/z using fixed representative isotope abundances within CIAAW 2024 ranges; it does not predict instrument resolution, adduct populations, or fragmentation.",
+  "ms.env.summary!":"The most abundant nominal peak (●) has a neutral-mass offset of +{offset} Da from the monoisotopic peak (△): m/z {mz} versus {mono} at charge {charge}; bar heights are relative abundances (tallest = 100%), and the displayed peaks contain {coverage}% of the total probability.",
+  "ms.env.title":"Isotope envelope",
   "pack.blurb!":"A pack of <b>{scans}</b> photo scans is <b>{price}</b>, bought once. Not a subscription. <b>The credits never expire</b>, and your monthly scans still reset on their own.",
   "punct.colon":": ",
   "punct.stop":". ",
@@ -1693,6 +1696,14 @@ var I18N = {
   "ui.eps.h.lblN":"ε₂₆₀ leaves {n} labels out.",
   "ui.eps.h.omit1":"ε₂₆₀ leaves {n} residue out, so it reads low.",
   "ui.eps.h.omitN":"ε₂₆₀ leaves {n} residues out, so it reads low.",
+  "ui.eps.record.condition":"{code}: a published measurement for this monomer at pH 3.5 gives ε₂₆₀ = {value} M⁻¹ cm⁻¹ ({source}). This calculator does not adjust ε₂₆₀ for pH; the estimate above uses the parent-compound approximation.",
+  "ui.eps.record.missing":"No source recorded.",
+  "ui.eps.record.own":"{code}: ε₂₆₀ = {value} M⁻¹ cm⁻¹. Source: the value you entered for this monomer.",
+  "ui.eps.record.parent":"{code}: parent approximation using {parent}, ε₂₆₀ = {value} M⁻¹ cm⁻¹. Source: {source}.",
+  "ui.eps.record.sugar!":"{code} uses ε₂₆₀ = {value} M⁻¹ cm⁻¹, directly measured for the 5-methylcytidine monomer on a ribose sugar; 5-methylcytidine on the {sugar} sugar was not measured (16 mM phosphate, pH 7.4 ± 0.1, λmax 278 nm; Finol et al., 2024, {source}).",
+  "ui.eps.record.superseded":"{code}: a vendor-printed value was set aside for this monomer ({note}).",
+  "ui.eps.record.term":"{code}: source-reported ε₂₆₀ value = {value} M⁻¹ cm⁻¹. Source: {source}.",
+  "ui.eps.record.unmeasured":"No measurement for this modified residue was found in the documented sources checked for this entry; the cited value is for its parent compound.",
   "ui.eps.why.base1":"{n} in-chain monomer ({codes}) has no published ε₂₆₀, so it adds nothing here.",
   "ui.eps.why.baseN":"{n} in-chain monomers ({codes}) have no published ε₂₆₀, so they add nothing here.",
   "ui.eps.why.conj1":"{n} label ({codes}) has no published ε₂₆₀, so it adds nothing here. Some labels absorb at 260 nm and some do not.",
@@ -1701,8 +1712,8 @@ var I18N = {
   "ui.eps.why.convN":"{n} monomers ({codes}) are counted as their parent bases, by a published convention.",
   "ui.eps.why.dir":"So ε₂₆₀ reads low, and a concentration from A₂₆₀ reads high.",
   "ui.eps.why.dirmay":"If a label absorbs at 260 nm, ε₂₆₀ reads low and a concentration from A₂₆₀ reads high.",
-  "ui.eps.why.parent1":"{n} 2′-modified residue ({codes}) is counted as its natural base. The 2′ group is not part of the light-absorbing base, so this is a close approximation.",
-  "ui.eps.why.parentN":"{n} 2′-modified residues ({codes}) are counted as their natural bases. The 2′ group is not part of the light-absorbing base, so this is a close approximation.",
+  "ui.eps.why.parent1":"{n} modified residue ({codes}) uses the parent approximation documented below.",
+  "ui.eps.why.parentN":"{n} modified residues ({codes}) use the parent approximations documented below.",
   "ui.eps.why.parentpub":"For 2′-OMe that is a published vendor convention.",
   "ui.eps.why.unaff":"The molecular weight and the ng/µL reading are unaffected.",
   "ui.flash.antisense":"⚠ Fix the antisense strand first",
@@ -3257,6 +3268,9 @@ var I18N = {
   "mk.0443":"\u7e7c\u7e8c",
   "mk.0444":"Oligo Calculator Pro",
   "ms.adducts":"Na⁺ / K⁺ \u52a0\u6210\u7269",
+  "ms.env.method!":"\u540c\u4f4d\u7d20\u5305\u7d61\u7dda\u4f9d\u6a19\u7a31\u8cea\u91cf\u5c07\u7d44\u6210\u5f0f\u7684\u540c\u4f4d\u7d20\u9ad4\u5206\u7d44\uff0c\u63a1\u7528 CIAAW 2024 \u7bc4\u570d\u5167\u7684\u56fa\u5b9a\u4ee3\u8868\u540c\u4f4d\u7d20\u8c50\u5ea6\uff0c\u7e6a\u51fa\u5404\u7d44\u7684\u8cea\u5fc3 m/z\uff1b\u6b64\u8a08\u7b97\u4e0d\u9810\u6e2c\u5100\u5668\u89e3\u6790\u5ea6\u3001\u52a0\u5408\u7269\u65cf\u7fa4\u5206\u5e03\u6216\u788e\u88c2\u3002",
+  "ms.env.summary!":"\u8c50\u5ea6\u6700\u9ad8\u7684\u6a19\u7a31\u8cea\u91cf\u5cf0\uff08●\uff09\u8207\u55ae\u4e00\u540c\u4f4d\u7d20\u5cf0\uff08△\uff09\u7684\u4e2d\u6027\u5206\u5b50\u8cea\u91cf\u5dee\u70ba +{offset} Da\uff1a\u96fb\u8377\u70ba {charge} \u6642\uff0cm/z \u5206\u5225\u70ba {mz} \u8207 {mono}\uff1b\u9577\u689d\u9ad8\u5ea6\u8868\u793a\u76f8\u5c0d\u8c50\u5ea6\uff08\u6700\u9ad8 = 100%\uff09\uff0c\u6240\u986f\u793a\u5404\u5cf0\u7684\u6a5f\u7387\u7e3d\u548c\u70ba {coverage}%\u3002",
+  "ms.env.title":"\u540c\u4f4d\u7d20\u5305\u7d61\u7dda",
   "pack.blurb!":"\u4e00\u5305 <b>{scans}</b> \u6b21\u7167\u7247\u6383\u63cf\u70ba <b>{price}</b>\uff0c\u4e00\u6b21\u8cb7\u65b7\uff0c\u4e0d\u662f\u8a02\u95b1\u3002<b>\u9ede\u6578\u6c38\u4e0d\u904e\u671f</b>\uff0c\u4f60\u6bcf\u6708\u7684\u6383\u63cf\u6b21\u6578\u4e5f\u7167\u5e38\u91cd\u7f6e\u3002",
   "punct.colon":"\uff1a",
   "punct.stop":"\u3002",
@@ -3698,6 +3712,14 @@ var I18N = {
   "ui.eps.h.lblN":"ε₂₆₀ \u5c11\u7b97\u4e86 {n} \u500b\u6a19\u8a18\u3002",
   "ui.eps.h.omit1":"ε₂₆₀ \u5c11\u7b97\u4e86 {n} \u500b\u6b98\u57fa\uff0c\u6240\u4ee5\u504f\u4f4e\u3002",
   "ui.eps.h.omitN":"ε₂₆₀ \u5c11\u7b97\u4e86 {n} \u500b\u6b98\u57fa\uff0c\u6240\u4ee5\u504f\u4f4e\u3002",
+  "ui.eps.record.condition":"{code}\uff1a\u6587\u737b\u4e2d\u5728 pH 3.5 \u689d\u4ef6\u4e0b\u6e2c\u5f97\u6b64\u55ae\u9ad4\u7684 ε₂₆₀ = {value} M⁻¹ cm⁻¹\uff08{source}\uff09\u3002\u672c\u8a08\u7b97\u6a5f\u4ecd\u4f7f\u7528\u6bcd\u9ad4\u5316\u5408\u7269\u7684\u6163\u7528\u4fc2\u6578\u4f5c\u70ba\u4f30\u8a08\u503c\uff0c\u4e14\u4e0d\u6703\u4f9d pH \u8abf\u6574 ε₂₆₀\u3002",
+  "ui.eps.record.missing":"\u672a\u8a18\u9304\u4f86\u6e90\u3002",
+  "ui.eps.record.own":"{code}\uff1aε₂₆₀ = {value} M⁻¹ cm⁻¹\u3002\u4f86\u6e90\uff1a\u60a8\u70ba\u6b64\u55ae\u9ad4\u8f38\u5165\u7684\u6578\u503c\u3002",
+  "ui.eps.record.parent":"{code}\uff1a\u4ee5 {parent} \u70ba\u6bcd\u9ad4\u7684\u8fd1\u4f3c\u503c\uff0cε₂₆₀ = {value} M⁻¹ cm⁻¹\u3002\u4f86\u6e90\uff1a{source}\u3002",
+  "ui.eps.record.sugar!":"{code} \u4f7f\u7528 ε₂₆₀ = {value} M⁻¹ cm⁻¹\uff0c\u6b64\u503c\u76f4\u63a5\u91cf\u6e2c\u81ea\u5e36\u6709\u6838\u91a3\u7684 5-\u7532\u57fa\u80de\u82f7\u55ae\u9ad4\uff1b\u5e36\u6709 {sugar} \u91a3\u57fa\u7684 5-\u7532\u57fa\u80de\u82f7\u672a\u7d93\u91cf\u6e2c\uff0816 mM \u78f7\u9178\u9e7d\uff0cpH 7.4 ± 0.1\uff0cλmax 278 nm\uff1bFinol et al., 2024\uff0c{source}\uff09\u3002",
+  "ui.eps.record.superseded":"{code}\uff1a\u6b64\u55ae\u9ad4\u7684\u5ee0\u5546\u6a19\u793a\u503c\u672a\u88ab\u63a1\u7528\uff08{note}\uff09\u3002",
+  "ui.eps.record.term":"{code}\uff1a\u5f15\u7528\u7684 ε₂₆₀ \u503c = {value} M⁻¹ cm⁻¹\u3002\u4f86\u6e90\uff1a{source}\u3002",
+  "ui.eps.record.unmeasured":"\u5728\u5df2\u67e5\u95b1\u7684\u6587\u737b\u4e2d\u672a\u627e\u5230\u6b64\u4fee\u98fe\u6b98\u57fa\u7684\u91cf\u6e2c\u503c\uff1b\u5f15\u7528\u6578\u503c\u4f86\u81ea\u5176\u6bcd\u9ad4\u3002",
   "ui.eps.why.base1":"{n} \u500b\u93c8\u5167\u55ae\u9ad4\uff08{codes}\uff09\u6c92\u6709\u5df2\u767c\u8868\u7684 ε₂₆₀\uff0c\u6240\u4ee5\u5728\u9019\u88e1\u4e0d\u8a08\u5165\u3002",
   "ui.eps.why.baseN":"{n} \u500b\u93c8\u5167\u55ae\u9ad4\uff08{codes}\uff09\u6c92\u6709\u5df2\u767c\u8868\u7684 ε₂₆₀\uff0c\u6240\u4ee5\u5728\u9019\u88e1\u4e0d\u8a08\u5165\u3002",
   "ui.eps.why.conj1":"{n} \u500b\u6a19\u8a18\uff08{codes}\uff09\u6c92\u6709\u5df2\u767c\u8868\u7684 ε₂₆₀\uff0c\u6240\u4ee5\u5728\u9019\u88e1\u4e0d\u8a08\u5165\u3002\u6709\u4e9b\u6a19\u8a18\u6703\u5438\u6536 260 nm \u7684\u5149\uff0c\u6709\u4e9b\u4e0d\u6703\u3002",
@@ -3706,8 +3728,8 @@ var I18N = {
   "ui.eps.why.convN":"{n} \u500b\u55ae\u9ad4\uff08{codes}\uff09\u4f9d\u5df2\u767c\u8868\u7684\u6163\u4f8b\u4ee5\u5176\u6bcd\u9ad4\u9e7c\u57fa\u8a08\u7b97\u3002",
   "ui.eps.why.dir":"\u56e0\u6b64 ε₂₆₀ \u504f\u4f4e\uff0c\u7531 A₂₆₀ \u63db\u7b97\u7684\u6fc3\u5ea6\u504f\u9ad8\u3002",
   "ui.eps.why.dirmay":"\u5982\u679c\u6a19\u8a18\u6703\u5438\u6536 260 nm \u7684\u5149\uff0cε₂₆₀ \u5c31\u6703\u504f\u4f4e\uff0c\u7531 A₂₆₀ \u63db\u7b97\u7684\u6fc3\u5ea6\u5c31\u6703\u504f\u9ad8\u3002",
-  "ui.eps.why.parent1":"{n} \u500b 2′ \u4fee\u98fe\u6b98\u57fa\uff08{codes}\uff09\u4ee5\u5176\u5929\u7136\u9e7c\u57fa\u8a08\u7b97\u30022′ \u57fa\u5718\u4e26\u975e\u5438\u5149\u9e7c\u57fa\u7684\u4e00\u90e8\u5206\uff0c\u6240\u4ee5\u9019\u500b\u8fd1\u4f3c\u76f8\u7576\u6e96\u78ba\u3002",
-  "ui.eps.why.parentN":"{n} \u500b 2′ \u4fee\u98fe\u6b98\u57fa\uff08{codes}\uff09\u4ee5\u5176\u5929\u7136\u9e7c\u57fa\u8a08\u7b97\u30022′ \u57fa\u5718\u4e26\u975e\u5438\u5149\u9e7c\u57fa\u7684\u4e00\u90e8\u5206\uff0c\u6240\u4ee5\u9019\u500b\u8fd1\u4f3c\u76f8\u7576\u6e96\u78ba\u3002",
+  "ui.eps.why.parent1":"{n} \u500b\u4fee\u98fe\u6b98\u57fa\uff08{codes}\uff09\u63a1\u7528\u4e0b\u65b9\u5217\u660e\u7684\u6bcd\u9ad4\u8fd1\u4f3c\u503c\u3002",
+  "ui.eps.why.parentN":"{n} \u500b\u4fee\u98fe\u6b98\u57fa\uff08{codes}\uff09\u63a1\u7528\u4e0b\u65b9\u5217\u660e\u7684\u6bcd\u9ad4\u8fd1\u4f3c\u503c\u3002",
   "ui.eps.why.parentpub":"\u5c0d 2′-OMe \u800c\u8a00\uff0c\u9019\u662f\u5ee0\u5546\u5df2\u767c\u8868\u7684\u6163\u4f8b\u3002",
   "ui.eps.why.unaff":"\u5206\u5b50\u91cf\u8207 ng/µL \u8b80\u503c\u4e0d\u53d7\u5f71\u97ff\u3002",
   "ui.flash.antisense":"⚠ \u8acb\u5148\u4fee\u6b63\u53cd\u7fa9\u80a1",
@@ -5261,6 +5283,9 @@ var I18N = {
   "mk.0443":"\u7ee7\u7eed",
   "mk.0444":"Oligo Calculator Pro",
   "ms.adducts":"Na⁺ / K⁺ \u52a0\u5408\u7269",
+  "ms.env.method!":"\u540c\u4f4d\u7d20\u5305\u7edc\u7ebf\u6309\u6807\u79f0\u8d28\u91cf\u5c06\u7ec4\u6210\u5f0f\u7684\u540c\u4f4d\u7d20\u4f53\u5206\u7ec4\uff0c\u91c7\u7528 CIAAW 2024 \u8303\u56f4\u5185\u7684\u56fa\u5b9a\u4ee3\u8868\u540c\u4f4d\u7d20\u4e30\u5ea6\uff0c\u7ed8\u51fa\u5404\u7ec4\u7684\u8d28\u5fc3 m/z\uff1b\u8be5\u8ba1\u7b97\u4e0d\u9884\u6d4b\u4eea\u5668\u5206\u8fa8\u7387\u3001\u52a0\u5408\u7269\u7fa4\u4f53\u5206\u5e03\u6216\u788e\u88c2\u3002",
+  "ms.env.summary!":"\u4e30\u5ea6\u6700\u9ad8\u7684\u6807\u79f0\u8d28\u91cf\u5cf0\uff08●\uff09\u4e0e\u5355\u540c\u4f4d\u7d20\u5cf0\uff08△\uff09\u7684\u4e2d\u6027\u5206\u5b50\u8d28\u91cf\u5dee\u4e3a +{offset} Da\uff1a\u7535\u8377\u4e3a {charge} \u65f6\uff0cm/z \u5206\u522b\u4e3a {mz} \u4e0e {mono}\uff1b\u6761\u5f62\u9ad8\u5ea6\u8868\u793a\u76f8\u5bf9\u4e30\u5ea6\uff08\u6700\u9ad8 = 100%\uff09\uff0c\u6240\u663e\u793a\u5404\u5cf0\u7684\u6982\u7387\u603b\u548c\u4e3a {coverage}%\u3002",
+  "ms.env.title":"\u540c\u4f4d\u7d20\u5305\u7edc\u7ebf",
   "pack.blurb!":"\u4e00\u5305 <b>{scans}</b> \u6b21\u7167\u7247\u626b\u63cf\u4e3a <b>{price}</b>\uff0c\u4e00\u6b21\u4e70\u65ad\uff0c\u4e0d\u662f\u8ba2\u9605\u3002<b>\u70b9\u6570\u6c38\u4e0d\u8fc7\u671f</b>\uff0c\u4f60\u6bcf\u6708\u7684\u626b\u63cf\u6b21\u6570\u4e5f\u7167\u5e38\u91cd\u7f6e\u3002",
   "punct.colon":"\uff1a",
   "punct.stop":"\u3002",
@@ -5702,6 +5727,14 @@ var I18N = {
   "ui.eps.h.lblN":"ε₂₆₀ \u5c11\u7b97\u4e86 {n} \u4e2a\u6807\u8bb0\u3002",
   "ui.eps.h.omit1":"ε₂₆₀ \u5c11\u7b97\u4e86 {n} \u4e2a\u6b8b\u57fa\uff0c\u6240\u4ee5\u504f\u4f4e\u3002",
   "ui.eps.h.omitN":"ε₂₆₀ \u5c11\u7b97\u4e86 {n} \u4e2a\u6b8b\u57fa\uff0c\u6240\u4ee5\u504f\u4f4e\u3002",
+  "ui.eps.record.condition":"{code}\uff1a\u6587\u732e\u4e2d\u5728 pH 3.5 \u6761\u4ef6\u4e0b\u6d4b\u5f97\u8be5\u5355\u4f53\u7684 ε₂₆₀ = {value} M⁻¹ cm⁻¹\uff08{source}\uff09\u3002\u672c\u8ba1\u7b97\u5668\u4ecd\u4f7f\u7528\u6bcd\u4f53\u5316\u5408\u7269\u7684\u5e38\u7528\u7cfb\u6570\u4f5c\u4e3a\u4f30\u8ba1\u503c\uff0c\u4e0d\u4f1a\u6839\u636e pH \u8c03\u6574 ε₂₆₀\u3002",
+  "ui.eps.record.missing":"\u672a\u8bb0\u5f55\u6765\u6e90\u3002",
+  "ui.eps.record.own":"{code}\uff1aε₂₆₀ = {value} M⁻¹ cm⁻¹\u3002\u6765\u6e90\uff1a\u60a8\u4e3a\u6b64\u5355\u4f53\u8f93\u5165\u7684\u6570\u503c\u3002",
+  "ui.eps.record.parent":"{code}\uff1a\u4ee5 {parent} \u4e3a\u6bcd\u4f53\u7684\u8fd1\u4f3c\u503c\uff0cε₂₆₀ = {value} M⁻¹ cm⁻¹\u3002\u6765\u6e90\uff1a{source}\u3002",
+  "ui.eps.record.sugar!":"{code} \u4f7f\u7528 ε₂₆₀ = {value} M⁻¹ cm⁻¹\uff0c\u8be5\u503c\u76f4\u63a5\u6d4b\u5f97\u81ea\u5e26\u6709\u6838\u7cd6\u7684 5-\u7532\u57fa\u80de\u82f7\u5355\u4f53\uff1b\u5e26\u6709 {sugar} \u7cd6\u57fa\u7684 5-\u7532\u57fa\u80de\u82f7\u672a\u7ecf\u6d4b\u91cf\uff0816 mM \u78f7\u9178\u76d0\uff0cpH 7.4 ± 0.1\uff0cλmax 278 nm\uff1bFinol et al., 2024\uff0c{source}\uff09\u3002",
+  "ui.eps.record.superseded":"{code}\uff1a\u6b64\u5355\u4f53\u7684\u5382\u5546\u6807\u793a\u503c\u672a\u88ab\u91c7\u7528\uff08{note}\uff09\u3002",
+  "ui.eps.record.term":"{code}\uff1a\u5f15\u7528\u7684 ε₂₆₀ \u503c = {value} M⁻¹ cm⁻¹\u3002\u6765\u6e90\uff1a{source}\u3002",
+  "ui.eps.record.unmeasured":"\u5728\u5df2\u67e5\u9605\u7684\u6587\u732e\u4e2d\u672a\u627e\u5230\u6b64\u4fee\u9970\u6b8b\u57fa\u7684\u6d4b\u91cf\u503c\uff1b\u5f15\u7528\u6570\u503c\u6765\u81ea\u5176\u6bcd\u4f53\u3002",
   "ui.eps.why.base1":"{n} \u4e2a\u94fe\u5185\u5355\u4f53\uff08{codes}\uff09\u6ca1\u6709\u5df2\u53d1\u8868\u7684 ε₂₆₀\uff0c\u6240\u4ee5\u5728\u8fd9\u91cc\u4e0d\u8ba1\u5165\u3002",
   "ui.eps.why.baseN":"{n} \u4e2a\u94fe\u5185\u5355\u4f53\uff08{codes}\uff09\u6ca1\u6709\u5df2\u53d1\u8868\u7684 ε₂₆₀\uff0c\u6240\u4ee5\u5728\u8fd9\u91cc\u4e0d\u8ba1\u5165\u3002",
   "ui.eps.why.conj1":"{n} \u4e2a\u6807\u8bb0\uff08{codes}\uff09\u6ca1\u6709\u5df2\u53d1\u8868\u7684 ε₂₆₀\uff0c\u6240\u4ee5\u5728\u8fd9\u91cc\u4e0d\u8ba1\u5165\u3002\u6709\u4e9b\u6807\u8bb0\u4f1a\u5438\u6536 260 nm \u7684\u5149\uff0c\u6709\u4e9b\u4e0d\u4f1a\u3002",
@@ -5710,8 +5743,8 @@ var I18N = {
   "ui.eps.why.convN":"{n} \u4e2a\u5355\u4f53\uff08{codes}\uff09\u6309\u5df2\u53d1\u8868\u7684\u60ef\u4f8b\u4ee5\u5176\u6bcd\u4f53\u78b1\u57fa\u8ba1\u7b97\u3002",
   "ui.eps.why.dir":"\u56e0\u6b64 ε₂₆₀ \u504f\u4f4e\uff0c\u7531 A₂₆₀ \u6362\u7b97\u7684\u6d53\u5ea6\u504f\u9ad8\u3002",
   "ui.eps.why.dirmay":"\u5982\u679c\u6807\u8bb0\u4f1a\u5438\u6536 260 nm \u7684\u5149\uff0cε₂₆₀ \u5c31\u4f1a\u504f\u4f4e\uff0c\u7531 A₂₆₀ \u6362\u7b97\u7684\u6d53\u5ea6\u5c31\u4f1a\u504f\u9ad8\u3002",
-  "ui.eps.why.parent1":"{n} \u4e2a 2′ \u4fee\u9970\u6b8b\u57fa\uff08{codes}\uff09\u6309\u5176\u5929\u7136\u78b1\u57fa\u8ba1\u7b97\u30022′ \u57fa\u56e2\u4e0d\u5728\u5438\u5149\u7684\u78b1\u57fa\u4e0a\uff0c\u6240\u4ee5\u8fd9\u662f\u5f88\u63a5\u8fd1\u7684\u8fd1\u4f3c\u3002",
-  "ui.eps.why.parentN":"{n} \u4e2a 2′ \u4fee\u9970\u6b8b\u57fa\uff08{codes}\uff09\u6309\u5176\u5929\u7136\u78b1\u57fa\u8ba1\u7b97\u30022′ \u57fa\u56e2\u4e0d\u5728\u5438\u5149\u7684\u78b1\u57fa\u4e0a\uff0c\u6240\u4ee5\u8fd9\u662f\u5f88\u63a5\u8fd1\u7684\u8fd1\u4f3c\u3002",
+  "ui.eps.why.parent1":"{n} \u4e2a\u4fee\u9970\u6b8b\u57fa\uff08{codes}\uff09\u91c7\u7528\u4e0b\u65b9\u5217\u660e\u7684\u6bcd\u4f53\u8fd1\u4f3c\u503c\u3002",
+  "ui.eps.why.parentN":"{n} \u4e2a\u4fee\u9970\u6b8b\u57fa\uff08{codes}\uff09\u91c7\u7528\u4e0b\u65b9\u5217\u660e\u7684\u6bcd\u4f53\u8fd1\u4f3c\u503c\u3002",
   "ui.eps.why.parentpub":"\u5bf9 2′-OMe \u800c\u8a00\uff0c\u8fd9\u662f\u5382\u5546\u5df2\u53d1\u8868\u7684\u60ef\u4f8b\u3002",
   "ui.eps.why.unaff":"\u5206\u5b50\u91cf\u4e0e ng/µL \u8bfb\u6570\u4e0d\u53d7\u5f71\u54cd\u3002",
   "ui.flash.antisense":"⚠ \u8bf7\u5148\u4fee\u6b63\u53cd\u4e49\u94fe",
@@ -7265,6 +7298,9 @@ var I18N = {
   "mk.0443":"\u7d9a\u3051\u308b",
   "mk.0444":"Oligo Calculator Pro",
   "ms.adducts":"Na⁺ / K⁺ \u4ed8\u52a0\u4f53",
+  "ms.env.method!":"\u540c\u4f4d\u4f53\u5305\u7d61\u7dda\u306f\u4e00\u5206\u5b50\u4e2d\u306e\u5b9f\u969b\u306e\u539f\u5b50\u6570\u3092\u8868\u3059\u7d44\u6210\u5f0f\u306e\u540c\u4f4d\u4f53\u5206\u5b50\u7a2e\u3092\u516c\u79f0\u8cea\u91cf\u3067\u307e\u3068\u3081\u3001CIAAW 2024 \u306e\u7bc4\u56f2\u5185\u306e\u56fa\u5b9a\u4ee3\u8868\u540c\u4f4d\u4f53\u5b58\u5728\u6bd4\u3092\u4f7f\u3063\u3066\u5404\u7fa4\u306e\u91cd\u5fc3 m/z \u3092\u63cf\u304d\u307e\u3059\u3002\u88c5\u7f6e\u306e\u5206\u89e3\u80fd\u3001\u4ed8\u52a0\u4f53\u306e\u5206\u5e03\u3001\u30d5\u30e9\u30b0\u30e1\u30f3\u30c6\u30fc\u30b7\u30e7\u30f3\u306f\u4e88\u6e2c\u3057\u307e\u305b\u3093\u3002",
+  "ms.env.summary!":"\u5b58\u5728\u6bd4\u304c\u6700\u5927\u306e\u516c\u79f0\u8cea\u91cf\u30d4\u30fc\u30af\uff08●\uff09\u3068\u30e2\u30ce\u30a2\u30a4\u30bd\u30c8\u30d4\u30c3\u30af\u30d4\u30fc\u30af\uff08△\uff09\u306e\u4e2d\u6027\u5206\u5b50\u3068\u3057\u3066\u306e\u8cea\u91cf\u5dee\u306f +{offset} Da \u3067\u3001\u96fb\u8377 {charge} \u3067\u306e m/z \u306f\u305d\u308c\u305e\u308c {mz} \u3068 {mono} \u3067\u3059\u3002\u68d2\u306e\u9ad8\u3055\u306f\u76f8\u5bfe\u5b58\u5728\u6bd4\uff08\u6700\u5927 = 100%\uff09\u3092\u793a\u3057\u3001\u8868\u793a\u3057\u305f\u30d4\u30fc\u30af\u7fa4\u306e\u78ba\u7387\u306e\u5408\u8a08\u306f {coverage}% \u3067\u3059\u3002",
+  "ms.env.title":"\u540c\u4f4d\u4f53\u5305\u7d61\u7dda",
   "pack.blurb!":"\u5199\u771f\u30b9\u30ad\u30e3\u30f3 <b>{scans}</b> \u56de\u5206\u306e\u30d1\u30c3\u30af\u304c <b>{price}</b>\u3001\u8cb7\u3044\u5207\u308a\u3067\u3059\u3002\u30b5\u30d6\u30b9\u30af\u30ea\u30d7\u30b7\u30e7\u30f3\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002<b>\u30af\u30ec\u30b8\u30c3\u30c8\u306b\u6709\u52b9\u671f\u9650\u306f\u3042\u308a\u307e\u305b\u3093</b>\u3002\u6bce\u6708\u306e\u30b9\u30ad\u30e3\u30f3\u56de\u6570\u306f\u3053\u308c\u3068\u306f\u5225\u306b\u30ea\u30bb\u30c3\u30c8\u3055\u308c\u307e\u3059\u3002",
   "punct.colon":"\uff1a",
   "punct.stop":"\u3002",
@@ -7706,6 +7742,14 @@ var I18N = {
   "ui.eps.h.lblN":"ε₂₆₀ \u306f\u6a19\u8b58 {n} \u500b\u3092\u9664\u3044\u3066\u8a08\u7b97\u3055\u308c\u3066\u3044\u307e\u3059\u3002",
   "ui.eps.h.omit1":"ε₂₆₀ \u306f\u6b8b\u57fa {n} \u500b\u3092\u9664\u3044\u3066\u8a08\u7b97\u3055\u308c\u3066\u3044\u308b\u305f\u3081\u3001\u4f4e\u3081\u306b\u51fa\u307e\u3059\u3002",
   "ui.eps.h.omitN":"ε₂₆₀ \u306f\u6b8b\u57fa {n} \u500b\u3092\u9664\u3044\u3066\u8a08\u7b97\u3055\u308c\u3066\u3044\u308b\u305f\u3081\u3001\u4f4e\u3081\u306b\u51fa\u307e\u3059\u3002",
+  "ui.eps.record.condition":"{code}\uff1a\u3053\u306e\u30e2\u30ce\u30de\u30fc\u306e pH 3.5 \u3067\u306e\u6e2c\u5b9a\u5024\u3068\u3057\u3066 ε₂₆₀ = {value} M⁻¹ cm⁻¹ \u304c\u5831\u544a\u3055\u308c\u3066\u3044\u307e\u3059\uff08{source}\uff09\u3002\u3053\u306e\u8a08\u7b97\u6a5f\u306f pH \u306b\u5fdc\u3058\u305f ε₂₆₀ \u306e\u88dc\u6b63\u3092\u884c\u308f\u305a\u3001\u4e0a\u8a18\u306e\u63a8\u5b9a\u306b\u306f\u89aa\u5316\u5408\u7269\u306e\u4fc2\u6570\u3092\u7528\u3044\u307e\u3059\u3002",
+  "ui.eps.record.missing":"\u51fa\u5178\u306e\u8a18\u9332\u304c\u3042\u308a\u307e\u305b\u3093\u3002",
+  "ui.eps.record.own":"{code}\uff1aε₂₆₀ = {value} M⁻¹ cm⁻¹\u3002\u51fa\u5178\uff1a\u3053\u306e\u30e2\u30ce\u30de\u30fc\u306b\u5165\u529b\u3057\u305f\u5024\u3067\u3059\u3002",
+  "ui.eps.record.parent":"{code}\uff1a{parent} \u3092\u89aa\u5316\u5408\u7269\u3068\u3059\u308b\u8fd1\u4f3c\u5024\u3001ε₂₆₀ = {value} M⁻¹ cm⁻¹\u3002\u51fa\u5178\uff1a{source}\u3002",
+  "ui.eps.record.sugar!":"{code} \u306b\u306f ε₂₆₀ = {value} M⁻¹ cm⁻¹ \u3092\u4f7f\u7528\u3057\u307e\u3059\u3002\u3053\u308c\u306f\u30ea\u30dc\u30fc\u30b9\u7cd6\u3092\u6301\u3064 5-\u30e1\u30c1\u30eb\u30b7\u30c1\u30b8\u30f3\u30e2\u30ce\u30de\u30fc\u3067\u76f4\u63a5\u6e2c\u5b9a\u3055\u308c\u305f\u5024\u3067\u3042\u308a\u3001{sugar} \u7cd6\u3092\u6301\u3064 5-\u30e1\u30c1\u30eb\u30b7\u30c1\u30b8\u30f3\u3067\u306f\u6e2c\u5b9a\u3055\u308c\u3066\u3044\u307e\u305b\u3093\uff0816 mM \u30ea\u30f3\u9178\u5869\u3001pH 7.4 ± 0.1\u3001λmax 278 nm\uff1bFinol et al., 2024\u3001{source}\uff09\u3002",
+  "ui.eps.record.superseded":"{code}\uff1a\u3053\u306e\u30e2\u30ce\u30de\u30fc\u306b\u3064\u3044\u3066\u306f\u3001\u30d9\u30f3\u30c0\u30fc\u304c\u793a\u3057\u305f\u5024\u306f\u63a1\u7528\u3057\u3066\u3044\u307e\u305b\u3093\uff08{note}\uff09\u3002",
+  "ui.eps.record.term":"{code}\uff1a\u51fa\u5178\u306e\u3042\u308b ε₂₆₀ \u5024 = {value} M⁻¹ cm⁻¹\u3002\u51fa\u5178\uff1a{source}\u3002",
+  "ui.eps.record.unmeasured":"\u78ba\u8a8d\u3057\u305f\u51fa\u5178\u3067\u306f\u3001\u3053\u306e\u4fee\u98fe\u6b8b\u57fa\u306e\u6e2c\u5b9a\u5024\u306f\u898b\u3064\u304b\u3063\u3066\u3044\u307e\u305b\u3093\u3002\u5f15\u7528\u5024\u306f\u89aa\u5316\u5408\u7269\u306e\u3082\u306e\u3067\u3059\u3002",
   "ui.eps.why.base1":"\u9396\u5185\u30e2\u30ce\u30de\u30fc {n} \u500b\uff08{codes}\uff09\u306b\u306f\u516c\u8868\u3055\u308c\u305f ε₂₆₀ \u304c\u306a\u3044\u305f\u3081\u3001\u3053\u3053\u3067\u306f\u4f55\u3082\u52a0\u7b97\u3055\u308c\u307e\u305b\u3093\u3002",
   "ui.eps.why.baseN":"\u9396\u5185\u30e2\u30ce\u30de\u30fc {n} \u500b\uff08{codes}\uff09\u306b\u306f\u516c\u8868\u3055\u308c\u305f ε₂₆₀ \u304c\u306a\u3044\u305f\u3081\u3001\u3053\u3053\u3067\u306f\u4f55\u3082\u52a0\u7b97\u3055\u308c\u307e\u305b\u3093\u3002",
   "ui.eps.why.conj1":"\u6a19\u8b58 {n} \u500b\uff08{codes}\uff09\u306b\u306f\u516c\u8868\u3055\u308c\u305f ε₂₆₀ \u304c\u306a\u3044\u305f\u3081\u3001\u3053\u3053\u3067\u306f\u4f55\u3082\u52a0\u7b97\u3055\u308c\u307e\u305b\u3093\u3002260 nm \u306e\u5149\u3092\u5438\u53ce\u3059\u308b\u6a19\u8b58\u3082\u3042\u308c\u3070\u3001\u5438\u53ce\u3057\u306a\u3044\u6a19\u8b58\u3082\u3042\u308a\u307e\u3059\u3002",
@@ -7714,8 +7758,8 @@ var I18N = {
   "ui.eps.why.convN":"\u30e2\u30ce\u30de\u30fc {n} \u500b\uff08{codes}\uff09\u306f\u3001\u516c\u8868\u3055\u308c\u305f\u6163\u4f8b\u306b\u3088\u308a\u89aa\u5869\u57fa\u3068\u3057\u3066\u8a08\u7b97\u3055\u308c\u3066\u3044\u307e\u3059\u3002",
   "ui.eps.why.dir":"\u305d\u306e\u305f\u3081 ε₂₆₀ \u306f\u4f4e\u3081\u306b\u51fa\u3066\u3001A₂₆₀ \u304b\u3089\u6c42\u3081\u305f\u6fc3\u5ea6\u306f\u9ad8\u3081\u306b\u51fa\u307e\u3059\u3002",
   "ui.eps.why.dirmay":"\u6a19\u8b58\u304c 260 nm \u306e\u5149\u3092\u5438\u53ce\u3059\u308b\u5834\u5408\u3001ε₂₆₀ \u306f\u4f4e\u3081\u306b\u51fa\u3066\u3001A₂₆₀ \u304b\u3089\u6c42\u3081\u305f\u6fc3\u5ea6\u306f\u9ad8\u3081\u306b\u51fa\u307e\u3059\u3002",
-  "ui.eps.why.parent1":"2′ \u4fee\u98fe\u6b8b\u57fa {n} \u500b\uff08{codes}\uff09\u306f\u3001\u305d\u306e\u5929\u7136\u5869\u57fa\u3068\u3057\u3066\u8a08\u7b97\u3055\u308c\u3066\u3044\u307e\u3059\u30022′ \u57fa\u306f\u5149\u3092\u5438\u53ce\u3059\u308b\u5869\u57fa\u306e\u4e00\u90e8\u3067\u306f\u306a\u3044\u305f\u3081\u3001\u3053\u308c\u306f\u826f\u3044\u8fd1\u4f3c\u3067\u3059\u3002",
-  "ui.eps.why.parentN":"2′ \u4fee\u98fe\u6b8b\u57fa {n} \u500b\uff08{codes}\uff09\u306f\u3001\u305d\u306e\u5929\u7136\u5869\u57fa\u3068\u3057\u3066\u8a08\u7b97\u3055\u308c\u3066\u3044\u307e\u3059\u30022′ \u57fa\u306f\u5149\u3092\u5438\u53ce\u3059\u308b\u5869\u57fa\u306e\u4e00\u90e8\u3067\u306f\u306a\u3044\u305f\u3081\u3001\u3053\u308c\u306f\u826f\u3044\u8fd1\u4f3c\u3067\u3059\u3002",
+  "ui.eps.why.parent1":"{n} \u500b\u306e\u4fee\u98fe\u6b8b\u57fa\uff08{codes}\uff09\u306b\u306f\u3001\u4ee5\u4e0b\u306b\u793a\u3059\u89aa\u5316\u5408\u7269\u306e\u8fd1\u4f3c\u5024\u3092\u4f7f\u7528\u3057\u3066\u3044\u307e\u3059\u3002",
+  "ui.eps.why.parentN":"{n} \u500b\u306e\u4fee\u98fe\u6b8b\u57fa\uff08{codes}\uff09\u306b\u306f\u3001\u4ee5\u4e0b\u306b\u793a\u3059\u89aa\u5316\u5408\u7269\u306e\u8fd1\u4f3c\u5024\u3092\u4f7f\u7528\u3057\u3066\u3044\u307e\u3059\u3002",
   "ui.eps.why.parentpub":"2′-OMe \u306b\u3064\u3044\u3066\u306f\u3001\u3053\u308c\u306f\u30d9\u30f3\u30c0\u30fc\u304c\u516c\u8868\u3057\u3066\u3044\u308b\u6163\u4f8b\u3067\u3059\u3002",
   "ui.eps.why.unaff":"\u5206\u5b50\u91cf\u3068 ng/µL \u306e\u8aad\u307f\u5024\u306f\u5f71\u97ff\u3092\u53d7\u3051\u307e\u305b\u3093\u3002",
   "ui.flash.antisense":"⚠ \u5148\u306b\u30a2\u30f3\u30c1\u30bb\u30f3\u30b9\u9396\u3092\u4fee\u6b63\u3057\u3066\u304f\u3060\u3055\u3044",
@@ -9269,6 +9313,9 @@ var I18N = {
   "mk.0443":"Continuer",
   "mk.0444":"Oligo Calculator Pro",
   "ms.adducts":"Adduits Na⁺ / K⁺",
+  "ms.env.method!":"L’enveloppe isotopique regroupe les isotopologues de la formule par masse nominale et trace le m/z du centroïde de chaque groupe, à partir d’abondances isotopiques représentatives fixes choisies dans les intervalles CIAAW 2024 ; elle ne prédit ni la résolution instrumentale, ni les populations d’adduits, ni la fragmentation.",
+  "ms.env.summary!":"Le pic nominal le plus abondant (●) correspond à un décalage de masse neutre de +{offset} Da par rapport au pic monoisotopique (△) : m/z {mz} contre {mono} pour une charge de {charge} ; la hauteur des barres indique l’abondance relative (maximum = 100%), et les pics affichés représentent ensemble {coverage}% de la probabilité totale.",
+  "ms.env.title":"Enveloppe isotopique",
   "pack.blurb!":"Un lot de <b>{scans}</b> scans photo coûte <b>{price}</b>, acheté une seule fois. Ce n’est pas un abonnement. <b>Les crédits n’expirent jamais</b>, et vos scans mensuels se réinitialisent quand même d’eux-mêmes.",
   "punct.colon":" : ",
   "punct.stop":". ",
@@ -9710,6 +9757,14 @@ var I18N = {
   "ui.eps.h.lblN":"ε₂₆₀ omet {n} marqueurs.",
   "ui.eps.h.omit1":"ε₂₆₀ omet {n} résidu, il est donc sous-estimé.",
   "ui.eps.h.omitN":"ε₂₆₀ omet {n} résidus, il est donc sous-estimé.",
+  "ui.eps.record.condition":"{code} : une mesure publiée pour ce monomère à pH 3,5 donne ε₂₆₀ = {value} M⁻¹ cm⁻¹ ({source}). Ce calculateur ne corrige pas ε₂₆₀ en fonction du pH ; l’estimation ci-dessus utilise toujours le coefficient du composé parent.",
+  "ui.eps.record.missing":"Aucune source enregistrée.",
+  "ui.eps.record.own":"{code} : ε₂₆₀ = {value} M⁻¹ cm⁻¹. Source : la valeur que vous avez saisie pour ce monomère.",
+  "ui.eps.record.parent":"{code} : approximation fondée sur {parent}, ε₂₆₀ = {value} M⁻¹ cm⁻¹. Source : {source}.",
+  "ui.eps.record.sugar!":"{code} utilise ε₂₆₀ = {value} M⁻¹ cm⁻¹, mesuré directement pour le monomère 5-méthylcytidine portant un ribose ; la 5-méthylcytidine portant le sucre {sugar} n’a pas été mesurée (phosphate 16 mM, pH 7.4 ± 0.1, λmax 278 nm ; Finol et al., 2024, {source}).",
+  "ui.eps.record.superseded":"{code} : une valeur imprimée par le fournisseur n’a pas été retenue pour ce monomère ({note}).",
+  "ui.eps.record.term":"{code} : valeur citée de ε₂₆₀ = {value} M⁻¹ cm⁻¹. Source : {source}.",
+  "ui.eps.record.unmeasured":"Aucune mesure trouvée pour ce résidu modifié dans les sources consultées ; la valeur citée est celle du composé parent.",
   "ui.eps.why.base1":"{n} monomère dans la chaîne ({codes}) n’a pas de ε₂₆₀ publié, il n’ajoute donc rien ici.",
   "ui.eps.why.baseN":"{n} monomères dans la chaîne ({codes}) n’ont pas de ε₂₆₀ publié, ils n’ajoutent donc rien ici.",
   "ui.eps.why.conj1":"{n} marqueur ({codes}) n’a pas de ε₂₆₀ publié, il n’ajoute donc rien ici. Certains marqueurs absorbent à 260 nm et d’autres non.",
@@ -9718,8 +9773,8 @@ var I18N = {
   "ui.eps.why.convN":"{n} monomères ({codes}) sont comptés comme leurs bases parentes, selon une convention publiée.",
   "ui.eps.why.dir":"ε₂₆₀ est donc sous-estimé, et une concentration calculée à partir de A₂₆₀ est surestimée.",
   "ui.eps.why.dirmay":"Si un marqueur absorbe à 260 nm, ε₂₆₀ est sous-estimé et une concentration calculée à partir de A₂₆₀ est surestimée.",
-  "ui.eps.why.parent1":"{n} résidu modifié en 2′ ({codes}) est compté comme sa base naturelle. Le groupement en 2′ ne fait pas partie de la base qui absorbe la lumière, c’est donc une bonne approximation.",
-  "ui.eps.why.parentN":"{n} résidus modifiés en 2′ ({codes}) sont comptés comme leurs bases naturelles. Le groupement en 2′ ne fait pas partie de la base qui absorbe la lumière, c’est donc une bonne approximation.",
+  "ui.eps.why.parent1":"{n} résidu modifié ({codes}) utilise la valeur approchée du composé parent indiquée ci-dessous.",
+  "ui.eps.why.parentN":"{n} résidus modifiés ({codes}) utilisent les valeurs approchées des composés parents indiquées ci-dessous.",
   "ui.eps.why.parentpub":"Pour le 2′-OMe, c’est une convention publiée par un fournisseur.",
   "ui.eps.why.unaff":"La masse moléculaire et la lecture en ng/µL ne sont pas affectées.",
   "ui.flash.antisense":"⚠ Corrigez d’abord le brin antisens",
@@ -11273,6 +11328,9 @@ var I18N = {
   "mk.0443":"Continuar",
   "mk.0444":"Oligo Calculator Pro",
   "ms.adducts":"Aductos de Na⁺ / K⁺",
+  "ms.env.method!":"La envolvente isotópica agrupa los isotopólogos de la fórmula por masa nominal y representa el m/z centroide de cada grupo a partir de abundancias isotópicas representativas fijas dentro de los intervalos CIAAW 2024; no predice la resolución instrumental, las poblaciones de aductos ni la fragmentación.",
+  "ms.env.summary!":"El pico nominal más abundante (●) tiene una diferencia de masa neutra de +{offset} Da respecto al pico monoisotópico (△): m/z {mz} frente a {mono} con una carga de {charge}; la altura de las barras indica la abundancia relativa (máximo = 100%), y los picos mostrados representan en conjunto el {coverage}% de la probabilidad total.",
+  "ms.env.title":"Envolvente isotópica",
   "pack.blurb!":"Un paquete de <b>{scans}</b> escaneos de fotos cuesta <b>{price}</b>, en un solo pago. No es una suscripción. <b>Los créditos no caducan nunca</b>, y tus escaneos mensuales se siguen renovando por su cuenta.",
   "punct.colon":": ",
   "punct.stop":". ",
@@ -11714,6 +11772,14 @@ var I18N = {
   "ui.eps.h.lblN":"ε₂₆₀ omite {n} marcadores.",
   "ui.eps.h.omit1":"ε₂₆₀ omite {n} residuo, así que sale bajo.",
   "ui.eps.h.omitN":"ε₂₆₀ omite {n} residuos, así que sale bajo.",
+  "ui.eps.record.condition":"{code}: una medición publicada para este monómero a pH 3,5 indica ε₂₆₀ = {value} M⁻¹ cm⁻¹ ({source}). Esta calculadora no ajusta ε₂₆₀ según el pH; la estimación anterior sigue utilizando el coeficiente del compuesto de referencia.",
+  "ui.eps.record.missing":"No hay ninguna fuente registrada.",
+  "ui.eps.record.own":"{code}: ε₂₆₀ = {value} M⁻¹ cm⁻¹. Fuente: el valor que introdujo para este monómero.",
+  "ui.eps.record.parent":"{code}: aproximación basada en {parent}, ε₂₆₀ = {value} M⁻¹ cm⁻¹. Fuente: {source}.",
+  "ui.eps.record.sugar!":"{code} utiliza ε₂₆₀ = {value} M⁻¹ cm⁻¹, medido directamente para el monómero de 5-metilcitidina con ribosa; no se midió la 5-metilcitidina con el azúcar {sugar} (fosfato 16 mM, pH 7.4 ± 0.1, λmax 278 nm; Finol et al., 2024, {source}).",
+  "ui.eps.record.superseded":"{code}: no se utilizó un valor impreso por el proveedor para este monómero ({note}).",
+  "ui.eps.record.term":"{code}: coeficiente ε₂₆₀ citado = {value} M⁻¹ cm⁻¹. Fuente: {source}.",
+  "ui.eps.record.unmeasured":"Este registro no incluye una medición específica de este residuo modificado; el valor citado corresponde a su compuesto de referencia.",
   "ui.eps.why.base1":"{n} monómero integrado en la cadena ({codes}) no tiene ε₂₆₀ publicado, así que aquí no suma nada.",
   "ui.eps.why.baseN":"{n} monómeros integrados en la cadena ({codes}) no tienen ε₂₆₀ publicado, así que aquí no suman nada.",
   "ui.eps.why.conj1":"{n} marcador ({codes}) no tiene ε₂₆₀ publicado, así que aquí no suma nada. Algunos marcadores absorben a 260 nm y otros no.",
@@ -11722,8 +11788,8 @@ var I18N = {
   "ui.eps.why.convN":"{n} monómeros ({codes}) se cuentan como sus bases de referencia, según una convención publicada.",
   "ui.eps.why.dir":"Por eso ε₂₆₀ sale bajo, y una concentración calculada a partir de A₂₆₀ sale alta.",
   "ui.eps.why.dirmay":"Si un marcador absorbe a 260 nm, ε₂₆₀ sale bajo y una concentración calculada a partir de A₂₆₀ sale alta.",
-  "ui.eps.why.parent1":"{n} residuo modificado en 2′ ({codes}) se cuenta como su base natural. El grupo 2′ no forma parte de la base que absorbe la luz, así que es una buena aproximación.",
-  "ui.eps.why.parentN":"{n} residuos modificados en 2′ ({codes}) se cuentan como sus bases naturales. El grupo 2′ no forma parte de la base que absorbe la luz, así que es una buena aproximación.",
+  "ui.eps.why.parent1":"{n} residuo modificado ({codes}) usa la aproximación del compuesto de referencia indicada a continuación.",
+  "ui.eps.why.parentN":"{n} residuos modificados ({codes}) usan las aproximaciones de los compuestos de referencia indicadas a continuación.",
   "ui.eps.why.parentpub":"Para el 2′-OMe, esa es una convención publicada por un proveedor.",
   "ui.eps.why.unaff":"El peso molecular y la lectura en ng/µL no se ven afectados.",
   "ui.flash.antisense":"⚠ Corrige primero la cadena antisentido",
@@ -13277,6 +13343,9 @@ var I18N = {
   "mk.0443":"Weiter",
   "mk.0444":"Oligo Calculator Pro",
   "ms.adducts":"Na⁺-/K⁺-Addukte",
+  "ms.env.method!":"Die Isotopenhülle gruppiert die Isotopologe der Formel nach nominaler Masse und stellt den m/z-Schwerpunkt jeder Gruppe anhand fester repräsentativer Isotopenhäufigkeiten innerhalb der CIAAW-2024-Bereiche dar; sie sagt weder Geräteauflösung noch Adduktpopulationen oder Fragmentierung voraus.",
+  "ms.env.summary!":"Der häufigste nominale Peak (●) hat gegenüber dem monoisotopischen Peak (△) eine Massendifferenz der neutralen Moleküle von +{offset} Da: m/z {mz} gegenüber {mono} bei Ladung {charge}; die Balkenhöhe zeigt die relative Häufigkeit (Maximum = 100%), und die dargestellten Peaks enthalten zusammen {coverage}% der Gesamtwahrscheinlichkeit.",
+  "ms.env.title":"Isotopenhülle",
   "pack.blurb!":"Ein Paket mit <b>{scans}</b> Fotoscans kostet <b>{price}</b>, einmalig gekauft. Kein Abonnement. <b>Das Guthaben verfällt nie</b>, und Ihre monatlichen Scans werden weiterhin von selbst zurückgesetzt.",
   "punct.colon":": ",
   "punct.stop":". ",
@@ -13718,6 +13787,14 @@ var I18N = {
   "ui.eps.h.lblN":"ε₂₆₀ lässt {n} Markierungen aus.",
   "ui.eps.h.omit1":"ε₂₆₀ lässt {n} Rest aus und fällt daher zu niedrig aus.",
   "ui.eps.h.omitN":"ε₂₆₀ lässt {n} Reste aus und fällt daher zu niedrig aus.",
+  "ui.eps.record.condition":"{code}: Eine veröffentlichte Messung für dieses Monomer bei pH 3,5 ergibt ε₂₆₀ = {value} M⁻¹ cm⁻¹ ({source}). Dieser Rechner korrigiert ε₂₆₀ nicht für den pH-Wert; der obige Schätzwert verwendet weiterhin den Koeffizienten der Stammverbindung.",
+  "ui.eps.record.missing":"Keine Quelle dokumentiert.",
+  "ui.eps.record.own":"{code}: ε₂₆₀ = {value} M⁻¹ cm⁻¹. Quelle: der von Ihnen für dieses Monomer eingegebene Wert.",
+  "ui.eps.record.parent":"{code}: Näherungswert auf Basis von {parent}, ε₂₆₀ = {value} M⁻¹ cm⁻¹. Quelle: {source}.",
+  "ui.eps.record.sugar!":"{code} verwendet ε₂₆₀ = {value} M⁻¹ cm⁻¹, direkt am 5-Methylcytidin-Monomer mit Ribose gemessen; 5-Methylcytidin mit dem Zucker {sugar} wurde nicht gemessen (16 mM Phosphat, pH 7.4 ± 0.1, λmax 278 nm; Finol et al., 2024, {source}).",
+  "ui.eps.record.superseded":"{code}: Ein vom Lieferanten angegebener Wert wurde für dieses Monomer nicht verwendet ({note}).",
+  "ui.eps.record.term":"{code}: zitierter ε₂₆₀-Wert = {value} M⁻¹ cm⁻¹. Quelle: {source}.",
+  "ui.eps.record.unmeasured":"In den dokumentierten Quellen wurde für diesen modifizierten Rest kein Messwert gefunden; der zitierte Wert gilt für die Stammverbindung.",
   "ui.eps.why.base1":"{n} Monomer in der Kette ({codes}) hat kein veröffentlichtes ε₂₆₀ und trägt hier daher nichts bei.",
   "ui.eps.why.baseN":"{n} Monomere in der Kette ({codes}) haben kein veröffentlichtes ε₂₆₀ und tragen hier daher nichts bei.",
   "ui.eps.why.conj1":"{n} Markierung ({codes}) hat kein veröffentlichtes ε₂₆₀ und trägt hier daher nichts bei. Manche Markierungen absorbieren bei 260 nm, andere nicht.",
@@ -13726,8 +13803,8 @@ var I18N = {
   "ui.eps.why.convN":"{n} Monomere ({codes}) werden nach einer veröffentlichten Konvention als die Basen ihrer Stammverbindungen gezählt.",
   "ui.eps.why.dir":"Daher fällt ε₂₆₀ zu niedrig aus, und eine aus A₂₆₀ berechnete Konzentration zu hoch.",
   "ui.eps.why.dirmay":"Absorbiert eine Markierung bei 260 nm, fällt ε₂₆₀ zu niedrig aus und eine aus A₂₆₀ berechnete Konzentration zu hoch.",
-  "ui.eps.why.parent1":"{n} 2′-modifizierter Rest ({codes}) wird als seine natürliche Base gezählt. Die 2′-Gruppe gehört nicht zur lichtabsorbierenden Base, daher ist dies eine gute Näherung.",
-  "ui.eps.why.parentN":"{n} 2′-modifizierte Reste ({codes}) werden als ihre natürlichen Basen gezählt. Die 2′-Gruppe gehört nicht zur lichtabsorbierenden Base, daher ist dies eine gute Näherung.",
+  "ui.eps.why.parent1":"Für {n} modifizierten Rest ({codes}) wird der unten dokumentierte Näherungswert der Stammverbindung verwendet.",
+  "ui.eps.why.parentN":"Für {n} modifizierte Reste ({codes}) werden die unten dokumentierten Näherungswerte der Stammverbindungen verwendet.",
   "ui.eps.why.parentpub":"Für 2′-OMe ist das eine von einem Lieferanten veröffentlichte Konvention.",
   "ui.eps.why.unaff":"Das Molekulargewicht und der ng/µL-Wert sind davon nicht betroffen.",
   "ui.flash.antisense":"⚠ Korrigieren Sie zuerst den Antisense-Strang",
@@ -18786,11 +18863,212 @@ const SUGAR_LABEL  = { d:"DNA", r:"RNA", m:"2′-OMe", f:"2′-F", moe:"2′-MOE
 
 
 
+
+
+
 const SUGAR_EPS_RECORD = {
-  m:   { basis:"parent", table:"RNA", source:{ vendor:"LGC", doc:"bti_modification_data.pdf", md5:"79c69ccb29b263cacd0ae77cba81385e", fetched:"2026-09-02", printed:"MeOU=rU=9900" }, see:"docs/EPS-TERMS-SOURCING.md" },
-  f:   { basis:"parent", table:"RNA", source:null, searched:"EPS-TERMS-2026-09-02", see:"docs/EPS-TERMS-SOURCING.md" },
-  moe: { basis:"parent", table:"RNA", source:null, searched:"EPS-TERMS-2026-09-02", see:"docs/EPS-TERMS-SOURCING.md" },
-  cEt: { basis:"parent", table:"RNA", source:null, searched:"EPS-TERMS-2026-09-02", see:"docs/EPS-TERMS-SOURCING.md" },
+  "m": {
+    "basis": "parent",
+    "table": "RNA",
+    "source": {
+      "vendor": "LGC",
+      "doc": "bti_modification_data.pdf",
+      "md5": "79c69ccb29b263cacd0ae77cba81385e",
+      "fetched": "2026-09-02",
+      "printed": "MeOU=rU=9900"
+    },
+    "searched": "ORACLES-2-2026-09-13",
+    "residues": {
+      "A": {
+        "parent": "A",
+        "value": 15400,
+        "basis": "parent",
+        "reference": "adenosine (rA)",
+        "source": "https://oligos.biosearchtech.com/Content/files/bti_modification_data.pdf",
+        "searched": "ORACLES-2-2026-09-13"
+      },
+      "C": {
+        "parent": "C",
+        "value": 7200,
+        "basis": "parent",
+        "reference": "cytidine (rC)",
+        "source": "https://oligos.biosearchtech.com/Content/files/bti_modification_data.pdf",
+        "searched": "ORACLES-2-2026-09-13",
+        "conditionMeasurement": {
+          "value": 6079.69,
+          "pH": 3.5,
+          "buffer": "HCOOH(aq),0.01%",
+          "temperature": "RT;exact-T-unspecified",
+          "source": "https://doi.org/10.1093/nar/gkv971"
+        }
+      },
+      "G": {
+        "parent": "G",
+        "value": 11500,
+        "basis": "parent",
+        "reference": "guanosine (rG)",
+        "source": "https://oligos.biosearchtech.com/Content/files/bti_modification_data.pdf",
+        "searched": "ORACLES-2-2026-09-13",
+        "conditionMeasurement": {
+          "value": 8992.65,
+          "pH": 3.5,
+          "buffer": "HCOOH(aq),0.01%",
+          "temperature": "RT;exact-T-unspecified",
+          "source": "https://doi.org/10.1093/nar/gkv971"
+        }
+      },
+      "U": {
+        "parent": "U",
+        "value": 9900,
+        "basis": "parent",
+        "reference": "uridine (rU)",
+        "source": "https://oligos.biosearchtech.com/Content/files/bti_modification_data.pdf",
+        "searched": "ORACLES-2-2026-09-13",
+        "conditionMeasurement": {
+          "value": 8234.7,
+          "pH": 3.5,
+          "buffer": "HCOOH(aq),0.01%",
+          "temperature": "RT;exact-T-unspecified",
+          "source": "https://doi.org/10.1093/nar/gkv971"
+        }
+      }
+    }
+  },
+  "f": {
+    "basis": "parent",
+    "table": "RNA",
+    "source": null,
+    "searched": "ORACLES-2-2026-09-13",
+    "residues": {
+      "A": {
+        "parent": "A",
+        "value": 15400,
+        "basis": "parent",
+        "reference": "adenosine (rA)",
+        "source": "https://oligos.biosearchtech.com/Content/files/bti_modification_data.pdf",
+        "searched": "ORACLES-2-2026-09-13"
+      },
+      "C": {
+        "parent": "C",
+        "value": 7200,
+        "basis": "parent",
+        "reference": "cytidine (rC)",
+        "source": "https://oligos.biosearchtech.com/Content/files/bti_modification_data.pdf;https://doi.org/10.1089/nat.2011.0288",
+        "searched": "ORACLES-2-2026-09-13"
+      },
+      "G": {
+        "parent": "G",
+        "value": 11500,
+        "basis": "parent",
+        "reference": "guanosine (rG)",
+        "source": "https://oligos.biosearchtech.com/Content/files/bti_modification_data.pdf",
+        "searched": "ORACLES-2-2026-09-13"
+      },
+      "U": {
+        "parent": "U",
+        "value": 9900,
+        "basis": "parent",
+        "reference": "uridine (rU)",
+        "source": "https://oligos.biosearchtech.com/Content/files/bti_modification_data.pdf;https://doi.org/10.1089/nat.2011.0288",
+        "searched": "ORACLES-2-2026-09-13"
+      }
+    }
+  },
+  "moe": {
+    "basis": "parent",
+    "table": "RNA",
+    "source": null,
+    "searched": "ORACLES-2-2026-09-13",
+    "residues": {
+      "A": {
+        "parent": "A",
+        "value": 15400,
+        "basis": "parent",
+        "reference": "adenosine (rA)",
+        "source": "https://oligos.biosearchtech.com/Content/files/bti_modification_data.pdf",
+        "searched": "ORACLES-2-2026-09-13"
+      },
+      "C": {
+        "parent": "C",
+        "value": 5199,
+        "basis": "monomer",
+        "reference": "5-methylcytidine (ribose)",
+        "source": "https://doi.org/10.1016/j.omtn.2024.102171",
+        "searched": "EPS-ENVELOPE-2026-09-13",
+        "sugarTransfer": "2′-MOE",
+        "measurement": {
+          "compound": "5-methylcytidine",
+          "sugar": "ribose",
+          "pH": 7.4,
+          "pHTolerance": 0.1,
+          "phosphate_mM": 16,
+          "solvent": "H2O",
+          "lambdaMaxNm": 278,
+          "epsilonMax": 7948,
+          "temperature": null,
+          "table": "S5",
+          "direct": true,
+          "instrument": "Cary100"
+        }
+      },
+      "G": {
+        "parent": "G",
+        "value": 11500,
+        "basis": "parent",
+        "reference": "guanosine (rG)",
+        "source": "https://oligos.biosearchtech.com/Content/files/bti_modification_data.pdf",
+        "searched": "ORACLES-2-2026-09-13"
+      },
+      "U": {
+        "parent": "T",
+        "value": 8700,
+        "basis": "parent",
+        "reference": "thymidine (dT)",
+        "source": "https://doi.org/10.1093/nar/gkh154",
+        "searched": "ORACLES-2-2026-09-13"
+      }
+    }
+  },
+  "cEt": {
+    "basis": "parent",
+    "table": "RNA",
+    "source": null,
+    "searched": "ORACLES-2-2026-09-13",
+    "residues": {
+      "A": {
+        "parent": "A",
+        "value": 15400,
+        "basis": "parent",
+        "reference": "adenosine (rA)",
+        "source": "https://oligos.biosearchtech.com/Content/files/bti_modification_data.pdf",
+        "searched": "ORACLES-2-2026-09-13"
+      },
+      "C": {
+        "parent": "C",
+        "value": 7200,
+        "basis": "parent",
+        "reference": "cytidine (rC)",
+        "source": "https://oligos.biosearchtech.com/Content/files/bti_modification_data.pdf",
+        "searched": "ORACLES-2-2026-09-13"
+      },
+      "G": {
+        "parent": "G",
+        "value": 11500,
+        "basis": "parent",
+        "reference": "guanosine (rG)",
+        "source": "https://oligos.biosearchtech.com/Content/files/bti_modification_data.pdf",
+        "searched": "ORACLES-2-2026-09-13"
+      },
+      "U": {
+        "parent": "U",
+        "value": 9900,
+        "basis": "parent",
+        "reference": "uridine (rU)",
+        "source": "https://oligos.biosearchtech.com/Content/files/bti_modification_data.pdf",
+        "searched": "ORACLES-2-2026-09-13"
+      }
+    }
+  }
 };
 const PREFIXES = ["cEt","moe","m","f","d","r"];                  
 const LINK = { PO:61.964, PS:78.025 };                           
@@ -18884,7 +19162,7 @@ function modMassVal(){ return ocNumIn(S.modMass)||0; }
 
 let CUSTOM = Object.create(null);    
 let cbEditCode = '';  
-function rebuildCustom(){ CUSTOM=Object.create(null); ((typeof S!=='undefined'&&S.customBases)||[]).forEach(c=>{ const conj=(c.kind==='conj'); CUSTOM[c.code]={...c, nobond:conj, eff: conj ? c.mass : (c.hasPhos ? (c.mass-LINK.PO) : c.mass)}; }); }
+function rebuildCustom(){ CUSTOM=Object.create(null); ((typeof S!=='undefined'&&S.customBases)||[]).forEach(c=>{ const conj=(c.kind==='conj'); CUSTOM[c.code]={...c, nobond:conj, eff: conj ? c.mass : (c.hasPhos ? (c.mass-LINK.PO) : c.mass), eps260_source:epsSourceNorm(c.eps260_source)}; }); }
 
  
 const EXT_MONO = {
@@ -18938,7 +19216,15 @@ function epsilon260(tokens){
   };
   const segs=[[]]; let terms=0;
   (tokens||[]).forEach(t=>{
-    if(!t.custom){ segs[segs.length-1].push(t); return; }
+    if(!t.custom){
+      const group=SUGAR_EPS_RECORD[t.sugar], r=group&&group.residues&&group.residues[t.base];
+      if(r){
+        const pb=r.parent==='T'?'U':r.parent;
+        segs[segs.length-1].push({sugar:'r',base:r.parent});
+        terms += r.value-(EXT_MONO.RNA[pb]||0);
+      }else segs[segs.length-1].push(t);
+      return;
+    }
     const c=rec(t), basis=c&&c.eps260_basis, v=c&&c.eps260, p=c&&c.eps260_parent;
     const sug=(c&&(c.sugar==='d'||c.sugar==='lna'||c.sugar==='bna'))?'d':'r', tbl=(sug==='d')?'DNA':'RNA';
     if(p && (basis==='parent'||basis==='monomer'||basis==='label')){
@@ -19005,12 +19291,30 @@ function epsQuality(tokens){
       if(c && c.kind==='conj') excludedConj.push(t.code); else excludedBases.push(t.code);
       return;
     }
-    if(t.sugar!=='d' && t.sugar!=='r'){ parentCount++; if(parentApprox.indexOf(t.sugar)<0) parentApprox.push(t.sugar); }
+    var sr=SUGAR_EPS_RECORD[t.sugar], rr=sr&&sr.residues&&sr.residues[t.base];
+    if(t.sugar!=='d' && t.sugar!=='r' && !(rr&&rr.sugarTransfer)){ parentCount++; if(parentApprox.indexOf(t.sugar)<0) parentApprox.push(t.sugar); }
+  });
+  var sourceRows=[], seen=Object.create(null);
+  (tokens||[]).forEach(function(t){
+    var code=t.custom?t.code:t.sugar+'.'+t.base, r=null;
+    if(seen[code]) return; seen[code]=true;
+    if(t.custom){
+      var c=null; try{c=CUSTOM[t.code];}catch(_){}
+      if(!c) return;
+      var p=c.eps260_parent, b=c.eps260_basis, table=(c.sugar==='d'||c.sugar==='lna'||c.sugar==='bna')?'DNA':'RNA';
+      var pb=table==='DNA'?(p==='U'?'T':p):(p==='T'?'U':p);
+      var parent=!!(p&&(b==='parent'||((b==='monomer'||b==='label')&&typeof c.eps260!=='number')));
+      if(parent||withTerm.indexOf(t.code)>=0) r={code:code,basis:parent?'parent':b,parent:p||'',reference:p||'',value:parent?EXT_MONO[table][pb]:c.eps260,source:c.eps260_source||null,sugarTransfer:c.eps260_source&&c.eps260_source.sugarTransfer};
+    }else{
+      var g=SUGAR_EPS_RECORD[t.sugar], rr=g&&g.residues&&g.residues[t.base];
+      if(rr) r=Object.assign({code:code},rr);
+    }
+    if(r) sourceRows.push(r);
   });
   var excluded=excludedBases.concat(excludedConj);
-  if(!parentApprox.length && !parentOnly.length && !excluded.length) return null;
+  if(!parentApprox.length && !parentOnly.length && !excluded.length && !sourceRows.length) return null;
   return { mod:(parentApprox.length>0||parentOnly.length>0), conj:(excluded.length>0),
-    parentApprox:parentApprox, parentCount:parentCount, parentOnly:parentOnly, withTerm:withTerm,
+    sourceRows:sourceRows, parentApprox:parentApprox, parentCount:parentCount, parentOnly:parentOnly, withTerm:withTerm,
     excluded:excluded, excludedBases:excludedBases, excludedConj:excludedConj };
 }
 
@@ -19032,6 +19336,26 @@ window.epsQuality=epsQuality;
 
 
 function epsNoteParts(q){
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  function _epsSuperseded(why,T,r,source){
+    if(!source || typeof source!=='object') return;
+    if(r.basis==='parent' || r.value==null || !source.excluded) return;
+    why.push(T('ui.eps.record.superseded',{code:r.code,note:source.excluded}));
+  }
   var T=function(k,v){ return (typeof window.t==='function') ? window.t(k,v) : k; };
   var N=function(x){ return (typeof window.ocNumFmt==='function') ? window.ocNumFmt(x) : String(x); };
   var uniq=function(a){ return a.filter(function(x,i){ return a.indexOf(x)===i; }).join(', '); };
@@ -19046,6 +19370,80 @@ function epsNoteParts(q){
   if(nb) why.push(T(nb===1?'ui.eps.why.base1':'ui.eps.why.baseN',{n:N(nb), codes:uniq(q.excludedBases)}));
   if(nc) why.push(T(nc===1?'ui.eps.why.conj1':'ui.eps.why.conjN',{n:N(nc), codes:uniq(q.excludedConj)}));
   if(nb) why.push(T('ui.eps.why.dir')); else if(nc) why.push(T('ui.eps.why.dirmay'));
+  (q.sourceRows||[]).forEach(function(r){
+    var source=r.source;
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    var cite=(function(s){
+      if(!s) return '';
+      if(typeof s==='string') return s;                         
+      if(s.citation) return s.citation;
+      if(s.vendor && s.vendor!=='user' && s.doc_url) return s.vendor+', '+s.doc_url;
+      if(s.vendor && s.vendor!=='user') return s.vendor;
+      if(s.doc_url) return s.doc_url;
+      return s.excluded||'';
+    })(source);
+    
+
+
+
+
+
+
+
+
+
+
+
+    var _noSrc=String(T('ui.eps.record.missing')).replace(/[.\u3002\uFF0E\uFF61]+\s*$/,'');
+    if(r.sugarTransfer){
+      why.push(T('ui.eps.record.sugar!',{code:r.code,sugar:r.sugarTransfer,value:N(r.value),source:cite||_noSrc}));
+      _epsSuperseded(why,T,r,source);
+      return;
+    }
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+    if(source && typeof source==='object' && source.vendor==='user' && !source.citation && !source.doc_url){
+      why.push(T('ui.eps.record.own',{code:r.code,value:N(r.value)}));
+      return;
+    }
+    why.push(T(r.basis==='parent'?'ui.eps.record.parent':'ui.eps.record.term',{code:r.code,parent:r.reference||r.parent,value:N(r.value),source:cite||_noSrc}));
+    _epsSuperseded(why,T,r,source);
+    if(r.basis==='parent'){
+      var cm=r.conditionMeasurement;
+      if(cm) why.push(T('ui.eps.record.condition',{code:r.code,value:N(cm.value),source:cm.source}));
+      else why.push(T('ui.eps.record.unmeasured'));
+    }
+  });
   why.push(T('ui.eps.why.unaff'));
   return { head:head, why:why, text:head+' '+why.join(' ') };
 }
@@ -21128,6 +21526,43 @@ function catalogCodeReserved(code){
   return typeof RESERVED_CODES!=='undefined' && RESERVED_CODES &&
     typeof RESERVED_CODES.has==='function' && RESERVED_CODES.has(code);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function epsSourceNorm(v){
+  
+
+
+
+
+  var EPS_SRC_MAX = 512;
+  var EPS_SRC_KEYS = ['citation','doc_url','vendor','sugarTransfer','excluded'];
+  if(!v || typeof v!=='object' || Array.isArray(v)) return null;
+  var out=null;
+  for(var i=0;i<EPS_SRC_KEYS.length;i++){
+    var k=EPS_SRC_KEYS[i], s=v[k];
+    if(typeof s!=='string') continue;
+    s=s.trim();
+    if(!s || s.length>EPS_SRC_MAX) continue;
+    if(!out) out=Object.create(null);                   
+    out[k]=s;
+  }
+  return out;
+}
 function catalogReady(cat){
   
 
@@ -21408,7 +21843,24 @@ async function fetchFromSupabase(){
 
 
   const hdr = { headers:{ apikey:key, Authorization:'Bearer '+(tok||key), Accept:'application/json' } };
-  let res = await fetchT(`${base}/rest/v1/monomers?select=${encodeURIComponent(sel+',eps260,eps260_basis,eps260_parent')}`, hdr, 15000);
+  
+
+
+
+
+
+
+
+
+
+
+  const epsSel = 'eps260,eps260_basis,eps260_parent,'
+               + 'eps260_citation:eps260_source->>citation,'
+               + 'eps260_docurl:eps260_source->>doc_url,'
+               + 'eps260_vendor:eps260_source->>vendor,'
+               + 'eps260_sugartransfer:eps260_source->>sugarTransfer,'
+               + 'eps260_excluded:eps260_source->>excluded';
+  let res = await fetchT(`${base}/rest/v1/monomers?select=${encodeURIComponent(sel+','+epsSel)}`, hdr, 15000);
   if(res.status===400) res = await fetchT(`${base}/rest/v1/monomers?select=${encodeURIComponent(sel)}`, hdr, 15000);
   if(!res.ok) throw new Error('Supabase '+res.status+' '+(await res.text()).slice(0,160));
   const rows = await res.json();
@@ -21417,6 +21869,12 @@ async function fetchFromSupabase(){
     hasPhos:!!m.has_phos, mass:Number(m.mass),
     verified:!!m.verified, verification:m.verification||'',
     eps260:(m.eps260!=null&&isFinite(Number(m.eps260))?Number(m.eps260):null), eps260_basis:m.eps260_basis||null, eps260_parent:m.eps260_parent||null,    
+    
+
+
+
+    eps260_source:epsSourceNorm({ citation:m.eps260_citation, doc_url:m.eps260_docurl, vendor:m.eps260_vendor,
+                                  sugarTransfer:m.eps260_sugartransfer, excluded:m.eps260_excluded }),
     vendor_products:(m.vendor_products||[]).map(v=>({
       vendor:v.vendor, catalog_no:v.catalog_no, product_name:v.product_name, source:v.source||'' }))
   }));
@@ -21456,6 +21914,12 @@ function mergeCatalogIntoCustom(){
       if(u.eps260_basis==null && u.name===c.name && Number(u.mass)===Number(c.mass)){
         u.sugar=u.sugar||c.sugar||''; u.eps260=(typeof c.eps260==='number'?c.eps260:null);
         u.eps260_basis=c.eps260_basis||null; u.eps260_parent=c.eps260_parent||null;
+        
+
+
+
+
+        u.eps260_source=epsSourceNorm(c.eps260_source);
       }
       return;
     }
@@ -21476,7 +21940,9 @@ function mergeCatalogIntoCustom(){
     CUSTOM[c.code]={ code:c.code, name:c.name, mass:c.mass, hasPhos:!!c.hasPhos, kind:c.kind||'base', formula:c.nucleoside_formula||c.formula||'',
       nobond:conj, eff: conj ? c.mass : (c.hasPhos ? c.mass-LINK.PO : c.mass), _catalog:true,
        
-      sugar:c.sugar||'', eps260:(typeof c.eps260==='number'?c.eps260:null), eps260_basis:c.eps260_basis||null, eps260_parent:c.eps260_parent||null };
+      sugar:c.sugar||'', eps260:(typeof c.eps260==='number'?c.eps260:null), eps260_basis:c.eps260_basis||null, eps260_parent:c.eps260_parent||null,
+       
+      eps260_source:epsSourceNorm(c.eps260_source) };
   });
 }
 const __origRebuildCustom = rebuildCustom;              
@@ -21870,6 +22336,9 @@ function showNotice(id, opts){
   opts=opts||{};
   var el=document.getElementById(id);
   if(!el){ el=document.createElement('div'); el.id=id; noticeHost().appendChild(el); }
+   
+  if(el._oligoNoticeTimer){ clearTimeout(el._oligoNoticeTimer); el._oligoNoticeTimer=null; }
+  var lifetime={}; el._oligoNoticeLifetime=lifetime;
   el.className='oligo-notice'+(opts.kind?(' '+opts.kind):'');
   
 
@@ -21895,6 +22364,11 @@ function showNotice(id, opts){
     a2.addEventListener('click',function(ev){ ev.stopPropagation(); if(opts.onAction2) opts.onAction2(); });
     el.appendChild(a2); }
   if(opts.dismissible){ var x=document.createElement('button'); x.type='button'; x.className='x'; x.setAttribute('aria-label','Dismiss'); x.textContent='✕'; x.addEventListener('click',function(ev){ ev.stopPropagation(); el.remove(); if(opts.onDismiss) opts.onDismiss(); }); el.appendChild(x); }
+  if(typeof opts.duration==='number' && opts.duration>0){
+    el._oligoNoticeTimer=setTimeout(function(){
+      if(document.getElementById(id)===el && el._oligoNoticeLifetime===lifetime) removeNotice(id);
+    },opts.duration);
+  }
   return el;
 }
 function removeNotice(id){ var el=document.getElementById(id); if(el) el.remove(); }
@@ -21976,8 +22450,7 @@ var _deferredPrompt=null;
 function chip(text, onClick){
   try{
     if(onClick){ showNotice('pwaChip', { text:text, action:'Install', onAction:onClick, dismissible:true, onDismiss:function(){ var m=pwaMeta(); m.dismissed=true; setPwaMeta(m); } }); }
-    else { var el=showNotice('pwaChip', { text:text, dismissible:true, onDismiss:function(){ var m=pwaMeta(); m.dismissed=true; setPwaMeta(m); } });
-      setTimeout(function(){ var e2=document.getElementById('pwaChip'); if(e2===el) removeNotice('pwaChip'); }, 12000); }
+    else { showNotice('pwaChip', { text:text, dismissible:true, duration:12000, onDismiss:function(){ var m=pwaMeta(); m.dismissed=true; setPwaMeta(m); } }); }
   }catch(_){   }
 }
 function initInstallAffordance(){
@@ -23983,6 +24456,8 @@ function _syncDilActions(){
 function renderMSShell(){
   if(!document.getElementById('panel-ms')) return;
   var d=msData(S.seq,S.type,S.linkage);
+   
+  window.__ocEpsEnvelopeMSData=d;
   var monoOK=d.mono!=null;
   var basis=(S.msBasis==='mono'&&monoOK)?'mono':'avg';
   var mode=S.msMode==='pos'?'pos':'neg';
@@ -24882,15 +25357,15 @@ document.body.addEventListener('click', function(e){
 
 
 
-  if(ex){ if(typeof exportHistoryCSV==='function'){ var sel=window.oligoSheetHost.selected()||[]; if(!sel.length){ if(window.__oligoNotice){ window.__oligoNotice('oligoShareToast',{text:(typeof window.t==='function'?window.t('lab.sel.none'):''),dismissible:true}); setTimeout(function(){ if(window.__oligoRemoveNotice) window.__oligoRemoveNotice('oligoShareToast'); },5000); } return; } exportHistoryCSV(sel); } return; }
+  if(ex){ if(typeof exportHistoryCSV==='function'){ var sel=window.oligoSheetHost.selected()||[]; if(!sel.length){ if(window.__oligoNotice){ window.__oligoNotice('oligoShareToast',{text:(typeof window.t==='function'?window.t('lab.sel.none'):''),dismissible:true,duration:5000}); } return; } exportHistoryCSV(sel); } return; }
   var shs=e.target.closest('.view-hist [data-hsharesel]');
   
 
 
-  if(shs){ var selS=window.oligoSheetHost.selected()||[]; if(!selS.length){ if(window.__oligoNotice){ window.__oligoNotice('oligoShareToast',{text:'Select one or more strands to share.',dismissible:true}); setTimeout(function(){ if(window.__oligoRemoveNotice) window.__oligoRemoveNotice('oligoShareToast'); },3400); } } else if(window.oligoShare){ window.oligoShare.shareStrands(selS); } return; }
+  if(shs){ var selS=window.oligoSheetHost.selected()||[]; if(!selS.length){ if(window.__oligoNotice){ window.__oligoNotice('oligoShareToast',{text:'Select one or more strands to share.',dismissible:true,duration:3400}); } } else if(window.oligoShare){ window.oligoShare.shareStrands(selS); } return; }
   var clb=e.target.closest('.view-hist [data-hcopylab]');
    
-  if(clb){ var selL=window.oligoSheetHost.selected()||[]; if(!selL.length){ if(window.__oligoNotice){ window.__oligoNotice('oligoShareToast',{text:(typeof window.t==='function'?window.t('lab.mv.none'):''),dismissible:true}); setTimeout(function(){ if(window.__oligoRemoveNotice) window.__oligoRemoveNotice('oligoShareToast'); },5000); } return; } if(!(window.oligoLabLib&&window.oligoLabLib.copyToLab)){ if(window.__oligoNotice){ window.__oligoNotice('oligoShareToast',{text:(typeof window.t==='function'?window.t('lab.mv.signin'):''),dismissible:true}); } return; } clb.disabled=true;
+  if(clb){ var selL=window.oligoSheetHost.selected()||[]; if(!selL.length){ if(window.__oligoNotice){ window.__oligoNotice('oligoShareToast',{text:(typeof window.t==='function'?window.t('lab.mv.none'):''),dismissible:true,duration:5000}); } return; } if(!(window.oligoLabLib&&window.oligoLabLib.copyToLab)){ if(window.__oligoNotice){ window.__oligoNotice('oligoShareToast',{text:(typeof window.t==='function'?window.t('lab.mv.signin'):''),dismissible:true}); } return; } clb.disabled=true;
     Promise.resolve(window.oligoLabLib.copyToLab(selL))
       .then(function(){
          
@@ -24915,8 +25390,7 @@ document.body.addEventListener('click', function(e){
         try{ if(typeof ocFail==='function') ocFail('hcopylab#1',err); }catch(_e){}
         var _m=''; try{ _m=String((err&&err.message)||err||''); }catch(_e){}
         if(!_m && typeof window.t==='function'){ try{ _m=window.t('lab.mv.pfail',{n:selL.length}); }catch(_e){} }
-        try{ if(window.__oligoNotice){ window.__oligoNotice('oligoShareToast',{text:_m,dismissible:true});
-          setTimeout(function(){ if(window.__oligoRemoveNotice) window.__oligoRemoveNotice('oligoShareToast'); },5000); }
+        try{ if(window.__oligoNotice){ window.__oligoNotice('oligoShareToast',{text:_m,dismissible:true,duration:5000}); }
           else if(typeof toast==='function') toast(_m); }catch(_e){}
       })
       .then(function(){ clb.disabled=false; });
@@ -27485,7 +27959,8 @@ body[data-seqfocus="antisense"] .warn[data-antiwarn]{display:none}
 
 .eps-note{margin:-2px 0 8px; font-size:11.5px; line-height:1.45; color:var(--muted); max-width:62ch}
 .eps-note[hidden]{display:none}
-#c-eps-est{display:flex; align-items:baseline; gap:6px}
+#c-eps-est{display:flex; align-items:baseline; gap:6px; min-width:0; overflow-wrap:anywhere}
+.rn-why,.r-notice-more{overflow-wrap:anywhere}
 
 
 
@@ -28662,6 +29137,25 @@ html[data-lab-live="1"] body:not([data-tab="lab"]) .tabnav #tab-lab .ic{color:va
 @media(min-width:1100px){.r1-view[data-r1-mode="3d"] .r1-svg,.r2-view .r1-svg{height:520px;}}
 #ocFoldOvl .r2-view .r1-svg{height:clamp(360px,65dvh,620px);}
 @media(max-height:500px){.r1-view[data-r1-mode="3d"] .r1-svg,.r2-view .r1-svg,#ocFoldOvl .r2-view .r1-svg{height:300px;}}
+
+
+.ms-envelope{margin:12px 0 20px;padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--text);min-width:0;overflow-wrap:anywhere}
+.ms-envelope[hidden]{display:none}
+.ms-env-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.ms-env-head h3{margin:0;font-family:var(--font-head);font-size:14px}
+.ms-env-head label{display:flex;align-items:center;gap:8px;font-size:12px}
+.ms-env-head select{min-height:44px;min-width:64px;background:var(--surface-2);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:4px 8px;font-family:var(--font-num)}
+.ms-env-head select:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.ms-env-chart{width:100%;min-width:0;margin-top:10px}
+.ms-env-chart svg{display:block;overflow:visible}
+.ms-env-chart text{font-family:var(--font-num);font-size:12px;fill:var(--text)}
+.ms-env-axis path{stroke:var(--text);fill:none}
+.ms-env-bar{fill:var(--accent-2)}
+body[data-mode="dark"] .ms-env-bar{fill:var(--accent)}
+.ms-env-mono{fill:var(--surface);stroke:var(--text);stroke-width:1.5}
+.ms-env-mode{fill:var(--text)}
+.ms-env-summary,.ms-env-method{font-size:12px;line-height:1.6;margin:10px 0 0;overflow-wrap:anywhere}
+.ms-env-method{color:var(--muted)}
 </style>
 <script id="oligo-share-js">
 
@@ -28676,7 +29170,7 @@ try{
   function encJson(o){ return b64uEnc(new TextEncoder().encode(JSON.stringify(o))); }
   function decJson(b){ return JSON.parse(new TextDecoder().decode(b64uDec(b))); }
   function toast(t){ try{ if(window.oligoAnnounce) window.oligoAnnounce(t);    
-    showNotice('oligoShareToast',{text:t,dismissible:true,announced:true}); setTimeout(function(){ try{ removeNotice('oligoShareToast'); }catch(_){   } },3400); }catch(_){   } }
+    showNotice('oligoShareToast',{text:t,dismissible:true,announced:true,duration:3400}); }catch(_){   } }
 
   
 
@@ -28906,7 +29400,19 @@ try{
     var c=CUSTOM[code]; return c&&c._shared!==true?c:null;
   }
   function mergeSessionDefs(defs){ (defs||[]).forEach(function(c){ if(CUSTOM[c.code]) return; var conj=(c.kind==='conj'); CUSTOM[c.code]={code:c.code,name:c.name,mass:c.mass,hasPhos:!!c.hasPhos,kind:c.kind||'base',formula:c.formula||'',nobond:conj,eff:conj?c.mass:(c.hasPhos?c.mass-LINK.PO:c.mass),_shared:true,
-    sugar:c.sugar||'', eps260:(typeof c.eps260==='number'?c.eps260:null), eps260_basis:c.eps260_basis||null, eps260_parent:c.eps260_parent||null}; }); }    
+    sugar:c.sugar||'', eps260:(typeof c.eps260==='number'?c.eps260:null), eps260_basis:c.eps260_basis||null, eps260_parent:c.eps260_parent||null}; }); }
+  
+
+
+
+
+
+
+
+
+
+
+
   
 
 
@@ -29226,7 +29732,7 @@ try{
   function _q(s,r){ return (r||document).querySelector(s); }
   function esc(s){ return ocEsc(s); }    
   function toast(t){ try{ if(window.oligoAnnounce) window.oligoAnnounce(t);    
-    showNotice('oligoLabToast',{text:t,dismissible:true,announced:true}); setTimeout(function(){ try{ removeNotice('oligoLabToast'); }catch(_){   } },3600); }catch(_){   } }
+    showNotice('oligoLabToast',{text:t,dismissible:true,announced:true,duration:3600}); }catch(_){   } }
   function isPro(){ try{ return (typeof proIsPro!=='undefined') && !!proIsPro; }catch(_){ return false; } }
   function signedIn(){ try{ return !!(typeof proSession==='function' && proSession()); }catch(_){ return false; } }
 
@@ -30358,7 +30864,7 @@ try{
   function _q(s,r){ return (r||document).querySelector(s); }
   function esc(s){ return ocEsc(s); }    
   function toast(t){ try{ if(window.oligoAnnounce) window.oligoAnnounce(t);    
-    showNotice('oligoLabToast',{text:t,dismissible:true,announced:true}); setTimeout(function(){ try{ removeNotice('oligoLabToast'); }catch(_){   } },3600); }catch(_){   } }
+    showNotice('oligoLabToast',{text:t,dismissible:true,announced:true,duration:3600}); }catch(_){   } }
   
 
 
@@ -30369,10 +30875,9 @@ try{
 
   function toastAct(t, label, fn){
     try{ if(window.oligoAnnounce) window.oligoAnnounce(t);
-      showNotice('oligoLabToast',{text:t,dismissible:true,announced:true,action:label,
+      showNotice('oligoLabToast',{text:t,dismissible:true,announced:true,duration:8000,action:label,
         onAction:function(){ try{ removeNotice('oligoLabToast'); }catch(_){ }
                              try{ fn(); }catch(_e){ ocFail('labed#openit',_e); } }});
-      setTimeout(function(){ try{ removeNotice('oligoLabToast'); }catch(_){ } },8000);
     }catch(_){ try{ toast(t); }catch(_e){ ocFail('labed#toastact',_e); } }
   }
   function meta(){ try{ return JSON.parse(localStorage.getItem(LAB_KEY)||'{}'); }catch(_){ return {}; } }
@@ -34071,7 +34576,7 @@ try{
       for(var i=0;i<entries.length;i++){ var k=keyOf(entries[i]); if(have[k]){ dupe++; continue; } try{ await addToLab(entries[i], labId); have[k]=1; copied++; }catch(_){ failed++; } }
       var msg;
       var labMsg=function(t){ try{ if(window.oligoAnnounce) window.oligoAnnounce(t); }catch(_e){ ocFail('labMsg#0',_e); }
-        if(window.__oligoNotice){ window.__oligoNotice('oligoLabToast',{text:t,dismissible:true,announced:true}); setTimeout(function(){ if(window.__oligoRemoveNotice) window.__oligoRemoveNotice('oligoLabToast'); },5000); } else toast(t); };
+        if(window.__oligoNotice){ window.__oligoNotice('oligoLabToast',{text:t,dismissible:true,announced:true,duration:5000}); } else toast(t); };
       if(copied===0 && failed===0 && dupe>0){ msg=(dupe===1?_t('lab.mv.dupe1',{labname:labNm}):_t('lab.mv.dupeN',{n:_n(dupe),labname:labNm})); }
       else if(copied>0 && dupe===0 && failed===0){ msg=_t(copied===1?'lab.mv.ok1':'lab.mv.okN',{n:_n(copied),labname:labNm}); }
       else { var parts=[]; if(copied)parts.push(_t('lab.mv.pmoved',{n:_n(copied)})); if(dupe)parts.push(_t('lab.mv.pdupe',{n:_n(dupe)})); if(failed)parts.push(_t('lab.mv.pfail',{n:_n(failed)})); msg=_t('lab.mv.mix',{parts:parts.join(' · '),labname:labNm}); }
@@ -34099,7 +34604,7 @@ try{
   function syncOn(){ try{ return !!(W.oligoSync&&W.oligoSync.syncEnabled&&W.oligoSync.syncEnabled()); }catch(_){ return false; } }
   function pushStrandFn(e){ try{ if(W.oligoSync&&W.oligoSync.pushStrand) W.oligoSync.pushStrand(e); }catch(_e){ ocFail('pushStrandFn#1',_e); } }
   function notice(text){
-    try{ if(W.__oligoNotice){ W.__oligoNotice('oligoScanToast',{text:text,dismissible:true}); setTimeout(function(){ try{ W.__oligoRemoveNotice&&W.__oligoRemoveNotice('oligoScanToast'); }catch(_e){ ocFail('notice#1',_e); } },4600); return; } }catch(_e){ ocFail('notice#2',_e); }
+    try{ if(W.__oligoNotice){ W.__oligoNotice('oligoScanToast',{text:text,dismissible:true,duration:4600}); return; } }catch(_e){ ocFail('notice#2',_e); }
     try{ console.log('[scan] '+text); }catch(_){   }
   }
 
@@ -46149,8 +46654,7 @@ window.addEventListener('oligo:lang', function(){ sync(); });
 
 
       if (!_list.length) {
-        try { if (W.__oligoNotice) { W.__oligoNotice('oligoShareToast', { text: (typeof W.t === 'function' ? W.t('lab.sel.none') : ''), dismissible: true });
-          setTimeout(function(){ if (W.__oligoRemoveNotice) W.__oligoRemoveNotice('oligoShareToast'); }, 5000); } }
+        try { if (W.__oligoNotice) { W.__oligoNotice('oligoShareToast', { text: (typeof W.t === 'function' ? W.t('lab.sel.none') : ''), dismissible: true, duration: 5000 }); } }
         catch(_e2){ fail('sheet#none', _e2); }
         return;
       }
@@ -50275,6 +50779,19 @@ else mount();
     var out = { figures: [], result: [], note: [], seq: '' };
     var i, n, nodes;
 
+     
+    var epsNodes = r.querySelectorAll('#result .rn-why');
+    var epsSeen = Object.create(null);
+    for (i = 0; i < epsNodes.length; i++) {
+      n = txt(epsNodes[i]);
+      if (n && !epsSeen[n]) { out.note.push(esc(n)); epsSeen[n] = true; }
+    }
+     
+    if (W.ocIsotopeEnvelope) {
+      W.ocIsotopeEnvelope.render();
+      var envHost = r.querySelector('#oc-ms-envelope');
+      if (envHost && !envHost.hidden) out.note.push(esc(txt(envHost.querySelector('.ms-env-method'))));
+    }
     var seqEl = r.querySelector('[data-seq]');
     if (seqEl && seqEl.value) out.seq = String(seqEl.value).replace(/\s+/g, '');
 
@@ -50367,6 +50884,7 @@ else mount();
     + '.sub{color:#555;font-size:13px;margin-bottom:18px}'
     + '.seq{font-family:ui-monospace,Consolas,monospace;font-size:13px;'
     + 'word-break:break-all;background:#f6f3ec;padding:9px;border-radius:6px}'
+    + 'p{overflow-wrap:anywhere}'
     + 'figure{margin-top:12px;margin-bottom:12px;padding:8px;background:#f7f2e8;'
     + 'border-width:1px;border-style:solid;border-color:rgba(36,29,19,.28);'
     + 'border-radius:8px;overflow-x:auto}'
@@ -50572,12 +51090,7 @@ else mount();
     try {
       if (typeof W.__oligoNotice === 'function') {
         W.__oligoNotice('oligoSaveDest',
-          { kind: state === 'ok' ? '' : 'warn', dismissible: true, text: txt });
-        if (typeof W.__oligoRemoveNotice === 'function') {
-          W.setTimeout(function () {
-            try { W.__oligoRemoveNotice('oligoSaveDest'); } catch (e) { }
-          }, 5000);
-        }
+          { kind: state === 'ok' ? '' : 'warn', dismissible: true, text: txt, duration: 5000 });
         return;
       }
       if (typeof W._flashBtn === 'function') W._flashBtn(pa, txt, state);
@@ -52656,7 +53169,7 @@ else mount();
         return{c:kids[i],o:[C[0]+d*o[0]-m*sc[0],C[1]+d*o[1]-m*sc[1]],d:o,len:(kids[i].pairs.length-1)*f.h,deg:ac/RAD,flip:flip};}
       function coaxial(A,B){var cr=Math.abs(A.d[0]*B.d[1]-A.d[1]*B.d[0]),vx=B.o[0]-A.o[0],vz=B.o[1]-A.o[1],perp=Math.abs(vx*A.d[1]-vz*A.d[0]);
         var b0=vx*A.d[0]+vz*A.d[1],b1=b0+(A.d[0]*B.d[0]+A.d[1]*B.d[1])*B.len,gap=Math.max(0,Math.min(b0,b1)-A.len,-Math.max(b0,b1));
-        return cr<Math.sin(10*RAD)&&perp<6&&gap<4*step;}
+        return cr<Math.sin(10*RAD)&&perp<6.5&&gap<4*step;}
       function arms(){var out=[{o:[s.origin[0],s.origin[2]],d:ax,len:(count-1)*f.h}];for(var k=0;k<K;k++)out.push(arm(k));return out;}
       function clear(st){for(var p=0;p<st.length;p++)for(var q=p+1;q<st.length;q++)if(coaxial(st[p],st[q]))return q;return -1;}
       var nudges=[],st,bad,pass;
@@ -52664,7 +53177,7 @@ else mount();
         st=arms();bad=clear(st);if(bad<0||pass>K)break;
         j=bad-1;
         var before=(tauA[j]+shift[j]-(j?tauA[j-1]+theta[j-1]+shift[j-1]:0))*R,after=(2*u-tauA[K-1]-theta[K-1]-shift[K-1])*R;
-        var dir=after>=before?1:-1,room=Math.max(0,(dir>0?after:before)-step/2)/R,deg,d,ok=false;
+        var dir=after>=before?1:-1,room=Math.max(0,dir>0?after-arc[K]:before-arc[j])/R,deg,d,ok=false;
         for(deg=1;deg<=45&&!ok;deg++){d=Math.min(room,deg*RAD);for(i=j;i<K;i++)shift[i]+=dir*d;ok=clear(arms())<0;if(!ok&&d<room)for(i=j;i<K;i++)shift[i]-=dir*d;else break;}
         nudges.push({arm:kids[j].id,deg:dir*deg,cleared:ok});
       }
@@ -52783,6 +53296,118 @@ else mount();
     snapshot:function(){return freeze(JSON.parse(JSON.stringify({revision:revision,input:latest,owners:{intended:views.intended&&views.intended.data,self:views.self&&views.self.data}})));},
     state:function(){var out={};Object.keys(views).forEach(function(k){var v=views[k];out[k]={mode:v.mode,yaw:v.yaw,pitch:v.pitch,open:v.el.open,paints:v.paints};});return out;}
   };
+})(window,document);
+
+</script>
+<script id="oligo-epsenvelope-js">
+ 
+
+
+
+
+
+(function(W){
+  'use strict';
+  var ISOTOPES={"C":[[12,12,0.9893],[13,13.0033548378,0.0107]],"H":[[1,1.00782503207,0.999885],[2,2.0141017778,0.000115]],"N":[[14,14.0030740048,0.99636],[15,15.0001088982,0.00364]],"O":[[16,15.99491461956,0.99757],[17,16.9991317,0.00038],[18,17.999161,0.00205]],"P":[[31,30.97376163,1]],"S":[[32,31.972071,0.94985],[33,32.97145876,0.0075],[34,33.9678669,0.0425],[36,35.96708076,0.00015]],"F":[[19,18.99840322,1]],"I":[[127,126.904473,1]],"Br":[[79,78.9183371,0.5069],[81,80.9162906,0.4931]],"Cl":[[35,34.96885268,0.7576],[37,36.96590259,0.2424]],"Na":[[23,22.9897692809,1]],"K":[[39,38.96370668,0.932581],[40,39.96399848,0.000117],[41,40.96182576,0.067302]]};
+  function distribution(formula){
+    if(!formula||typeof formula!=='object')return null;
+    var entries=[],mono=0,mean=0,variance=0,total=0;
+    for(var el of Object.keys(formula)){
+      var count=formula[el],tab=ISOTOPES[el];
+      if(!Number.isSafeInteger(count)||count<0||!tab)return null;
+      if(!count)continue;
+      total+=count;entries.push([count,tab]);mono+=count*tab[0][1];
+      var a=0,b=0;for(var v of tab){var n=v[0]-tab[0][0];a+=n*v[2];b+=n*n*v[2];}
+      mean+=count*a;variance+=count*(b-a*a);
+    }
+    if(!total||total>200000)return null;
+    var cap=Math.ceil(mean+12*Math.sqrt(variance)+24);if(cap>2048)return null;
+    function convolve(a,b){
+      var len=Math.min(cap+1,a.p.length+b.p.length-1),p=new Float64Array(len),m=new Float64Array(len);
+      for(var i=0;i<a.p.length&&i<len;i++)if(a.p[i]){
+        for(var j=0;j<b.p.length&&i+j<len;j++)if(b.p[j]){
+          p[i+j]+=a.p[i]*b.p[j];m[i+j]+=a.m[i]*b.p[j]+a.p[i]*b.m[j];
+        }
+      }
+      return {p:p,m:m};
+    }
+    var result={p:new Float64Array([1]),m:new Float64Array([0])};
+    for(var entry of entries){
+      var power=entry[0],isotopes=entry[1],len=isotopes[isotopes.length-1][0]-isotopes[0][0]+1;
+      if(len===1)continue;
+      var atom={p:new Float64Array(len),m:new Float64Array(len)};
+      for(var isotope of isotopes){var k=isotope[0]-isotopes[0][0];atom.p[k]=isotope[2];atom.m[k]=isotope[2]*(isotope[1]-isotopes[0][1]);}
+      while(power){if(power%2)result=convolve(result,atom);power=Math.floor(power/2);if(power)atom=convolve(atom,atom);}
+    }
+     
+    if(!result.p[0])return null;
+    var peaks=[],coverage=0,mode=0,max=0;
+    for(var i=0;i<result.p.length;i++){
+      var p=result.p[i];if(p>0){var offset=result.m[i]/p;peaks.push({nominal:i,probability:p,mass:mono+offset,offset:offset});if(p>max){max=p;mode=peaks.length-1;}}
+      coverage+=p;if(coverage>=0.9999)break;
+    }
+    if(coverage<0.99)return null;
+    for(var peak of peaks)peak.relative=100*peak.probability/max;
+    return {monoisotopic:mono,peaks:peaks,coverage:coverage,mostAbundant:peaks[mode],sourceYear:2024};
+  }
+  W.ocIsotopeEnvelope={compute:distribution};
+})(window);
+
+ 
+(function(W,D){
+  'use strict';
+  var selected=1,cacheKey='',cached=null,observed=false;
+  var E=W.ocIsotopeEnvelope;
+  function render(){
+    var panel=D.getElementById('panel-ms');if(!panel)return;
+    var host=D.getElementById('oc-ms-envelope');
+    if(!host){
+      host=D.createElement('section');host.id='oc-ms-envelope';host.className='ms-envelope';host.hidden=true;
+      host.innerHTML='<div class="ms-env-head"><h3></h3><label><span></span> <select id="oc-ms-env-z"></select></label></div><div class="ms-env-chart"></div><p class="ms-env-summary"></p><p class="ms-env-method"></p>';
+      panel.insertBefore(host,panel.querySelector('table.ladder'));
+      host.querySelector('select').addEventListener('change',function(e){selected=Number(e.target.value);render();});
+    }
+    var d=W.__ocEpsEnvelopeMSData;
+    if(!d){host.hidden=true;return;}
+    var key=JSON.stringify(d.formula),env;
+    if(key!==cacheKey){cacheKey=key;cached=d.n?E.compute(d.formula):null;}env=cached;
+    if(!d.n||!env||d.mono==null){host.hidden=true;host.querySelector('.ms-env-chart').replaceChildren();return;}
+    host.hidden=false;
+    var N=function(x,dp){return W.ocNumFmt(x,{minimumFractionDigits:dp||0,maximumFractionDigits:dp||0});},T=W.t,esc=W.ocEsc;
+    var z=Math.max(1,Math.min(d.maxN,selected));selected=z;
+    var mode=W.S.msMode==='pos'?'pos':'neg',signed=mode==='pos'?z:-z;
+    var select=host.querySelector('select');
+    host.querySelector('h3').textContent=T('ms.env.title');host.querySelector('label').querySelector('span').textContent=T('mk.0178');
+    var options='';for(var i=1;i<=d.maxN;i++)options+='<option value="'+i+'"'+(i===z?' selected':'')+'>'+esc(N(mode==='pos'?i:-i))+'</option>';
+    if(select.innerHTML!==options)select.innerHTML=options;
+    var monoMz=W.mzLadder(d.mono,z,mode)[z-1].mz;
+    var peak=env.mostAbundant,peakMz=monoMz+peak.offset/z;
+    var summary=T('ms.env.summary!',{offset:N(peak.offset,3),mz:N(peakMz,3),mono:N(monoMz,3),charge:N(signed),coverage:N(env.coverage*100,2)});
+    host.querySelector('.ms-env-summary').textContent=summary;
+    host.querySelector('.ms-env-method').textContent=T('ms.env.method!');
+    var chart=host.querySelector('.ms-env-chart'),width=Math.round(chart.clientWidth)||440,height=205,left=38,right=22,top=28,bottom=160;
+    var peaks=env.peaks,last=peaks[peaks.length-1].offset/z,span=last||1;
+    var x=function(p){return left+(width-left-right)*(p.offset/z)/span;},y=function(p){return bottom-(bottom-top)*p.relative/100;};
+    var bw=Math.max(2,Math.min(14,(width-left-right)/Math.max(peaks.length,1)*0.5));
+    var svg='<svg role="img" viewBox="0 0 WIDTH 205" width="100%" height="205"><g class="ms-env-axis">'.replace('WIDTH',String(width));
+    for(var level of [0,50,100]){var yy=bottom-(bottom-top)*level/100;svg+='<text x="'+(left-9)+'" y="'+(yy+4)+'" text-anchor="end">'+esc(N(level))+'</text>';}
+    svg+='<text x="7" y="15">%</text><path d="M'+left+' '+top+'V'+bottom+'H'+(width-right)+'"/></g>';
+    for(var p of peaks)svg+='<rect class="ms-env-bar" data-nominal="'+p.nominal+'" x="'+(x(p)-bw/2)+'" y="'+y(p)+'" width="'+bw+'" height="'+Math.max(0.5,bottom-y(p))+'"/>';
+    var p0=peaks[0],xm=x(p0),ym=y(p0)-11;
+    svg+='<path class="ms-env-mono" data-mark="monoisotopic" d="M'+xm+' '+(ym-5)+'l-5 9h10z"/>';
+    svg+='<circle class="ms-env-mode" data-mark="most-abundant" cx="'+x(peak)+'" cy="'+(y(peak)-(peak.nominal===0?23:11))+'" r="4"/>';
+    var ticks=(width<320?[0,peaks.length-1]:[0,Math.floor((peaks.length-1)/2),peaks.length-1]).filter(function(v,i,a){return a.indexOf(v)===i;});
+    for(var ti of ticks){var p=peaks[ti];svg+='<text class="ms-env-tick" x="'+x(p)+'" y="181" text-anchor="'+(ti===0?'start':ti===peaks.length-1?'end':'middle')+'">'+esc(N(monoMz+p.offset/z,2))+'</text>';}
+    svg+='<text class="ms-env-tick" x="'+(width/2)+'" y="201" text-anchor="middle">m/z</text></svg>';
+    chart.innerHTML=svg;chart.querySelector('svg').setAttribute('aria-label',summary);host.dataset.nominal=String(peak.nominal);host.dataset.charge=String(signed);
+    if(!observed&&typeof ResizeObserver==='function'){
+      var lastWidth=width;new ResizeObserver(function(){var next=Math.round(chart.clientWidth);if(next>0&&next!==lastWidth){lastWidth=next;render();}}).observe(chart);observed=true;
+    }
+  }
+  var old=W.renderMSShell;W.renderMSShell=function(){var value=old.apply(this,arguments);render();return value;};
+  E.render=render;
+  W.addEventListener('oligo:lang',render);
+  render();
 })(window,document);
 
 </script>
