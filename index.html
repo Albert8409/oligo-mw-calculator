@@ -1826,6 +1826,7 @@ var I18N = {
   "ui.eps.rec.vals":"ε₂₆₀ used, in M⁻¹ cm⁻¹: {list}.",
   "ui.eps.record.missing":"No source recorded.",
   "ui.eps.record.own":"{code}: ε₂₆₀ = {value} M⁻¹ cm⁻¹. Source: the value you entered for this monomer.",
+  "ui.eps.record.shared":"{code}: ε₂₆₀ = {value} M⁻¹ cm⁻¹. Source: the value the sender entered for this monomer.",
   "ui.eps.record.sugar!":"{code} uses ε₂₆₀ = {value} M⁻¹ cm⁻¹, measured for the 5-methylcytidine monomer on a ribose sugar and not on the {sugar} sugar ({source}).",
   "ui.eps.record.superseded":"{code}: a vendor-printed value was set aside for this monomer ({note}).",
   "ui.eps.why.base1":"{n} in-chain monomer ({codes}) has no published ε₂₆₀, so it adds nothing here.",
@@ -2066,7 +2067,12 @@ var I18N = {
   "ui.rc.okadd1":"Saved the sequence and added {n} custom base ✓",
   "ui.rc.okaddN":"Saved the sequence and added {n} custom bases ✓",
   "ui.rc.okhave":"Saved the sequence. Its custom bases were already available ✓",
+  "ui.rc.okren1":"monomer {code} saved as {to}",
+  "ui.rc.okrenN":"monomers saved under new codes: {pairs}",
+  "ui.rc.openband":"Someone shared this sequence with you. It is not in your library yet.",
   "ui.rc.priv!":"Someone sent you this link. It carries the sequence data itself and does not say who sent it, so open it only if you were expecting it. Nothing is added to your library until you save it, and what you save is your own copy.",
+  "ui.rc.ren1":"{code} already means a different monomer here, so the sender's is saved as {to}.",
+  "ui.rc.renN":"The following codes already mean different monomers here, so the sender's are saved under new codes: {pairs}.",
   "ui.rc.save":"Save to my library",
   "ui.rc.save1":"Save sequence + {n} custom base",
   "ui.rc.saveN":"Save sequence + {n} custom bases",
@@ -4035,6 +4041,7 @@ var I18N = {
   "ui.eps.rec.vals":"\u9019\u88e1\u63a1\u7528\u7684 ε₂₆₀\uff08\u55ae\u4f4d M⁻¹ cm⁻¹\uff09\uff1a{list}\u3002",
   "ui.eps.record.missing":"\u672a\u8a18\u9304\u4f86\u6e90\u3002",
   "ui.eps.record.own":"{code}\uff1aε₂₆₀ = {value} M⁻¹ cm⁻¹\u3002\u4f86\u6e90\uff1a\u4f60\u70ba\u6b64\u55ae\u9ad4\u8f38\u5165\u7684\u6578\u503c\u3002",
+  "ui.eps.record.shared":"{code}\uff1aε₂₆₀ = {value} M⁻¹ cm⁻¹\u3002\u4f86\u6e90\uff1a\u5206\u4eab\u8005\u70ba\u6b64\u55ae\u9ad4\u8f38\u5165\u7684\u6578\u503c\u3002",
   "ui.eps.record.sugar!":"{code} \u4f7f\u7528 ε₂₆₀ = {value} M⁻¹ cm⁻¹\uff0c\u6b64\u503c\u91cf\u6e2c\u81ea\u5e36\u6709\u6838\u91a3\u7684 5-\u7532\u57fa\u80de\u82f7\u55ae\u9ad4\uff0c\u800c\u4e0d\u662f\u5e36\u6709 {sugar} \u91a3\u57fa\u7684 5-\u7532\u57fa\u80de\u82f7\u55ae\u9ad4\uff08{source}\uff09\u3002",
   "ui.eps.record.superseded":"{code}\uff1a\u6b64\u55ae\u9ad4\u7684\u5ee0\u5546\u6a19\u793a\u503c\u672a\u88ab\u63a1\u7528\uff08{note}\uff09\u3002",
   "ui.eps.why.base1":"{n} \u500b\u93c8\u5167\u55ae\u9ad4\uff08{codes}\uff09\u6c92\u6709\u5df2\u767c\u8868\u7684 ε₂₆₀\uff0c\u6240\u4ee5\u5728\u9019\u88e1\u4e0d\u8a08\u5165\u3002",
@@ -4274,7 +4281,12 @@ var I18N = {
   "ui.rc.okadd1":"\u5df2\u5132\u5b58\u5e8f\u5217\uff0c\u4e26\u52a0\u5165 {n} \u500b\u81ea\u8a02\u9e7c\u57fa ✓",
   "ui.rc.okaddN":"\u5df2\u5132\u5b58\u5e8f\u5217\uff0c\u4e26\u52a0\u5165 {n} \u500b\u81ea\u8a02\u9e7c\u57fa ✓",
   "ui.rc.okhave":"\u5df2\u5132\u5b58\u5e8f\u5217\u3002\u5b83\u7528\u5230\u7684\u81ea\u8a02\u9e7c\u57fa\u9019\u908a\u672c\u4f86\u5c31\u6709 ✓",
+  "ui.rc.okren1":"\u55ae\u9ad4 {code} \u5df2\u5132\u5b58\u70ba {to}",
+  "ui.rc.okrenN":"\u55ae\u9ad4\u5df2\u6539\u7528\u65b0\u4ee3\u78bc\u5132\u5b58\uff1a{pairs}",
+  "ui.rc.openband":"\u9019\u7b46\u5e8f\u5217\u662f\u5225\u4eba\u5206\u4eab\u7d66\u4f60\u7684\uff0c\u9084\u6c92\u6709\u5132\u5b58\u5230\u4f60\u7684\u8cc7\u6599\u5eab\u3002",
   "ui.rc.priv!":"\u6709\u4eba\u628a\u9019\u500b\u9023\u7d50\u5bc4\u7d66\u4f60\u3002\u9023\u7d50\u672c\u8eab\u5c31\u5e36\u8457\u5e8f\u5217\u8cc7\u6599\uff0c\u4f46\u4e0d\u6703\u8a18\u9304\u662f\u8ab0\u5bc4\u7684\uff0c\u6240\u4ee5\u8acb\u53ea\u5728\u4f60\u9810\u671f\u6703\u6536\u5230\u6642\u624d\u6253\u958b\u3002\u5728\u4f60\u6309\u4e0b\u5132\u5b58\u4e4b\u524d\uff0c\u4e0d\u6703\u6709\u4efb\u4f55\u6771\u897f\u9032\u5165\u4f60\u7684\u8cc7\u6599\u5eab\uff1b\u4f60\u5132\u5b58\u7684\u662f\u4f60\u81ea\u5df1\u7684\u526f\u672c\u3002",
+  "ui.rc.ren1":"{code} \u5728\u9019\u88e1\u5df2\u7d93\u4ee3\u8868\u53e6\u4e00\u7a2e\u55ae\u9ad4\uff0c\u6240\u4ee5\u5206\u4eab\u7684\u4eba\u50b3\u4f86\u7684\u55ae\u9ad4\u6703\u5132\u5b58\u70ba {to}\u3002",
+  "ui.rc.renN":"\u4e0b\u5217\u4ee3\u78bc\u5728\u9019\u88e1\u5df2\u7d93\u4ee3\u8868\u5176\u4ed6\u55ae\u9ad4\uff0c\u6240\u4ee5\u5206\u4eab\u7684\u4eba\u50b3\u4f86\u7684\u5c0d\u61c9\u55ae\u9ad4\u6703\u6539\u7528\u65b0\u4ee3\u78bc\u5132\u5b58\uff1a{pairs}\u3002",
   "ui.rc.save":"\u5132\u5b58\u5230\u6211\u7684\u8cc7\u6599\u5eab",
   "ui.rc.save1":"\u5132\u5b58\u5e8f\u5217 + {n} \u500b\u81ea\u8a02\u9e7c\u57fa",
   "ui.rc.saveN":"\u5132\u5b58\u5e8f\u5217 + {n} \u500b\u81ea\u8a02\u9e7c\u57fa",
@@ -6243,6 +6255,7 @@ var I18N = {
   "ui.eps.rec.vals":"\u6240\u7528\u7684 ε₂₆₀\uff08M⁻¹ cm⁻¹\uff09\uff1a{list}\u3002",
   "ui.eps.record.missing":"\u672a\u8bb0\u5f55\u6765\u6e90\u3002",
   "ui.eps.record.own":"{code}\uff1aε₂₆₀ = {value} M⁻¹ cm⁻¹\u3002\u6765\u6e90\uff1a\u4f60\u4e3a\u6b64\u5355\u4f53\u8f93\u5165\u7684\u6570\u503c\u3002",
+  "ui.eps.record.shared":"{code}\uff1aε₂₆₀ = {value} M⁻¹ cm⁻¹\u3002\u6765\u6e90\uff1a\u5206\u4eab\u8005\u4e3a\u8be5\u5355\u4f53\u8f93\u5165\u7684\u6570\u503c\u3002",
   "ui.eps.record.sugar!":"{code} \u4f7f\u7528 ε₂₆₀ = {value} M⁻¹ cm⁻¹\uff0c\u8be5\u503c\u6d4b\u5f97\u81ea\u5e26\u6709\u6838\u7cd6\u7684 5-\u7532\u57fa\u80de\u82f7\u5355\u4f53\uff0c\u800c\u4e0d\u662f\u5e26\u6709 {sugar} \u7cd6\u57fa\u7684 5-\u7532\u57fa\u80de\u82f7\uff08{source}\uff09\u3002",
   "ui.eps.record.superseded":"{code}\uff1a\u6b64\u5355\u4f53\u7684\u5382\u5546\u6807\u793a\u503c\u672a\u88ab\u91c7\u7528\uff08{note}\uff09\u3002",
   "ui.eps.why.base1":"{n} \u4e2a\u94fe\u5185\u5355\u4f53\uff08{codes}\uff09\u6ca1\u6709\u5df2\u53d1\u8868\u7684 ε₂₆₀\uff0c\u6240\u4ee5\u5728\u8fd9\u91cc\u4e0d\u8ba1\u5165\u3002",
@@ -6482,7 +6495,12 @@ var I18N = {
   "ui.rc.okadd1":"\u5df2\u4fdd\u5b58\u5e8f\u5217\uff0c\u5e76\u52a0\u5165 {n} \u4e2a\u81ea\u5b9a\u4e49\u78b1\u57fa ✓",
   "ui.rc.okaddN":"\u5df2\u4fdd\u5b58\u5e8f\u5217\uff0c\u5e76\u52a0\u5165 {n} \u4e2a\u81ea\u5b9a\u4e49\u78b1\u57fa ✓",
   "ui.rc.okhave":"\u5df2\u4fdd\u5b58\u5e8f\u5217\u3002\u5b83\u7528\u5230\u7684\u81ea\u5b9a\u4e49\u78b1\u57fa\u8fd9\u8fb9\u672c\u6765\u5c31\u6709 ✓",
+  "ui.rc.okren1":"\u5355\u4f53 {code} \u5df2\u4fdd\u5b58\u4e3a {to}",
+  "ui.rc.okrenN":"\u5355\u4f53\u5df2\u6539\u7528\u65b0\u4ee3\u7801\u4fdd\u5b58\uff1a{pairs}",
+  "ui.rc.openband":"\u8fd9\u6761\u5e8f\u5217\u662f\u522b\u4eba\u5206\u4eab\u7ed9\u4f60\u7684\uff0c\u8fd8\u6ca1\u6709\u4fdd\u5b58\u5230\u4f60\u7684\u6570\u636e\u5e93\u3002",
   "ui.rc.priv!":"\u6709\u4eba\u628a\u8fd9\u4e2a\u94fe\u63a5\u53d1\u7ed9\u4f60\u3002\u94fe\u63a5\u672c\u8eab\u5c31\u5e26\u7740\u5e8f\u5217\u6570\u636e\uff0c\u4f46\u4e0d\u4f1a\u8bb0\u5f55\u662f\u8c01\u53d1\u7684\uff0c\u6240\u4ee5\u8bf7\u53ea\u5728\u4f60\u9884\u671f\u4f1a\u6536\u5230\u65f6\u624d\u6253\u5f00\u3002\u5728\u4f60\u6309\u4e0b\u4fdd\u5b58\u4e4b\u524d\uff0c\u4e0d\u4f1a\u6709\u4efb\u4f55\u4e1c\u897f\u8fdb\u5165\u4f60\u7684\u6570\u636e\u5e93\uff1b\u4f60\u4fdd\u5b58\u7684\u662f\u4f60\u81ea\u5df1\u7684\u526f\u672c\u3002",
+  "ui.rc.ren1":"{code} \u5728\u8fd9\u91cc\u5df2\u7ecf\u4ee3\u8868\u53e6\u4e00\u79cd\u5355\u4f53\uff0c\u6240\u4ee5\u5206\u4eab\u7684\u4eba\u53d1\u6765\u7684\u5355\u4f53\u4f1a\u4fdd\u5b58\u4e3a {to}\u3002",
+  "ui.rc.renN":"\u4ee5\u4e0b\u4ee3\u7801\u5728\u8fd9\u91cc\u5df2\u7ecf\u4ee3\u8868\u5176\u4ed6\u5355\u4f53\uff0c\u6240\u4ee5\u5206\u4eab\u7684\u4eba\u53d1\u6765\u7684\u5bf9\u5e94\u5355\u4f53\u4f1a\u6539\u7528\u65b0\u4ee3\u7801\u4fdd\u5b58\uff1a{pairs}\u3002",
   "ui.rc.save":"\u4fdd\u5b58\u5230\u6211\u7684\u6570\u636e\u5e93",
   "ui.rc.save1":"\u4fdd\u5b58\u5e8f\u5217 + {n} \u4e2a\u81ea\u5b9a\u4e49\u78b1\u57fa",
   "ui.rc.saveN":"\u4fdd\u5b58\u5e8f\u5217 + {n} \u4e2a\u81ea\u5b9a\u4e49\u78b1\u57fa",
@@ -8451,6 +8469,7 @@ var I18N = {
   "ui.eps.rec.vals":"\u4f7f\u7528\u3057\u305f ε₂₆₀\uff08M⁻¹ cm⁻¹\uff09\uff1a{list}\u3002",
   "ui.eps.record.missing":"\u51fa\u5178\u306e\u8a18\u9332\u304c\u3042\u308a\u307e\u305b\u3093\u3002",
   "ui.eps.record.own":"{code}\uff1aε₂₆₀ = {value} M⁻¹ cm⁻¹\u3002\u51fa\u5178\uff1a\u3053\u306e\u30e2\u30ce\u30de\u30fc\u306b\u5165\u529b\u3057\u305f\u5024\u3067\u3059\u3002",
+  "ui.eps.record.shared":"{code}\uff1aε₂₆₀ = {value} M⁻¹ cm⁻¹\u3002\u51fa\u5178\uff1a\u5171\u6709\u3057\u305f\u4eba\u304c\u3053\u306e\u30e2\u30ce\u30de\u30fc\u306b\u5165\u529b\u3057\u305f\u5024\u3067\u3059\u3002",
   "ui.eps.record.sugar!":"{code} \u306b\u4f7f\u7528\u3059\u308b ε₂₆₀ = {value} M⁻¹ cm⁻¹ \u306f\u3001\u30ea\u30dc\u30fc\u30b9\u7cd6\u3092\u6301\u3064 5-\u30e1\u30c1\u30eb\u30b7\u30c1\u30b8\u30f3\u30e2\u30ce\u30de\u30fc\u3067\u6e2c\u5b9a\u3055\u308c\u305f\u5024\u3067\u3042\u308a\u3001{sugar} \u7cd6\u3067\u6e2c\u5b9a\u3055\u308c\u305f\u3082\u306e\u3067\u306f\u3042\u308a\u307e\u305b\u3093\uff08{source}\uff09\u3002",
   "ui.eps.record.superseded":"{code}\uff1a\u3053\u306e\u30e2\u30ce\u30de\u30fc\u306b\u3064\u3044\u3066\u306f\u3001\u30d9\u30f3\u30c0\u30fc\u304c\u793a\u3057\u305f\u5024\u306f\u63a1\u7528\u3057\u3066\u3044\u307e\u305b\u3093\uff08{note}\uff09\u3002",
   "ui.eps.why.base1":"\u9396\u5185\u30e2\u30ce\u30de\u30fc {n} \u500b\uff08{codes}\uff09\u306b\u306f\u516c\u8868\u3055\u308c\u305f ε₂₆₀ \u304c\u306a\u3044\u305f\u3081\u3001\u3053\u3053\u3067\u306f\u4f55\u3082\u52a0\u7b97\u3055\u308c\u307e\u305b\u3093\u3002",
@@ -8690,7 +8709,12 @@ var I18N = {
   "ui.rc.okadd1":"\u914d\u5217\u3092\u4fdd\u5b58\u3057\u3001\u30ab\u30b9\u30bf\u30e0\u5869\u57fa {n} \u4ef6\u3092\u8ffd\u52a0\u3057\u307e\u3057\u305f ✓",
   "ui.rc.okaddN":"\u914d\u5217\u3092\u4fdd\u5b58\u3057\u3001\u30ab\u30b9\u30bf\u30e0\u5869\u57fa {n} \u4ef6\u3092\u8ffd\u52a0\u3057\u307e\u3057\u305f ✓",
   "ui.rc.okhave":"\u914d\u5217\u3092\u4fdd\u5b58\u3057\u307e\u3057\u305f\u3002\u4f7f\u308f\u308c\u3066\u3044\u308b\u30ab\u30b9\u30bf\u30e0\u5869\u57fa\u306f\u3059\u3067\u306b\u3042\u308a\u307e\u3057\u305f ✓",
+  "ui.rc.okren1":"\u30e2\u30ce\u30de\u30fc {code} \u3092 {to} \u3068\u3057\u3066\u4fdd\u5b58\u3057\u307e\u3057\u305f",
+  "ui.rc.okrenN":"\u30e2\u30ce\u30de\u30fc\u3092\u65b0\u3057\u3044\u30b3\u30fc\u30c9\u3067\u4fdd\u5b58\u3057\u307e\u3057\u305f: {pairs}",
+  "ui.rc.openband":"\u3053\u306e\u914d\u5217\u306f\u3042\u306a\u305f\u3068\u5171\u6709\u3055\u308c\u305f\u3082\u306e\u3067\u3059\u3002\u307e\u3060\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u306f\u4fdd\u5b58\u3055\u308c\u3066\u3044\u307e\u305b\u3093\u3002",
   "ui.rc.priv!":"\u3053\u306e\u30ea\u30f3\u30af\u306f\u8ab0\u304b\u304c\u3042\u306a\u305f\u306b\u9001\u3063\u305f\u3082\u306e\u3067\u3059\u3002\u30ea\u30f3\u30af\u306b\u306f\u914d\u5217\u30c7\u30fc\u30bf\u305d\u306e\u3082\u306e\u304c\u542b\u307e\u308c\u307e\u3059\u304c\u3001\u9001\u308a\u4e3b\u306f\u8a18\u9332\u3055\u308c\u3066\u3044\u307e\u305b\u3093\u3002\u5fc3\u5f53\u305f\u308a\u304c\u3042\u308b\u5834\u5408\u3060\u3051\u958b\u3044\u3066\u304f\u3060\u3055\u3044\u3002\u4fdd\u5b58\u3059\u308b\u307e\u3067\u3001\u3042\u306a\u305f\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u306f\u4f55\u3082\u8ffd\u52a0\u3055\u308c\u307e\u305b\u3093\u3002\u4fdd\u5b58\u3057\u305f\u3082\u306e\u306f\u3042\u306a\u305f\u81ea\u8eab\u306e\u30b3\u30d4\u30fc\u306b\u306a\u308a\u307e\u3059\u3002",
+  "ui.rc.ren1":"{code} \u306f\u3053\u3053\u3067\u306f\u3059\u3067\u306b\u5225\u306e\u30e2\u30ce\u30de\u30fc\u3092\u8868\u3057\u3066\u3044\u308b\u305f\u3081\u3001\u9001\u308a\u4e3b\u306e\u30e2\u30ce\u30de\u30fc\u306f {to} \u3068\u3057\u3066\u4fdd\u5b58\u3055\u308c\u307e\u3059\u3002",
+  "ui.rc.renN":"\u6b21\u306e\u30b3\u30fc\u30c9\u306f\u3053\u3053\u3067\u306f\u3059\u3067\u306b\u5225\u306e\u30e2\u30ce\u30de\u30fc\u3092\u8868\u3057\u3066\u3044\u308b\u305f\u3081\u3001\u9001\u308a\u4e3b\u306e\u30e2\u30ce\u30de\u30fc\u306f\u65b0\u3057\u3044\u30b3\u30fc\u30c9\u3067\u4fdd\u5b58\u3055\u308c\u307e\u3059: {pairs}\u3002",
   "ui.rc.save":"\u81ea\u5206\u306e\u30e9\u30a4\u30d6\u30e9\u30ea\u306b\u4fdd\u5b58",
   "ui.rc.save1":"\u914d\u5217\u3068\u30ab\u30b9\u30bf\u30e0\u5869\u57fa {n} \u4ef6\u3092\u4fdd\u5b58",
   "ui.rc.saveN":"\u914d\u5217\u3068\u30ab\u30b9\u30bf\u30e0\u5869\u57fa {n} \u4ef6\u3092\u4fdd\u5b58",
@@ -10659,6 +10683,7 @@ var I18N = {
   "ui.eps.rec.vals":"ε₂₆₀ retenu, en M⁻¹ cm⁻¹ : {list}.",
   "ui.eps.record.missing":"Aucune source enregistrée.",
   "ui.eps.record.own":"{code} : ε₂₆₀ = {value} M⁻¹ cm⁻¹. Source : la valeur que vous avez saisie pour ce monomère.",
+  "ui.eps.record.shared":"{code} : ε₂₆₀ = {value} M⁻¹ cm⁻¹. Source : la valeur que l’expéditeur du lien a saisie pour ce monomère.",
   "ui.eps.record.sugar!":"{code} utilise ε₂₆₀ = {value} M⁻¹ cm⁻¹, mesuré pour le monomère 5-méthylcytidine portant un ribose et non le sucre {sugar} ({source}).",
   "ui.eps.record.superseded":"{code} : une valeur imprimée par le fournisseur n’a pas été retenue pour ce monomère ({note}).",
   "ui.eps.why.base1":"{n} monomère dans la chaîne ({codes}) n’a pas de ε₂₆₀ publié, il n’ajoute donc rien ici.",
@@ -10898,7 +10923,12 @@ var I18N = {
   "ui.rc.okadd1":"Séquence enregistrée et {n} base personnalisée ajoutée ✓",
   "ui.rc.okaddN":"Séquence enregistrée et {n} bases personnalisées ajoutées ✓",
   "ui.rc.okhave":"Séquence enregistrée. Ses bases personnalisées étaient déjà disponibles ✓",
+  "ui.rc.okren1":"monomère {code} enregistré sous {to}",
+  "ui.rc.okrenN":"monomères enregistrés sous de nouveaux codes : {pairs}",
+  "ui.rc.openband":"Quelqu’un a partagé cette séquence avec vous. Elle n’est pas encore enregistrée dans votre bibliothèque.",
   "ui.rc.priv!":"Quelqu’un vous a envoyé ce lien. Il contient les données de la séquence elle-même et n’indique pas qui l’a envoyé, ne l’ouvrez donc que si vous l’attendiez. Rien n’est ajouté à votre bibliothèque tant que vous ne l’enregistrez pas, et ce que vous enregistrez est votre propre copie.",
+  "ui.rc.ren1":"{code} désigne déjà un autre monomère ici, le monomère de l’expéditeur sera donc enregistré sous {to}.",
+  "ui.rc.renN":"Les codes suivants désignent déjà d’autres monomères ici, les monomères correspondants de l’expéditeur seront donc enregistrés sous de nouveaux codes : {pairs}.",
   "ui.rc.save":"Enregistrer dans ma bibliothèque",
   "ui.rc.save1":"Enregistrer la séquence + {n} base personnalisée",
   "ui.rc.saveN":"Enregistrer la séquence + {n} bases personnalisées",
@@ -12308,14 +12338,14 @@ var I18N = {
   "mk.0444":"Oligo Calculator Pro",
   "ms.adducts":"Aductos de Na⁺ / K⁺",
   "ms.charge.many!":"{codes} tienen cargas positivas permanentes. Los valores de espectrometría de masas que se muestran aquí se calculan para la molécula neutra.",
-  "ms.charge.more":"Cómo tiene en cuenta la calculadora una carga permanente se explica en el FAQ.",
+  "ms.charge.more":"Cómo tiene en cuenta la calculadora una carga permanente se explica en las preguntas frecuentes.",
   "ms.charge.one!":"{codes} tiene una carga positiva permanente. Los valores de espectrometría de masas que se muestran aquí se calculan para la molécula neutra.",
   "ms.env.method!":"La envolvente isotópica agrupa los isotopólogos de la fórmula por masa nominal y representa el m/z centroide de cada grupo a partir de abundancias isotópicas representativas fijas dentro de los intervalos CIAAW 2024; no predice la resolución instrumental, las poblaciones de aductos ni la fragmentación.",
-  "ms.env.more":"Cómo se calcula la envolvente se explica en el FAQ.",
+  "ms.env.more":"Cómo se calcula la envolvente se explica en las preguntas frecuentes.",
   "ms.env.scope!":"La envolvente isotópica no predice la resolución instrumental, las poblaciones de aductos ni la fragmentación.",
   "ms.env.summary!":"El pico nominal más abundante (●) tiene una diferencia de masa neutra de +{offset} Da respecto al pico monoisotópico (△): m/z {mz} frente a {mono} con una carga de {charge}; la altura de las barras indica la abundancia relativa (máximo = {max}), y los picos mostrados representan en conjunto el {coverage} de la probabilidad total.",
   "ms.env.title":"Envolvente isotópica",
-  "ms.range.more":"Qué significa el intervalo de trabajo se explica en el FAQ.",
+  "ms.range.more":"Qué significa el intervalo de trabajo se explica en las preguntas frecuentes.",
   "pack.blurb!":"Un paquete de <b>{scans}</b> escaneos de fotos cuesta <b>{price}</b>, en un solo pago. <b>Los créditos no caducan nunca</b>, y tus escaneos mensuales se siguen renovando por su cuenta.",
   "punct.colon":": ",
   "punct.stop":". ",
@@ -12469,8 +12499,8 @@ var I18N = {
   "tm.fold.mbc.none!":"Esta búsqueda no encontró ninguna estructura con unión de varios brazos.",
   "tm.fold.mbc.same!":"El resultado de la búsqueda ordinaria ya contiene una unión de varios brazos. La búsqueda que exige una unión devolvió la misma estructura.",
   "tm.fold.mbc.tied!":"La diferencia de energía predicha se redondea a 0,00 kcal/mol.",
-  "tm.fold.more.loops":"Lo que dan por supuesto estos parámetros de bucle se explica en el FAQ.",
-  "tm.fold.more.search":"Cómo funciona la búsqueda, y qué deja fuera, se explica en el FAQ.",
+  "tm.fold.more.loops":"Lo que dan por supuesto estos parámetros de bucle se explica en las preguntas frecuentes.",
+  "tm.fold.more.search":"Cómo funciona la búsqueda, y qué deja fuera, se explica en las preguntas frecuentes.",
   "tm.fold.name.branched":"Plegamiento ramificado",
   "tm.fold.name.hairpin":"Horquilla",
   "tm.fold.name.junction":"Unión de {n} brazos",
@@ -12552,11 +12582,11 @@ var I18N = {
   "tm.selfdimer":"Autodímero",
   "tm.selfwarn!":"⚠ <b>La horquilla de esta cadena se funde {d} °C por encima del dúplex</b> ({hp} °C frente a {dup} °C). A cualquier temperatura a la que se formaría el dúplex, la cadena ya está plegada sobre sí misma, así que hibridará mal. Mira Estructura propia más abajo.",
   "tm.selfwarn.fact!":"⚠ <b>La horquilla de esta cadena se funde {d} °C por encima del dúplex</b> ({hp} °C frente a {dup} °C). Mira Estructura propia más abajo.",
-  "tm.selfwarn.more":"Por qué esto afecta a la hibridación se explica en el FAQ.",
+  "tm.selfwarn.more":"Por qué esto afecta a la hibridación se explica en las preguntas frecuentes.",
   "tm.tabs.h":"Estructuras posibles",
   "tm.tabs.more":"+{n} más",
   "tm.tabs.unit":"kcal/mol",
-  "tm.thermo.more":"El estado de referencia de ΔH° y ΔS° se explica en el FAQ.",
+  "tm.thermo.more":"El estado de referencia de ΔH° y ΔS° se explica en las preguntas frecuentes.",
   "tm.thermo.ome.ref!":"ΔH° y ΔS° están referidos a 0,1 M de Na⁺; no se corrigen según las condiciones salinas introducidas.",
   "tm.thermo.ref!":"ΔH° y ΔS° corresponden al estado de referencia del modelo del vecino más cercano, con {salt} M de sal monovalente. Tm se corrige por separado para las condiciones introducidas.",
   "tm.uni!":" · <b>unimolecular, así que esto no cambia con la concentración</b>",
@@ -12867,6 +12897,7 @@ var I18N = {
   "ui.eps.rec.vals":"ε₂₆₀ utilizado, en M⁻¹ cm⁻¹: {list}.",
   "ui.eps.record.missing":"No hay ninguna fuente registrada.",
   "ui.eps.record.own":"{code}: ε₂₆₀ = {value} M⁻¹ cm⁻¹. Fuente: el valor que introdujo para este monómero.",
+  "ui.eps.record.shared":"{code}: ε₂₆₀ = {value} M⁻¹ cm⁻¹. Fuente: el valor introducido para este monómero por la persona que compartió la secuencia.",
   "ui.eps.record.sugar!":"{code} utiliza ε₂₆₀ = {value} M⁻¹ cm⁻¹, medido para el monómero de 5-metilcitidina con ribosa y no con el azúcar {sugar} ({source}).",
   "ui.eps.record.superseded":"{code}: no se utilizó un valor impreso por el proveedor para este monómero ({note}).",
   "ui.eps.why.base1":"{n} monómero integrado en la cadena ({codes}) no tiene ε₂₆₀ publicado, así que aquí no suma nada.",
@@ -12877,7 +12908,7 @@ var I18N = {
   "ui.eps.why.convN":"{n} monómeros ({codes}) se cuentan como sus bases de referencia, según una convención publicada.",
   "ui.eps.why.dir":"Por eso ε₂₆₀ sale bajo, y una concentración calculada a partir de A₂₆₀ sale alta.",
   "ui.eps.why.dirmay":"Si un marcador absorbe a 260 nm, ε₂₆₀ sale bajo y una concentración calculada a partir de A₂₆₀ sale alta.",
-  "ui.eps.why.more":"Cómo se calcula ε₂₆₀ se explica en el FAQ.",
+  "ui.eps.why.more":"Cómo se calcula ε₂₆₀ se explica en las preguntas frecuentes.",
   "ui.eps.why.parent1":"{n} residuo modificado ({codes}) usa la aproximación del compuesto de referencia indicada a continuación.",
   "ui.eps.why.parentN":"{n} residuos modificados ({codes}) usan las aproximaciones de los compuestos de referencia indicadas a continuación.",
   "ui.flash.antisense":"⚠ Corrige primero la cadena antisentido",
@@ -13011,7 +13042,7 @@ var I18N = {
   "ui.ps.fromlib":"Tomado de la Escala de síntesis guardada en tu biblioteca. Cambiarla aquí no cambia ese registro.",
   "ui.ps.help":"Se acoplan {c} de las {n} bases.",
   "ui.ps.help.one":"Se acopla {c} de 1 base.",
-  "ui.ps.more":"Por qué el soporte cambia este número se explica en el FAQ.",
+  "ui.ps.more":"Por qué el soporte cambia este número se explica en las preguntas frecuentes.",
   "ui.ps.nomw":"Esto necesita un peso molecular. Introduce una secuencia, activa arriba el peso molecular personalizado, o indica abajo la cantidad de un tubo en nmol o µmol.",
   "ui.ps.noread":"Toma una lectura arriba e indica el volumen de resuspensión, o añade un tubo abajo.",
   "ui.ps.noscale":"Elige una escala de síntesis, o escribe una en nmol, para obtener el rendimiento.",
@@ -13106,7 +13137,12 @@ var I18N = {
   "ui.rc.okadd1":"Secuencia guardada y {n} base personalizada añadida ✓",
   "ui.rc.okaddN":"Secuencia guardada y {n} bases personalizadas añadidas ✓",
   "ui.rc.okhave":"Secuencia guardada. Sus bases personalizadas ya estaban disponibles ✓",
+  "ui.rc.okren1":"monómero {code} guardado como {to}",
+  "ui.rc.okrenN":"monómeros guardados con códigos nuevos: {pairs}",
+  "ui.rc.openband":"Alguien ha compartido esta secuencia contigo. Todavía no está en tu biblioteca.",
   "ui.rc.priv!":"Alguien te ha enviado este enlace. Lleva dentro los datos de la secuencia y no dice quién lo ha enviado, así que ábrelo solo si lo estabas esperando. No se añade nada a tu biblioteca hasta que lo guardes, y lo que guardas es tu propia copia.",
+  "ui.rc.ren1":"{code} ya se usa aquí para otro monómero, así que el monómero de quien compartió el enlace se guardará como {to}.",
+  "ui.rc.renN":"Los siguientes códigos ya se usan aquí para otros monómeros, así que los monómeros de quien compartió el enlace se guardarán con códigos nuevos: {pairs}.",
   "ui.rc.save":"Guardar en mi biblioteca",
   "ui.rc.save1":"Guardar la secuencia + {n} base personalizada",
   "ui.rc.saveN":"Guardar la secuencia + {n} bases personalizadas",
@@ -15075,6 +15111,7 @@ var I18N = {
   "ui.eps.rec.vals":"Verwendete ε₂₆₀-Werte in M⁻¹ cm⁻¹: {list}.",
   "ui.eps.record.missing":"Keine Quelle dokumentiert.",
   "ui.eps.record.own":"{code}: ε₂₆₀ = {value} M⁻¹ cm⁻¹. Quelle: der von Ihnen für dieses Monomer eingegebene Wert.",
+  "ui.eps.record.shared":"{code}: ε₂₆₀ = {value} M⁻¹ cm⁻¹. Quelle: der Wert, den die Person, die den Link geteilt hat, für dieses Monomer eingegeben hat.",
   "ui.eps.record.sugar!":"{code} verwendet ε₂₆₀ = {value} M⁻¹ cm⁻¹, gemessen am 5-Methylcytidin-Monomer mit Ribose und nicht mit dem Zucker {sugar} ({source}).",
   "ui.eps.record.superseded":"{code}: Ein vom Lieferanten angegebener Wert wurde für dieses Monomer nicht verwendet ({note}).",
   "ui.eps.why.base1":"{n} Monomer in der Kette ({codes}) hat kein veröffentlichtes ε₂₆₀ und trägt hier daher nichts bei.",
@@ -15314,7 +15351,12 @@ var I18N = {
   "ui.rc.okadd1":"Sequenz gespeichert und {n} benutzerdefinierte Base hinzugefügt ✓",
   "ui.rc.okaddN":"Sequenz gespeichert und {n} benutzerdefinierte Basen hinzugefügt ✓",
   "ui.rc.okhave":"Sequenz gespeichert. Ihre benutzerdefinierten Basen waren bereits vorhanden ✓",
+  "ui.rc.okren1":"Monomer {code} als {to} gespeichert",
+  "ui.rc.okrenN":"Monomere unter neuen Kürzeln gespeichert: {pairs}",
+  "ui.rc.openband":"Jemand hat diese Sequenz mit Ihnen geteilt. Die Sequenz ist noch nicht in Ihrer Bibliothek gespeichert.",
   "ui.rc.priv!":"Jemand hat Ihnen diesen Link geschickt. Er enthält die Sequenzdaten selbst und nennt nicht, wer ihn geschickt hat, öffnen Sie ihn daher nur, wenn Sie ihn erwartet haben. Bis Sie speichern, wird nichts zu Ihrer Bibliothek hinzugefügt, und was Sie speichern, ist Ihre eigene Kopie.",
+  "ui.rc.ren1":"{code} steht hier bereits für ein anderes Monomer, daher wird das Monomer der absendenden Person als {to} gespeichert.",
+  "ui.rc.renN":"Die folgenden Kürzel stehen hier bereits für andere Monomere, daher werden die betreffenden Monomere der absendenden Person unter neuen Kürzeln gespeichert: {pairs}.",
   "ui.rc.save":"In meiner Bibliothek speichern",
   "ui.rc.save1":"Sequenz + {n} benutzerdefinierte Base speichern",
   "ui.rc.saveN":"Sequenz + {n} benutzerdefinierte Basen speichern",
@@ -19378,15 +19420,17 @@ if(/[?&]billing=/.test(window.__ocSearch)){
    "eps260_basis": "parent",
    "eps260_parent": "A",
    "eps260_source": {
-    "vendor": "peer-reviewed (Europe PMC full text, PMC11676002)",
-    "doc_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11676002/fullTextXML",
+    "vendor": "peer-reviewed (PubMed Central full text, PMC11676002)",
+    "doc_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11676002/",
     "fetched": "2026-09-02T17:17:22",
     "md5": "bab4b48c51893cfd61e25253cbe917a6",
     "kind": "html (cite-check)",
     "quote": "were determined from the molar extinction coefficient",
     "quote2": "estimated from the predicted values of DNA",
     "context": "section 4.1 Oligonucleotide Synthesis: antisense DNAs carrying an LNA modification",
-    "cross_check": "no second fetched document names this entity; a lone source, shipped and said so"
+    "cross_check": "no second fetched document names this entity; a lone source, shipped and said so",
+    "fetched_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11676002/fullTextXML",
+    "doc_url_checked": "2026-09-30: HTTP 200; both quotes present at doc_url"
    },
    "eps260_pending": null
   },
@@ -19420,15 +19464,17 @@ if(/[?&]billing=/.test(window.__ocSearch)){
    "eps260_basis": "parent",
    "eps260_parent": "T",
    "eps260_source": {
-    "vendor": "peer-reviewed (Europe PMC full text, PMC11676002)",
-    "doc_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11676002/fullTextXML",
+    "vendor": "peer-reviewed (PubMed Central full text, PMC11676002)",
+    "doc_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11676002/",
     "fetched": "2026-09-02T17:17:22",
     "md5": "bab4b48c51893cfd61e25253cbe917a6",
     "kind": "html (cite-check)",
     "quote": "were determined from the molar extinction coefficient",
     "quote2": "estimated from the predicted values of DNA",
     "context": "section 4.1 Oligonucleotide Synthesis: antisense DNAs carrying an LNA modification",
-    "cross_check": "no second fetched document names this entity; a lone source, shipped and said so"
+    "cross_check": "no second fetched document names this entity; a lone source, shipped and said so",
+    "fetched_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11676002/fullTextXML",
+    "doc_url_checked": "2026-09-30: HTTP 200; both quotes present at doc_url"
    },
    "eps260_pending": null
   },
@@ -19462,15 +19508,17 @@ if(/[?&]billing=/.test(window.__ocSearch)){
    "eps260_basis": "parent",
    "eps260_parent": "G",
    "eps260_source": {
-    "vendor": "peer-reviewed (Europe PMC full text, PMC11676002)",
-    "doc_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11676002/fullTextXML",
+    "vendor": "peer-reviewed (PubMed Central full text, PMC11676002)",
+    "doc_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11676002/",
     "fetched": "2026-09-02T17:17:22",
     "md5": "bab4b48c51893cfd61e25253cbe917a6",
     "kind": "html (cite-check)",
     "quote": "were determined from the molar extinction coefficient",
     "quote2": "estimated from the predicted values of DNA",
     "context": "section 4.1 Oligonucleotide Synthesis: antisense DNAs carrying an LNA modification",
-    "cross_check": "no second fetched document names this entity; a lone source, shipped and said so"
+    "cross_check": "no second fetched document names this entity; a lone source, shipped and said so",
+    "fetched_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11676002/fullTextXML",
+    "doc_url_checked": "2026-09-30: HTTP 200; both quotes present at doc_url"
    },
    "eps260_pending": null
   },
@@ -19504,15 +19552,17 @@ if(/[?&]billing=/.test(window.__ocSearch)){
    "eps260_basis": "parent",
    "eps260_parent": "C",
    "eps260_source": {
-    "vendor": "peer-reviewed (Europe PMC full text, PMC11676002)",
-    "doc_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11676002/fullTextXML",
+    "vendor": "peer-reviewed (PubMed Central full text, PMC11676002)",
+    "doc_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11676002/",
     "fetched": "2026-09-02T17:17:22",
     "md5": "bab4b48c51893cfd61e25253cbe917a6",
     "kind": "html (cite-check)",
     "quote": "were determined from the molar extinction coefficient",
     "quote2": "estimated from the predicted values of DNA",
     "context": "section 4.1 Oligonucleotide Synthesis: antisense DNAs carrying an LNA modification",
-    "cross_check": "no second fetched document names this entity; a lone source, shipped and said so"
+    "cross_check": "no second fetched document names this entity; a lone source, shipped and said so",
+    "fetched_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11676002/fullTextXML",
+    "doc_url_checked": "2026-09-30: HTTP 200; both quotes present at doc_url"
    },
    "eps260_pending": null
   },
@@ -20912,7 +20962,13 @@ function epsNoteParts(q){
 
 
     if(source && typeof source==='object' && source.vendor==='user' && !source.citation && !source.doc_url){
-      why.push(T('ui.eps.record.own',{code:r.code,value:N(r.value)}));
+      
+
+
+
+
+      var rc=(typeof CUSTOM!=='undefined')?CUSTOM[r.code]:null;
+      why.push(T(rc&&rc._shared===true?'ui.eps.record.shared':'ui.eps.record.own',{code:r.code,value:N(r.value)}));
       return;
     }
     
@@ -21248,7 +21304,11 @@ window.bareTypeIntent=bareTypeIntent; window.prefixBareBases=prefixBareBases; wi
 
 
 function _svT(k,v){ try{ if(typeof window.t==='function') return window.t(k,v); }catch(_){ } return ''; }
-function validateParsedSequence(p){
+
+
+
+
+function validateParsedSequence(p, noOpen){
   if(!p || !p.tokens) return {ok:false, reason:'parse', message:_svT('ui.sv.parse')};
   if(p.needPrefix)   return {ok:false, reason:'needPrefix', message:_svT('ui.sv.prefix')};
   if(p.danglingLink) return {ok:false, reason:'danglingLink', message:_svT('ui.sv.dangling')};
@@ -21257,14 +21317,19 @@ function validateParsedSequence(p){
     return {ok:false, reason:'bad', bad:u,
             message:_svT(u.length>1?'ui.sv.badn':'ui.sv.bad1',{codes:u.slice(0,8).map(function(t){ return window.ocQuote(t); }).join(', ')})};
   }
+  if(noOpen){
+    var ob=[]; p.tokens.forEach(function(k){ var c=k&&k.custom&&CUSTOM[k.code]; if(c&&c._open===true){ var q=k.code.length>1?'('+k.code+')':k.code; if(ob.indexOf(q)<0) ob.push(q); } });
+    if(ob.length) return {ok:false, reason:'bad', bad:ob,
+            message:_svT(ob.length>1?'ui.sv.badn':'ui.sv.bad1',{codes:ob.slice(0,8).map(function(q){ return window.ocQuote(q); }).join(', ')})};
+  }
   if(!p.tokens.length) return {ok:false, reason:'empty', message:_svT('ui.sv.nobases')};
   return {ok:true, reason:'', message:''};
 }
-function validateSequence(seq, mode){
+function validateSequence(seq, mode, noOpen){
   var raw=String(seq==null?'':seq).trim();
   if(!raw) return {ok:false, reason:'empty', message:_svT('ui.sv.empty')};
   var p=null; try{ p=parseSeq(raw, mode); }catch(_){ p=null; }
-  return validateParsedSequence(p);
+  return validateParsedSequence(p, noOpen);
 }
 
 
@@ -21791,7 +21856,13 @@ function customFormula(code){
   const cb=((typeof S!=='undefined'&&S.customBases)||[]).find(c=>c.code===code);
   if(cb && cb.formula){ const f=parseFormula(cb.formula); if(f) return f; }
   const m=(typeof CATALOG!=='undefined'&&CATALOG.byCode)?CATALOG.byCode[code]:null;
-  if(m && m.nucleoside_formula){ const f=parseFormula(m.nucleoside_formula); if(f) return f; }
+  
+
+
+
+
+
+  if(m && m.nucleoside_formula && (!cb || (cb.name===m.name && Number(cb.mass)===Number(m.mass)))){ const f=parseFormula(m.nucleoside_formula); if(f) return f; }
   
 
 
@@ -22601,6 +22672,14 @@ function saveCurrent(){
 
 
   if(S && S.__shared) return 'shared';
+  
+
+
+
+
+
+
+  if(S && S.__linkOpen) return 'linkopen';
   const entry=ocEntryForSave();
   if(!entry) return false;
   const last=history[0];
@@ -22619,8 +22698,18 @@ function saveCurrent(){
 
 
 function ocFocusBand(){
-  try{ var b=document.querySelector('[data-labed] [data-ed-save]');
-       if(b){ b.focus(); return true; } }catch(_e){ ocFail('ocFocusBand#1',_e); }
+  
+
+
+
+
+  try{ var b=document.querySelector('[data-labed] [data-ed-save], [data-linkopen] [data-lo-save]');
+       
+
+
+       if(b){ if(!b.getClientRects().length && typeof window.setTab==='function'){ window.setTab('mw');
+                Promise.resolve().then(function(){ try{ var s2=document.querySelector('[data-labed] [data-ed-save], [data-linkopen] [data-lo-save]'); if(s2) s2.focus(); }catch(_e){ ocFail('ocFocusBand#2',_e); } }); }
+              b.focus(); return true; } }catch(_e){ ocFail('ocFocusBand#1',_e); }
   return false;
 }
 function loadSavedState(h){
@@ -22651,6 +22740,11 @@ function loadSavedState(h){
     ? { rowId:h.__rowId, labId:h.__labId, ver:h.__ver||'', vn:(h.__vn==null?'':h.__vn),
         led:h.__led||'', name:h.name||'', author:h.__author||'', back:null }
     : null;
+  
+
+
+
+  S.__linkOpen = null;
   try{ window.dispatchEvent(new CustomEvent('oligo:shared')); }catch(_e){ ocFail('loadSavedState#1',_e); }
   return true;
 }
@@ -22745,7 +22839,7 @@ document.body.addEventListener("click", e=>{
     if(ok===true){ savedSig=currentSig(); applyAll(); }
     
 
-    else if(ok==='shared'){ ocFocusBand(); }
+    else if(ok==='shared'||ok==='linkopen'){ ocFocusBand(); }    
     else if(ok!=='gated'){ const b=e.target.closest("[data-save]"); b.textContent="Already saved"; ocDefer('saveFeedback', applyAll, 900); }
     return;
   }
@@ -23157,6 +23251,10 @@ let catalogOpen=false, catalogQName="", catalogQCat="", lastSeqEl=null, catalogO
 var catalogLoading=false;    
 window.catalogLoadingState=function(){ return catalogLoading; };
 
+
+var _catLoadP=null;
+window.catalogLoadPromise=function(){ return catalogLoading?_catLoadP:null; };
+
 function parseCatalogInline(){
   const el=document.getElementById("catalogData");
   if(el && el.textContent.trim()){ try{ return JSON.parse(el.textContent); }catch(e){ console.warn("[catalog] inline parse failed", e); } }
@@ -23203,6 +23301,10 @@ function epsSourceNorm(v){
   }
   return out;
 }
+
+
+
+window.epsSourceNorm=epsSourceNorm;
 function catalogReady(cat){
   
 
@@ -23533,8 +23635,8 @@ function loadCatalog(){
 
 
     catalogLoading=true; try{ if(typeof window.renderCatGate==='function') window.renderCatGate(); }catch(_e){ ocFail('loadCatalog#1',_e); }
-    return fetchFromSupabase().then(cat=>{ catalogOffline=false; catalogLoading=false; try{ if(typeof window.renderCatGate==='function') window.renderCatGate(); }catch(_e){ ocFail('loadCatalog#2',_e); } return cat; })
-      .catch(e=>{ catalogOffline=true; catalogLoading=false; try{ if(typeof window.renderCatGate==='function') window.renderCatGate(); }catch(_e){ ocFail('loadCatalog#3',_e); } console.warn('[catalog] Supabase failed, falling back to bundled:', e); return parseCatalogInline(); });
+    return (_catLoadP=fetchFromSupabase().then(cat=>{ catalogOffline=false; catalogLoading=false; try{ if(typeof window.renderCatGate==='function') window.renderCatGate(); }catch(_e){ ocFail('loadCatalog#2',_e); } return cat; })
+      .catch(e=>{ catalogOffline=true; catalogLoading=false; try{ if(typeof window.renderCatGate==='function') window.renderCatGate(); }catch(_e){ ocFail('loadCatalog#3',_e); } console.warn('[catalog] Supabase failed, falling back to bundled:', e); return parseCatalogInline(); }));
   }
   catalogOffline=false;
   return Promise.resolve(parseCatalogInline());
@@ -24866,7 +24968,9 @@ if(typeof W.saveCurrent==='function'){
   var _origSaveCurrent=W.saveCurrent;
   W.saveCurrent=function(){
     var r=_origSaveCurrent.apply(this,arguments);
-    try{ if(r && history.length){ var e=history[0]; if(!e.id){ e.id=uuid(); saveHist(); }
+    
+
+    try{ if(r===true && history.length){ var e=history[0]; if(!e.id){ e.id=uuid(); saveHist(); }
       if(syncEnabled()) pushStrand(e); } }catch(_e){ ocFail('syncTell#4',_e); }
     return r;
   };
@@ -25124,7 +25228,7 @@ function batchCompute(ov){
 
 
 
-    var v=validateSequence(seq, S.type);
+    var v=validateSequence(seq, S.type, true);    
     var r=null,eps='',mono='',mw='';
     if(v.ok){
       try{ r=compute(seq, S.type, S.linkage, S.three||'OH', 0);
@@ -25166,7 +25270,7 @@ document.addEventListener('click', function(e){
     if(_valid.length && !_allow) return;                    
     var _dropped=_valid.length-_allow;
     _valid.slice(0,_allow).forEach(function(r){
-      if(!validateSequence(r.seq, S.type).ok) return;       
+      if(!validateSequence(r.seq, S.type, true).ok) return;       
       var rr=null; try{ rr=compute(r.seq,S.type,S.linkage,S.three||'OH',0); }catch(_e){ ocFail('batchCompute#5',_e); }
       if(!rr||!rr.n) return;
       var entry={ id:uuid(), seq:r.seq, type:S.type, linkage:S.linkage, five:rr.five, fiveThio:rr.fiveThio,
@@ -26981,7 +27085,9 @@ function renderHistShell(){
 
   var _mwCache=null, _mwGen=null;
   function _custGen(){
-    try{ var k=Object.keys(CUSTOM).sort(), s=''+k.length;
+    
+
+    try{ var k=Object.keys(CUSTOM).filter(function(x){ var c=CUSTOM[x]; return !(c&&c._open===true); }).sort(), s=''+k.length;
       for(var i=0;i<k.length;i++){ var c=CUSTOM[k[i]];
         s+='|'+k[i]+':'+(c&&c.eff)+':'+(c&&c.nobond?1:0); }
       return s;
@@ -27003,8 +27109,11 @@ function renderHistShell(){
   function _histRecheckRaw(h){
     try{
       var p=parseSeq(h.seq, h.type||'DNA');
-      if(p && p.bad && p.bad.length){
-        var u=[]; p.bad.forEach(function(x){ if(u.indexOf(x)<0) u.push(x); });
+      
+
+      var ob=[]; if(p && p.tokens) p.tokens.forEach(function(x){ var c=x&&x.custom&&CUSTOM[x.code]; if(c&&c._open===true){ var q=x.code.length>1?'('+x.code+')':x.code; if(ob.indexOf(q)<0) ob.push(q); } });
+      if(p && ((p.bad && p.bad.length) || ob.length)){
+        var u=[]; (p.bad||[]).concat(ob).forEach(function(x){ if(u.indexOf(x)<0) u.push(x); });
         return {gone:true, codes:u.join(', '), was:h.mwStr}; }
       var rr=compute(h.seq, h.type||'DNA', h.linkage||'PO', h.three||'OH', 0);
       if(!rr || !rr.n) return null;
@@ -27204,7 +27313,7 @@ document.body.addEventListener('click', function(e){
   
 
 
-  if(shs){ var selS=window.oligoSheetHost.selected()||[]; if(!selS.length){ if(window.__oligoNotice){ window.__oligoNotice('oligoShareToast',{text:'Select one or more strands to share.',dismissible:true,duration:3400}); } } else if(window.oligoShare){ window.oligoShare.shareStrands(selS); } return; }
+  if(shs){ var selS=window.oligoSheetHost.selected()||[]; if(!selS.length){ if(window.__oligoNotice){ window.__oligoNotice('oligoShareToast',{text:(typeof window.t==='function'?window.t('ui.sh.err.none'):''),dismissible:true,duration:3400}); } } else if(window.oligoShare){ window.oligoShare.shareStrands(selS); } return; }
   var clb=e.target.closest('.view-hist [data-hcopylab]');
    
   if(clb){ var selL=window.oligoSheetHost.selected()||[]; if(!selL.length){ if(window.__oligoNotice){ window.__oligoNotice('oligoShareToast',{text:(typeof window.t==='function'?window.t('lab.mv.none'):''),dismissible:true,duration:5000}); } return; } if(!(window.oligoLabLib&&window.oligoLabLib.copyToLab)){ if(window.__oligoNotice){ window.__oligoNotice('oligoShareToast',{text:(typeof window.t==='function'?window.t('lab.mv.signin'):''),dismissible:true}); } return; } clb.disabled=true;
@@ -27570,7 +27679,7 @@ document.body.addEventListener('click', function(e){
         if(window._antiInvalid){ _flashBtn(pa, window.t('ui.flash.antisense')); return; }
         var rr=compute(S.seq,S.type,S.linkage);
         if(!rr.n){ _flashBtn(pa, window.t('ui.flash.invalid')); return; }
-        if(typeof saveCurrent==='function'){ var ok=saveCurrent(); if(ok===true){ try{ savedSig=currentSig(); }catch(_e){ ocFail('_flashBtn#1',_e); } if(typeof renderHistShell==='function') renderHistShell(); applyAll(); _flashBtn(pa, window.t('ui.flash.saved'), 'ok'); } else if(ok==='shared'){ ocFocusBand(); } else if(ok!=='gated'){ _flashBtn(pa, window.t('ui.flash.dupe')); } }
+        if(typeof saveCurrent==='function'){ var ok=saveCurrent(); if(ok===true){ try{ savedSig=currentSig(); }catch(_e){ ocFail('_flashBtn#1',_e); } if(typeof renderHistShell==='function') renderHistShell(); applyAll(); _flashBtn(pa, window.t('ui.flash.saved'), 'ok'); } else if(ok==='shared'||ok==='linkopen'){ ocFocusBand(); } else if(ok!=='gated'){ _flashBtn(pa, window.t('ui.flash.dupe')); } }    
       }
       return;
     }
@@ -31267,6 +31376,11 @@ try{
     
 
     if(d && cu && Number.isInteger(cu.charge) && cu.charge>=1 && cu.charge<=4) d.charge=cu.charge;
+    
+
+
+
+    if(d && cu) epsInto(d, cu);
     return d;
   }
   function strandSeqs(h){ var a=[[h.seq,h.type]]; if(h.duplex && (h.duplex.mode==='custom'||h.duplex.mode==='manual') && h.duplex.antiSeq) a.push([h.duplex.antiSeq, h.duplex.antiType||h.type]); return a; }
@@ -31293,14 +31407,40 @@ try{
 
 
     for(var _li=0;_li<strands.length;_li++){ if(strands[_li]&&strands[_li].__labId) throw new Error('LAB'); }
-    var url=location.origin+location.pathname+'#share='+encJson({ v:VER, strands:strands.map(toShare), customBases:collectDefs(strands) });
+    var payload={ v:VER, strands:strands.map(toShare), customBases:collectDefs(strands) };
+    
+
+
+
+
+
+
+
+
+    var chk=validate(JSON.parse(JSON.stringify(payload)));
+    if(!chk) throw invalidErr(_t('ui.rc.v.parse'));
+    for(var _vi=0;_vi<chk.strands.length;_vi++){ var _vs=validShared(chk.strands[_vi]); if(!_vs.ok) throw invalidErr(_vs.message||_t('ui.rc.v.parse')); }
+    var url=location.origin+location.pathname+'#share='+encJson(payload);
     if(url.length>MAXURL) throw new Error('TOO_LARGE');
     return url;
   }
-  function shareStrands(strands){
+  function shareStrands(strands){ shareAttempt(strands,false); }
+  function shareAttempt(strands,again){
     var url;
     try{ url=buildUrl(strands); }
-    catch(e){ toast(_t(e.message==='TOO_MANY'?'ui.sh.err.many':e.message==='EMPTY'?'ui.sh.err.none':e.message==='LAB'?'ui.sh.err.lab!':'ui.sh.err.big')); return; }
+    catch(e){
+      
+
+
+
+
+      if(e&&e.message==='INVALID'){
+        var lp=null;
+        try{ if(!again&&typeof window.catalogLoadingState==='function'&&window.catalogLoadingState()&&typeof window.catalogLoadPromise==='function') lp=window.catalogLoadPromise(); }catch(_e){ ocFail('shareStrands#wait',_e); }
+        if(lp&&typeof lp.then==='function'){ toast(_t('ui.catgate.loading')); lp.then(function(){ shareAttempt(strands,true); },function(){ shareAttempt(strands,true); }); return; }
+        toast(e.userMessage||_t('ui.rc.v.parse')); return;
+      }
+      toast(_t(e.message==='TOO_MANY'?'ui.sh.err.many':e.message==='EMPTY'?'ui.sh.err.none':e.message==='LAB'?'ui.sh.err.lab!':'ui.sh.err.big')); return; }
     
 
 
@@ -31476,7 +31616,7 @@ try{
     var c=CUSTOM[code]; return c&&c._shared!==true?c:null;
   }
   function mergeSessionDefs(defs){ (defs||[]).forEach(function(c){ if(CUSTOM[c.code]) return; var conj=(c.kind==='conj'); CUSTOM[c.code]={code:c.code,name:c.name,mass:c.mass,hasPhos:!!c.hasPhos,kind:c.kind||'base',formula:c.formula||'',nobond:conj,eff:conj?c.mass:(c.hasPhos?c.mass-LINK.PO:c.mass),_shared:true,charge:(c.charge||0),
-    sugar:c.sugar||'', eps260:(typeof c.eps260==='number'?c.eps260:null), eps260_basis:c.eps260_basis||null, eps260_parent:c.eps260_parent||null}; }); }
+    sugar:c.sugar||'', eps260:(typeof c.eps260==='number'?c.eps260:null), eps260_basis:c.eps260_basis||null, eps260_parent:c.eps260_parent||null, eps260_source:srcNorm(c.eps260_source)}; }); }
   
 
 
@@ -31485,10 +31625,175 @@ try{
 
 
 
+  
 
 
 
 
+  var EPS_BASES=Object.assign(Object.create(null),{monomer:1,label:1,isolated:1,parent:1}),
+      EPS_PARENTS=Object.assign(Object.create(null),{A:1,C:1,G:1,T:1,U:1}),
+      EPS_SUGARS=Object.assign(Object.create(null),{d:1,r:1,m:1,f:1,moe:1,lna:1,bna:1,'-':1});    
+  function hasOwn(o,k){ return !!o && Object.prototype.hasOwnProperty.call(o,k); }
+   
+  function srcNorm(v){ try{ var n=(typeof window.epsSourceNorm==='function')?window.epsSourceNorm(v):null; if(!n) return null; var o={}; for(var k in n) o[k]=n[k]; return o; }catch(_e){ ocFail('srcNorm#1',_e); return null; } }
+  
+
+
+  function epsInto(d,src){
+    var b=src&&src.eps260_basis; if(typeof b!=='string'||!EPS_BASES[b]) return d;
+    if(b!=='parent'&&typeof src.eps260==='number') d.eps260=src.eps260;
+    d.eps260_basis=b;
+    if(src.eps260_parent) d.eps260_parent=src.eps260_parent;
+    var s=srcNorm(src.eps260_source); if(s) d.eps260_source=s;
+    if(src.eps260_parent&&src.sugar) d.sugar=src.sugar;
+    return d;
+  }
+  
+
+  function epsOk(c,def){
+    function has(k){ return hasOwn(c,k)&&c[k]!=null; }
+    if(!has('eps260_basis')) return !(has('eps260')||has('eps260_parent')||has('eps260_source')||has('sugar'));
+    var b=c.eps260_basis; if(typeof b!=='string'||!EPS_BASES[b]) return false;
+    if(b==='parent'){ if(has('eps260')) return false; }
+    else{ if(typeof c.eps260!=='number'||!isFinite(c.eps260)||c.eps260<0) return false; def.eps260=c.eps260; }
+    def.eps260_basis=b;
+    if(has('eps260_parent')){ if(typeof c.eps260_parent!=='string'||!EPS_PARENTS[c.eps260_parent]) return false; def.eps260_parent=c.eps260_parent; }
+    if(has('sugar')){ if(!def.eps260_parent||typeof c.sugar!=='string'||!EPS_SUGARS[c.sugar]) return false; def.sugar=c.sugar; }
+    if(has('eps260_source')){ var s=srcNorm(c.eps260_source); if(s) def.eps260_source=s; }
+    return true;
+  }
+   
+  function epsKey(r){
+    var b=r&&r.eps260_basis; if(!b) return '';
+    var s=srcNorm(r.eps260_source), ks=s?Object.keys(s).sort():[];
+    return JSON.stringify([b, b==='parent'?null:(typeof r.eps260==='number'?r.eps260:null), r.eps260_parent||null,
+      r.eps260_parent?(r.sugar||''):'', ks.map(function(k){ return [k,s[k]]; })]);
+  }
+  function chargeOf(r){ var q=r&&r.charge; return (Number.isInteger(q)&&q>=1&&q<=4)?q:0; }
+  
+
+  function linkSame(a,b){ return sameDef(a,b) && defFormula(a)===defFormula(b) && epsKey(a)===epsKey(b) && chargeOf(a)===chargeOf(b); }
+  
+
+  function labDefs(code){ try{ var L=window.oligoLabLib; return (L&&typeof L.labMonDefs==='function')?(L.labMonDefs(code)||[]):[]; }catch(_e){ ocFail('labDefs#1',_e); return []; } }
+  
+
+
+  function heldDefs(code){
+    
+
+    var c=CUSTOM[code]; if(c&&(c._shared!==true||c._open===true)) return [c];
+    var out=(S.customBases||[]).filter(function(x){ return x&&x.code===code; });
+    var by=(typeof CATALOG!=='undefined'&&CATALOG&&CATALOG.byCode)||null;
+    if(!out.length&&S.catalogEnabled&&by&&hasOwn(by,code)) out.push(by[code]);
+    return out.concat(labDefs(code));
+  }
+  
+
+
+  function nameBound(code){ try{ var L=window.ocTm&&window.ocTm._limits&&window.ocTm._limits.LNA_CODE; return !!L&&hasOwn(L,code); }catch(_e){ return false; } }
+  
+
+  function renameCode(code,n){ var sfx='-'+n; return code.slice(0,16-sfx.length)+sfx; }
+  
+
+  function freeCode(c,taken){
+    if(hasOwn(taken,c)||!/^[A-Za-z0-9+._-]{1,16}$/.test(c)) return false;
+    if(typeof RESERVED_CODES!=='undefined'&&RESERVED_CODES.has&&RESERVED_CODES.has(c)) return false;
+    if(typeof PROTO_NAMES!=='undefined'&&PROTO_NAMES.indexOf(c)>=0) return false;
+    if(CUSTOM[c]||(S.customBases||[]).some(function(x){ return x&&x.code===c; })) return false;
+    var by=(typeof CATALOG!=='undefined'&&CATALOG&&CATALOG.byCode)||null; if(by&&hasOwn(by,c)) return false;
+    return !labDefs(c).length;
+  }
+  
+
+  function reuseOrMint(d,taken){
+    var n,c;
+    for(n=1;n<100;n++){ c=renameCode(d.code,n); if(hasOwn(taken,c)) continue;
+      var h=heldDefs(c); if(h.length&&h.every(function(x){ return linkSame(x,d); })) return c; }
+    for(n=1;n<100;n++){ c=renameCode(d.code,n); if(freeCode(c,taken)) return c; }
+    return null;
+  }
+  
+
+  
+
+  function clashAt(code,d){ return heldDefs(code).some(function(x){ return !linkSame(x,d); }); }
+  function decide(defs){
+    var map=Object.create(null), refuse=[], taken=Object.create(null);
+    (defs||[]).forEach(function(d){ taken[d.code]=1; });
+    (defs||[]).forEach(function(d){
+      if(!clashAt(d.code,d)) return;
+      if(nameBound(d.code)){ refuse.push(d.code); return; }
+      var to=reuseOrMint(d,taken); if(!to){ refuse.push(d.code); return; }
+      map[d.code]=to; taken[to]=1;
+    });
+    return {map:map, refuse:refuse};
+  }
+  
+
+
+
+  function walkSeq(raw,onCode){
+    var s=String(raw==null?'':raw), tail='', out='', i=0, k;
+    var m3=s.match(/\s+(idT|idA|idC|idG|P)\s*$/); if(m3){ tail=s.slice(m3.index); s=s.slice(0,m3.index); }
+    var fk=(typeof FIVE_PREFIX_KEYS!=='undefined'&&FIVE_PREFIX_KEYS)||[];
+    for(k=0;k<fk.length;k++){ var tag=fivePrefixTag(fk[k]); if(tag&&s.startsWith(tag)){ out=tag; i=tag.length; break; } }
+    var sug=Object.keys(NUCLEO).sort(function(a,b){ return b.length-a.length; });
+    while(i<s.length){
+      var ch=s[i];
+      if(/\s/.test(ch)||ch==='s'||ch==='o'){ out+=ch; i++; continue; }
+      if(ch==='('){ var e=s.indexOf(')',i+1); if(e>i){ var r=onCode(s.slice(i+1,e)); out+=(r!=null?r:s.slice(i,e+1)); i=e+1; continue; } out+=s.slice(i); break; }
+      var r1=onCode(ch); if(r1!=null){ out+=r1; i++; continue; }
+      var pl=0; for(k=0;k<sug.length;k++){ if(s.startsWith(sug[k],i)){ pl=sug[k].length; break; } }
+      var b=s[i+pl]; if(b&&/[ACGTU]/.test(b)){ out+=s.slice(i,i+pl+1); i+=pl+1; continue; }
+      out+=ch; i++;
+    }
+    return out+tail;
+  }
+  function renameSeq(raw,map){ return walkSeq(raw,function(c){ return hasOwn(map,c)?'('+map[c]+')':null; }); }
+  function isAnti(s){ return !!(s&&s.duplex&&(s.duplex.mode==='custom'||s.duplex.mode==='manual')); }
+   
+  function applyPlan(strands,defs,map){
+    if(!Object.keys(map).length) return {strands:strands, defs:defs};
+    return { strands:(strands||[]).map(function(s){ var o=Object.assign({},s); o.seq=renameSeq(s.seq,map);
+        if(isAnti(s)) o.duplex=Object.assign({},s.duplex,{antiSeq:renameSeq(s.duplex.antiSeq,map)}); return o; }),
+      defs:(defs||[]).map(function(d){ return hasOwn(map,d.code)?Object.assign({},d,{code:map[d.code]}):d; }) };
+  }
+  function current(dlg){ var plan=decide(dlg.customBases); return {plan:plan, view:applyPlan(dlg.strands,dlg.customBases,plan.map)}; }
+   
+  function renPairs(s,map){ var seen=[]; function note(c){ if(hasOwn(map,c)&&seen.indexOf(c)<0) seen.push(c); return null; }
+    walkSeq(s&&s.seq,note); if(isAnti(s)) walkSeq(s.duplex.antiSeq,note); return seen.map(function(c){ return [c,map[c]]; }); }
+  function quote(x){ return (typeof window.ocQuote==='function')?window.ocQuote(x):('“'+x+'”'); }
+  function pairsText(p){ return p.map(function(x){ return quote(x[0])+' → '+quote(x[1]); }).join(', '); }
+   
+  function renText(p){ return p.length===1?_t('ui.rc.ren1',{code:quote(p[0][0]),to:quote(p[0][1])}):_t('ui.rc.renN',{pairs:pairsText(p)}); }
+  function renLine(s,map){ var p=renPairs(s,map); if(!p.length) return null;
+    var e=el('div','oshare-defs'); e.innerHTML=nwCodes(renText(p),p);
+    e.setAttribute('data-lsren',''); return e; }
+  
+
+
+  function nwCodes(txt,p){ var h=ocEsc(txt), cs=[]; p.forEach(function(x){ [x[0],x[1]].forEach(function(c){ if(cs.indexOf(c)<0) cs.push(c); }); });
+    cs.forEach(function(c){ var q=ocEsc(quote(c)); h=h.split(q).join('\u0001'+q+'\u0002'); });
+    return h.replace(/\u0001/g,'<span class="oc-nw">').replace(/\u0002/g,'</span>'); }
+  function renToast(p){ return p.length===1?_t('ui.rc.okren1',{code:quote(p[0][0]),to:quote(p[0][1])}):_t('ui.rc.okrenN',{pairs:pairsText(p)}); }
+   
+  function saveToast(r,rn){
+    return r&&r.ok ? (r.added.length?_t(r.added.length===1?'ui.rc.okadd1':'ui.rc.okaddN',{n:r.added.length}):(r.used.length?_t('ui.rc.okhave'):_t('ui.rc.ok')))+(rn.length?' \u00b7 '+renToast(rn):'')
+      : r==='gated' ? _t('ui.rc.full')
+      : _t('ui.rc.err');
+  }
+   
+  function dropSession(){ try{ for(var k in CUSTOM){ if(CUSTOM[k]&&CUSTOM[k]._shared===true&&CUSTOM[k]._open!==true){ rebuildCustom(); return; } } }catch(_e){ ocFail('dropSession#1',_e); } }    
+  function invalidErr(msg){ var e=new Error('INVALID'); e.userMessage=msg; return e; }
+  function openConflict(codes,onClose){
+    var cs=openScrim(onClose,{label:_t('ui.rc.cf.aria'),initialFocus:'none'}), cb=el('div','oshare-box');
+    var cx=el('button','oshare-btn oshare-x','✕'); cx.type='button'; cx.setAttribute('aria-label',_t('lab.dlg.close')); cx.addEventListener('click',function(){ cs._close(); }); cb.appendChild(cx);
+    cb.appendChild(el('h3',null,_t('ui.rc.cf.h')));
+    cb.appendChild(el('p','oshare-sub',_t('ui.rc.cf.body!',{codes:codes.map(function(c){return '('+c+')';}).join(', ')})));
+    var cn=el('button','oshare-btn',_t('lab.dlg.close')); cn.type='button'; cn.addEventListener('click',function(){ cs._close(); }); cb.appendChild(cn); cs.appendChild(cb);
+  }
   
 
 
@@ -31534,24 +31839,55 @@ try{
       if(old){ if(!sameDef(old,d)) ocFail('addDefs#conflict',new Error('Conflicting shared custom base '+d.code)); return; }
       if(!S.customBases) S.customBases=[];
       var cb={code:d.code,name:d.name||'',mass:d.mass,hasPhos:!!d.hasPhos,kind:d.kind||'base',formula:d.formula||''};
-      S.customBases.push(cb); var conj=(d.kind==='conj');
-      CUSTOM[d.code]={code:d.code,name:d.name,mass:d.mass,hasPhos:!!d.hasPhos,kind:d.kind||'base',formula:d.formula||'',nobond:conj,eff:conj?d.mass:(d.hasPhos?d.mass-LINK.PO:d.mass),charge:(d.charge||0)};    
+      
+
+
+
+
+      if(Number.isInteger(d.charge)&&d.charge>=1&&d.charge<=4) cb.charge=d.charge;
+      epsInto(cb,d);
+      S.customBases.push(cb);
       added.push(cb);
     });
     if(added.length&&typeof save==='function') try{ save(); }catch(_e){ ocFail('addDefs#1',_e); }
+    
+
+    if(added.length) try{ rebuildCustom(); }catch(_e){ ocFail('addDefs#rebuild',_e); }
     added.forEach(function(cb){ try{ if(window.oligoSync&&oligoSync.pushCustomBase) oligoSync.pushCustomBase(cb); }catch(_e){ ocFail('addDefs#sync',_e); } });
     return added;
   }
   
 
 
-  var WORK=['seq','type','linkage','five','fiveThio','three','advanced','duplexMode','antiSeq','antiType','antiFive','antiThree','antiLinkage','mwSource','modPreset','modName','modMass','__shared','concRecord'];
+  var WORK=['seq','type','linkage','five','fiveThio','three','advanced','duplexMode','antiSeq','antiType','antiFive','antiThree','antiLinkage','mwSource','modPreset','modName','modMass','__shared','concRecord','__linkOpen'];
+  
+
+
+  
+
+
+
+
+
+
+
+
   function saveShared(s,allDefs){
+    mergeSessionDefs(allDefs);
+    try{ return saveSharedNow(s,allDefs); }
+    finally{ dropSession(); }
+  }
+   
+  function peOf(s){
+    return { seq:s.seq,type:s.type,linkage:s.linkage,five:s.five,fiveThio:s.fiveThio,three:s.three,advanced:s.advanced,modPreset:s.modPreset,modName:s.modName,modMass:s.modMass,mwSource:s.mwSource,
+      duplex:(s.duplex&&s.duplex.mode&&s.duplex.mode!=='off')?{mode:s.duplex.mode,antiSeq:s.duplex.antiSeq||'',antiType:s.duplex.antiType||s.type,antiFive:s.duplex.antiFive||'OH',antiThree:s.duplex.antiThree||'OH',antiLinkage:s.duplex.antiLinkage||'PO'}:null };
+  }
+  function saveSharedNow(s,allDefs){
     if(!validShared(s).ok) return false;       
     var snap={}; WORK.forEach(function(k){ snap[k]=S[k]; });
-    var pe={ seq:s.seq,type:s.type,linkage:s.linkage,five:s.five,fiveThio:s.fiveThio,three:s.three,advanced:s.advanced,modPreset:s.modPreset,modName:s.modName,modMass:s.modMass,mwSource:s.mwSource,
-      duplex:(s.duplex&&s.duplex.mode&&s.duplex.mode!=='off')?{mode:s.duplex.mode,antiSeq:s.duplex.antiSeq||'',antiType:s.duplex.antiType||s.type,antiFive:s.duplex.antiFive||'OH',antiThree:s.duplex.antiThree||'OH',antiLinkage:s.duplex.antiLinkage||'PO'}:null };
+    var pe=peOf(s);
     var ok=false, saved=null;
+    _loQuiet++;       
     
 
 
@@ -31566,7 +31902,7 @@ try{
 
         saved.fromShare=Date.now(); saveHist(); }
     }catch(_e){ ocFail('saveShared#1',_e); ok=false; }
-    finally{ WORK.forEach(function(k){ S[k]=snap[k]; }); try{ save(); }catch(_e){ ocFail('saveShared#3',_e); } }
+    finally{ WORK.forEach(function(k){ S[k]=snap[k]; }); _loQuiet--; try{ save(); }catch(_e){ ocFail('saveShared#3',_e); } }
     if(ok!=='gated'&&ok!==true) return false;
     if(ok==='gated') return 'gated';
     var used=defsFor(s,allDefs), added=addDefs(used);
@@ -31580,18 +31916,17 @@ try{
 
 
     mergeSessionDefs(payload.customBases);
-    var referenced=defsAcross(payload.strands,payload.customBases), conflicts=[];
+    var referenced=defsAcross(payload.strands,payload.customBases);
     try{ if(typeof rebuildCustom==='function') rebuildCustom(); }catch(_e){ ocFail('renderRecipient#rebuild',_e); }
-    referenced.forEach(function(d){ var old=existingDef(d.code); if(old&&!sameDef(old,d)) conflicts.push(d); });
     payload.customBases=referenced;
-    if(conflicts.length){
-      var cs=openScrim(finish,{label:_t('ui.rc.cf.aria'),initialFocus:'none'}), cb=el('div','oshare-box');
-      var cx=el('button','oshare-btn oshare-x','\u2715'); cx.type='button'; cx.setAttribute('aria-label',_t('lab.dlg.close')); cx.addEventListener('click',function(){ cs._close(); }); cb.appendChild(cx);
-      cb.appendChild(el('h3',null,_t('ui.rc.cf.h')));
-      cb.appendChild(el('p','oshare-sub',_t('ui.rc.cf.body!',{codes:conflicts.map(function(d){return '('+d.code+')';}).join(', ')})));
-      var cn=el('button','oshare-btn',_t('lab.dlg.close')); cn.type='button'; cn.addEventListener('click',function(){ cs._close(); }); cb.appendChild(cn); cs.appendChild(cb); return;
-    }
-    mergeSessionDefs(referenced);
+    
+
+
+
+
+    var cur=current(payload), view=cur.view;
+    if(cur.plan.refuse.length){ openConflict(cur.plan.refuse,finish); return; }
+    mergeSessionDefs(view.defs);
     
 
     var sc=openScrim(finish,{label:_t('ui.rc.h'), initialFocus:'none'});
@@ -31607,24 +31942,33 @@ try{
 
 
     box.appendChild(el('p','oshare-sub', _t(payload.strands.length===1?'ui.rc.sub1':'ui.rc.subN',{n:payload.strands.length})));
-    if(referenced.length){
-      var missAll=missingDefs(referenced), dn=el('div','oshare-defnote'); dn.setAttribute('role','status');
+    if(view.defs.length){
+      var missAll=missingDefs(view.defs), dn=el('div','oshare-defnote'); dn.setAttribute('role','status');
       
 
 
 
 
-      dn.innerHTML='<b>'+ocEsc(_t(referenced.length===1?'ui.rc.cb1':'ui.rc.cbN',{n:referenced.length}))+'</b> '+referenced.map(function(d){return '('+ocEsc(d.code)+') '+ocEsc(d.name||_t('ui.rc.unnamed'));}).join(', ')+ocEsc(_t('punct.stop'))+
+      dn.innerHTML='<b>'+ocEsc(_t(view.defs.length===1?'ui.rc.cb1':'ui.rc.cbN',{n:view.defs.length}))+'</b> '+view.defs.map(function(d){return '('+ocEsc(d.code)+') '+ocEsc(d.name||_t('ui.rc.unnamed'));}).join(', ')+ocEsc(_t('punct.stop'))+
         ocEsc(missAll.length?_t(missAll.length===1?'ui.rc.cbadd1':'ui.rc.cbaddN'):_t('ui.rc.cbhave'));
       box.appendChild(dn);
     }
     var list=el('div','oshare-list');
-    payload.strands.forEach(function(s,idx){
+    
+
+    var cardSaved=[], cardBtn=[], cardSync=[];
+    
+
+    function defsLine(sd){ var sm=missingDefs(sd); return el('div','oshare-defs',_t('ui.rc.cbs',{codes:sd.map(function(d){return '('+d.code+')';}).join(', ')})+' \u00b7 '+(sm.length?_t(sm.length===1?'ui.rc.cbwill1':'ui.rc.cbwillN',{n:sm.length}):_t('ui.rc.cbok'))); }
+    view.strands.forEach(function(s,idx){
       var card=el('div','oshare-card');
       card.appendChild(el('div','nm', s.name||_t('ui.rc.seqn',{n:idx+1})));
-      card.appendChild(el('div','sq', (typeof spaceSeq==='function'?spaceSeq(s.seq,s.type,s.linkage):s.seq)));
-      var sdefs=defsFor(s,payload.customBases), smiss=missingDefs(sdefs);
-      if(sdefs.length) card.appendChild(el('div','oshare-defs',_t('ui.rc.cbs',{codes:sdefs.map(function(d){return '('+d.code+')';}).join(', ')})+' \u00b7 '+(smiss.length?_t(smiss.length===1?'ui.rc.cbwill1':'ui.rc.cbwillN',{n:smiss.length}):_t('ui.rc.cbok'))));
+      var sqEl=el('div','sq', (typeof spaceSeq==='function'?spaceSeq(s.seq,s.type,s.linkage):s.seq)); card.appendChild(sqEl);
+      var sdefs=defsFor(s,view.defs), smiss=missingDefs(sdefs);
+      var defsEl=sdefs.length?defsLine(sdefs):null; if(defsEl) card.appendChild(defsEl);
+      cardSync[idx]=function(nw){ var nd=defsFor(nw.view.strands[idx],nw.view.defs), nl=nd.length?defsLine(nd):null;
+        if(defsEl&&defsEl.parentNode){ if(nl) defsEl.parentNode.replaceChild(nl,defsEl); else defsEl.parentNode.removeChild(defsEl); } defsEl=nl; };
+      var renEl=renLine(payload.strands[idx],cur.plan.map); if(renEl) card.appendChild(renEl);
       var vs=validShared(s);
       var c=vs.ok?computeShared(s):null, mw=el('div','mw');
       
@@ -31641,23 +31985,46 @@ try{
       else { mw.className='mw oshare-bad'; mw.setAttribute('role','alert');
              mw.textContent='✕ '+(vs.ok?_t('ui.rc.bad'):vs.message)+' '+_t('ui.rc.notsaved'); }
       card.appendChild(mw);
-      var b1=el('button','oshare-btn',smiss.length?_t(smiss.length===1?'ui.rc.save1':'ui.rc.saveN',{n:smiss.length}):_t('ui.rc.save')); b1.type='button';
+      var b1=el('button','oshare-btn',smiss.length?_t(smiss.length===1?'ui.rc.save1':'ui.rc.saveN',{n:smiss.length}):_t('ui.rc.save')); b1.type='button'; cardBtn[idx]=b1;
       if(!c){ b1.disabled=true; b1.setAttribute('aria-disabled','true'); b1.title=_t('ui.rc.invalid'); }
       else b1.addEventListener('click',function(){
         try{ if(window.ocPlan&&window.ocPlan.gateSave&&!window.ocPlan.gateSave(1,{retry:function(){ try{ b1.click(); }catch(_e){ ocFail('saveShared#retry',_e); } }})) return; }catch(_e){ ocFail('saveShared#gate',_e); }
-        var r=saveShared(s,payload.customBases);
+        
+
+
+        var now=current(payload);
+        if(now.plan.refuse.length){ openConflict(now.plan.refuse,null); return; }
+        var ns=now.view.strands[idx], rn=renPairs(payload.strands[idx],now.plan.map);
+        var r=saveShared(ns,now.view.defs);
          
-        toast(r&&r.ok ? (r.added.length?_t(r.added.length===1?'ui.rc.okadd1':'ui.rc.okaddN',{n:r.added.length}):(r.used.length?_t('ui.rc.okhave'):_t('ui.rc.ok')))
-            : r==='gated' ? _t('ui.rc.full')
-            : _t('ui.rc.err'));
-        if(r&&r.ok){ b1.disabled=true; b1.textContent=_t('ui.rc.done'); }
+        toast(saveToast(r,rn));
+        if(r&&r.ok){ b1.disabled=true; b1.textContent=_t('ui.rc.done'); cardSaved[idx]=true;
+           
+          sqEl.textContent=(typeof spaceSeq==='function'?spaceSeq(ns.seq,ns.type,ns.linkage):ns.seq);
+          var ne=renLine(payload.strands[idx],now.plan.map); if(renEl&&renEl.parentNode) renEl.parentNode.removeChild(renEl); if(ne) card.insertBefore(ne,mw); renEl=ne;
+          cardSync[idx](now); }
         if(typeof renderHistShell==='function') try{ renderHistShell(); }catch(_e){ ocFail('finish#4',_e); } });
       card.appendChild(b1);
+      
+
+
+
+      var b2=el('button','oshare-btn',_t('lab.card.open')); b2.type='button'; b2.setAttribute('data-lo-open','');
+      if(!c){ b2.disabled=true; b2.setAttribute('aria-disabled','true'); b2.title=_t('ui.rc.invalid'); }
+      else b2.addEventListener('click',function(){
+        var now=current(payload);
+        if(now.plan.refuse.length){ openConflict(now.plan.refuse,null); return; }
+        if(!loOpen(payload,idx,now)){ toast(_t('ui.rc.bad')); return; }
+        sc._close();       
+        try{ if((document.body.dataset.tab||'mw')!=='mw'&&typeof window.setTab==='function') window.setTab('mw'); }catch(_e){ ocFail('linkOpen#tab',_e); }
+        loPaint();
+      });
+      card.appendChild(b2);
       list.appendChild(card);
     });
     box.appendChild(list);
     var acts=el('div','oshare-actions');
-    var allMissing=missingDefs(referenced);
+    var allMissing=missingDefs(view.defs);
     var all=el('button','oshare-btn primary',allMissing.length?_t(allMissing.length===1?'ui.rc.all1':'ui.rc.allN',{n:allMissing.length}):_t('ui.rc.all')); all.type='button'; all.addEventListener('click',function(){
       
 
@@ -31665,25 +32032,36 @@ try{
 
 
 
-      var okc=0, invalid=0, other=0, gated=0, addedCodes={};
-      var _valid=payload.strands.filter(function(s){ return validShared(s).ok; });
-      invalid = payload.strands.length - _valid.length;
+      var okc=0, invalid=0, other=0, gated=0, addedCodes={}, renUsed=[];
+      
+
+      var now=current(payload);
+      if(now.plan.refuse.length){ openConflict(now.plan.refuse,null); return; }
+      mergeSessionDefs(now.view.defs);
+      var _vi=[], had=0; now.view.strands.forEach(function(s,i){ if(!validShared(s).ok) return; if(cardSaved[i]){ had++; return; } _vi.push(i); });
+      var _valid=_vi.map(function(i){ return now.view.strands[i]; });
+      invalid = now.view.strands.length - _valid.length - had;
       var _allow=_valid.length;
       try{ if(window.ocPlan&&window.ocPlan.gateSave&&_valid.length)
         _allow=window.ocPlan.gateSave(_valid.length,{retry:function(){ try{ all.click(); }catch(_e){ ocFail('finish#5',_e); } }}); }catch(_e){ ocFail('finish#6',_e); }
-      if(_valid.length && !_allow){ return; }           
+      if(_valid.length && !_allow){ dropSession(); return; }           
       _valid.forEach(function(s, i){
         if(i>=_allow){ gated++; return; }
-        var r=saveShared(s,payload.customBases);
-        if(r&&r.ok){ okc++; (r.added||[]).forEach(function(d){ addedCodes[d.code]=1; }); }
+        var r=saveShared(s,now.view.defs);
+        if(r&&r.ok){ okc++; (r.added||[]).forEach(function(d){ addedCodes[d.code]=1; });
+          cardSaved[_vi[i]]=true; var cb1=cardBtn[_vi[i]]; if(cb1){ cb1.disabled=true; cb1.textContent=_t('ui.rc.done'); } cardSync[_vi[i]](now);
+          renPairs(payload.strands[_vi[i]],now.plan.map).forEach(function(p){ if(!renUsed.some(function(q){ return q[0]===p[0]; })) renUsed.push(p); }); }
         else if(r==='gated') gated++; else other++;
       });
+      dropSession();
       var parts=[];
       if(okc)     parts.push(_t(okc===1?'ui.rc.bok1':'ui.rc.bokN',{n:okc}));
       var addN=Object.keys(addedCodes).length; if(addN) parts.push(_t(addN===1?'ui.rc.badd1':'ui.rc.baddN',{n:addN}));
       if(invalid) parts.push(_t('ui.rc.bskip',{n:invalid}));
       if(gated)   parts.push(_t('ui.rc.bfull',{n:gated}));
       if(other)   parts.push(_t('ui.rc.berr',{n:other}));
+      if(renUsed.length) parts.push(renToast(renUsed));
+      if(had)     parts.push(_t('ui.scan.already',{n:had}));
       toast(parts.length?parts.join(' · '):_t('ui.rc.bnone'));
       if(typeof renderHistShell==='function') try{ renderHistShell(); }catch(_e){ ocFail('finish#7',_e); }
       
@@ -31697,7 +32075,233 @@ try{
     acts.appendChild(all); acts.appendChild(no); box.appendChild(acts);
     box.appendChild(el('p','oshare-priv',_t('ui.rc.priv!')));
     sc.appendChild(box);
+    
+
+
+    dropSession();
   }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  var _loWrapped=false, _loQuiet=0, _loSeen=null, _loRefused='';
+  function loRec(){ try{ var lo=S&&S.__linkOpen; return (lo&&typeof lo==='object'&&Array.isArray(lo.defs)&&lo.map&&typeof lo.map==='object'&&lo.payload&&Array.isArray(lo.payload.strands))?lo:null; }catch(_){ return null; } }
+  function loShown(lo,code){ return hasOwn(lo.map,code)?lo.map[code]:code; }
+   
+  function loDefs(lo){ return lo.defs.map(function(d){ return hasOwn(lo.map,d.code)?Object.assign({},d,{code:lo.map[d.code]}):d; }); }
+  function loText(){ return String(S.seq||'')+'\u0000'+(S.duplexMode==='custom'?String(S.antiSeq||''):''); }
+   
+  function loUses(lo){
+    var codes=Object.create(null), hit=false;
+    loDefs(lo).forEach(function(d){ codes[d.code]=1; });
+    function f(c){ if(codes[c]) hit=true; return null; }
+    walkSeq(S.seq,f); if(S.duplexMode==='custom') walkSeq(S.antiSeq,f);
+    return hit;
+  }
+  
+
+
+
+
+
+
+  function loDecide(lo){
+    var taken=Object.create(null), delta=Object.create(null), refuse=[], moved=false;
+    lo.defs.forEach(function(d){ taken[d.code]=1; taken[loShown(lo,d.code)]=1; });
+    lo.defs.forEach(function(d){
+      var shown=loShown(lo,d.code);
+      if(!clashAt(shown,d)) return;
+      if(nameBound(d.code)){ refuse.push(shown); return; }
+      var to=reuseOrMint(d,taken); if(!to){ refuse.push(shown); return; }
+      lo.map[d.code]=to; taken[to]=1; delta[shown]=to; moved=true;
+    });
+    if(moved){ S.seq=renameSeq(S.seq,delta); if(S.duplexMode==='custom') S.antiSeq=renameSeq(S.antiSeq,delta); }
+    return {moved:moved, refuse:refuse};
+  }
+   
+  function loLayer(){
+    var lo=loRec();
+     
+    if(!lo){ var hb=loHost(false); if(hb&&!hb.hidden) loPaint(); return; }
+    var r=loDecide(lo), shown=loDefs(lo);
+    mergeSessionDefs(shown);
+     
+    shown.forEach(function(d){ var x=CUSTOM[d.code]; if(x&&x._shared===true) x._open=true; });
+    
+
+    r.refuse.forEach(function(c){ try{ delete CUSTOM[c]; }catch(_e){ ocFail('linkOpen#withhold',_e); } });
+    var key=r.refuse.slice().sort().join(',');
+    if(r.moved||key!==_loRefused){
+      var tell=!!key&&key!==_loRefused; _loRefused=key;
+      if(r.moved) _loSeen=loText();
+       
+      ocDefer('linkOpen',function(){ try{ applyAll(); }catch(_e){ ocFail('linkOpen#apply',_e); } loPaint(); if(tell) openConflict(r.refuse,null); },0);
+    }
+  }
+  
+
+
+  function loInstall(){
+    if(_loWrapped||typeof window.rebuildCustom!=='function'||typeof window.applyAll!=='function') return;
+    _loWrapped=true;
+    var rb=window.rebuildCustom, aa=window.applyAll;
+    window.rebuildCustom=function(){ var r=rb.apply(this,arguments); try{ loLayer(); }catch(_e){ ocFail('linkOpen#layer',_e); } return r; };
+    window.applyAll=function(){ try{ loTick(); }catch(_e){ ocFail('linkOpen#tick',_e); } var r=aa.apply(this,arguments);
+      try{ var b=loHost(false), on=!!loRec(); if(on?(!b||b.hidden):(b&&!b.hidden)) loPaint(); }catch(_e){ ocFail('linkOpen#sync',_e); } return r; };
+  }
+  
+
+
+  function loTick(){
+    var lo=loRec(); if(!lo||_loQuiet) return;
+    var now=loText(); if(_loSeen===null){ _loSeen=now; return; }
+    if(now===_loSeen) return;
+    _loSeen=now;
+    if(!loUses(lo)) loClose();
+  }
+   
+  function loDrop(){ try{ for(var k in CUSTOM){ if(CUSTOM[k]&&CUSTOM[k]._open===true){ rebuildCustom(); return; } } }catch(_e){ ocFail('linkOpen#drop',_e); } }
+   
+  function loClose(){
+    try{ S.__linkOpen=null; }catch(_e){ ocFail('linkOpen#clear',_e); }
+    _loSeen=null; _loRefused='';
+    loDrop();
+    try{ save(); }catch(_e){ ocFail('linkOpen#save',_e); }
+    loPaint();
+  }
+  function loHost(make){
+    var p=document.getElementById('panel-mw'); if(!p) return null;
+    var b=p.querySelector('[data-linkopen]');
+    if(!b&&make){ b=document.createElement('div'); b.className='labed'; b.setAttribute('data-linkopen',''); b.setAttribute('role','status'); p.insertBefore(b,p.firstChild); }
+    return b||null;
+  }
+  
+
+
+
+  function loPaint(){
+    var lo=loRec(), b=loHost(!!lo); if(!b) return;
+    if(!lo){ b.hidden=true; b.innerHTML=''; return; }
+    var p=renPairs(lo.payload.strands[lo.idx],lo.map);
+    b.hidden=false;
+    b.innerHTML='<div class="labed-t">'+ocEsc(_t('ui.rc.openband'))+'</div>'
+      +(lo.name?'<div class="labed-m">'+ocEsc(quote(lo.name))+'</div>':'')
+      +(p.length?'<div class="labed-m" data-lsren>'+nwCodes(renText(p),p)+'</div>':'')    
+      +'<div class="labed-a"><button type="button" class="lab-x2 lab-pri" data-lo-save>'+ocEsc(_t('ui.rc.save'))+'</button>'
+      +'<button type="button" class="lab-x2" data-lo-back>'+ocEsc(_t('lab.back'))+'</button></div>';
+  }
+   
+  function loStrand(lo){
+    var s={name:lo.name||'', seq:S.seq||'', type:S.type||'DNA', linkage:S.linkage||'PO', five:S.five||'OH', fiveThio:!!S.fiveThio,
+      three:S.three||'OH', advanced:!!S.advanced, modPreset:S.modPreset||'', modName:S.modName||'', modMass:S.modMass||'', mwSource:S.mwSource||'sense'};
+    if(S.duplexMode&&S.duplexMode!=='off') s.duplex={mode:S.duplexMode, antiSeq:S.antiSeq||'', antiType:S.antiType||s.type,
+      antiFive:S.antiFive||'OH', antiThree:S.antiThree||'OH', antiLinkage:S.antiLinkage||'PO'};
+    return s;
+  }
+  
+
+
+
+
+  function loSave(){
+    var lo=loRec(); if(!lo) return;
+    try{ if(window.ocPlan&&window.ocPlan.gateSave&&!window.ocPlan.gateSave(1,{retry:function(){ try{ loSave(); }catch(_e){ ocFail('linkOpen#retry',_e); } }})) return; }catch(_e){ ocFail('linkOpen#gate',_e); }
+    
+
+
+
+    var fresh=decide(lo.defs);
+    if(fresh.refuse.length){ openConflict(fresh.refuse,null); return; }
+    var delta=Object.create(null), moved=false, map={};
+    lo.defs.forEach(function(d){ var from=loShown(lo,d.code), to=hasOwn(fresh.map,d.code)?fresh.map[d.code]:d.code;
+      if(to!==d.code) map[d.code]=to; if(from!==to){ delta[from]=to; moved=true; } });
+    if(moved){ S.seq=renameSeq(S.seq,delta); if(S.duplexMode==='custom') S.antiSeq=renameSeq(S.antiSeq,delta); _loSeen=loText(); }
+    lo.map=map;
+    var defs=loDefs(lo), r=saveShared(loStrand(lo),defs);
+    var back=Object.create(null); Object.keys(lo.map).forEach(function(c){ back[lo.map[c]]=c; });
+    var rn=((r&&r.used)||[]).filter(function(x){ return hasOwn(back,x.code); }).map(function(x){ return [back[x.code],x.code]; });
+    toast(saveToast(r,rn));
+    if(!(r&&r.ok)) return;
+    loClose();
+    try{ savedSig=currentSig(); }catch(_e){ ocFail('linkOpen#sig',_e); }
+    try{ applyAll(); }catch(_e){ ocFail('linkOpen#apply2',_e); }
+    if(typeof renderHistShell==='function') try{ renderHistShell(); }catch(_e){ ocFail('linkOpen#hist',_e); }
+  }
+  
+
+
+
+  function loBack(){
+    var lo=loRec(); if(!lo) return;
+    var back=(lo.back&&typeof lo.back==='object')?lo.back:{}, inBand=false;
+    try{ var ae=document.activeElement; inBand=!!(ae&&ae.closest&&ae.closest('[data-linkopen]')); }catch(_e){ ocFail('linkOpen#focus1',_e); }
+    WORK.forEach(function(k){ if(hasOwn(back,k)) S[k]=back[k]; else delete S[k]; });
+    _loSeen=null; _loRefused='';
+    try{ rebuildCustom(); }catch(_e){ ocFail('linkOpen#back',_e); }
+    try{ applyAll(); }catch(_e){ ocFail('linkOpen#apply3',_e); }
+    try{ window.dispatchEvent(new CustomEvent('oligo:shared')); }catch(_e){ ocFail('linkOpen#event',_e); }
+    loPaint();
+     
+    var tab=(typeof lo.tab==='string'&&lo.tab)?lo.tab:'mw';
+    if(tab!==(document.body.dataset.tab||'mw')&&typeof window.setTab==='function'){ try{ window.setTab(tab); }catch(_e){ ocFail('linkOpen#tab2',_e); } return; }
+    if(inBand){ try{ var h=document.querySelector('#panel-mw .vhead h2, #panel-mw h2'); if(h){ h.setAttribute('tabindex','-1'); h.focus({preventScroll:true}); } }catch(_e){ ocFail('linkOpen#focus2',_e); } }
+  }
+   
+  function loOpen(payload,idx,now){
+    var s=now.view.strands[idx], src=payload.strands[idx]; if(!s||!src) return false;
+    mergeSessionDefs(now.view.defs);
+    if(!validShared(s).ok){ dropSession(); return false; }
+    var defs=defsFor(src,payload.customBases), map={};
+    defs.forEach(function(d){ if(hasOwn(now.plan.map,d.code)) map[d.code]=now.plan.map[d.code]; });
+    var back={}; WORK.forEach(function(k){ if(S[k]!==undefined) back[k]=S[k]; });
+     
+    var rec=JSON.parse(JSON.stringify({payload:payload, idx:idx, name:s.name||'', defs:defs, map:map, back:back, tab:(document.body.dataset.tab||'mw')}));
+    loadSavedState(peOf(s));         
+    S.__linkOpen=rec;
+    loInstall(); _loSeen=null; _loRefused='';
+    try{ rebuildCustom(); }catch(_e){ ocFail('linkOpen#open',_e); }       
+    return true;
+  }
+  
+
+
+  function loBoot(){
+    try{ if(!S||S.__linkOpen==null) return; }catch(_){ return; }
+    var lo=loRec(), ok=false;
+    try{
+      if(lo){ var v=validate(JSON.parse(JSON.stringify(lo.payload))), one=[{seq:'A',type:'DNA'}],
+          dv=validate({v:VER,strands:one,customBases:JSON.parse(JSON.stringify(lo.defs))}),
+          sv=validate({v:VER,strands:one,customBases:JSON.parse(JSON.stringify(loDefs(lo)))});
+        ok=!!(v&&dv&&sv&&dv.customBases.length===lo.defs.length&&sv.customBases.length===lo.defs.length&&Number.isInteger(lo.idx)&&v.strands[lo.idx]
+          &&Object.keys(lo.map).every(function(k){ return typeof lo.map[k]==='string'; }));
+        if(ok){ lo.payload=v; lo.defs=dv.customBases; } }
+    }catch(_e){ ok=false; }
+    if(!ok){ try{ S.__linkOpen=null; save(); }catch(_e){ ocFail('linkOpen#boot',_e); } return; }
+    loInstall(); loLayer();
+  }
+  try{
+    document.addEventListener('click',function(ev){
+      var b=ev.target&&ev.target.closest&&ev.target.closest('[data-linkopen] [data-lo-save], [data-linkopen] [data-lo-back]'); if(!b) return;
+      if(b.hasAttribute('data-lo-save')) loSave(); else loBack();
+    });
+     
+    document.addEventListener('input',function(ev){ try{ if(!loRec()) return; var t=ev.target; if(t&&t.closest&&t.closest('[data-seq],[data-antiseq]')) loTick(); }catch(_e){ ocFail('linkOpen#input',_e); } });
+     
+    window.addEventListener('oligo:shared',function(){ try{ if(_loQuiet) return; if(!loRec()) loDrop(); loPaint(); }catch(_e){ ocFail('linkOpen#shared',_e); } });
+    window.addEventListener('oligo:lang',function(){ try{ loPaint(); }catch(_e){ ocFail('linkOpen#lang',_e); } });
+  }catch(_e){ ocFail('linkOpen#wire',_e); }
   function validate(p){
     if(!p||typeof p!=='object'||p.v!==VER||!Array.isArray(p.strands)||!p.strands.length||p.strands.length>MAXN) return null;
     
@@ -31709,13 +32313,17 @@ try{
         LK=Object.assign(Object.create(null),{PO:1,PS:1,Mixed:1}),
         MS=Object.assign(Object.create(null),{sense:1,antisense:1,duplex:1});
     function ss(v,m){ return (typeof v==='string'?v:'').slice(0,m); }
+    
+
+
+    function sb(v){ return (typeof v==='string'&&v.length>MAXURL)?null:ss(v,MAXURL); }
     function endValue(v,table){
       if(v==null||v==='') return 'OH';
       return typeof v==='string'&&Object.prototype.hasOwnProperty.call(table,v)?v:null;
     }
     var strands=[];
     for(var i=0;i<p.strands.length;i++){
-      var s=p.strands[i]; if(!s||typeof s!=='object') return null; var seq=ss(s.seq,4000); if(!seq) return null;
+      var s=p.strands[i]; if(!s||typeof s!=='object') return null; var seq=sb(s.seq); if(!seq) return null;
       var five=endValue(s.five,FIVE), three=endValue(s.three,THREE); if(five===null||three===null) return null;
       if(Object.prototype.hasOwnProperty.call(s,'fiveThio')&&typeof s.fiveThio!=='boolean') return null;
       var fiveThio=s.fiveThio===true; if(fiveThio&&five!=='phosphate') return null;
@@ -31725,7 +32333,7 @@ try{
         if(md==='mirror'||md==='custom'||md==='manual'){
           dx={mode:md};
           if(md!=='mirror'){
-            dx.antiSeq=ss(s.duplex.antiSeq,4000); dx.antiType=TY[s.duplex.antiType]?s.duplex.antiType:'DNA';
+            dx.antiSeq=sb(s.duplex.antiSeq); if(dx.antiSeq===null) return null; dx.antiType=TY[s.duplex.antiType]?s.duplex.antiType:'DNA';
             dx.antiFive=endValue(s.duplex.antiFive,FIVE); dx.antiThree=endValue(s.duplex.antiThree,THREE);
             if(dx.antiFive===null||dx.antiThree===null) return null;
             dx.antiLinkage=LK[s.duplex.antiLinkage]?s.duplex.antiLinkage:'PO';
@@ -31734,7 +32342,8 @@ try{
       }
       
 
-      strands.push({ name:ss(s.name,120),seq:seq,type:TY[s.type]?s.type:'DNA',linkage:LK[s.linkage]?s.linkage:'PO',five:five,fiveThio:fiveThio,three:three,advanced:!!s.advanced,modPreset:ss(s.modPreset,40),modName:ss(s.modName,80),modMass:(window.ocModMassData(s.modMass)||''),mwSource:MS[s.mwSource]?s.mwSource:'sense',duplex:dx });
+      var nm=sb(s.name); if(nm===null) return null;
+      strands.push({ name:nm,seq:seq,type:TY[s.type]?s.type:'DNA',linkage:LK[s.linkage]?s.linkage:'PO',five:five,fiveThio:fiveThio,three:three,advanced:!!s.advanced,modPreset:ss(s.modPreset,40),modName:ss(s.modName,80),modMass:(window.ocModMassData(s.modMass)||''),mwSource:MS[s.mwSource]?s.mwSource:'sense',duplex:dx });
     }
     
 
@@ -31758,7 +32367,7 @@ try{
       if(Object.prototype.hasOwnProperty.call(c,'hasPhos')&&typeof c.hasPhos!=='boolean') return null;
       var kind=c.kind==null?'base':c.kind; if(kind!=='base'&&kind!=='conj') return null;
       if(c.formula!=null&&typeof c.formula!=='string') return null;
-      var formula=ss(c.formula,60); if(c.formula&&formula!==c.formula) return null;
+      var formula=sb(c.formula); if(formula===null) return null;
       if(formula){ var pf=parseFormula(formula); if(!pf) return null;
         
 
@@ -31766,11 +32375,14 @@ try{
 
 
         try{ var fav=formulaAvg(pf); if(fav!==null&&!isFinite(fav)) return null; }catch(_e){ return null; } }
-      var def={code:code,name:ss(c.name,80),mass:c.mass,hasPhos:c.hasPhos===true,kind:kind,formula:formula};
+      var cname=sb(c.name); if(cname===null) return null;
+      var def={code:code,name:cname,mass:c.mass,hasPhos:c.hasPhos===true,kind:kind,formula:formula};
        
       if(Object.prototype.hasOwnProperty.call(c,'charge')){ if(!(Number.isInteger(c.charge)&&c.charge>=1&&c.charge<=4)) return null; def.charge=c.charge; }
+       
+      if(!epsOk(c,def)) return null;
       if(seenCb[code]){
-        var old=seenCb[code]; if(old.mass!==def.mass||old.hasPhos!==def.hasPhos||old.kind!==def.kind||old.formula!==def.formula||(old.charge||0)!==(def.charge||0)) return null;
+        var old=seenCb[code]; if(old.mass!==def.mass||old.hasPhos!==def.hasPhos||old.kind!==def.kind||old.formula!==def.formula||(old.charge||0)!==(def.charge||0)||epsKey(old)!==epsKey(def)) return null;
         continue;
       }
       seenCb[code]=def; cb.push(def); } }
@@ -31788,6 +32400,11 @@ try{
 
 
   window.oligoShare={ shareStrands:shareStrands, _buildUrl:buildUrl, _validate:validate, _sameDef:sameDef };
+  
+
+  loBoot();
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',function(){ try{ loPaint(); }catch(_e){ ocFail('linkOpen#paint',_e); } });
+  else loPaint();
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',initFromHash); else initFromHash();
   
 
@@ -33803,10 +34420,17 @@ try{
 
 
 
+  
+
+
+
+
+  function _linkResident(){ try{ for(var k in CUSTOM){ if(CUSTOM[k]&&CUSTOM[k]._shared===true) return true; } }catch(_e){ ocFail('_linkResident#1',_e); } return false; }
   async function mergeLabMonomers(labId, epoch){
     try{ var got=await fetchLabMonomers(labId);
          if(epoch!==undefined && epoch!==_epoch) return;
-         _labMon=got; mergeMonInto(_labMon); }
+         _labMon=got;
+         if(_linkResident() && typeof window.rebuildCustom==='function') window.rebuildCustom(); else mergeMonInto(_labMon); }
     catch(_){ _labMon=[]; }
   }
   
@@ -36613,7 +37237,15 @@ try{
 
 
   window.oligoLabLib={ renderMonLib:renderMonLib, _whoName:_whoName, memberMapMode:function(){ return _memMapOk?(_memNmOk?'named':'legacy'):'failed'; },
-    ensureScope:ensureScope, openLab:openLab, renderLabList:renderLabList, addToLab:addToLab, fetchLabStrands:fetchLabStrands, _openAccess:openAccess, _openPicker:openPicker,
+    
+
+
+
+    labMonDefs:function(code){ var out=[]; try{ (_labMon||[]).forEach(function(row){ if(!row||String(row.code)!==String(code)) return;
+      var c=Object.assign({}, row.data||{}, {code:row.code}); if(!labMonOk(c)) return;
+      out.push({code:c.code,name:c.name||c.code,mass:Number(c.mass),hasPhos:!!c.hasPhos,kind:c.kind||'base',formula:_monFormula(c)}); }); }catch(_e){ ocFail('labMonDefs#1',_e); } return out; },
+    ensureScope:ensureScope, openLab:openLab, renderLabList:renderLabList,
+ addToLab:addToLab, fetchLabStrands:fetchLabStrands, _openAccess:openAccess, _openPicker:openPicker,
     invalidateLabs:invalidateLabs, isForeignLab:isForeignLab, isForeignLabNow:isForeignLabNow,
     
 
@@ -36962,13 +37594,14 @@ try{
 
 
     var _v=(typeof validateParsedSequence==='function')
-      ? validateParsedSequence(p)
+      ? validateParsedSequence(p, true)       
       : {ok:!!(p&&p.tokens&&p.tokens.length&&!(p.bad&&p.bad.length)&&!p.needPrefix), reason:''};
     if(!_v.ok){
       
 
 
       if(_v.reason==='bad' && p && p.bad && p.bad.length) return {ok:false,msg:_scT('ui.sv.sc.bad',{codes:p.bad.slice(0,8).join(' ')})};
+      if(_v.reason==='bad' && _v.bad && _v.bad.length) return {ok:false,msg:_scT('ui.sv.sc.bad',{codes:_v.bad.slice(0,8).join(' ')})};    
       if(_v.reason==='needPrefix')   return {ok:false,msg:_scT('ui.sv.sc.prefix')};
       if(_v.reason==='danglingLink') return {ok:false,msg:_scT('ui.sv.sc.dangling')};
       return {ok:false,msg:_scT('ui.sv.sc.nobases')};
@@ -41347,12 +41980,22 @@ try{
       if(typeof S!=='undefined'&&S){
         S.customBases=[]; S.seq=''; S.antiSeq='';
         S.concTask='dilution'; S.annealDraft=null; S.massDraft=null; S.concRecord=null;
+        
+
+        S.__linkOpen=null;
+        
+
+        S.__shared=null;
         if(W.ocConcTasks) W.ocConcTasks.clear();
         var CF=['a260','nd','vol','dilC2','dilV2','customStock','customMW','modName','modMass','name'];
         for(var c=0;c<CF.length;c++) if(Object.prototype.hasOwnProperty.call(S,CF[c])) S[CF[c]]='';
       }
     }catch(_e){ ocFail('privacy.wipe#2',_e); }
     try{ if(typeof rebuildCustom==='function') rebuildCustom(); }catch(_e){ ocFail('privacy.wipe#3',_e); }
+    
+
+
+    try{ window.dispatchEvent(new CustomEvent('oligo:shared')); }catch(_e){ ocFail('privacy.wipe#10',_e); }
     
 
 
@@ -46411,9 +47054,11 @@ try{
       var label = window.t('tm.parent.label.' + parentKind);
       var reasons = whyList(qual.reasons);
       var counts = [];
-      if (qual.unmodelled) counts.push(plural(qual.unmodelled, 'tm.count.residue'));
+      
+
+
+      if (qual.unmodelled + qual.conjugates) counts.push(plural(qual.unmodelled + qual.conjugates, 'tm.count.residue'));
       if (qual.psLinkages) counts.push(plural(qual.psLinkages, 'tm.count.linkage'));
-      if (qual.conjugates) counts.push(plural(qual.conjugates, 'tm.count.conjugate'));
 
       var dirTxt = qual.direction === 'higher'
           ? t('tm.dir.higher!')
@@ -46443,10 +47088,21 @@ try{
 
 
 
+      
+
+
+
+
+      var cjc = [], cjn = {};
+      (qual.residues || []).forEach(function (st, i) { var tk = g.sense[i]; if (st === 'excluded' && tk && tk.custom) { if (!cjn[tk.code]) { cjn[tk.code] = 0; cjc.push(tk.code); } cjn[tk.code]++; } });
+      var why2 = (reasons ? [reasons] : []).concat(cjc.length ? [cjc.map(function (c) { return cjn[c] > 1 ? cjn[c] + '\u00a0\u00d7\u00a0' + c : c; }).join(t('tm.why.sep'))] : []).join(t('tm.why.sep'));
+      
+
+      var nLeft = qual.unmodelled + qual.psLinkages + qual.conjugates;
       html += '<div class="tm-cov tm-warn"><b>' + t('tm.parent.not!') + '</b> '
            + t(dgv ? 'tm.parent.nopar.dg!'
-                   : (qual.unmodelled + qual.psLinkages === 1 ? 'tm.parent.nopar.one!' : 'tm.parent.nopar.many!'),
-               { what: esc(joinList(counts)), why: esc(reasons) })
+                   : (nLeft === 1 ? 'tm.parent.nopar.one!' : 'tm.parent.nopar.many!'),
+               { what: esc(joinList(counts)), why: esc(why2) })
            + ' ' + dirTxt
            + ' ' + t('tm.parent.howmuch!') + '</div>'
            + '<div class="tm-res" aria-label="' + esc(t('tm.res.aria')) + '">' + covMap(g.sense, qual, dgv) + '</div>'
@@ -48471,7 +49127,7 @@ window.addEventListener('oligo:lang', function(){ sync(); });
 
 
       var v = null;
-      try { v = (typeof W.validateSequence === 'function') ? W.validateSequence(h.seq, h.type) : { ok: true }; }
+      try { v = (typeof W.validateSequence === 'function') ? W.validateSequence(h.seq, h.type, true) : { ok: true }; }    
       catch(_e){ fail('sheet#validate', _e); v = { ok: false, message: '' }; }
       if (!v || !v.ok){
         problems.push(T('lab.imp.rowseq', { n: rowNo, why: (v && v.message) || '' }));
@@ -54156,6 +54812,9 @@ else mount();
     var pa;
     try { pa = ev.target.closest && ev.target.closest(SEL); } catch (e) { return; }
     if (!pa || !isSaveTab()) return;
+    
+
+    try { if (W.S && W.S.__linkOpen) return; } catch (e) {   }
     var list = labsNow();
     
 
